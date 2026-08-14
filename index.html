@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mendingur — Cánh Cổng</title>
+<meta name="description" content="Mendingur — tác giả, nhạc sĩ, người kể chuyện. Chọn một lối đi.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="style/site.css">
+<style>
+body {
+    margin: 0;
+    min-height: 100%;
+    background:
+      radial-gradient(
+        ellipse 120% 80% at 50% -10%,
+        #F7EFDC 0%,
+        var(--parchment) 45%,
+        #EDE0C8 100%
+      );
+    background-attachment: fixed;
+    background-size: 100% 100vh;
+    background-repeat: no-repeat;
+  
+    color: var(--ink);
+    font-family: 'Be Vietnam Pro', -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+.stage {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1.4rem 4rem;
+    position: relative;
+    text-align: center;
+  }
+
+@media (prefers-reduced-motion: reduce) {
+  .rift-anim, .card { animation: none !important; transition: none !important; }
+}
+
+.rift-wrap {
+    width: min(260px, 60vw);
+    margin: 0 auto 0.6rem;
+    position: relative;
+    z-index: 1;
+    animation: breathe 7s ease-in-out infinite;
+  }
+
+h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 600;
+    font-size: clamp(2.4rem, 8vw, 3.6rem);
+    margin: 0.2rem 0 0.3rem;
+    position: relative; z-index: 1;
+  }
+
+.tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.05rem, 3vw, 1.3rem);
+    color: var(--ink-soft);
+    margin: 0 0 0.6rem;
+    position: relative; z-index: 1;
+  }
+
+.quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.98rem;
+    color: var(--ember-rust);
+    margin: 0 0 2.6rem;
+    position: relative; z-index: 1;
+  }
+
+.prompt {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--ink-soft);
+    margin: 0 0 1.6rem;
+    position: relative; z-index: 1;
+  }
+
+.gates {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(150px, 220px));
+    justify-content: center;
+    gap: 1.1rem;
+    max-width: 620px;
+    width: 100%;
+    position: relative; z-index: 1;
+  }
+
+@media (max-width: 480px) {
+  .gates { grid-template-columns: 1fr; max-width: 320px; }
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.55rem;
+    text-decoration: none;
+    color: var(--ink);
+    background: linear-gradient(180deg, rgba(255,255,255,0.55), rgba(255,255,255,0.15));
+    border: 1px solid var(--parchment-edge);
+    border-radius: 18px 18px 60px 60px;
+    padding: 1.6rem 1rem 1.3rem;
+    transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle 160px at var(--mx, 50%) var(--my, 50%), rgba(168,83,42,0.38), transparent 72%);
+    opacity: 0;
+    transition: opacity .3s ease;
+    pointer-events: none;
+  }
+
+.card:hover, .card:focus-visible {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 30px -14px rgba(168,83,42,0.35);
+    border-color: var(--ember-gold);
+  }
+
+.card:hover::before, .card:focus-visible::before { opacity: 1; }
+
+.card:focus-visible { outline: 2px solid var(--ember-rust); outline-offset: 3px; }
+
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(168,83,42,0.30);
+    transform: scale(0);
+    opacity: 1;
+    animation: rippleAnim 0.65s ease-out forwards;
+    pointer-events: none;
+  }
+
+@media (prefers-reduced-motion: reduce) {
+  .card::before { transition: none; }
+}
+
+.card .icon {
+    width: 40px; height: 40px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; z-index: 1;
+  }
+
+.card .icon svg { width: 100%; height: 100%; }
+
+.card .label {
+    font-weight: 600;
+    font-size: 0.98rem;
+    position: relative; z-index: 1;
+  }
+
+.card .sub {
+    font-size: 0.74rem;
+    color: var(--ink-soft);
+    position: relative; z-index: 1;
+  }
+
+@media (max-width: 480px) {
+  .language-switcher { top: .8rem; right: .8rem; }
+  .lang-btn { min-width: 42px; padding: 0 .55rem; }
+}
+</style>
+</head>
+<body>
+
+  <div class="language-switcher" id="languageSwitcher" role="group" aria-label="Ngôn ngữ / Language">
+    <button class="lang-btn active" type="button" data-lang="vi" aria-pressed="true">VI</button>
+    <button class="lang-btn" type="button" data-lang="en" aria-pressed="false">EN</button>
+  </div>
+
+  <!-- Khúc Ca Hy Vọng — nút truy cập mini game -->
+  <a
+    class="game-fab"
+    id="gameFab"
+    href="https://mendingur.github.io/interactivechapters/"
+    aria-label="Mở Chương Tương Tác"
+  >
+    <span class="game-fab-icon" aria-hidden="true">
+      <svg viewBox="0 0 400 400" fill="none">
+        <path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="#FFF6DE"/>
+        <path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="#FFF6DE"/>
+        <g transform="translate(200,278)">
+          <ellipse rx="14" ry="21" fill="#FFF6DE"/>
+          <ellipse rx="14" ry="21" transform="rotate(72)" fill="#FFF6DE"/>
+          <ellipse rx="14" ry="21" transform="rotate(144)" fill="#FFF6DE"/>
+          <ellipse rx="14" ry="21" transform="rotate(216)" fill="#FFF6DE"/>
+          <ellipse rx="14" ry="21" transform="rotate(288)" fill="#FFF6DE"/>
+          <circle r="9" fill="#A8532A"/>
+        </g>
+        <g transform="translate(200,96)">
+          <path d="M0,-24 C2,-7 7,-2 24,0 C7,2 2,7 0,24 C-2,7 -7,2 -24,0 C-7,-2 -2,-7 0,-24 Z" fill="#FFF6DE"/>
+        </g>
+      </svg>
+    </span>
+    <span class="game-fab-copy">
+      <span class="game-fab-title" data-i18n data-vi="Chương Tương Tác" data-en="Interactive Chapters">Chương Tương Tác</span>
+      <span class="game-fab-sub" data-i18n data-vi="Mini Game · 3 Quyển" data-en="Mini Games · 3 Volumes">Mini Game · 3 Quyển</span>
+    </span>
+    <svg class="game-fab-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M5 12h13"/>
+      <path d="m13 6 6 6-6 6"/>
+    </svg>
+  </a>
+
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<main class="stage" id="stage">
+
+  <div class="rift-wrap">
+    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Biểu tượng Mendingur">
+      <defs>
+        <linearGradient id="wingGrad" x1="0" y1="1" x2="0" y2="0">
+          <stop offset="0%" stop-color="#A8532A"/><stop offset="55%" stop-color="#C99A3E"/><stop offset="100%" stop-color="#E4C077"/>
+        </linearGradient>
+        <radialGradient id="coreGlow" cx="50%" cy="55%" r="55%">
+          <stop offset="0%" stop-color="#FFF6DE" stop-opacity="0.95"/><stop offset="55%" stop-color="#E4C077" stop-opacity="0.35"/><stop offset="100%" stop-color="#E4C077" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="flowerGrad" x1="0" y1="1" x2="0" y2="0">
+          <stop offset="0%" stop-color="#A8532A"/><stop offset="100%" stop-color="#E4C077"/>
+        </linearGradient>
+      </defs>
+      <circle cx="200" cy="215" r="145" fill="url(#coreGlow)"/>
+      <path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+      <path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+      <path d="M195,312 C160,298 122,272 100,230 C82,196 80,155 90,118" fill="none" stroke="#FBF6EC" stroke-width="2" opacity="0.45"/>
+      <path d="M205,312 C240,298 278,272 300,230 C318,196 320,155 310,118" fill="none" stroke="#FBF6EC" stroke-width="2" opacity="0.45"/>
+      <path d="M200,340 L200,295" stroke="#8A4423" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+      <g transform="translate(200,278)">
+        <g stroke="#FBF6EC" stroke-width="1.1" stroke-opacity="0.55">
+          <ellipse rx="14" ry="21" fill="url(#flowerGrad)"/>
+          <ellipse rx="14" ry="21" transform="rotate(72)" fill="url(#flowerGrad)"/>
+          <ellipse rx="14" ry="21" transform="rotate(144)" fill="url(#flowerGrad)"/>
+          <ellipse rx="14" ry="21" transform="rotate(216)" fill="url(#flowerGrad)"/>
+          <ellipse rx="14" ry="21" transform="rotate(288)" fill="url(#flowerGrad)"/>
+        </g>
+        <circle r="9.5" fill="#FFF6DE"/><circle r="3" fill="#E4A94E"/>
+      </g>
+      <g transform="translate(200,96)"><path d="M0,-24 C2,-7 7,-2 24,0 C7,2 2,7 0,24 C-2,7 -7,2 -24,0 C-7,-2 -2,-7 0,-24 Z" fill="#F3D488"/></g>
+      <g transform="translate(255,148) scale(0.42)"><path d="M0,-24 C2,-7 7,-2 24,0 C7,2 2,7 0,24 C-2,7 -7,2 -24,0 C-7,-2 -2,-7 0,-24 Z" fill="#E4C077"/></g>
+      <g transform="translate(145,148) scale(0.42)"><path d="M0,-24 C2,-7 7,-2 24,0 C7,2 2,7 0,24 C-2,7 -7,2 -24,0 C-7,-2 -2,-7 0,-24 Z" fill="#E4C077"/></g>
+    </svg>
+  </div>
+
+  <h1>Mendingur</h1>
+  <p class="tagline" data-i18n data-vi="Tác giả · Nhạc sĩ · Người kể chuyện" data-en="Author · Musician · Storyteller">Tác giả · Nhạc sĩ · Người kể chuyện</p>
+  <p class="quote" data-i18n data-vi="&quot;Giữa tro tàn, vẫn kiên tâm vun xới không ngừng.&quot;" data-en="&quot;Among the ashes, still tending the soil without cease.&quot;">"Giữa tro tàn, vẫn kiên tâm vun xới không ngừng."</p>
+
+  <p class="prompt" data-i18n data-vi="Bạn muốn đi đâu?" data-en="Where will you go?">Bạn muốn đi đâu?</p>
+
+  <nav class="gates" aria-label="Điều hướng chính" data-aria-vi="Điều hướng chính" data-aria-en="Main navigation">
+    <a class="card" href="https://github.com/Mendingur">
+      <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="#A8532A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 0-3.16 19.5c.5.1.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85V21c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg></span>
+      <span class="label" data-i18n data-vi="About me" data-en="About me">About me</span>
+      <span class="sub" data-i18n data-vi="Hồ sơ &amp; dự án trên GitHub" data-en="Profile &amp; projects on GitHub">Hồ sơ &amp; dự án trên GitHub</span>
+    </a>
+    <a class="card" href="mailto:methesky.mending@gmail.com">
+      <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="#A8532A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+      <span class="label" data-i18n data-vi="Liên hệ" data-en="Contact">Liên hệ</span>
+      <span class="sub" data-i18n data-vi="Email: methesky.mending@gmail.com" data-en="Email: methesky.mending@gmail.com">Email: methesky.mending@gmail.com</span>
+    </a>
+    <a class="card" href="https://youtube.com/@Mendingur">
+      <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="#A8532A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V6l8 6-8 6Z"/><circle cx="12" cy="12" r="10"/></svg></span>
+      <span class="label" data-i18n data-vi="YouTube — Nghe nhạc" data-en="YouTube — Music">YouTube — Nghe nhạc</span>
+      <span class="sub" data-i18n data-vi="Sáng tác dưới bút danh Mendingur" data-en="Music released under the Mendingur name">Sáng tác dưới bút danh Mendingur</span>
+    </a>
+    <a class="card" href="https://mendingur.github.io/thesowerscycle/">
+      <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="#A8532A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
+      <span class="label" data-i18n data-vi="Đọc truyện" data-en="Read the story">Đọc truyện</span>
+      <span class="sub" data-i18n data-vi="Vòng Tuần Hoàn Người Gieo Hạt" data-en="The Sower's Cycle">Vòng Tuần Hoàn Người Gieo Hạt</span>
+    </a>
+  </nav>
+
+  <footer>
+  <a href="https://github.com/Mendingur" aria-label="GitHub">
+    <svg viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.54 2.87 8.39 6.84 9.75.5.09.68-.22.68-.48 0-.24-.01-1.04-.01-1.89-2.78.62-3.37-1.19-3.37-1.19-.46-1.2-1.11-1.52-1.11-1.52-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.32.1-2.75 0 0 .84-.28 2.75 1.05a9.3 9.3 0 0 1 2.5-.35c.85 0 1.71.12 2.5.35 1.91-1.33 2.75-1.05 2.75-1.05.55 1.43.2 2.49.1 2.75.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.82 0 .27.18.58.69.48A10.01 10.01 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z"/>
+    </svg>
+  </a>
+
+  <span class="sep">·</span>
+
+  <a href="https://youtube.com/@Mendingur" aria-label="YouTube">
+    <svg viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd">
+      <path d="M5 6.5H19A4 4 0 0 1 23 10.5V13.5A4 4 0 0 1 19 17.5H5A4 4 0 0 1 1 13.5V10.5A4 4 0 0 1 5 6.5ZM10 9.7L10 14.3L16 12Z"/>
+    </svg>
+  </a>
+
+  <span class="sep">·</span>
+
+  <a href="https://x.com/Mendingur" aria-label="X">
+    <svg viewBox="0 0 24 24" fill="currentColor">
+      <path d="M18.9 2H22l-7.6 8.7L23 22h-6.8l-5.3-6.9L4.8 22H1.7l8.1-9.3L1 2h7l4.8 6.3L18.9 2Zm-1.2 18h1.9L7.4 4H5.4l12.3 16Z"/>
+    </svg>
+  </a>
+
+  <span class="sep">·</span>
+
+  <a href="https://facebook.com/Mendingur" aria-label="Facebook">
+    <svg viewBox="0 0 24 24" fill="currentColor">
+      <path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12Z"/>
+    </svg>
+  </a>
+
+  <span class="sep">·</span>
+
+  <a href="https://www.instagram.com/mendingur/" aria-label="Instagram">
+    <svg viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd">
+      <path d="M7 2H17A5 5 0 0 1 22 7V17A5 5 0 0 1 17 22H7A5 5 0 0 1 2 17V7A5 5 0 0 1 7 2Z M7.4 3.8H16.6A3.6 3.6 0 0 1 20.2 7.4V16.6A3.6 3.6 0 0 1 16.6 20.2H7.4A3.6 3.6 0 0 1 3.8 16.6V7.4A3.6 3.6 0 0 1 7.4 3.8Z M7 12A5 5 0 1 0 17 12A5 5 0 1 0 7 12Z M8.8 12A3.2 3.2 0 1 0 15.2 12A3.2 3.2 0 1 0 8.8 12Z M16.4 6.5A1.1 1.1 0 1 0 18.6 6.5A1.1 1.1 0 1 0 16.4 6.5Z"/>
+    </svg>
+  </a>
+
+  <span class="sep">·</span>
+
+  <a href="https://mendingur.github.io/donate/" class="donate-link">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-6.7-4.35-9.3-8.1C.8 10.1 1.4 6.6 4.3 5.1c2.2-1.15 4.6-.5 6.1 1.2.5.55 1 1.2 1.6 1.9.6-.7 1.1-1.35 1.6-1.9 1.5-1.7 3.9-2.35 6.1-1.2 2.9 1.5 3.5 5 1.6 7.8C18.7 16.65 12 21 12 21Z"/></svg>
+    <span data-i18n data-vi="Ủng hộ" data-en="Donate">Ủng hộ</span>
+  </a>
+
+  <!-- Dòng bản quyền -->
+  <div class="copyright" data-i18n data-vi="© 2026 Nguyễn Duy Anh (bút danh: Mendingur)." data-en="© 2026 Nguyễn Duy Anh (pen name: Mendingur).">
+    © 2026 Nguyễn Duy Anh (bút danh: Mendingur).
+  </div>
+</footer>
+
+</main>
+
+<script>
+  window.MENDINGUR_PAGE = {
+    titleVi: 'Mendingur — Cánh Cổng',
+    titleEn: 'Mendingur — The Gates',
+    descVi: 'Mendingur — tác giả, nhạc sĩ, người kể chuyện. Chọn một lối đi.',
+    descEn: 'Mendingur — author, musician, storyteller. Choose a path.'
+  };
+</script>
+<script src="script/site.js"></script>
+</body>
+</html>

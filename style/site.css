@@ -1,0 +1,376 @@
+/* ============================================================
+   Mendingur — shared site stylesheet
+   Used by: index.html (Cánh Cổng), thesowerscycle/, interactivechapters/
+
+   Contains ONLY rules verified byte-identical across all pages that
+   use them. Page-specific sizing (.stage padding, .rift-wrap size,
+   h1/.tagline/.quote sizing, .ripple opacity, .card, .gates, .volumes,
+   .volume-card, .game-fab, .timeline...) stays in each page's own
+   <style> block, since those values intentionally differ (e.g. the
+   Gate's hero logo/title are larger than the sub-pages, which reserve
+   top padding for the back-link bar).
+   ============================================================ */
+
+/* ---- reset ---- */
+
+:root {
+    --ink: #2A2118;
+    --ink-soft: #55493B;
+    --parchment: #FBF6EC;
+    --parchment-dim: #F1E7D3;
+    --parchment-edge: #E4D5B7;
+    --ember-gold: #C99A3E;
+    --ember-gold-soft: #E4C077;
+    --ember-rust: #A8532A;
+    --rift-navy: #1B2534;
+  }
+
+* { box-sizing: border-box; }
+
+html {
+    min-height: 100%;
+  }
+
+a { color: inherit; }
+
+/* ---- drifting sparks (decorative) ---- */
+
+.spark {
+    position: absolute;
+    bottom: -5%;
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--ember-gold-soft);
+    opacity: 0;
+    animation: drift 9s ease-in infinite;
+    pointer-events: none;
+  }
+
+@keyframes drift {
+    0% { transform: translateY(0) scale(0.6); opacity: 0; }
+    10% { opacity: 0.8; }
+    80% { opacity: 0.5; }
+    100% { transform: translateY(-100vh) scale(1.1); opacity: 0; }
+  }
+
+/* ---- logo breathing animation keyframes (sizing itself is page-specific) ---- */
+
+@keyframes breathe {
+    0%, 100% { filter: drop-shadow(0 0 20px rgba(201,154,62,0.25)); transform: scale(1); }
+    50% { filter: drop-shadow(0 0 32px rgba(201,154,62,0.42)); transform: scale(1.015); }
+  }
+
+/* ---- click ripple ---- */
+
+@keyframes rippleAnim {
+    to { transform: scale(1); opacity: 0; }
+  }
+
+/* ---- cursor glow ---- */
+
+.cursor-glow {
+    position: fixed;
+    top: -170px; left: -170px;
+    width: 340px; height: 340px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(168,83,42,0.14), rgba(168,83,42,0.05) 45%, transparent 72%);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0;
+    transform: translate3d(-9999px, -9999px, 0);
+    will-change: transform;
+    transition: opacity .35s ease;
+  }
+
+/* ---- top-left back navigation (absent on the Gate itself) ---- */
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: .55rem;
+    height: 38px;
+    padding: 0 .9rem 0 .7rem;
+    border-radius: 999px;
+    border: 1.5px solid rgba(201,154,62,0.55);
+    background: rgba(251,246,236,0.85);
+    box-shadow: 0 8px 24px rgba(42,33,24,0.1), inset 0 0 0 1px rgba(255,255,255,0.5);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    text-decoration: none;
+    font-size: .76rem;
+    font-weight: 700;
+    color: var(--ink);
+    transition: color .18s ease, border-color .18s ease, transform .15s ease, box-shadow .15s ease;
+  }
+
+.back-link svg { width: 19px; height: 19px; transition: transform .18s ease; flex: none; }
+
+.back-link:hover, .back-link:focus-visible { color: var(--ember-rust); border-color: var(--ember-gold); transform: translateY(-2px); box-shadow: 0 12px 28px rgba(42,33,24,0.14), inset 0 0 0 1px rgba(255,255,255,0.5); }
+
+.back-link:hover svg { transform: translateX(-3px); }
+
+.back-link:focus-visible { outline: 2px solid var(--ember-rust); outline-offset: 3px; }
+
+/* ---- language switcher (top-right, all pages) ---- */
+
+.language-switcher {
+    position: fixed;
+    top: 1.2rem;
+    right: 1.2rem;
+    z-index: 20;
+    display: inline-flex;
+    align-items: center;
+    padding: 4px;
+    border: 1px solid rgba(201,154,62,0.38);
+    border-radius: 999px;
+    background: rgba(251,246,236,0.72);
+    box-shadow: 0 8px 24px rgba(42,33,24,0.08), inset 0 0 0 1px rgba(255,255,255,0.45);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    overflow: hidden;
+  }
+
+.language-switcher::before {
+    content: "";
+    position: absolute;
+    top: 4px; bottom: 4px; left: 4px;
+    width: calc(50% - 4px);
+    border-radius: 999px;
+    background: linear-gradient(135deg, #A8532A, #C99A3E);
+    box-shadow: 0 4px 12px rgba(168,83,42,0.22);
+    transition: transform .28s cubic-bezier(.22,.8,.25,1);
+    pointer-events: none;
+  }
+
+.language-switcher.en::before { transform: translateX(100%); }
+
+.lang-btn {
+    position: relative;
+    z-index: 1;
+    min-width: 46px;
+    height: 30px;
+    padding: 0 .7rem;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--ink-soft);
+    font: 700 .68rem/1 'Be Vietnam Pro', sans-serif;
+    letter-spacing: .12em;
+    cursor: pointer;
+    transition: color .22s ease, transform .22s ease;
+  }
+
+.lang-btn:hover { transform: translateY(-1px); }
+
+.lang-btn.active { color: #FFF9EE; }
+
+.lang-btn:focus-visible { outline: 2px solid var(--ember-rust); outline-offset: 2px; }
+
+/* ---- i18n text-swap micro-transition ---- */
+
+[data-i18n] { transition: opacity .16s ease, transform .16s ease; }
+
+.language-changing [data-i18n] { opacity: 0; transform: translateY(2px); }
+
+/* ---- floating "Interactive Chapters" pill (bottom) ---- */
+
+.game-fab {
+    position: fixed;
+    right: 1.25rem;
+    bottom: 1.25rem;
+    z-index: 30;
+    display: inline-flex;
+    align-items: center;
+    gap: .7rem;
+    min-height: 58px;
+    padding: .55rem .8rem .55rem .65rem;
+    border: 1px solid rgba(228,192,119,.72);
+    border-radius: 999px;
+    color: #FFF9EE;
+    text-decoration: none;
+    background: linear-gradient(135deg, rgba(122,55,30,.96), rgba(168,83,42,.96) 52%, rgba(201,154,62,.96));
+    box-shadow: 0 12px 30px rgba(72,38,22,.24), 0 0 0 1px rgba(255,255,255,.12) inset, 0 0 28px rgba(201,154,62,.22);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    overflow: hidden;
+    isolation: isolate;
+    transition: transform .28s cubic-bezier(.22,.8,.25,1), box-shadow .28s ease, filter .28s ease;
+    animation: gameFabFloat 4s ease-in-out infinite;
+  }
+
+.game-fab::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, transparent 25%, rgba(255,246,222,.28) 45%, transparent 65%);
+    transform: translateX(-120%);
+    animation: gameFabShine 4.8s ease-in-out infinite;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+.game-fab::after {
+    content: "";
+    position: absolute;
+    inset: 2px;
+    border-radius: inherit;
+    border: 1px solid rgba(255,246,222,.12);
+    pointer-events: none;
+  }
+
+.game-fab:hover,
+.game-fab:focus-visible {
+    transform: translateY(-5px) scale(1.025);
+    box-shadow: 0 18px 38px rgba(72,38,22,.28), 0 0 0 1px rgba(255,255,255,.14) inset, 0 0 38px rgba(201,154,62,.34);
+    filter: saturate(1.08);
+    animation-play-state: paused;
+  }
+
+.game-fab:focus-visible {
+    outline: 2px solid var(--ember-gold-soft);
+    outline-offset: 4px;
+  }
+
+.game-fab-icon {
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #FFF6DE 0 7%, #E4C077 28%, #A8532A 72%, #7A371E 100%);
+    box-shadow: 0 0 0 1px rgba(255,246,222,.35), 0 0 18px rgba(228,192,119,.42);
+  }
+
+.game-fab-icon svg {
+    width: 24px;
+    height: 24px;
+    filter: drop-shadow(0 2px 4px rgba(72,38,22,.28));
+  }
+
+.game-fab-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .08rem;
+    padding-right: .25rem;
+    white-space: nowrap;
+  }
+
+.game-fab-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.08rem;
+    font-weight: 600;
+    line-height: 1;
+  }
+
+.game-fab-sub {
+    font-size: .62rem;
+    line-height: 1.25;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: rgba(255,249,238,.78);
+  }
+
+.game-fab-arrow {
+    width: 22px;
+    height: 22px;
+    opacity: .82;
+    transition: transform .25s ease;
+  }
+
+.game-fab:hover .game-fab-arrow,
+.game-fab:focus-visible .game-fab-arrow {
+    transform: translateX(3px);
+  }
+
+@keyframes gameFabFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+  }
+
+@keyframes gameFabShine {
+    0%, 42% { transform: translateX(-120%); }
+    64%, 100% { transform: translateX(120%); }
+  }
+
+/* ---- footer ---- */
+
+footer {
+  margin-top: 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.1rem;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  font-size: 0.8rem;
+}
+
+footer a {
+  text-decoration: none;
+  color: var(--ink-soft);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: color .15s;
+}
+
+footer a:hover {
+  color: var(--ember-rust);
+}
+
+footer svg {
+  width: 16px;
+  height: 16px;
+}
+
+footer .sep {
+  color: var(--parchment-edge);
+}
+
+.donate-link {
+  color: var(--ember-rust) !important;
+  font-weight: 600;
+}
+.donate-link svg {
+  color: var(--ember-rust);
+  transition: transform .2s ease;
+}
+.donate-link:hover svg {
+  transform: scale(1.15);
+}
+
+.copyright {
+  flex: 0 0 100%;
+  width: 100%;
+  margin-top: 0.4rem;
+  text-align: center;
+  font-size: 0.72rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  opacity: 0.7;
+}
+
+/* ---- small-screen tweaks for shared components ---- */
+
+@media (max-width: 560px) {
+  .back-link { padding: 0 1rem 0 .8rem; font-size: .82rem; }
+  .back-link svg { width: 16px; height: 16px; }
+  .game-fab { right: .8rem; bottom: .8rem; min-height: 52px; padding: .45rem .62rem .45rem .52rem; gap: .52rem; }
+  .game-fab-icon { width: 38px; height: 38px; flex-basis: 38px; }
+  .game-fab-title { font-size: .98rem; }
+  .game-fab-sub { font-size: .55rem; }
+  .game-fab-arrow { display: none; }
+}
+
+/* ---- reduced motion (shared subset; page-specific selectors like .card/.volume-card stay in each page) ---- */
+
+@media (prefers-reduced-motion: reduce) {
+  .spark { display: none; }
+  .cursor-glow { display: none; }
+  .back-link, .back-link svg { animation: none !important; transition: none !important; }
+  .game-fab, .game-fab::before { animation: none !important; }
+  .game-fab { transition: none !important; }
+}
