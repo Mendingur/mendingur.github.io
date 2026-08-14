@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mendingur — Trang Chủ</title>
-<meta name="description" content="Mendingur — tác giả, nhạc sĩ, người kể chuyện. Chọn một lối đi.">
+<title>Mendingur — Trang Tác Giả</title>
+<meta name="description" content="Mendingur — tác giả, nhạc sĩ, người kể chuyện. Tìm hiểu và kết nối.">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="style/site.css">
+<link rel="stylesheet" href="../style/site.css">
 <style>
 body {
     margin: 0;
@@ -34,18 +34,18 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 3rem 1.4rem 4rem;
+    padding: 5.5rem 1.4rem 4rem;
     position: relative;
     text-align: center;
   }
 
 @media (prefers-reduced-motion: reduce) {
-  .rift-anim, .card { animation: none !important; transition: none !important; }
+  .rift-anim, .card, .back-link, .back-link svg { animation: none !important; transition: none !important; }
 }
 
 .rift-wrap {
-    width: min(260px, 60vw);
-    margin: 0 auto 0.6rem;
+    width: min(180px, 42vw);
+    margin: 0 auto 0.4rem;
     position: relative;
     z-index: 1;
     animation: breathe 7s ease-in-out infinite;
@@ -55,14 +55,14 @@ h1 {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     font-weight: 600;
-    font-size: clamp(2.4rem, 8vw, 3.6rem);
-    margin: 0.2rem 0 0.3rem;
+    font-size: clamp(2.1rem, 7vw, 3.2rem);
+    margin: 0.2rem 0 0.2rem;
     position: relative; z-index: 1;
   }
 
 .tagline {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.05rem, 3vw, 1.3rem);
+    font-size: clamp(1rem, 3vw, 1.2rem);
     color: var(--ink-soft);
     margin: 0 0 0.6rem;
     position: relative; z-index: 1;
@@ -75,6 +75,18 @@ h1 {
     color: var(--ember-rust);
     margin: 0 0 2.6rem;
     position: relative; z-index: 1;
+  }
+
+/* ---- top-left back navigation ---- */
+
+.top-nav-left {
+    position: fixed;
+    top: 1.2rem;
+    left: 1.2rem;
+    z-index: 20;
+    display: inline-flex;
+    align-items: center;
+    gap: .6rem;
   }
 
 .prompt {
@@ -173,10 +185,22 @@ h1 {
 @media (max-width: 480px) {
   .language-switcher { top: .8rem; right: .8rem; }
   .lang-btn { min-width: 42px; padding: 0 .55rem; }
+  .top-nav-left { top: .8rem; left: .8rem; gap: .4rem; }
 }
 </style>
 </head>
 <body>
+
+  <div class="top-nav-left">
+    <a class="back-link" id="backLink" href="https://mendingur.github.io/" data-fallback="https://mendingur.github.io/" data-aria-vi="Quay lại trang trước" data-aria-en="Back to the previous page" aria-label="Quay lại trang trước">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg>
+      <span data-i18n data-vi="Quay lại" data-en="Back">Quay lại</span>
+    </a>
+    <a class="back-link" id="gateLink" href="https://mendingur.github.io/" data-aria-vi="Về Trang Chủ" data-aria-en="To the homepage" aria-label="Về Trang Chủ">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/></svg>
+      <span data-i18n data-vi="Trang Chủ" data-en="Home">Trang Chủ</span>
+    </a>
+  </div>
 
   <div class="language-switcher" id="languageSwitcher" role="group" aria-label="Ngôn ngữ / Language">
     <button class="lang-btn active" type="button" data-lang="vi" aria-pressed="true">VI</button>
@@ -263,25 +287,25 @@ h1 {
   <p class="prompt" data-i18n data-vi="Bạn muốn đi đâu?" data-en="Where will you go?">Bạn muốn đi đâu?</p>
 
   <nav class="gates" aria-label="Điều hướng chính" data-aria-vi="Điều hướng chính" data-aria-en="Main navigation">
-    <a class="card" href="https://mendingur.github.io/tacgia/">
-      <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="#A8532A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-7 8-7s8 3 8 7"/></svg></span>
-      <span class="label" data-i18n data-vi="Trang Tác Giả" data-en="The Author">Trang Tác Giả</span>
-      <span class="sub" data-i18n data-vi="Tác giả · Nhạc sĩ · Người kể chuyện" data-en="Author · Musician · Storyteller">Tác giả · Nhạc sĩ · Người kể chuyện</span>
+    <a class="card" href="https://github.com/Mendingur">
+      <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="#A8532A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 0-3.16 19.5c.5.1.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85V21c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg></span>
+      <span class="label" data-i18n data-vi="About me" data-en="About me">About me</span>
+      <span class="sub" data-i18n data-vi="Hồ sơ &amp; dự án trên GitHub" data-en="Profile &amp; projects on GitHub">Hồ sơ &amp; dự án trên GitHub</span>
     </a>
-    <a class="card" href="https://mendingur.github.io/thesowerscycle/">
-      <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="#A8532A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
-      <span class="label" data-i18n data-vi="Đọc truyện" data-en="Read the story">Đọc truyện</span>
-      <span class="sub" data-i18n data-vi="Vòng Tuần Hoàn Người Gieo Hạt" data-en="The Sower's Cycle">Vòng Tuần Hoàn Người Gieo Hạt</span>
+    <a class="card" href="mailto:methesky.mending@gmail.com">
+      <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="#A8532A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+      <span class="label" data-i18n data-vi="Liên hệ" data-en="Contact">Liên hệ</span>
+      <span class="sub" data-i18n data-vi="Email: methesky.mending@gmail.com" data-en="Email: methesky.mending@gmail.com">Email: methesky.mending@gmail.com</span>
     </a>
     <a class="card" href="https://youtube.com/@Mendingur">
       <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="#A8532A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V6l8 6-8 6Z"/><circle cx="12" cy="12" r="10"/></svg></span>
       <span class="label" data-i18n data-vi="YouTube — Nghe nhạc" data-en="YouTube — Music">YouTube — Nghe nhạc</span>
       <span class="sub" data-i18n data-vi="Sáng tác dưới bút danh Mendingur" data-en="Music released under the Mendingur name">Sáng tác dưới bút danh Mendingur</span>
     </a>
-    <a class="card" href="https://mendingur.github.io/donate/">
-      <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="#A8532A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.7-4.35-9.3-8.1C.8 10.1 1.4 6.6 4.3 5.1c2.2-1.15 4.6-.5 6.1 1.2.5.55 1 1.2 1.6 1.9.6-.7 1.1-1.35 1.6-1.9 1.5-1.7 3.9-2.35 6.1-1.2 2.9 1.5 3.5 5 1.6 7.8C18.7 16.65 12 21 12 21Z"/></svg></span>
-      <span class="label" data-i18n data-vi="Ủng hộ" data-en="Donate">Ủng hộ</span>
-      <span class="sub" data-i18n data-vi="Đồng hành cùng hành trình sáng tác" data-en="Support the creative journey">Đồng hành cùng hành trình sáng tác</span>
+    <a class="card" href="https://mendingur.github.io/thesowerscycle/">
+      <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="#A8532A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
+      <span class="label" data-i18n data-vi="Đọc truyện" data-en="Read the story">Đọc truyện</span>
+      <span class="sub" data-i18n data-vi="Vòng Tuần Hoàn Người Gieo Hạt" data-en="The Sower's Cycle">Vòng Tuần Hoàn Người Gieo Hạt</span>
     </a>
   </nav>
 
@@ -341,12 +365,12 @@ h1 {
 
 <script>
   window.MENDINGUR_PAGE = {
-    titleVi: 'Mendingur — Trang Chủ',
-    titleEn: 'Mendingur — Home',
-    descVi: 'Mendingur — tác giả, nhạc sĩ, người kể chuyện. Chọn một lối đi.',
-    descEn: 'Mendingur — author, musician, storyteller. Choose a path.'
+    titleVi: 'Mendingur — Trang Tác Giả',
+    titleEn: 'Mendingur — About the Author',
+    descVi: 'Mendingur — tác giả, nhạc sĩ, người kể chuyện. Tìm hiểu và kết nối.',
+    descEn: 'Mendingur — author, musician, storyteller. Learn more and connect.'
   };
 </script>
-<script src="script/site.js"></script>
+<script src="../script/site.js"></script>
 </body>
 </html>

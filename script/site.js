@@ -1,14 +1,16 @@
 /* ============================================================
    Mendingur — shared site script
-   Used by: index.html (Cánh Cổng), thesowerscycle/, interactivechapters/
+   Used by: index.html (Trang Chủ), tacgia/ (Trang Tác Giả),
+   thesowerscycle/, interactivechapters/, donate/,
+   interactivechaptersentanthemofhope/
 
    Each page sets window.MENDINGUR_PAGE = { titleVi, titleEn, descVi, descEn }
    in an inline <script> BEFORE loading this file, so the language
    switcher can update <title> / meta description correctly per page.
 
-   Back-link / gate-link logic below runs only if the corresponding
-   element exists on the page (harmless no-op on the Gate, which has
-   neither).
+   Back-link / home-link (id="gateLink", kept for backward compatibility)
+   logic below runs only if the corresponding element exists on the page
+   (harmless no-op on the homepage, which has neither).
    ============================================================ */
 
 (function () {
@@ -76,7 +78,7 @@
     if (saved === 'en' || saved === 'vi') window.setLanguage(saved, false);
   })();
 
-// ===== "Quay lại" & "Cánh Cổng" =====
+// ===== "Quay lại" & "Trang Chủ" =====
 (function () {
   var backLink = document.getElementById('backLink');
   var gateLink = document.getElementById('gateLink');
@@ -134,15 +136,15 @@
   }
 
   if (gateLink) {
-    var goingToGate = prevUrl === 'https://mendingur.github.io/' || prevUrl === 'https://mendingur.github.io/index.html';
+    var goingHome = prevUrl === 'https://mendingur.github.io/' || prevUrl === 'https://mendingur.github.io/index.html';
     var backLinkHidden = backLink && backLink.style.display === 'none';
-    if (goingToGate && !backLinkHidden) {
+    if (goingHome && !backLinkHidden) {
       gateLink.style.display = 'none';
     }
   }
 })();
 
-  // ===== GAME LINK (Gate only; no-op elsewhere) =====
+  // ===== GAME LINK (present on the homepage; no-op elsewhere) =====
   (function () {
     var GAME_URL = 'https://mendingur.github.io/interactivechapters/';
     var gameFab = document.getElementById('gameFab');
@@ -186,7 +188,7 @@
 
   // brown blur that follows the cursor inside each card, stronger than the
   // ambient page-wide glow above — this is the "climbs onto the card and
-  // gets darker" effect. Matches both the Gate's .card and the
+  // gets darker" effect. Matches both the homepage/author page's .card and the
   // volume/chapter pages' a.volume-card.
   var interactiveCards = document.querySelectorAll('.card, a.volume-card');
 

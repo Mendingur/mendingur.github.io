@@ -40,7 +40,7 @@
     </a>
     <a href="https://mendingur.github.io/" id="gateLink" class="back-link">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/></svg>
-      <span data-i18n data-vi="Cánh Cổng" data-en="The Gate">Cánh Cổng</span>
+      <span data-i18n data-vi="Trang Chủ" data-en="Home">Trang Chủ</span>
     </a>
 </div>
 </header>
@@ -247,7 +247,7 @@
     if (saved === 'en' || saved === 'vi') setLanguage(saved, false);
   })();
 
-  // "Quay lại" & "Cánh Cổng" (Bộ Ba khi truy cập từ nơi khác)
+  // "Quay lại" & "Trang Chủ" (Bộ Ba khi truy cập từ nơi khác)
   //
   // "Quay lại" luôn về thẳng hub Vòng Tuần Hoàn Người Gieo Hạt khi điều
   // hướng nội bộ — mục lục có nhiều điểm vào khác nhau (hub, hoặc nút
@@ -256,10 +256,11 @@
   // dùng history.back() nếu có vẻ cùng tab, ẩn hẳn nếu không có gì thật để
   // quay về (ví dụ mở trong tab mới từ in-app browser).
   //
-  // Nút thứ hai bình thường là "Cánh Cổng" dẫn về Cổng, giống các trang
-  // khác. Nhưng khách vào thẳng trang này từ nơi khác mà bị đẩy thẳng qua
-  // Bộ Ba lên tận Cổng thì bỏ lỡ một bước quan trọng — nên với khách từ
-  // ngoài, nút này đổi thành "Bộ Ba" và dẫn về hub thay vì Cổng.
+  // Nút thứ hai bình thường là "Trang Chủ" dẫn về trang chủ, giống các
+  // trang khác. Nhưng khách vào thẳng trang này từ nơi khác mà bị đẩy
+  // thẳng qua Bộ Ba lên tận Trang Chủ thì bỏ lỡ một bước quan trọng — nên
+  // với khách từ ngoài, nút này đổi thành "Bộ Ba" và dẫn về hub thay vì
+  // Trang Chủ.
   (function () {
     var backLink = document.getElementById('backLink');
     var gateLink = document.getElementById('gateLink');
@@ -302,8 +303,8 @@
         span.setAttribute('data-en', 'The Trilogy');
         span.textContent = document.documentElement.lang === 'en' ? 'The Trilogy' : 'Bộ Ba';
       } else {
-        var cameFromGate = ref && (ref.pathname === '/' || ref.pathname === '/index.html');
-        if (cameFromGate) {
+        var cameFromHome = ref && (ref.pathname === '/' || ref.pathname === '/index.html');
+        if (cameFromHome) {
           gateLink.style.display = 'none';
         }
       }

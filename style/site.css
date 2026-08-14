@@ -363,6 +363,8 @@ footer .sep {
   .game-fab-title { font-size: .98rem; }
   .game-fab-sub { font-size: .55rem; }
   .game-fab-arrow { display: none; }
+  footer { gap: .6rem; font-size: .78rem; }
+  footer .sep { display: none; }
 }
 
 /* ---- reduced motion (shared subset; page-specific selectors like .card/.volume-card stay in each page) ---- */
