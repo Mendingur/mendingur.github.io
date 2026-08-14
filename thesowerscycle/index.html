@@ -260,6 +260,10 @@ h2.prompt {
   .rift-anim, .volume-card, .back-link, .back-link svg { animation: none !important; transition: none !important; }
   .volume-card::before { transition: none; }
 }
+
+/* YouTube icon riêng trong footer: hẹp hơn 1px theo yêu cầu,
+   không đụng tới rule "footer svg" dùng chung cho các trang khác. */
+.icon-yt { width: 15px !important; }
 </style>
 </head>
 <body>
@@ -381,7 +385,7 @@ h2.prompt {
       </a>
       <span class="sep">·</span>
       <a href="https://youtube.com/@Mendingur" aria-label="YouTube">
-        <svg viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"><path d="M5 6.5H19A4 4 0 0 1 23 10.5V13.5A4 4 0 0 1 19 17.5H5A4 4 0 0 1 1 13.5V10.5A4 4 0 0 1 5 6.5ZM10 9.7L10 14.3L16 12Z"/></svg>
+        <svg class="icon-yt" viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"><path d="M5 6.5H19A4 4 0 0 1 23 10.5V13.5A4 4 0 0 1 19 17.5H5A4 4 0 0 1 1 13.5V10.5A4 4 0 0 1 5 6.5ZM10 9.7L10 14.3L16 12Z"/></svg>
       </a>
       <span class="sep">·</span>
       <a href="https://x.com/Mendingur" aria-label="X">
