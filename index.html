@@ -448,10 +448,17 @@ h1 {
   .hub-card::before { transition: none; }
 }
 
+/* Đủ khoảng trống để dòng copyright không bị nút Chương Tương Tác
+   (position: fixed, góc dưới-phải) che mất khi cuộn hết trang. */
+footer {
+    padding: 0 1.4rem 7rem;
+  }
+
 @media (max-width: 480px) {
   .language-switcher { top: .8rem; right: .8rem; }
   .lang-btn { min-width: 42px; padding: 0 .55rem; }
   .section { padding: 2.8rem 1.1rem; }
+  footer { padding: 0 1.4rem 8rem; }
 }
 </style>
 </head>
@@ -555,7 +562,7 @@ h1 {
     <div class="strip" role="list" aria-label="Trạng thái các dự án" data-aria-vi="Trạng thái các dự án" data-aria-en="Project status">
       <span class="mini-pill" role="listitem"><span class="dot dot--done" aria-hidden="true"></span><span data-i18n data-vi="Quyển I: Hoàn Thành" data-en="Volume I: Complete">Quyển I: Hoàn Thành</span></span>
       <span class="mini-pill" role="listitem"><span class="dot dot--active" aria-hidden="true"></span><span data-i18n data-vi="Quyển II: Đang Viết" data-en="Volume II: In Progress">Quyển II: Đang Viết</span></span>
-      <span class="mini-pill" role="listitem"><span class="dot dot--seed" aria-hidden="true"></span><span data-i18n data-vi="Game: Đang Ấp Ủ" data-en="Game: Early Seed">Game: Đang Ấp Ủ</span></span>
+      <span class="mini-pill" role="listitem"><span class="dot dot--seed" aria-hidden="true"></span><span data-i18n data-vi="Game: Chưa Bắt Đầu" data-en="Game: Not Started">Game: Chưa Bắt Đầu</span></span>
     </div>
 
     <a class="scroll-cue" href="#pillars">
@@ -614,12 +621,12 @@ h1 {
         </span>
         <span class="hub-top">
           <span class="hub-title" data-i18n data-vi="Game" data-en="Game">Game</span>
-          <span class="hub-tag status-soon" data-i18n data-vi="Đang Ấp Ủ" data-en="Early Seed">Đang Ấp Ủ</span>
+          <span class="hub-tag status-soon" data-i18n data-vi="Chưa Bắt Đầu" data-en="Not Started">Chưa Bắt Đầu</span>
         </span>
         <span class="hub-meta" data-i18n data-vi="chuyển thể thế giới" data-en="adapting the world">chuyển thể thế giới</span>
-        <span class="hub-blurb" data-i18n data-vi="Thẩm mỹ lấy cảm hứng từ Genshin Impact, Honkai: Star Rail và Wuthering Waves. Xem trước hành trình qua bản Chương Tương Tác, dự kiến 11/2026." data-en="Aesthetics inspired by Genshin Impact, Honkai: Star Rail, and Wuthering Waves. Preview the journey through Interactive Chapters, targeted for Nov 2026.">Thẩm mỹ lấy cảm hứng từ Genshin Impact, Honkai: Star Rail và Wuthering Waves. Xem trước hành trình qua bản Chương Tương Tác, dự kiến 11/2026.</span>
+        <span class="hub-blurb" data-i18n data-vi="Một bước đi xa hơn của vũ trụ — thẩm mỹ lấy cảm hứng từ Genshin Impact, Honkai: Star Rail và Wuthering Waves. Dự án chưa chính thức khởi động; trong lúc chờ, có Chương Tương Tác để khám phá." data-en="A further step for the universe — aesthetics inspired by Genshin Impact, Honkai: Star Rail, and Wuthering Waves. The project hasn't officially begun; in the meantime, Interactive Chapters is here to explore.">Một bước đi xa hơn của vũ trụ — thẩm mỹ lấy cảm hứng từ Genshin Impact, Honkai: Star Rail và Wuthering Waves. Dự án chưa chính thức khởi động; trong lúc chờ, có Chương Tương Tác để khám phá.</span>
         <span class="hub-cta">
-          <span data-i18n data-vi="Xem bản demo" data-en="See the demo">Xem bản demo</span>
+          <span data-i18n data-vi="Trong lúc chờ: Chương Tương Tác" data-en="Meanwhile: Interactive Chapters">Trong lúc chờ: Chương Tương Tác</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </span>
       </a>
@@ -659,7 +666,7 @@ h1 {
           </li>
           <li class="log-item">
             <span class="log-dot" aria-hidden="true"></span>
-            <span class="log-text"><span class="log-when">11/2026</span><span data-i18n data-vi="Khúc Ca Hy Vọng (bản tương tác) dự kiến ra mắt." data-en="Anthem of Hope (interactive edition) is targeted for launch.">Khúc Ca Hy Vọng (bản tương tác) dự kiến ra mắt.</span></span>
+            <span class="log-text"><span class="log-when" data-i18n data-vi="Đầu 3/2027" data-en="Early Mar 2027">Đầu 3/2027</span><span data-i18n data-vi="Khúc Ca Hy Vọng (bản tương tác) dự kiến ra mắt." data-en="Anthem of Hope (interactive edition) is targeted for launch.">Khúc Ca Hy Vọng (bản tương tác) dự kiến ra mắt.</span></span>
           </li>
           <li class="log-item">
             <span class="log-dot" aria-hidden="true"></span>
