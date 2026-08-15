@@ -136,7 +136,13 @@
   }
 
   if (gateLink) {
-    var goingHome = prevUrl === 'https://mendingur.github.io/' || prevUrl === 'https://mendingur.github.io/index.html';
+    var goingHome = false;
+    if (prevUrl) {
+      try {
+        var prevPath = new URL(prevUrl, window.location.href).pathname;
+        goingHome = prevPath === '/' || prevPath === '/index.html';
+      } catch (e) {}
+    }
     var backLinkHidden = backLink && backLink.style.display === 'none';
     if (goingHome && !backLinkHidden) {
       gateLink.style.display = 'none';
