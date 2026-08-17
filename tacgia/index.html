@@ -111,13 +111,17 @@ h1 {
 
 .gates {
     display: grid;
-    grid-template-columns: repeat(2, minmax(150px, 220px));
+    grid-template-columns: repeat(3, minmax(150px, 220px));
     justify-content: center;
     gap: 1.1rem;
-    max-width: 620px;
+    max-width: 760px;
     width: 100%;
     position: relative; z-index: 1;
   }
+
+@media (max-width: 720px) {
+  .gates { grid-template-columns: repeat(2, minmax(150px, 220px)); max-width: 480px; }
+}
 
 @media (max-width: 480px) {
   .gates { grid-template-columns: 1fr; max-width: 320px; }
@@ -194,8 +198,6 @@ h1 {
   }
 
 @media (max-width: 480px) {
-  .language-switcher { top: .8rem; right: .8rem; }
-  .lang-btn { min-width: 42px; padding: 0 .55rem; }
   .top-nav-left { top: .8rem; left: .8rem; gap: .4rem; }
 }
 
