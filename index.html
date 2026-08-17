@@ -14,10 +14,10 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mendingur — Đại Sảnh</title>
-<meta name="description" content="Đại Sảnh của Mendingur — nơi hội tụ tiểu thuyết Vòng Tuần Hoàn Người Gieo Hạt và một dự án game đang được ấp ủ.">
+<title>Mendingur — Trang Tác Giả</title>
+<meta name="description" content="Mendingur — tác giả, người kể chuyện. Tìm hiểu và kết nối.">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="style/site.css">
+<link rel="stylesheet" href="../style/site.css">
 <style>
 body {
     margin: 0;
@@ -32,464 +32,190 @@ body {
     background-attachment: fixed;
     background-size: 100% 100vh;
     background-repeat: no-repeat;
+  
     color: var(--ink);
     font-family: 'Be Vietnam Pro', -apple-system, sans-serif;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
   }
 
-html { scroll-behavior: smooth; }
-
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-}
-
-main { display: block; position: relative; }
-
-/* ================= HERO ================= */
-
-.hero {
-    min-height: 100svh;
+.stage {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 3rem 1.4rem 3.5rem;
+    padding: 5.5rem 1.4rem 4rem;
     position: relative;
     text-align: center;
   }
 
+@media (prefers-reduced-motion: reduce) {
+  .rift-anim, .card, .back-link, .back-link svg { animation: none !important; transition: none !important; }
+}
+
 .rift-wrap {
-    width: min(190px, 46vw);
-    margin: 0 auto 0.5rem;
+    width: min(180px, 42vw);
+    margin: 0 auto 0.4rem;
     position: relative;
     z-index: 1;
     animation: breathe 7s ease-in-out infinite;
-  }
-
-.eyebrow {
-    font-size: 0.72rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.24em;
-    color: var(--ember-rust);
-    margin: 0 0 0.7rem;
-    position: relative; z-index: 1;
   }
 
 h1 {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     font-weight: 600;
-    font-size: clamp(2.1rem, 6.4vw, 3.3rem);
-    line-height: 1.12;
-    margin: 0.1rem 0 0.35rem;
-    max-width: 18ch;
+    font-size: clamp(2.1rem, 7vw, 3.2rem);
+    margin: 0.2rem 0 0.2rem;
     position: relative; z-index: 1;
   }
 
 .tagline {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1rem, 2.8vw, 1.18rem);
+    font-size: clamp(1rem, 3vw, 1.2rem);
     color: var(--ink-soft);
-    margin: 0 0 1rem;
+    margin: 0 0 0.6rem;
     position: relative; z-index: 1;
-  }
-
-.hero-copy {
-    font-size: 0.92rem;
-    line-height: 1.7;
-    color: var(--ink-soft);
-    max-width: 480px;
-    margin: 0 0 1.3rem;
-    position: relative; z-index: 1;
-  }
-
-.hero-copy a {
-    color: var(--ember-rust);
-    font-weight: 600;
-    text-decoration: none;
-    border-bottom: 1px solid rgba(168,83,42,0.35);
-    transition: border-color .18s ease;
-  }
-
-.hero-copy a:hover, .hero-copy a:focus-visible {
-    border-color: var(--ember-rust);
-  }
-
-.byline {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 1rem;
-    color: var(--ink-soft);
-    margin: 0 0 1.3rem;
-    position: relative; z-index: 1;
-  }
-
-.byline a {
-    color: var(--ember-rust);
-    font-weight: 600;
-    text-decoration: none;
-    border-bottom: 1px solid rgba(168,83,42,0.35);
-    transition: border-color .18s ease;
-  }
-
-.byline a:hover, .byline a:focus-visible {
-    border-color: var(--ember-rust);
   }
 
 .quote {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
-    font-size: 0.96rem;
+    font-size: 0.98rem;
     color: var(--ember-rust);
-    max-width: 440px;
-    margin: 0 0 1.7rem;
-    position: relative; z-index: 1;
-  }
-
-.strip {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.55rem;
     margin: 0 0 2.6rem;
     position: relative; z-index: 1;
   }
 
-.mini-pill {
+/* ---- top-left back navigation ---- */
+
+.top-nav-left {
+    position: fixed;
+    top: 1.2rem;
+    left: 1.2rem;
+    z-index: 20;
     display: inline-flex;
     align-items: center;
-    gap: 0.42rem;
-    padding: 0.36rem 0.8rem;
-    border-radius: 999px;
-    border: 1px solid rgba(201,154,62,0.42);
-    background: linear-gradient(180deg, rgba(255,255,255,0.5), rgba(255,255,255,0.12));
-    font-size: 0.63rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
+    gap: .6rem;
+  }
+
+.prompt {
+    font-size: 0.78rem;
     text-transform: uppercase;
+    letter-spacing: 0.2em;
     color: var(--ink-soft);
-  }
-
-.mini-pill .dot {
-    width: 7px; height: 7px;
-    border-radius: 50%;
-    flex: none;
-  }
-
-.dot--done { background: var(--ember-rust); }
-
-.dot--active {
-    background: var(--ember-rust);
-    animation: dotPulse 2.2s ease-out infinite;
-  }
-
-.dot--seed {
-    background: transparent;
-    border: 1.5px solid var(--ember-gold);
-  }
-
-@keyframes dotPulse {
-    0% { box-shadow: 0 0 0 0 rgba(168,83,42,0.45); }
-    70% { box-shadow: 0 0 0 7px rgba(168,83,42,0); }
-    100% { box-shadow: 0 0 0 0 rgba(168,83,42,0); }
-  }
-
-.scroll-cue {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.35rem;
-    text-decoration: none;
-    color: var(--ink-soft);
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
+    margin: 0 0 1.6rem;
     position: relative; z-index: 1;
-    transition: color .18s ease;
   }
 
-.scroll-cue:hover, .scroll-cue:focus-visible { color: var(--ember-rust); }
-
-.scroll-cue svg {
-    width: 18px; height: 18px;
-    animation: cueBounce 2s ease-in-out infinite;
-  }
-
-@keyframes cueBounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(5px); }
-  }
-
-/* ================= SHARED SECTION LAYOUT ================= */
-
-.section {
-    padding: 3.6rem 1.4rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-  }
-
-.section-head {
-    text-align: center;
-    max-width: 560px;
-    margin: 0 0 2.4rem;
-  }
-
-.section-head .eyebrow { margin-bottom: 0.6rem; }
-
-.section-head h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-weight: 600;
-    font-size: clamp(1.5rem, 4.2vw, 2.1rem);
-    margin: 0 0 0.6rem;
-  }
-
-.section-head p {
-    font-size: 0.88rem;
-    line-height: 1.65;
-    color: var(--ink-soft);
-    margin: 0;
-  }
-
-/* ================= HUB CARDS (pillars + bio) ================= */
-
-.hub-grid {
+.gates {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.2rem;
+    grid-template-columns: repeat(2, minmax(150px, 220px));
+    justify-content: center;
+    gap: 1.1rem;
+    max-width: 620px;
     width: 100%;
-    max-width: 980px;
+    position: relative; z-index: 1;
   }
 
-@media (max-width: 760px) {
-  .hub-grid { grid-template-columns: 1fr; max-width: 420px; }
+@media (max-width: 480px) {
+  .gates { grid-template-columns: 1fr; max-width: 320px; }
 }
 
-.hub-card {
+.card {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    text-align: left;
-    gap: 0.7rem;
+    align-items: center;
+    gap: 0.55rem;
     text-decoration: none;
     color: var(--ink);
-    background: linear-gradient(180deg, rgba(255,255,255,0.55), rgba(255,255,255,0.15));
+    background: linear-gradient(180deg, var(--card-sheen-top), var(--card-sheen-bottom));
     border: 1px solid var(--parchment-edge);
-    border-radius: 20px;
-    padding: 1.6rem 1.5rem 1.5rem;
+    border-radius: 18px 18px 60px 60px;
+    padding: 1.6rem 1rem 1.3rem;
+    transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
     position: relative;
     overflow: hidden;
-    transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
   }
 
-.hub-card::before {
+.card::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle 220px at var(--mx, 50%) var(--my, 50%), rgba(168,83,42,0.28), transparent 72%);
+    background: radial-gradient(circle 160px at var(--mx, 50%) var(--my, 50%), rgba(168,83,42,0.38), transparent 72%);
     opacity: 0;
     transition: opacity .3s ease;
     pointer-events: none;
   }
 
-.hub-card:hover, .hub-card:focus-visible {
+.card:hover, .card:focus-visible {
     transform: translateY(-5px);
-    box-shadow: 0 16px 30px -14px rgba(168,83,42,0.32);
+    box-shadow: 0 16px 30px -14px rgba(168,83,42,0.35);
     border-color: var(--ember-gold);
   }
 
-.hub-card:hover::before, .hub-card:focus-visible::before { opacity: 1; }
+.card:hover::before, .card:focus-visible::before { opacity: 1; }
 
-.hub-card:focus-visible { outline: 2px solid var(--ember-rust); outline-offset: 3px; }
-
-.hub-icon {
-    width: 52px; height: 52px;
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
-    background: radial-gradient(circle at 35% 30%, #E4C077 0%, #A8532A 70%, #7A371E 100%);
-    box-shadow: 0 0 0 1px rgba(255,246,222,.3);
-    position: relative; z-index: 1;
-    flex: none;
-  }
-
-.hub-icon svg { width: 24px; height: 24px; }
-
-.hub-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.6rem;
-    flex-wrap: wrap;
-    width: 100%;
-    position: relative; z-index: 1;
-  }
-
-.hub-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-weight: 600;
-    font-size: 1.28rem;
-  }
-
-.hub-tag {
-    font-size: 0.6rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    padding: 0.2rem 0.55rem;
-    border-radius: 999px;
-    white-space: nowrap;
-  }
-
-.status-done { background: var(--ember-rust); color: #FFF6DE; }
-.status-writing { border: 1px solid var(--ember-gold); color: var(--ember-rust); }
-.status-soon { border: 1px dashed var(--parchment-edge); color: var(--ink-soft); }
-
-.hub-meta {
-    font-size: 0.72rem;
-    color: var(--ink-soft);
-    opacity: 0.8;
-    position: relative; z-index: 1;
-  }
-
-.hub-blurb {
-    font-size: 0.85rem;
-    line-height: 1.62;
-    color: var(--ink-soft);
-    flex: 1;
-    position: relative; z-index: 1;
-  }
-
-.hub-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    font-weight: 600;
-    font-size: 0.82rem;
-    color: var(--ember-rust);
-    position: relative; z-index: 1;
-  }
-
-.hub-cta svg { width: 16px; height: 16px; transition: transform .2s ease; }
-
-.hub-card:hover .hub-cta svg, .hub-card:focus-visible .hub-cta svg { transform: translateX(3px); }
+.card:focus-visible { outline: 2px solid var(--ember-rust); outline-offset: 3px; }
 
 .ripple {
     position: absolute;
     border-radius: 50%;
-    background: rgba(168,83,42,0.28);
+    background: rgba(168,83,42,0.30);
     transform: scale(0);
     opacity: 1;
     animation: rippleAnim 0.65s ease-out forwards;
     pointer-events: none;
   }
 
-/* ================= NOW SECTION ================= */
-
-.now-grid {
-    display: grid;
-    grid-template-columns: minmax(260px, 1fr) minmax(300px, 1.4fr);
-    gap: 1.4rem;
-    width: 100%;
-    max-width: 980px;
-    align-items: stretch;
-  }
-
-@media (max-width: 760px) {
-  .now-grid { grid-template-columns: 1fr; max-width: 420px; }
-}
-
-.log-panel {
-    background: linear-gradient(180deg, rgba(255,255,255,0.55), rgba(255,255,255,0.15));
-    border: 1px solid var(--parchment-edge);
-    border-radius: 20px;
-    padding: 1.6rem 1.5rem 1.5rem;
-    text-align: left;
-  }
-
-.log-panel h3, .hub-card-title-standalone {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-weight: 600;
-    font-size: 1.28rem;
-    margin: 0 0 1rem;
-  }
-
-.log-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.95rem;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-.log-item {
-    display: flex;
-    gap: 0.7rem;
-    align-items: flex-start;
-  }
-
-.log-dot {
-    width: 8px; height: 8px;
-    margin-top: 0.45rem;
-    border-radius: 50%;
-    background: var(--ember-gold);
-    box-shadow: 0 0 0 3px rgba(201,154,62,0.15);
-    flex: none;
-  }
-
-.log-text {
-    font-size: 0.85rem;
-    line-height: 1.6;
-    color: var(--ink-soft);
-  }
-
-.log-when {
-    display: inline-block;
-    font-size: 0.66rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    color: var(--ember-rust);
-    margin-right: 0.35rem;
-  }
-
-/* ================= REDUCED MOTION ================= */
-
 @media (prefers-reduced-motion: reduce) {
-  .hub-card, .scroll-cue svg, .dot--active { animation: none !important; transition: none !important; }
-  .hub-card::before { transition: none; }
+  .card::before { transition: none; }
 }
 
-/* Đủ khoảng trống để dòng copyright không bị nút Chương Tương Tác
-   (position: fixed, góc dưới-phải) che mất khi cuộn hết trang. */
-footer {
-    padding: 0 1.4rem 7rem;
+.card .icon {
+    width: 40px; height: 40px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; z-index: 1;
   }
 
-/* YouTube icon riêng trong footer trang chủ: hẹp hơn 1px theo yêu cầu,
-   không đụng tới rule "footer svg" dùng chung cho các trang khác. */
-.icon-yt { width: 15px !important; }
+.card .icon svg { width: 100%; height: 100%; }
+
+.card .label {
+    font-weight: 600;
+    font-size: 0.98rem;
+    position: relative; z-index: 1;
+  }
+
+.card .sub {
+    font-size: 0.74rem;
+    color: var(--ink-soft);
+    position: relative; z-index: 1;
+  }
 
 @media (max-width: 480px) {
   .language-switcher { top: .8rem; right: .8rem; }
   .lang-btn { min-width: 42px; padding: 0 .55rem; }
-  .section { padding: 2.8rem 1.1rem; }
-  footer { padding: 0 1.4rem 8rem; }
+  .top-nav-left { top: .8rem; left: .8rem; gap: .4rem; }
 }
+
+/* YouTube icon riêng trong footer: hẹp hơn 1px theo yêu cầu,
+   không đụng tới rule "footer svg" dùng chung cho các trang khác. */
+.icon-yt { width: 15px !important; }
 </style>
 </head>
 <body>
+
+  <div class="top-nav-left">
+    <a class="back-link" id="backLink" href="https://mendingur.github.io/" data-fallback="https://mendingur.github.io/" data-aria-vi="Quay lại trang trước" data-aria-en="Back to the previous page" aria-label="Quay lại trang trước">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg>
+      <span data-i18n data-vi="Quay lại" data-en="Back">Quay lại</span>
+    </a>
+    <a class="back-link" id="gateLink" href="https://mendingur.github.io/" data-aria-vi="Về Trang Chủ" data-aria-en="To the homepage" aria-label="Về Trang Chủ">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/></svg>
+      <span data-i18n data-vi="Trang Chủ" data-en="Home">Trang Chủ</span>
+    </a>
+  </div>
 
   <div class="settings-menu" id="settingsMenu">
     <button class="menu-toggle" type="button" id="settingsMenuToggle" aria-haspopup="true" aria-expanded="false" aria-controls="settingsPopover" aria-label="Cài đặt" data-aria-vi="Cài đặt" data-aria-en="Settings">
@@ -520,208 +246,68 @@ footer {
     </div>
   </div>
 
-  <!-- Khúc Ca Hy Vọng — nút truy cập mini game -->
-  <a
-    class="game-fab"
-    id="gameFab"
-    href="https://mendingur.github.io/interactivechapters/"
-    aria-label="Mở Chương Tương Tác"
-  >
-    <span class="game-fab-icon" aria-hidden="true">
-      <svg viewBox="0 0 400 400" fill="none">
-        <path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="#FFF6DE"/>
-        <path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="#FFF6DE"/>
-        <g transform="translate(200,278)">
-          <ellipse rx="14" ry="21" fill="#FFF6DE"/>
-          <ellipse rx="14" ry="21" transform="rotate(72)" fill="#FFF6DE"/>
-          <ellipse rx="14" ry="21" transform="rotate(144)" fill="#FFF6DE"/>
-          <ellipse rx="14" ry="21" transform="rotate(216)" fill="#FFF6DE"/>
-          <ellipse rx="14" ry="21" transform="rotate(288)" fill="#FFF6DE"/>
-          <circle r="9" fill="#A8532A"/>
-        </g>
-        <g transform="translate(200,96)">
-          <path d="M0,-24 C2,-7 7,-2 24,0 C7,2 2,7 0,24 C-2,7 -7,2 -24,0 C-7,-2 -2,-7 0,-24 Z" fill="#FFF6DE"/>
-        </g>
-      </svg>
-    </span>
-    <span class="game-fab-copy">
-      <span class="game-fab-title" data-i18n data-vi="Chương Tương Tác" data-en="Interactive Chapters">Chương Tương Tác</span>
-      <span class="game-fab-sub" data-i18n data-vi="Mini Game · 3 Quyển" data-en="Mini Games · 3 Volumes">Mini Game · 3 Quyển</span>
-    </span>
-    <svg class="game-fab-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <path d="M5 12h13"/>
-      <path d="m13 6 6 6-6 6"/>
-    </svg>
-  </a>
-
 <div class="cursor-glow" id="cursorGlow"></div>
 
-<main id="main">
+<main class="stage" id="stage">
 
-  <!-- ============ HERO ============ -->
-  <section class="hero" id="stage" aria-labelledby="pageTitle">
-
-    <div class="rift-wrap">
-      <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Biểu tượng Vòng Tuần Hoàn Người Gieo Hạt">
-        <defs>
-          <linearGradient id="wingGrad" x1="0" y1="1" x2="0" y2="0">
-            <stop offset="0%" stop-color="#A8532A"/><stop offset="55%" stop-color="#C99A3E"/><stop offset="100%" stop-color="#E4C077"/>
-          </linearGradient>
-          <radialGradient id="coreGlow" cx="50%" cy="55%" r="55%">
-            <stop offset="0%" stop-color="#FFF6DE" stop-opacity="0.95"/><stop offset="55%" stop-color="#E4C077" stop-opacity="0.35"/><stop offset="100%" stop-color="#E4C077" stop-opacity="0"/>
-          </radialGradient>
-          <linearGradient id="flowerGrad" x1="0" y1="1" x2="0" y2="0">
-            <stop offset="0%" stop-color="#A8532A"/><stop offset="100%" stop-color="#E4C077"/>
-          </linearGradient>
-        </defs>
-        <circle cx="200" cy="215" r="145" fill="url(#coreGlow)"/>
-        <path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
-        <path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
-        <path d="M195,312 C160,298 122,272 100,230 C82,196 80,155 90,118" fill="none" stroke="#FBF6EC" stroke-width="2" opacity="0.45"/>
-        <path d="M205,312 C240,298 278,272 300,230 C318,196 320,155 310,118" fill="none" stroke="#FBF6EC" stroke-width="2" opacity="0.45"/>
-        <path d="M200,340 L200,295" stroke="#8A4423" stroke-width="3.2" fill="none" stroke-linecap="round"/>
-        <g transform="translate(200,278)">
-          <g stroke="#FBF6EC" stroke-width="1.1" stroke-opacity="0.55">
-            <ellipse rx="14" ry="21" fill="url(#flowerGrad)"/>
-            <ellipse rx="14" ry="21" transform="rotate(72)" fill="url(#flowerGrad)"/>
-            <ellipse rx="14" ry="21" transform="rotate(144)" fill="url(#flowerGrad)"/>
-            <ellipse rx="14" ry="21" transform="rotate(216)" fill="url(#flowerGrad)"/>
-            <ellipse rx="14" ry="21" transform="rotate(288)" fill="url(#flowerGrad)"/>
-          </g>
-          <circle r="9.5" fill="#FFF6DE"/><circle r="3" fill="#E4A94E"/>
+  <div class="rift-wrap">
+    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Biểu tượng Mendingur">
+      <defs>
+        <linearGradient id="wingGrad" x1="0" y1="1" x2="0" y2="0">
+          <stop offset="0%" stop-color="#A8532A"/><stop offset="55%" stop-color="#C99A3E"/><stop offset="100%" stop-color="#E4C077"/>
+        </linearGradient>
+        <radialGradient id="coreGlow" cx="50%" cy="55%" r="55%">
+          <stop offset="0%" stop-color="#FFF6DE" stop-opacity="0.95"/><stop offset="55%" stop-color="#E4C077" stop-opacity="0.35"/><stop offset="100%" stop-color="#E4C077" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="flowerGrad" x1="0" y1="1" x2="0" y2="0">
+          <stop offset="0%" stop-color="#A8532A"/><stop offset="100%" stop-color="#E4C077"/>
+        </linearGradient>
+      </defs>
+      <circle cx="200" cy="215" r="145" fill="url(#coreGlow)"/>
+      <path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+      <path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+      <path d="M195,312 C160,298 122,272 100,230 C82,196 80,155 90,118" fill="none" stroke="#FBF6EC" stroke-width="2" opacity="0.45"/>
+      <path d="M205,312 C240,298 278,272 300,230 C318,196 320,155 310,118" fill="none" stroke="#FBF6EC" stroke-width="2" opacity="0.45"/>
+      <path d="M200,340 L200,295" stroke="#8A4423" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+      <g transform="translate(200,278)">
+        <g stroke="#FBF6EC" stroke-width="1.1" stroke-opacity="0.55">
+          <ellipse rx="14" ry="21" fill="url(#flowerGrad)"/>
+          <ellipse rx="14" ry="21" transform="rotate(72)" fill="url(#flowerGrad)"/>
+          <ellipse rx="14" ry="21" transform="rotate(144)" fill="url(#flowerGrad)"/>
+          <ellipse rx="14" ry="21" transform="rotate(216)" fill="url(#flowerGrad)"/>
+          <ellipse rx="14" ry="21" transform="rotate(288)" fill="url(#flowerGrad)"/>
         </g>
-        <g transform="translate(200,96)"><path d="M0,-24 C2,-7 7,-2 24,0 C7,2 2,7 0,24 C-2,7 -7,2 -24,0 C-7,-2 -2,-7 0,-24 Z" fill="#F3D488"/></g>
-        <g transform="translate(255,148) scale(0.42)"><path d="M0,-24 C2,-7 7,-2 24,0 C7,2 2,7 0,24 C-2,7 -7,2 -24,0 C-7,-2 -2,-7 0,-24 Z" fill="#E4C077"/></g>
-        <g transform="translate(145,148) scale(0.42)"><path d="M0,-24 C2,-7 7,-2 24,0 C7,2 2,7 0,24 C-2,7 -7,2 -24,0 C-7,-2 -2,-7 0,-24 Z" fill="#E4C077"/></g>
-      </svg>
-    </div>
+        <circle r="9.5" fill="#FFF6DE"/><circle r="3" fill="#E4A94E"/>
+      </g>
+      <g transform="translate(200,96)"><path d="M0,-24 C2,-7 7,-2 24,0 C7,2 2,7 0,24 C-2,7 -7,2 -24,0 C-7,-2 -2,-7 0,-24 Z" fill="#F3D488"/></g>
+      <g transform="translate(255,148) scale(0.42)"><path d="M0,-24 C2,-7 7,-2 24,0 C7,2 2,7 0,24 C-2,7 -7,2 -24,0 C-7,-2 -2,-7 0,-24 Z" fill="#E4C077"/></g>
+      <g transform="translate(145,148) scale(0.42)"><path d="M0,-24 C2,-7 7,-2 24,0 C7,2 2,7 0,24 C-2,7 -7,2 -24,0 C-7,-2 -2,-7 0,-24 Z" fill="#E4C077"/></g>
+    </svg>
+  </div>
 
-    <p class="eyebrow" data-i18n data-vi="Nơi Vũ Trụ Bắt Đầu" data-en="Where the Universe Begins">Nơi Vũ Trụ Bắt Đầu</p>
+  <h1>Mendingur</h1>
+  <p class="tagline" data-i18n data-vi="Tác giả · Người kể chuyện" data-en="Author · Storyteller">Tác giả · Người kể chuyện</p>
+  <p class="quote" data-i18n data-vi="&quot;Giữa tro tàn, vẫn kiên tâm vun xới không ngừng.&quot;" data-en="&quot;Among the ashes, still tending the soil without cease.&quot;">"Giữa tro tàn, vẫn kiên tâm vun xới không ngừng."</p>
 
-    <h1 id="pageTitle" data-i18n data-vi="Vòng Tuần Hoàn Người Gieo Hạt" data-en="The Sower's Cycle">Vòng Tuần Hoàn Người Gieo Hạt</h1>
-    <p class="tagline" data-i18n data-vi="Một bộ trường ca hậu tận thế" data-en="A post-apocalyptic saga">Một bộ trường ca hậu tận thế</p>
+  <p class="prompt" data-i18n data-vi="Bạn muốn đi đâu?" data-en="Where will you go?">Bạn muốn đi đâu?</p>
 
-    <p class="hero-copy" data-i18n data-vi="&lt;a href=&quot;https://mendingur.github.io/thesowerscycle/&quot;&gt;Vòng Tuần Hoàn Người Gieo Hạt&lt;/a&gt; là một vũ trụ giả tưởng được dựng nên bởi &lt;a href=&quot;https://mendingur.github.io/tacgia/&quot;&gt;Mendingur&lt;/a&gt;, với hai trụ cột chính: tiểu thuyết và game. Hai hình thức ấy cùng kể một câu chuyện, cùng chia sẻ một thế giới, và cùng lớn lên theo thời gian." data-en="&lt;a href=&quot;https://mendingur.github.io/thesowerscycle/&quot;&gt;The Sower's Cycle&lt;/a&gt; is a fictional universe built by &lt;a href=&quot;https://mendingur.github.io/tacgia/&quot;&gt;Mendingur&lt;/a&gt;, standing on two pillars: fiction and a game. The two forms tell one story, share one world, and grow together over time.">&lt;a href="https://mendingur.github.io/thesowerscycle/"&gt;Vòng Tuần Hoàn Người Gieo Hạt&lt;/a&gt; là một vũ trụ giả tưởng được dựng nên bởi &lt;a href="https://mendingur.github.io/tacgia/"&gt;Mendingur&lt;/a&gt;, với hai trụ cột chính: tiểu thuyết và game. Hai hình thức ấy cùng kể một câu chuyện, cùng chia sẻ một thế giới, và cùng lớn lên theo thời gian.</p>
-
-    <p class="hero-copy" data-i18n data-vi="Năm 2054, giữa tro tàn của một thế giới cũ, một cô gái mang theo lời hứa gieo hạt của bà ngoại. Câu chuyện của cô giờ đây được kể lại qua trang sách, qua giai điệu, và — sớm thôi — qua một thế giới bạn có thể bước vào." data-en="In 2054, amid the ashes of an old world, a girl carries her grandmother's promise to sow hope. Her story is now being told through pages, through melody, and — soon — through a world you'll be able to step into.">Năm 2054, giữa tro tàn của một thế giới cũ, một cô gái mang theo lời hứa gieo hạt của bà ngoại. Câu chuyện của cô giờ đây được kể lại qua trang sách, qua giai điệu, và — sớm thôi — qua một thế giới bạn có thể bước vào.</p>
-
-    <p class="byline">
-      <span data-i18n data-vi="một dự án của" data-en="a project by">một dự án của</span>
-      <a href="https://mendingur.github.io/tacgia/">Mendingur</a>
-    </p>
-
-    <p class="quote" data-i18n data-vi="&quot;Giữa tro tàn, vẫn kiên tâm vun xới không ngừng.&quot;" data-en="&quot;Among the ashes, still tending the soil without cease.&quot;">"Giữa tro tàn, vẫn kiên tâm vun xới không ngừng."</p>
-
-    <div class="strip" role="list" aria-label="Trạng thái các dự án" data-aria-vi="Trạng thái các dự án" data-aria-en="Project status">
-      <span class="mini-pill" role="listitem"><span class="dot dot--done" aria-hidden="true"></span><span data-i18n data-vi="Quyển I: Hoàn Thành" data-en="Volume I: Complete">Quyển I: Hoàn Thành</span></span>
-      <span class="mini-pill" role="listitem"><span class="dot dot--active" aria-hidden="true"></span><span data-i18n data-vi="Quyển II: Đang sáng tác" data-en="Volume II: Currently Being Written">Quyển II: Đang sáng tác</span></span>
-      <span class="mini-pill" role="listitem"><span class="dot dot--seed" aria-hidden="true"></span><span data-i18n data-vi="Game: Chưa Bắt Đầu" data-en="Game: Not Started">Game: Chưa Bắt Đầu</span></span>
-    </div>
-
-    <a class="scroll-cue" href="#pillars">
-      <span data-i18n data-vi="Khám phá vũ trụ" data-en="Explore the universe">Khám phá vũ trụ</span>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+  <nav class="gates" aria-label="Điều hướng chính" data-aria-vi="Điều hướng chính" data-aria-en="Main navigation">
+    <a class="card" href="https://github.com/Mendingur">
+      <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="#A8532A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 0-3.16 19.5c.5.1.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85V21c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg></span>
+      <span class="label" data-i18n data-vi="About me" data-en="About me">About me</span>
+      <span class="sub" data-i18n data-vi="Hồ sơ &amp; dự án trên GitHub" data-en="Profile &amp; projects on GitHub">Hồ sơ &amp; dự án trên GitHub</span>
     </a>
-
-  </section>
-
-  <!-- ============ BA TRỤ CỘT ============ -->
-  <section class="section" id="pillars" aria-labelledby="pillarsHeading">
-
-    <div class="section-head">
-      <p class="eyebrow" data-i18n data-vi="Hai Trụ Cột" data-en="Two Pillars">Hai Trụ Cột</p>
-      <h2 id="pillarsHeading" data-i18n data-vi="Một câu chuyện, hai hình hài" data-en="One story, two forms">Một câu chuyện, hai hình hài</h2>
-      <p data-i18n data-vi="Cùng một thế giới — kể lại bằng trang sách, và sắp tới, bằng một không gian để bước vào." data-en="The same world — told through pages, and soon, through a space to step into.">Cùng một thế giới — kể lại bằng trang sách, và sắp tới, bằng một không gian để bước vào.</p>
-    </div>
-
-    <div class="hub-grid">
-
-      <a class="hub-card" href="https://mendingur.github.io/thesowerscycle/">
-        <span class="hub-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#FFF6DE" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-        </span>
-        <span class="hub-top">
-          <span class="hub-title" data-i18n data-vi="Trước Tác" data-en="The Writing">Trước Tác</span>
-          <span class="hub-tag status-writing" data-i18n data-vi="Đang Tiếp Diễn" data-en="Ongoing">Đang Tiếp Diễn</span>
-        </span>
-        <span class="hub-meta" data-i18n data-vi="Vòng Tuần Hoàn Người Gieo Hạt" data-en="The Sower's Cycle">Vòng Tuần Hoàn Người Gieo Hạt</span>
-        <span class="hub-blurb" data-i18n data-vi="Quyển I: Khúc Ca Hy Vọng đã hoàn thành — 29 chương, 3 xen kẽ. Quyển II đang được viết tiếp." data-en="Volume I: Anthem of Hope is complete — 29 chapters, 3 interludes. Volume II is being written.">Quyển I: Khúc Ca Hy Vọng đã hoàn thành — 29 chương, 3 xen kẽ. Quyển II đang được viết tiếp.</span>
-        <span class="hub-cta">
-          <span data-i18n data-vi="Đọc truyện" data-en="Read the story">Đọc truyện</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </span>
-      </a>
-
-      <a class="hub-card" href="https://mendingur.github.io/interactivechapters/">
-        <span class="hub-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#FFF6DE" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9 9 3h6l5 6-8 12Z"/><path d="M4 9h16"/><path d="M9 3 7 9l5 12"/><path d="M15 3l2 6-5 12"/></svg>
-        </span>
-        <span class="hub-top">
-          <span class="hub-title" data-i18n data-vi="Game" data-en="Game">Game</span>
-          <span class="hub-tag status-soon" data-i18n data-vi="Chưa Bắt Đầu" data-en="Not Started">Chưa Bắt Đầu</span>
-        </span>
-        <span class="hub-meta" data-i18n data-vi="chuyển thể thế giới" data-en="adapting the world">chuyển thể thế giới</span>
-        <span class="hub-blurb" data-i18n data-vi="Một bước đi xa hơn của vũ trụ — thẩm mỹ lấy cảm hứng từ Genshin Impact, Honkai: Star Rail và Wuthering Waves. Dự án chưa chính thức khởi động; trong lúc chờ, có Chương Tương Tác để khám phá." data-en="A further step for the universe — aesthetics inspired by Genshin Impact, Honkai: Star Rail, and Wuthering Waves. The project hasn't officially begun; in the meantime, Interactive Chapters is here to explore.">Một bước đi xa hơn của vũ trụ — thẩm mỹ lấy cảm hứng từ Genshin Impact, Honkai: Star Rail và Wuthering Waves. Dự án chưa chính thức khởi động; trong lúc chờ, có Chương Tương Tác để khám phá.</span>
-        <span class="hub-cta">
-          <span data-i18n data-vi="Trong lúc chờ: Chương Tương Tác" data-en="Meanwhile: Interactive Chapters">Trong lúc chờ: Chương Tương Tác</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </span>
-      </a>
-
-    </div>
-  </section>
-
-  <!-- ============ NGAY LÚC NÀY ============ -->
-  <section class="section" id="now" aria-labelledby="nowHeading">
-
-    <div class="section-head">
-      <p class="eyebrow" data-i18n data-vi="Ngay Lúc Này" data-en="Right Now">Ngay Lúc Này</p>
-      <h2 id="nowHeading" data-i18n data-vi="Người đứng sau, và những gì đang diễn ra" data-en="Who's behind it, and what's happening">Người đứng sau, và những gì đang diễn ra</h2>
-    </div>
-
-    <div class="now-grid">
-
-      <a class="hub-card" href="https://mendingur.github.io/tacgia/">
-        <span class="hub-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#FFF6DE" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-7 8-7s8 3 8 7"/></svg>
-        </span>
-        <span class="hub-title" data-i18n data-vi="Người tạo ra vũ trụ này" data-en="The person behind it">Người tạo ra vũ trụ này</span>
-        <span class="hub-blurb" data-i18n data-vi="Nguyễn Duy Anh — bút danh Mendingur — viết, và tự tay dựng nên toàn bộ vũ trụ Vòng Tuần Hoàn Người Gieo Hạt, từ trang truyện đầu tiên đến từng dòng mã nguồn." data-en="Nguyễn Duy Anh — pen name Mendingur — writes, and built this entire The Sower's Cycle universe by hand, from the first page to every line of code.">Nguyễn Duy Anh — bút danh Mendingur — viết, và tự tay dựng nên toàn bộ vũ trụ Vòng Tuần Hoàn Người Gieo Hạt, từ trang truyện đầu tiên đến từng dòng mã nguồn.</span>
-        <span class="hub-cta">
-          <span data-i18n data-vi="Tìm hiểu về tác giả" data-en="Meet the author">Tìm hiểu về tác giả</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </span>
-      </a>
-
-      <div class="log-panel">
-        <h3 data-i18n data-vi="Nhật ký vũ trụ" data-en="Universe log">Nhật ký vũ trụ</h3>
-        <!-- Thêm mục mới: sao chép một .log-item, đặt lên đầu danh sách (mới nhất trước). -->
-        <ul class="log-list">
-          <li class="log-item">
-            <span class="log-dot" aria-hidden="true"></span>
-            <span class="log-text" data-i18n data-vi="Quyển I: Khúc Ca Hy Vọng tái bản — mở rộng lên 29 chương, 3 xen kẽ, khoảng 62.000 chữ." data-en="Volume I: Anthem of Hope re-released — expanded to 29 chapters, 3 interludes, about 62,000 words.">Quyển I: Khúc Ca Hy Vọng tái bản — mở rộng lên 29 chương, 3 xen kẽ, khoảng 62.000 chữ.</span>
-          </li>
-          <li class="log-item">
-            <span class="log-dot" aria-hidden="true"></span>
-            <span class="log-text" data-i18n data-vi="Đại Sảnh được dựng lại — một mái nhà chung cho toàn bộ vũ trụ, thay vì một cánh cổng đơn lẻ." data-en="The Hall was rebuilt — one shared home for the whole universe, instead of a single gate.">Đại Sảnh được dựng lại — một mái nhà chung cho toàn bộ vũ trụ, thay vì một cánh cổng đơn lẻ.</span>
-          </li>
-          <li class="log-item">
-            <span class="log-dot" aria-hidden="true"></span>
-            <span class="log-text"><span class="log-when" data-i18n data-vi="Đầu 3/2027" data-en="Early Mar 2027">Đầu 3/2027</span><span data-i18n data-vi="Khúc Ca Hy Vọng (Chương tương tác) dự kiến ra mắt." data-en="Anthem of Hope (Interactive Chapters) is targeted for launch.">Khúc Ca Hy Vọng (Chương tương tác) dự kiến ra mắt.</span></span>
-          </li>
-          <li class="log-item">
-            <span class="log-dot" aria-hidden="true"></span>
-            <span class="log-text" data-i18n data-vi="Chương Tương Tác ra mắt — mini game đồng hành cùng Vòng Tuần Hoàn Người Gieo Hạt." data-en="Interactive Chapters launched — a mini-game companion to The Sower's Cycle.">Chương Tương Tác ra mắt — mini game đồng hành cùng Vòng Tuần Hoàn Người Gieo Hạt.</span>
-          </li>
-          <li class="log-item">
-            <span class="log-dot" aria-hidden="true"></span>
-            <span class="log-text" data-i18n data-vi="Quyển I: Khúc Ca Hy Vọng hoàn thành — 25 chương, khoảng 52.000 chữ." data-en="Volume I: Anthem of Hope completed — 25 chapters, about 52,000 words.">Quyển I: Khúc Ca Hy Vọng hoàn thành — 25 chương, khoảng 52.000 chữ.</span>
-          </li>
-        </ul>
-      </div>
-
-    </div>
-  </section>
+    <a class="card" href="mailto:methesky.mending@gmail.com">
+      <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="#A8532A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+      <span class="label" data-i18n data-vi="Liên hệ" data-en="Contact">Liên hệ</span>
+      <span class="sub" data-i18n data-vi="Email: methesky.mending@gmail.com" data-en="Email: methesky.mending@gmail.com">Email: methesky.mending@gmail.com</span>
+    </a>
+    <a class="card" href="https://mendingur.github.io/thesowerscycle/">
+      <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="#A8532A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
+      <span class="label" data-i18n data-vi="Đọc truyện" data-en="Read the story">Đọc truyện</span>
+      <span class="sub" data-i18n data-vi="Vòng Tuần Hoàn Người Gieo Hạt" data-en="The Sower's Cycle">Vòng Tuần Hoàn Người Gieo Hạt</span>
+    </a>
+  </nav>
 
   <footer>
   <a href="https://github.com/Mendingur" aria-label="GitHub">
@@ -779,49 +365,12 @@ footer {
 
 <script>
   window.MENDINGUR_PAGE = {
-    titleVi: 'Mendingur — Đại Sảnh',
-    titleEn: 'Mendingur — The Hall',
-    descVi: 'Đại Sảnh của Mendingur — nơi hội tụ tiểu thuyết Vòng Tuần Hoàn Người Gieo Hạt và một dự án game đang được ấp ủ.',
-    descEn: "Mendingur's Hall — where the novel The Sower's Cycle and an early-stage game project come together."
+    titleVi: 'Mendingur — Trang Tác Giả',
+    titleEn: 'Mendingur — About the Author',
+    descVi: 'Mendingur — tác giả, người kể chuyện. Tìm hiểu và kết nối.',
+    descEn: 'Mendingur — author, storyteller. Learn more and connect.'
   };
 </script>
-<script src="script/site.js"></script>
-<script>
-  // Trang chủ có thêm .hub-card (trụ cột + tác giả) — không có trong bộ chọn
-  // mặc định của site.js (".card, a.volume-card"), nên lặp lại đúng hiệu ứng
-  // hover-glow + ripple-rồi-điều-hướng ở đây cho riêng lớp này.
-  (function () {
-    var cards = document.querySelectorAll('.hub-card');
-    cards.forEach(function (card) {
-      card.addEventListener('mousemove', function (e) {
-        var rect = card.getBoundingClientRect();
-        card.style.setProperty('--mx', (e.clientX - rect.left) + 'px');
-        card.style.setProperty('--my', (e.clientY - rect.top) + 'px');
-      });
-      card.addEventListener('click', function (e) {
-        if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-        var href = card.getAttribute('href');
-        if (!href) return;
-        e.preventDefault();
-
-        var rect = card.getBoundingClientRect();
-        var size = Math.max(rect.width, rect.height) * 2;
-        var cx = (typeof e.clientX === 'number' && e.clientX !== 0) ? e.clientX : rect.left + rect.width / 2;
-        var cy = (typeof e.clientY === 'number' && e.clientY !== 0) ? e.clientY : rect.top + rect.height / 2;
-
-        var ripple = document.createElement('span');
-        ripple.className = 'ripple';
-        ripple.style.width = size + 'px';
-        ripple.style.height = size + 'px';
-        ripple.style.left = (cx - rect.left - size / 2) + 'px';
-        ripple.style.top = (cy - rect.top - size / 2) + 'px';
-        card.appendChild(ripple);
-        ripple.addEventListener('animationend', function () { ripple.remove(); });
-
-        setTimeout(function () { window.location.href = href; }, 220);
-      });
-    });
-  })();
-</script>
+<script src="../script/site.js"></script>
 </body>
 </html>
