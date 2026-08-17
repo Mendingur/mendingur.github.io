@@ -17,6 +17,7 @@
   --ember-rust:     #A8532A;   /* secondary accent — tro tàn / ember */
   --rift-navy:      #16213D;   /* deep night — interludes, Cõi Hư Tàn */
   --rift-navy-soft: #2A3A63;
+  --rift-navy-page: #2E4470;   /* interlude page background — brighter blue for light theme */
 
   --surface: rgba(251,246,236,0.72);
   --surface-solid: #FBF6EC;
@@ -45,6 +46,7 @@ html[data-theme="dark"] {
   --ember-rust:      #DE8A55;
   --rift-navy:       #1B2338;
   --rift-navy-soft:  #2C3A5C;
+  --rift-navy-page:  #1B2338;   /* interlude page background — stays deep navy in dark theme */
 
   --surface: rgba(58,46,31,0.68);
   --surface-solid: #33281A;
@@ -727,7 +729,7 @@ article.prose[data-size="sm"] { font-size: 1.0rem; }
 }
 
 /* Interlude page variant: darker, night-sky feel */
-body.interlude { background: var(--rift-navy); color: #E9E2D3; }
+body.interlude { background: var(--rift-navy-page); color: #E9E2D3; }
 body.interlude .sitebar a.brand { color: #E9E2D3; }
 body.interlude .chapter-head .cnum { color: #9FB0C4; }
 body.interlude .chapter-head h1 { color: #F3ECDD; }
@@ -742,6 +744,12 @@ body.interlude footer.sitefoot { color: #9FB0C4; border-color: rgba(255,255,255,
 body.interlude .font-toggle { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.15); }
 body.interlude .font-toggle button { color: #B9C2D0; }
 body.interlude .font-toggle button[aria-pressed="true"] { background: var(--ember-gold-soft); color: var(--rift-navy); }
+body.interlude .sitebar nav a.toc-pill {
+  background: linear-gradient(135deg, rgba(58,26,14,.96), rgba(94,46,22,.96) 52%, rgba(138,102,42,.96));
+  color: #FFF6DE;
+  box-shadow: 0 6px 18px -6px rgba(0,0,0,0.45);
+}
+body.interlude .sitebar nav a.toc-pill:hover { box-shadow: 0 10px 22px -6px rgba(0,0,0,0.55); }
 
 /* ---- game FAB (Chương Tương Tác), used on the Quyển I table-of-contents page ---- */
 .game-fab {
