@@ -105,7 +105,7 @@ img, svg { display: block; max-width: 100%; }
   z-index: 2;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 1rem;
   padding: 1.1rem clamp(1.2rem, 4vw, 3rem);
   font-family: var(--font-ui);
@@ -752,12 +752,12 @@ body.interlude footer.sitefoot { color: #9FB0C4; border-color: rgba(255,255,255,
 body.interlude .font-toggle { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.15); }
 body.interlude .font-toggle button { color: #B9C2D0; }
 body.interlude .font-toggle button[aria-pressed="true"] { background: var(--ember-gold-soft); color: var(--rift-navy); }
-body.interlude .sitebar nav a.toc-pill {
+html body.interlude .sitebar nav a.toc-pill {
   background: linear-gradient(135deg, rgba(255,255,255,0.14), rgba(255,255,255,0.06));
   color: #E9E2D3;
   box-shadow: 0 6px 18px -6px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(255,255,255,0.18);
 }
-body.interlude .sitebar nav a.toc-pill:hover { box-shadow: 0 10px 22px -6px rgba(0,0,0,0.6), inset 0 0 0 1px rgba(255,255,255,0.24); }
+html body.interlude .sitebar nav a.toc-pill:hover { box-shadow: 0 10px 22px -6px rgba(0,0,0,0.6), inset 0 0 0 1px rgba(255,255,255,0.24); }
 
 /* ---- game FAB (Chương Tương Tác), used on the Quyển I table-of-contents page ---- */
 .game-fab {
