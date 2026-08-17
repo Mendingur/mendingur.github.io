@@ -851,6 +851,16 @@ body.interlude .font-toggle button[aria-pressed="true"] { background: var(--embe
   64%, 100% { transform: translateX(120%); }
 }
 
+html[data-theme="dark"] .game-fab {
+  border-color: rgba(190,148,84,.55);
+  background: linear-gradient(135deg, rgba(58,26,14,.96), rgba(94,46,22,.96) 52%, rgba(138,102,42,.96));
+  box-shadow: 0 12px 30px rgba(10,6,3,.5), 0 0 0 1px rgba(255,255,255,.06) inset, 0 0 22px rgba(160,116,52,.16);
+}
+html[data-theme="dark"] .game-fab:hover,
+html[data-theme="dark"] .game-fab:focus-visible {
+  box-shadow: 0 18px 38px rgba(10,6,3,.55), 0 0 0 1px rgba(255,255,255,.08) inset, 0 0 30px rgba(160,116,52,.24);
+}
+
 /* ==========================================================================
    Responsive
    ========================================================================== */
