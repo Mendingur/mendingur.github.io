@@ -759,6 +759,28 @@ html body.interlude .sitebar nav a.toc-pill {
 }
 html body.interlude .sitebar nav a.toc-pill:hover { box-shadow: 0 10px 22px -6px rgba(0,0,0,0.6), inset 0 0 0 1px rgba(255,255,255,0.24); }
 
+/* Interlude settings menu (hamburger/close + GIAO DIỆN popover): match the night-sky palette */
+html body.interlude .menu-toggle {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.18);
+  color: #E9E2D3;
+}
+html body.interlude .menu-toggle:hover { border-color: var(--ember-gold-soft); }
+html body.interlude .settings-popover {
+  background: #1E2B47;
+  border-color: rgba(255,255,255,0.14);
+  box-shadow: 0 16px 40px rgba(5,8,16,0.45), 0 0 0 1px rgba(255,255,255,0.04) inset;
+}
+html body.interlude .settings-group-label { color: #9FB0C4; }
+html body.interlude .settings-divider { background: rgba(255,255,255,0.14); }
+html body.interlude .language-switcher,
+html body.interlude .theme-switcher { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.16); }
+html body.interlude .lang-btn,
+html body.interlude .theme-btn { color: #B9C2D0; }
+html body.interlude .theme-switcher:not(.dark) .theme-btn[data-theme-choice="light"],
+html body.interlude .lang-btn.active { color: #FFF9EE; }
+html body.interlude .theme-switcher.dark .theme-btn[data-theme-choice="dark"] { color: #241B0F; }
+
 /* ---- game FAB (Chương Tương Tác), used on the Quyển I table-of-contents page ---- */
 .game-fab {
   position: fixed;
