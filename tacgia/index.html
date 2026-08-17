@@ -1,10 +1,21 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem('mendingur-theme');
+    var theme = saved === 'dark' || saved === 'light'
+      ? saved
+      : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {}
+})();
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mendingur — Trang Tác Giả</title>
-<meta name="description" content="Mendingur — tác giả, nhạc sĩ, người kể chuyện. Tìm hiểu và kết nối.">
+<meta name="description" content="Mendingur — tác giả, người kể chuyện. Tìm hiểu và kết nối.">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="../style/site.css">
 <style>
@@ -14,9 +25,9 @@ body {
     background:
       radial-gradient(
         ellipse 120% 80% at 50% -10%,
-        #F7EFDC 0%,
-        var(--parchment) 45%,
-        #EDE0C8 100%
+        var(--bg-grad-top) 0%,
+        var(--bg-grad-mid) 45%,
+        var(--bg-grad-bottom) 100%
       );
     background-attachment: fixed;
     background-size: 100% 100vh;
@@ -206,9 +217,33 @@ h1 {
     </a>
   </div>
 
-  <div class="language-switcher" id="languageSwitcher" role="group" aria-label="Ngôn ngữ / Language">
-    <button class="lang-btn active" type="button" data-lang="vi" aria-pressed="true">VI</button>
-    <button class="lang-btn" type="button" data-lang="en" aria-pressed="false">EN</button>
+  <div class="settings-menu" id="settingsMenu">
+    <button class="menu-toggle" type="button" id="settingsMenuToggle" aria-haspopup="true" aria-expanded="false" aria-controls="settingsPopover" aria-label="Cài đặt" data-aria-vi="Cài đặt" data-aria-en="Settings">
+      <span class="menu-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+    </button>
+    <div class="settings-popover" id="settingsPopover" role="menu">
+      <div class="settings-group">
+        <p class="settings-group-label" data-i18n data-vi="Ngôn ngữ" data-en="Language">Ngôn ngữ</p>
+        <div class="language-switcher" id="languageSwitcher" role="group" aria-label="Ngôn ngữ / Language">
+          <button class="lang-btn active" type="button" data-lang="vi" aria-pressed="true">VI</button>
+          <button class="lang-btn" type="button" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+      </div>
+      <div class="settings-divider" role="separator"></div>
+      <div class="settings-group">
+        <p class="settings-group-label" data-i18n data-vi="Giao diện" data-en="Theme">Giao diện</p>
+        <div class="theme-switcher" id="themeSwitcher" role="group" aria-label="Giao diện sáng / tối" data-aria-vi="Giao diện sáng / tối" data-aria-en="Light / dark theme">
+          <button class="theme-btn active" type="button" data-theme-choice="light" aria-pressed="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+            <span data-i18n data-vi="Sáng" data-en="Light">Sáng</span>
+          </button>
+          <button class="theme-btn" type="button" data-theme-choice="dark" aria-pressed="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+            <span data-i18n data-vi="Tối" data-en="Dark">Tối</span>
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 
 <div class="cursor-glow" id="cursorGlow"></div>
@@ -251,7 +286,7 @@ h1 {
   </div>
 
   <h1>Mendingur</h1>
-  <p class="tagline" data-i18n data-vi="Tác giả · Nhạc sĩ · Người kể chuyện" data-en="Author · Musician · Storyteller">Tác giả · Nhạc sĩ · Người kể chuyện</p>
+  <p class="tagline" data-i18n data-vi="Tác giả · Người kể chuyện" data-en="Author · Storyteller">Tác giả · Người kể chuyện</p>
   <p class="quote" data-i18n data-vi="&quot;Giữa tro tàn, vẫn kiên tâm vun xới không ngừng.&quot;" data-en="&quot;Among the ashes, still tending the soil without cease.&quot;">"Giữa tro tàn, vẫn kiên tâm vun xới không ngừng."</p>
 
   <p class="prompt" data-i18n data-vi="Bạn muốn đi đâu?" data-en="Where will you go?">Bạn muốn đi đâu?</p>
@@ -266,11 +301,6 @@ h1 {
       <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="#A8532A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
       <span class="label" data-i18n data-vi="Liên hệ" data-en="Contact">Liên hệ</span>
       <span class="sub" data-i18n data-vi="Email: methesky.mending@gmail.com" data-en="Email: methesky.mending@gmail.com">Email: methesky.mending@gmail.com</span>
-    </a>
-    <a class="card" href="https://youtube.com/@Mendingur">
-      <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="#A8532A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V6l8 6-8 6Z"/><circle cx="12" cy="12" r="10"/></svg></span>
-      <span class="label" data-i18n data-vi="YouTube — Nghe nhạc" data-en="YouTube — Music">YouTube — Nghe nhạc</span>
-      <span class="sub" data-i18n data-vi="Sáng tác dưới bút danh Mendingur" data-en="Music released under the Mendingur name">Sáng tác dưới bút danh Mendingur</span>
     </a>
     <a class="card" href="https://mendingur.github.io/thesowerscycle/">
       <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="#A8532A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
@@ -337,8 +367,8 @@ h1 {
   window.MENDINGUR_PAGE = {
     titleVi: 'Mendingur — Trang Tác Giả',
     titleEn: 'Mendingur — About the Author',
-    descVi: 'Mendingur — tác giả, nhạc sĩ, người kể chuyện. Tìm hiểu và kết nối.',
-    descEn: 'Mendingur — author, musician, storyteller. Learn more and connect.'
+    descVi: 'Mendingur — tác giả, người kể chuyện. Tìm hiểu và kết nối.',
+    descEn: 'Mendingur — author, storyteller. Learn more and connect.'
   };
 </script>
 <script src="../script/site.js"></script>

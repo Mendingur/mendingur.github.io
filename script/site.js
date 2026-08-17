@@ -78,6 +78,76 @@
     if (saved === 'en' || saved === 'vi') window.setLanguage(saved, false);
   })();
 
+  // ===== THEME SWITCHER (light / dark) =====
+  (function () {
+    var switcher = document.getElementById('themeSwitcher');
+    if (!switcher) return;
+    var buttons = switcher.querySelectorAll('.theme-btn');
+
+    window.setTheme = function (theme, save) {
+      document.documentElement.setAttribute('data-theme', theme);
+
+      buttons.forEach(function (button) {
+        var active = button.getAttribute('data-theme-choice') === theme;
+        button.classList.toggle('active', active);
+        button.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+
+      switcher.classList.toggle('dark', theme === 'dark');
+
+      if (save) {
+        try { localStorage.setItem('mendingur-theme', theme); } catch (e) {}
+      }
+    };
+
+    buttons.forEach(function (button) {
+      button.addEventListener('click', function () {
+        var theme = button.getAttribute('data-theme-choice');
+        if (document.documentElement.getAttribute('data-theme') !== theme) {
+          window.setTheme(theme, true);
+        }
+      });
+    });
+
+    // Sync the pill to whatever theme the early-init inline script already
+    // applied (it runs before this file loads, to avoid a light-mode flash).
+    var current = document.documentElement.getAttribute('data-theme') || 'light';
+    window.setTheme(current, false);
+  })();
+
+  // ===== SETTINGS MENU (hamburger → popover with language + theme) =====
+  (function () {
+    var menu = document.getElementById('settingsMenu');
+    var toggle = document.getElementById('settingsMenuToggle');
+    if (!menu || !toggle) return;
+
+    function closeMenu() {
+      menu.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+
+    function openMenu() {
+      menu.classList.add('open');
+      toggle.setAttribute('aria-expanded', 'true');
+    }
+
+    toggle.addEventListener('click', function (e) {
+      e.stopPropagation();
+      if (menu.classList.contains('open')) closeMenu(); else openMenu();
+    });
+
+    document.addEventListener('click', function (e) {
+      if (menu.classList.contains('open') && !menu.contains(e.target)) closeMenu();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && menu.classList.contains('open')) {
+        closeMenu();
+        toggle.focus();
+      }
+    });
+  })();
+
 // ===== "Quay lại" & "Trang Chủ" =====
 (function () {
   var backLink = document.getElementById('backLink');

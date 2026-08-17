@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem('mendingur-theme');
+    var theme = saved === 'dark' || saved === 'light'
+      ? saved
+      : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {}
+})();
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mendingur — Chương Tương Tác</title>
@@ -23,7 +34,7 @@ body {
     margin: 0;
     min-height: 100%;
     background:
-      radial-gradient(ellipse 120% 80% at 50% -10%, #F7EFDC 0%, var(--parchment) 45%, #EDE0C8 100%);
+      radial-gradient(ellipse 120% 80% at 50% -10%, var(--bg-grad-top) 0%, var(--bg-grad-mid) 45%, var(--bg-grad-bottom) 100%);
     background-attachment: fixed;
     background-size: 100% 100vh;
     background-repeat: no-repeat;
@@ -276,9 +287,33 @@ h2.prompt {
     </a>
   </div>
 
-  <div class="language-switcher" id="languageSwitcher" role="group" aria-label="Ngôn ngữ / Language">
-    <button class="lang-btn active" type="button" data-lang="vi" aria-pressed="true">VI</button>
-    <button class="lang-btn" type="button" data-lang="en" aria-pressed="false">EN</button>
+  <div class="settings-menu" id="settingsMenu">
+    <button class="menu-toggle" type="button" id="settingsMenuToggle" aria-haspopup="true" aria-expanded="false" aria-controls="settingsPopover" aria-label="Cài đặt" data-aria-vi="Cài đặt" data-aria-en="Settings">
+      <span class="menu-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+    </button>
+    <div class="settings-popover" id="settingsPopover" role="menu">
+      <div class="settings-group">
+        <p class="settings-group-label" data-i18n data-vi="Ngôn ngữ" data-en="Language">Ngôn ngữ</p>
+        <div class="language-switcher" id="languageSwitcher" role="group" aria-label="Ngôn ngữ / Language">
+          <button class="lang-btn active" type="button" data-lang="vi" aria-pressed="true">VI</button>
+          <button class="lang-btn" type="button" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+      </div>
+      <div class="settings-divider" role="separator"></div>
+      <div class="settings-group">
+        <p class="settings-group-label" data-i18n data-vi="Giao diện" data-en="Theme">Giao diện</p>
+        <div class="theme-switcher" id="themeSwitcher" role="group" aria-label="Giao diện sáng / tối" data-aria-vi="Giao diện sáng / tối" data-aria-en="Light / dark theme">
+          <button class="theme-btn active" type="button" data-theme-choice="light" aria-pressed="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+            <span data-i18n data-vi="Sáng" data-en="Light">Sáng</span>
+          </button>
+          <button class="theme-btn" type="button" data-theme-choice="dark" aria-pressed="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+            <span data-i18n data-vi="Tối" data-en="Dark">Tối</span>
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="cursor-glow" id="cursorGlow"></div>
