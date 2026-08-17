@@ -372,6 +372,13 @@ img, svg { display: block; max-width: 100%; }
 .sitebar nav a.toc-pill:hover { transform: translateY(-2px); box-shadow: 0 10px 22px -6px rgba(168,83,42,0.65); }
 .sitebar nav a.toc-pill:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 
+html[data-theme="dark"] .sitebar nav a.toc-pill {
+  background: linear-gradient(135deg, rgba(58,26,14,.96), rgba(94,46,22,.96) 52%, rgba(138,102,42,.96));
+  color: #FFF6DE;
+  box-shadow: 0 6px 18px -6px rgba(10,6,3,.5);
+}
+html[data-theme="dark"] .sitebar nav a.toc-pill:hover { box-shadow: 0 10px 22px -6px rgba(10,6,3,.6); }
+
 .font-toggle {
   display: inline-flex; align-items: center; gap: 2px;
   background: var(--parchment-dim);
@@ -745,11 +752,11 @@ body.interlude .font-toggle { background: rgba(255,255,255,0.06); border-color: 
 body.interlude .font-toggle button { color: #B9C2D0; }
 body.interlude .font-toggle button[aria-pressed="true"] { background: var(--ember-gold-soft); color: var(--rift-navy); }
 body.interlude .sitebar nav a.toc-pill {
-  background: linear-gradient(135deg, rgba(58,26,14,.96), rgba(94,46,22,.96) 52%, rgba(138,102,42,.96));
-  color: #FFF6DE;
-  box-shadow: 0 6px 18px -6px rgba(0,0,0,0.45);
+  background: linear-gradient(135deg, rgba(255,255,255,0.14), rgba(255,255,255,0.06));
+  color: #E9E2D3;
+  box-shadow: 0 6px 18px -6px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(255,255,255,0.18);
 }
-body.interlude .sitebar nav a.toc-pill:hover { box-shadow: 0 10px 22px -6px rgba(0,0,0,0.55); }
+body.interlude .sitebar nav a.toc-pill:hover { box-shadow: 0 10px 22px -6px rgba(0,0,0,0.6), inset 0 0 0 1px rgba(255,255,255,0.24); }
 
 /* ---- game FAB (Chương Tương Tác), used on the Quyển I table-of-contents page ---- */
 .game-fab {
