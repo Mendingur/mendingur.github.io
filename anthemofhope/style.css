@@ -21,6 +21,7 @@
 
   --surface: rgba(251,246,236,0.72);
   --surface-solid: #FBF6EC;
+  --surface-popover: rgba(251,246,236,0.86);
   --surface-border: rgba(201,154,62,0.38);
   --menu-shadow: 0 8px 24px rgba(42,33,24,0.08), inset 0 0 0 1px rgba(255,255,255,0.45);
   --card-sheen-top: rgba(255,255,255,0.55);
@@ -50,6 +51,7 @@ html[data-theme="dark"] {
 
   --surface: rgba(58,46,31,0.68);
   --surface-solid: #33281A;
+  --surface-popover: rgba(51,40,26,0.86);
   --surface-border: rgba(224,177,94,0.32);
   --menu-shadow: 0 8px 26px rgba(15,10,4,0.42), inset 0 0 0 1px rgba(255,241,214,0.06);
   --card-sheen-top: rgba(255,241,214,0.07);
@@ -145,8 +147,8 @@ img, svg { display: block; max-width: 100%; }
   border: 1px solid var(--surface-border);
   background: var(--surface);
   box-shadow: var(--menu-shadow);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   text-decoration: none;
   font-size: .74rem;
   font-weight: 700;
@@ -182,8 +184,8 @@ img, svg { display: block; max-width: 100%; }
   border-radius: 999px;
   background: var(--surface);
   box-shadow: var(--menu-shadow);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   cursor: pointer;
   color: var(--ink);
   transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease, background .2s ease;
@@ -216,10 +218,10 @@ img, svg { display: block; max-width: 100%; }
   padding: .72rem;
   border: 1px solid var(--surface-border);
   border-radius: 17px;
-  background: var(--surface-solid);
+  background: var(--surface-popover);
   box-shadow: 0 16px 40px rgba(20,14,8,0.18), var(--menu-shadow);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   transform-origin: top right;
   transform: scale(.92) translateY(-6px);
   opacity: 0;
@@ -770,7 +772,7 @@ html body.interlude .menu-toggle {
 }
 html body.interlude .menu-toggle:hover { border-color: var(--ember-gold-soft); }
 html body.interlude .settings-popover {
-  background: #1E2B47;
+  background: rgba(30,43,71,0.82);
   border-color: rgba(255,255,255,0.14);
   box-shadow: 0 16px 40px rgba(5,8,16,0.45), 0 0 0 1px rgba(255,255,255,0.04) inset;
 }
