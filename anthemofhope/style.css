@@ -145,8 +145,8 @@ img, svg { display: block; max-width: 100%; }
   border: 1px solid var(--surface-border);
   background: var(--surface);
   box-shadow: var(--menu-shadow);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   text-decoration: none;
   font-size: .74rem;
   font-weight: 700;
@@ -182,8 +182,8 @@ img, svg { display: block; max-width: 100%; }
   border-radius: 999px;
   background: var(--surface);
   box-shadow: var(--menu-shadow);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   cursor: pointer;
   color: var(--ink);
   transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease, background .2s ease;
@@ -218,8 +218,8 @@ img, svg { display: block; max-width: 100%; }
   border-radius: 17px;
   background: var(--surface-solid);
   box-shadow: 0 16px 40px rgba(20,14,8,0.18), var(--menu-shadow);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   transform-origin: top right;
   transform: scale(.92) translateY(-6px);
   opacity: 0;
@@ -367,6 +367,8 @@ img, svg { display: block; max-width: 100%; }
   border-radius: 999px;
   box-shadow: 0 6px 18px -6px rgba(168,83,42,0.55);
   border-bottom: none;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   transition: transform .15s ease, box-shadow .15s ease;
 }
 .sitebar nav a.toc-pill svg { width: 13px; height: 13px; flex: none; }
@@ -578,6 +580,7 @@ html[data-theme="dark"] .sitebar nav a.toc-pill:hover { box-shadow: 0 10px 22px 
   padding: 0.6rem 0.9rem;
 }
 .toc-interlude a:hover { padding-left: 0.9rem; }
+html[data-theme="dark"] .toc-interlude a { color: #F3ECDD; }
 .toc-interlude .tag {
   font-family: var(--font-ui); font-style: normal; text-transform: uppercase;
   font-size: 0.65rem; letter-spacing: 0.12em; color: var(--ember-rust);
@@ -798,8 +801,8 @@ html body.interlude .theme-switcher.dark .theme-btn[data-theme-choice="dark"] { 
   text-decoration: none;
   background: linear-gradient(135deg, rgba(122,55,30,.96), rgba(168,83,42,.96) 52%, rgba(201,154,62,.96));
   box-shadow: 0 12px 30px rgba(72,38,22,.24), 0 0 0 1px rgba(255,255,255,.12) inset, 0 0 28px rgba(201,154,62,.22);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   overflow: hidden;
   isolation: isolate;
   transition: transform .28s cubic-bezier(.22,.8,.25,1), box-shadow .28s ease, filter .28s ease;
