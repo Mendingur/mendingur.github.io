@@ -19,9 +19,8 @@
   --rift-navy-soft: #2A3A63;
   --rift-navy-page: #2E4470;   /* interlude page background — brighter blue for light theme */
 
-  --surface: rgba(251,246,236,0.4);
+  --surface: rgba(251,246,236,0.72);
   --surface-solid: #FBF6EC;
-  --surface-popover: rgba(251,246,236,0.55);
   --surface-border: rgba(201,154,62,0.38);
   --menu-shadow: 0 8px 24px rgba(42,33,24,0.08), inset 0 0 0 1px rgba(255,255,255,0.45);
   --card-sheen-top: rgba(255,255,255,0.55);
@@ -49,9 +48,8 @@ html[data-theme="dark"] {
   --rift-navy-soft:  #2C3A5C;
   --rift-navy-page:  #1B2338;   /* interlude page background — stays deep navy in dark theme */
 
-  --surface: rgba(58,46,31,0.36);
+  --surface: rgba(58,46,31,0.68);
   --surface-solid: #33281A;
-  --surface-popover: rgba(51,40,26,0.5);
   --surface-border: rgba(224,177,94,0.32);
   --menu-shadow: 0 8px 26px rgba(15,10,4,0.42), inset 0 0 0 1px rgba(255,241,214,0.06);
   --card-sheen-top: rgba(255,241,214,0.07);
@@ -147,8 +145,8 @@ img, svg { display: block; max-width: 100%; }
   border: 1px solid var(--surface-border);
   background: var(--surface);
   box-shadow: var(--menu-shadow);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   text-decoration: none;
   font-size: .74rem;
   font-weight: 700;
@@ -184,8 +182,8 @@ img, svg { display: block; max-width: 100%; }
   border-radius: 999px;
   background: var(--surface);
   box-shadow: var(--menu-shadow);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   cursor: pointer;
   color: var(--ink);
   transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease, background .2s ease;
@@ -218,10 +216,10 @@ img, svg { display: block; max-width: 100%; }
   padding: .72rem;
   border: 1px solid var(--surface-border);
   border-radius: 17px;
-  background: var(--surface-popover);
+  background: var(--surface-solid);
   box-shadow: 0 16px 40px rgba(20,14,8,0.18), var(--menu-shadow);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   transform-origin: top right;
   transform: scale(.92) translateY(-6px);
   opacity: 0;
@@ -360,25 +358,27 @@ img, svg { display: block; max-width: 100%; }
   gap: 0.4rem;
   height: 36px;
   text-decoration: none;
-  color: var(--ember-rust);
+  color: var(--parchment);
   font-weight: 600;
   font-size: 0.72rem;
   letter-spacing: 0.04em;
-  background: var(--surface);
-  border: 1px solid var(--surface-border);
+  background: linear-gradient(135deg, var(--ember-rust), var(--ember-gold));
   padding: 0 .9rem 0 .8rem;
   border-radius: 999px;
-  box-shadow: var(--menu-shadow);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease, color .15s ease;
+  box-shadow: 0 6px 18px -6px rgba(168,83,42,0.55);
+  border-bottom: none;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: transform .15s ease, box-shadow .15s ease;
 }
 .sitebar nav a.toc-pill svg { width: 13px; height: 13px; flex: none; }
-.sitebar nav a.toc-pill:hover { transform: translateY(-2px); border-color: var(--ember-gold); box-shadow: 0 10px 22px -6px rgba(168,83,42,0.35); }
+.sitebar nav a.toc-pill:hover { transform: translateY(-2px); box-shadow: 0 10px 22px -6px rgba(168,83,42,0.65); }
 .sitebar nav a.toc-pill:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 
 html[data-theme="dark"] .sitebar nav a.toc-pill {
-  color: var(--ember-gold-soft);
+  background: linear-gradient(135deg, rgba(58,26,14,.96), rgba(94,46,22,.96) 52%, rgba(138,102,42,.96));
+  color: #FFF6DE;
+  box-shadow: 0 6px 18px -6px rgba(10,6,3,.5);
 }
 html[data-theme="dark"] .sitebar nav a.toc-pill:hover { box-shadow: 0 10px 22px -6px rgba(10,6,3,.6); }
 
@@ -593,7 +593,7 @@ footer.sitefoot {
   font-family: var(--font-ui);
   font-size: 0.78rem;
   color: var(--ink-soft);
-  padding: 2.5rem 1.5rem 3.5rem;
+  padding: 3rem 1.5rem 4.5rem;
   border-top: 1px solid var(--parchment-edge);
 }
 footer.sitefoot p { max-width: 34em; margin: 0.4rem auto; }
@@ -756,22 +756,21 @@ body.interlude .font-toggle { background: rgba(255,255,255,0.06); border-color: 
 body.interlude .font-toggle button { color: #B9C2D0; }
 body.interlude .font-toggle button[aria-pressed="true"] { background: var(--ember-gold-soft); color: var(--rift-navy); }
 html body.interlude .sitebar nav a.toc-pill {
-  background: rgba(255,255,255,0.04);
-  border-color: rgba(255,255,255,0.18);
+  background: linear-gradient(135deg, rgba(255,255,255,0.14), rgba(255,255,255,0.06));
   color: #E9E2D3;
-  box-shadow: 0 6px 18px -6px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(255,255,255,0.1);
+  box-shadow: 0 6px 18px -6px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(255,255,255,0.18);
 }
-html body.interlude .sitebar nav a.toc-pill:hover { border-color: var(--ember-gold-soft); box-shadow: 0 10px 22px -6px rgba(0,0,0,0.6), inset 0 0 0 1px rgba(255,255,255,0.16); }
+html body.interlude .sitebar nav a.toc-pill:hover { box-shadow: 0 10px 22px -6px rgba(0,0,0,0.6), inset 0 0 0 1px rgba(255,255,255,0.24); }
 
 /* Interlude settings menu (hamburger/close + GIAO DIỆN popover): match the night-sky palette */
 html body.interlude .menu-toggle {
-  background: rgba(255,255,255,0.04);
+  background: rgba(255,255,255,0.08);
   border-color: rgba(255,255,255,0.18);
   color: #E9E2D3;
 }
 html body.interlude .menu-toggle:hover { border-color: var(--ember-gold-soft); }
 html body.interlude .settings-popover {
-  background: rgba(30,43,71,0.5);
+  background: #1E2B47;
   border-color: rgba(255,255,255,0.14);
   box-shadow: 0 16px 40px rgba(5,8,16,0.45), 0 0 0 1px rgba(255,255,255,0.04) inset;
 }
