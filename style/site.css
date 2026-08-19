@@ -27,9 +27,9 @@
     --bg-grad-top: #F7EFDC;
     --bg-grad-mid: var(--parchment);
     --bg-grad-bottom: #EDE0C8;
-    --surface: rgba(251,246,236,0.72);
+    --surface: rgba(251,246,236,0.5);
     --surface-solid: #FBF6EC;
-    --surface-popover: rgba(251,246,236,0.86);
+    --surface-popover: rgba(251,246,236,0.65);
     --surface-border: rgba(201,154,62,0.38);
     --menu-shadow: 0 8px 24px rgba(42,33,24,0.08), inset 0 0 0 1px rgba(255,255,255,0.45);
     --card-sheen-top: rgba(255,255,255,0.55);
@@ -52,9 +52,9 @@ html[data-theme="dark"] {
     --bg-grad-top: #362A1B;
     --bg-grad-mid: #2B2116;
     --bg-grad-bottom: #221A11;
-    --surface: rgba(58,46,31,0.68);
+    --surface: rgba(58,46,31,0.46);
     --surface-solid: #33281A;
-    --surface-popover: rgba(51,40,26,0.86);
+    --surface-popover: rgba(51,40,26,0.6);
     --surface-border: rgba(224,177,94,0.32);
     --menu-shadow: 0 8px 26px rgba(15,10,4,0.42), inset 0 0 0 1px rgba(255,241,214,0.06);
     --card-sheen-top: rgba(255,241,214,0.07);

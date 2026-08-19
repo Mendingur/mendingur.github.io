@@ -19,9 +19,9 @@
   --rift-navy-soft: #2A3A63;
   --rift-navy-page: #2E4470;   /* interlude page background — brighter blue for light theme */
 
-  --surface: rgba(251,246,236,0.72);
+  --surface: rgba(251,246,236,0.5);
   --surface-solid: #FBF6EC;
-  --surface-popover: rgba(251,246,236,0.86);
+  --surface-popover: rgba(251,246,236,0.65);
   --surface-border: rgba(201,154,62,0.38);
   --menu-shadow: 0 8px 24px rgba(42,33,24,0.08), inset 0 0 0 1px rgba(255,255,255,0.45);
   --card-sheen-top: rgba(255,255,255,0.55);
@@ -49,9 +49,9 @@ html[data-theme="dark"] {
   --rift-navy-soft:  #2C3A5C;
   --rift-navy-page:  #1B2338;   /* interlude page background — stays deep navy in dark theme */
 
-  --surface: rgba(58,46,31,0.68);
+  --surface: rgba(58,46,31,0.46);
   --surface-solid: #33281A;
-  --surface-popover: rgba(51,40,26,0.86);
+  --surface-popover: rgba(51,40,26,0.6);
   --surface-border: rgba(224,177,94,0.32);
   --menu-shadow: 0 8px 26px rgba(15,10,4,0.42), inset 0 0 0 1px rgba(255,241,214,0.06);
   --card-sheen-top: rgba(255,241,214,0.07);
@@ -766,13 +766,13 @@ html body.interlude .sitebar nav a.toc-pill:hover { box-shadow: 0 10px 22px -6px
 
 /* Interlude settings menu (hamburger/close + GIAO DIỆN popover): match the night-sky palette */
 html body.interlude .menu-toggle {
-  background: rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.06);
   border-color: rgba(255,255,255,0.18);
   color: #E9E2D3;
 }
 html body.interlude .menu-toggle:hover { border-color: var(--ember-gold-soft); }
 html body.interlude .settings-popover {
-  background: rgba(30,43,71,0.82);
+  background: rgba(30,43,71,0.6);
   border-color: rgba(255,255,255,0.14);
   box-shadow: 0 16px 40px rgba(5,8,16,0.45), 0 0 0 1px rgba(255,255,255,0.04) inset;
 }
