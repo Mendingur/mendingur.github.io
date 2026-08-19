@@ -746,6 +746,7 @@ body.interlude .chapter-head .cnum { color: #9FB0C4; }
 body.interlude .chapter-head h1 { color: #F3ECDD; }
 body.interlude .chapter-head .crumb { color: var(--ember-gold-soft); }
 body.interlude article.prose { color: #E9E2D3; }
+body.interlude .p-note { color: #E9E2D3; }
 body.interlude article.prose strong { color: #F6E6BE; }
 body.interlude .p-epigraph { background: rgba(255,255,255,0.05); border-left-color: var(--ember-gold-soft); color: #E4DCC8; }
 body.interlude .chapter-nav a { border-color: rgba(255,255,255,0.15); color: #E9E2D3; }
@@ -784,6 +785,10 @@ html body.interlude .theme-btn { color: #B9C2D0; }
 html body.interlude .theme-switcher:not(.dark) .theme-btn[data-theme-choice="light"],
 html body.interlude .lang-btn.active { color: #FFF9EE; }
 html body.interlude .theme-switcher.dark .theme-btn[data-theme-choice="dark"] { color: #241B0F; }
+html body.interlude .theme-switcher::before {
+  background: linear-gradient(135deg, #2B2E34, #454A52);
+  box-shadow: 0 4px 12px rgba(10,12,16,0.35);
+}
 
 /* ---- game FAB (Chương Tương Tác), used on the Quyển I table-of-contents page ---- */
 .game-fab {
