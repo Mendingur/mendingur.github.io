@@ -665,7 +665,7 @@ article.prose[data-size="sm"] { font-size: 1.0rem; }
   text-align: center;
   font-family: var(--font-display);
   font-style: italic;
-  color: var(--ink-soft);
+  color: var(--ink);
   font-size: 0.95em;
   margin: 1.8em 0 !important;
 }
