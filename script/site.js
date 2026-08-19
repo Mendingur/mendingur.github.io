@@ -24,45 +24,51 @@
     var translatable = document.querySelectorAll('[data-i18n]');
     var ariaEls = document.querySelectorAll('[data-aria-vi]');
 
-    window.setLanguage = function (lang, save) {
+    function applyLanguage(lang, save) {
       document.documentElement.lang = lang;
+
+      translatable.forEach(function (el) {
+        var value = el.getAttribute('data-' + lang);
+        if (value !== null) el.innerHTML = value;
+      });
+
+      ariaEls.forEach(function (el) {
+        var value = el.getAttribute('data-aria-' + lang);
+        if (value !== null) el.setAttribute('aria-label', value);
+      });
+
+      buttons.forEach(function (button) {
+        var active = button.getAttribute('data-lang') === lang;
+        button.classList.toggle('active', active);
+        button.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+
+      switcher.classList.toggle('en', lang === 'en');
+
+      if (page.titleVi && page.titleEn) {
+        document.title = lang === 'en' ? page.titleEn : page.titleVi;
+      }
+
+      var description = document.querySelector('meta[name="description"]');
+      if (description && page.descVi && page.descEn) {
+        description.setAttribute('content', lang === 'en' ? page.descEn : page.descVi);
+      }
+
+      if (typeof page.onLanguageChange === 'function') {
+        page.onLanguageChange(lang);
+      }
+      if (save) {
+        try { localStorage.setItem('mendingur-language', lang); } catch (e) {}
+      }
+    }
+
+    // Used when the user actively switches language: brief fade so the
+    // swap doesn't feel abrupt.
+    window.setLanguage = function (lang, save) {
       document.body.classList.add('language-changing');
-
       setTimeout(function () {
-        translatable.forEach(function (el) {
-          var value = el.getAttribute('data-' + lang);
-          if (value !== null) el.innerHTML = value;
-        });
-
-        ariaEls.forEach(function (el) {
-          var value = el.getAttribute('data-aria-' + lang);
-          if (value !== null) el.setAttribute('aria-label', value);
-        });
-
-        buttons.forEach(function (button) {
-          var active = button.getAttribute('data-lang') === lang;
-          button.classList.toggle('active', active);
-          button.setAttribute('aria-pressed', active ? 'true' : 'false');
-        });
-
-        switcher.classList.toggle('en', lang === 'en');
-
-        if (page.titleVi && page.titleEn) {
-          document.title = lang === 'en' ? page.titleEn : page.titleVi;
-        }
-
-        var description = document.querySelector('meta[name="description"]');
-        if (description && page.descVi && page.descEn) {
-          description.setAttribute('content', lang === 'en' ? page.descEn : page.descVi);
-        }
-
+        applyLanguage(lang, save);
         document.body.classList.remove('language-changing');
-        if (typeof page.onLanguageChange === 'function') {
-          page.onLanguageChange(lang);
-        }
-        if (save) {
-          try { localStorage.setItem('mendingur-language', lang); } catch (e) {}
-        }
       }, 90);
     };
 
@@ -75,7 +81,15 @@
 
     var saved = null;
     try { saved = localStorage.getItem('mendingur-language'); } catch (e) {}
-    if (saved === 'en' || saved === 'vi') window.setLanguage(saved, false);
+    // Always apply on load, even with no saved preference, and do it
+    // immediately (no fade/delay). This guarantees [data-i18n] elements
+    // get their innerHTML applied (escaped markup in data-vi/data-en
+    // parsed into real tags) on every first-time visit, not just when a
+    // prior localStorage value exists. Without this, first-time visitors
+    // (e.g. via in-app browsers that don't share cookies/localStorage
+    // with a normal browser session) would see raw escaped HTML as plain
+    // text instead of rendered links.
+    applyLanguage(saved === 'en' ? 'en' : 'vi', false);
   })();
 
   // ===== THEME SWITCHER (light / dark) =====
