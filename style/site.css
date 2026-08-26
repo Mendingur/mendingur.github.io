@@ -110,6 +110,7 @@ a { color: inherit; }
     content: "";
     position: absolute;
     inset: 0;
+    z-index: 0;
     background: radial-gradient(
         circle 220px at var(--mx, 50%) var(--my, 50%),
         var(--color-accent-border),
@@ -118,18 +119,6 @@ a { color: inherit; }
     opacity: 0;
     transition: opacity var(--dur-long) var(--ease-out);
     pointer-events: none;
-    z-index: 0;
-}
-
-.card:hover,
-.card:focus-visible,
-a.split-row__link:hover .split-row,
-a.split-row__link:focus-visible .split-row,
-a.now-card:hover,
-a.now-card:focus-visible {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 30px -14px var(--color-accent-border);
-    border-color: var(--color-accent-gold);
 }
 
 .card:hover::before,
@@ -142,8 +131,8 @@ a.now-card:focus-visible::before {
 }
 
 .card > *,
-.split-row > *,
-.now-card > * {
+a.split-row__link > *,
+a.now-card > * {
     position: relative;
     z-index: 1;
 }
