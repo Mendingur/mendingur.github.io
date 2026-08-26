@@ -273,41 +273,37 @@
   var interactiveCards = document.querySelectorAll('.card, a.volume-card, a.split-row__link, a.now-card');
 
   interactiveCards.forEach(function (card) {
-    card.addEventListener('mousemove', function (e) {
-      var rect = card.getBoundingClientRect();
-      card.style.setProperty('--mx', (e.clientX - rect.left) + 'px');
-      card.style.setProperty('--my', (e.clientY - rect.top) + 'px');
+  card.addEventListener('click', function (e) {
+    if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = card.getAttribute('href');
+    if (!href) return;
+
+    var rippleHost = card.querySelector('.split-row') || card;
+    var rect = rippleHost.getBoundingClientRect();
+    var size = Math.max(rect.width, rect.height) * 2;
+    var cx = (typeof e.clientX === 'number' && e.clientX !== 0)
+      ? e.clientX
+      : rect.left + rect.width / 2;
+    var cy = (typeof e.clientY === 'number' && e.clientY !== 0)
+      ? e.clientY
+      : rect.top + rect.height / 2;
+
+    var ripple = document.createElement('span');
+    ripple.className = 'ripple';
+    ripple.style.width = size + 'px';
+    ripple.style.height = size + 'px';
+    ripple.style.left = (cx - rect.left - size / 2) + 'px';
+    ripple.style.top = (cy - rect.top - size / 2) + 'px';
+    rippleHost.appendChild(ripple);
+    ripple.addEventListener('animationend', function () {
+      ripple.remove();
     });
+
+    // Chỉ chặn link sau khi ripple đã được tạo thành công.
+    e.preventDefault();
+    window.setTimeout(function () {
+      window.location.href = href;
+    }, 220);
   });
-
-  // gentle ripple on tap/click, with a short delay before navigating
-  // so the ripple is visible even though the card is a real link
-  interactiveCards.forEach(function (card) {
-    card.addEventListener('click', function (e) {
-      // let modified clicks (open in new tab, middle click, etc.) behave natively
-      if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-
-      var href = card.getAttribute('href');
-      if (!href) return;
-      e.preventDefault();
-
-      var rect = card.getBoundingClientRect();
-      var size = Math.max(rect.width, rect.height) * 2;
-      var cx = (typeof e.clientX === 'number' && e.clientX !== 0) ? e.clientX : rect.left + rect.width / 2;
-      var cy = (typeof e.clientY === 'number' && e.clientY !== 0) ? e.clientY : rect.top + rect.height / 2;
-
-      var ripple = document.createElement('span');
-      ripple.className = 'ripple';
-      ripple.style.width = size + 'px';
-      ripple.style.height = size + 'px';
-      ripple.style.left = (cx - rect.left - size / 2) + 'px';
-      ripple.style.top = (cy - rect.top - size / 2) + 'px';
-      rippleHost.appendChild(ripple);
-      ripple.addEventListener('animationend', function () { ripple.remove(); });
-
-      setTimeout(function () {
-        window.location.href = href;
-      }, 220);
-    });
-  });
-})();
+});
