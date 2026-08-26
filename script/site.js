@@ -273,6 +273,14 @@
   var interactiveCards = document.querySelectorAll('.card, a.volume-card, a.split-row__link, a.now-card');
 
   interactiveCards.forEach(function (card) {
+  card.addEventListener('mousemove', function (e) {
+    var rect = card.getBoundingClientRect();
+    card.style.setProperty('--mx', (e.clientX - rect.left) + 'px');
+    card.style.setProperty('--my', (e.clientY - rect.top) + 'px');
+  });
+});
+
+  interactiveCards.forEach(function (card) {
   card.addEventListener('click', function (e) {
     if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
 
