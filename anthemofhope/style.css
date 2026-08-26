@@ -1,33 +1,38 @@
 /* ==========================================================================
    KHÚC CA HY VỌNG — Reading site design system
    Vòng Tuần Hoàn Người Gieo Hạt (The Sower's Cycle), Quyển I
+   Hallmark · macrostructure: (reader chrome — content-first, not a landing
+   macrostructure) · genre: editorial · theme: custom (tuned)
+   Token bridge: legacy variable names below now alias tokens.css (loaded
+   first by every page in this folder) so this file's rules keep working
+   unmigrated while speaking the shared token system.
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap');
 
 :root {
-  /* ---- color tokens ---- */
-  --ink:            #2A2118;   /* primary text, warm near-black */
-  --ink-soft:       #55493B;   /* secondary text */
-  --parchment:      #FBF6EC;   /* page background, warm cream */
-  --parchment-dim:  #F1E7D3;   /* section / card background */
-  --parchment-edge:  #E4D5B7;  /* hairlines, borders on cream */
-  --ember-gold:     #C99A3E;   /* primary accent — hy vọng / light */
-  --ember-gold-soft:#E4C077;   /* lighter gold, for glows/hover */
-  --ember-rust:     #A8532A;   /* secondary accent — tro tàn / ember */
-  --rift-navy:      #16213D;   /* deep night — interludes, Cõi Hư Tàn */
+  /* ---- color tokens (bridged to tokens.css — see /tokens.css) ---- */
+  --ink:            var(--color-ink, #2A2118);
+  --ink-soft:       var(--color-ink-soft, #55493B);
+  --parchment:      var(--color-paper, #FBF6EC);
+  --parchment-dim:  var(--color-paper-2, #F1E7D3);
+  --parchment-edge: var(--color-paper-edge, #E4D5B7);
+  --ember-gold:     var(--color-accent-gold, #C99A3E);
+  --ember-gold-soft:var(--color-accent-soft, #E4C077);
+  --ember-rust:     var(--color-accent, #A8532A);
+  --rift-navy:      #16213D;   /* deep night — interludes, Cõi Hư Tàn (không gắn với logo, giữ nguyên hex) */
   --rift-navy-soft: #2A3A63;
   --rift-navy-page: #2E4470;   /* interlude page background — brighter blue for light theme */
 
-  --surface: rgba(251,246,236,0.4);
-  --surface-solid: #FBF6EC;
-  --surface-popover: rgba(251,246,236,0.55);
-  --surface-border: rgba(201,154,62,0.38);
-  --menu-shadow: 0 8px 24px rgba(42,33,24,0.08), inset 0 0 0 1px rgba(255,255,255,0.45);
-  --card-sheen-top: rgba(255,255,255,0.55);
-  --card-sheen-bottom: rgba(255,255,255,0.15);
+  /* --surface*/--menu-shadow/--card-sheen-* already defined by tokens.css
+     under the same names — no bridge declaration needed here, this file
+     just consumes them directly wherever it uses var(--surface) etc. */
 
-  /* ---- type ---- */
+  /* ---- type ----
+     Both names also exist in tokens.css, loaded before this file — these
+     re-declarations intentionally win (last-in-source wins for identical
+     custom-property names) because reading pages use a different pairing
+     (serif body copy) than the rest of the site (sans-serif UI body). */
   --font-display: 'Cormorant Garamond', 'Times New Roman', serif;
   --font-body:    'Lora', Georgia, serif;
   --font-ui:      'Be Vietnam Pro', -apple-system, sans-serif;
@@ -36,26 +41,10 @@
   --read-measure: 34em; /* chapter reading column */
 }
 
+/* dark mode now lives in tokens.css; --rift-navy* stay theme-invariant here
+   except rift-navy-page, which intentionally lightens in light mode above */
 html[data-theme="dark"] {
-  --ink:             #F0E6D2;
-  --ink-soft:        #C7B79A;
-  --parchment:       #2B2116;
-  --parchment-dim:   #34281B;
-  --parchment-edge:  #4A3B27;
-  --ember-gold:      #E0B15E;
-  --ember-gold-soft: #EDC885;
-  --ember-rust:      #DE8A55;
-  --rift-navy:       #1B2338;
-  --rift-navy-soft:  #2C3A5C;
   --rift-navy-page:  #1B2338;   /* interlude page background — stays deep navy in dark theme */
-
-  --surface: rgba(58,46,31,0.36);
-  --surface-solid: #33281A;
-  --surface-popover: rgba(51,40,26,0.5);
-  --surface-border: rgba(224,177,94,0.32);
-  --menu-shadow: 0 8px 26px rgba(15,10,4,0.42), inset 0 0 0 1px rgba(255,241,214,0.06);
-  --card-sheen-top: rgba(255,241,214,0.07);
-  --card-sheen-bottom: rgba(255,241,214,0.015);
 }
 
 html { transition: background-color .35s ease; }
@@ -65,10 +54,12 @@ body { transition: background-color .35s ease, color .35s ease; }
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 body {
   margin: 0;
+  overflow-x: clip;
   background: var(--parchment);
   color: var(--ink);
   font-family: var(--font-body);
@@ -87,6 +78,27 @@ a { color: inherit; }
 img, svg { display: block; max-width: 100%; }
 
 ::selection { background: var(--ember-gold-soft); color: var(--ink); }
+
+/* vệt sáng mờ đi theo con trỏ chuột — cùng kiểu với trang chủ và các trang hub */
+.cursor-glow {
+  position: fixed;
+  top: calc(var(--cursor-glow-size, 68px) / -2);
+  left: calc(var(--cursor-glow-size, 68px) / -2);
+  width: var(--cursor-glow-size, 68px);
+  height: var(--cursor-glow-size, 68px);
+  border-radius: 50%;
+  background: var(--cursor-glow-bg, radial-gradient(circle, rgba(168,83,42,0.14), rgba(168,83,42,0.05) 45%, transparent 72%));
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  transform: translate3d(-9999px, -9999px, 0);
+  will-change: transform;
+  transition: opacity .35s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor-glow { display: none; }
+}
 
 /* subtle grain / paper texture, purely decorative */
 .grain {
@@ -124,7 +136,7 @@ img, svg { display: block; max-width: 100%; }
   font-weight: 600;
 }
 .sitebar .brand .mark { width: 22px; height: 22px; flex: none; }
-.sitebar .brand .word { font-family: var(--font-display); font-style: italic; font-size: 1.05rem; }
+.sitebar .brand .word { font-family: var(--font-display); font-style: normal; font-weight: 600; font-size: 1.05rem; }
 
 /* Floating "Quay lại" / "Cánh Cổng" (hoặc "Bộ Ba") — chỉ dùng ở trang mục
    lục (index.html). Các trang chương dùng logo + nav "Mục lục" trong .sitebar. */
@@ -152,6 +164,7 @@ img, svg { display: block; max-width: 100%; }
   text-decoration: none;
   font-size: .74rem;
   font-weight: 700;
+  white-space: nowrap;
   color: var(--ink);
   transition: color .18s ease, border-color .18s ease, transform .15s ease, box-shadow .15s ease;
 }
@@ -283,6 +296,7 @@ img, svg { display: block; max-width: 100%; }
   color: var(--ink-soft);
   font: 700 .58rem/1 var(--font-ui);
   letter-spacing: .1em;
+  white-space: nowrap;
   text-align: center;
   cursor: pointer;
   transition: color .22s ease, transform .22s ease;
@@ -336,6 +350,7 @@ img, svg { display: block; max-width: 100%; }
   color: var(--ink-soft);
   font: 700 .55rem/1 var(--font-ui);
   letter-spacing: .05em;
+  white-space: nowrap;
   cursor: pointer;
   transition: color .22s ease, transform .22s ease;
 }
@@ -364,6 +379,7 @@ img, svg { display: block; max-width: 100%; }
   font-weight: 600;
   font-size: 0.72rem;
   letter-spacing: 0.04em;
+  white-space: nowrap;
   background: var(--surface);
   border: 1px solid var(--surface-border);
   padding: 0 .9rem 0 .8rem;
@@ -394,6 +410,7 @@ html[data-theme="dark"] .sitebar nav a.toc-pill:hover { box-shadow: 0 10px 22px 
   border: none; background: transparent; cursor: pointer;
   padding: 5px 11px; border-radius: 100px; color: var(--ink-soft);
   font-size: 0.78rem;
+  white-space: nowrap;
   transition: background .15s, color .15s;
 }
 .font-toggle button[aria-pressed="true"] { background: var(--ink); color: var(--parchment); }
@@ -450,12 +467,14 @@ html[data-theme="dark"] .sitebar nav a.toc-pill:hover { box-shadow: 0 10px 22px 
 
 .hero h1 {
   font-family: var(--font-display);
-  font-style: italic;
+  font-style: normal;
   font-weight: 600;
   font-size: clamp(2.6rem, 7vw, 4.4rem);
   line-height: 1.05;
   margin: 0 0 0.6rem;
   color: var(--ink);
+  overflow-wrap: anywhere;
+  min-width: 0;
 }
 
 .hero .subtitle {
@@ -524,7 +543,8 @@ html[data-theme="dark"] .sitebar nav a.toc-pill:hover { box-shadow: 0 10px 22px 
 
 .toc-part summary .pnum {
   font-family: var(--font-display);
-  font-style: italic;
+  font-style: normal;
+  font-weight: 600;
   font-size: 1.5rem;
   color: var(--ember-rust);
   flex: none;
@@ -548,10 +568,12 @@ html[data-theme="dark"] .sitebar nav a.toc-pill:hover { box-shadow: 0 10px 22px 
 .toc-body { padding: 0.2rem 0 1.6rem 3.6em; }
 .toc-book { margin-bottom: 1rem; }
 .toc-book h3 {
-  font-family: var(--font-body);
-  font-style: italic;
-  font-weight: 500;
-  font-size: 0.92rem;
+  font-family: var(--font-ui);
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
   color: var(--ink-soft);
   margin: 0 0 0.5rem;
 }
@@ -571,13 +593,16 @@ html[data-theme="dark"] .sitebar nav a.toc-pill:hover { box-shadow: 0 10px 22px 
 
 .toc-interlude { margin: 0.7rem 0 1.1rem; padding-left: 0; }
 .toc-interlude a {
-  font-style: italic;
+  font-style: normal;
+  font-weight: 600;
   font-family: var(--font-display);
   font-size: 1.05rem;
   color: var(--rift-navy);
   background: var(--parchment-dim);
   border-radius: 8px;
   padding: 0.6rem 0.9rem;
+  overflow-wrap: anywhere;
+  min-width: 0;
 }
 .toc-interlude a:hover { padding-left: 0.9rem; }
 html[data-theme="dark"] .toc-interlude a { color: #F3ECDD; }
@@ -629,12 +654,15 @@ footer.sitefoot p { max-width: 34em; margin: 0.4rem auto; }
 .chapter-head .crumb a { text-decoration: none; color: inherit; }
 .chapter-head .crumb a:hover { text-decoration: underline; }
 .chapter-head .cnum {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 1.15rem;
+  font-family: var(--font-ui);
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
   color: var(--ink-soft);
   display: block;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.4rem;
 }
 .chapter-head h1 {
   font-family: var(--font-display);
@@ -698,7 +726,7 @@ article.prose[data-size="sm"] { font-size: 1.0rem; }
 .p-book-end {
   text-align: center;
   font-family: var(--font-display);
-  font-style: italic;
+  font-style: normal;
   font-weight: 600;
   font-size: 1.3em;
   color: var(--ember-rust);
@@ -732,7 +760,7 @@ article.prose[data-size="sm"] { font-size: 1.0rem; }
 .chapter-nav a:hover { border-color: var(--ember-rust); background: var(--parchment-dim); }
 .chapter-nav a.next { text-align: right; }
 .chapter-nav a .lbl { display: block; color: var(--ink-soft); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.25rem; }
-.chapter-nav a .ttl { font-family: var(--font-display); font-style: italic; font-size: 1.05rem; }
+.chapter-nav a .ttl { font-family: var(--font-display); font-style: normal; font-weight: 600; font-size: 1.05rem; overflow-wrap: anywhere; min-width: 0; }
 .chapter-nav .toc-link {
   flex: none;
   display: flex; align-items: center; justify-content: center;
@@ -790,124 +818,6 @@ html body.interlude .theme-switcher:not(.dark)::before {
   box-shadow: 0 4px 12px rgba(10,12,16,0.35);
 }
 
-/* ---- game FAB (Chương Tương Tác), used on the Quyển I table-of-contents page ---- */
-.game-fab {
-  position: fixed;
-  right: 1.25rem;
-  bottom: 1.25rem;
-  z-index: 30;
-  display: inline-flex;
-  align-items: center;
-  gap: .7rem;
-  min-height: 58px;
-  padding: .55rem .8rem .55rem .65rem;
-  border: 1px solid rgba(228,192,119,.72);
-  border-radius: 999px;
-  color: #FFF9EE;
-  text-decoration: none;
-  background: linear-gradient(135deg, rgba(122,55,30,.96), rgba(168,83,42,.96) 52%, rgba(201,154,62,.96));
-  box-shadow: 0 12px 30px rgba(72,38,22,.24), 0 0 0 1px rgba(255,255,255,.12) inset, 0 0 28px rgba(201,154,62,.22);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  overflow: hidden;
-  isolation: isolate;
-  transition: transform .28s cubic-bezier(.22,.8,.25,1), box-shadow .28s ease, filter .28s ease;
-  animation: gameFabFloat 4s ease-in-out infinite;
-}
-.game-fab::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(105deg, transparent 25%, rgba(255,246,222,.28) 45%, transparent 65%);
-  transform: translateX(-120%);
-  animation: gameFabShine 4.8s ease-in-out infinite;
-  pointer-events: none;
-  z-index: -1;
-}
-.game-fab::after {
-  content: "";
-  position: absolute;
-  inset: 2px;
-  border-radius: inherit;
-  border: 1px solid rgba(255,246,222,.12);
-  pointer-events: none;
-}
-.game-fab:hover,
-.game-fab:focus-visible {
-  transform: translateY(-5px) scale(1.025);
-  box-shadow: 0 18px 38px rgba(72,38,22,.28), 0 0 0 1px rgba(255,255,255,.14) inset, 0 0 38px rgba(201,154,62,.34);
-  filter: saturate(1.08);
-  animation-play-state: paused;
-}
-.game-fab:focus-visible {
-  outline: 2px solid var(--ember-gold-soft);
-  outline-offset: 4px;
-}
-.game-fab-icon {
-  width: 42px;
-  height: 42px;
-  flex: 0 0 42px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #FFF6DE 0 7%, #E4C077 28%, #A8532A 72%, #7A371E 100%);
-  box-shadow: 0 0 0 1px rgba(255,246,222,.35), 0 0 18px rgba(228,192,119,.42);
-}
-.game-fab-icon svg {
-  width: 24px;
-  height: 24px;
-  filter: drop-shadow(0 2px 4px rgba(72,38,22,.28));
-}
-.game-fab-copy {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: .08rem;
-  padding-right: .25rem;
-  white-space: nowrap;
-}
-.game-fab-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.08rem;
-  font-weight: 600;
-  line-height: 1;
-}
-.game-fab-sub {
-  font-size: .62rem;
-  line-height: 1.25;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: rgba(255,249,238,.78);
-}
-.game-fab-arrow {
-  width: 22px;
-  height: 22px;
-  opacity: .82;
-  transition: transform .25s ease;
-}
-.game-fab:hover .game-fab-arrow,
-.game-fab:focus-visible .game-fab-arrow {
-  transform: translateX(3px);
-}
-@keyframes gameFabFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-3px); }
-}
-@keyframes gameFabShine {
-  0%, 42% { transform: translateX(-120%); }
-  64%, 100% { transform: translateX(120%); }
-}
-
-html[data-theme="dark"] .game-fab {
-  border-color: rgba(190,148,84,.55);
-  background: linear-gradient(135deg, rgba(58,26,14,.96), rgba(94,46,22,.96) 52%, rgba(138,102,42,.96));
-  box-shadow: 0 12px 30px rgba(10,6,3,.5), 0 0 0 1px rgba(255,255,255,.06) inset, 0 0 22px rgba(160,116,52,.16);
-}
-html[data-theme="dark"] .game-fab:hover,
-html[data-theme="dark"] .game-fab:focus-visible {
-  box-shadow: 0 18px 38px rgba(10,6,3,.55), 0 0 0 1px rgba(255,255,255,.08) inset, 0 0 30px rgba(160,116,52,.24);
-}
-
 /* ==========================================================================
    Responsive
    ========================================================================== */
@@ -928,11 +838,6 @@ html[data-theme="dark"] .game-fab:focus-visible {
   .top-nav-left { top: .8rem; left: .8rem; gap: .4rem; }
   .back-link { padding: 0 1rem 0 .8rem; font-size: .82rem; }
   .back-link svg { width: 16px; height: 16px; }
-  .game-fab { right: .8rem; bottom: .8rem; min-height: 52px; padding: .45rem .62rem .45rem .52rem; gap: .52rem; }
-  .game-fab-icon { width: 38px; height: 38px; flex-basis: 38px; }
-  .game-fab-title { font-size: .98rem; }
-  .game-fab-sub { font-size: .55rem; }
-  .game-fab-arrow { display: none; }
 }
 
 @media (max-width: 420px) {

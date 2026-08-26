@@ -1,0 +1,141 @@
+/* Hallmark · macrostructure: Split Studio · theme: custom (tuned) · genre: editorial
+ * vibe: "vũ trụ hậu tận thế ấm áp như giấy da cũ, hy vọng cháy như than hồng"
+ * paper: oklch(97.4% 0.014 85) · accent: oklch(53.9% 0.124 45) (giữ nguyên hex logo #A8532A)
+ * display: Cormorant Garamond · body: Be Vietnam Pro · axes: light / classical-serif / warm-amber
+ * nav: N6 (masthead, tùy biến) · footer: Ft6 (letter close) · studied: no
+ */
+
+:root {
+  /* ---- paper / ink (bảo toàn palette gốc gắn với logo, OKLCH-hoá) ---- */
+  --color-paper:        oklch(97.4% 0.014 85);   /* #FBF6EC parchment */
+  --color-paper-2:      oklch(94.3% 0.017 84);   /* #F1E7D3 parchment-dim */
+  --color-paper-edge:   oklch(88.4% 0.028 78);   /* #E4D5B7 parchment-edge */
+  --color-rule:         oklch(88.4% 0.028 78 / 0.6);
+  --color-ink:          oklch(25.5% 0.021 67);   /* #2A2118 */
+  --color-ink-soft:     oklch(41.2% 0.022 66);   /* #55493B */
+  --color-muted:        oklch(41.2% 0.022 66 / 0.8);
+
+  --color-accent:       oklch(53.9% 0.124 45);   /* #A8532A rust — hex giữ nguyên cho logo */
+  --color-accent-hex:   #A8532A;
+  --color-accent-gold:  oklch(71.4% 0.121 81);   /* #C99A3E */
+  --color-accent-soft:  oklch(82.3% 0.101 84);   /* #E4C077 */
+  --color-focus:        oklch(53.9% 0.124 45);
+  --color-accent-border:      oklch(53.9% 0.124 45 / 0.35);
+  --color-accent-gold-border: oklch(71.4% 0.121 81 / 0.42);
+  --color-sheen-ring:         oklch(100% 0 0 / 0.3);
+  --color-icon-on-accent:     oklch(97.4% 0.014 85);  /* #FFF6DE — icon trên nền accent tròn */
+
+  /* ---- vòng tròn huy hiệu icon (trang chủ, thẻ quyển sách, thẻ ủng hộ) ----
+     Mảng phẳng ở CẢ HAI giao diện: không điểm sáng góc trên trái, không viền
+     trắng — kiểu khối cầu bóng trông giả nhựa. Tách riêng khỏi --color-accent*
+     vì chữ và link cần sáng lên ở chế độ tối để đủ tương phản, còn mảng tròn
+     đặc này thì phải tối đi mới không bị chói. */
+  --icon-circle-bg:   linear-gradient(180deg, oklch(58% 0.126 48), oklch(51% 0.122 44));
+  --icon-circle-ring: transparent;
+
+  /* Vệt sáng mờ đi theo con trỏ chuột. Đặt ở đây để trang chủ, các trang hub
+     và các trang đọc chương dùng chung đúng một kiểu. */
+  --cursor-glow-size: 68px;
+  --cursor-glow-bg: radial-gradient(circle, oklch(53.9% 0.124 45 / 0.14), oklch(53.9% 0.124 45 / 0.05) 45%, transparent 72%);
+
+  --bg-grad-top:    oklch(96.4% 0.021 84);  /* #F7EFDC */
+  --bg-grad-mid:    var(--color-paper);
+  --bg-grad-bottom: oklch(91.6% 0.030 80);  /* #EDE0C8 */
+
+  --surface:            oklch(97.4% 0.014 85 / 0.4);
+  --surface-solid:      var(--color-paper);
+  --surface-popover:    oklch(97.4% 0.014 85 / 0.55);
+  --surface-border:     oklch(71.4% 0.121 81 / 0.38);
+  --card-sheen-top:         oklch(100% 0 0 / 0.55);
+  --card-sheen-bottom:      oklch(100% 0 0 / 0.15);
+  --card-sheen-top-strong:  oklch(100% 0 0 / 0.5);
+  --card-sheen-bottom-strong: oklch(100% 0 0 / 0.12);
+  --menu-shadow: 0 8px 24px oklch(25.5% 0.021 67 / 0.08), inset 0 0 0 1px oklch(100% 0 0 / 0.45);
+
+  /* ---- dark mode anchors (giữ hue, chỉ đổi lightness/chroma theo color.md) ---- */
+  --color-paper-dark:      oklch(15.8% 0.017 66);
+  --color-paper-2-dark:    oklch(19.6% 0.020 66);
+  --color-paper-edge-dark: oklch(28.9% 0.030 60);
+  --color-ink-dark:        oklch(92.9% 0.017 84);
+  --color-ink-soft-dark:   oklch(80.9% 0.023 78);
+  --color-accent-dark:     oklch(69.4% 0.114 61);
+  --color-accent-gold-dark:oklch(80.5% 0.106 78);
+  --color-accent-soft-dark:oklch(87.6% 0.084 82);
+
+  /* ---- type ---- */
+  --font-display: 'Cormorant Garamond', ui-serif, Georgia, serif;
+  --font-body:    'Be Vietnam Pro', -apple-system, ui-sans-serif, sans-serif;
+
+  --text-xs:   0.64rem;
+  --text-sm:   0.8rem;
+  --text-base: 1rem;
+  --text-md:   1.1rem;
+  --text-lg:   1.375rem;
+  --text-xl:   1.75rem;
+  --text-2xl:  2.2rem;
+  --text-3xl:  2.75rem;
+  --text-display:   clamp(2.5rem, 5.5vw + 1rem, 4.5rem);
+  --text-display-s: clamp(2rem, 4vw + 1rem, 3.3rem);
+
+  /* ---- spacing (4pt) ---- */
+  --space-3xs: 0.125rem;
+  --space-2xs: 0.25rem;
+  --space-xs:  0.5rem;
+  --space-sm:  0.75rem;
+  --space-md:  1rem;
+  --space-lg:  1.5rem;
+  --space-xl:  2.5rem;
+  --space-2xl: 4rem;
+  --space-3xl: 6rem;
+  --space-4xl: 9rem;
+
+  /* ---- motion ---- */
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in:     cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-micro: 120ms;
+  --dur-short: 220ms;
+  --dur-long:  420ms;
+
+  /* ---- misc ---- */
+  --rule-hair: 1px;
+  --radius-card: 20px;
+  --radius-pill: 999px;
+  --page-gutter: 1.4rem;
+
+  --z-base: 1; --z-raised: 10; --z-dropdown: 100; --z-sticky: 200; --z-modal: 400; --z-toast: 500; --z-tooltip: 600;
+}
+
+html[data-theme="dark"] {
+  --color-paper:      var(--color-paper-dark);
+  --color-paper-2:    var(--color-paper-2-dark);
+  --color-paper-edge: var(--color-paper-edge-dark);
+  --color-rule:       oklch(28.9% 0.030 60 / 0.6);
+  --color-ink:        var(--color-ink-dark);
+  --color-ink-soft:   var(--color-ink-soft-dark);
+  --color-muted:      oklch(80.9% 0.023 78 / 0.8);
+
+  --color-accent:      var(--color-accent-dark);
+  --color-accent-gold: var(--color-accent-gold-dark);
+  --color-accent-soft: var(--color-accent-soft-dark);
+  --color-focus:       var(--color-accent-dark);
+
+  /* vòng tròn icon: tối lại thành đồng hun, không đi theo accent sáng ở trên */
+  --color-icon-on-accent: oklch(88% 0.026 84);
+  --icon-circle-bg: linear-gradient(180deg, oklch(43% 0.086 52), oklch(37% 0.076 48));
+  --icon-circle-ring: transparent;
+
+  --bg-grad-top:    oklch(21.9% 0.023 66);
+  --bg-grad-mid:    var(--color-paper);
+  --bg-grad-bottom: oklch(13.4% 0.016 62);
+
+  --surface:            oklch(21.9% 0.023 66 / 0.36);
+  --surface-solid:      oklch(19.9% 0.021 64);
+  --surface-popover:    oklch(19.9% 0.021 64 / 0.5);
+  --surface-border:     oklch(69.4% 0.114 61 / 0.32);
+  --card-sheen-top:         oklch(96% 0.02 84 / 0.07);
+  --card-sheen-bottom:      oklch(96% 0.02 84 / 0.015);
+  --card-sheen-top-strong:  oklch(96% 0.02 84 / 0.09);
+  --card-sheen-bottom-strong: oklch(96% 0.02 84 / 0.02);
+  --menu-shadow: 0 8px 26px oklch(8% 0.01 60 / 0.42), inset 0 0 0 1px oklch(96% 0.02 84 / 0.06);
+}

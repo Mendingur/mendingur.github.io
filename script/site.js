@@ -1,8 +1,7 @@
 /* ============================================================
    Mendingur — shared site script
    Used by: index.html (Trang Chủ), tacgia/ (Trang Tác Giả),
-   thesowerscycle/, interactivechapters/, donate/,
-   interactivechaptersentanthemofhope/
+   thesowerscycle/, donate/
 
    Each page sets window.MENDINGUR_PAGE = { titleVi, titleEn, descVi, descEn }
    in an inline <script> BEFORE loading this file, so the language
@@ -233,15 +232,6 @@
     }
   }
 })();
-
-  // ===== GAME LINK (present on the homepage; no-op elsewhere) =====
-  (function () {
-    var GAME_URL = 'https://mendingur.github.io/interactivechapters/';
-    var gameFab = document.getElementById('gameFab');
-    if (gameFab && GAME_URL.indexOf('YOUR-GAME-LINK-HERE') === -1) {
-      gameFab.href = GAME_URL;
-    }
-  })();
 
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var stage = document.getElementById('stage');

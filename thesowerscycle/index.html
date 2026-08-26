@@ -13,143 +13,169 @@
 })();
 </script>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Mendingur — Vòng Tuần Hoàn Người Gieo Hạt</title>
 <meta name="description" content="Vòng Tuần Hoàn Người Gieo Hạt — bộ ba tiểu thuyết hậu tận thế của Mendingur. Quyển I đã hoàn thành, Quyển II và III đang được viết tiếp.">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../tokens.css">
 <link rel="stylesheet" href="../style/site.css">
 <style>
-:root {
-    --ink: #2A2118;
-    --ink-soft: #55493B;
-    --parchment: #FBF6EC;
-    --parchment-dim: #F1E7D3;
-    --parchment-edge: #E4D5B7;
-    --ember-gold: #C99A3E;
-    --ember-gold-soft: #E4C077;
-    --ember-rust: #A8532A;
-  }
+/* Hallmark · macrostructure: Editorial Stack (single column — nội dung là
+ * một danh sách 3 quyển, không phải song đối) · genre: editorial
+ * theme: custom (tuned) · nav: N6 (masthead, tùy biến) · footer: Ft6 (letter close)
+ * pre-emit critique: P5 H4 E5 S4 R5 V4
+ */
+html, body { overflow-x: clip; }
 
-body {
+main { display: block; position: relative; }
+
+/* ================= MASTHEAD (N6, tùy biến) ================= */
+.mast {
+    display: grid;
+    justify-items: center;
+    gap: var(--space-2xs);
+    padding: var(--space-lg) var(--page-gutter) 0;
+    text-align: center;
+  }
+.mast-line {
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-accent);
     margin: 0;
-    min-height: 100%;
-    background:
-      radial-gradient(ellipse 120% 80% at 50% -10%, var(--bg-grad-top) 0%, var(--bg-grad-mid) 45%, var(--bg-grad-bottom) 100%);
-    background-attachment: fixed;
-    background-size: 100% 100vh;
-    background-repeat: no-repeat;
-    color: var(--ink);
-    font-family: 'Be Vietnam Pro', -apple-system, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
+  }
+.mast-line a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--color-accent-border); }
+.mast-line a:hover, .mast-line a:focus-visible { border-color: var(--color-accent); }
+.mast-name {
+    font-family: var(--font-display);
+    font-style: normal;
+    font-weight: 600;
+    font-size: clamp(1.7rem, 4.2vw, 2.4rem);
+    line-height: 1;
+    letter-spacing: -0.01em;
+    margin: 0;
+    color: var(--color-ink);
+    overflow-wrap: anywhere;
+    min-width: 0;
+  }
+.mast-rule {
+    width: 100%;
+    max-width: 640px;
+    height: 4px;
+    margin: var(--space-sm) 0 0;
+    border: 0;
+    border-top: var(--rule-hair) solid var(--color-rule);
+    border-bottom: var(--rule-hair) solid var(--color-rule);
   }
 
+/* ================= STAGE ================= */
 .stage {
-    min-height: 100vh;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: var(--space-2xl) var(--page-gutter) var(--space-3xl);
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 5.5rem 1.4rem 4rem;
-    position: relative;
     text-align: center;
   }
 
 .rift-wrap {
     width: min(180px, 42vw);
-    margin: 0 auto 0.4rem;
+    margin: 0 auto var(--space-sm);
     position: relative;
     z-index: 1;
     animation: breathe 7s ease-in-out infinite;
   }
+@media (prefers-reduced-motion: reduce) { .rift-wrap { animation: none; } }
+@keyframes breathe {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 18px var(--color-accent-soft)); }
+  50% { transform: scale(1.02); filter: drop-shadow(0 0 26px var(--color-accent-soft)); }
+}
 
 h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
+    font-family: var(--font-display);
+    font-style: normal;
     font-weight: 600;
     font-size: clamp(2.1rem, 7vw, 3.2rem);
-    margin: 0.2rem 0 0.2rem;
-    position: relative; z-index: 1;
+    line-height: 1.08;
+    margin: 0.2rem 0 0.3rem;
+    color: var(--color-ink);
+    overflow-wrap: anywhere;
+    min-width: 0;
   }
 
 .tagline {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: var(--font-display);
     font-size: clamp(1rem, 3vw, 1.2rem);
-    color: var(--ink-soft);
-    margin: 0 0 1rem;
-    position: relative; z-index: 1;
+    color: var(--color-ink-soft);
+    margin: 0 0 var(--space-sm);
   }
 
 .quote {
-    font-family: 'Cormorant Garamond', serif;
+    /* font-style: italic (giữ — đây là <p>, trích dẫn trong văn xuôi, thuộc diện ngoại lệ) */
+    font-family: var(--font-display);
     font-style: italic;
     font-size: 1rem;
-    color: var(--ember-rust);
+    color: var(--color-accent);
     max-width: 440px;
-    margin: 0 0 2.4rem;
-    position: relative; z-index: 1;
+    margin: 0 0 var(--space-xl);
   }
 
+h2.prompt {
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--color-ink-soft);
+    margin: 0 0 var(--space-lg);
+  }
+
+/* ================= VOLUME LIST ================= */
 .volumes {
     display: flex;
     flex-direction: column;
-    gap: 1.1rem;
+    gap: var(--space-md);
     width: 100%;
-    max-width: 600px;
-    position: relative;
-    z-index: 1;
   }
 
 .volume-card {
     display: flex;
-    gap: 1.1rem;
+    gap: var(--space-md);
     align-items: flex-start;
     text-align: left;
     text-decoration: none;
     color: inherit;
     background: linear-gradient(180deg, var(--card-sheen-top), var(--card-sheen-bottom));
-    border: 1px solid var(--parchment-edge);
-    border-radius: 20px;
-    padding: 1.4rem 1.5rem;
+    border: 1px solid var(--color-paper-edge);
+    border-radius: var(--radius-card);
+    padding: var(--space-lg);
     position: relative;
     overflow: hidden;
-    transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+    transition: transform var(--dur-short) var(--ease-out), box-shadow var(--dur-short) var(--ease-out), border-color var(--dur-short) var(--ease-out);
   }
 
 .volume-card::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle 220px at var(--mx, 50%) var(--my, 50%), rgba(168,83,42,0.28), transparent 72%);
+    background: radial-gradient(circle 220px at var(--mx, 50%) var(--my, 50%), var(--color-accent-border), transparent 72%);
     opacity: 0;
-    transition: opacity .3s ease;
+    transition: opacity var(--dur-long) var(--ease-out);
     pointer-events: none;
   }
 
 a.volume-card:hover, a.volume-card:focus-visible {
     transform: translateY(-4px);
-    box-shadow: 0 16px 30px -14px rgba(168,83,42,0.32);
-    border-color: var(--ember-gold);
+    box-shadow: 0 16px 30px -14px var(--color-accent-border);
+    border-color: var(--color-accent-gold);
   }
-
 a.volume-card:hover::before, a.volume-card:focus-visible::before { opacity: 1; }
+a.volume-card:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
 
-a.volume-card:focus-visible { outline: 2px solid var(--ember-rust); outline-offset: 3px; }
-
-.volume-card.is-locked {
-    border-style: dashed;
-    opacity: .78;
-  }
-
-.ripple {
-    position: absolute;
-    border-radius: 50%;
-    background: rgba(168,83,42,0.28);
-    transform: scale(0);
-    opacity: 1;
-    animation: rippleAnim 0.65s ease-out forwards;
-    pointer-events: none;
-  }
+.volume-card.is-locked { border-style: dashed; opacity: .78; }
 
 .volume-num {
     flex: 0 0 54px;
@@ -157,44 +183,31 @@ a.volume-card:focus-visible { outline: 2px solid var(--ember-rust); outline-offs
     border-radius: 50%;
     display: grid;
     place-items: center;
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
+    font-family: var(--font-display);
+    font-style: normal;
     font-weight: 600;
     font-size: 1.4rem;
-    color: #FFF6DE;
-    background: radial-gradient(circle at 35% 30%, #E4C077 0%, #A8532A 70%, #7A371E 100%);
-    box-shadow: 0 0 0 1px rgba(255,246,222,.3);
+    color: var(--color-icon-on-accent);
+    background: var(--icon-circle-bg);
+    box-shadow: 0 0 0 1px var(--icon-circle-ring);
     position: relative; z-index: 1;
   }
-
 .volume-card.is-locked .volume-num {
-    background: var(--parchment-dim);
-    color: var(--ink-soft);
-    border: 1px dashed var(--parchment-edge);
+    background: var(--color-paper-2);
+    color: var(--color-ink-soft);
+    border: 1px dashed var(--color-paper-edge);
     box-shadow: none;
   }
 
-.volume-body {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: .4rem;
-    position: relative; z-index: 1;
-    min-width: 0;
-  }
-
-.volume-top {
-    display: flex;
-    align-items: center;
-    gap: .6rem;
-    flex-wrap: wrap;
-  }
+.volume-body { flex: 1; display: flex; flex-direction: column; gap: .4rem; position: relative; z-index: 1; min-width: 0; }
+.volume-top { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; }
 
 .volume-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
+    font-family: var(--font-display);
+    font-style: normal;
     font-weight: 600;
     font-size: 1.25rem;
+    overflow-wrap: anywhere;
   }
 
 .volume-status {
@@ -203,27 +216,15 @@ a.volume-card:focus-visible { outline: 2px solid var(--ember-rust); outline-offs
     text-transform: uppercase;
     letter-spacing: .1em;
     padding: .2rem .55rem;
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
     white-space: nowrap;
   }
+.status-done { background: var(--color-accent); color: var(--color-icon-on-accent); }
+.status-writing { border: 1px solid var(--color-accent-gold); color: var(--color-accent); }
+.status-soon { border: 1px dashed var(--color-paper-edge); color: var(--color-ink-soft); }
 
-.status-done { background: var(--ember-rust); color: #FFF6DE; }
-
-.status-writing { border: 1px solid var(--ember-gold); color: var(--ember-rust); }
-
-.status-soon { border: 1px dashed var(--parchment-edge); color: var(--ink-soft); }
-
-.volume-blurb {
-    font-size: .85rem;
-    line-height: 1.6;
-    color: var(--ink-soft);
-  }
-
-.volume-meta {
-    font-size: .7rem;
-    color: var(--ink-soft);
-    opacity: .75;
-  }
+.volume-blurb { font-size: .85rem; line-height: 1.6; color: var(--color-ink-soft); }
+.volume-meta { font-size: .7rem; color: var(--color-ink-soft); opacity: .75; }
 
 .volume-cta {
     margin-top: .3rem;
@@ -232,63 +233,66 @@ a.volume-card:focus-visible { outline: 2px solid var(--ember-rust); outline-offs
     gap: .35rem;
     font-weight: 600;
     font-size: .82rem;
-    color: var(--ember-rust);
+    color: var(--color-accent);
+    white-space: nowrap;
   }
-
-.volume-cta svg { width: 16px; height: 16px; transition: transform .2s ease; }
-
+.volume-cta svg { width: 16px; height: 16px; transition: transform var(--dur-short) var(--ease-out); }
 a.volume-card:hover .volume-cta svg, a.volume-card:focus-visible .volume-cta svg { transform: translateX(3px); }
 
-h2.prompt {
-    font-size: 0.74rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.18em;
-    color: var(--ink-soft);
-    margin: 0 0 1.3rem;
-    position: relative; z-index: 1;
+/* ================= FOOTER — LETTER CLOSE (Ft6, tùy biến) ================= */
+.foot-letter {
+    padding: var(--space-2xl) var(--page-gutter) var(--space-xl);
+    max-width: 1180px;
+    margin: 0 auto;
+    display: grid;
+    gap: var(--space-lg);
+    text-align: center;
   }
-
-.top-nav-left {
-    position: fixed;
-    top: 1.2rem;
-    left: 1.2rem;
-    z-index: 20;
-    display: inline-flex;
+.foot-letter__close {
+    /* font-style: italic (giữ — <p>, trần thuật lời chào, thuộc diện ngoại lệ) */
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: var(--text-lg);
+    line-height: 1.4;
+    margin: 0 auto;
+    max-width: 60ch;
+  }
+.foot-letter__sign { font-style: normal; font-weight: 600; }
+.foot-letter__row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-md);
     align-items: center;
-    gap: .6rem;
+    font-size: var(--text-sm);
   }
+.foot-letter__row a {
+    text-decoration: none;
+    color: var(--color-ink-soft);
+    display: flex;
+    align-items: center;
+    gap: var(--space-2xs);
+    white-space: nowrap;
+    transition: color var(--dur-short) var(--ease-out);
+  }
+.foot-letter__row a:hover, .foot-letter__row a:focus-visible { color: var(--color-accent); }
+.foot-letter__row svg { width: 16px; height: 16px; }
+.foot-letter__row .icon-yt { width: 15px; }
+.foot-letter__row .sep { color: var(--color-paper-edge); }
+.donate-link { color: var(--color-accent) !important; font-weight: 600; }
+.foot-letter__copyright { font-size: var(--text-xs); line-height: 1.5; color: var(--color-ink-soft); opacity: 0.75; }
 
 @media (max-width: 560px) {
-  .top-nav-left { top: .8rem; left: .8rem; gap: .4rem; }
   .volume-card { padding: 1.1rem 1rem; gap: .8rem; }
   .volume-num { flex-basis: 44px; width: 44px; height: 44px; font-size: 1.15rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .rift-anim, .volume-card, .back-link, .back-link svg { animation: none !important; transition: none !important; }
-  .volume-card::before { transition: none; }
+  .volume-card, .volume-card::before { transition: none !important; }
 }
-
-/* YouTube icon riêng trong footer: hẹp hơn 1px theo yêu cầu,
-   không đụng tới rule "footer svg" dùng chung cho các trang khác. */
-.icon-yt { width: 15px !important; }
 </style>
 </head>
 <body>
-</head>
-<body>
-
-  <div class="top-nav-left">
-    <a class="back-link" id="backLink" href="https://mendingur.github.io/" data-fallback="https://mendingur.github.io/" data-aria-vi="Quay lại trang trước" data-aria-en="Back to the previous page" aria-label="Quay lại trang trước">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg>
-      <span data-i18n data-vi="Quay lại" data-en="Back">Quay lại</span>
-    </a>
-    <a class="back-link" id="gateLink" href="https://mendingur.github.io/" data-aria-vi="Về Trang Chủ" data-aria-en="To the homepage" aria-label="Về Trang Chủ">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/></svg>
-      <span data-i18n data-vi="Trang Chủ" data-en="Home">Trang Chủ</span>
-    </a>
-  </div>
 
   <div class="settings-menu" id="settingsMenu">
     <button class="menu-toggle" type="button" id="settingsMenuToggle" aria-haspopup="true" aria-expanded="false" aria-controls="settingsPopover" aria-label="Cài đặt" data-aria-vi="Cài đặt" data-aria-en="Settings">
@@ -319,15 +323,20 @@ h2.prompt {
     </div>
   </div>
 
-  <a class="game-fab" id="gameFab" href="https://mendingur.github.io/interactivechapters/" aria-label="Mở Chương Tương Tác" data-aria-vi="Mở Chương Tương Tác" data-aria-en="Open Interactive Chapters">
-    <span class="game-fab-icon" aria-hidden="true"><svg viewBox="0 0 400 400" fill="none"><path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="#FFF6DE"/><path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="#FFF6DE"/><g transform="translate(200,278)"><ellipse rx="14" ry="21" fill="#FFF6DE"/><ellipse rx="14" ry="21" transform="rotate(72)" fill="#FFF6DE"/><ellipse rx="14" ry="21" transform="rotate(144)" fill="#FFF6DE"/><ellipse rx="14" ry="21" transform="rotate(216)" fill="#FFF6DE"/><ellipse rx="14" ry="21" transform="rotate(288)" fill="#FFF6DE"/><circle r="9" fill="#A8532A"/></g><g transform="translate(200,96)"><path d="M0,-24 C2,-7 7,-2 24,0 C7,2 2,7 0,24 C-2,7 -7,2 -24,0 C-7,-2 -2,-7 0,-24 Z" fill="#FFF6DE"/></g></svg></span>
-    <span class="game-fab-copy"><span class="game-fab-title" data-i18n data-vi="Chương Tương Tác" data-en="Interactive Chapters">Chương Tương Tác</span><span class="game-fab-sub" data-i18n data-vi="Mini Game · 3 Quyển" data-en="Mini Games · 3 Volumes">Mini Game · 3 Quyển</span></span>
-    <svg class="game-fab-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"/><path d="m13 6 6 6-6 6"/></svg>
-  </a>
-
   <div class="cursor-glow" id="cursorGlow"></div>
 
-  <main class="stage" id="stage" aria-labelledby="pageTitle">
+<main id="main">
+
+  <!-- ============ MASTHEAD (N6, tùy biến) ============ -->
+  <header class="mast">
+    <p class="mast-line">
+      <a href="https://mendingur.github.io/" data-i18n data-vi="← Về Trang Chủ Mendingur" data-en="← Back to Mendingur Home">← Về Trang Chủ Mendingur</a>
+    </p>
+    <p class="mast-name">Vòng Tuần Hoàn Người Gieo Hạt</p>
+    <hr class="mast-rule" aria-hidden="true">
+  </header>
+
+  <div class="stage" id="stage" aria-labelledby="pageTitle">
 
     <div class="rift-wrap">
       <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Biểu tượng Mendingur">
@@ -411,8 +420,15 @@ h2.prompt {
       </div>
 
     </div>
+  </div>
 
-    <footer>
+  <footer class="foot-letter">
+    <p class="foot-letter__close" data-i18n data-vi="Mỗi trang là một hạt giống. Cảm ơn vì đã ghé qua." data-en="Every page is a seed. Thank you for stopping by.">
+      Mỗi trang là một hạt giống. Cảm ơn vì đã ghé qua.<br>
+      <span class="foot-letter__sign" data-i18n data-vi="— Mendingur" data-en="— Mendingur">— Mendingur</span>
+    </p>
+
+    <div class="foot-letter__row">
       <a href="https://github.com/Mendingur" aria-label="GitHub">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.54 2.87 8.39 6.84 9.75.5.09.68-.22.68-.48 0-.24-.01-1.04-.01-1.89-2.78.62-3.37-1.19-3.37-1.19-.46-1.2-1.11-1.52-1.11-1.52-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.32.1-2.75 0 0 .84-.28 2.75 1.05a9.3 9.3 0 0 1 2.5-.35c.85 0 1.71.12 2.5.35 1.91-1.33 2.75-1.05 2.75-1.05.55 1.43.2 2.49.1 2.75.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.82 0 .27.18.58.69.48A10.01 10.01 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z"/></svg>
       </a>
@@ -437,10 +453,14 @@ h2.prompt {
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-6.7-4.35-9.3-8.1C.8 10.1 1.4 6.6 4.3 5.1c2.2-1.15 4.6-.5 6.1 1.2.5.55 1 1.2 1.6 1.9.6-.7 1.1-1.35 1.6-1.9 1.5-1.7 3.9-2.35 6.1-1.2 2.9 1.5 3.5 5 1.6 7.8C18.7 16.65 12 21 12 21Z"/></svg>
         <span data-i18n data-vi="Ủng hộ" data-en="Donate">Ủng hộ</span>
       </a>
-      <div class="copyright" data-i18n data-vi="© 2026 Nguyễn Duy Anh (bút danh: Mendingur)." data-en="© 2026 Nguyễn Duy Anh (pen name: Mendingur).">© 2026 Nguyễn Duy Anh (bút danh: Mendingur).</div>
-    </footer>
+    </div>
 
-  </main>
+    <div class="foot-letter__copyright" data-i18n data-vi="© 2026 Nguyễn Duy Anh (bút danh: Mendingur)." data-en="© 2026 Nguyễn Duy Anh (pen name: Mendingur).">
+      © 2026 Nguyễn Duy Anh (bút danh: Mendingur).
+    </div>
+  </footer>
+
+</main>
 
 <script>
   window.MENDINGUR_PAGE = {
