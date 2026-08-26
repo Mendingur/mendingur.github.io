@@ -99,43 +99,6 @@ a { color: inherit; }
     0%, 100% { filter: drop-shadow(0 0 20px rgba(201,154,62,0.25)); transform: scale(1); }
     50% { filter: drop-shadow(0 0 32px rgba(201,154,62,0.42)); transform: scale(1.015); }
   }
-@keyframes breathe {
-    0%, 100% { filter: drop-shadow(0 0 20px rgba(201,154,62,0.25)); transform: scale(1); }
-    50% { filter: drop-shadow(0 0 32px rgba(201,154,62,0.42)); transform: scale(1.015); }
-}
-
-.card::before,
-.split-row::before,
-.now-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    background: radial-gradient(
-        circle 220px at var(--mx, 50%) var(--my, 50%),
-        var(--color-accent-border),
-        transparent 72%
-    );
-    opacity: 0;
-    transition: opacity var(--dur-long) var(--ease-out);
-    pointer-events: none;
-}
-
-.card:hover::before,
-.card:focus-visible::before,
-a.split-row__link:hover .split-row::before,
-a.split-row__link:focus-visible .split-row::before,
-a.now-card:hover::before,
-a.now-card:focus-visible::before {
-    opacity: 1;
-}
-
-.card > *,
-a.split-row__link > *,
-a.now-card > * {
-    position: relative;
-    z-index: 1;
-}
 
 /* ---- click ripple ----
    site.js chèn <span class="ripple"> vào trong thẻ card khi bấm. Rule này
@@ -165,10 +128,10 @@ a.now-card > * {
 
 .cursor-glow {
     position: fixed;
-    top: calc(var(--cursor-glow-size, 108px) / -2);
-    left: calc(var(--cursor-glow-size, 108px) / -2);
-    width: var(--cursor-glow-size, 108px);
-    height: var(--cursor-glow-size, 108px);
+    top: calc(var(--cursor-glow-size, 68px) / -2);
+    left: calc(var(--cursor-glow-size, 68px) / -2);
+    width: var(--cursor-glow-size, 68px);
+    height: var(--cursor-glow-size, 68px);
     border-radius: 50%;
     background: var(--cursor-glow-bg, radial-gradient(circle, rgba(168,83,42,0.14), rgba(168,83,42,0.05) 45%, transparent 72%));
     pointer-events: none;

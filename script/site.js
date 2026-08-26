@@ -248,44 +248,66 @@
     }
   }
 
+  // soft brown glow that follows the cursor anywhere on the page.
+  // Uses transform (GPU compositing) instead of left/top so it stays cheap
+  // even at a high mousemove rate.
+  if (!reduceMotion) {
+    var glow = document.getElementById('cursorGlow');
+    if (glow) {
+      var glowShown = false;
+      document.addEventListener('mousemove', function (e) {
+        glow.style.transform = 'translate3d(' + e.clientX + 'px,' + e.clientY + 'px,0)';
+        if (!glowShown) { glow.style.opacity = '1'; glowShown = true; }
+      }, { passive: true });
+      document.addEventListener('mouseleave', function () {
+        glow.style.opacity = '0';
+        glowShown = false;
+      });
+    }
+  }
+
   // brown blur that follows the cursor inside each card, stronger than the
   // ambient page-wide glow above — this is the "climbs onto the card and
   // gets darker" effect. Matches both the homepage/author page's .card and the
   // volume/chapter pages' a.volume-card.
-  var interactiveCards = document.querySelectorAll('.card, a.volume-card, a.split-row__link, a.now-card');
+  var interactiveCards = document.querySelectorAll('.card, a.volume-card');
 
   interactiveCards.forEach(function (card) {
-  card.addEventListener('click', function (e) {
-    if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-
-    var href = card.getAttribute('href');
-    if (!href) return;
-
-    var rippleHost = card.querySelector('.split-row') || card;
-    var rect = rippleHost.getBoundingClientRect();
-    var size = Math.max(rect.width, rect.height) * 2;
-    var cx = (typeof e.clientX === 'number' && e.clientX !== 0)
-      ? e.clientX
-      : rect.left + rect.width / 2;
-    var cy = (typeof e.clientY === 'number' && e.clientY !== 0)
-      ? e.clientY
-      : rect.top + rect.height / 2;
-
-    var ripple = document.createElement('span');
-    ripple.className = 'ripple';
-    ripple.style.width = size + 'px';
-    ripple.style.height = size + 'px';
-    ripple.style.left = (cx - rect.left - size / 2) + 'px';
-    ripple.style.top = (cy - rect.top - size / 2) + 'px';
-    rippleHost.appendChild(ripple);
-
-    ripple.addEventListener('animationend', function () {
-      ripple.remove();
+    card.addEventListener('mousemove', function (e) {
+      var rect = card.getBoundingClientRect();
+      card.style.setProperty('--mx', (e.clientX - rect.left) + 'px');
+      card.style.setProperty('--my', (e.clientY - rect.top) + 'px');
     });
-
-    e.preventDefault();
-    window.setTimeout(function () {
-      window.location.href = href;
-    }, 220);
   });
-});
+
+  // gentle ripple on tap/click, with a short delay before navigating
+  // so the ripple is visible even though the card is a real link
+  interactiveCards.forEach(function (card) {
+    card.addEventListener('click', function (e) {
+      // let modified clicks (open in new tab, middle click, etc.) behave natively
+      if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+      var href = card.getAttribute('href');
+      if (!href) return;
+      e.preventDefault();
+
+      var rect = card.getBoundingClientRect();
+      var size = Math.max(rect.width, rect.height) * 2;
+      var cx = (typeof e.clientX === 'number' && e.clientX !== 0) ? e.clientX : rect.left + rect.width / 2;
+      var cy = (typeof e.clientY === 'number' && e.clientY !== 0) ? e.clientY : rect.top + rect.height / 2;
+
+      var ripple = document.createElement('span');
+      ripple.className = 'ripple';
+      ripple.style.width = size + 'px';
+      ripple.style.height = size + 'px';
+      ripple.style.left = (cx - rect.left - size / 2) + 'px';
+      ripple.style.top = (cy - rect.top - size / 2) + 'px';
+      card.appendChild(ripple);
+      ripple.addEventListener('animationend', function () { ripple.remove(); });
+
+      setTimeout(function () {
+        window.location.href = href;
+      }, 220);
+    });
+  });
+})();
