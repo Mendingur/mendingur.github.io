@@ -109,6 +109,7 @@ a { color: inherit; }
 .now-card::before {
     content: "";
     position: absolute;
+    z-index: 0;
     inset: 0;
     background: radial-gradient(
         circle 220px at var(--mx, 50%) var(--my, 50%),
@@ -138,6 +139,13 @@ a.split-row__link:focus-visible .split-row::before,
 a.now-card:hover::before,
 a.now-card:focus-visible::before {
     opacity: 1;
+}
+
+.card > *,
+.split-row > *,
+.now-card > * {
+    position: relative;
+    z-index: 1;
 }
 
 /* ---- click ripple ----
