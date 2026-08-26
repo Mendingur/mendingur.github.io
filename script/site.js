@@ -248,37 +248,11 @@
     }
   }
 
-  // soft brown glow that follows the cursor anywhere on the page.
-  // Uses transform (GPU compositing) instead of left/top so it stays cheap
-  // even at a high mousemove rate.
-  if (!reduceMotion) {
-    var glow = document.getElementById('cursorGlow');
-    if (glow) {
-      var glowShown = false;
-      document.addEventListener('mousemove', function (e) {
-        glow.style.transform = 'translate3d(' + e.clientX + 'px,' + e.clientY + 'px,0)';
-        if (!glowShown) { glow.style.opacity = '1'; glowShown = true; }
-      }, { passive: true });
-      document.addEventListener('mouseleave', function () {
-        glow.style.opacity = '0';
-        glowShown = false;
-      });
-    }
-  }
-
   // brown blur that follows the cursor inside each card, stronger than the
   // ambient page-wide glow above — this is the "climbs onto the card and
   // gets darker" effect. Matches both the homepage/author page's .card and the
   // volume/chapter pages' a.volume-card.
   var interactiveCards = document.querySelectorAll('.card, a.volume-card, a.split-row__link, a.now-card');
-
-  interactiveCards.forEach(function (card) {
-  card.addEventListener('mousemove', function (e) {
-    var rect = card.getBoundingClientRect();
-    card.style.setProperty('--mx', (e.clientX - rect.left) + 'px');
-    card.style.setProperty('--my', (e.clientY - rect.top) + 'px');
-  });
-});
 
   interactiveCards.forEach(function (card) {
   card.addEventListener('click', function (e) {
@@ -304,11 +278,11 @@
     ripple.style.left = (cx - rect.left - size / 2) + 'px';
     ripple.style.top = (cy - rect.top - size / 2) + 'px';
     rippleHost.appendChild(ripple);
+
     ripple.addEventListener('animationend', function () {
       ripple.remove();
     });
 
-    // Chỉ chặn link sau khi ripple đã được tạo thành công.
     e.preventDefault();
     window.setTimeout(function () {
       window.location.href = href;
