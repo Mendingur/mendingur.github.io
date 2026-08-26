@@ -299,8 +299,12 @@ h1 {
     border: 1px solid var(--color-paper-edge);
     border-radius: var(--radius-card);
     background: linear-gradient(180deg, var(--card-sheen-top), var(--card-sheen-bottom));
-    transition: border-color var(--dur-short) var(--ease-out);
-  }
+    position: relative;
+    overflow: hidden;
+    transition: transform var(--dur-short) var(--ease-out),
+                box-shadow var(--dur-short) var(--ease-out),
+                border-color var(--dur-short) var(--ease-out);
+}
 
 /* Huy hiệu tròn nhỏ, đứng ngay trước tên trụ cột trong cùng một dòng. */
 .split-row__figure {
@@ -383,6 +387,8 @@ a.split-row__link:focus-visible .split-row__cta svg { transform: translateX(3px)
 a.split-row__link {
     display: block;
     height: 100%;
+    position: relative;
+    overflow: hidden;
     text-decoration: none;
     color: inherit;
     border-radius: var(--radius-card);
@@ -414,6 +420,8 @@ a.split-row__link:focus-visible { outline: 2px solid var(--color-accent); outlin
     border: 1px solid var(--color-paper-edge);
     border-radius: var(--radius-card);
     padding: var(--space-lg);
+    position: relative;
+    overflow: hidden;
   }
 
 a.now-card {
