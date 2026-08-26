@@ -104,8 +104,9 @@ a { color: inherit; }
     50% { filter: drop-shadow(0 0 32px rgba(201,154,62,0.42)); transform: scale(1.015); }
 }
 
-/* THÊM ĐOẠN NÀY */
-.card::before {
+.card::before,
+.split-row::before,
+.now-card::before {
     content: "";
     position: absolute;
     inset: 0;
@@ -120,14 +121,22 @@ a { color: inherit; }
 }
 
 .card:hover,
-.card:focus-visible {
+.card:focus-visible,
+a.split-row__link:hover .split-row,
+a.split-row__link:focus-visible .split-row,
+a.now-card:hover,
+a.now-card:focus-visible {
     transform: translateY(-4px);
     box-shadow: 0 16px 30px -14px var(--color-accent-border);
     border-color: var(--color-accent-gold);
 }
 
 .card:hover::before,
-.card:focus-visible::before {
+.card:focus-visible::before,
+a.split-row__link:hover .split-row::before,
+a.split-row__link:focus-visible .split-row::before,
+a.now-card:hover::before,
+a.now-card:focus-visible::before {
     opacity: 1;
 }
 
