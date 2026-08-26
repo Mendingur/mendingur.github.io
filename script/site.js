@@ -302,7 +302,7 @@
       ripple.style.height = size + 'px';
       ripple.style.left = (cx - rect.left - size / 2) + 'px';
       ripple.style.top = (cy - rect.top - size / 2) + 'px';
-      card.appendChild(ripple);
+      rippleHost.appendChild(ripple);
       ripple.addEventListener('animationend', function () { ripple.remove(); });
 
       setTimeout(function () {

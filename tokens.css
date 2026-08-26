@@ -35,7 +35,7 @@
 
   /* Vệt sáng mờ đi theo con trỏ chuột. Đặt ở đây để trang chủ, các trang hub
      và các trang đọc chương dùng chung đúng một kiểu. */
-  --cursor-glow-size: 68px;
+  --cursor-glow-size: 102px;
   --cursor-glow-bg: radial-gradient(circle, oklch(53.9% 0.124 45 / 0.14), oklch(53.9% 0.124 45 / 0.05) 45%, transparent 72%);
 
   --bg-grad-top:    oklch(96.4% 0.021 84);  /* #F7EFDC */
