@@ -86,7 +86,7 @@ a.split-row__link:focus-visible .split-row::before { opacity: 1; }
   pointer-events: none;
 }
 .now-card:hover::before,
-a.now-card:focus-visible::before { opacity: 1; }
+.now-card-link:focus-visible .now-card::before { opacity: 1; }
 .now-card > *:not(.ripple) { position: relative; z-index: 1; }
 
 /* ================= MASTHEAD (N6, tùy biến) ================= */
@@ -427,7 +427,7 @@ a.split-row__link {
 a.split-row__link:hover .split-row,
 a.split-row__link:focus-visible .split-row { border-color: var(--color-accent-gold); }
 
-a.split-row__link:hover, a.split-row__link:focus-visible { transform: translateY(-2px); box-shadow: var(--card-lift-shadow); }
+a.split-row__link:hover, a.split-row__link:focus-visible { transform: translateY(-2px); box-shadow: var(--card-lift-shadow, 0 14px 28px rgba(89,46,26,0.4)); }
 
 a.split-row__link:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 4px; }
 
@@ -449,22 +449,29 @@ a.split-row__link:focus-visible { outline: 2px solid var(--color-accent); outlin
     border: 1px solid var(--color-paper-edge);
     border-radius: var(--radius-card);
     padding: var(--space-lg);
+    transition: border-color var(--dur-short) var(--ease-out);
   }
 
-a.now-card {
-    text-decoration: none;
-    color: inherit;
+.now-card-link .now-card {
     display: flex;
     flex-direction: column;
     gap: var(--space-sm);
-    transition: border-color var(--dur-short) var(--ease-out), transform var(--dur-short) var(--ease-out), filter var(--dur-short) var(--ease-out);
   }
 
-/* dùng filter: drop-shadow() thay vì box-shadow — .now-card có overflow: hidden
-   (để cắt vệt sáng ::before và ripple theo bo góc), mà box-shadow thường sẽ bị
-   chính overflow: hidden của nó cắt mất; filter thì không bị ảnh hưởng. */
-a.now-card:hover, a.now-card:focus-visible { border-color: var(--color-accent-gold); transform: translateY(-2px); filter: drop-shadow(var(--card-lift-shadow)); }
-a.now-card:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
+.now-card-link {
+    display: block;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+    border-radius: var(--radius-card);
+    transition: transform var(--dur-short) var(--ease-out), box-shadow var(--dur-short) var(--ease-out);
+  }
+
+.now-card-link:hover .now-card,
+.now-card-link:focus-visible .now-card { border-color: var(--color-accent-gold); }
+
+.now-card-link:hover, .now-card-link:focus-visible { transform: translateY(-2px); box-shadow: var(--card-lift-shadow, 0 14px 28px rgba(89,46,26,0.4)); }
+.now-card-link:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
 
 .now-card__icon {
     width: 48px; height: 48px;
@@ -505,7 +512,7 @@ a.now-card:focus-visible { outline: 2px solid var(--color-accent); outline-offse
   }
 
 .now-card__cta svg { width: 16px; height: 16px; transition: transform var(--dur-short) var(--ease-out); }
-a.now-card:hover .now-card__cta svg, a.now-card:focus-visible .now-card__cta svg { transform: translateX(3px); }
+.now-card-link:hover .now-card__cta svg, .now-card-link:focus-visible .now-card__cta svg { transform: translateX(3px); }
 
 .log-list {
     display: flex;
@@ -606,7 +613,7 @@ a.now-card:hover .now-card__cta svg, a.now-card:focus-visible .now-card__cta svg
 @media (prefers-reduced-motion: reduce) {
   .reveal { animation-duration: 150ms; transform: none; }
   a.split-row__link:hover, a.split-row__link:focus-visible { transform: none; }
-  a.now-card:hover, a.now-card:focus-visible { transform: none; }
+  .now-card-link:hover, .now-card-link:focus-visible { transform: none; }
 }
 
 @media (max-width: 30rem) {
@@ -780,7 +787,8 @@ a.now-card:hover .now-card__cta svg, a.now-card:focus-visible .now-card__cta svg
 
     <div class="now-grid">
 
-      <a class="now-card" href="https://mendingur.github.io/tacgia/">
+      <a class="now-card-link" href="https://mendingur.github.io/tacgia/">
+      <div class="now-card">
         <span class="now-card__icon" aria-hidden="true">
           <svg class="icon-on-accent" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-7 8-7s8 3 8 7"/></svg>
         </span>
@@ -790,6 +798,7 @@ a.now-card:hover .now-card__cta svg, a.now-card:focus-visible .now-card__cta svg
           <span data-i18n data-vi="Tìm hiểu về tác giả" data-en="Meet the author">Tìm hiểu về tác giả</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </span>
+      </div>
       </a>
 
       <div class="now-card">

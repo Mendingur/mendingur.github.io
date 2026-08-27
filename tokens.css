@@ -35,7 +35,7 @@
 
   /* Vệt sáng mờ đi theo con trỏ chuột. Đặt ở đây để trang chủ, các trang hub
      và các trang đọc chương dùng chung đúng một kiểu. */
-  --cursor-glow-size: 180px;
+  --cursor-glow-size: 150px;
   --cursor-glow-bg: radial-gradient(circle, oklch(53.9% 0.124 45 / 0.14), oklch(53.9% 0.124 45 / 0.05) 45%, transparent 72%);
 
   --bg-grad-top:    oklch(96.4% 0.021 84);  /* #F7EFDC */
@@ -51,7 +51,7 @@
   --card-sheen-top-strong:  oklch(100% 0 0 / 0.5);
   --card-sheen-bottom-strong: oklch(100% 0 0 / 0.12);
   --menu-shadow: 0 8px 24px oklch(25.5% 0.021 67 / 0.08), inset 0 0 0 1px oklch(100% 0 0 / 0.45);
-  --card-lift-shadow: 0 14px 28px oklch(25.5% 0.021 67 / 0.16);
+  --card-lift-shadow: 0 16px 30px oklch(32% 0.09 42 / 0.38);
 
   /* ---- dark mode anchors (giữ hue, chỉ đổi lightness/chroma theo color.md) ---- */
   --color-paper-dark:      oklch(15.8% 0.017 66);
@@ -139,5 +139,5 @@ html[data-theme="dark"] {
   --card-sheen-top-strong:  oklch(96% 0.02 84 / 0.09);
   --card-sheen-bottom-strong: oklch(96% 0.02 84 / 0.02);
   --menu-shadow: 0 8px 26px oklch(8% 0.01 60 / 0.42), inset 0 0 0 1px oklch(96% 0.02 84 / 0.06);
-  --card-lift-shadow: 0 14px 30px oklch(6% 0.01 60 / 0.5);
+  --card-lift-shadow: 0 14px 30px oklch(18% 0.05 45 / 0.6);
 }
