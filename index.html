@@ -53,6 +53,41 @@ html { scroll-behavior: smooth; }
 }
 
 main { display: block; position: relative; }
+/* ==== Hiệu ứng "sáng hơn khi rê chuột", bê từ thesowerscycle/.volume-card ==== */
+
+.split-row {
+  position: relative;
+  overflow: hidden;
+}
+.split-row::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle 352px at var(--mx, 50%) var(--my, 50%), var(--color-accent-border), transparent 72%);
+  opacity: 0;
+  transition: opacity var(--dur-long) var(--ease-out);
+  pointer-events: none;
+}
+.split-row:hover::before,
+a.split-row__link:focus-visible .split-row::before { opacity: 1; }
+.split-row__body { position: relative; z-index: 1; }
+
+.now-card {
+  position: relative;
+  overflow: hidden;
+}
+.now-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle 220px at var(--mx, 50%) var(--my, 50%), var(--color-accent-border), transparent 72%);
+  opacity: 0;
+  transition: opacity var(--dur-long) var(--ease-out);
+  pointer-events: none;
+}
+.now-card:hover::before,
+a.now-card:focus-visible::before { opacity: 1; }
+.now-card > * { position: relative; z-index: 1; }
 
 /* ================= MASTHEAD (N6, tùy biến) ================= */
 
@@ -544,11 +579,6 @@ a.now-card:hover .now-card__cta svg, a.now-card:focus-visible .now-card__cta svg
 
 .foot-letter__row .sep { color: var(--color-paper-edge); }
 
-.donate-link {
-  color: var(--color-accent) !important;
-  font-weight: 600;
-}
-
 .foot-letter__copyright {
     text-align: center;
     font-size: var(--text-xs);
@@ -826,12 +856,5 @@ a.now-card:hover .now-card__cta svg, a.now-card:focus-visible .now-card__cta svg
   };
 </script>
 <script src="script/site.js"></script>
-<script>
-  // Trang chủ có .split-row__link (điều hướng cả khối Tiểu Thuyết) — không nằm
-  // trong bộ chọn mặc định của site.js (".card, a.volume-card"), nên chỉ cần
-  // đăng ký các sự kiện bàn phím/chuột mặc định của trình duyệt (thẻ <a> gốc
-  // đã tự xử lý điều hướng) — không cần JS ripple/ghi đè thêm ở đây nữa.
-</script>
 </body>
 </html>
-</content>

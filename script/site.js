@@ -287,7 +287,12 @@
       // let modified clicks (open in new tab, middle click, etc.) behave natively
       if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
 
-      var href = card.getAttribute('href');
+      // Hầu hết card (a.volume-card, a.now-card, .card khi tự nó là <a>) có
+      // href ngay trên chính mình. Nhưng .split-row lại là <div> nằm BÊN
+      // TRONG <a class="split-row__link">, nên khi không tìm thấy href trên
+      // card, thử tìm ở thẻ <a> cha gần nhất trước khi bỏ cuộc.
+      var linkEl = card.hasAttribute('href') ? card : card.closest('a[href]');
+      var href = linkEl ? linkEl.getAttribute('href') : null;
       if (!href) return;
       e.preventDefault();
 
