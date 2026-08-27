@@ -270,7 +270,7 @@
   // ambient page-wide glow above — this is the "climbs onto the card and
   // gets darker" effect. Matches both the homepage/author page's .card and the
   // volume/chapter pages' a.volume-card.
-  var interactiveCards = document.querySelectorAll('.card, a.volume-card');
+  var interactiveCards = document.querySelectorAll('.card, a.volume-card, .split-row, .now-card');
 
   interactiveCards.forEach(function (card) {
     card.addEventListener('mousemove', function (e) {
