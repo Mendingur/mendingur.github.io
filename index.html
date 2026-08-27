@@ -421,13 +421,13 @@ a.split-row__link {
     text-decoration: none;
     color: inherit;
     border-radius: var(--radius-card);
-    transition: transform var(--dur-short) var(--ease-out);
+    transition: transform var(--dur-short) var(--ease-out), box-shadow var(--dur-short) var(--ease-out);
   }
 
 a.split-row__link:hover .split-row,
 a.split-row__link:focus-visible .split-row { border-color: var(--color-accent-gold); }
 
-a.split-row__link:hover, a.split-row__link:focus-visible { transform: translateY(-2px); }
+a.split-row__link:hover, a.split-row__link:focus-visible { transform: translateY(-2px); box-shadow: var(--card-lift-shadow); }
 
 a.split-row__link:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 4px; }
 
@@ -457,10 +457,13 @@ a.now-card {
     display: flex;
     flex-direction: column;
     gap: var(--space-sm);
-    transition: border-color var(--dur-short) var(--ease-out);
+    transition: border-color var(--dur-short) var(--ease-out), transform var(--dur-short) var(--ease-out), filter var(--dur-short) var(--ease-out);
   }
 
-a.now-card:hover, a.now-card:focus-visible { border-color: var(--color-accent-gold); }
+/* dùng filter: drop-shadow() thay vì box-shadow — .now-card có overflow: hidden
+   (để cắt vệt sáng ::before và ripple theo bo góc), mà box-shadow thường sẽ bị
+   chính overflow: hidden của nó cắt mất; filter thì không bị ảnh hưởng. */
+a.now-card:hover, a.now-card:focus-visible { border-color: var(--color-accent-gold); transform: translateY(-2px); filter: drop-shadow(var(--card-lift-shadow)); }
 a.now-card:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
 
 .now-card__icon {
@@ -603,6 +606,7 @@ a.now-card:hover .now-card__cta svg, a.now-card:focus-visible .now-card__cta svg
 @media (prefers-reduced-motion: reduce) {
   .reveal { animation-duration: 150ms; transform: none; }
   a.split-row__link:hover, a.split-row__link:focus-visible { transform: none; }
+  a.now-card:hover, a.now-card:focus-visible { transform: none; }
 }
 
 @media (max-width: 30rem) {
