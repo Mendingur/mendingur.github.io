@@ -15,396 +15,408 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Mendingur — Trang Tác Giả</title>
-<meta name="description" content="Mendingur — tác giả, người kể chuyện. Tìm hiểu và kết nối.">
+<meta name="description" content="Mendingur — tác giả, người kể chuyện. Đôi lời giới thiệu, và cách để liên hệ.">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="../tokens.css">
-<link rel="stylesheet" href="../style/site.css">
+<link rel="stylesheet" href="/tokens.css">
+<link rel="stylesheet" href="/style/site.css">
 <style>
-/* Hallmark · macrostructure: Editorial Stack (single column — trang hồ sơ
- * tác giả, không phải song đối) · genre: editorial · theme: custom (tuned)
- * nav: N6 (masthead, tùy biến) · footer: Ft6 (letter close)
- * pre-emit critique: P5 H4 E5 S4 R5 V4
+/* Hallmark · macrostructure: Letter · genre: editorial · theme: custom (tuned)
+ * nav: N6 (masthead, kế thừa toàn site) · footer: Ft6 (letter close, kế thừa toàn site) · accent: oklch(53.9% 0.124 45)
+ * redesign note: gỡ 3 thẻ điều hướng (About me / Đọc Tiểu Thuyết / Liên hệ) khỏi bản cũ, viết lại thành
+ * một bức thư ngỏ một cột, bỏ mọi nhắc tới "làm nhạc", thêm mục Liên hệ thật ở cuối trang.
+ * pre-emit critique: P5 H4 E4 S4 R5 V5
  */
 html, body { overflow-x: clip; }
-
+body {
+  margin: 0;
+  min-height: 100%;
+  background:
+    radial-gradient(
+      ellipse 120% 80% at 50% -10%,
+      var(--bg-grad-top) 0%,
+      var(--bg-grad-mid) 45%,
+      var(--bg-grad-bottom) 100%
+    );
+  background-attachment: fixed;
+  background-size: 100% 100vh;
+  background-repeat: no-repeat;
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  padding-inline: max(0px, env(safe-area-inset-left)) max(0px, env(safe-area-inset-right));
+}
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
 main { display: block; position: relative; }
 
-/* ================= MASTHEAD (N6, tùy biến) ================= */
+/* ================= MASTHEAD (N6, kế thừa từ toàn site) ================= */
 .mast {
-    display: grid;
-    justify-items: center;
-    gap: var(--space-2xs);
-    padding: var(--space-lg) var(--page-gutter) 0;
-    text-align: center;
-  }
+  display: grid;
+  justify-items: center;
+  gap: var(--space-2xs);
+  padding: var(--space-lg) var(--page-gutter) 0;
+  text-align: center;
+}
+.back-link {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-ink-soft);
+  text-decoration: none;
+  margin: 0 0 var(--space-md);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3xs);
+  transition: color var(--dur-short) var(--ease-out);
+}
+.back-link:hover, .back-link:focus-visible { color: var(--color-accent); }
+.back-link:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; border-radius: 4px; }
 .mast-line {
-    font-family: var(--font-body);
-    font-size: var(--text-xs);
-    font-weight: 700;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--color-accent);
-    margin: 0;
-  }
-.mast-line a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--color-accent-border); }
-.mast-line a:hover, .mast-line a:focus-visible { border-color: var(--color-accent); }
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0;
+}
 .mast-name {
-    font-family: var(--font-display);
-    font-style: normal;
-    font-weight: 600;
-    font-size: clamp(1.7rem, 4.2vw, 2.4rem);
-    line-height: 1;
-    letter-spacing: -0.01em;
-    margin: 0;
-    color: var(--color-ink);
-    overflow-wrap: anywhere;
-    min-width: 0;
-  }
+  font-family: var(--font-display);
+  font-style: normal;
+  font-weight: 600;
+  font-size: clamp(1.7rem, 4.2vw, 2.4rem);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  margin: 0;
+  color: var(--color-ink);
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
 .mast-rule {
-    width: 100%;
-    max-width: 640px;
-    height: 4px;
-    margin: var(--space-sm) 0 0;
-    border: 0;
-    border-top: var(--rule-hair) solid var(--color-rule);
-    border-bottom: var(--rule-hair) solid var(--color-rule);
-  }
-
-/* ================= STAGE ================= */
-.stage {
-    max-width: 700px;
-    margin: 0 auto;
-    padding: var(--space-2xl) var(--page-gutter) var(--space-3xl);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-.rift-wrap {
-    width: min(180px, 42vw);
-    margin: 0 auto var(--space-sm);
-    position: relative;
-    z-index: 1;
-    animation: breathe 7s ease-in-out infinite;
-  }
-@media (prefers-reduced-motion: reduce) { .rift-wrap { animation: none; } }
-@keyframes breathe {
-  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 18px var(--color-accent-soft)); }
-  50% { transform: scale(1.02); filter: drop-shadow(0 0 26px var(--color-accent-soft)); }
+  width: 100%;
+  max-width: 640px;
+  height: 4px;
+  margin: var(--space-sm) 0 0;
+  border: 0;
+  border-top: var(--rule-hair) solid var(--color-rule);
+  border-bottom: var(--rule-hair) solid var(--color-rule);
 }
 
-h1 {
-    font-family: var(--font-display);
-    font-style: normal;
-    font-weight: 600;
-    font-size: clamp(2.1rem, 7vw, 3.2rem);
-    line-height: 1.08;
-    margin: 0.2rem 0 0.3rem;
-    color: var(--color-ink);
-    overflow-wrap: anywhere;
-    min-width: 0;
-  }
-
-.tagline {
-    font-family: var(--font-display);
-    font-size: clamp(1rem, 3vw, 1.2rem);
-    color: var(--color-ink-soft);
-    margin: 0 0 var(--space-sm);
-  }
-
-.quote {
-    /* font-style: italic (giữ — <p>, trích dẫn trong văn xuôi, thuộc diện ngoại lệ) */
-    font-family: var(--font-display);
-    font-style: italic;
-    font-size: 0.98rem;
-    color: var(--color-accent);
-    margin: 0 0 var(--space-xl);
-  }
-
-.prompt {
-    font-family: var(--font-body);
-    font-size: var(--text-xs);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.18em;
-    color: var(--color-ink-soft);
-    margin: 0 0 var(--space-lg);
-  }
-
-/* ================= GATE CARDS ================= */
-.gates {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(150px, 220px));
-    justify-content: center;
-    gap: var(--space-md);
-    max-width: 760px;
-    width: 100%;
-  }
-@media (max-width: 720px) {
-  .gates { grid-template-columns: repeat(2, minmax(150px, 220px)); max-width: 480px; }
+/* ================= LETTER — single column, left-aligned, narrow measure ================= */
+.letter {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: var(--space-2xl) var(--page-gutter) var(--space-lg);
+  text-align: left;
 }
-@media (max-width: 480px) {
-  .gates { grid-template-columns: 1fr; max-width: 320px; }
+.letter-date {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--text-md);
+  color: var(--color-ink-soft);
+  margin: 0 0 var(--space-sm);
+}
+.letter h1 {
+  font-family: var(--font-display);
+  font-style: normal;
+  font-weight: 600;
+  font-size: var(--text-display);
+  line-height: 1.05;
+  margin: 0 0 var(--space-xl);
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+.letter-body {
+  font-size: var(--text-base);
+  line-height: 1.7;
+  color: var(--color-ink-soft);
+  max-width: 58ch;
+  margin: 0 0 var(--space-md);
+}
+.letter-body a {
+  color: var(--color-accent);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-accent-border);
+  transition: border-color var(--dur-short) var(--ease-out);
+}
+.letter-body a:hover, .letter-body a:focus-visible { border-color: var(--color-accent); }
+.letter-divider {
+  text-align: center;
+  color: var(--color-paper-edge);
+  letter-spacing: 0.4em;
+  font-size: var(--text-sm);
+  margin: var(--space-xl) 0;
+  max-width: 58ch;
+}
+.letter-quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--text-lg);
+  color: var(--color-accent);
+  max-width: 50ch;
+  margin: 0 0 var(--space-md);
+  line-height: 1.5;
 }
 
-.card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.55rem;
-    text-decoration: none;
-    color: var(--color-ink);
-    background: linear-gradient(180deg, var(--card-sheen-top), var(--card-sheen-bottom));
-    border: 1px solid var(--color-paper-edge);
-    border-radius: 18px 18px 60px 60px;
-    padding: 1.6rem 1rem 1.3rem;
-    transition: transform var(--dur-short) var(--ease-out), box-shadow var(--dur-short) var(--ease-out), border-color var(--dur-short) var(--ease-out);
-    position: relative;
-    overflow: hidden;
-  }
+/* ================= LIÊN HỆ — mục thật, không phải thẻ điều hướng ================= */
+.letter-contact {
+  max-width: 720px;
+  margin: var(--space-lg) auto 0;
+  padding: var(--space-xl) var(--page-gutter) var(--space-2xl);
+  text-align: left;
+  border-top: var(--rule-hair) solid var(--color-rule);
+}
+.letter-contact h2 {
+  font-family: var(--font-display);
+  font-style: normal;
+  font-weight: 600;
+  font-size: var(--text-display-s);
+  line-height: 1.08;
+  margin: 0 0 var(--space-sm);
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+.letter-contact__row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  margin-top: var(--space-md);
+}
+.letter-contact__icon {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--icon-circle-bg);
+  box-shadow: 0 0 0 1px var(--icon-circle-ring);
+  flex: none;
+}
+.letter-contact__icon svg { width: 22px; height: 22px; }
+.letter-email {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: var(--text-lg);
+  color: var(--color-accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-accent-border);
+  overflow-wrap: anywhere;
+  transition: border-color var(--dur-short) var(--ease-out);
+}
+.letter-email:hover, .letter-email:focus-visible { border-color: var(--color-accent); }
+.letter-email:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 4px; border-radius: 2px; }
 
-.card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle 160px at var(--mx, 50%) var(--my, 50%), var(--color-accent-border), transparent 72%);
-    opacity: 0;
-    transition: opacity var(--dur-long) var(--ease-out);
-    pointer-events: none;
-  }
-
-.card:hover, .card:focus-visible {
-    transform: translateY(-5px);
-    box-shadow: 0 16px 30px -14px var(--color-accent-border);
-    border-color: var(--color-accent-gold);
-  }
-.card:hover::before, .card:focus-visible::before { opacity: 1; }
-.card:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
-
-.card .icon {
-    width: 40px; height: 40px;
-    display: flex; align-items: center; justify-content: center;
-    position: relative; z-index: 1;
-  }
-.card .icon svg { width: 100%; height: 100%; stroke: var(--color-accent); }
-
-.card .label {
-    font-weight: 600;
-    font-size: 0.98rem;
-    position: relative; z-index: 1;
-    overflow-wrap: anywhere;
-  }
-
-.card .sub {
-    font-size: 0.74rem;
-    color: var(--color-ink-soft);
-    position: relative; z-index: 1;
-    overflow-wrap: anywhere;
-  }
-
-/* ================= FOOTER — LETTER CLOSE (Ft6, tùy biến) ================= */
+/* ================= FOOTER — LETTER CLOSE (Ft6, kế thừa từ toàn site) ================= */
 .foot-letter {
-    padding: var(--space-2xl) var(--page-gutter) var(--space-xl);
-    max-width: 1180px;
-    margin: 0 auto;
-    display: grid;
-    gap: var(--space-lg);
-    text-align: center;
-  }
+  padding: var(--space-2xl) var(--page-gutter) var(--space-xl);
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  gap: var(--space-lg);
+  text-align: center;
+}
 .foot-letter__close {
-    /* font-style: italic (giữ — <p>, lời chào, thuộc diện ngoại lệ) */
-    font-family: var(--font-display);
-    font-style: italic;
-    font-size: var(--text-lg);
-    line-height: 1.4;
-    margin: 0 auto;
-    max-width: 60ch;
-  }
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--text-lg);
+  line-height: 1.4;
+  margin: 0 auto;
+  max-width: 60ch;
+}
 .foot-letter__sign { font-style: normal; font-weight: 600; }
+.letter-ps {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--text-base);
+  color: var(--color-ink-soft);
+  max-width: 52ch;
+  margin: 0 auto;
+}
+.letter-ps a {
+  color: var(--color-accent);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-accent-border);
+  transition: border-color var(--dur-short) var(--ease-out);
+}
+.letter-ps a:hover, .letter-ps a:focus-visible { border-color: var(--color-accent); }
 .foot-letter__row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: var(--space-md);
-    align-items: center;
-    font-size: var(--text-sm);
-  }
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-md);
+  align-items: center;
+  font-size: var(--text-sm);
+}
 .foot-letter__row a {
-    text-decoration: none;
-    color: var(--color-ink-soft);
-    display: flex;
-    align-items: center;
-    gap: var(--space-2xs);
-    white-space: nowrap;
-    transition: color var(--dur-short) var(--ease-out);
-  }
+  text-decoration: none;
+  color: var(--color-ink-soft);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  transition: color var(--dur-short) var(--ease-out);
+}
 .foot-letter__row a:hover, .foot-letter__row a:focus-visible { color: var(--color-accent); }
 .foot-letter__row svg { width: 16px; height: 16px; }
-.foot-letter__row .icon-yt { width: 15px; }
 .foot-letter__row .sep { color: var(--color-paper-edge); }
 .donate-link { color: var(--color-accent) !important; font-weight: 600; }
-.foot-letter__copyright { font-size: var(--text-xs); line-height: 1.5; color: var(--color-ink-soft); opacity: 0.75; }
+.foot-letter__copyright {
+  text-align: center;
+  font-size: var(--text-xs);
+  line-height: 1.5;
+  color: var(--color-ink-soft);
+  opacity: 0.75;
+}
 
+/* ================= REVEAL ================= */
+.reveal {
+  opacity: 0;
+  transform: translateY(8px);
+  animation: reveal var(--dur-long) var(--ease-out) forwards;
+  animation-delay: calc(var(--i, 0) * 60ms);
+}
+@keyframes reveal { to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) {
-  .card, .card::before { transition: none !important; }
+  .reveal { animation-duration: 150ms; transform: none; }
+}
+
+@media (max-width: 30rem) {
+  .letter { padding: var(--space-xl) var(--page-gutter) var(--space-md); }
+  .letter-contact { padding: var(--space-lg) var(--page-gutter) var(--space-xl); }
 }
 </style>
 </head>
 <body>
 
-  <div class="settings-menu" id="settingsMenu">
-    <button class="menu-toggle" type="button" id="settingsMenuToggle" aria-haspopup="true" aria-expanded="false" aria-controls="settingsPopover" aria-label="Cài đặt" data-aria-vi="Cài đặt" data-aria-en="Settings">
-      <span class="menu-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
-    </button>
-    <div class="settings-popover" id="settingsPopover" role="menu">
-      <div class="settings-group">
-        <p class="settings-group-label" data-i18n data-vi="Ngôn ngữ" data-en="Language">Ngôn ngữ</p>
-        <div class="language-switcher" id="languageSwitcher" role="group" aria-label="Ngôn ngữ / Language">
-          <button class="lang-btn active" type="button" data-lang="vi" aria-pressed="true">VI</button>
-          <button class="lang-btn" type="button" data-lang="en" aria-pressed="false">EN</button>
-        </div>
-      </div>
-      <div class="settings-divider" role="separator"></div>
-      <div class="settings-group">
-        <p class="settings-group-label" data-i18n data-vi="Giao diện" data-en="Theme">Giao diện</p>
-        <div class="theme-switcher" id="themeSwitcher" role="group" aria-label="Giao diện sáng / tối" data-aria-vi="Giao diện sáng / tối" data-aria-en="Light / dark theme">
-          <button class="theme-btn active" type="button" data-theme-choice="light" aria-pressed="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
-            <span data-i18n data-vi="Sáng" data-en="Light">Sáng</span>
-          </button>
-          <button class="theme-btn" type="button" data-theme-choice="dark" aria-pressed="false">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
-            <span data-i18n data-vi="Tối" data-en="Dark">Tối</span>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="settings-menu" id="settingsMenu">
+<button class="menu-toggle" type="button" id="settingsMenuToggle" aria-haspopup="true" aria-expanded="false" aria-controls="settingsPopover" aria-label="Cài đặt" data-aria-vi="Cài đặt" data-aria-en="Settings">
+<span class="menu-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+</button>
+<div class="settings-popover" id="settingsPopover" role="menu">
+<div class="settings-group">
+<p class="settings-group-label" data-i18n data-vi="Ngôn ngữ" data-en="Language">Ngôn ngữ</p>
+<div class="language-switcher" id="languageSwitcher" role="group" aria-label="Ngôn ngữ / Language">
+<button class="lang-btn active" type="button" data-lang="vi" aria-pressed="true">VI</button>
+<button class="lang-btn" type="button" data-lang="en" aria-pressed="false">EN</button>
+</div>
+</div>
+<div class="settings-divider" role="separator"></div>
+<div class="settings-group">
+<p class="settings-group-label" data-i18n data-vi="Giao diện" data-en="Theme">Giao diện</p>
+<div class="theme-switcher" id="themeSwitcher" role="group" aria-label="Giao diện sáng / tối" data-aria-vi="Giao diện sáng / tối" data-aria-en="Light / dark theme">
+<button class="theme-btn active" type="button" data-theme-choice="light" aria-pressed="true">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+<span data-i18n data-vi="Sáng" data-en="Light">Sáng</span>
+</button>
+<button class="theme-btn" type="button" data-theme-choice="dark" aria-pressed="false">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+<span data-i18n data-vi="Tối" data-en="Dark">Tối</span>
+</button>
+</div>
+</div>
+</div>
+</div>
 
-<div class="cursor-glow" id="cursorGlow"></div>
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
 
 <main id="main">
 
-  <!-- ============ MASTHEAD (N6, tùy biến) ============ -->
-  <header class="mast">
-    <p class="mast-line">
-      <a href="https://mendingur.github.io/" data-i18n data-vi="← Về Trang Chủ Mendingur" data-en="← Back to Mendingur Home">← Về Trang Chủ Mendingur</a>
-    </p>
-    <p class="mast-name">Trang Tác Giả</p>
-    <hr class="mast-rule" aria-hidden="true">
-  </header>
+<!-- ============ MASTHEAD (N6) ============ -->
+<header class="mast">
+<a class="back-link" href="https://mendingur.github.io/" data-i18n data-vi="← Về Trang Chủ" data-en="← Back to Home">← Về Trang Chủ</a>
+<p class="mast-line" data-i18n data-vi="Trang Tác Giả" data-en="Author Page">Trang Tác Giả</p>
+<p class="mast-name">Mendingur</p>
+<hr class="mast-rule" aria-hidden="true">
+</header>
 
-  <div class="stage" id="stage">
+<!-- ============ LETTER — thư ngỏ một cột ============ -->
+<section class="letter" id="letter" aria-labelledby="pageTitle">
+<p class="letter-date reveal" style="--i:0" data-i18n data-vi="Viết từ Thành phố Hồ Chí Minh." data-en="Written from Ho Chi Minh City.">Viết từ Thành phố Hồ Chí Minh.</p>
 
-  <div class="rift-wrap">
-    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Biểu tượng Mendingur">
-      <defs>
-        <linearGradient id="wingGrad" x1="0" y1="1" x2="0" y2="0">
-          <stop offset="0%" stop-color="#A8532A"/><stop offset="55%" stop-color="#C99A3E"/><stop offset="100%" stop-color="#E4C077"/>
-        </linearGradient>
-        <radialGradient id="coreGlow" cx="50%" cy="55%" r="55%">
-          <stop offset="0%" stop-color="#FFF6DE" stop-opacity="0.95"/><stop offset="55%" stop-color="#E4C077" stop-opacity="0.35"/><stop offset="100%" stop-color="#E4C077" stop-opacity="0"/>
-        </radialGradient>
-        <linearGradient id="flowerGrad" x1="0" y1="1" x2="0" y2="0">
-          <stop offset="0%" stop-color="#A8532A"/><stop offset="100%" stop-color="#E4C077"/>
-        </linearGradient>
-      </defs>
-      <circle cx="200" cy="215" r="145" fill="url(#coreGlow)"/>
-      <path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
-      <path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
-      <path d="M195,312 C160,298 122,272 100,230 C82,196 80,155 90,118" fill="none" stroke="#FBF6EC" stroke-width="2" opacity="0.45"/>
-      <path d="M205,312 C240,298 278,272 300,230 C318,196 320,155 310,118" fill="none" stroke="#FBF6EC" stroke-width="2" opacity="0.45"/>
-      <path d="M200,340 L200,295" stroke="#8A4423" stroke-width="3.2" fill="none" stroke-linecap="round"/>
-      <g transform="translate(200,278)">
-        <g stroke="#FBF6EC" stroke-width="1.1" stroke-opacity="0.55">
-          <ellipse rx="14" ry="21" fill="url(#flowerGrad)"/>
-          <ellipse rx="14" ry="21" transform="rotate(72)" fill="url(#flowerGrad)"/>
-          <ellipse rx="14" ry="21" transform="rotate(144)" fill="url(#flowerGrad)"/>
-          <ellipse rx="14" ry="21" transform="rotate(216)" fill="url(#flowerGrad)"/>
-          <ellipse rx="14" ry="21" transform="rotate(288)" fill="url(#flowerGrad)"/>
-        </g>
-        <circle r="9.5" fill="#FFF6DE"/><circle r="3" fill="#E4A94E"/>
-      </g>
-      <g transform="translate(200,96)"><path d="M0,-24 C2,-7 7,-2 24,0 C7,2 2,7 0,24 C-2,7 -7,2 -24,0 C-7,-2 -2,-7 0,-24 Z" fill="#F3D488"/></g>
-      <g transform="translate(255,148) scale(0.42)"><path d="M0,-24 C2,-7 7,-2 24,0 C7,2 2,7 0,24 C-2,7 -7,2 -24,0 C-7,-2 -2,-7 0,-24 Z" fill="#E4C077"/></g>
-      <g transform="translate(145,148) scale(0.42)"><path d="M0,-24 C2,-7 7,-2 24,0 C7,2 2,7 0,24 C-2,7 -7,2 -24,0 C-7,-2 -2,-7 0,-24 Z" fill="#E4C077"/></g>
-    </svg>
-  </div>
+<h1 id="pageTitle" class="reveal" style="--i:1" data-i18n data-vi="Xin chào, mình là Mendingur." data-en="Hello, I'm Mendingur.">Xin chào, mình là Mendingur.</h1>
 
-    <h1>Mendingur</h1>
-    <p class="tagline" data-i18n data-vi="Tác giả · Người kể chuyện" data-en="Author · Storyteller">Tác giả · Người kể chuyện</p>
-    <p class="quote" data-i18n data-vi="&quot;Giữa tro tàn, vẫn kiên tâm vun xới không ngừng.&quot;" data-en="&quot;Among the ashes, still tending the soil without cease.&quot;">"Giữa tro tàn, vẫn kiên tâm vun xới không ngừng."</p>
+<p class="letter-body reveal" style="--i:2" data-i18n data-vi="Tên thật là Nguyễn Duy Anh, nhưng phần lớn thời gian mình sống với bút danh này. Mình dành phần lớn thời gian để viết và tự tay dựng những trang web như trang này — thích đi từ một ý tưởng đến một sản phẩm hoàn chỉnh, dù đó là một chương truyện hay một dòng mã nguồn. Gần đây mình cũng bắt đầu tìm hiểu sâu hơn về công nghệ thông tin, chỉ vì tò mò muốn hiểu rõ hơn phần hạ tầng phía sau những gì mình làm." data-en="My given name is Nguyễn Duy Anh, but I spend most of my time under this pen name. I spend most of my time writing and building pages like this one by hand — I like carrying an idea all the way to a finished thing, whether that's a chapter or a line of code. Lately I've also been digging deeper into computer science, mostly out of curiosity about the infrastructure behind everything I make.">Tên thật là Nguyễn Duy Anh, nhưng phần lớn thời gian mình sống với bút danh này. Mình dành phần lớn thời gian để viết và tự tay dựng những trang web như trang này — thích đi từ một ý tưởng đến một sản phẩm hoàn chỉnh, dù đó là một chương truyện hay một dòng mã nguồn. Gần đây mình cũng bắt đầu tìm hiểu sâu hơn về công nghệ thông tin, chỉ vì tò mò muốn hiểu rõ hơn phần hạ tầng phía sau những gì mình làm.</p>
 
-    <p class="prompt" data-i18n data-vi="Bạn muốn đi đâu?" data-en="Where will you go?">Bạn muốn đi đâu?</p>
+<p class="letter-divider reveal" style="--i:3" aria-hidden="true">* * *</p>
 
-    <nav class="gates" aria-label="Điều hướng chính" data-aria-vi="Điều hướng chính" data-aria-en="Main navigation">
-      <a class="card" href="https://github.com/Mendingur">
-        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 0-3.16 19.5c.5.1.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85V21c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg></span>
-        <span class="label" data-i18n data-vi="About me" data-en="About me">About me</span>
-        <span class="sub" data-i18n data-vi="Hồ sơ &amp; dự án trên GitHub" data-en="Profile &amp; projects on GitHub">Hồ sơ &amp; dự án trên GitHub</span>
-      </a>
-      <a class="card" href="mailto:methesky.mending@gmail.com">
-        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
-        <span class="label" data-i18n data-vi="Liên hệ" data-en="Contact">Liên hệ</span>
-        <span class="sub" data-i18n data-vi="Email: methesky.mending@gmail.com" data-en="Email: methesky.mending@gmail.com">Email: methesky.mending@gmail.com</span>
-      </a>
-      <a class="card" href="https://mendingur.github.io/thesowerscycle/">
-        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
-        <span class="label" data-i18n data-vi="Đọc Tiểu Thuyết" data-en="Read The Novel">Đọc Tiểu Thuyết</span>
-        <span class="sub" data-i18n data-vi="Vòng Tuần Hoàn Người Gieo Hạt" data-en="The Sower's Cycle">Vòng Tuần Hoàn Người Gieo Hạt</span>
-      </a>
-    </nav>
-  </div>
+<p class="letter-quote reveal" style="--i:4" data-i18n data-vi="&quot;Giữa tro tàn, vẫn kiên tâm vun xới không ngừng.&quot;" data-en="&quot;Among the ashes, still tending the soil without cease.&quot;">"Giữa tro tàn, vẫn kiên tâm vun xới không ngừng."</p>
 
-  <footer class="foot-letter">
-    <p class="foot-letter__close" data-i18n data-vi="Cảm ơn vì đã ghé thăm câu chuyện của tôi." data-en="Thank you for visiting my story.">
-      Cảm ơn vì đã ghé thăm câu chuyện của tôi.<br>
-      <span class="foot-letter__sign" data-i18n data-vi="— Mendingur" data-en="— Mendingur">— Mendingur</span>
-    </p>
+<p class="letter-divider reveal" style="--i:5" aria-hidden="true">* * *</p>
 
-    <div class="foot-letter__row">
-      <a href="https://github.com/Mendingur" aria-label="GitHub">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.54 2.87 8.39 6.84 9.75.5.09.68-.22.68-.48 0-.24-.01-1.04-.01-1.89-2.78.62-3.37-1.19-3.37-1.19-.46-1.2-1.11-1.52-1.11-1.52-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.32.1-2.75 0 0 .84-.28 2.75 1.05a9.3 9.3 0 0 1 2.5-.35c.85 0 1.71.12 2.5.35 1.91-1.33 2.75-1.05 2.75-1.05.55 1.43.2 2.49.1 2.75.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.82 0 .27.18.58.69.48A10.01 10.01 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z"/></svg>
-      </a>
-      <span class="sep">·</span>
-      <a href="https://youtube.com/@Mendingur" aria-label="YouTube">
-        <svg class="icon-yt" viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"><path d="M5 6.5H19A4 4 0 0 1 23 10.5V13.5A4 4 0 0 1 19 17.5H5A4 4 0 0 1 1 13.5V10.5A4 4 0 0 1 5 6.5ZM10 9.7L10 14.3L16 12Z"/></svg>
-      </a>
-      <span class="sep">·</span>
-      <a href="https://x.com/Mendingur" aria-label="X">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.6 8.7L23 22h-6.8l-5.3-6.9L4.8 22H1.7l8.1-9.3L1 2h7l4.8 6.3L18.9 2Zm-1.2 18h1.9L7.4 4H5.4l12.3 16Z"/></svg>
-      </a>
-      <span class="sep">·</span>
-      <a href="https://facebook.com/Mendingur" aria-label="Facebook">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12Z"/></svg>
-      </a>
-      <span class="sep">·</span>
-      <a href="https://www.instagram.com/mendingur/" aria-label="Instagram">
-        <svg viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"><path d="M7 2H17A5 5 0 0 1 22 7V17A5 5 0 0 1 17 22H7A5 5 0 0 1 2 17V7A5 5 0 0 1 7 2Z M7.4 3.8H16.6A3.6 3.6 0 0 1 20.2 7.4V16.6A3.6 3.6 0 0 1 16.6 20.2H7.4A3.6 3.6 0 0 1 3.8 16.6V7.4A3.6 3.6 0 0 1 7.4 3.8Z M7 12A5 5 0 1 0 17 12A5 5 0 1 0 7 12Z M8.8 12A3.2 3.2 0 1 0 15.2 12A3.2 3.2 0 1 0 8.8 12Z M16.4 6.5A1.1 1.1 0 1 0 18.6 6.5A1.1 1.1 0 1 0 16.4 6.5Z"/></svg>
-      </a>
-      <span class="sep">·</span>
-      <a href="https://mendingur.github.io/donate/" class="donate-link">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-6.7-4.35-9.3-8.1C.8 10.1 1.4 6.6 4.3 5.1c2.2-1.15 4.6-.5 6.1 1.2.5.55 1 1.2 1.6 1.9.6-.7 1.1-1.35 1.6-1.9 1.5-1.7 3.9-2.35 6.1-1.2 2.9 1.5 3.5 5 1.6 7.8C18.7 16.65 12 21 12 21Z"/></svg>
-        <span data-i18n data-vi="Ủng hộ" data-en="Donate">Ủng hộ</span>
-      </a>
-    </div>
+<p class="letter-body reveal" style="--i:6" data-i18n data-vi="Phần lớn những gì mình viết ra đều thuộc về &lt;a href=&quot;https://mendingur.github.io/thesowerscycle/&quot;&gt;Vòng Tuần Hoàn Người Gieo Hạt&lt;/a&gt; — một bộ trường ca hậu tận thế lấy bối cảnh năm 2054, khi thế giới cũ sụp đổ dưới ba làn sóng chiến tranh. Giữa tro tàn, một cô gái mang theo lời hứa gieo hạt của bà ngoại, và câu chuyện của cô dần chạm vào một bí mật có thể thay đổi vận mệnh nhân loại. Quyển I: Khúc Ca Hy Vọng đã hoàn thành — 28 chương, 4 xen kẽ, khoảng 62.000 chữ. Quyển II đang được viết tiếp. Mình cũng đang ấp ủ chuyển thể cả vũ trụ này thành một dự án game, thẩm mỹ lấy cảm hứng từ Genshin Impact, Honkai: Star Rail và Wuthering Waves — dù dự án đó chưa chính thức bắt đầu." data-en="Most of what I write belongs to &lt;a href=&quot;https://mendingur.github.io/thesowerscycle/&quot;&gt;The Sower's Cycle&lt;/a&gt; — a post-apocalyptic saga set in 2054, after the old world collapses under three waves of war. Amid the ashes, a girl carries her grandmother's promise to sow hope, and her story slowly brushes against a secret that could change humanity's fate. Volume I: Anthem of Hope is complete — 28 chapters, 4 interludes, about 62,000 words. Volume II is being written. I'm also dreaming up a game adaptation of the whole universe, aesthetically inspired by Genshin Impact, Honkai: Star Rail, and Wuthering Waves — though that project hasn't officially started."><a href="https://mendingur.github.io/thesowerscycle/">Vòng Tuần Hoàn Người Gieo Hạt</a> — một bộ trường ca hậu tận thế lấy bối cảnh năm 2054, khi thế giới cũ sụp đổ dưới ba làn sóng chiến tranh. Giữa tro tàn, một cô gái mang theo lời hứa gieo hạt của bà ngoại, và câu chuyện của cô dần chạm vào một bí mật có thể thay đổi vận mệnh nhân loại. Quyển I: Khúc Ca Hy Vọng đã hoàn thành — 28 chương, 4 xen kẽ, khoảng 62.000 chữ. Quyển II đang được viết tiếp. Mình cũng đang ấp ủ chuyển thể cả vũ trụ này thành một dự án game, thẩm mỹ lấy cảm hứng từ Genshin Impact, Honkai: Star Rail và Wuthering Waves — dù dự án đó chưa chính thức bắt đầu.</p>
+</section>
 
-    <div class="foot-letter__copyright" data-i18n data-vi="© 2026 Nguyễn Duy Anh (bút danh: Mendingur)." data-en="© 2026 Nguyễn Duy Anh (pen name: Mendingur).">
-      © 2026 Nguyễn Duy Anh (bút danh: Mendingur).
-    </div>
-  </footer>
+<!-- ============ LIÊN HỆ — mục thật, ở gần cuối trang ============ -->
+<section class="letter-contact reveal" style="--i:7" id="lienhe" aria-labelledby="contactHeading">
+<h2 id="contactHeading" data-i18n data-vi="Liên hệ" data-en="Get in touch">Liên hệ</h2>
+<p class="letter-body" style="margin-bottom:0" data-i18n data-vi="Nếu bạn muốn gửi một lời nhắn — một cảm nhận về câu chuyện, một góp ý cho trang này, hay đơn giản chỉ là lời chào — mình luôn tự đọc email của mình." data-en="If you'd like to send a note — a thought on the story, feedback on this page, or just a hello — I read my own email.">Nếu bạn muốn gửi một lời nhắn — một cảm nhận về câu chuyện, một góp ý cho trang này, hay đơn giản chỉ là lời chào — mình luôn tự đọc email của mình.</p>
+<div class="letter-contact__row">
+<span class="letter-contact__icon" aria-hidden="true">
+<svg class="icon-on-accent" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+</span>
+<a class="letter-email" href="mailto:methesky.mending@gmail.com">methesky.mending@gmail.com</a>
+</div>
+</section>
+
+<!-- ============ FOOTER — LETTER CLOSE (Ft6) ============ -->
+<footer class="foot-letter">
+<p class="foot-letter__close" data-i18n data-vi="Cảm ơn vì đã đọc đến đây." data-en="Thank you for reading this far.">
+Cảm ơn vì đã đọc đến đây.<br>
+<span class="foot-letter__sign" data-i18n data-vi="— Mendingur" data-en="— Mendingur">— Mendingur</span>
+</p>
+
+<p class="letter-ps" data-i18n data-vi="P.S. Nếu bạn tò mò về câu chuyện đứng sau tất cả những điều này, &lt;a href=&quot;https://mendingur.github.io/thesowerscycle/&quot;&gt;Vòng Tuần Hoàn Người Gieo Hạt&lt;/a&gt; đang đợi bạn ở đây →" data-en="P.S. If you're curious about the story behind all of this, &lt;a href=&quot;https://mendingur.github.io/thesowerscycle/&quot;&gt;The Sower's Cycle&lt;/a&gt; is waiting for you here →">P.S. Nếu bạn tò mò về câu chuyện đứng sau tất cả những điều này, <a href="https://mendingur.github.io/thesowerscycle/">Vòng Tuần Hoàn Người Gieo Hạt</a> đang đợi bạn ở đây →</p>
+
+<div class="foot-letter__row">
+<a href="https://github.com/Mendingur" aria-label="GitHub">
+<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.54 2.87 8.39 6.84 9.75.5.09.68-.22.68-.48 0-.24-.01-1.04-.01-1.89-2.78.62-3.37-1.19-3.37-1.19-.46-1.2-1.11-1.52-1.11-1.52-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.32.1-2.75 0 0 .84-.28 2.75 1.05a9.3 9.3 0 0 1 2.5-.35c.85 0 1.71.12 2.5.35 1.91-1.33 2.75-1.05 2.75-1.05.55 1.43.2 2.49.1 2.75.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.82 0 .27.18.58.69.48A10.01 10.01 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z"/></svg>
+</a>
+<span class="sep">·</span>
+<a href="https://youtube.com/@Mendingur" aria-label="YouTube">
+<svg viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"><path d="M5 6.5H19A4 4 0 0 1 23 10.5V13.5A4 4 0 0 1 19 17.5H5A4 4 0 0 1 1 13.5V10.5A4 4 0 0 1 5 6.5ZM10 9.7L10 14.3L16 12Z"/></svg>
+</a>
+<span class="sep">·</span>
+<a href="https://x.com/Mendingur" aria-label="X">
+<svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.6 8.7L23 22h-6.8l-5.3-6.9L4.8 22H1.7l8.1-9.3L1 2h7l4.8 6.3L18.9 2Zm-1.2 18h1.9L7.4 4H5.4l12.3 16Z"/></svg>
+</a>
+<span class="sep">·</span>
+<a href="https://facebook.com/Mendingur" aria-label="Facebook">
+<svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12Z"/></svg>
+</a>
+<span class="sep">·</span>
+<a href="https://www.instagram.com/mendingur/" aria-label="Instagram">
+<svg viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"><path d="M7 2H17A5 5 0 0 1 22 7V17A5 5 0 0 1 17 22H7A5 5 0 0 1 2 17V7A5 5 0 0 1 7 2Z M7.4 3.8H16.6A3.6 3.6 0 0 1 20.2 7.4V16.6A3.6 3.6 0 0 1 16.6 20.2H7.4A3.6 3.6 0 0 1 3.8 16.6V7.4A3.6 3.6 0 0 1 7.4 3.8Z M7 12A5 5 0 1 0 17 12A5 5 0 1 0 7 12Z M8.8 12A3.2 3.2 0 1 0 15.2 12A3.2 3.2 0 1 0 8.8 12Z M16.4 6.5A1.1 1.1 0 1 0 18.6 6.5A1.1 1.1 0 1 0 16.4 6.5Z"/></svg>
+</a>
+<span class="sep">·</span>
+<a href="https://mendingur.github.io/donate/" class="donate-link">
+<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-6.7-4.35-9.3-8.1C.8 10.1 1.4 6.6 4.3 5.1c2.2-1.15 4.6-.5 6.1 1.2.5.55 1 1.2 1.6 1.9.6-.7 1.1-1.35 1.6-1.9 1.5-1.7 3.9-2.35 6.1-1.2 2.9 1.5 3.5 5 1.6 7.8C18.7 16.65 12 21 12 21Z"/></svg>
+<span data-i18n data-vi="Ủng hộ" data-en="Donate">Ủng hộ</span>
+</a>
+</div>
+
+<div class="foot-letter__copyright" data-i18n data-vi="© 2026 Nguyễn Duy Anh (bút danh: Mendingur)." data-en="© 2026 Nguyễn Duy Anh (pen name: Mendingur).">
+© 2026 Nguyễn Duy Anh (bút danh: Mendingur).
+</div>
+</footer>
 
 </main>
 
 <script>
-  window.MENDINGUR_PAGE = {
-    titleVi: 'Mendingur — Trang Tác Giả',
-    titleEn: 'Mendingur — About the Author',
-    descVi: 'Mendingur — tác giả, người kể chuyện. Tìm hiểu và kết nối.',
-    descEn: 'Mendingur — author, storyteller. Learn more and connect.'
-  };
+window.MENDINGUR_PAGE = {
+  titleVi: 'Mendingur — Trang Tác Giả',
+  titleEn: 'Mendingur — The Author',
+  descVi: 'Mendingur — tác giả, người kể chuyện. Đôi lời giới thiệu, và cách để liên hệ.',
+  descEn: 'A short introduction to Mendingur — author, storyteller — and how to get in touch.'
+};
 </script>
-<script src="../script/site.js"></script>
+<script src="/script/site.js"></script>
+<script>
+// Trang tác giả chỉ dùng <a> thường (liên kết trong đoạn văn, mailto, P.S.) — không cần
+// ripple/JS điều hướng bổ sung nào ngoài những gì site.js đã xử lý sẵn cho toàn site
+// (đổi ngôn ngữ/giao diện, cursor glow).
+</script>
 </body>
 </html>
