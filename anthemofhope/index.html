@@ -69,29 +69,13 @@
     </div>
   </div>
 </div>
-<header class="sitebar">
-  <div class="top-nav-left">
-    <a href="#" id="backLink" class="back-link" data-fallback="https://mendingur.github.io/thesowerscycle/">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg>
-      <span data-i18n data-vi="Quay lại" data-en="Back">Quay lại</span>
-    </a>
-    <a href="https://mendingur.github.io/" id="gateLink" class="back-link">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/></svg>
-      <span data-i18n data-vi="Trang Chủ" data-en="Home">Trang Chủ</span>
-    </a>
-</div>
-  <a href="index.html" class="brand">
-    <svg class="mark" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <circle cx="200" cy="215" r="145" fill="url(#coreGlow)"/>
-      <path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
-      <path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
-      <g transform="translate(200,278)">
-        <circle r="9.5" fill="#FFF6DE"/>
-        <circle r="3" fill="#E4A94E"/>
-      </g>
-    </svg>
-    <span class="word" data-i18n data-vi="Khúc Ca Hy Vọng" data-en="Anthem of Hope">Khúc Ca Hy Vọng</span>
-  </a>
+<!-- ============ MASTHEAD (N6, tùy biến — đồng bộ với thesowerscycle/donate) ============ -->
+<header class="mast">
+  <p class="mast-line">
+    <a href="https://mendingur.github.io/thesowerscycle/" data-i18n data-vi="← Về Bộ Ba" data-en="← Back to The Trilogy">← Về Bộ Ba</a>
+  </p>
+  <p class="mast-name" data-i18n data-vi="Khúc Ca Hy Vọng" data-en="Anthem of Hope">Khúc Ca Hy Vọng</p>
+  <hr class="mast-rule" aria-hidden="true">
 </header>
 
 <section class="hero">
@@ -385,72 +369,6 @@
         toggle.focus();
       }
     });
-  })();
-
-  // "Quay lại" & "Trang Chủ" (Bộ Ba khi truy cập từ nơi khác)
-  //
-  // "Quay lại" luôn về thẳng hub Vòng Tuần Hoàn Người Gieo Hạt khi điều
-  // hướng nội bộ — mục lục có nhiều điểm vào khác nhau (hub, hoặc nút
-  // "Mục lục" ở bất kỳ chương nào), nên browser history không đáng tin cho
-  // trường hợp này. Riêng khi đến thẳng từ Trang Chủ, nút này ẩn đi —
-  // giống cách các trang khác của site xử lý (xem script/site.js) — để
-  // "Trang Chủ" đảm nhiệm một mình, tránh hiện hai nút cùng trỏ về một chỗ.
-  // Với khách từ NGOÀI site thì history lại đáng tin — dùng history.back()
-  // nếu có vẻ cùng tab, ẩn hẳn nếu không có gì thật để quay về (ví dụ mở
-  // trong tab mới từ in-app browser).
-  //
-  // Nút thứ hai bình thường là "Trang Chủ" dẫn về trang chủ, giống các
-  // trang khác. Nhưng khách vào thẳng trang này từ nơi khác mà bị đẩy
-  // thẳng qua Bộ Ba lên tận Trang Chủ thì bỏ lỡ một bước quan trọng — nên
-  // với khách từ ngoài, nút này đổi thành "Bộ Ba" và dẫn về hub thay vì
-  // Trang Chủ.
-  (function () {
-    var backLink = document.getElementById('backLink');
-    var gateLink = document.getElementById('gateLink');
-
-    var referrer = document.referrer || '';
-    var isInternal = false;
-    var ref = null;
-    try {
-      if (referrer) {
-        ref = new URL(referrer);
-        isInternal = ref.hostname === 'mendingur.github.io';
-      }
-    } catch (e) {}
-
-    var cameFromHome = isInternal && ref && (ref.pathname === '/' || ref.pathname === '/index.html');
-    var likelySameTab = window.history.length > 1;
-
-    if (backLink) {
-      if (cameFromHome) {
-        backLink.style.display = 'none';
-      } else if (isInternal) {
-        backLink.addEventListener('click', function (e) {
-          e.preventDefault();
-          window.location.href = backLink.getAttribute('data-fallback');
-        });
-      } else if (referrer && likelySameTab) {
-        backLink.addEventListener('click', function (e) {
-          e.preventDefault();
-          window.history.back();
-        });
-      } else {
-        backLink.style.display = 'none';
-      }
-    }
-
-    if (gateLink && !isInternal) {
-      // Khách từ ngoài site: đổi "Trang Chủ" thành "Bộ Ba" để không bỏ
-      // qua hub khi lùi ra khỏi Khúc Ca Hy Vọng.
-      gateLink.href = 'https://mendingur.github.io/thesowerscycle/';
-      gateLink.querySelector('svg').innerHTML =
-        '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>';
-      var span = gateLink.querySelector('span');
-      span.setAttribute('data-vi', 'Bộ Ba');
-      span.setAttribute('data-en', 'The Trilogy');
-      span.textContent = document.documentElement.lang === 'en' ? 'The Trilogy' : 'Bộ Ba';
-    }
-    // isInternal (kể cả từ Trang Chủ): gateLink giữ nguyên "Trang Chủ" và luôn hiện.
   })();
 </script>
 
