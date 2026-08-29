@@ -175,6 +175,42 @@ a { color: inherit; }
 
 .back-link:focus-visible { outline: 2px solid var(--ember-rust); outline-offset: 3px; }
 
+/* ---- top-left back navigation, icon-only variant ----
+   Nút tròn chỉ chứa icon mũi tên, nổi y như .menu-toggle nhưng đặt đối
+   xứng ở góc trên-trái. Dùng cho các trang hub (thesowerscycle/, donate/)
+   vốn không có đủ chỗ/nhu cầu cho pill có chữ như .back-link. Vẫn gắn
+   vào id="backLink" nên toàn bộ cơ chế chống-lặp + tự ẩn khi vào bằng
+   link trực tiếp trong site.js áp dụng y hệt, không cần sửa JS. */
+
+.back-link-icon {
+    position: fixed;
+    top: 1.2rem;
+    left: 1.2rem;
+    z-index: 30;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--surface-border);
+    border-radius: 999px;
+    background: var(--surface);
+    box-shadow: var(--menu-shadow);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    color: var(--ink);
+    text-decoration: none;
+    transition: color .18s ease, border-color .18s ease, transform .15s ease, box-shadow .15s ease;
+  }
+
+.back-link-icon svg { width: 17px; height: 17px; transition: transform .18s ease; flex: none; }
+
+.back-link-icon:hover, .back-link-icon:focus-visible { color: var(--ember-rust); border-color: var(--ember-gold); transform: translateY(-2px); }
+
+.back-link-icon:hover svg { transform: translateX(-2px); }
+
+.back-link-icon:focus-visible { outline: 2px solid var(--ember-rust); outline-offset: 2px; }
+
 /* ---- settings menu (top-right, all pages): hamburger → popover with language + theme ---- */
 
 .settings-menu {
@@ -467,6 +503,7 @@ footer .sep {
 @media (max-width: 560px) {
   .settings-menu { top: .8rem; right: .8rem; }
   .menu-toggle { width: 33px; height: 33px; }
+  .back-link-icon { top: .8rem; left: .8rem; width: 33px; height: 33px; }
   .settings-popover { width: 168px; padding: .62rem; gap: .5rem; }
   .back-link { padding: 0 1rem 0 .8rem; font-size: .82rem; }
   .back-link svg { width: 16px; height: 16px; }
@@ -479,6 +516,6 @@ footer .sep {
 @media (prefers-reduced-motion: reduce) {
   .spark { display: none; }
   .cursor-glow { display: none; }
-  .back-link, .back-link svg { animation: none !important; transition: none !important; }
+  .back-link, .back-link svg, .back-link-icon, .back-link-icon svg { animation: none !important; transition: none !important; }
   .settings-popover, .menu-toggle-bars span, html, body { transition: none !important; }
 }
