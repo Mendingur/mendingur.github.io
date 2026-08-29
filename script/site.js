@@ -204,8 +204,21 @@
     prevUrl = referrer || (backLink && backLink.getAttribute('data-fallback')) || null;
   }
 
+  // Trang trước đó (nếu quay lại ngay bây giờ) có phải là Trang Chủ không.
+  var goingHome = false;
+  if (prevUrl) {
+    try {
+      var prevPath = new URL(prevUrl, window.location.href).pathname;
+      goingHome = prevPath === '/' || prevPath === '/index.html';
+    } catch (e) {}
+  }
+
   if (backLink) {
-    if (prevUrl) {
+    // Ẩn nút "Quay lại" khi: không có nơi để quay về (truy cập trực tiếp
+    // qua link), HOẶC nơi quay về chính là Trang Chủ — xử lý giống hệt
+    // trường hợp truy cập trực tiếp, để nút "Trang Chủ" (gateLink, nếu
+    // trang có) đảm nhiệm thay vì hiện cả hai nút cùng trỏ về một chỗ.
+    if (prevUrl && !goingHome) {
       backLink.addEventListener('click', function (e) {
         e.preventDefault();
         stack.pop();
@@ -219,13 +232,6 @@
   }
 
   if (gateLink) {
-    var goingHome = false;
-    if (prevUrl) {
-      try {
-        var prevPath = new URL(prevUrl, window.location.href).pathname;
-        goingHome = prevPath === '/' || prevPath === '/index.html';
-      } catch (e) {}
-    }
     var backLinkHidden = backLink && backLink.style.display === 'none';
     if (goingHome && !backLinkHidden) {
       gateLink.style.display = 'none';
