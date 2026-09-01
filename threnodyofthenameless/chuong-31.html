@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Không Có Toà Nào — Khúc Ai Ca Cho Những Kẻ Vô Danh</title>
+<meta name="description" content="Vòng Tuần Hoàn Người Gieo Hạt · Quyển II — tiểu thuyết của Mendingur">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="style.css">
+<script src="reader.js" defer></script>
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem('mendingur-theme');
+    var theme = saved === 'dark' || saved === 'light'
+      ? saved
+      : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+  <linearGradient id="wingGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="55%" stop-color="#C99A3E"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+  <radialGradient id="coreGlow" cx="50%" cy="55%" r="55%">
+    <stop offset="0%" stop-color="#FFF6DE" stop-opacity="0.95"/>
+    <stop offset="55%" stop-color="#E4C077" stop-opacity="0.35"/>
+    <stop offset="100%" stop-color="#E4C077" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="flowerGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+</defs>
+</svg>
+<div class="grain"></div>
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+<div class="settings-menu" id="settingsMenu">
+  <button class="menu-toggle" type="button" id="settingsMenuToggle" aria-haspopup="true" aria-expanded="false" aria-controls="settingsPopover" aria-label="Cài đặt giao diện">
+    <span class="menu-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+  </button>
+  <div class="settings-popover" id="settingsPopover" role="menu">
+    <div class="settings-group">
+      <p class="settings-group-label">Giao diện</p>
+      <div class="theme-switcher" id="themeSwitcher" role="group" aria-label="Giao diện sáng / tối">
+        <button class="theme-btn active" type="button" data-theme-choice="light" aria-pressed="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <span>Sáng</span>
+        </button>
+        <button class="theme-btn" type="button" data-theme-choice="dark" aria-pressed="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+          <span>Tối</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<header class="sitebar">
+  <a class="brand" href="index.html">
+    <span class="mark"><svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sower's Cycle mark">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+<g transform="translate(200,278)">
+  <g><ellipse rx="14" ry="21" transform="rotate(0)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(72)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(144)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(216)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(288)" fill="url(#flowerGrad)"/></g>
+  <circle r="9.5" fill="#FFF6DE"/>
+</g>
+<g transform="translate(200,96)"><path d="M0,-24 C2,-7 7,-2 24,0 C7,2 2,7 0,24 C-2,7 -7,2 -24,0 C-7,-2 -2,-7 0,-24 Z" fill="#F3D488"/></g>
+</svg></span>
+    <span class="word">Khúc Ai Ca Cho Những Kẻ Vô Danh</span>
+  </a>
+  <nav>
+    <a href="index.html" class="toc-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      Mục lục
+    </a>
+  </nav>
+</header>
+<div class="progress-track"><div class="progress-fill"></div></div>
+
+<header class="chapter-head">
+  <p class="crumb"><a href="index.html">IN PARADISUM · HOÁ ĐƠN ĐẾN MUỘN</a></p>
+  <span class="cnum">Chương 31</span>
+  <h1>Không Có Toà Nào</h1>
+  <div class="font-toggle" role="group" aria-label="Cỡ chữ">
+    <button type="button" data-size="sm" aria-pressed="false">A-</button>
+    <button type="button" data-size="md" aria-pressed="true">A</button>
+    <button type="button" data-size="lg" aria-pressed="false">A+</button>
+  </div>
+</header>
+
+<article class="prose" data-size="md">
+<p>Sách giáo khoa địa lý lớp tám, bản in năm 2070, dùng từ năm học 2070 đến 2071.</p>
+<p>Bài 31, phần đọc thêm, in chữ nhỏ trong một cái khung, mười một dòng.</p>
+<p>Bốn dòng đầu nói về hành lang trung chuyển. Dòng thứ năm nói cấu trúc có đường kính gần bảy trăm mét. Dòng cuối nói tuyến cấp nước đưa vào vận hành năm 2070.</p>
+<p>Phần đọc thêm không nằm trong nội dung kiểm tra.</p>
+<p>Ông Marek Sund làm chỉ huy trạm kỹ thuật số hai từ tháng 8 năm 2068.</p>
+<p>Trước đó ông làm hai mươi hai năm ở ngành cảng, và cái đưa ông tới đây là một hợp đồng hai năm ký năm 2068, gia hạn hai lần. Ông năm mươi sáu tuổi. Việc của ông có ba phần: người, vật tư, và giấy tờ, và phần thứ ba chiếm nhiều thời gian nhất.</p>
+<p>Ngày 19 tháng 10 năm 2069, ông là người ký vào ô cuối cùng của một hồ sơ mang số 2069/HL/001, và ông ký vì trong bảy tháng thì không tìm ra ai khác có thẩm quyền ký.</p>
+<p>Ngày 21 tháng 10 năm 2070, họ đưa một người tới.</p>
+<p>Chuyện ấy báo trước ba phiên. Ở phiên 214, họ gõ dấu bắt đầu, gõ một, gõ dấu hết, rồi họ làm một chuỗi ba nhịp mà tổ chưa ghi được lần nào. Ở phiên 215 họ làm lại đúng chuỗi ấy. Ở phiên 216, ngày mồng bảy tháng 10, họ làm nó lần thứ ba và gõ thêm một con số, và con số ấy là mười bốn, và tổ ghi vào biên bản rằng chưa xác định được nó đếm cái gì.</p>
+<p>Mười bốn ngày sau, họ tới cửa hành lang lúc chín giờ sáng.</p>
+<p>Có mười một cái đi tới. Mười cái quay lại và đi về theo hành lang, và cái thứ mười một ở lại.</p>
+<p>Cái ở lại thì không đi được. Hai cái khiêng nó tới cửa hành lang rồi đặt xuống, và cách chúng đặt nó xuống thì giống hệt cách chúng vẫn đặt xuống một cái làm rơi thì hỏng.</p>
+<p>Ông Sund có mặt ở đó cùng bốn người của trạm. Trời âm hai mươi mốt độ, không gió. Việc ấy kéo dài hai mươi hai phút và trong hai mươi hai phút ấy không ai ở phía này nói một câu nào, vì nói cũng không tới được.</p>
+<p>Trước khi quay lại hành lang, hai cái khiêng có đặt xuống cạnh cái thứ mười một một thứ nữa, và thứ ấy là một cái hộp cùng họ với những cái vật vẫn mang tới mỗi phiên. Nó nặng mười chín cân, và tổ có cân nó vào buổi chiều. Không ai gõ một con số nào cho nó.</p>
+<p>Đưa cái thứ mười một từ cửa hành lang về trạm mất bốn tiếng.</p>
+<p>Trạm không có cáng nào đủ khổ. Tổ hậu cần tháo hai tấm ván sàn ở nhà xe, bắt vào một cái khung ống, và bốn người khiêng, đổi vai bốn lần trong ba cây số. Đoạn cuối có dốc, và ở dốc thì hai người phía trước hạ thấp xuống và hai người phía sau nâng lên, và họ làm việc ấy vì đó là cách khiêng một cái nặng lên dốc.</p>
+<p>Biên bản lập lúc 15:40, ba liên, bốn chữ ký, và ở ô loại việc thì người lập biên bản để trống, vì trong danh mục loại việc của trạm có mười chín mục và không mục nào hợp.</p>
+<p>Cái phòng người ta để ông ta vào là cái nhà kho phía đông.</p>
+<p>Nó xây năm 2068 để chứa mẫu đá và ống, nền bê tông, không cửa sổ, một cửa, và người ta chọn nó vì nó là cái duy nhất trong trạm không có tên trong lịch sử dụng của tuần nào.</p>
+<p>Bản tin hai tuần của ban thư ký, số ra ngày 30 tháng 10 năm 2070, đưa việc ấy ở mục hai, hai dòng. Hai dòng ấy nói ngày, nói địa điểm, và nói rằng một cư dân của bên kia hiện do trạm kỹ thuật số hai quản lý, theo đề nghị của chính bên ấy.</p>
+<p>Ba hãng tin dẫn lại hai dòng ấy trong tuần. Cả ba đều dẫn đúng hai dòng và không thêm dòng nào. Không hãng nào hỏi câu thứ hai.</p>
+<p>Ngày thứ hai, ông Sund phải trả lời bốn câu hỏi, và cả bốn đều do người của trạm hỏi, và cả bốn đều là câu hỏi vận hành.</p>
+<p>Câu thứ nhất là ai trực. Câu thứ hai là trực thì ghi vào sổ nào. Câu thứ ba là cho ăn cái gì, và câu ấy ông trả lời được, vì trong hai trăm bảy mươi trang báo cáo năm 2067 có một mục nói chưa xác định được cái họ dùng để duy trì, và ông đọc nguyên câu ấy lên. Câu thứ tư là làm sao biết còn sống, và câu ấy ông không trả lời được trong ngày hôm đó.</p>
+<p>Ba hôm sau ông trả lời được, và câu trả lời là cái từ kế.</p>
+<p>Từ ngày mồng một tháng 11, nhà kho phía đông có một cuốn sổ trực bốn cột: ngày, ca, người trực, và số đọc được của từ kế lúc đầu ca và lúc cuối ca. Sổ ấy lấy mẫu của sổ trực kho vật tư, và ở mẫu ấy cột thứ tư vốn là cột nhiệt độ kho.</p>
+<p>Trong ba tháng đầu, câu hỏi được gửi đi năm nơi.</p>
+<p>Nơi thứ nhất là uỷ ban thường trực. Uỷ ban trả lời rằng quy chế thành lập của uỷ ban không có điều khoản nào về giam giữ, và uỷ ban không thể tự cho mình một thẩm quyền mà văn bản thành lập không cho.</p>
+<p>Nơi thứ hai và nơi thứ ba là hai cơ quan tư pháp của hai quốc gia đã trả lời hồ sơ 2069/HL/001 năm trước. Cả hai nói cùng một chuyện, là thẩm quyền tài phán của họ áp dụng cho một danh mục tội danh, và tội danh phải được xác định trước, và ở đây thì chưa xác định được cả tội danh lẫn tư cách của người bị buộc.</p>
+<p>Nơi thứ tư là ban thư ký của Hội Đồng. Ban thư ký trả lời rằng việc này cần một quyết định của Hội Đồng, và đưa nó vào chương trình làm việc thì cần một thành viên có ghế đề nghị.</p>
+<p>Nơi thứ năm là bộ phận pháp chế của tổ chức cứu trợ. Họ trả lời trong mười ngày, rằng cái loài người có cho trường hợp này là ba thứ, và cả ba đều giả định rằng người ấy đứng trước một cái toà.</p>
+<p>Bà Amara Osei đọc cả năm văn bản trả lời vào tháng 3 năm 2071.</p>
+<p>Bà viết một đề nghị dài hai dòng, và hai dòng ấy đề nghị uỷ ban ghi nhận rằng chưa có khung pháp lý, và ghi nhận rằng tình trạng hiện tại là tình trạng tạm thời không có thời hạn. Đề nghị được thông qua ở phiên 141 và ghi vào biên bản.</p>
+<p>Bà ghi số hiệu biên bản ấy vào trang cuối sổ tay, dưới một số hiệu khác, và ở đó bây giờ có hai dòng.</p>
+<p>Cả năm nơi đều trả lời trong hạn.</p>
+<p>Từ tháng 11 năm 2070, tổ dựng bộ đối thoại vật chất trong nhà kho ấy.</p>
+<p>Tấm thép vuông một mét hai đóng nằm xuống nền, ba chốt, ép sát. Cái vồ gỗ. Cái từ kế đặt cách bốn mươi phân. Đồng hồ bấm giây và hai người ghi độc lập, ghi rời, không nhìn bảng của nhau. Đúng bộ ấy, đúng quy trình ấy, không thêm không bớt một thứ nào.</p>
+<p>Người kỹ sư trưởng gõ dấu bắt đầu.</p>
+<p>Ông ta gõ nó vào mười giờ sáng ngày 4 tháng 11, và ông ta chờ đủ cái chờ, và không có gì.</p>
+<p>Ông ta gõ lại. Ông ta gõ hai hồi dài liền nhau, tức là làm lại từ đầu, rồi gõ dấu bắt đầu lần nữa. Không có gì.</p>
+<p>Phiên ấy kéo bốn mươi phút theo đúng lịch, và biên bản ghi một dòng, và dòng ấy nói không nhận được trả lời. Ở ô kết quả thì người ghi điền số không, vì ô kết quả là ô số.</p>
+<p>Trong mười bốn tuần, tổ làm hai mươi tám phiên.</p>
+<p>Hai mươi tám phiên, không phiên nào nhận được trả lời. Tổ đổi thứ tự, đổi số nhịp, đổi khoảng chờ, và đổi cả người gõ. Tổ thử cả chuỗi ba nhịp mà bên kia đã dùng ở phiên 214, gõ nó theo đúng bản ghi, hai lần trong một phiên.</p>
+<p>Không có gì.</p>
+<p>Cái làm cho hai mươi tám phiên ấy khác với hai mươi tám phiên gõ vào một cái tường là cái từ kế.</p>
+<p>Trong suốt hai mươi tám phiên, cái từ kế có số. Nó có số trước khi tổ gõ, có số trong lúc tổ gõ, và có số sau khi tổ về. Cái ở trong nhà kho ấy đang phát, đều, không đứt, và nó không đổi khi có người gõ và cũng không đổi khi không có ai gõ.</p>
+<p>Ngày 17 tháng 2 năm 2071, người kỹ sư trưởng viết một câu vào phần kết luận, và câu ấy nói rằng không trả lời ở đây là một việc được làm chứ không phải một việc không làm được.</p>
+<p>Rồi ông ta viết thêm một câu nữa và gạch nó đi trước khi ai kịp đọc.</p>
+<p>Không có tuyên bố nào. Không có một câu nào để chép lại, không có một đoạn nào để đưa lên đài, và trong mười bốn tuần thì cái phía này thu được là hai mươi tám tờ biên bản và một dãy số.</p>
+<p>Ông Sund có vào nhà kho ấy ba lần trong mười bốn tuần, mỗi lần chừng một phút, và ông vào vì bản hướng dẫn nói người chỉ huy phải trực tiếp kiểm tra chỗ ít nhất một lần mỗi tháng, và bản hướng dẫn ấy là bản hướng dẫn về kho vật tư.</p>
+<p>Lần thứ hai ông vào là buổi trưa ngày 21 tháng giêng. Ông kiểm bốn thứ theo mẫu: cửa, khoá, chỗ dột, và lối thoát. Cái nhà kho ấy dột một chỗ ở góc phía bắc, dột từ tháng 8 năm ngoái, và ông ghi vào sổ là dột, và tháng 2 thì tổ hậu cần vá nó, vì có phiếu và vì vá một chỗ dột thì mất hai tiếng.</p>
+<p>Trong một phút ấy, cái ở trong nhà kho không đổi gì cả. Con số ở từ kế lúc ông vào và lúc ông ra là một con số.</p>
+<p>Ông ra, đóng cửa, khoá, và ghi giờ.</p>
+<p>Từ tháng 3 năm 2071, số của từ kế bắt đầu xuống.</p>
+<p>Nó xuống đều. Cứ chừng bảy tuần thì nó còn một nửa. Không có bậc, không có chỗ vọt lên, và không có đêm nào nó dừng.</p>
+<p>Tổ đặt thêm hai từ kế ở hai góc để lấy hướng.</p>
+<p>Cái phát ra ở đó có một hướng, và hướng ấy không đổi. Nó chếch lên trên mặt ngang mười bốn độ, và trên mặt bằng thì nó về phía tây bắc.</p>
+<p>Trong sáu tháng đo, cái hướng ấy không nhích.</p>
+<p>Ở cuối mục, người viết ghi rõ một chuyện, và chuyện ấy là hướng đo được là hướng của cái phát ra, chứ không phải hướng tới một chỗ nào.</p>
+<p>Tổ vẫn tra bản đồ theo hướng ấy, vì tra thì không mất gì. Trên hướng ấy, trong bán kính ba nghìn cây, không có trạm nào, không có tuyến nào, và không có cái gì.</p>
+<p>Ngày 2 tháng 9 năm 2071, số của từ kế xuống dưới ngưỡng đọc được.</p>
+<p>Nó xuống dưới ngưỡng lúc gần bốn giờ chiều, lên lại trong mười một phút, rồi xuống lại và ở dưới.</p>
+<p>Bản hướng dẫn đo của tổ nói một đại lượng được coi là hết khi nó nằm dưới ngưỡng liên tục bảy mươi hai giờ. Bảy mươi hai giờ ấy hết vào chiều mồng năm, và người trực ca chiều mồng năm là một kỹ thuật viên hai mươi sáu tuổi, và anh ta ghi vào sổ đúng cái phải ghi, là dưới ngưỡng, bảy mươi hai giờ.</p>
+<p>Anh ta không ghi chữ nào khác.</p>
+<p>Không ai xác định được đó là chết hay là gì khác. Không ai ở trạm có thẩm quyền xác định chuyện đó, và không có văn bản nào nói ai có.</p>
+<p>Tháng 9 năm 2070, một chuyên viên tư liệu của trạm gửi phiếu yêu cầu kho lưu trữ chuyển bản gốc của một bản ghi mang số hiệu GC-2058-1141, để đối chiếu với tập tài liệu đang sắp xếp.</p>
+<p>Bản gốc về ngày 14 tháng 10. Trong tờ khai lưu trữ đề năm 2058, ô thời lượng ghi bốn mươi giây.</p>
+<p>Người chuyên viên ấy đo lại bản ghi và ra bốn mươi chín giây.</p>
+<p>Cô ghi chuyện đó vào phiếu đối chiếu, một dòng, kèm ngày, và cô ghi thêm rằng chín giây cuối không có cấu trúc lặp nên có thể người điền khai năm 2058 chỉ tính phần có cấu trúc. Cô chuyển phiếu cho tổ kỹ thuật, và cuối năm thì cô hết hạn công tác và cô về.</p>
+<p>Tổ mở lại cái phiếu ấy vào tháng 9 năm 2071.</p>
+<p>Chín giây cuối của bản ghi năm 2058 không lặp. Nó tắt theo bậc, từng bậc một, bảy bậc, và giữa các bậc có chỗ bằng.</p>
+<p>Dãy số ghi được ở nhà kho phía đông từ chiều mồng hai tháng 9 năm 2071 cũng tắt theo bậc. Bảy bậc. Cùng tỉ lệ giữa các bậc, sai khác dưới hai phần trăm.</p>
+<p>Tổ viết báo cáo bốn trang và trong bốn trang ấy có ba kết luận. Thứ nhất, hai đoạn khớp nhau. Thứ hai, hai đoạn cách nhau mười hai năm mười tháng và ghi ở hai bán cầu. Thứ ba, chưa xác định được hai đoạn ấy là cái gì.</p>
+<p>Báo cáo không viết dòng thứ tư.</p>
+<p>Ở phần cuối báo cáo có một mục tên là đề nghị, và trong mục ấy tổ đề nghị hỏi ý kiến chuyên môn bên ngoài.</p>
+<p>Ban thư ký kỹ thuật giữ một danh sách những người có thể hỏi về hiện tượng cộng hưởng. Danh sách ấy lập năm 2068 và nó có hai dòng.</p>
+<p>Dòng thứ nhất là một phòng thí nghiệm. Phòng ấy giải thể năm 2069.</p>
+<p>Dòng thứ hai là một dòng không có tên, chỉ có một số hiệu hồ sơ và mấy chữ ghi cách liên hệ qua ba chặng. Bên cạnh dòng ấy, ở cột ghi chú, có một dòng thêm vào tháng 4 năm 2069, và dòng thêm vào ấy có bốn chữ.</p>
+<p class="p-note">Đã trả lời không.</p>
+<p>Người thư ký soạn công văn hỏi ý kiến vào ngày 18 tháng 9 năm 2071. Công văn dài một trang, có số hiệu, và ở dòng kính gửi thì anh ta để trống, vì anh ta phải tra danh sách trước.</p>
+<p>Anh ta tra danh sách, đọc cả hai dòng, và đọc luôn cả cột ghi chú.</p>
+<p>Anh ta không in công văn ấy ra. Anh ta để nó trong tệp dự thảo, và cuối tháng thì tệp dự thảo được dọn theo lệ, và anh ta xoá nó cùng với mười bảy tệp khác.</p>
+<p>Anh ta hai mươi chín tuổi. Anh ta không biết dòng thứ hai ấy là ai và anh ta không phải biết, vì cột ghi chú đã trả lời rồi.</p>
+<p>Cái danh sách ấy không bị xoá. Nó vẫn có hai dòng, và cả hai dòng vẫn nằm đó, và ai mở nó ra cũng đọc được cả hai.</p>
+<p>Ngày 4 tháng 10 năm 2071, tổ gỡ hai cái từ kế ở hai góc nhà kho phía đông.</p>
+<p>Từ ngày mồng sáu thì lịch phiên đối thoại vật chất chạy lại theo lịch cũ, hai phiên một tuần, và một phiên thì cần cái từ kế đặt cách tấm thép bốn mươi phân.</p>
+<p>Người kỹ thuật viên tháo cái từ kế thứ ba xuống khỏi giá, lau mặt kính bằng khăn khô, cuộn dây theo chiều cuộn cũ, và đặt nó vào hộp.</p>
+<p>Nhà kho phía đông quét trong hai ngày. Chỗ đặt tấm thép thì để lại một vệt vuông trên nền bê tông, và vệt ấy sẫm hơn chỗ chung quanh, và người ta không chà nó vì chà thì mất một buổi.</p>
+<p>Ngày 12 tháng 10, ban hậu cần lập lại lịch sử dụng của tuần.</p>
+<p>Trong lịch ấy, nhà kho phía đông có một dòng. Cột thứ nhất ghi tên kho. Cột thứ hai ghi tuần. Cột thứ ba ghi nội dung sử dụng, và ở cột thứ ba thì người lập lịch đánh máy ba chữ.</p>
+<p class="p-note">Chứa mẫu đá.</p>
+</article>
+
+
+<svg class="rift-small" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+</svg>
+
+
+<div class="chapter-foot">
+  <nav class="chapter-nav" aria-label="Điều hướng chương">
+    <a class="prev" href="chuong-30.html"><span class="lbl">Trước</span><span class="ttl">Thị Trấn Không Đổi Gì Cả</span></a>
+    <a class="toc-link" href="index.html" aria-label="Về mục lục"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></a>
+    <a class="next" href="chuong-32.html"><span class="lbl">Sau</span><span class="ttl">Tôi Và Anh</span></a>
+  </nav>
+</div>
+
+<footer class="sitefoot">
+  <p>Khúc Ai Ca Cho Những Kẻ Vô Danh — Vòng Tuần Hoàn Người Gieo Hạt · Quyển II</p>
+  <p>© 2026 Nguyễn Duy Anh (bút danh: Mendingur). Bản quyền tác phẩm thuộc về tác giả.</p>
+</footer>
+
+<script src="glow.js" defer></script>
+</body>
+</html>

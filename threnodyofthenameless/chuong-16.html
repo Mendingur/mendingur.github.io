@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Người Giữ Ký Ức — Khúc Ai Ca Cho Những Kẻ Vô Danh</title>
+<meta name="description" content="Vòng Tuần Hoàn Người Gieo Hạt · Quyển II — tiểu thuyết của Mendingur">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="style.css">
+<script src="reader.js" defer></script>
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem('mendingur-theme');
+    var theme = saved === 'dark' || saved === 'light'
+      ? saved
+      : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+  <linearGradient id="wingGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="55%" stop-color="#C99A3E"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+  <radialGradient id="coreGlow" cx="50%" cy="55%" r="55%">
+    <stop offset="0%" stop-color="#FFF6DE" stop-opacity="0.95"/>
+    <stop offset="55%" stop-color="#E4C077" stop-opacity="0.35"/>
+    <stop offset="100%" stop-color="#E4C077" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="flowerGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+</defs>
+</svg>
+<div class="grain"></div>
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+<div class="settings-menu" id="settingsMenu">
+  <button class="menu-toggle" type="button" id="settingsMenuToggle" aria-haspopup="true" aria-expanded="false" aria-controls="settingsPopover" aria-label="Cài đặt giao diện">
+    <span class="menu-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+  </button>
+  <div class="settings-popover" id="settingsPopover" role="menu">
+    <div class="settings-group">
+      <p class="settings-group-label">Giao diện</p>
+      <div class="theme-switcher" id="themeSwitcher" role="group" aria-label="Giao diện sáng / tối">
+        <button class="theme-btn active" type="button" data-theme-choice="light" aria-pressed="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <span>Sáng</span>
+        </button>
+        <button class="theme-btn" type="button" data-theme-choice="dark" aria-pressed="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+          <span>Tối</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<header class="sitebar">
+  <a class="brand" href="index.html">
+    <span class="mark"><svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sower's Cycle mark">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+<g transform="translate(200,278)">
+  <g><ellipse rx="14" ry="21" transform="rotate(0)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(72)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(144)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(216)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(288)" fill="url(#flowerGrad)"/></g>
+  <circle r="9.5" fill="#FFF6DE"/>
+</g>
+<g transform="translate(200,96)"><path d="M0,-24 C2,-7 7,-2 24,0 C7,2 2,7 0,24 C-2,7 -7,2 -24,0 C-7,-2 -2,-7 0,-24 Z" fill="#F3D488"/></g>
+</svg></span>
+    <span class="word">Khúc Ai Ca Cho Những Kẻ Vô Danh</span>
+  </a>
+  <nav>
+    <a href="index.html" class="toc-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      Mục lục
+    </a>
+  </nav>
+</header>
+<div class="progress-track"><div class="progress-fill"></div></div>
+
+<header class="chapter-head">
+  <p class="crumb"><a href="index.html">LACRIMOSA · HAI NÉT CHỮ</a></p>
+  <span class="cnum">Chương 16</span>
+  <h1>Người Giữ Ký Ức</h1>
+  <div class="font-toggle" role="group" aria-label="Cỡ chữ">
+    <button type="button" data-size="sm" aria-pressed="false">A-</button>
+    <button type="button" data-size="md" aria-pressed="true">A</button>
+    <button type="button" data-size="lg" aria-pressed="false">A+</button>
+  </div>
+</header>
+
+<article class="prose" data-size="md">
+<p>Ngày 3 tháng 5 năm 2063. Đường kính cấu trúc: 402,9 mét. Từ ngày 15 tháng 5, sổ mua dầu hộ gia đình đổi từ mẫu hai cột sang mẫu bốn cột, và sổ mẫu cũ vẫn dùng đến hết.</p>
+<p>Cuốn vở còn ba mươi bảy trang trắng.</p>
+<p>Nó là cuốn vở học sinh một trăm trang, bìa xanh, mua năm 2057, và trên bìa không viết gì. Bên trong không kẻ cột. Mai bắt đầu ghi nó từ tháng ba năm 2057, mỗi dòng một ngày, một con số, và đôi khi mấy chữ.</p>
+<p>Mấy chữ ấy bây giờ chiếm nhiều chỗ hơn con số.</p>
+<p>Con số vẫn là cái vân dưới da cổ tay trái Kaito, đo bằng sợi chỉ, đặt lên thước. Tháng năm 2063 nó là bảy phẩy sáu. Nó lên chậm và nó chưa bao giờ xuống.</p>
+<p>Mấy chữ là cái khác.</p>
+<p>Trong năm năm anh không học được một chữ nào của bên kia. Không một âm, không một dấu, không một cái gì có thể chép lại rồi đọc cho người khác nghe. Cái anh làm được là một cái bảng.</p>
+<p>Bảng ấy dựng trên ba thứ, và ba thứ ấy là ba thứ anh nhận được trong bảy phút ở đầu ngõ cuối năm 2058, và trong năm năm anh không tìm ra thứ thứ tư.</p>
+<p>Thứ nhất là một sức nặng. Nó tì vào giữa ngực. Anh chia nó ra làm sáu bậc, và anh chia bằng đồ vật, vì đồ vật thì anh cầm được. Bậc một là cái nón. Bậc hai là ấm nước đầy. Bậc ba là bao gạo hai chục cân đặt lên ngực khi nằm. Bậc bốn, bậc năm và bậc sáu thì không có đồ vật nào, và anh ghi chúng bằng cách viết ba trên gấp đôi, ba trên gấp bốn, và ba trên chịu không nổi.</p>
+<p>Thứ hai là một hướng. Anh ghi hướng bằng hai con số, một cho phương và một cho độ chếch. Phương thì anh ghi theo tám hướng thường, và độ chếch thì ghi là ngang, chếch xuống, hoặc chếch lên. Anh ghi thêm một chữ nữa ở cuối, và chữ ấy là qua hoặc vào. Qua nghĩa là cái hướng ấy đi xuyên qua anh và đi tiếp. Vào nghĩa là nó dừng ở anh.</p>
+<p>Trong năm năm, chữ vào xuất hiện mười bốn lần.</p>
+<p>Thứ ba là một nhiệt độ. Anh ghi bằng cách so với mu bàn tay mình, và anh ghi bằng ba cái mốc anh sờ được quanh nhà: quả nắm cửa kim loại trong nhà, nước giếng lúc tháng chạp, và vỏ máy phát sau hai tiếng chạy. Ba cái mốc ấy nằm đủ xa nhau để chia được, và anh không cần chính xác hơn thế.</p>
+<p>Ký hiệu thì anh tự đặt. Nó vụng. Sức nặng là một cái gạch ngang có chấm ở dưới, số chấm là bậc. Hướng là một mũi tên ngắn với một chữ cái. Nhiệt độ là một vòng tròn nhỏ để trống, tô một nửa, hoặc tô kín.</p>
+<p>Hệ ký hiệu ấy có một lỗi mà anh biết và không sửa được: nó không ghi được thời gian. Cái gì kéo dài bốn giây và cái gì kéo dài bảy phút thì trên giấy trông y như nhau. Anh bù bằng cách ghi thêm một con số phút ở lề, và con số phút ấy là con số anh ước.</p>
+<p>Có những mục không phải chữ anh.</p>
+<p>Từ tháng tám năm 2062, có những đêm tay phải anh không viết được. Nó không đau. Nó làm được việc thô, cầm ca nước thì được, cầm bút thì nét đi thành ba đoạn rời. Những đêm ấy anh đọc và Mai chép.</p>
+<p>Chữ cô nhỏ hơn, đều hơn, và cô chép cả những chỗ anh nói lắp, chép nguyên, không sửa.</p>
+<p>Anh ghi hai mục đầu tiên trong cùng một tối, ngày mười một tháng chạp năm 2058. Mục một là cái đêm ở đầu ngõ, chín ngày trước. Mục hai là cái chiều thứ Năm, hai ngày trước. Chín ngày ấy anh không ghi gì, vì anh chưa nghĩ ra là phải ghi. Cái làm anh nghĩ ra là Mai, và cô nghĩ ra nó theo lối cô nghĩ mọi thứ, tức là cô nói rằng cái chi mà tuần ni thấy một kiểu tuần sau thấy một kiểu thì phải viết xuống, chứ nhớ thì nhớ theo cái mình muốn nhớ.</p>
+<p>Ba mục, chép nguyên.</p>
+<p>Mục 204, ngày 9 tháng 9 năm 2062. Ba chấm. Mũi tên đông nam, chếch xuống, chữ qua. Vòng tròn tô một nửa. Lề: bốn phút. Chữ anh.</p>
+<p>Mục 205, ngày 9 tháng 9 năm 2062. Năm chấm. Mũi tên bắc, ngang, chữ vào. Vòng tròn tô kín. Lề: chưa tới một phút. Chữ anh, và ở dưới có một dòng chữ Mai, và dòng ấy là hai mục ni cách nhau chừng nửa tiếng.</p>
+<p>Mục 233, ngày 4 tháng chạp năm 2062. Hai chấm. Chỗ mũi tên không có mũi tên, chỗ ấy vẽ một cái vòng nhỏ khép lại. Vòng tròn để trống. Lề: hai ba giây. Cả mục chữ Mai, kể cả số mục.</p>
+<p>Trong năm năm, bảng ấy có hai trăm sáu mươi mốt mục.</p>
+<p>Hai trăm sáu mươi mốt mục trên gần một nghìn tám trăm đêm. Nghĩa là bảy tám đêm mới có một mục, và những đêm không có mục thì trong vở vẫn có một dòng, một ngày, và một con số cổ tay.</p>
+<p>Anh xếp chúng lại theo ba thang, ba lần, vào ba mùa khác nhau, và cả ba lần thì hai trăm sáu mươi mốt mục ấy tự rơi vào hai đống.</p>
+<p>Đống thứ nhất: sức nặng bậc một tới bậc ba, hướng bao giờ cũng có chữ qua, nhiệt độ bao giờ cũng ở dưới mu bàn tay.</p>
+<p>Đống thứ hai: sức nặng bậc bốn trở lên, hướng có chữ vào, nhiệt độ ở trên mu bàn tay.</p>
+<p>Mười bốn lần có chữ vào thì cả mười bốn lần đều nằm ở đống thứ hai.</p>
+<p>Cái làm anh chắc không phải hai cái đống. Hai cái đống thì có thể là một thứ ở hai trạng thái, giống người ta lúc ngủ lúc thức. Cái làm anh chắc là mười chín đêm.</p>
+<p>Mười chín đêm ấy, hai đống có mặt cùng lúc.</p>
+<p>Chúng không trộn vào nhau. Chúng không ra thành một cái ở giữa. Chúng thay phiên, và cái thay phiên ấy không đều, và mỗi lần đổi thì cái tới sau đè lên cái tới trước ở chỗ nào đó chưa xong.</p>
+<p>Đêm mười một tháng hai năm 2063, anh ngồi ngoài hiên từ chín giờ tới hơn một giờ sáng và ghi được ba mươi hai lần đổi.</p>
+<p>Nếu là một thứ ở hai trạng thái thì nó không đổi ba mươi hai lần trong bốn tiếng, và nó không đè lên chính nó.</p>
+<p>Anh thử bác cái đó theo ba lối.</p>
+<p>Lối thứ nhất: có thể là hai chỗ khác nhau, cùng một loại, cách nhau xa. Anh loại lối này bằng cái hướng. Trong mười chín đêm ấy, có mười một đêm hai đống tới từ cùng một hướng, sai lệch dưới một phần tám vòng.</p>
+<p>Lối thứ hai: có thể là anh. Có thể trong người anh có hai kiểu nghe, và cái anh chia làm hai đống là hai kiểu nghe của chính anh chứ không phải hai bên. Anh không loại được lối này. Anh viết nó ra ở lề, viết bằng chữ thường, và anh để nó nằm đó suốt tám tháng.</p>
+<p>Lối thứ ba là cái loại được lối thứ hai, và nó tới muộn, và nó tới từ mười một tờ giấy.</p>
+<p>Anh đếm ba mươi hai lần đổi ấy bằng cách vạch lên mặt trong bao thuốc lá của thầy Tịnh Không cũ, cái bao anh vẫn để trong túi áo mà không ai hỏi vì sao. Sáng ra anh chép ba mươi hai cái vạch vào vở, và anh chép cả cái chỗ bốn vạch cuối bị nhoè vì tay anh ướt.</p>
+<p>Anh nói với Mai chuyện ấy vào một buổi sáng, lúc cô đang vo gạo.</p>
+<p>"Có hai." Anh nói.</p>
+<p>"Hai cái?"</p>
+<p>"Hai bên."</p>
+<p>Cô để cái rá xuống.</p>
+<p>"Hai bên là răng?"</p>
+<p>"Hai bên không giống nhau." Anh nói. "Mà hai bên biết nhau."</p>
+<p>Cái đống thứ nhất có một chỗ lặp.</p>
+<p>Chỗ lặp ấy đến ở đầu, và nó đến trước mọi thứ khác, và nó giống nhau tới mức trong bảng nó chiếm đúng một dòng ký hiệu, chép lại bốn mươi mốt lần không sai một chấm.</p>
+<p>Nó là ba nhịp. Một sức nặng bậc hai tới, rồi đứng. Một hướng, và cái hướng ấy không chỉ đi đâu cả, nó quay ngược lại chính chỗ nó phát ra. Rồi nhiệt độ tụt, tụt xuống mức nước giếng tháng chạp, và giữ ở đó chừng hai ba giây.</p>
+<p>Rồi mới tới cái còn lại.</p>
+<p>Trong bốn mươi mốt lần thì bốn mươi mốt lần đều có ba nhịp ấy trước. Không lần nào thiếu. Cái đống thứ hai thì không bao giờ có nó.</p>
+<p>Anh tả ba nhịp ấy cho Mai nghe, tả ba lần, ba tối khác nhau, và tả bằng ba lối khác nhau để xem cô có hiểu ra cùng một thứ không.</p>
+<p>Lần thứ ba cô nói.</p>
+<p>"Giống người ta xưng tên trước bàn thờ." Cô nói. "Trước khi khấn thì phải xưng mình là ai đã. Con là con của ông nớ bà nớ, ở xóm nớ."</p>
+<p>"Không phải xưng tên mình."</p>
+<p>"Rứa xưng tên ai?"</p>
+<p>Anh không trả lời được câu đó trong hôm ấy, và cũng không trong ba tháng sau.</p>
+<p>Cái anh trả lời được là cái hướng. Cái hướng ấy quay ngược về chỗ nó phát ra, và cái ấy anh chắc, vì mười bốn lần chữ vào thì hướng đi vào anh, còn ba nhịp này thì hướng đi vào chính nó.</p>
+<p>Tháng tám năm 2063 anh viết một dòng lên đầu một trang mới, bằng chữ mình, chữ đã đi thành ba đoạn rời nhưng vẫn đọc được.</p>
+<p>Người giữ ký ức.</p>
+<p>Dưới dòng ấy có một dòng nữa, chữ Mai, nhỏ hơn và đều hơn.</p>
+<p>Chồng tôi nói đây là chữ gần nhất, không phải chữ đúng.</p>
+<p>Chuyện đi xin cái bản ghi bắt đầu từ một chỗ anh không đi qua được.</p>
+<p>Anh có hai cái đống, và anh có bốn mươi mốt lần ba nhịp, và anh có một hệ ký hiệu do chính anh đặt ra để ghi lại chính cái anh nhận được. Nghĩa là mọi thứ trong cuốn vở ấy đều đi qua một người, và người ấy là anh.</p>
+<p>Anh nói với Mai bằng đúng chữ của việc ấy.</p>
+<p>"Không có cái để so." Anh nói. "Cái chi cũng qua anh. Anh không biết cái anh nghe là cái ngoài kia, hay là cái ở trong anh nó nghe ra như rứa."</p>
+<p>Cái anh cần là một cái gì đó do máy ghi, ở gần cái Cổng, còn giữ lại được, và có ghi giờ.</p>
+<p>Mai đi tìm cái đó.</p>
+<p>Cô đi tìm theo lối cô vẫn làm mọi việc, tức là cô nghĩ trước xem hỏi ai thì lộ ít nhất. Cô loại chị Sarah ngay. Cô loại cả cái viện. Còn lại một chỗ, và chỗ ấy là Bảo Thư.</p>
+<p>Tháng chín cô ra ngã ba đợi Bảo Thư đạp xe qua, và cô đi bộ với Bảo Thư một quãng.</p>
+<p>"Chị hỏi cái ni." Mai nói. "Bên cậu có lấy được cái chi ghi ở gần cái Cổng không. Ghi bằng máy. Không phải ảnh, không phải giấy tờ. Cái máy nó ghi được cái chi thì lấy cái nớ."</p>
+<p>Bảo Thư đi thêm mấy bước.</p>
+<p>"Ghi năm mô cũng được hả chị?"</p>
+<p>"Năm mô cũng được. Miễn có giờ."</p>
+<p>"Để mình hỏi."</p>
+<p>Bảo Thư không hỏi tại sao. Cô hỏi hai câu khác, là cần bản gốc hay bản chép cũng được, và cần bao lâu nữa. Rồi cô đạp xe đi.</p>
+<p>Ở trạm, Bảo Thư nói lại đúng ba câu ấy với Diễm, không thêm không bớt, vì Bảo Thư kể chuyện gì cũng kể nguyên văn.</p>
+<p>Diễm nghe xong thì ngồi im một lúc lâu hơn mức cần cho một câu hỏi đơn giản.</p>
+<p>Rồi cô mở cặp bìa đề chưa xếp được, cái cặp cô lập từ tháng bảy năm ngoái, và cô lấy ra một dòng.</p>
+<p>Cô không hỏi ai. Cô cũng không nói với Toản.</p>
+<p>Diễm ghi vào sổ riêng của cô một dòng, đề ngày, và dòng ấy là: nhà Gò Sen hỏi bản ghi bằng máy, có giờ. Cô không ghi ai hỏi, không ghi vì sao. Từ dòng ấy trở đi, trong sổ cô có một mục mới, và cô đặt tên mục ấy là nguồn bốn.</p>
+<p>Trong bốn năm cô đã có ba nguồn, và cả ba đều là người có chỗ ngồi trong một cơ quan nào đó. Nguồn bốn thì không.</p>
+<p>Cái Diễm gửi đi mất bốn tháng mới về.</p>
+<p>Nó về ngày mười chín tháng giêng năm 2064, trong một phong bì có ba lớp, và bên trong là mười một tờ giấy khổ lớn.</p>
+<p>Không phải băng ghi âm. Ba cái mi cờ rô ngoài trời đêm ấy không ghi được gì, và chuyện đó có ghi ngay ở tờ thứ nhất.</p>
+<p>Cái ghi được nó là hai cái từ kế và một cuộn dây đo cường độ trường. Mười một tờ giấy là ba đường cong in ra theo trục thời gian, bốn mươi giây, chia ô mỗi ô một phần mười giây, kèm một bảng số ở ba tờ cuối.</p>
+<p>Ở góc tờ thứ nhất có số hiệu lưu kho, và số hiệu ấy là GC-2058-1141. Có ngày, mười một tháng mười một năm 2058. Có giờ, bốn giờ năm mươi mốt sáng. Có tên trạm, Trạm Quan Sát Số 3. Có một ô ghi mức ưu tiên, và ô ấy ghi thấp. Có một ô ghi liên hệ tác chiến, và ô ấy ghi không.</p>
+<p>Người mang nó tới là Bảo Thư, đạp xe, tám cây số, buổi trưa. Cô đưa cái phong bì cho Mai ở ngoài sân, không vào nhà, và cô nói đúng một câu, là bên tê dặn không có bản gốc, cái ni là in lại.</p>
+<p>Rồi cô hỏi Mai một câu, và câu ấy không phải câu hỏi về cái phong bì.</p>
+<p>"Nhà mình có ai đau không chị?"</p>
+<p>"Không." Mai nói. "Cậu ăn cơm chưa?"</p>
+<p>"Rồi. Mình đi hè."</p>
+<p>Kaito trải mười một tờ ra nền nhà, ở gian ngoài, buổi chiều, vì buổi chiều thì đủ sáng.</p>
+<p>Anh không nghe được cái gì cả. Trên giấy thì nó là ba cái đường cong.</p>
+<p>Anh ngồi với nó bốn ngày.</p>
+<p>Ngày thứ nhất anh chỉ nhìn. Ngày thứ hai anh lấy cái thước kẻ của bé Nhân ra đo.</p>
+<p>Ba cái đường cong không chồng khít lên nhau. Cái thứ hai đi sau cái thứ nhất một quãng, và cái thứ ba đi sau cái thứ hai một quãng khác, và anh đo hai cái quãng ấy ở mười bảy chỗ khác nhau trên bốn mươi giây, và ở cả mười bảy chỗ thì tỉ lệ giữa hai cái quãng ấy không đổi.</p>
+<p>Ở tờ thứ nhất có sơ đồ đặt máy, và trên sơ đồ có ghi khoảng cách giữa ba cái máy. Anh lấy khoảng cách chia cho cái quãng. Ra một con số. Anh làm lại với cặp thứ hai. Ra đúng con số ấy.</p>
+<p>Anh không biết con số ấy là con số của cái gì, và trong tờ giấy cũng không ai viết nó là con số của cái gì.</p>
+<p>Cái anh biết được từ nó thì nhỏ và chắc: cái đó có một chỗ đứng, và cái chỗ đứng ấy ở về phía bên nào so với ba cái máy thì tính ra được. Nó không ở khắp nơi. Nó ở một chỗ.</p>
+<p>Ngày thứ ba anh đếm.</p>
+<p>Anh đếm số ô trên trục thời gian, đếm ba lần, và ba lần đều ra một nghìn hai trăm bốn mươi bảy ô có biên độ trên nền.</p>
+<p>Ngày thứ tư anh lấy cuốn vở ra và mở tới mục thứ hai.</p>
+<p>Trong hai trăm sáu mươi mốt mục, có bốn mươi tư mục anh đánh dấu bằng một cái gạch chéo ở lề, và bốn mươi tư mục ấy anh gọi trong đầu là cái tắt. Chúng có chung một hình: sức nặng lên rồi tụt theo bậc chứ không tụt liền, hướng thôi chỉ, và nhiệt độ về một giá trị rồi đứng nguyên ở đó.</p>
+<p>Cái thứ ba, cái nhiệt độ về một giá trị rồi đứng nguyên, là cái anh không ghi được thời lượng. Anh chỉ ghi được ở lề: đứng.</p>
+<p>Trên tờ giấy thứ chín, ở giây thứ ba mươi bảy, ba cái đường cong thôi lặp.</p>
+<p>Ba giây cuối cùng là một đường thẳng.</p>
+<p>Anh đếm số lần lặp trong bốn mươi giây. Mười chín lần. Mỗi lần yếu hơn lần trước, và cái yếu đi ấy không đều, có hai chỗ nó mạnh trở lại rồi mới yếu tiếp.</p>
+<p>Mục thứ hai trong cuốn vở là mục cho ngày mồng chín tháng chạp năm 2058. Trên cái dòng ngày ấy, dòng Mai ghi từ hai năm trước khi có mục nào, cô có ghi thêm ở cuối một cái giờ, và cái giờ ấy là 19:40, và cô ghi nó vì hôm đó cô thấy anh dừng tay giữa lúc rửa bát, và cô không biết ghi cái giờ ấy để làm gì.</p>
+<p>Anh đặt tờ giấy thứ chín cạnh mục thứ hai.</p>
+<p>Cùng một hình.</p>
+<p>Cái trên giấy là mười chín cái. Cái trong cuốn vở là một cái.</p>
+<p>Anh gọi Mai vào và anh chỉ cho cô hai chỗ ấy, tờ giấy và mục vở, và anh không nói gì thêm.</p>
+<p>Cô nhìn hai chỗ ấy khá lâu.</p>
+<p>"Cái ni là cái ngày anh đứng dưới bể." Cô nói.</p>
+<p>"Ừ."</p>
+<p>"Rứa cái tờ ni là chỗ mô?"</p>
+<p>"Nam Cực." Anh nói. "Năm năm tám. Tháng mười một."</p>
+<p>Cô không hỏi thêm câu nào và cô đi xuống bếp, và cô nấu cơm chiều đúng giờ mọi khi.</p>
+<p>Anh ngồi thêm một ngày nữa để tìm chỗ mình sai, vì anh biết rằng một người muốn thấy một thứ thì thường thấy được nó. Anh lấy bốn mươi ba mục còn lại trong nhóm cái tắt ra đối, từng mục một, và anh cũng lấy hai chục mục không thuộc nhóm ấy ra đối, để xem chúng có khớp luôn không.</p>
+<p>Chúng không khớp.</p>
+<p>Và đây là chỗ loại được lối thứ hai.</p>
+<p>Mười một tờ giấy này không đi qua anh. Nó đi qua hai cái từ kế với một cuộn dây, ở Nam Cực, lúc bốn giờ năm mươi mốt sáng ngày mười một tháng mười một năm 2058. Hôm ấy anh ở Gò Sen, và hôm ấy anh không ghi gì cả, vì lúc ấy anh chưa ghi.</p>
+<p>Cái hình trên giấy và cái hình trong vở là một hình. Một trong hai cái đó do máy ghi và không có người nào ở giữa.</p>
+<p>Nghĩa là cái anh nhận được năm năm nay có ở ngoài anh.</p>
+<p>Anh ngồi với ý ấy chừng nửa buổi, và nó không làm anh nhẹ đi chút nào.</p>
+<p>Rồi tới cái chất.</p>
+<p>Cái chất thì không nằm trong ba thang. Nó là cái đọng lại sau khi ba thang đã ghi xong, và trong năm năm anh chưa tìm được cách ghi nó, nên anh không ghi.</p>
+<p>Cái chất của mười chín lần lặp trên mười một tờ giấy này, anh biết. Anh đã đứng trong nó bảy phút ở đầu ngõ cuối năm 2058, và nó là cái đống thứ nhất, và trước mỗi lần nó tới thì nó xưng ba nhịp.</p>
+<p>Và anh còn biết nó ở một chỗ nữa.</p>
+<p>Năm 2055 Mai có kể cho anh nghe một chuyện.</p>
+<p>Cô kể một lần. Cô kể vào một buổi tối, ở một chỗ khác, hồi hai người còn chưa cưới, và cô kể xong thì cô không kể lại lần nào nữa trong chín năm.</p>
+<p>Cô đã chạm vào một con. Không phải chạm bằng tay.</p>
+<p>Và cô tả cái cô nhận được bằng bốn chữ, và cô tả bốn chữ ấy với vẻ khó chịu của người biết mình đang dùng chữ sai. Bốn chữ là: sợ, rối, lạc, và như một đứa nhỏ bị ném vào chỗ nó không biết.</p>
+<p>Anh đã nghe bốn chữ ấy chín năm trước và anh nhớ cả bốn, và anh nhớ cả cái vẻ khó chịu ấy, vì đó là cái vẻ anh nhìn thấy trên mặt mình trong năm năm nay mỗi lần anh ngồi xuống với cuốn vở.</p>
+<p>Bốn chữ ấy tả đúng cái đống thứ nhất.</p>
+<p>Nghĩa là cái thứ Mai chạm vào năm 2055, cái mà loài người gọi là làn sóng, cái mà người ta bắn từng con một trong hai năm và gọi việc đó là tự vệ, và cái đứng ở đầu ngõ nhà anh năm 2058 không tấn công, và cái khóc trong mười một tờ giấy này, là một.</p>
+<p>Chúng không phải ba thứ. Chúng là một thứ, ở ba chỗ, cách nhau chín năm.</p>
+<p>Cái làn sóng năm ấy là chính họ, đã hỏng, đã lâu quá trong một chỗ đang sập, và bị văng ra trước.</p>
+<p>Anh ngồi trên nền nhà với mười một tờ giấy trải quanh và anh nghĩ tiếp cái phải nghĩ tiếp.</p>
+<p>Cái đống thứ hai, trong bốn mươi mốt lần anh ghi được của nó, có mười hai lần mang theo một thứ. Thứ ấy là cái tắt. Không phải một cái tắt đang xảy ra. Là một cái tắt đã xảy ra rồi, được đưa ra lần nữa, nguyên hình, không thiếu bậc nào.</p>
+<p>Họ giữ nó. Họ đưa nó ra. Họ đưa ra mãi.</p>
+<p>Anh ghi vào cuốn vở, tối hôm ấy, bốn chữ, và bốn chữ ấy không có ký hiệu nào.</p>
+<p>Họ biết chuyện đó.</p>
+<p>Anh nói với cô tối hai mươi tư tháng giêng, sau khi Thiên ngủ.</p>
+<p>Anh nói hết trong chừng hai mươi phút. Anh không nói theo lối kể chuyện. Anh nói theo lối anh vẫn nói khi đọc cho cô chép, tức là nói từng mục, có số mục, có ngày.</p>
+<p>Mai ngồi ở mép phản và nghe hết.</p>
+<p>Cô không hỏi anh có chắc không. Cô không hỏi lại một câu nào về mười một tờ giấy. Cô không nói một chữ nào về năm 2055.</p>
+<p>Cô hỏi một câu.</p>
+<p>"Bao nhiêu người?"</p>
+<p>Anh không hiểu ngay.</p>
+<p>"Hồi nớ." Cô nói. "Từ năm năm lăm tới lúc hết. Bên mình bắn được bao nhiêu."</p>
+<p>"Anh không biết."</p>
+<p>"Có chỗ mô ghi không?"</p>
+<p>"Không." Anh nói. "Hồi nớ không ai đếm. Đếm thì phải biết mình đang đếm cái chi."</p>
+<p>Mai ngồi im.</p>
+<p>Cô đang tìm một con số, và cô tìm nó theo cái lối cô vẫn tìm mọi con số, tức là cô đi tìm cái sổ nào có ghi nó. Cô đi qua trong đầu tất cả những chỗ có sổ mà cô biết. Sổ giao nhận. Sổ tư trang. Sổ dầu. Bảng vật tư. Bảng quân số. Sổ trực.</p>
+<p>Không sổ nào ghi cái đó.</p>
+<p>Đến chỗ ấy thì cô gãy, và cô gãy ở chỗ không có sổ chứ không gãy ở chỗ có con số.</p>
+<p>Cô ngồi im lâu tới mức anh tưởng cô không nói gì nữa.</p>
+<p>"Hồi nớ có người nói rồi." Cô nói. "Có một ông nói rồi. Ông nói tụi hắn chạy trốn. Ông nói y như rứa, năm năm lăm."</p>
+<p>"Ừ."</p>
+<p>"Rứa mà có ai làm chi mô."</p>
+<p>Cô nói câu đó không to hơn mấy câu trước, và cô nói xong thì cô đứng dậy.</p>
+<p>Cô đứng dậy đi xuống bếp.</p>
+<p>Cô vo gạo cho sáng mai, vì tối nào cô cũng vo gạo cho sáng mai từ khi cô đi viện. Cô đong ba lon. Cô vo hai nước, chắt, rồi đổ nước vào ngâm.</p>
+<p>Rồi cô đổ nước lần nữa.</p>
+<p>Cô đứng nhìn cái nồi một lúc, rồi cô chắt hết đi, rồi cô đổ lại lần thứ ba, và lần thứ ba cô đổ quá tay, và chỗ nước quá tay ấy tràn ra ngoài miệng nồi xuống nền bếp.</p>
+<p>Cơm sáng hôm sau nhão. Bé Nhân ăn hết phần của cậu. Thiên ăn hai thìa rồi thôi, và Mai không ép nó.</p>
+<p>Trong bảy năm ở cái bếp ấy, đây là lần thứ hai cô nấu hỏng một nồi cơm. Lần thứ nhất là năm 2059, buổi sáng sau cái đêm ở chùa.</p>
+<p>Không ai trong nhà nói gì về nồi cơm. Kaito ăn hết phần của anh. Bé Nhân đi làm chuyến sáu giờ.</p>
+<p>Sáng hôm sau cô đi viện đúng chuyến đò năm giờ mười lăm. Cô kiểm kho lúc bảy giờ. Cô nộp bảng vật tư lúc mười một giờ. Ba giờ chiều cô ghi sổ tư trang, được bốn dòng, và bốn dòng ấy về sau không có dòng nào sai.</p>
+<p>Đêm ấy, gần một giờ sáng, cô lấy cuốn vở xuống.</p>
+<p>Anh đọc cho cô chép mục cuối. Anh đọc số mục, đọc ngày, đọc ba thang, và đọc cả cái phần không ghi được bằng ký hiệu, và cô chép cả phần ấy, chép bằng chữ thường, chép nguyên văn, không sửa.</p>
+<p>Trong mục ấy, ở chỗ lẽ ra là chữ nó, anh đọc một chữ khác.</p>
+<p>Anh đọc là họ.</p>
+<p>Cô chép đúng chữ anh đọc. Cô chép nó ba lần trong một mục, ba lần đều là chữ ấy, và cô không dừng lại ở lần nào.</p>
+<p>Chép xong cô đọc lại một lượt, theo thói quen.</p>
+<p>Rồi cô để bút xuống.</p>
+<p>"Cái ni phải có người khác biết." Cô nói.</p>
+<p>Anh không trả lời ngay. Anh nhìn cái trang giấy chứ không nhìn cô.</p>
+<p>"Người mô?"</p>
+<p>"Chưa biết." Cô nói. "Mà phải có."</p>
+<p>Cô không gấp vở lại.</p>
+<p>Trên trang ấy có hai nét chữ. Nét của anh ở nửa trên, và nó nghiêng hơn nét của anh năm ngoái. Nét của cô ở nửa dưới.</p>
+</article>
+
+
+<svg class="rift-small" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+</svg>
+
+
+<div class="chapter-foot">
+  <nav class="chapter-nav" aria-label="Điều hướng chương">
+    <a class="prev" href="chuong-15.html"><span class="lbl">Trước</span><span class="ttl">Ba Món Đồ</span></a>
+    <a class="toc-link" href="index.html" aria-label="Về mục lục"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></a>
+    <a class="next" href="chuong-17.html"><span class="lbl">Sau</span><span class="ttl">Không Ai Đo Được Ranh Giới</span></a>
+  </nav>
+</div>
+
+<footer class="sitefoot">
+  <p>Khúc Ai Ca Cho Những Kẻ Vô Danh — Vòng Tuần Hoàn Người Gieo Hạt · Quyển II</p>
+  <p>© 2026 Nguyễn Duy Anh (bút danh: Mendingur). Bản quyền tác phẩm thuộc về tác giả.</p>
+</footer>
+
+<script src="glow.js" defer></script>
+</body>
+</html>

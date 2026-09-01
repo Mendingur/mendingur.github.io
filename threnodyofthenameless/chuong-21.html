@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mấy Giờ? — Khúc Ai Ca Cho Những Kẻ Vô Danh</title>
+<meta name="description" content="Vòng Tuần Hoàn Người Gieo Hạt · Quyển II — tiểu thuyết của Mendingur">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="style.css">
+<script src="reader.js" defer></script>
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem('mendingur-theme');
+    var theme = saved === 'dark' || saved === 'light'
+      ? saved
+      : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+  <linearGradient id="wingGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="55%" stop-color="#C99A3E"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+  <radialGradient id="coreGlow" cx="50%" cy="55%" r="55%">
+    <stop offset="0%" stop-color="#FFF6DE" stop-opacity="0.95"/>
+    <stop offset="55%" stop-color="#E4C077" stop-opacity="0.35"/>
+    <stop offset="100%" stop-color="#E4C077" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="flowerGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+</defs>
+</svg>
+<div class="grain"></div>
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+<div class="settings-menu" id="settingsMenu">
+  <button class="menu-toggle" type="button" id="settingsMenuToggle" aria-haspopup="true" aria-expanded="false" aria-controls="settingsPopover" aria-label="Cài đặt giao diện">
+    <span class="menu-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+  </button>
+  <div class="settings-popover" id="settingsPopover" role="menu">
+    <div class="settings-group">
+      <p class="settings-group-label">Giao diện</p>
+      <div class="theme-switcher" id="themeSwitcher" role="group" aria-label="Giao diện sáng / tối">
+        <button class="theme-btn active" type="button" data-theme-choice="light" aria-pressed="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <span>Sáng</span>
+        </button>
+        <button class="theme-btn" type="button" data-theme-choice="dark" aria-pressed="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+          <span>Tối</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<header class="sitebar">
+  <a class="brand" href="index.html">
+    <span class="mark"><svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sower's Cycle mark">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+<g transform="translate(200,278)">
+  <g><ellipse rx="14" ry="21" transform="rotate(0)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(72)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(144)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(216)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(288)" fill="url(#flowerGrad)"/></g>
+  <circle r="9.5" fill="#FFF6DE"/>
+</g>
+<g transform="translate(200,96)"><path d="M0,-24 C2,-7 7,-2 24,0 C7,2 2,7 0,24 C-2,7 -7,2 -24,0 C-7,-2 -2,-7 0,-24 Z" fill="#F3D488"/></g>
+</svg></span>
+    <span class="word">Khúc Ai Ca Cho Những Kẻ Vô Danh</span>
+  </a>
+  <nav>
+    <a href="index.html" class="toc-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      Mục lục
+    </a>
+  </nav>
+</header>
+<div class="progress-track"><div class="progress-fill"></div></div>
+
+<header class="chapter-head">
+  <p class="crumb"><a href="index.html">LIBERA ME · CHÍN NGÀY</a></p>
+  <span class="cnum">Chương 21</span>
+  <h1>Mấy Giờ?</h1>
+  <div class="font-toggle" role="group" aria-label="Cỡ chữ">
+    <button type="button" data-size="sm" aria-pressed="false">A-</button>
+    <button type="button" data-size="md" aria-pressed="true">A</button>
+    <button type="button" data-size="lg" aria-pressed="false">A+</button>
+  </div>
+</header>
+
+<article class="prose" data-size="md">
+<p class="p-epigraph"><span class="line">Biên niên, quyển tám mươi mốt, trang 7. Mục đề ngày 8 tháng 3 năm 2062, nét chữ Nguyễn Bảo Thư.</span><span class="line">"Sẽ có người đi qua được."</span><span class="line">"Cái đi qua được không phải là người ấy."</span></p>
+<p>Sổ trực tổ kiểm soát trung chuyển K-9, quyển bốn, trang 214.</p>
+<p>Ngày: 23 tháng 9 năm 2067. Ca: hai, từ 14:00 đến 22:00. Người trực: ghi ở cột ba. Đường kính cấu trúc, chép theo bản tin tuần mục một: 690,0 mét.</p>
+<p>Ghi chú đầu ca: mã thông hành đổi từ 0 giờ ngày 22 tháng 9 theo lịch quý. Bản mã mới đã nhận. Ký nhận ở trang 213.</p>
+<p>Ông Đô sáu mươi mốt tuổi và ông chưa bao giờ nhìn thấy tuyết.</p>
+<p>Ông nhìn thấy nó lần đầu vào lúc bốn giờ chiều ngày 21 tháng 9, từ cửa sổ một cái nhà chờ bằng tôn ở đầu tuyến hậu cần, và ông nhìn nó chừng một phút rồi ông quay vào hỏi Toản chỗ này có nước nóng không.</p>
+<p>Ba người đi trên chuyến tiếp vận số 40, khởi hành từ một cảng phía nam, mười chín ngày biển và hai chặng bay.</p>
+<p>Giấy tờ của họ đúng và có thật. Tổ khảo sát điều kiện đất và nước, hợp đồng phụ với một tổ chức cứu trợ có tên trong danh mục các tổ chức được cấp phép hoạt động ở vùng phụ cận phân khu bảy, số hiệu hợp đồng có, con dấu có, và cả ba người đều có tên trong bản kê nhân sự nộp trước hai mươi mốt ngày.</p>
+<p>Cái làm ra bộ giấy ấy là chín năm hồ sơ.</p>
+<p>Không phải quen biết. Một tổ chức cứu trợ nhận một tổ khảo sát bên ngoài thì phải trình bảy loại giấy, và loại thứ sáu là chuỗi số liệu ba năm gần nhất của tổ ấy, và Elin có mười một điểm quan trắc liên tục từ năm 2058, có bảy trăm sáu mươi hai bảng tuần, có ba chỗ đứt và cả ba chỗ đứt đều kèm lý do ghi bằng tay.</p>
+<p>Người ở ban thẩm định đọc hết, và người ấy duyệt vì bộ số liệu ấy sạch.</p>
+<p>Ông Đô mang theo hai thứ ngoài quần áo: một cuộn giấy kẻ ô, và một cái ca nhôm.</p>
+<p>Ba ngày đầu ông không làm gì ngoài việc đi.</p>
+<p>Ông đi từ nhà chờ ra bãi xe, từ bãi xe ra chỗ đổ dầu, từ chỗ đổ dầu ra đầu đường công vụ, và ông đi đi lại lại mấy quãng ấy trong ba ngày, và ông đếm bước. Ông đếm vì ở đây không có cái gì để lấy làm mốc. Không có cây, không có nhà, không có ngã ba. Ông nói với Toản là ở đây cái khó không phải lạnh, cái khó là không có chỗ nào khác chỗ nào.</p>
+<p>Ông ghi số bước vào cuộn giấy kẻ ô và ông quy ra mét theo bước của ông, và bước của ông ở đây ngắn hơn bước của ông ở nhà, vì mặt đường có tuyết nén, và ông đo cả cái ngắn hơn ấy.</p>
+<p>Đến ngày thứ ba ông đã có một cái bảng, và trên bảng ấy có cột thời gian đi bộ và cột thời gian đi xe, và ông có cả một cột thứ ba là thời gian đi bộ nếu vác nặng.</p>
+<p>Ông không có ai để đưa cái cột thứ ba ấy cho.</p>
+<p>Tuyến có mười một chặng.</p>
+<p>Chặng một đến chặng bốn là tuyến hậu cần chính, có đường, có biển báo, có ba chỗ trình giấy. Chặng năm đến chặng tám là đường công vụ, không có biển, và ông đánh dấu bằng chỗ đỗ xe và chỗ dốc. Chặng chín là chặng có cái vòng tròn nhỏ gạch chéo.</p>
+<p>Chặng mười và chặng mười một thì trên tờ giấy kẻ ô không có gì.</p>
+<p>Ông không giấu chuyện đó với ai. Đêm trước khi đi, ở trạm, ông đã nói ra bằng bảy chữ.</p>
+<p>"Tới chốt K-9 là hết chỗ tao biết."</p>
+<p>Bảo Thư mang cái tin ấy về Gò Sen ngày 21 tháng 8, cùng với bốn thứ khác.</p>
+<p>Mai nghe hết, ngồi ở bậc cửa, tay vẫn nhặt rau.</p>
+<p>Rồi cô nói một câu, và câu ấy có ba phần: đơn vị, hòm thư, và số hiệu quân nhân, và cô đọc cả ba phần liền một mạch, không sai một chữ số, vì cô đã chép chúng vào mặt trong nắp hòm gỗ từ tháng 9 năm 2065 và cô đã đọc lại chỗ ấy nhiều lần hơn cô đếm được.</p>
+<p>Bảo Thư ghi vào sổ, kèm giờ.</p>
+<p>Diễm gửi đi ngày 23 tháng 8. Không phải một cái điện, không phải qua đường của cô. Cô gửi một cái thư thường, dán tem, bỏ ở bưu điện huyện, vì một cái thư thường thì đi mười tám ngày và một cái thư thường thì không ai đọc.</p>
+<p>Trong phong bì có một tờ giấy, chữ Mai, mười một dòng.</p>
+<p>Cô viết ngày. Cô viết chỗ. Cô viết giờ. Cô viết cái người ta cần đưa ra và cái người ta không đưa ra được, và cô viết cả chuyện cái tuyến ấy đến chốt K-9 là hết.</p>
+<p>Cô không viết một câu nào bảo cậu làm gì.</p>
+<p>Dòng cuối cùng hỏi cái áo len xám cậu còn giữ không.</p>
+<p>Thư tới K-9 ngày 19 tháng 9.</p>
+<p>Trong bốn ngày ấy Elin làm việc của cô.</p>
+<p>Cô lấy mười một mẫu ở bốn chỗ dọc tuyến hậu cần, ghi toạ độ, ghi giờ, dán nhãn, và cô lập một bảng và cô nộp bảng ấy cho người phụ trách của tổ chức cứu trợ đúng thứ Sáu, vì hợp đồng đòi một bảng tuần.</p>
+<p>Mười một mẫu ấy về sau có người dùng thật, và người dùng chúng là một tổ nghiên cứu ở Christchurch, và họ dẫn số liệu ấy trong hai bài, và cả hai bài không liên quan gì tới đêm ấy.</p>
+<p>Toản làm việc của cậu. Cậu ngồi hai ngày ở nhà chờ tuyến hậu cần và cậu nghe. Cậu không hỏi ai câu nào. Cậu chỉ ngồi ở chỗ có người đi qua, và trong hai ngày cậu ghi được hai mươi ba mẩu, và cậu xếp chúng theo cột giờ như mọi khi.</p>
+<p>Ngày 23 tháng 9, lúc 15:40, xe của tổ khảo sát bị giữ ở chốt K-9 chiều vào.</p>
+<p>Người trực đọc giấy, đọc chậm, đọc đủ, rồi đưa lại và chỉ vào ô thứ tư.</p>
+<p>Mã thông hành trên giấy đi đường của họ là mã quý ba. Mã quý ba hết hiệu lực lúc 0 giờ ngày 22 tháng 9.</p>
+<p>Người ta giữ ba tiếng, xem giấy, lập biên bản, và trả lại đủ. Không mất tờ nào. Không ai bị đánh. Người trực có nói là nếu tổ chức cứu trợ gửi lại bản kê nhân sự với mã quý bốn thì đi được, và cái đó đúng, và làm cái đó mất từ chín tới mười bốn ngày.</p>
+<p>Ông Đô ký vào biên bản và ghi giờ.</p>
+<p>Toản lấy mã ấy ngày 18 tháng 8, và ngày 18 tháng 8 thì nó đúng.</p>
+<p>Việc đổi mã theo lịch quý được ghi trong một văn bản ban hành từ năm 2063, mục 4, và nó đổi vào ngày cuối cùng của tuần thứ mười hai mỗi quý, và năm nay ngày ấy rơi vào 21 tháng 9.</p>
+<p>Toản làm cái việc cậu vẫn làm. Cậu ngồi ở nhà chờ của chốt trong hai tiếng rưỡi và cậu đi ngược cái giờ.</p>
+<p>Cậu tìm ra bốn bản tin nội bộ nhắc tới việc đổi mã, và bản sớm nhất đề ngày 4 tháng 9, và nó là một thông báo hành chính gửi cho mười bảy đầu mối, và nó không gửi cho tổ chức cứu trợ vì tổ chức cứu trợ không nằm trong mười bảy đầu mối, và cái đó đúng quy định.</p>
+<p>Không có ai. Không có chỗ nào rò. Không có người thứ hai nào biết lịch của nhóm.</p>
+<p>Cái mẹo của cậu chạy hết một vòng và nó ra một cái không có ai ở giữa.</p>
+<p>Cậu ngồi với chuyện đó chừng mười phút. Rồi cậu ra chỗ ông Đô đang đứng hút thuốc ngoài cửa và cậu nói bốn chữ.</p>
+<p>"Không phải tại ai."</p>
+<p>Ông Đô nói ừ.</p>
+<p>Cửa sổ ở mặt trong vành đai đêm 24 rạng 25 tháng 9 là cửa sổ duy nhất của cả quý.</p>
+<p>Nó không phải là một cửa sổ ai mở ra cho họ. Nó là lịch bảo dưỡng.</p>
+<p>Con đường công vụ đông nằm trong cung của cụm 7-D, và cung của cụm 7-D chồng lên cung của cụm 7-E ở đúng chỗ ấy. Một cụm nghỉ thì cụm kia vẫn phủ, và quy tắc phủ chồng là quy tắc gốc của cả giao thức.</p>
+<p>Hai cụm liền nhau chỉ cùng nghỉ trong đợt bảo dưỡng lớn, mỗi cung một lần một quý, và lịch bảo dưỡng lớn quý ba của cung đông đặt cụm 7-D và cụm 7-E cùng nghỉ từ 03:10 đến 04:00 ngày 25 tháng 9.</p>
+<p>Đợt sau là quý tư, tháng chạp.</p>
+<p>Phiên họp khai mạc ngày 3 tháng 10.</p>
+<p>Elin mở cái hòm nhôm của cô ra ở nhà chờ chốt K-9 lúc gần bảy giờ tối và cô kiểm lại một lượt, và cô kiểm nó theo lối cô kiểm mọi thứ, tức là cô đọc danh mục và sờ từng cái.</p>
+<p>Trong hòm có: một cân đĩa và bộ quả cân, hai cái thước lá, một cái thước dây, máy ảnh và bốn cuộn phim, mười bốn cái túi niêm phong có số, một tập biểu mẫu bàn giao ba mươi tờ in sẵn ba liên, và một cuốn sổ bìa cứng giấy kẻ ô, gáy khâu chỉ, chưa viết dòng nào.</p>
+<p>Cô đóng hòm lại và cô khoá nó.</p>
+<p>Cô không mở nó ra lần nữa.</p>
+<p>Trước khi đi, ở trạm, ngày 12 tháng 8, cô có làm một việc.</p>
+<p>Cô lấy cuốn sổ giấc mơ ra và cô ghi ba từ khoá vào cột cuối, và ba từ khoá ấy không phải của một giấc mơ, vì tháng ấy cô không mơ gì cả. Cô ghi chúng vì cô cần một chỗ để đặt ba chữ ấy xuống.</p>
+<p>Rồi cô đưa cột ấy cho Toản, đúng như chín năm nay.</p>
+<p>Toản tìm trong nguồn công khai ba ngày và cậu về với hai bàn tay không.</p>
+<p>"Không có cái thứ hai." Cậu nói.</p>
+<p>"Ừ."</p>
+<p>"Anh có coi kỹ."</p>
+<p>"Em biết."</p>
+<p>Luật của nhóm từ năm 2059 là không đi vì một giấc mơ, đi vì một giấc mơ cộng thêm một lý do khác. Trong tám năm cái luật ấy chạy hai mươi sáu lần và nó chưa hỏng lần nào.</p>
+<p>Lần này cái thứ nhất không phải một giấc mơ và cái thứ hai không có.</p>
+<p>Cô đi.</p>
+<p>Nhân hai mươi tuổi.</p>
+<p>Cậu ở tổ kiểm soát trung chuyển K-9 từ ngày 2 tháng chạp năm 2066, mười tháng. Ba ca. Việc của cậu là ghi và ký.</p>
+<p>K-9 kiểm hai chiều. Chiều vào thì kiểm giấy đi đường, mã thông hành, và bản kê hàng. Chiều ra thì kiểm bản kê và niêm phong. Một ngày qua chốt chừng ba chục lượt xe, và trong ba chục lượt ấy có hai lượt là xe của chính K-9.</p>
+<p>Lượt thứ nhất là xe chở biểu mẫu, phụ tùng lẻ và bưu kiện vào sáu cụm hoả lực phía đông, đi lúc hai giờ sáng, về trước sáu giờ. Nó đi hai người, một lái và một ghi.</p>
+<p>Người ghi có nhiệm vụ nhận lại tờ mục 7 của từng cụm, đối chiếu cột thứ hai với sổ, và ký.</p>
+<p>Từ tháng 4 năm 2067, người ghi trong lượt ấy là Nhân, vì cậu là người trong tổ ghi mục 7 nhanh nhất và ít sai nhất.</p>
+<p>Mười tháng ấy của cậu thì không có gì để kể.</p>
+<p>Cậu dậy lúc năm giờ hoặc lúc một giờ chiều hoặc lúc chín giờ tối tuỳ ca. Cậu ăn ở nhà ăn số hai. Cậu ghi. Ở K-9 không có tiếng bắn, vì K-9 cách vành đai bốn mươi hai cây về phía bắc, và bốn mươi hai cây thì cái tiếng ấy không tới, kể cả qua nền đất.</p>
+<p>Ba tuần đầu cậu không ngủ được vì im.</p>
+<p>Cậu quen chỗ này nhanh, và cậu quen nhanh vì việc ở đây giống việc cậu đã làm từ năm chín tuổi. Người ta đưa giấy, cậu chép sang sổ, cậu ký. Sổ trực K-9 có bốn cột và cậu chưa để sót một dòng nào trong mười tháng.</p>
+<p>Cậu nhận thư ngày 19 tháng 9.</p>
+<p>Cậu đọc nó hai lần, ở chỗ để xe, đứng, rồi cậu gấp làm tư theo nếp cũ và bỏ vào túi ngực áo trong.</p>
+<p>Thư có mười một dòng và cậu đọc dòng cuối cùng ba lần.</p>
+<p>Cậu không hỏi ai một câu nào trong bốn ngày sau đó.</p>
+<p>Cái cậu làm trong bốn ngày ấy là cậu đọc lịch bảo dưỡng, và cậu đọc nó không phải theo lối tìm một chỗ hở, mà theo lối cậu vẫn đọc nó, tức là đọc cột thứ tư.</p>
+<p>Cụm 7-D. 03:10 tới 04:00. Ngày 25.</p>
+<p>Lượt xe của cậu đi lúc hai giờ, và cụm 7-D là cụm thứ tư trên đường, và giờ cậu tới đó theo lịch chạy bình thường là 03:20.</p>
+<p>Cậu biết lệnh thường trực.</p>
+<p>Lệnh thường trực nói bất cứ vật gì thu được ở khu vực trong vành đai phải báo cáo ngay và không được di chuyển trước khi có người của ban an ninh. Lệnh thường trực nói xe công vụ không được chở người hoặc vật ngoài bản kê. Lệnh thường trực nói người trực không được rời phương tiện quá một trăm mét.</p>
+<p>Cậu biết trong hồ sơ người ta sẽ đọc ra cái gì. Cậu đã ghi sổ bốn năm và cậu biết một dòng ghi thì về sau người ta đọc nó ra làm sao.</p>
+<p>Cậu tính chuyện đó trong đêm 22, nằm ngửa, không ngủ, và cậu tính xong thì cậu thôi.</p>
+<p>Cái cậu không tính được là người lái.</p>
+<p>Lượt xe đi hai người, và người lái là một anh ba mươi tuổi tên Kỳ, quê ở đâu thì cậu không biết, và hai người đã đi với nhau chừng bảy chục lượt và nói với nhau chừng bảy chục câu.</p>
+<p>Cậu nghĩ tới chuyện nói cho anh Kỳ biết, và cậu bỏ, không phải vì cậu sợ anh ấy không chịu. Cậu bỏ vì nếu anh ấy chịu thì trong hồ sơ sẽ có hai cái tên.</p>
+<p>Sáng 24 cậu đổi ca với thằng nhỏ mười tám tuổi để lấy ca một, và đổi ca thì phải ghi vào sổ phân ca, và cậu ghi, và cậu ghi lý do là đổi theo nguyện vọng cá nhân, vì cột lý do trong sổ phân ca có ba dòng và người ta ghi câu ấy mỗi ngày.</p>
+<p>Cậu đổi ca vì ca một thì hết lúc mười bốn giờ, và cậu cần buổi chiều.</p>
+<p>Cái quyết định thì cậu không nhớ mình đã ra lúc nào.</p>
+<p>Cậu có thử nhớ lại, trong đêm 23, và cậu không tìm ra một cái giờ nào. Không có lúc nào cậu ngồi xuống và nghĩ có nên hay không. Cái cậu nhớ là ngày 19 cậu đọc thư ở chỗ để xe, và ngày 20 cậu ra bảng lịch bảo dưỡng và cậu tìm cụm 7-D, và giữa hai việc ấy thì không có gì.</p>
+<p>Cậu đi tìm cụm 7-D theo lối cậu đi lấy đồ ở kho.</p>
+<p>Có một chuyện cậu biết mà cậu không nghĩ tới trong bốn ngày ấy, và cậu chỉ nghĩ tới nó đúng một lần, vào đêm 23, và nghĩ chừng một phút rồi thôi.</p>
+<p>Chuyện ấy là năm 2059 cậu có nghe một người đàn bà nói một câu trong bếp, và câu ấy cậu đã nói ra một lần ở nhà ca số hai đêm 3 tháng 4 năm 2066, và thằng Chuẩn đã cười.</p>
+<p>Cậu không nối hai chuyện ấy lại với nhau. Cậu chỉ nghĩ tới câu ấy, một phút, rồi cậu quay sang nghĩ tới cái xe.</p>
+<p>Ngày 24, ca một, cậu làm hết ca.</p>
+<p>Buổi trưa cậu ăn hết suất của mình. Cậu ăn hết cả phần cơm và cả phần thịt hộp, và cậu ăn hết cả cái bánh ngọt trong khẩu phần tăng cường mà cậu vẫn để dành cho người khác, vì trong tổ có một thằng mười tám tuổi hay đói.</p>
+<p>Bốn giờ chiều cậu trả cái đèn pin.</p>
+<p>Cậu mượn nó của anh Tuyên hồi tháng 7, cái đèn pin nhỏ có kẹp áo, và anh Tuyên đã bảo cậu cứ giữ mà dùng. Cậu mang sang nhà ca cụm 7-B, đưa tận tay, và anh Tuyên hỏi răng trả, và cậu nói của anh thì anh giữ.</p>
+<p>Anh Tuyên cầm lấy và bỏ vào túi và hai người nói chuyện chừng năm phút về chuyện một cái van hỏng.</p>
+<p>Cậu không viết thư cho ai.</p>
+<p>Cậu có giấy. Trong ngăn bàn của tổ có cả một tập giấy viết thư in sẵn dòng kẻ, phát cho lính, không mất tiền, và cậu có bốn tiếng rảnh trong buổi tối ngày 24.</p>
+<p>Cậu ngồi ở bàn ấy từ tám giờ tới chín giờ rưỡi và cậu đọc lại sổ trực trang 210 tới 214, đối chiếu cột thứ ba, và cậu tìm ra hai chỗ ghi thiếu số hiệu và cậu bổ sung cả hai.</p>
+<p>Cậu bổ sung chúng bằng bút mực đen, đúng cỡ chữ của người ghi trước, và ở lề ngoài cậu ghi ngày bổ sung, vì bản hướng dẫn nói bổ sung thì phải ghi ngày.</p>
+<p>Rồi cậu đóng sổ và để nó vào ngăn, gáy quay ra ngoài.</p>
+<p>Rồi cậu đi nằm.</p>
+<p>Từ 03:12 tới 03:52 không có tin gì.</p>
+<p>Ba người ngồi ở nhà chờ chốt K-9, phía ngoài, và họ ngồi ở đó vì đó là chỗ duy nhất có lò sưởi và vì xe của họ vẫn đang bị giữ ở bãi.</p>
+<p>Ông Đô ngồi quay mặt ra cửa.</p>
+<p>Toản đi ra ngoài hai lần, mỗi lần chừng bốn phút, và cả hai lần cậu vào thì cậu không nói gì.</p>
+<p>Elin ngồi với cái hòm nhôm đặt dưới chân ghế. Cô để tay lên nắp hòm và cô để nguyên như thế, và trong bốn mươi phút ấy cô không mở nó ra, vì không có gì để cân và không có ai giao cho cô cái gì.</p>
+<p>Cô nghĩ tới một chuyện, và chuyện ấy là một cái bảng cỡ giày sai của một nước khác.</p>
+<p>Cô không biết vì sao cô nghĩ tới nó và cô không đuổi nó đi.</p>
+<p>Ba người không biết gì cả trong bốn mươi phút ấy, và họ cũng không biết gì trong bốn mươi phút trước đó, và cũng không biết gì trong cả ngày 24.</p>
+<p>Họ không biết ai đi. Họ không biết có ai đi hay không. Cái họ biết là cửa sổ ở đâu và cửa sổ dài bao lâu, và cái đó thì Bảo Thư đã viết vào một tờ giấy ở Gò Sen ngày 21 tháng 8, và Mai đã chép nó vào một cái thư, và cái thư ấy đi mười tám ngày.</p>
+<p>Ông Đô có nhìn đồng hồ. Ông nhìn nó lúc 03:12 và lúc 03:40, và giữa hai lần ấy ông không nhìn, và ông ngồi thẳng lưng, hai bàn tay để trên đầu gối.</p>
+<p>Đến 03:52 thì bên ngoài có một cái xe chạy vào bãi và có tiếng người, và ba người đứng dậy, và cái xe ấy là xe chở dầu.</p>
+<p>03:33, cụm 7-D nổ máy lại.</p>
+<p>Tổ bảo dưỡng của cụm 7-D thay xong bốn nòng trong hai mươi ba phút thay vì năm mươi phút, vì nòng thứ hai vào trơn và vì tổ ấy đã thay hai trăm mấy chục cái nòng trong hai năm và họ làm việc ấy tốt.</p>
+<p>Mục 5 của bản hướng dẫn nói khôi phục hoả lực ngay khi hoàn tất, không chờ hết khung giờ đã đăng ký.</p>
+<p>Tổ trưởng ký lúc 03:31 và cụm lên lúc 03:33.</p>
+<p>Ông ta làm đúng.</p>
+<p>Ba người biết là có một cái xe mất vào lúc chín giờ sáng ngày 25, và họ biết vì cả cái nhà chờ đều biết.</p>
+<p>Người ta nói một cái xe công vụ vào cung 7-D ban đêm và không ra. Người ta nói hai người. Người ta nói cụm lên sớm. Trong ba tiếng buổi sáng ấy, Toản ghi được sáu mẩu về chuyện đó và sáu mẩu ấy khác nhau ở số người và giống nhau ở cái giờ.</p>
+<p>Không ai trong ba người biết cái xe ấy là cái gì đối với họ.</p>
+<p>Toản có ghi sáu mẩu ấy vào phiếu, xếp theo cột giờ, và cậu để chúng vào xấp cùng với hai mươi ba mẩu hai hôm trước.</p>
+<p>Elin viết vào bảng tuần, ở cột ghi chú, ba chữ: không vào được.</p>
+<p>Chiều 25 họ nhận được trả lời của tổ chức cứu trợ về bản kê nhân sự mã quý bốn, và trả lời nói sớm nhất là ngày 6 tháng 10.</p>
+<p>Ngày 26, ông Đô nói ba người về, và chuyến tiếp vận ra sớm nhất là ngày 2 tháng 10.</p>
+<p>Sáng 25 tháng 9, lúc 06:20, tổ thu hồi tới cây số bốn của đường công vụ đông.</p>
+<p>Biên bản hiện trường lập tại chỗ, ba liên, có sơ đồ vẽ tay, có giờ, có bốn chữ ký.</p>
+<p>Trên sơ đồ vẽ tay, đầu xe quay về hướng bắc.</p>
+<p>Trong mục kê hiện vật thu được có bảy dòng.</p>
+<p>Dòng thứ nhất là một cái cặp bìa cứng đựng mười bốn tờ mục 7, và trong mười bốn tờ ấy có sáu tờ đã ký và tám tờ chưa. Dòng thứ hai là một cái bình giữ nhiệt. Dòng thứ ba là một túi bưu kiện chưa phát, bảy kiện.</p>
+<p>Dòng thứ sáu ghi: một vật hình hộp, chất liệu không xác định, dài 61 cm, rộng 24 cm, cao 22 cm, nặng 19,4 kg, bề mặt liền không có mối nối, không có bộ phận chuyển động, nhiệt độ bề mặt 11 độ C và không đổi trong ba giờ theo dõi. Không thuộc danh mục trang bị. Đánh số hiện vật K9/2067/0311.</p>
+<p>Người lập biên bản không biết cái đó là cái gì và người lập biên bản ghi đúng cái mình đo được.</p>
+<p>Vì nó không thuộc danh mục trang bị và không xác định được, nó đi theo tuyến hiện vật chưa xác định.</p>
+<p>Tuyến ấy có ba chặng và chặng cuối là ban thư ký Tổ công tác 7.</p>
+<p>Tháng 5 năm 2065, giáo sư Elias Rourke, thành viên đương nhiên của Tổ công tác 7, có nộp một đề nghị thường trực dài một trang, xin chuyển tới tổ công tác bản kê và hiện vật của mọi trường hợp hiện vật chưa xác định thu được trong phân khu bảy. Đề nghị ấy được chấp thuận trong bốn tuần vì nó không tốn gì.</p>
+<p>Trong hai năm bốn tháng, tuyến ấy chuyển tới tổ công tác hai mươi hai hiện vật.</p>
+<p>Hiện vật thứ nhất là một mảnh vỏ thùng. Hiện vật thứ mười bảy là một cái găng tay.</p>
+<p>Hiện vật thứ hai mươi ba tới ban thư ký Tổ công tác 7 lúc 11:00 ngày 2 tháng 10 năm 2067, kèm bản sao biên bản hiện trường, kèm bản trích lục sổ trực, và kèm bảy chữ ký nối tiếp nhau ở mặt sau tờ bàn giao.</p>
+<p>Không ai buôn lậu cái gì. Không ai giấu cái gì. Cái dây giữ mà Elin định lập bằng mười bốn cái túi niêm phong có số thì đã có sẵn, và nó do bảy người lập ra, và trong bảy người ấy không ai biết mình đang lập cái gì.</p>
+<p>Bản trích lục sổ trực K-9, quyển bốn, trang 216, dòng thứ chín.</p>
+<p>Nó có bốn cột.</p>
+<p>Cột giờ: 02:04.</p>
+<p>Cột nội dung: xe công vụ 04 xuất bãi, lượt biểu mẫu và bưu kiện, sáu cụm phía đông.</p>
+<p>Cột số hiệu: hai số hiệu quân nhân, người lái và người ghi.</p>
+<p>Cột chữ ký: hai chữ ký.</p>
+<p>Ở dòng thứ mười một, giờ 06:44, cột nội dung có mười hai chữ và cột chữ ký có một chữ ký.</p>
+<p>Trong ngoặc, sau số hiệu thứ hai của dòng thứ chín, ban thư ký đơn vị đánh máy tên người vào bản trích lục cho dễ đối chiếu.</p>
+<p>Tên ấy đánh máy sai một chữ.</p>
+<p>Ngày 28 tháng 9, lúc chín giờ sáng, có người của phòng quân lực tới nhà chờ hỏi ai là đại diện tổ khảo sát điều kiện đất và nước.</p>
+<p>Ông Đô đứng dậy.</p>
+<p>Người ấy hỏi ông có phải là ông Trần Minh Huân không, và ông nói phải, và trên đường đi ông không hỏi câu nào, vì ông biết hỏi trên đường thì không ai trả lời.</p>
+<p>Ông Đô nhận bản trích lục và hai túi tư trang ngày 28 tháng 9, ở phòng quân lực, vì ông là người có tên trong ô người nhận, do trong hồ sơ của cậu ô ấy ghi tổ khảo sát điều kiện đất và nước và ghi số hợp đồng, và cái đó là do một người ở phòng quân lực điền vào theo tờ giấy gần nhất có mặt trên bàn.</p>
+<p>Sổ tư trang của đơn vị có ba ô.</p>
+<p>Ô thứ nhất: một cái đồng hồ đeo tay, dây vải, mặt nứt góc dưới.</p>
+<p>Ô thứ hai: một cái ví, trong có ba tờ giấy tờ tuỳ thân và một tờ giấy gấp làm tư.</p>
+<p>Ô thứ ba: một con dao con.</p>
+<p>Cái áo len xám, dày, cỡ người lớn, thì không nằm trong ba ô ấy.</p>
+<p>Người ghi sổ tư trang ở đơn vị là một người hai mươi sáu tuổi, và người ấy chọn ba món theo hướng dẫn, và hướng dẫn nói chọn ba món có giá trị nhất.</p>
+<p>Ông Đô hỏi ở phòng quân lực đúng một câu.</p>
+<p>Ông hỏi hiện vật thu được ở hiện trường thì đi đâu.</p>
+<p>Người ở phòng quân lực nói cái đó không thuộc phòng này, và chỉ cho ông sang ban hậu cần, và nói thêm là bên đó chỉ trả lời cho đơn vị chứ không trả lời cho người nhận tư trang.</p>
+<p>Ông nói cảm ơn.</p>
+<p>Ông không sang ban hậu cần, vì ông đã nghe ra là đi cũng không được gì, và vì ông sáu mươi mốt tuổi và ông đã đi ba chặng như thế trong đời rồi.</p>
+<p>Ông Đô đọc bản trích lục ở ngoài hành lang, đứng, dưới một cái đèn.</p>
+<p>Ông đọc hết cả trang, cả dòng thứ chín và dòng thứ mười một, rồi ông đọc lại dòng thứ chín.</p>
+<p>Rồi ông rút cây bút chì trong túi ngực ra.</p>
+<p>Ông gạch một nét qua chữ sai, và ông viết chữ đúng lên phía trên, nhỏ và ngay ngắn, đúng cỡ chữ đánh máy, theo lối một người lính già sửa hộ một tờ khai điền sai.</p>
+<p>Rồi ông đọc lại cả dòng một lần cho chắc.</p>
+<p>Bản trích lục ấy là bản sao. Bản gốc nằm ở quyển bốn của sổ trực K-9, ở trang 216, và trên bản gốc thì cái tên không đánh máy, nó không có ở đó, vì cột số hiệu của sổ trực chỉ ghi số hiệu.</p>
+<p>Việc ông vừa làm không sửa được cái gì ở bất cứ đâu.</p>
+<p>Ông gấp tờ giấy lại, bỏ vào túi trong, và đi ra chỗ hai người kia đang ngồi.</p>
+<p>Tin về tới trạm thực địa ngày 14 tháng 10.</p>
+<p>Diễm nhận, và cô đọc cái bì thư trước khi mở, và cô ngồi im chừng nửa phút.</p>
+<p>Rồi cô làm cái việc cô làm được, tức là cô nói cho chị Liên biết những giấy tờ nào sẽ tới và tới theo thứ tự nào: giấy báo tử trước, rồi biên bản, rồi quyết định trợ cấp, và ba thứ ấy đi ba đường khác nhau và không đến cùng lúc, và cái thứ ba có thể mất nửa năm.</p>
+<p>Cô nói cả chuyện ô người thân trong hồ sơ, và cô nói rằng nếu ô ấy không đúng thì phải làm một cái đơn đính chính, và cái đơn ấy phải có xác nhận của ủy ban xã.</p>
+<p>Cô nói những chuyện đó bằng giọng đều, và cô biết hết, từng bước một, không phải vì cô đọc quy định.</p>
+<p>Năm 2058, ở một cái phòng có tủ hồ sơ kê sát ba mặt tường, Diễm đã đọc hết tập hồ sơ mang tên cô, và trong tập ấy có một tờ giấy khai tử, và ở ô chữ ký người khai có tên anh trai cô, ký ngày tháng thứ mười một.</p>
+<p>Chị Liên hỏi cô răng mà rành rứa.</p>
+<p>Diễm nói tại nghề.</p>
+<p>Bảo Thư đi Gò Sen sáng 15 tháng 10.</p>
+<p>Cô đạp xe tám cây, và cô tới nơi lúc gần chín giờ, và cô dựng xe ở ngoài, và cô không vào sân ngay.</p>
+<p>Mai đang ở ngoài giếng.</p>
+<p>Cô đang đếm chỗ chai không của trạm y tế xã gửi nhờ, đếm để trưa có người tới lấy, và cô đếm tới hai mươi mấy thì cô nhìn lên và thấy Bảo Thư đứng ở cổng.</p>
+<p>Cô để cái chai đang cầm xuống, đặt nó vào hàng, ngay ngắn.</p>
+<p>Bảo Thư đi vào tới giữa sân rồi mới dừng lại.</p>
+<p>Mai nhìn cô một lúc.</p>
+<p>"Mấy giờ?" Mai nói.</p>
+</article>
+
+
+<svg class="rift-small" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+</svg>
+
+
+<div class="chapter-foot">
+  <nav class="chapter-nav" aria-label="Điều hướng chương">
+    <a class="prev" href="chuong-20.html"><span class="lbl">Trước</span><span class="ttl">Viết Ra Cả Bìa</span></a>
+    <a class="toc-link" href="index.html" aria-label="Về mục lục"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></a>
+    <a class="next" href="chuong-22.html"><span class="lbl">Sau</span><span class="ttl">Mười Bảy Cái Ghế, Lần Cuối</span></a>
+  </nav>
+</div>
+
+<footer class="sitefoot">
+  <p>Khúc Ai Ca Cho Những Kẻ Vô Danh — Vòng Tuần Hoàn Người Gieo Hạt · Quyển II</p>
+  <p>© 2026 Nguyễn Duy Anh (bút danh: Mendingur). Bản quyền tác phẩm thuộc về tác giả.</p>
+</footer>
+
+<script src="glow.js" defer></script>
+</body>
+</html>

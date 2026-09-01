@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dãy Ghế Không Nằm Được — Khúc Ai Ca Cho Những Kẻ Vô Danh</title>
+<meta name="description" content="Vòng Tuần Hoàn Người Gieo Hạt · Quyển II — tiểu thuyết của Mendingur">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="style.css">
+<script src="reader.js" defer></script>
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem('mendingur-theme');
+    var theme = saved === 'dark' || saved === 'light'
+      ? saved
+      : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+  <linearGradient id="wingGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="55%" stop-color="#C99A3E"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+  <radialGradient id="coreGlow" cx="50%" cy="55%" r="55%">
+    <stop offset="0%" stop-color="#FFF6DE" stop-opacity="0.95"/>
+    <stop offset="55%" stop-color="#E4C077" stop-opacity="0.35"/>
+    <stop offset="100%" stop-color="#E4C077" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="flowerGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+</defs>
+</svg>
+<div class="grain"></div>
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+<div class="settings-menu" id="settingsMenu">
+  <button class="menu-toggle" type="button" id="settingsMenuToggle" aria-haspopup="true" aria-expanded="false" aria-controls="settingsPopover" aria-label="Cài đặt giao diện">
+    <span class="menu-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+  </button>
+  <div class="settings-popover" id="settingsPopover" role="menu">
+    <div class="settings-group">
+      <p class="settings-group-label">Giao diện</p>
+      <div class="theme-switcher" id="themeSwitcher" role="group" aria-label="Giao diện sáng / tối">
+        <button class="theme-btn active" type="button" data-theme-choice="light" aria-pressed="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <span>Sáng</span>
+        </button>
+        <button class="theme-btn" type="button" data-theme-choice="dark" aria-pressed="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+          <span>Tối</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<header class="sitebar">
+  <a class="brand" href="index.html">
+    <span class="mark"><svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sower's Cycle mark">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+<g transform="translate(200,278)">
+  <g><ellipse rx="14" ry="21" transform="rotate(0)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(72)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(144)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(216)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(288)" fill="url(#flowerGrad)"/></g>
+  <circle r="9.5" fill="#FFF6DE"/>
+</g>
+<g transform="translate(200,96)"><path d="M0,-24 C2,-7 7,-2 24,0 C7,2 2,7 0,24 C-2,7 -7,2 -24,0 C-7,-2 -2,-7 0,-24 Z" fill="#F3D488"/></g>
+</svg></span>
+    <span class="word">Khúc Ai Ca Cho Những Kẻ Vô Danh</span>
+  </a>
+  <nav>
+    <a href="index.html" class="toc-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      Mục lục
+    </a>
+  </nav>
+</header>
+<div class="progress-track"><div class="progress-fill"></div></div>
+
+<header class="chapter-head">
+  <p class="crumb"><a href="index.html">INTROITUS · NGƯỜI ĐÃ NGỒI SẴN Ở ĐÓ</a></p>
+  <span class="cnum">Chương 5</span>
+  <h1>Dãy Ghế Không Nằm Được</h1>
+  <div class="font-toggle" role="group" aria-label="Cỡ chữ">
+    <button type="button" data-size="sm" aria-pressed="false">A-</button>
+    <button type="button" data-size="md" aria-pressed="true">A</button>
+    <button type="button" data-size="lg" aria-pressed="false">A+</button>
+  </div>
+</header>
+
+<article class="prose" data-size="md">
+<p>Cửa máy bay mở lúc hai giờ mười chiều, và thứ đầu tiên vào người Elin không phải là cái nóng.</p>
+<p>Là nước.</p>
+<p>Không khí có nước trong nó, nhiều đến mức cô thấy nó ở trong phổi ngay hơi thở đầu tiên, và trong ba giây cô có cảm giác mình đang hít vào một thứ hơi ấm mà ai đó vừa thở ra. Đến bậc thang thứ tư thì kính cô mờ. Cô tháo kính ra và không đeo lại cho tới lúc vào trong nhà ga.</p>
+<p>Cô đã đọc con số độ ẩm tương đối của vùng này. Cô đã dùng nó, không dưới ba mươi lần, để tính bốc hơi mặt đất trong các bảng của mình.</p>
+<p>Người ở quầy nhập cảnh lật hộ chiếu cô, nhìn màn hình, rồi nhìn cô, rồi hỏi một câu bằng tiếng Anh mà giọng anh ta làm cô mất hai giây mới ráp ra được. Anh ta hỏi cô ở lại bao lâu. Cô nói sáu tháng. Anh ta đóng dấu.</p>
+<p>Xe của tổ chức đón cô ở cửa và chở sáu mươi tám cây số về ga.</p>
+<p>Suốt sáu mươi tám cây số ấy Elin nhìn ra ngoài cửa kính và làm cái việc cô không nhịn được.</p>
+<p>Đất bên đường có màu đỏ ở đoạn đầu, đỏ hơn mọi thứ cô từng nhìn thấy ngoài ảnh, và cô biết cái đỏ ấy là sắt, và cô biết sắt nhiều thì lân bị giữ lại. Đến đoạn giữa thì đổi sang xám, rồi lại đỏ. Có một mảnh ruộng bỏ, cỏ mọc cao ngang hông, và ngay cạnh nó là một mảnh đang cấy, và hai mảnh cách nhau đúng một bờ.</p>
+<p>Trong ba tháng đọc tài liệu, cô đã đọc bốn mươi mốt bài về vùng này. Không bài nào nói với cô rằng hai mảnh ruộng cách nhau một bờ có thể khác nhau đến thế, và không bài nào giải thích được vì sao.</p>
+<p>Cô lấy sổ ra và ghi: <em>bờ. một bờ. hỏi.</em></p>
+<p>Rồi xe đến ga, và cô xuống, và tàu của cô đã đi trước đó bốn mươi phút.</p>
+<hr class="scene-break" aria-hidden="true">
+<p>Chuyến bay hạ cánh muộn bốn tiếng hai mươi phút, đúng bằng thời gian bay vòng, và tàu nối của cô rời ga lúc mười tám giờ ba mươi lăm khi cô còn cách đó bốn mươi cây số.</p>
+<p>Chuyến sau là năm giờ hai mươi sáng.</p>
+<p>Người bán vé nói với cô ba lần, mỗi lần chậm hơn lần trước, và Elin vẫn không hiểu. Cuối cùng chị ta xé một mảnh giấy nhỏ, viết 5:20, đẩy qua ô cửa, rồi chỉ tay về phía dãy ghế.</p>
+<p>Elin nói cảm ơn. Cô biết chữ đó. Đó là một trong bốn chữ cô biết.</p>
+<p>Phòng vé đóng lúc mười một giờ. Khu chờ thì để mở, vì có tàu đêm chạy qua không dừng và vì người ta không khoá được cái cửa ấy, bản lề đã hỏng từ lâu và có một viên gạch chèn ở dưới.</p>
+<p>Chín giờ tối, nhiệt độ ba mươi tư độ.</p>
+<p>Elin không biết trước là ba mươi tư độ ban đêm thì như thế nào. Cô đã đọc con số đó nhiều lần trong các bảng khí hậu và cô đã dùng nó để tính bốc hơi mặt đất. Bây giờ cô ngồi trong nó. Mồ hôi không bay đi đâu cả. Nó ở lại trên da, dưới cổ áo, ở khuỷu tay, và sau bốn tiếng thì áo cô ướt theo một hình dạng cố định và không đổi nữa.</p>
+<p>Cái ghế bằng kim loại sơn xanh, và cái ghế thì ấm.</p>
+<p>Dãy ghế có mười hai chỗ, nối liền nhau thành một khối, và giữa mỗi chỗ có một cái tay vịn hàn chết. Elin ngồi khoảng nửa tiếng rồi mới hiểu ra rằng cái tay vịn ấy không phải để tì tay. Nó ở đó để không ai nằm được. Cô hiểu điều đó vào lúc cô thử nằm.</p>
+<p>Điện thoại còn ba mươi mốt phần trăm. Không có ổ cắm nào trong khu chờ. Có hai cái ở chân cột, cả hai đều bị bóc mặt nạ và bên trong không còn gì.</p>
+<p>Cô tắt hết những thứ tắt được, để lại đúng đồng hồ.</p>
+<p>Trên trần có một cái quạt trần, và một cánh của nó bị lệch, nên mỗi vòng quay nó lại chạm vào cái gì đó và kêu một tiếng tách rất nhỏ. Bốn mươi ba vòng một phút. Elin đếm hai lần để chắc.</p>
+<p>Cô mở túi xách, kiểm tra lại thuốc, kiểm tra lại hộ chiếu, đóng túi lại. Cô làm việc đó ba lần trong hai tiếng, và cô biết mình đang làm gì, và cô vẫn làm.</p>
+<p>Giữa chín giờ và mười một giờ có ba chuyến tàu chạy qua mà không dừng. Mỗi lần, cả toà nhà rung nhẹ trong khoảng mười hai giây, tiếng tách của cái quạt chìm đi, rồi tàu qua rồi thì nó lại có.</p>
+<p>Ở đầu kia khu chờ có một nhà bốn người trải bìa các tông ra nền gạch và nằm. Họ mang bìa theo. Hai tấm to, gấp đôi lại, và một cái khăn cuộn làm gối.</p>
+<p>Elin nhìn mấy tấm bìa ấy, rồi nhìn cái tay vịn hàn chết giữa hai chỗ ngồi của mình.</p>
+<p>Cô không đi tìm bìa. Cô không biết bìa ở đâu và cô không hỏi được, và trong hai tiếng sau đó cô nghĩ về chuyện ấy nhiều hơn mức đáng nghĩ.</p>
+<p>Khoảng mười giờ có một chị bán hàng đi qua với cái mẹt đội đầu, đặt xuống chân cột, mở ra. Bên trong có trứng luộc, bánh gói lá, và mấy chai nước ngọt.</p>
+<p>Elin đứng dậy đi tới. Cô chỉ vào một cái bánh và giơ một ngón tay. Chị bán hàng nói một con số. Elin không hiểu con số ấy, nên cô đưa ra tờ tiền to nhất trong ví.</p>
+<p>Chị bán hàng nhìn tờ tiền, rồi cười, rồi lắc đầu, rồi làm cái việc mà từ đó về sau Elin không quên: chị ta ngồi xuống, đặt tờ tiền lên mẹt, và đếm tiền thối ra thành tiếng, từng tờ một, đặt xuống trước mặt cô cho cô nhìn thấy.</p>
+<p>Chị ta đếm nhanh. Elin không bắt được một tiếng nào.</p>
+<p>Thứ duy nhất cô nhận ra là mỗi cụm đều kết bằng một âm đi xuống.</p>
+<p>Cô nghĩ, ở đây ai nói cũng thế.</p>
+<p>Cô cầm bánh, cầm tiền thối, nói cảm ơn, và về chỗ ngồi. Cái bánh gói trong lá chuối, buộc lạt, và cô mất một lúc mới mở được. Bên trong là nếp và đậu. Cô ăn hết, và nó ngon hơn cô tưởng, và cô không có cách nào hỏi tên nó.</p>
+<p>Đến gần mười một giờ, một người đàn ông đẩy xe lau sàn từ đầu kia đi tới. Cái xô có bánh xe, một bánh kẹt. Nước trong xô đục và đã lau cả ngày, và cái mùi nó để lại trên nền gạch không phải mùi sạch, nó chỉ là mùi của chính thứ nước ấy trải mỏng ra.</p>
+<p>Ông ta lau qua chỗ dưới dãy ghế, không bảo cô nhấc chân, và cô tự nhấc chân.</p>
+<hr class="scene-break" aria-hidden="true">
+<p>Người đàn ông kia đã ngồi sẵn ở đó từ trước.</p>
+<p>Elin biết chắc điều đó về sau, khi cô ngồi nhớ lại, vì lúc cô vào khu chờ lúc bảy giờ tối thì trên dãy ghế bên kia đã có một người, và cô đã ghi nhận có một người, và không nghĩ gì thêm.</p>
+<p>Ông ta ngồi ở đầu dãy đối diện, cách cô chừng bốn mét, hai bàn tay để trên đùi.</p>
+<p>Đến mười một giờ hai mươi thì ông ta nói.</p>
+<p>"Cái quạt kia lệch từ hồi người ta thay mô tơ." Ông nói. "Thợ vặn chặt quá một bên. Chỉ cần nới ra là hết, mà không ai nới."</p>
+<p>Elin ngẩng lên.</p>
+<p>Về sau cô không xác định được ông ta nói tiếng gì. Cô cũng không nhớ mình đã trả lời bằng tiếng gì. Trong suốt cuộc nói chuyện ấy, chuyện ngôn ngữ đơn giản là không có mặt, giống như người ta không để ý đến việc mình đang thở, và mãi đến sáng hôm sau, trên tàu, cô mới nhận ra rằng đó là một chuyện không thể có.</p>
+<p>"Vâng." Cô nói.</p>
+<p>"Người ăn gì chưa?"</p>
+<p>"Tôi ăn trên máy bay rồi."</p>
+<p>"Cái đó không phải ăn." Ông nói.</p>
+<p>Ông hỏi cô đi đến đâu. Cô nói tên tỉnh. Ông hỏi ba lô nặng bao nhiêu, và cô nói hai mươi mốt cân, và ông nói hai mươi mốt cân thì phải chỉnh quai ngực chứ không phải chỉnh quai vai, và cô nói vâng.</p>
+<p>"Người sang đây làm gì?"</p>
+<p>"Tôi đo đất."</p>
+<p>"Đo để làm gì?"</p>
+<p>Elin nghĩ một lúc, vì cô đã viết một trang giấy để trả lời câu này cho một tổ chức và cả trang ấy đều không phải câu trả lời.</p>
+<p>"Để biết chỗ nào còn trồng lại được." Cô nói.</p>
+<p>Ông gật đầu.</p>
+<p>"Người ở đây biết rồi." Ông nói. "Ruộng nào chết thì họ biết từ lâu. Có ông cụ chỉ cần đi qua bờ là nói được, khỏi cần cái máy nào."</p>
+<p>"Tôi biết." Elin nói. "Nhưng ông cụ ấy không đưa được cái đó lên giấy. Người ta chỉ chi tiền theo giấy. Việc của tôi là biến cái ông cụ ấy biết thành ba con số mà một người ngồi cách đây chín nghìn cây không cãi được."</p>
+<p>Ông nhìn cô.</p>
+<p>"Ừ." Ông nói. "Vậy thì người làm được việc."</p>
+<p>Có một con thiêu thân bay quanh cái đèn ống, rồi rơi xuống, rồi bò trên mặt ghế kim loại giữa hai người. Ông không phủi nó đi. Nó bò được chừng một gang rồi dừng lại và ở đó.</p>
+<p>Rồi ông nói:</p>
+<p>"Chỗ này ngày trước là bãi ủ mắm. Bốn chục cái chum, ngay sau dãy nhà kia. Ta ở đây hồi còn cái bãi ấy. Người ta dẹp lâu rồi, xây ga lên trên, nhưng mùi thì ngấm vào tường. Trời sắp mưa là nó dậy lên. Mắm ruốc trộn dầu máy."</p>
+<p>Ông nhìn cái quạt.</p>
+<p>"Người gọi nó là gì?"</p>
+<p>Elin không trả lời.</p>
+<p>Ở trang cuối cùng của cuốn sổ trong túi xách cô, dưới ba dòng viết bằng nét chữ nhỏ nhất của cô, có một cái tên gồm đúng một chữ cái. Không một người nào trên đời biết rằng cuốn sổ ấy có một trang cuối.</p>
+<p>Ông không đợi cô trả lời. Ông đã nói sang chuyện khác trước cả khi cô kịp thấy mình chưa nói gì.</p>
+<p>Cô nhìn ông.</p>
+<p>Ông chừng năm mươi tuổi, hoặc sáu mươi. Áo sơ mi. Dép. Không có gì để nhớ, và Elin, người đã học bốn năm cách mô tả một mẫu vật bằng những đặc điểm đo được, ngồi đối diện ông trong bốn mươi phút và không thu được một đặc điểm nào.</p>
+<p>Rồi cô nhìn vào mắt ông.</p>
+<p>Người cô ấm. Không có gì trong thân thể cô báo động. Nhịp tim không đổi, bàn tay không lạnh, cái áo ướt vẫn dính vào lưng ghế y như một phút trước. Về mặt thân thể, cô an toàn, và cô biết mình an toàn theo cái cách người ta biết mình đang ở trong nhà mình.</p>
+<p>Và cô kinh hoàng.</p>
+<p>Năm mười lăm tuổi, trong một chuyến thực địa ở Drenthe, người ta đào một hố phẫu diện sâu hai mét và cho học sinh xuống đứng dưới đáy để nhìn thành hố. Elin xuống. Thầy giáo chỉ vào một dải sẫm màu ngang tầm vai cô và nói dải ấy hình thành trước khi có con người trên vùng đất này. Cô đứng đó thêm khoảng mười giây rồi trèo lên, và cô trèo lên không phải vì sợ cái hố. Cái hố không làm gì cô cả. Cô trèo lên vì cô vừa đứng cạnh một thứ mà cô không có đơn vị nào để đo.</p>
+<p>Bây giờ cũng đúng như thế, và lần này thì không có bậc thang nào để trèo.</p>
+<p>Cô nhìn xuống sàn.</p>
+<p>"Rồi sẽ có kẻ nói cho người nghe rằng thứ đó cũng biết sợ." Ông nói. "Lúc ấy người sẽ không tin nổi. Cứ tin đi."</p>
+<p>Elin nhìn xuống sàn. Có một vết ố dưới gầm ghế, hình gần tròn, mép nó đã bạc.</p>
+<p>"Người sẽ được một kẻ cứu mạng." Ông nói. "Rồi chính kẻ ấy đem người đi bán. Đừng đi tìm lý do. Lý do sẽ hợp lý."</p>
+<p>Cái quạt kêu tách.</p>
+<p>Elin ngồi im khoảng mười lăm giây. Rồi cô hỏi cái câu mà cô chưa hỏi ai bao giờ, chưa hỏi ông bà, chưa hỏi bác sĩ tâm lý mà trường bắt cô gặp bốn buổi năm 2055, chưa hỏi cả trong đầu mình thành lời.</p>
+<p>"Lúc chết họ có đau không?"</p>
+<p>Ông không trả lời.</p>
+<p>Ông nhìn cái xô lau sàn ở góc phòng.</p>
+<p>"Người phải uống nước." Ông nói. "Ở đây mất nước nhanh hơn người tưởng nhiều. Đến sáng thì đã muộn rồi. Uống ngay bây giờ, một chai, đừng uống từng ngụm."</p>
+<p>Elin ngồi yên.</p>
+<p>Rồi cô mở túi xách, lấy chai nước, và uống.</p>
+<hr class="scene-break" aria-hidden="true">
+<p>Ông đứng dậy lúc gần mười hai giờ.</p>
+<p>Ông cúi xuống nhặt một thứ dưới chân ghế cô, một thứ đã rơi ra lúc cô mở túi lấy chai nước và cô không biết là đã rơi.</p>
+<p>Cái kính lúp gấp mười, vỏ đồng, gập lại thì bằng đốt ngón tay cái. Cô mua nó năm thứ hai, hàng cũ, và người bán nói cái này dùng bốn chục năm nữa vẫn được.</p>
+<p>Ông chìa nó ra.</p>
+<p>Elin cầm lấy, và cô nói cảm ơn bằng tiếng Hà Lan, hoàn toàn không cố ý, vì suốt bốn mươi phút vừa rồi không có ngôn ngữ nào cả nên cái phản xạ cũ nhất của cô nhảy ra trước.</p>
+<p>Ông gật đầu.</p>
+<p>Rồi ông đi ra cửa.</p>
+<p>Cửa có lò xo và lò xo đã yếu, nên cánh cửa không đóng hẳn, nó dừng lại cách khung chừng hai đốt ngón tay và đứng đó. Nó đã đứng như vậy suốt buổi tối, với ông thì cũng vậy.</p>
+<p>Không có gió nổi lên. Đèn không nhấp nháy. Cái quạt vẫn bốn mươi ba vòng một phút.</p>
+<hr class="scene-break" aria-hidden="true">
+<p>Elin ngồi đúng một phút rồi đứng dậy.</p>
+<p>Người lau sàn đang ngồi hút thuốc ở bậc thềm ngoài. Cô ra chỗ ông ta, và cô định hỏi, và cô không hỏi được.</p>
+<p>Cô không có từ nào. Cô chỉ tay vào dãy ghế trong kia, rồi chỉ ra cửa, rồi giơ tay ngang tầm vai để tả chiều cao, và cô dừng lại ở đó, vì cô nhận ra chiều cao ấy là cô đoán.</p>
+<p>Người lau sàn nhìn cô. Ông ta nói một câu ngắn, giọng không khó chịu, rồi lại nói câu ấy lần nữa, chậm hơn.</p>
+<p>Elin không hiểu. Cô nói cảm ơn.</p>
+<p>Trên tường khu chờ có một cái camera, gắn cao, ống kính hướng về phía ô cửa bán vé. Từ chỗ đó thì nó không thấy dãy ghế bên kia. Elin đứng dưới nó và tính góc, và cô tính đúng, và như vậy thì không có gì hết, không có xác nhận mà cũng không có phủ nhận.</p>
+<p>Cô về chỗ ngồi.</p>
+<p>Cô lấy sổ ra và bắt đầu ghi mô tả, vì mô tả là việc cô làm được.</p>
+<p class="p-note">nam. 50 đến 60.</p>
+<p>Cô nhìn dòng đó. Cô không chắc về khoảng tuổi. Cô gạch đi.</p>
+<p class="p-note">áo sơ mi sáng màu.</p>
+<p>Cô nhớ cái cổ áo. Cô không nhớ màu. Cô gạch đi.</p>
+<p class="p-note">cao 1m65 đến 1m75.</p>
+<p>Cô chưa bao giờ thấy ông đứng cạnh cái gì để so. Cô gạch đi.</p>
+<p>Cô ngồi trước ba dòng đã gạch, và cô để nguyên như vậy, và cô không viết thêm dòng nào về ông ta.</p>
+<p>Rồi cô lật về phần đầu sổ, phần kẻ theo lối biên bản thí nghiệm, và cô làm cái việc duy nhất cô còn làm được.</p>
+<p>Cô ghi ngày. Cô ghi giờ, hai mươi ba giờ hai mươi đến không giờ kém năm. Cô ghi địa điểm, ghi nhiệt độ ước lượng, ghi rằng cô đang tỉnh và đã tỉnh liên tục mười chín tiếng.</p>
+<p>Rồi cô chép lại hai câu, nguyên văn, trong ngoặc kép, vì nguyên văn là thứ cô ghi được.</p>
+<p>Cô đọc lại hai lần để chắc chắn từng chữ đúng.</p>
+<p>Cô không ghi chúng vào phần giấc mơ. Cô ghi vào phần biên bản, vì lúc nghe hai câu ấy thì cô đang thức, và trong hệ thống của cô, thức và ngủ không được để lẫn vào nhau.</p>
+<p>Bốn giờ mười hai phút, cô nhìn đồng hồ. Không phải vì cô tỉnh dậy. Cô chưa ngủ một phút nào.</p>
+<p>Đến năm giờ kém mười thì cửa phòng vé mở, và một người đàn bà xách hai cái giỏ vào ngồi ở đầu dãy ghế bên kia, và bà ta lấy trong giỏ ra một nắm cơm gói lá và ăn, và ăn xong thì gấp cái lá lại làm tư và cất vào giỏ.</p>
+<p>Elin mở cuốn sổ giấc mơ ra.</p>
+<p>Cô đưa bút xuống trang giấy, và ngòi bút chạm mặt giấy, và ở đó có một chấm mực nhỏ.</p>
+<p>Rồi cô đóng sổ lại.</p>
+<hr class="scene-break" aria-hidden="true">
+</article>
+
+
+<svg class="rift-small" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+</svg>
+
+
+<div class="chapter-foot">
+  <nav class="chapter-nav" aria-label="Điều hướng chương">
+    <a class="prev" href="chuong-04.html"><span class="lbl">Trước</span><span class="ttl">Mười Bốn Cái Biểu Mẫu</span></a>
+    <a class="toc-link" href="index.html" aria-label="Về mục lục"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></a>
+    <a class="next" href="chuong-06.html"><span class="lbl">Sau</span><span class="ttl">Vết Dao Đề Năm 2058</span></a>
+  </nav>
+</div>
+
+<footer class="sitefoot">
+  <p>Khúc Ai Ca Cho Những Kẻ Vô Danh — Vòng Tuần Hoàn Người Gieo Hạt · Quyển II</p>
+  <p>© 2026 Nguyễn Duy Anh (bút danh: Mendingur). Bản quyền tác phẩm thuộc về tác giả.</p>
+</footer>
+
+<script src="glow.js" defer></script>
+</body>
+</html>

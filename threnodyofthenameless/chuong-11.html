@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Một Cái Máy Đo — Khúc Ai Ca Cho Những Kẻ Vô Danh</title>
+<meta name="description" content="Vòng Tuần Hoàn Người Gieo Hạt · Quyển II — tiểu thuyết của Mendingur">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="style.css">
+<script src="reader.js" defer></script>
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem('mendingur-theme');
+    var theme = saved === 'dark' || saved === 'light'
+      ? saved
+      : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+  <linearGradient id="wingGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="55%" stop-color="#C99A3E"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+  <radialGradient id="coreGlow" cx="50%" cy="55%" r="55%">
+    <stop offset="0%" stop-color="#FFF6DE" stop-opacity="0.95"/>
+    <stop offset="55%" stop-color="#E4C077" stop-opacity="0.35"/>
+    <stop offset="100%" stop-color="#E4C077" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="flowerGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+</defs>
+</svg>
+<div class="grain"></div>
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+<div class="settings-menu" id="settingsMenu">
+  <button class="menu-toggle" type="button" id="settingsMenuToggle" aria-haspopup="true" aria-expanded="false" aria-controls="settingsPopover" aria-label="Cài đặt giao diện">
+    <span class="menu-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+  </button>
+  <div class="settings-popover" id="settingsPopover" role="menu">
+    <div class="settings-group">
+      <p class="settings-group-label">Giao diện</p>
+      <div class="theme-switcher" id="themeSwitcher" role="group" aria-label="Giao diện sáng / tối">
+        <button class="theme-btn active" type="button" data-theme-choice="light" aria-pressed="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <span>Sáng</span>
+        </button>
+        <button class="theme-btn" type="button" data-theme-choice="dark" aria-pressed="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+          <span>Tối</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<header class="sitebar">
+  <a class="brand" href="index.html">
+    <span class="mark"><svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sower's Cycle mark">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+<g transform="translate(200,278)">
+  <g><ellipse rx="14" ry="21" transform="rotate(0)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(72)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(144)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(216)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(288)" fill="url(#flowerGrad)"/></g>
+  <circle r="9.5" fill="#FFF6DE"/>
+</g>
+<g transform="translate(200,96)"><path d="M0,-24 C2,-7 7,-2 24,0 C7,2 2,7 0,24 C-2,7 -7,2 -24,0 C-7,-2 -2,-7 0,-24 Z" fill="#F3D488"/></g>
+</svg></span>
+    <span class="word">Khúc Ai Ca Cho Những Kẻ Vô Danh</span>
+  </a>
+  <nav>
+    <a href="index.html" class="toc-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      Mục lục
+    </a>
+  </nav>
+</header>
+<div class="progress-track"><div class="progress-fill"></div></div>
+
+<header class="chapter-head">
+  <p class="crumb"><a href="index.html">DIES IRAE · KẺ CANH NGƯỠNG CỬA</a></p>
+  <span class="cnum">Chương 11</span>
+  <h1>Một Cái Máy Đo</h1>
+  <div class="font-toggle" role="group" aria-label="Cỡ chữ">
+    <button type="button" data-size="sm" aria-pressed="false">A-</button>
+    <button type="button" data-size="md" aria-pressed="true">A</button>
+    <button type="button" data-size="lg" aria-pressed="false">A+</button>
+  </div>
+</header>
+
+<article class="prose" data-size="md">
+<p>Lịch trực máy dán ở cột hiên, viết bằng bút bi trên mặt sau một tờ lịch cũ, và có bốn cái tên.</p>
+<p>Máy phát đặt sau nhà bếp, dưới cái mái tôn thấp mà ai cao hơn một mét bảy đều phải cúi. Nó chạy dầu, nó là loại cũ, và nó có ba tật. Tật thứ nhất là phải hé le gió chừng một phần ba trong bốn phút đầu rồi mới đóng lại. Tật thứ hai là cái đầu nối ống dầu rỉ chậm, mỗi đêm chừng một thìa, nên phải kê một cái lon dưới. Tật thứ ba là sau khoảng hai tiếng thì nó nóng, và nóng thì tiếng nổ đổi, và lúc ấy phải giảm tải bằng cách rút bớt một đường ra.</p>
+<p>Vì ba cái tật ấy nên phải có người ngồi với nó.</p>
+<p>Từ bảy giờ tối đến mười giờ. Ba tiếng, mỗi tối, kể từ tháng tám khi lưới điện cắt luân phiên bốn ngày một tuần. Điện ấy chạy cho hai cái bóng ở chánh điện, cái tủ lạnh nhỏ đựng thuốc của trạm y tế xã gửi nhờ, và cái máy bơm.</p>
+<p>Trong bốn cái tên trên tờ lịch, tên Kaito có ở mười chín tối trong ba mươi tối, vì anh vẫn nhận đổi cho người khác. Anh nhận đổi vì anh không ngủ được trước một giờ sáng, và chuyện ấy thì cả nhà đã biết từ lâu và đã thôi bàn.</p>
+<p>Dầu thì mua ở quán bà Sáu Đen ngoài ngã ba. Từ tháng chín giá lên hai lần, và từ tháng mười một thì bà Sáu không bán can hai chục lít nữa, bà chỉ bán can năm lít, vì chính bà cũng chỉ lấy được từng ít một. Mai mua ba can năm lít mỗi tuần và ghi vào mặt trong nắp hòm.</p>
+<p>Sổ dầu thì bé Nhân ghi. Mỗi tối trước khi tắt máy, cậu ghi giờ nổ, giờ tắt, và mực dầu còn lại đo bằng cái que tre có khắc vạch. Chữ cậu năm nay to hơn năm ngoái và bắt đầu nghiêng về bên phải.</p>
+<p>Thầy Tịnh Không dạo này ngồi ở hậu điện lâu hơn trước. Trước là một tiếng buổi sớm. Bây giờ là một tiếng buổi sớm và thêm chừng ấy nữa vào lúc chiều, và không ai trong nhà hỏi vì sao, vì trong nhà này chuyện thầy ngồi bao lâu chưa bao giờ là chuyện để hỏi.</p>
+<p>Bữa tối hôm ấy có canh, cá, và một đĩa rau lang luộc.</p>
+<p>Thiên một tuổi tám tháng. Con bé ăn bằng cách cầm thìa trong tay phải, xúc, rồi bỏ thìa xuống và dùng tay trái bốc chỗ vừa xúc được. Nó làm việc ấy một cách hệ thống và không ai cản được nữa.</p>
+<p>"Con bỏ tay ra." Mai nói.</p>
+<p>"Không." Thiên nói.</p>
+<p>Con bé biết chữ ấy từ tháng trước và bây giờ dùng nó cho tất cả mọi thứ, y như hồi trước nó dùng chữ mẹ.</p>
+<p>Bé Nhân ăn nhanh và ăn nhiều, và cậu ngồi ở đầu chiếu chỗ sát cửa vì cậu là người phải chạy ra tắt máy nếu nghe tiếng nó khục. Cậu mười một tuổi rưỡi. Tháng trước cậu đã lắp xong cái bánh xe sau vào cái xe cút kít, và phải nống càng ra một tí thật, và cậu đã nống bằng cách kê một khúc gỗ rồi lấy búa đập, và bây giờ cái xe đẩy nhẹ hơn hẳn nhưng nó bị lệch sang trái.</p>
+<p>"Chị." Bé Nhân nói. "Mai em đẩy xe qua bên ông Hoạch được không?"</p>
+<p>"Đẩy làm chi?"</p>
+<p>"Ông ấy cho mấy cây tre. Em chở về, chống lại cái giàn bầu."</p>
+<p>"Cái xe lệch qua trái đó, đẩy xa thì mỏi tay."</p>
+<p>"Em kê thêm miếng ván bên phải là hết lệch."</p>
+<p>"Ừ. Đi sớm rồi về, đừng đi qua trưa."</p>
+<p>"Vâng ạ."</p>
+<p>Thầy Tịnh Không ăn ít, ăn chậm, và ăn hết. Ông tám mươi tuổi vào tháng giêng tới. Ông đi từ chỗ ngồi ra tới bậc thềm thì phải men theo tường một quãng chừng ba bước, và ba bước ấy năm ngoái là hai.</p>
+<p>Sau bữa, Mai lấy cuốn vở học sinh ở trên nóc tủ xuống.</p>
+<p>Cuốn vở loại một trăm trang, bìa xanh, và trên bìa không viết gì. Bên trong không kẻ cột. Mỗi dòng là một ngày, và mỗi dòng có một cái ngày, một con số, và đôi khi có thêm mấy chữ.</p>
+<p>Kaito đưa cổ tay trái ra và lật ngửa.</p>
+<p>Cái vân dưới da chạy từ chỗ nếp gấp cổ tay lên phía cẳng tay, màu đen có ánh bạc khi để nghiêng dưới đèn, và nó không nổi lên trên mặt da, nó nằm ở dưới. Mai đo bằng một sợi chỉ. Cô đặt sợi chỉ dọc theo chỗ dài nhất, bấm ngón tay giữ, rồi gỡ ra và đặt lên cái thước kẻ của bé Nhân.</p>
+<p>"Bốn phẩy sáu." Cô nói.</p>
+<p>Cô ghi. Tuần trước bốn phẩy năm. Tháng trước bốn phẩy hai.</p>
+<p>"Đêm qua ngủ được không anh?"</p>
+<p>"Được. Từ một giờ."</p>
+<p>Cô ghi thêm hai chữ, gấp vở, và để lại lên nóc tủ.</p>
+<p>Cả việc ấy mất chưa tới hai phút. Nó đã mất chưa tới hai phút từ tháng ba năm ngoái.</p>
+<p>Kaito ra máy lúc bảy giờ kém năm và đổ dầu trước.</p>
+<p>Đổ dầu thì phải đổ qua cái phễu có lưới, vì dầu mua ở quán thì lẫn cặn, và mỗi lần đổ xong thì phải nghiêng cái phễu cho ráo rồi úp lên đầu cọc. Anh làm việc ấy không cần nhìn.</p>
+<p>Giật nổ lần thứ hai thì nổ. Anh hé le gió một phần ba, đếm đến hai trăm bốn mươi, rồi đóng.</p>
+<p>Rồi anh ngồi xuống cái ghế đẩu và chờ.</p>
+<p>Anh không ngủ được trước một giờ sáng từ hồi mùa mưa năm 2057. Chuyện ấy trong nhà xếp cùng loại với chuyện cái vân dưới da: nó có ở đó, có hôm nặng hơn hôm khác, và người ta ghi lại chứ người ta không bàn.</p>
+<p>Có hôm nhắm mắt thì anh thấy cái chỗ ấy. Anh đã thôi kể chuyện đó từ năm ngoái, vì kể thì cũng chỉ nói được đúng một câu và câu ấy lần nào cũng y như lần trước.</p>
+<p>Anh đã ngồi ở chỗ này sáu mươi mấy tối. Anh biết cái máy này ở mức người ta biết một thứ mình phải ngồi cạnh mà không có việc gì để làm.</p>
+<p>Tiếng nổ của nó là một nhịp. Trong nhịp ấy có một chỗ hơi hụt, cứ bảy nhịp lại hụt một lần, và cái hụt ấy đã có từ trước khi anh về đây.</p>
+<p>Nước trong bể trên mái rỉ xuống cái máng, một giọt, rồi khoảng bốn nhịp máy thì một giọt nữa.</p>
+<p>Ở góc mái tôn phía đông có một tấm bị bung một cái đinh, và khi có gió thì nó gõ.</p>
+<p>Chín giờ mười, anh nghe cái giọt nước rơi sai chỗ.</p>
+<p>Nó không rơi chậm hơn. Nó không rơi nhanh hơn. Nó rơi lệch đi chừng nửa nhịp so với chỗ nó vẫn rơi, và anh biết là nửa nhịp vì anh đã đếm cái đó sáu mươi mấy tối mà không hề định đếm.</p>
+<p>Rồi tiếng gõ của tấm tôn cũng lệch.</p>
+<p>Rồi cái chỗ hụt trong tiếng máy, cái chỗ cứ bảy nhịp lại hụt một lần, đến sớm.</p>
+<p>Tai anh bắt đầu có áp suất, kiểu áp suất khi xe xuống dốc dài.</p>
+<p>Ngoài kia, ếch nhái vẫn kêu. Con chó nhà ông Ba Cẩn vẫn sủa từng chặp ở phía bên kia mương. Không có gì im đi cả, và về sau, khi anh cố kể lại chuyện này, chỗ khó kể nhất là chỗ ấy.</p>
+<p>Anh đứng dậy và đi ra tới đầu ngõ.</p>
+<p>Ngõ dài chừng hai chục mét, hai bên là bụi tre, và ở cuối ngõ thì đường đất rẽ xuống hói.</p>
+<p>Ở đó có một cái bóng.</p>
+<p>Nó cao hơn cái cột hiên. Anh nhìn thấy nó vì nó chắn mất một mảng trời, và anh không nhìn thấy gì hơn thế, và anh cũng không bước lại gần hơn.</p>
+<p>Cái tiếng máy sau lưng anh bị bẻ.</p>
+<p>Đó là cách anh biết khoảng cách. Tiếng máy đi tới chỗ ấy thì bị bẻ, và chỗ bẻ nằm ở khoảng chín mét trước mặt anh, và khi cái bóng nhích thì chỗ bẻ nhích theo.</p>
+<p>Nó đi lệch. Một bên của nó không làm được cái việc mà bên kia làm được, nên mỗi bước nó phải bù, và cái bù ấy tốn của nó nhiều hơn cái bước.</p>
+<p>Nó đi thêm hai bước nữa về phía ngõ.</p>
+<p>Rồi nó dừng lại.</p>
+<p>Nó dừng sớm hơn cái đà của nó, dừng gọn, và cái dừng ấy không phải cái dừng của một thứ đang mệt.</p>
+<p>Nó không dừng vì anh động đậy, vì anh không động đậy. Nó dừng sau khi nó quét một lượt qua cái sân, qua bụi tre, qua cái cột hiên, và qua chỗ anh đứng.</p>
+<p>Rồi nó quay lại chỗ anh đứng.</p>
+<p>Và nó ở đó.</p>
+<p>Anh đếm bằng tiếng máy, vì đó là cái duy nhất anh đếm được. Bốn trăm mấy chục nhịp. Chừng bảy phút.</p>
+<p>Trong bảy phút ấy nó nhích đúng hai lần, mỗi lần chừng nửa bước, và cả hai lần đều về phía anh chứ không phải về phía nhà. Lần thứ hai nó nhích rồi lại lùi lại đúng chỗ cũ, và cái lùi ấy nhanh hơn cái nhích.</p>
+<p>Bên hỏng của nó rung. Rung không đều, từng chặp, và mỗi chặp thì chỗ bẻ trong tiếng máy dày lên rồi mỏng lại.</p>
+<p>Trong bảy phút ấy anh nhận được ba thứ, và ba thứ ấy là toàn bộ những gì anh mang được ra khỏi cái đêm đó.</p>
+<p>Thứ nhất là một sức nặng. Nó tì vào giữa ngực anh, đều, không đau, và nó không phải là sợ, vì anh biết sợ ở đâu trong người mình và nó không nằm ở đấy.</p>
+<p>Thứ hai là một hướng. Có một cái gì đó chỉ, và nó không chỉ vào anh. Nó chỉ đi qua anh, chếch xuống, và về phía nam, và xa. Anh biết chắc là nam, và anh không giải thích được vì sao anh biết chắc, vì trong bảy phút ấy anh không quay đầu lấy một lần.</p>
+<p>Thứ ba là một nhiệt độ. Không có gì chạm vào anh, nên lẽ ra không có nhiệt độ nào cả. Vẫn có một cái. Nó thấp hơn tay anh chừng vài độ, cái mức mà người ta biết được khi đặt tay lên một quả nắm cửa bằng kim loại trong nhà.</p>
+<p>Anh đứng đó với ba thứ ấy và anh không gọi được cái đang đứng ở đầu ngõ là gì.</p>
+<p>Anh không nghĩ ra một chữ nào. Không phải anh chọn không dùng chữ nào. Chỗ ấy trong đầu anh, chỗ vẫn tự động đặt tên cho mọi thứ đi ngang qua mắt, im.</p>
+<p>Cái bóng lui ba bước, rồi lui tiếp, rồi chỗ bẻ trong tiếng máy giãn ra và mỏng đi và hết.</p>
+<p>Áp suất trong tai anh mất trước, rồi tiếng gõ của tấm tôn về đúng chỗ, rồi cái giọt nước.</p>
+<p>Anh đứng ở đầu ngõ thêm một lúc nữa, không phải để nhìn, vì không còn gì để nhìn. Anh đứng vì hai chân anh chưa nhận được lệnh nào.</p>
+<p>Anh vào tắt máy lúc mười giờ đúng, đúng giờ, vì mười giờ là hết ca.</p>
+<p>Tắt máy thì có bốn việc, và bốn việc ấy có thứ tự. Rút tải trước, để máy chạy không tải một phút, rồi tắt, rồi đo mực dầu.</p>
+<p>Anh rút tải, rồi tắt luôn, rồi mới nhớ ra là còn thiếu một phút, rồi đứng nhìn cái máy đã tắt trong khoảng thời gian bằng đúng một phút ấy.</p>
+<p>Rồi anh đo mực dầu và ghi vào sổ, và anh ghi hộ bé Nhân vì hôm ấy đã muộn.</p>
+<p>Anh nói với Mai lúc gần mười một giờ, trong buồng, khi Thiên đã ngủ.</p>
+<p>Anh mở miệng và nói được ba chữ.</p>
+<p>"Ngoài ngõ có..."</p>
+<p>Rồi anh dừng.</p>
+<p>Rồi anh dựng lại cái câu ấy theo một lối không cần chủ ngữ, và anh nói hết trong chừng bốn phút, và trong bốn phút ấy anh nói được cả ba thứ, cái sức nặng, cái hướng, và cái nhiệt độ.</p>
+<p>Mai không hỏi lại một câu nào.</p>
+<p>Cô đứng dậy trước khi anh nói xong, đi ra buồng ngoài, và đóng cái cửa sổ chỗ bé Nhân nằm. Cửa sổ ấy có cái chốt gãy từ mùa mưa và phải chèn bằng một khúc tre, và cô chèn.</p>
+<p>Rồi cô quay vào và ngồi xuống mép phản.</p>
+<p>"Cách đây bao xa."</p>
+<p>"Chín mét."</p>
+<p>"Bao lâu."</p>
+<p>"Bảy phút."</p>
+<p>"Có chạm vào anh không."</p>
+<p>"Không."</p>
+<p>"Cổ tay có đau hơn không."</p>
+<p>"Không đau. Nóng lên một lúc rồi thôi."</p>
+<p>Cô gật đầu.</p>
+<p>"Anh không nói với ai." Cô nói. "Không nói với thầy. Không nói với bé Nhân. Không nói với chị Sarah."</p>
+<p>"Ừ."</p>
+<p>"Anh nghe em nói cái này một lần thôi rồi mình không nhắc lại nữa." Cô nói.</p>
+<p>Cô nói bằng cái giọng cô vẫn dùng để tính xem gạo trong lu còn đủ mấy ngày.</p>
+<p>"Trên đời này bây giờ ai cũng đang tìm cách đo cái Cổng ấy. Người ta đưa máy vào thì máy chết. Nếu người ta biết có một người nghe được nó thì người ta sẽ thôi coi anh là người. Người ta sẽ coi anh là một cái máy đo. Máy đo thì người ta mang đi, và người ta để ở chỗ nào cần đo."</p>
+<p>"Em không sợ người ta hại anh." Mai nói. "Em sợ người ta tử tế với anh. Người ta sẽ tử tế, và người ta sẽ có lý, và cái xe sẽ đến vào một buổi sáng."</p>
+<p>"Người ta sẽ cho anh một cái phòng có điều hòa." Cô nói. "Người ta sẽ hỏi anh mỗi ngày hai lần và người ta sẽ hỏi tử tế. Người ta sẽ để mẹ con em ở một chỗ tử tế cách đó bốn tiếng đi xe, mỗi tháng cho gặp một lần, và cái đó người ta ghi vào giấy hẳn hoi, có dấu."</p>
+<p>Kaito ngồi im một lúc.</p>
+<p>"Nó không tấn công." Anh nói.</p>
+<p>"Em biết."</p>
+<p>"Anh nói cho em biết là nó không tấn công."</p>
+<p>"Em nghe rồi." Mai nói. "Anh đừng nói câu đó với ai khác."</p>
+<p>Anh gật đầu.</p>
+<p>Cô đứng dậy, tắt đèn, và nằm xuống.</p>
+<p>Hai giờ sáng cô vẫn thức. Anh biết vì cô nói một câu trong bóng tối.</p>
+<p>"Lúc anh nói, em không hỏi lại câu nào."</p>
+<p>"Ừ."</p>
+<p>Cô không nói gì thêm.</p>
+<p>Bảy ngày sau, chiều thứ Năm, Mai đang lau cái bàn ăn ở hiên và Kaito đang rửa bát dưới bể.</p>
+<p>Bảy giờ ba mươi mấy.</p>
+<p>Từ chỗ cô ngồi, cô nhìn thấy lưng anh, cái vòi nước, và chồng bát đã úp bốn cái.</p>
+<p>Anh đang tráng cái bát thứ năm.</p>
+<p>Rồi anh dừng.</p>
+<p>Anh không giật mình. Anh không đứng thẳng lên. Cái bát vẫn ở dưới vòi và nước vẫn chảy qua nó, và bàn tay anh vẫn giữ nó ở nguyên chỗ ấy, và anh cứ như thế trong khoảng thời gian đủ để nước tràn qua mép bát ba lần.</p>
+<p>Ở phía đông bắc, xa, phía bên kia hói và qua khỏi rú, có tiếng nổ. Ba loạt ngắn rồi thôi. Chừng ba cây số. Tối nào tuần này cũng có tiếng như vậy ở đâu đó, và cả xã đã thôi ra sân xem.</p>
+<p>Mai không hỏi.</p>
+<p>Anh tráng nốt cái bát thứ năm, úp lên, rồi rửa hết chỗ còn lại, sáu cái bát, hai cái đĩa, cái nồi. Anh vét cái nồi bằng miếng xơ mướp, tráng hai lần, úp ngược. Anh vắt cái khăn lau, phơi lên dây, và vuốt cho nó thẳng ra.</p>
+<p>Rồi anh lau cái mặt bể. Anh lau hai lượt.</p>
+<p>Bảy giờ năm mươi lăm anh vào nhà, bế Thiên lên, và lau chân cho con bé, và nói với nó cái từ hai âm tiết ấy, và giọng anh không khác gì mọi tối.</p>
+<p>Tối hôm ấy Mai lấy cuốn vở học sinh trên nóc tủ xuống sớm hơn thường lệ.</p>
+<p>Cô ghi ngày. Cô đo và ghi con số, bốn phẩy sáu, không đổi.</p>
+<p>Rồi cô để bút xuống một lúc.</p>
+<p>Rồi cô ghi thêm, ở cuối dòng, sau con số, một cái giờ.</p>
+<p>19:40.</p>
+<p>Cô đọc lại dòng ấy một lần, rồi gấp vở, rồi để lên nóc tủ đúng chỗ cũ, gáy quay ra ngoài.</p>
+<p>Sáng hôm sau chợ họp muộn, vì đêm qua có mưa và mấy hàng ngoài trời phải chờ ráo.</p>
+<p>Chuyện ngoài chợ sáng ấy có ba chuyện. Chuyện thứ nhất là giá dầu. Chuyện thứ hai là cái danh sách xã mới dán, danh sách nam giới sinh từ năm ba mươi tám đến năm bốn mươi, dán để đối chiếu chứ chưa để làm gì, và ai cũng biết chưa để làm gì thì rồi cũng sẽ để làm gì.</p>
+<p>Chuyện thứ ba là tối qua một toán tuần tra bắn hạ một con ở khu rú bên kia hói, chừng bảy giờ rưỡi, bên mình không ai việc gì. Người kể nói thêm rằng lần này ba loạt là xong, chứ hồi năm lăm thì có con phải bắn hết cả băng mà nó vẫn bò được một quãng.</p>
+<p>"Bớt được một con." Bà bán cá nói.</p>
+<p>"Ừ." Mai nói.</p>
+<p>Cô mua hai con cá nục, trả tiền, và đi về.</p>
+</article>
+
+
+<svg class="rift-small" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+</svg>
+
+
+<div class="chapter-foot">
+  <nav class="chapter-nav" aria-label="Điều hướng chương">
+    <a class="prev" href="chuong-10.html"><span class="lbl">Trước</span><span class="ttl">Người Ta Chờ Ba Mươi Tám</span></a>
+    <a class="toc-link" href="index.html" aria-label="Về mục lục"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></a>
+    <a class="next" href="chuong-12.html"><span class="lbl">Sau</span><span class="ttl">Đêm Vô Ưu</span></a>
+  </nav>
+</div>
+
+<footer class="sitefoot">
+  <p>Khúc Ai Ca Cho Những Kẻ Vô Danh — Vòng Tuần Hoàn Người Gieo Hạt · Quyển II</p>
+  <p>© 2026 Nguyễn Duy Anh (bút danh: Mendingur). Bản quyền tác phẩm thuộc về tác giả.</p>
+</footer>
+
+<script src="glow.js" defer></script>
+</body>
+</html>

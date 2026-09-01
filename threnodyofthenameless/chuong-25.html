@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Đường Ống — Khúc Ai Ca Cho Những Kẻ Vô Danh</title>
+<meta name="description" content="Vòng Tuần Hoàn Người Gieo Hạt · Quyển II — tiểu thuyết của Mendingur">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="style.css">
+<script src="reader.js" defer></script>
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem('mendingur-theme');
+    var theme = saved === 'dark' || saved === 'light'
+      ? saved
+      : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+  <linearGradient id="wingGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="55%" stop-color="#C99A3E"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+  <radialGradient id="coreGlow" cx="50%" cy="55%" r="55%">
+    <stop offset="0%" stop-color="#FFF6DE" stop-opacity="0.95"/>
+    <stop offset="55%" stop-color="#E4C077" stop-opacity="0.35"/>
+    <stop offset="100%" stop-color="#E4C077" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="flowerGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+</defs>
+</svg>
+<div class="grain"></div>
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+<div class="settings-menu" id="settingsMenu">
+  <button class="menu-toggle" type="button" id="settingsMenuToggle" aria-haspopup="true" aria-expanded="false" aria-controls="settingsPopover" aria-label="Cài đặt giao diện">
+    <span class="menu-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+  </button>
+  <div class="settings-popover" id="settingsPopover" role="menu">
+    <div class="settings-group">
+      <p class="settings-group-label">Giao diện</p>
+      <div class="theme-switcher" id="themeSwitcher" role="group" aria-label="Giao diện sáng / tối">
+        <button class="theme-btn active" type="button" data-theme-choice="light" aria-pressed="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <span>Sáng</span>
+        </button>
+        <button class="theme-btn" type="button" data-theme-choice="dark" aria-pressed="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+          <span>Tối</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<header class="sitebar">
+  <a class="brand" href="index.html">
+    <span class="mark"><svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sower's Cycle mark">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+<g transform="translate(200,278)">
+  <g><ellipse rx="14" ry="21" transform="rotate(0)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(72)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(144)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(216)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(288)" fill="url(#flowerGrad)"/></g>
+  <circle r="9.5" fill="#FFF6DE"/>
+</g>
+<g transform="translate(200,96)"><path d="M0,-24 C2,-7 7,-2 24,0 C7,2 2,7 0,24 C-2,7 -7,2 -24,0 C-7,-2 -2,-7 0,-24 Z" fill="#F3D488"/></g>
+</svg></span>
+    <span class="word">Khúc Ai Ca Cho Những Kẻ Vô Danh</span>
+  </a>
+  <nav>
+    <a href="index.html" class="toc-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      Mục lục
+    </a>
+  </nav>
+</header>
+<div class="progress-track"><div class="progress-fill"></div></div>
+
+<header class="chapter-head">
+  <p class="crumb"><a href="index.html">IN PARADISUM · THIẾU MỘT TIẾNG ĐỘNG</a></p>
+  <span class="cnum">Chương 25</span>
+  <h1>Đường Ống</h1>
+  <div class="font-toggle" role="group" aria-label="Cỡ chữ">
+    <button type="button" data-size="sm" aria-pressed="false">A-</button>
+    <button type="button" data-size="md" aria-pressed="true">A</button>
+    <button type="button" data-size="lg" aria-pressed="false">A+</button>
+  </div>
+</header>
+
+<article class="prose" data-size="md">
+<p>Biểu mẫu B-4, uỷ ban thường trực về hành lang trung chuyển, bản in lần thứ hai, tháng 3 năm 2069.</p>
+<p>Dòng đầu trang, in sẵn: Ngày ...... · Cấu trúc 690,0 m · Trạm ......</p>
+<p>Dòng chữ nhỏ ở góc dưới bên trái: bản in lần thứ nhất vẫn có giá trị cho tới khi dùng hết.</p>
+<p>Uỷ ban thường trực về hành lang trung chuyển họp phiên thứ nhất ngày 4 tháng 9 năm 2068, và tính tới cuối năm 2070 thì nó đã họp một trăm hai mươi sáu phiên.</p>
+<p>Ghế chủ trì nhiệm kỳ thứ nhất thuộc về bà Bhattacharya. Bà chủ trì tốt, đúng giờ, và bà đọc hết tài liệu trước mỗi phiên, và trong hai năm bà không bỏ phiên nào.</p>
+<p>Bà Amara Osei là thành viên. Bà không ngồi ghế chủ trì và bà đã nói không từ tháng 11 năm 2067, và bà không đổi ý.</p>
+<p>Cái bà làm thì không có tên trong bất cứ chức danh nào. Bà đọc dự thảo. Bà tìm ra chỗ hở. Bà viết lại hai dòng ở chỗ hở ấy rồi bà đưa cho ban thư ký kỹ thuật, và ban thư ký kỹ thuật đưa nó vào bản sau, và trong biên bản thì hai dòng ấy là của ban thư ký kỹ thuật.</p>
+<p>Tháng 2 năm 2069, phạm vi của uỷ ban được mở rộng từ hành lang sang cả khu vực định cư, vì hai chuyện ấy không tách ra được, vì nước của khu định cư đi qua hành lang và người của khu định cư đi qua hành lang. Cái quyết định mở rộng ấy dài hai dòng.</p>
+<p>Bà Osei viết hai dòng ấy.</p>
+<p>Điều 9 chạy được, và nó chạy theo đúng cái cách người ta đã thiết kế cho nó chạy.</p>
+<p>Trong hai năm, quỹ chung nhận được đóng góp của hai mươi mốt quốc gia. Mười chín trong hai mươi mốt nước đóng bằng tiền hoặc bằng vật tư quy đổi. Hai nước đóng bằng đất.</p>
+<p>Nước thứ nhất đóng một khoảnh ven biển đã bị nước mặn ăn từ những năm 2040, và người cuối cùng ở đó dời đi năm 2051, và hồ sơ dời dân của khoảnh ấy đã đóng và đã quyết toán.</p>
+<p>Nước thứ hai đóng một khoảnh ở phía bắc, hai nghìn một trăm bốn mươi ki lô mét vuông. Khoảnh ấy sơ tán tháng 8 năm 2059 vì chiến sự, hồ sơ bồi thường mở tháng 10 năm 2059, đóng tháng 4 năm 2061, và trong hồ sơ ấy có ba trăm bảy mươi hộ và cả ba trăm bảy mươi hộ đều đã nhận đủ.</p>
+<p>Nước ấy đề nghị khoảnh đất ấy vào tháng 5 năm 2069 và trong công hàm có một chữ, và chữ ấy là trống.</p>
+<p>Ở khoảnh đất trống ấy có mười bốn hộ, bốn mươi mốt khẩu.</p>
+<p>Họ về từ năm 2064. Họ về vì phía đông của khoảnh ấy có nước ngọt và vì họ không có chỗ nào khác, và họ về không xin phép ai, và trong sáu năm không có ai tới hỏi họ một câu nào về đất.</p>
+<p>Họ không có trong danh sách nào cả, vì danh sách của khoảnh ấy đóng năm 2061.</p>
+<p>Bà Osei đọc ra chuyện đó vào tháng 7 năm 2069, và bà đọc ra nó từ một tờ giấy không liên quan gì tới đất đai. Đó là báo cáo tiêm chủng của một đội y tế lưu động, và trong báo cáo có một dòng ghi rằng đội đã tới điểm bảy và tiêm cho hai mươi hai trẻ.</p>
+<p>Điểm bảy nằm trong khoảnh đất trống.</p>
+<p>Bà mất bốn tháng cho mười bốn hộ ấy.</p>
+<p>Bà không mất bốn tháng để tìm ra họ là ai. Việc ấy mất chín ngày. Bà mất bốn tháng vì bài toán không có lời giải sạch nào.</p>
+<p>Muốn bồi thường cho mười bốn hộ thì phải lập danh sách. Lập danh sách thì phải mở lại hồ sơ đã quyết toán năm 2061. Mở lại hồ sơ đã quyết toán thì phải có một quyết định nói rằng hồ sơ ấy chưa đầy đủ, và cái quyết định ấy chỉ có một cơ quan ra được, và cơ quan ấy chính là cơ quan đã ký công hàm nói khoảnh đất ấy trống.</p>
+<p>Bà thử ba đường và cả ba đường đều dẫn về đúng cái bàn ấy.</p>
+<p>Đường thứ tư không phải là bồi thường.</p>
+<p>Ngày 3 tháng 12 năm 2069, uỷ ban thường trực thông qua một quyết định về tổ chức lực lượng vận hành và bảo dưỡng tuyến cấp nước, và trong quyết định ấy có một mục nói rằng tuyến được chia thành bảy đoạn, mỗi đoạn có một người phụ trách tuần tra và một người dự bị, và cả hai được tuyển tại chỗ, ưu tiên người đã cư trú trong khu vực.</p>
+<p>Mười bốn hộ ấy không được đền một đồng nào cho cái họ mất.</p>
+<p>Họ được mười một cái hợp đồng trong số mười bốn chỗ, thời hạn ba năm, gia hạn được, có bảo hiểm, và có một tờ giấy chứng nhận nơi làm việc, và cái tờ giấy chứng nhận nơi làm việc ấy là thứ giấy tờ đầu tiên trong sáu năm ghi tên họ và ghi địa chỉ ấy.</p>
+<p>Bà Osei biết chính xác cái bà vừa làm. Bà đã làm việc này chừng ba chục lần trong hai mươi năm và bà chưa lần nào thấy nó dễ chịu hơn lần trước.</p>
+<p>Bà ghi vào sổ tay của bà một dòng, và dòng ấy là một việc phải làm, và việc phải làm ấy là hỏi lại vào năm 2073 xem mười một cái hợp đồng có được gia hạn hay không.</p>
+<p>Người phụ trách đoạn ba tên là Ivo Perak, năm mươi mốt tuổi.</p>
+<p>Đoạn ba dài sáu ki lô mét, từ cái van số hai tới cái van số ba, chạy dọc theo con đường đất cũ, và trong sáu ki lô mét ấy có bốn chỗ ống nổi lên khỏi mặt đất vì bên dưới là đá.</p>
+<p>Việc của ông là đi hết đoạn ấy hai lần một tuần, xem bốn chỗ nổi, xem hai cái van, xem có chỗ nào ướt bất thường, và ký vào một quyển sổ ở cả hai đầu.</p>
+<p>Ông có một cái cờ lê, một cái đèn pin, một cuốn sổ, và một cái áo có phản quang ở lưng.</p>
+<p>Ông mang cái áo ấy cả những hôm không đi tuần, vì ở đây không có ai phát cho ông cái áo nào khác.</p>
+<p>Ông về đây năm 2064 với mẹ ông và với hai gia đình nữa. Mẹ ông mất năm 2067, tám mươi hai tuổi, và ông chôn bà ở chỗ cũ, cách nhà bốn trăm mét, ở cái chỗ mà năm 2059 đã là nghĩa địa và bây giờ vẫn là nghĩa địa vì không ai làm cái quyết định để đổi nó.</p>
+<p>Cái hợp đồng ba năm ông ký ngày 21 tháng 1 năm 2070.</p>
+<p>Người tới cho ông ký là một người của ban thư ký, ba mươi mấy tuổi, và người ấy có mang theo một cái cặp và trong cặp có ba bộ hồ sơ, và người ấy nói rõ rằng cái hợp đồng này không nói gì về đất và ông ký thì cũng không mất quyền gì.</p>
+<p>Ông hỏi một câu, và câu ấy là ký cái này thì có phải dời đi không.</p>
+<p>Người ấy nói cái đó chưa ai quyết.</p>
+<p>Ông ký.</p>
+<p>Tháng 4 năm 2070, ở nước đã đóng khoảnh đất ven biển, có một cuộc trưng cầu.</p>
+<p>Câu hỏi trên lá phiếu dài hai mươi bảy chữ và nó hỏi cử tri có đồng ý để chính phủ đóng góp lãnh thổ vào quỹ chung theo Điều 9 hay không.</p>
+<p>Sáu mươi mốt phần trăm nói không.</p>
+<p>Chính phủ nước ấy ghi nhận kết quả và chuyển phần đóng góp của mình sang hình thức tiền và vật tư quy đổi, theo đúng công thức ba biến, và phần quy đổi ấy thấp hơn giá trị khoảnh đất ven biển tính theo giá thị trường.</p>
+<p>Bà Osei đọc bản tin ấy vào một buổi sáng và bà đọc nó hết trong hai phút.</p>
+<p>Bà biết chính phủ nước ấy đã muốn chuyển sang tiền từ tháng 11 năm ngoái, và bà biết vì bà có ngồi trong cái phiên họp mà người ta hỏi ban thư ký kỹ thuật về thủ tục chuyển hình thức đóng góp, và câu hỏi ấy được hỏi bằng giọng người hỏi cho biết.</p>
+<p>Cuộc trưng cầu ấy tốn của nước ấy một khoản, và khoản ấy lớn hơn phần chênh lệch.</p>
+<p>Trong hai năm ấy có mười chín cuộc biểu tình ở chín nước. Cuộc lớn nhất có bốn nghìn người và nó diễn ra ở một quảng trường và nó tan lúc bốn giờ chiều vì trời mưa. Không có ai bị thương ở bất cứ cuộc nào trong mười chín cuộc.</p>
+<p>Ngày 8 tháng 6 năm 2070, đoạn ống thứ năm bị cắt.</p>
+<p>Người ta phát hiện ra lúc mười giờ sáng vì áp ở van số năm tụt, và tổ kỹ thuật ra tới nơi lúc gần một giờ chiều, và cái mất là hai mươi hai mét ống, cắt ở hai đầu bằng cưa máy, và hai chỗ cắt đều gọn.</p>
+<p>Trong bốn tuần sau đó có ba cơ quan vào cuộc.</p>
+<p>Người ta đi theo hướng chính trị. Người ta xem lại danh sách những người đã lên tiếng phản đối trong vùng, và danh sách ấy có hai mươi sáu tên, và người ta gặp mười chín trong hai mươi sáu người ấy. Người ta có một giả thuyết và giả thuyết ấy chặt chẽ và nó viết ra được thành bốn trang.</p>
+<p>Ngày 11 tháng 7, một người ở trạm cân sắt vụn cách đó bảy chục cây báo lên rằng tháng trước có người bán cho trạm ấy bảy tạ mấy ống thép cùng loại, cắt khúc, và trạm có sổ, và trong sổ có tên và có số giấy tờ tuỳ thân.</p>
+<p>Người bán là hai anh em, hai mươi tư và hai mươi bảy tuổi, ở cách tuyến ống chín cây.</p>
+<p>Hai người ấy khai rằng họ biết đó là ống của tuyến nước, và họ khai rằng họ không nghĩ tới chuyện bên kia, và họ khai rằng cái họ nghĩ tới là giá thép.</p>
+<p>Cả hai lời khai ấy đều được ghi nguyên văn.</p>
+<p>Bốn trang giả thuyết kia không bị huỷ. Nó nằm trong hồ sơ, ở phần các hướng đã kiểm tra, và về sau có hai bài báo dẫn lại nó, và cả hai bài đều dẫn phần giả thuyết chứ không dẫn phần sổ trạm cân.</p>
+<p>Ivo Perak nghe chuyện ấy ở chỗ đổ dầu.</p>
+<p>Ông nghe hai người nói với nhau, và một trong hai người nói rằng cắt ống thì cũng đáng đời, chúng nó lấy đất thì mình lấy ống.</p>
+<p>Người kia nói cái ống ấy chở nước cho cả mấy điểm ở đây chứ không phải chỉ cho bên tê.</p>
+<p>Người thứ nhất nói ừ thì ừ.</p>
+<p>Không ai sửa người ấy chữ nào, và Ivo Perak cũng không sửa, và ông đứng đó chờ đổ đầy can rồi ông đi về.</p>
+<p>Ngày 2 tháng 3 năm 2069, ở cây số bảy của hành lang trung chuyển, một người bên kia chết.</p>
+<p>Người làm ra chuyện ấy là một công nhân bốn mươi ba tuổi, thuộc tổ đào tuyến, và ông ta dùng một đoạn ống dài chừng một mét hai.</p>
+<p>Ở cây số bảy hôm ấy có hai tổ làm việc trên cùng một rãnh. Tổ phía mình và tổ bên kia. Hai tổ ấy đã làm chung ở rãnh đó mười một ngày, và trong mười một ngày ấy có bốn lần phải dừng vì hai bên hiểu nhầm nhau ở chỗ ai đào trước ai đào sau, và cả bốn lần đều giải quyết được bằng cách chỉ tay.</p>
+<p>Người công nhân ấy khai rằng cái kia đưa cái gì đó về phía ông ta.</p>
+<p>Người ta hỏi đưa cái gì. Ông ta nói ông ta không biết. Người ta hỏi đưa như thế nào. Ông ta nói ông ta không biết, và ông ta nói rằng ông ta không biết cái đó có phải là tay hay không, và ông ta nói câu ấy hai lần trong biên bản.</p>
+<p>Có bảy nhân chứng, và cả bảy đều khai, và chỗ không xác định được nằm ở đây: trong bảy người ấy không có ai nói được thế nào là đưa tay ra, đối với một người không có tay.</p>
+<p>Cái xác được đưa về trạm kỹ thuật số hai lúc 15:40.</p>
+<p>Đó là lần thứ nhất người ta phải dùng cái mẫu sáu ô của bà Osei duyệt hồi tháng 11 năm ngoái, cái mẫu mà bản thứ nhất và bản thứ hai đều bị trả lại.</p>
+<p>Ô thứ nhất của nó là ô ghi số hiệu do trạm cấp. Người trực điền vào đó số hiệu 2069/HL/001, và người ấy điền đúng theo hướng dẫn, và ba ô sau thì để trống vì không có gì để điền, và ô thứ năm là ô giờ và ô thứ sáu là ô chữ ký.</p>
+<p>Rồi tới phần chưa ai quyết được.</p>
+<p>Luật áp dụng trong hành lang là luật của quốc gia đăng ký phương tiện, và ở đây không có phương tiện nào. Trạm kỹ thuật số hai thuộc quyền quản lý của uỷ ban thường trực, và uỷ ban thường trực không phải là một cơ quan tư pháp và trong quy chế thành lập của nó không có một chữ nào về việc ấy. Người công nhân ấy mang quốc tịch của một nước, và nước ấy trả lời rằng thẩm quyền tài phán ngoài lãnh thổ của họ chỉ áp dụng cho một danh mục tội danh, và trong danh mục ấy tội danh phải được xác định trước, và ở đây thì chưa xác định được bị hại.</p>
+<p>Hồ sơ đi qua bốn nơi trong bảy tháng.</p>
+<p>Không nơi nào trong bốn nơi ấy nói dối, không nơi nào trì hoãn quá thời hạn của mình, và cả bốn nơi đều trả lời bằng văn bản có số hiệu.</p>
+<p>Ngày 19 tháng 10 năm 2069, hồ sơ đóng.</p>
+<p>Quyết định đóng dài một trang rưỡi và nó viết rằng vụ việc không thuộc thẩm quyền của bất cứ cơ quan nào đã thụ lý, và nó liệt kê cả bốn cơ quan ấy kèm số hiệu văn bản trả lời của từng nơi, và nó có một câu ở cuối nói rằng khi có khung pháp lý thì hồ sơ được xem xét lại.</p>
+<p>Bà Osei đọc nó ở phòng làm việc của bà, buổi chiều, và bà đọc hết cả trang rưỡi.</p>
+<p>Rồi bà đọc lại cái câu cuối.</p>
+<p>Bà biết cái câu ấy nghĩa là gì. Một hồ sơ được xem xét lại khi có khung pháp lý thì nó phải nằm ở đâu đó cho tới lúc ấy, và chỗ nó nằm là kho lưu trữ, và một hồ sơ đã đóng nằm ở kho lưu trữ thì muốn lấy ra phải có người nhớ ra là nó có.</p>
+<p>Bà ghi số hiệu của nó vào sổ tay, ở trang cuối, chỗ bà ghi những thứ không phải việc của năm nay.</p>
+<p>Người công nhân ấy trở lại làm việc ngày 4 tháng 11 năm 2069, ở cùng tổ, và tổ ấy vẫn làm ở tuyến đó.</p>
+<p>Tổ bên kia cũng vẫn làm ở tuyến đó.</p>
+<p>Từ tháng 3 năm 2069 tới hết năm 2070, họ tới đủ mọi ngày có trong lịch, và số người của họ ở rãnh không đổi, và không có ai ở phía này biết là họ có biết hay không.</p>
+<p>Tuyến cấp nước mở van ngày 6 tháng 5 năm 2070, lúc sáu giờ sáng, một ngày thứ Ba.</p>
+<p>Không có lễ.</p>
+<p>Ban thư ký kỹ thuật có soạn một chương trình lễ khánh thành, dài hai trang, và trong hai trang ấy có một mục về vị trí đứng của các bên tham dự. Mục ấy đưa ra phiên họp ngày 11 tháng 4 và bị trả lại, vì muốn xếp vị trí đứng thì phải ghi ra trên giấy bên nào đứng đâu, và trên giấy thì hai bên là A và B, và chưa phiên họp nào bàn xem A là ai và B là ai.</p>
+<p>Bản chương trình lễ được rút. Nó không bị bác bỏ, nó chỉ không được đưa lại lần thứ hai.</p>
+<p>Người mở van là một kỹ thuật viên hai mươi chín tuổi. Ông ta mở nó trong bốn mươi giây, theo đúng bảng quy trình dán ở buồng van, mở từng phần tư một và chờ giữa các phần tư.</p>
+<p>Ông ta ghi vào sổ: 06:00, mở van chính, áp đầu tuyến bình thường, và ông ta ký.</p>
+<p>Giáo sư Elias Rourke có mặt ở buồng van hôm ấy.</p>
+<p>Ông bảy mươi bảy tuổi. Ông tới vì ban thư ký uỷ ban có mời và vì bà Osei có nhắn một câu, và ông đi hai chặng bay và một chặng xe, và ông đi mất bốn ngày cho một việc kéo dài bốn mươi giây.</p>
+<p>Ông đứng được chừng sáu phút thì người ta đưa cho ông một cái ghế và ông ngồi xuống.</p>
+<p>Ông không phát biểu. Không ai mời ông phát biểu và ông cũng không xin.</p>
+<p>Cái ông làm ở buồng van là ông hỏi người kỹ thuật viên hai câu.</p>
+<p>Câu thứ nhất là tuyến này chịu được bao nhiêu độ âm mà không phải sấy.</p>
+<p>Câu thứ hai là nếu một đoạn hỏng vào tháng chạp thì thay mất bao lâu.</p>
+<p>Người kỹ thuật viên trả lời cả hai câu, và câu thứ hai thì ông ta trả lời là chín ngày nếu có ống ở kho và hai mươi mấy ngày nếu không.</p>
+<p>Rourke rút một cuốn sổ nhỏ ra và ghi lại cả hai con số. Ông ghi chậm và ông ghi bằng bút chì.</p>
+<p>Bà Osei đứng cách đó chừng ba mét và bà nhìn ông ghi.</p>
+<p>Bà không nói gì với ông về chuyện ấy hôm đó và cũng không nói về sau.</p>
+<p>Nước tới van số ba lúc mười giờ hai mươi.</p>
+<p>Ivo Perak đi tuyến của ông từ tám giờ, đi từ van số hai xuống, và ông đi chậm hơn mọi khi vì hôm nay ống có nước và ống có nước thì bốn chỗ nổi phải xem kỹ hơn.</p>
+<p>Ở van số ba có một cái vòi lấy mẫu, cỡ nhỏ, để bên vận hành lấy nước đi kiểm.</p>
+<p>Ông mở nó ra và hứng vào cái nắp bình giữ nhiệt.</p>
+<p>Nước ra hơi đục trong chừng mười giây rồi trong.</p>
+<p>Ông uống một ngụm.</p>
+<p>Nó có mùi ống. Đó là mùi thép mới, hơi ngọt ở cuống họng, và người ta có nói với ông là chừng một tháng thì hết.</p>
+<p>Ông uống hết chỗ trong nắp bình, vì ông đã đi bộ sáu ki lô mét.</p>
+</article>
+
+
+<svg class="rift-small" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+</svg>
+
+
+<div class="chapter-foot">
+  <nav class="chapter-nav" aria-label="Điều hướng chương">
+    <a class="prev" href="chuong-24.html"><span class="lbl">Trước</span><span class="ttl">Ba Giờ Sáng</span></a>
+    <a class="toc-link" href="index.html" aria-label="Về mục lục"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></a>
+    <a class="next" href="chuong-26.html"><span class="lbl">Sau</span><span class="ttl">Nhịp Gõ</span></a>
+  </nav>
+</div>
+
+<footer class="sitefoot">
+  <p>Khúc Ai Ca Cho Những Kẻ Vô Danh — Vòng Tuần Hoàn Người Gieo Hạt · Quyển II</p>
+  <p>© 2026 Nguyễn Duy Anh (bút danh: Mendingur). Bản quyền tác phẩm thuộc về tác giả.</p>
+</footer>
+
+<script src="glow.js" defer></script>
+</body>
+</html>

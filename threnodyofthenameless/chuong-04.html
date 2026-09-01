@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mười Bốn Cái Biểu Mẫu — Khúc Ai Ca Cho Những Kẻ Vô Danh</title>
+<meta name="description" content="Vòng Tuần Hoàn Người Gieo Hạt · Quyển II — tiểu thuyết của Mendingur">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="style.css">
+<script src="reader.js" defer></script>
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem('mendingur-theme');
+    var theme = saved === 'dark' || saved === 'light'
+      ? saved
+      : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+  <linearGradient id="wingGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="55%" stop-color="#C99A3E"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+  <radialGradient id="coreGlow" cx="50%" cy="55%" r="55%">
+    <stop offset="0%" stop-color="#FFF6DE" stop-opacity="0.95"/>
+    <stop offset="55%" stop-color="#E4C077" stop-opacity="0.35"/>
+    <stop offset="100%" stop-color="#E4C077" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="flowerGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+</defs>
+</svg>
+<div class="grain"></div>
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+<div class="settings-menu" id="settingsMenu">
+  <button class="menu-toggle" type="button" id="settingsMenuToggle" aria-haspopup="true" aria-expanded="false" aria-controls="settingsPopover" aria-label="Cài đặt giao diện">
+    <span class="menu-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+  </button>
+  <div class="settings-popover" id="settingsPopover" role="menu">
+    <div class="settings-group">
+      <p class="settings-group-label">Giao diện</p>
+      <div class="theme-switcher" id="themeSwitcher" role="group" aria-label="Giao diện sáng / tối">
+        <button class="theme-btn active" type="button" data-theme-choice="light" aria-pressed="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <span>Sáng</span>
+        </button>
+        <button class="theme-btn" type="button" data-theme-choice="dark" aria-pressed="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+          <span>Tối</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<header class="sitebar">
+  <a class="brand" href="index.html">
+    <span class="mark"><svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sower's Cycle mark">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+<g transform="translate(200,278)">
+  <g><ellipse rx="14" ry="21" transform="rotate(0)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(72)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(144)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(216)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(288)" fill="url(#flowerGrad)"/></g>
+  <circle r="9.5" fill="#FFF6DE"/>
+</g>
+<g transform="translate(200,96)"><path d="M0,-24 C2,-7 7,-2 24,0 C7,2 2,7 0,24 C-2,7 -7,2 -24,0 C-7,-2 -2,-7 0,-24 Z" fill="#F3D488"/></g>
+</svg></span>
+    <span class="word">Khúc Ai Ca Cho Những Kẻ Vô Danh</span>
+  </a>
+  <nav>
+    <a href="index.html" class="toc-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      Mục lục
+    </a>
+  </nav>
+</header>
+<div class="progress-track"><div class="progress-fill"></div></div>
+
+<header class="chapter-head">
+  <p class="crumb"><a href="index.html">INTROITUS · NGƯỜI ĐÃ NGỒI SẴN Ở ĐÓ</a></p>
+  <span class="cnum">Chương 4</span>
+  <h1>Mười Bốn Cái Biểu Mẫu</h1>
+  <div class="font-toggle" role="group" aria-label="Cỡ chữ">
+    <button type="button" data-size="sm" aria-pressed="false">A-</button>
+    <button type="button" data-size="md" aria-pressed="true">A</button>
+    <button type="button" data-size="lg" aria-pressed="false">A+</button>
+  </div>
+</header>
+
+<article class="prose" data-size="md">
+<p>Cái email của bà Veenstra nằm trong hộp thư tám ngày.</p>
+<p>Elin không xoá nó và cũng không mở lại. Nó tụt dần xuống dưới, qua bốn thư của khoa, một thư nhắc hạn nộp học phí kỳ hai, và một thư quảng cáo hội thảo mà cô đã huỷ đăng ký hai lần. Đến ngày thứ chín cô phải cuộn xuống mới thấy nó.</p>
+<p>Cô mở nó lúc mười giờ tối thứ Hai, ngày hai mươi bảy tháng tư, và đọc hết trong bốn phút.</p>
+<p>Tổ chức tên là Bodemherstel, trụ sở ở Utrecht, chín người làm toàn thời gian. Chương trình đang chạy năm thứ ba tại một tỉnh miền Trung Việt Nam, phối hợp với một viện nghiên cứu địa phương. Việc cần người: đo, ghi, lập bảng, và duy trì chuỗi số liệu của mười chín điểm quan trắc. Hợp đồng sáu tháng, gia hạn được. Hỗ trợ sinh hoạt phí, vé một chiều, chỗ ở do phía đối tác thu xếp.</p>
+<p>Ở cuối thư có một đoạn in nghiêng, chắc là đoạn họ dán vào mọi thông báo tuyển, nói rằng khu vực này nằm ngoài vùng chiến sự đang hoạt động nhưng tình hình có thể thay đổi, và ứng viên cần tự đánh giá.</p>
+<p>Elin đọc đoạn in nghiêng ấy hai lần, rồi mở một trang trắng và bắt đầu ghi những thứ phải nộp.</p>
+<p>Cô đánh số. Cô luôn đánh số.</p>
+<p>Một, đơn ứng tuyển. Hai, lý lịch khoa học. Ba, thư động cơ. Cô viết thư động cơ dài bốn dòng và gửi đi, và ba ngày sau người ta trả lời rằng thư động cơ cần tối thiểu một trang, đây là yêu cầu của nhà tài trợ chứ không phải của họ. Cô viết lại một trang. Trang ấy nói đúng những gì bốn dòng kia đã nói, chỉ dài hơn bảy lần.</p>
+<p>Bốn và năm, hai thư giới thiệu. Bà Veenstra viết một cái trong hai ngày. Người thứ hai đi nghỉ và trả lời sau mười một ngày.</p>
+<p>Sáu, bảng điểm có dấu. Bảy, đơn xin bảo lưu hai học phần. Tám, đơn giữ hợp đồng thuê phòng trong thời gian vắng mặt.</p>
+<p>Chín, mười và mười một là ba lần xin bảo hiểm du lịch.</p>
+<p>Công ty thứ nhất từ chối trong bốn mươi phút, tự động, kèm mã lý do. Cô tra mã: điểm đến nằm trong danh mục loại trừ. Công ty thứ hai từ chối sau ba ngày, có người viết thư hẳn hoi, lịch sự, và cũng loại trừ. Công ty thứ ba nhận, với một phụ lục hai trang liệt kê những gì không được bồi thường. Elin đọc hết hai trang. Danh sách loại trừ ấy, đọc cho kỹ, chính là danh sách những thứ thật sự có thể xảy ra với cô.</p>
+<p>Cô ký.</p>
+<p>Mười hai, thị thực. Mười ba, giấy phép hoạt động cho người nước ngoài, do phía đối tác Việt Nam nộp hộ, và cô chỉ phải gửi ảnh và một bản khai.</p>
+<p>Giữa chừng cái chuỗi ấy có một cuộc phỏng vấn.</p>
+<p>Nó kéo hai mươi hai phút, qua màn hình, với hai người ngồi chung một cái bàn ở Utrecht và một người thứ ba nối vào từ đâu đó, hình đứng, tiếng vọng.</p>
+<p>Elin đã chuẩn bị cho câu hỏi vì sao cô muốn đi. Cô đã viết ba phương án trả lời vào mặt sau tờ danh sách, và cả ba đều đúng, và không phương án nào là thật.</p>
+<p>Không ai hỏi cô câu đó.</p>
+<p>Người phụ nữ bên trái hỏi cô có làm được chiết một trên năm mà không có máy lắc không. Elin nói có, lắc tay mười lăm phút cũng ra được, sai số lớn hơn nhưng nếu cùng một người làm suốt thì sai số đi cùng chiều và chuỗi vẫn dùng được.</p>
+<p>Người phụ nữ gật đầu và ghi cái gì đó.</p>
+<p>Người bên phải hỏi nếu mất điện ba ngày liền thì cô xử lý mẫu ướt thế nào. Elin nói cô sẽ sấy phần cần sấy trước, chấp nhận hỏng phần còn lại, và ghi rõ mẫu nào bị bỏ, vì một chuỗi có lỗ được ghi chú thì còn dùng được, còn một chuỗi được vá thì vứt đi.</p>
+<p>"Cô đã gặp chuyện mất điện ba ngày bao giờ chưa?" Người bên phải hỏi.</p>
+<p>"Chưa ạ."</p>
+<p>"Rồi cô sẽ gặp." Ông ta nói, và chuyển sang câu tiếp theo.</p>
+<p>Cả cuộc phỏng vấn không ai nhắc đến chiến tranh, đến an toàn, đến lý do. Họ hỏi cô mười một câu và cả mười một câu đều về tay nghề.</p>
+<p>Bốn ngày sau họ gửi thư nhận.</p>
+<p>Ngày mười một tháng năm, cô lên tầng ba toà nhà hành chính để ký cái mà trường gọi là bản cam kết đi vùng rủi ro.</p>
+<p>Người ở phòng pháp chế là một người đàn ông chừng năm mươi tuổi, mặc áo len, bàn làm việc có hai màn hình và một cái cây héo. Ông ta đọc hồ sơ của cô trong hai phút.</p>
+<p>"Cô hiểu cái này nghĩa là gì không?"</p>
+<p>"Trường không chịu trách nhiệm ạ."</p>
+<p>"Không hẳn." Ông ta xoay màn hình lại. "Trường vẫn chịu trách nhiệm trong phạm vi có thể. Vấn đề là phạm vi có thể của chúng tôi ở chỗ đó bằng bao nhiêu. Cô muốn biết quy trình sơ tán của trường với sinh viên ở khu vực loại ba không?"</p>
+<p>"Vâng ạ."</p>
+<p>"Nó là một số điện thoại." Ông ta nói. "Số điện thoại của một công ty ở Brussels. Chúng tôi gọi cho họ, họ gọi cho một người ở nơi gần nhất mà họ còn người. Năm ngoái chúng tôi dùng nó một lần, cho một nghiên cứu sinh ở chỗ khác. Mất mười chín ngày."</p>
+<p>Elin ngồi yên.</p>
+<p>"Tôi không có quyền cấm cô." Ông ta nói. "Tôi có nghĩa vụ nói cho cô nghe con số mười chín ngày ấy. Tôi đã nói rồi. Ký ở hai chỗ, chỗ nào có dán giấy vàng."</p>
+<p>Cô ký ở hai chỗ có dán giấy vàng. Đó là biểu mẫu thứ mười ba.</p>
+<p>Cái thứ mười bốn là một tờ A4 của phòng công tác sinh viên, gửi qua đường bưu chính nội bộ, đề nghị điền và gửi lại trước ngày đi.</p>
+<p>Nó có hai ô.</p>
+<p>Ô thứ nhất: người liên hệ trong trường hợp khẩn cấp. Họ tên, số điện thoại, quan hệ. Elin viết Wim Hoogendijk, viết số máy bàn ở Ommen vì ông không dùng điện thoại di động, và ở ô quan hệ cô viết "ông ngoại".</p>
+<p>Ô thứ hai: người liên hệ dự phòng, phòng trường hợp không liên lạc được với người thứ nhất.</p>
+<p>Cô cầm bút một lúc.</p>
+<p>Rồi cô để trống ô thứ hai, ký tên ở dưới, và bỏ vào phong bì nội bộ.</p>
+<hr class="scene-break" aria-hidden="true">
+<p>Cô về Ommen ngày mười sáu tháng năm.</p>
+<p>Tháng năm thì tàu không bị giữ ở Zwolle nữa. Người ta đã chuyển việc kiểm tra sang ba ga khác và tuyến này bây giờ chạy thẳng. Không ai giải thích vì sao đổi, và cũng không ai hỏi.</p>
+<p>Cô nói chuyện đó ở bàn ăn tối, sau bữa, khi ông Wim đã dọn xong và bà Trees đang gọt táo.</p>
+<p>Bà Trees để con dao xuống.</p>
+<p>"Sáu tháng." Bà nói.</p>
+<p>"Vâng ạ. Gia hạn được, nhưng cháu ký sáu tháng."</p>
+<p>"Bên đấy có bệnh viện không?"</p>
+<p>"Có ạ. Ở thị xã, cách chỗ cháu ở hai mươi lăm cây."</p>
+<p>"Hai mươi lăm cây số." Bà Trees nói. "Sang đây thì hai mươi lăm cây là hai mươi phút. Bên đấy thì bao nhiêu?"</p>
+<p>Elin không biết. Cô nói cô không biết.</p>
+<p>Ông Wim ngồi ở đầu bàn và không nói gì. Ông đang gấp cái khăn lau bát, gấp làm tư, rồi mở ra gấp lại làm ba, rồi treo lên tay nắm lò nướng.</p>
+<p>"Người ta cần gì ở cháu." Bà Trees nói. "Cháu hai mươi tuổi. Bên đấy thiếu gì người biết đo đất."</p>
+<p>"Họ thiếu ạ." Elin nói. "Họ thiếu người ở lại đủ lâu để chuỗi số liệu không bị đứt."</p>
+<p>"Chuỗi số liệu."</p>
+<p>"Vâng ạ."</p>
+<p>Bà Trees cầm con dao lên rồi lại để xuống.</p>
+<p>"Bố mẹ cháu cũng lên máy bay." Bà nói.</p>
+<p>Trong bếp không ai nói gì. Cái tủ lạnh chạy, rồi ngắt.</p>
+<p>Elin nhìn xuống mặt bàn. Trên mặt bàn có một vệt xước hình chữ V mà cô đã nhìn thấy từ năm 2055 và chưa bao giờ hỏi nó ở đâu ra.</p>
+<p>Bà Trees đứng dậy, mang đĩa táo gọt dở ra bồn rửa, và mở vòi nước. Bà để vòi chảy lâu hơn mức cần cho ba miếng táo.</p>
+<p>Ông Wim vẫn ngồi. Ông không bênh ai. Ông không nói với vợ rằng câu đó không công bằng, và ông cũng không nói với cháu rằng bà không có ý như vậy. Ông ngồi đó, và sự im lặng của ông nặng hơn cả hai người cộng lại.</p>
+<p>Elin ngồi trong cái im lặng ấy khoảng một phút rưỡi.</p>
+<p>Rồi ông Wim hỏi:</p>
+<p>"Hộ chiếu cháu còn hạn đến bao giờ?"</p>
+<p>"Tháng ba năm sáu mươi ạ."</p>
+<p>"Ừ." Ông nói. "Còn hơn một năm. Nhưng có nước bắt phải còn sáu tháng tính từ ngày về. Cháu xem lại cái đó."</p>
+<p>"Cháu xem rồi ạ. Sáu tháng thì vẫn dư."</p>
+<p>"Ừ."</p>
+<p>Ông đứng dậy đi lấy nước.</p>
+<p>Ở bồn rửa, vòi nước tắt.</p>
+<hr class="scene-break" aria-hidden="true">
+<p>Sáng hôm sau bà Trees dậy trước cả ông Wim và làm bánh kếp.</p>
+<p>Bà không nhắc gì đến tối qua. Bà hỏi Elin ăn được mấy cái, rồi làm nhiều hơn số ấy hai cái, và đặt lọ mứt lên bàn chứ không đưa. Bà làm việc đó chậm hơn Elin nhớ. Đến cái thứ tư thì bà ngồi xuống ghế cạnh bếp và bảo Elin trở hộ, và bà không nói vì sao, và Elin không hỏi.</p>
+<p>Elin trở nốt sáu cái còn lại. Bà Trees ngồi đó nhìn, chỉ chỗ nào lửa to quá, và có một lúc bà nói rằng cái chảo này chỉ nóng đều ở nửa bên trái, đã thế từ lâu, và ai không biết thì cứ tưởng tại mình.</p>
+<p>Đó là toàn bộ những gì hai bà cháu nói với nhau về tối hôm trước.</p>
+<p>Trên cửa tủ lạnh, tờ giấy ghi đồ cần mua đã có chữ của ông Wim xen vào giữa chữ của bà. Nét ông to hơn, thẳng hơn, viết bằng bút chì.</p>
+<hr class="scene-break" aria-hidden="true">
+<p>Trước khi ra ga cô ra kho lấy cái bơm xe.</p>
+<p>Cái xe đạp cỡ nhỏ vẫn dựng sát tường trong cùng. Xích của nó đen và ướt, và trên nền xi măng dưới bánh sau có một vệt dầu chưa khô hẳn.</p>
+<p>Tháng năm. Ông đã tra dầu rồi.</p>
+<p>Elin lấy cái bơm ở đinh thứ ba và đi ra.</p>
+<hr class="scene-break" aria-hidden="true">
+<p>Danh sách hành lý viết tay, trên mặt sau một tờ đề cương thực hành cũ, và cô sửa nó ba lần.</p>
+<p>Bản thứ nhất nặng ba mươi mốt cân. Cô biết vì cô cân bằng cách đứng lên cân trong nhà tắm, ghi số, rồi đứng lên lần nữa với cái ba lô, ghi số, rồi trừ. Hạn ký gửi là hai mươi ba cân.</p>
+<p>Bản thứ hai cô cắt tám cân, và cô cắt sai. Cô bỏ đôi ủng lội thứ hai, giữ lại ba quyển sách. Đến tối cô đọc lại và hiểu rằng ở một chỗ mà mùa mưa kéo bốn tháng thì một đôi ủng ướt không khô kịp trước ca sau, và ba quyển sách thì cô đã đọc cả rồi.</p>
+<p>Bản thứ ba là bản thật.</p>
+<p>Đi theo cô: hai đôi ủng cao su. Một cái kính lúp gấp mười. Ba trăm cái nhãn dán mẫu, loại chịu ẩm. Hai hộp giấy đo pH, tuy chỗ ấy chắc chắn có máy, nhưng giấy thì không cần điện. Bốn cuốn sổ bìa cứng giấy kẻ ô, cùng loại, mua một lượt. Sáu cây bút bi xanh ngòi 0,7. Thuốc theo đơn của trạm y tế trường, đủ chín tháng, vì họ khuyên lấy dư. Một cái đèn pin đội đầu. Cuộn băng dính vải màu xám.</p>
+<p>Để lại: xe đạp, gửi trong nhà xe, khoá hai vòng, và cô báo cho Sanne biết chỗ để chìa. Cái áo khoác mùa đông. Một hộp các tông đựng đồ nghề riêng của cô, dán nhãn ghi ngày, để dưới gầm giường. Cuốn sổ giấc mơ.</p>
+<p>Cô để cuốn sổ trong ngăn kéo bàn học, dưới xấp bài thi cũ, và đóng ngăn kéo lại.</p>
+<p>Ba ngày sau, khi đóng ba lô lần cuối, cô mở ngăn kéo ra lấy nó.</p>
+<p>Cô không nghĩ gì về việc ấy. Cô chỉ để nó vào ngăn trong, cạnh cuộn băng dính, và kéo khoá.</p>
+<p>Joris hỏi cô có định mang mì gói không. Elin nói không. Joris nói cứ mang, đến lúc ốm thì biết. Cuối cùng trong ba lô có bốn gói mì, và cả hai đều biết chúng sẽ không bao giờ được ăn.</p>
+<p>Sanne ôm cô ở cửa và nói gần hai phút về chuyện múi giờ.</p>
+<hr class="scene-break" aria-hidden="true">
+<p>Sân bay Schiphol, ngày hai tháng sáu, chín giờ mười lăm sáng.</p>
+<p>Nửa nhà ga đóng. Cánh D và E bịt bằng vách ngăn tạm màu trắng, trên đó dán sơ đồ chỉ đường vòng, và sơ đồ ấy đã được sửa bằng băng dính ít nhất hai lần. Hàng chờ làm thủ tục kéo qua ba khúc quanh. Trong hàng có quân phục lẫn với thường phục, và không ai nhìn quân phục nữa.</p>
+<p>Bảng chuyến bay có thêm một cột mà bốn năm trước không có, ghi tuyến bay điều chỉnh. Chuyến của Elin bay vòng, cộng thêm bốn tiếng hai mươi phút, và giá vé của bốn tiếng hai mươi phút ấy nằm trong con số mà tổ chức Bodemherstel đã trả.</p>
+<p>Bà Trees không ra tiễn.</p>
+<p>Bà nói sáng nay có người giao thuốc tận nhà và phải có người ký nhận. Ông Wim gật đầu khi bà nói câu đó. Elin cũng gật đầu. Cả ba người đều biết rằng thuốc giao tận nhà thì để ở hộp thư cũng được, và không ai nói ra.</p>
+<p>Bà đứng ở cửa. Bà mặc áo khoác lần này, dù ngoài trời mười bốn độ.</p>
+<p>"Về đến nơi thì nhắn." Bà nói.</p>
+<p>"Vâng ạ."</p>
+<p>Bà không nói gì thêm. Bà đứng đó cho tới khi hai người đi khuất chỗ rẽ, và Elin biết vậy vì cô quay lại nhìn một lần, và bà vẫn đứng đó.</p>
+<hr class="scene-break" aria-hidden="true">
+<p>Ông Wim đi chuyến năm giờ bốn mươi mốt từ Ommen, đổi tàu hai lần, và sẽ về đến nhà lúc hai giờ chiều. Elin biết vậy vì cô hỏi và ông trả lời bằng số, kiểu người đọc lại một lịch trình đã tra kỹ.</p>
+<p>Ông không mua gì ở sân bay. Lúc chín giờ rưỡi ông lấy trong túi áo ra một gói giấy bạc, bên trong có hai lát bánh mì kẹp phô mai cắt sẵn từ nhà, và ông đứng dựa vào một cái cột mà ăn. Ông mời Elin một lát. Cô ăn.</p>
+<p>Cạnh cột có một tấm biển của hãng hàng không, dán thêm một dải giấy in ở dưới, ghi rằng hành lý ký gửi cho các tuyến điều chỉnh có thể đến sau chuyến bay từ hai đến sáu ngày, và hãng không nhận trách nhiệm với đồ dễ hỏng.</p>
+<p>"Thuốc cháu để đâu?" Ông hỏi.</p>
+<p>"Trong túi xách ạ. Cháu mang theo người hết, không ký gửi."</p>
+<p>"Ừ."</p>
+<p>Ông gấp tờ giấy bạc lại làm tư và cho vào túi áo.</p>
+<p>Ông Wim đi với cô đến tận vạch trước cửa an ninh.</p>
+<p>Từ chỗ đó thì người tiễn không đi tiếp được. Có một hàng cột chăng dây và một người mặc đồng phục đứng chỗ đầu hàng, và phía sau là máy soi.</p>
+<p>Ông không ôm.</p>
+<p>Ông nhìn cái túi xách tay còn lại trên vai cô.</p>
+<p>"Cái này nặng bao nhiêu?"</p>
+<p>"Bảy cân ạ."</p>
+<p>"Ừ."</p>
+<p>Hàng nhích lên một bước.</p>
+<p>"Nhớ ăn." Ông nói.</p>
+<p>Rồi ông quay đi.</p>
+<p>Ông đi nhanh. Elin đứng nhìn theo, và cô đợi.</p>
+<p>Sảnh Schiphol dài bốn trăm mét và thẳng. Nó không có chỗ rẽ nào.</p>
+<hr class="scene-break" aria-hidden="true">
+<p>Cô ngồi ở cửa số bốn mươi tư, còn một tiếng năm mươi phút.</p>
+<p>Ổ cắm dưới ghế bị hỏng, cái bên cạnh cũng hỏng, và có một mảnh giấy dán ở cột ghi rằng đã báo bảo trì, đề ngày mười một tháng năm.</p>
+<p>Elin lấy cuốn sổ trong ngăn ba lô ra, mở đến trang trắng đầu tiên, và kẻ chín cột bằng tay, vì đây là cuốn thứ hai và cuốn thứ hai thì phải kẻ lại từ đầu.</p>
+<p>Cô ghi ngày. Cô ghi giờ tỉnh, sáu giờ kém năm. Cô ghi số giờ ngủ, sáu tiếng bốn mươi phút. Cô ghi cà phê, một cốc, sáu giờ mười. Rượu, không. Nhiệt độ phòng thì cô bỏ trống, vì đêm qua cô ngủ ở nhà và không có nhiệt kế.</p>
+<p>Đến ô giấc mơ thì cô dừng.</p>
+<p>Đêm qua cô tỉnh vì chuông báo thức chứ không vì gì khác. Không có gì để viết vào ô ấy, kể cả chữ không, vì chữ không là để dành cho những đêm cô nhớ rõ là mình đã không mơ, và đêm qua thì cô không nhớ được gì hết.</p>
+<p>Ô ấy vẫn trống khi người ta gọi lên máy bay.</p>
+<hr class="scene-break" aria-hidden="true">
+</article>
+
+
+<svg class="rift-small" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+</svg>
+
+
+<div class="chapter-foot">
+  <nav class="chapter-nav" aria-label="Điều hướng chương">
+    <a class="prev" href="chuong-03.html"><span class="lbl">Trước</span><span class="ttl">Tương Quan Bằng Không</span></a>
+    <a class="toc-link" href="index.html" aria-label="Về mục lục"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></a>
+    <a class="next" href="chuong-05.html"><span class="lbl">Sau</span><span class="ttl">Dãy Ghế Không Nằm Được</span></a>
+  </nav>
+</div>
+
+<footer class="sitefoot">
+  <p>Khúc Ai Ca Cho Những Kẻ Vô Danh — Vòng Tuần Hoàn Người Gieo Hạt · Quyển II</p>
+  <p>© 2026 Nguyễn Duy Anh (bút danh: Mendingur). Bản quyền tác phẩm thuộc về tác giả.</p>
+</footer>
+
+<script src="glow.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nhịp Gõ — Khúc Ai Ca Cho Những Kẻ Vô Danh</title>
+<meta name="description" content="Vòng Tuần Hoàn Người Gieo Hạt · Quyển II — tiểu thuyết của Mendingur">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="style.css">
+<script src="reader.js" defer></script>
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem('mendingur-theme');
+    var theme = saved === 'dark' || saved === 'light'
+      ? saved
+      : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+  <linearGradient id="wingGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="55%" stop-color="#C99A3E"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+  <radialGradient id="coreGlow" cx="50%" cy="55%" r="55%">
+    <stop offset="0%" stop-color="#FFF6DE" stop-opacity="0.95"/>
+    <stop offset="55%" stop-color="#E4C077" stop-opacity="0.35"/>
+    <stop offset="100%" stop-color="#E4C077" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="flowerGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+</defs>
+</svg>
+<div class="grain"></div>
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+<div class="settings-menu" id="settingsMenu">
+  <button class="menu-toggle" type="button" id="settingsMenuToggle" aria-haspopup="true" aria-expanded="false" aria-controls="settingsPopover" aria-label="Cài đặt giao diện">
+    <span class="menu-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+  </button>
+  <div class="settings-popover" id="settingsPopover" role="menu">
+    <div class="settings-group">
+      <p class="settings-group-label">Giao diện</p>
+      <div class="theme-switcher" id="themeSwitcher" role="group" aria-label="Giao diện sáng / tối">
+        <button class="theme-btn active" type="button" data-theme-choice="light" aria-pressed="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <span>Sáng</span>
+        </button>
+        <button class="theme-btn" type="button" data-theme-choice="dark" aria-pressed="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+          <span>Tối</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<header class="sitebar">
+  <a class="brand" href="index.html">
+    <span class="mark"><svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sower's Cycle mark">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+<g transform="translate(200,278)">
+  <g><ellipse rx="14" ry="21" transform="rotate(0)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(72)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(144)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(216)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(288)" fill="url(#flowerGrad)"/></g>
+  <circle r="9.5" fill="#FFF6DE"/>
+</g>
+<g transform="translate(200,96)"><path d="M0,-24 C2,-7 7,-2 24,0 C7,2 2,7 0,24 C-2,7 -7,2 -24,0 C-7,-2 -2,-7 0,-24 Z" fill="#F3D488"/></g>
+</svg></span>
+    <span class="word">Khúc Ai Ca Cho Những Kẻ Vô Danh</span>
+  </a>
+  <nav>
+    <a href="index.html" class="toc-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      Mục lục
+    </a>
+  </nav>
+</header>
+<div class="progress-track"><div class="progress-fill"></div></div>
+
+<header class="chapter-head">
+  <p class="crumb"><a href="index.html">IN PARADISUM · THIẾU MỘT TIẾNG ĐỘNG</a></p>
+  <span class="cnum">Chương 26</span>
+  <h1>Nhịp Gõ</h1>
+  <div class="font-toggle" role="group" aria-label="Cỡ chữ">
+    <button type="button" data-size="sm" aria-pressed="false">A-</button>
+    <button type="button" data-size="md" aria-pressed="true">A</button>
+    <button type="button" data-size="lg" aria-pressed="false">A+</button>
+  </div>
+</header>
+
+<article class="prose" data-size="md">
+<p>Sổ tay đối thoại vật chất, trạm kỹ thuật số hai, quyển ba.</p>
+<p>Đầu mỗi trang có ba ô: ngày, cấu trúc, phiên số.</p>
+<p>Ngày 9 tháng 9 năm 2070 · 690,0 m · phiên thứ 209.</p>
+<p>Ô cấu trúc của quyển ba chép từ quyển hai, và ô cấu trúc của quyển hai chép từ quyển một, và người ghi quyển một có chép nó từ bản tin tuần, và bản tin tuần bây giờ ra hai tuần một số.</p>
+<p>In sẵn ở chân mọi trang: quyển này không thay thế biên bản.</p>
+<p>Diễm bốn mươi tuổi. Cô tới trạm kỹ thuật số hai ngày 6 tháng 2 năm 2070 và cô ở đó tới cuối năm.</p>
+<p>Cô tới bằng suất của một tổ chức cứu trợ, và trong giấy thì chức danh của cô là chuyên viên tư liệu, và chức danh ấy có thật, và việc của cô là sắp xếp và đối chiếu tài liệu lưu của trạm.</p>
+<p>Cô không được cấp thẻ nhà báo, vì thẻ nhà báo thì cấp cho người có cơ quan, và ô cơ quan trong đơn thì không cho bỏ trống và không cho ghi chữ không.</p>
+<p>Cô điền tên tổ chức cứu trợ.</p>
+<p>Cái quy trình bốn bước dài mười một dòng bắt đầu từ ngày 14 tháng 4 năm 2068.</p>
+<p>Ba người của trạm kỹ thuật số hai làm nó tại chỗ, và họ làm đúng bốn bước, và họ nhận lại được đúng bốn cái trả lời, và bốn cái trả lời ấy là bốn cái nhịp gõ.</p>
+<p>Biên bản xác nhận của ba người ấy dài một trang rưỡi, và nó được đóng vào tập hồ sơ gốc của hiệp định ở chỗ lẽ ra là chữ ký.</p>
+<p>Từ mười một dòng ấy, trong hai mươi chín tháng, người ta dựng ra một cái gọi là đối thoại vật chất.</p>
+<p>Nó không phải là ngôn ngữ. Ban thư ký kỹ thuật có nói rõ chuyện đó ở trang đầu quyển một, và họ viết là phương thức trao đổi bằng đại lượng đo được, và họ viết đúng.</p>
+<p>Một tấm thép vuông một mét hai đóng nằm xuống nền, ba cái chốt, ép sát. Một cái vồ gỗ. Một cái từ kế đặt cách bốn mươi phân. Một cái đồng hồ bấm giây và hai người ghi độc lập, ghi rời, không nhìn bảng của nhau.</p>
+<p>Người ta gõ. Bên kia không nghe tiếng trong không khí, bên kia nhận cái đi qua nền đất, và chuyện đó thì bốn mươi giây năm 2058 đã cho biết và không ai ở đây biết là đã cho biết.</p>
+<p>Cái nói được thì có chín thứ.</p>
+<p>Một hồi dài rồi tới một chuỗi ngắn thì hồi dài ấy là dấu bắt đầu. Số nhịp ngắn là con số. Một hồi dài đứng sau chuỗi ngắn là dấu hết. Hai hồi dài liền nhau là làm lại từ đầu. Một nhịp lẻ đứng riêng, có chờ trước và chờ sau, là cái vừa rồi đúng. Còn bốn thứ nữa và cả bốn đều là biến thể của năm thứ trên.</p>
+<p>Cái vốn ấy đủ chín thứ vào tháng 11 năm 2069, và từ đó nó không lớn thêm được.</p>
+<p>Có một đề nghị bổ sung thứ mười, nộp tháng 3 năm 2070, và nó bị rút hai tuần sau đó, vì người đề nghị không chứng minh được rằng bên kia phân biệt được nó với thứ thứ tám.</p>
+<p>Một lượt trao đổi mất bốn mươi phút, vì giữa mỗi thứ phải chờ, và cái chờ ấy không phải phép lịch sự, nó là điều kiện để hai bên ghi được là cái nào tách khỏi cái nào.</p>
+<p>Diễm ngồi dự phiên thứ nhất của cô ngày 14 tháng 2.</p>
+<p>Cô ngồi ở hàng sau, cạnh cái bàn có hai quyển sổ ghi độc lập, và cô có một tờ giấy và cô không ghi gì trong hai mươi phút đầu.</p>
+<p>Người kỹ sư trưởng của tổ là một người ba mươi bốn tuổi, và ở phút thứ hai mươi mấy ông ta giải thích cho cô cái dấu bắt đầu.</p>
+<p>Ông ta nói rằng trong hai mươi chín tháng thì chỗ khó nhất là chỗ này, là làm sao biết được một chuỗi đã bắt đầu, và ông ta nói tổ mất bốn tháng cho nó, và ông ta nói câu ấy bằng giọng người kể lại một việc mình đã làm xong.</p>
+<p>Ông ta đã tìm ra nó thật, và ông ta tìm ra nó bằng tấm thép, cái vồ, và hai quyển sổ ghi rời.</p>
+<p>Diễm ghi vào tờ giấy của cô một dòng, và dòng ấy là ngày và số phiên.</p>
+<p>Tháng 4 năm 2069, Diễm về Gò Sen một lần.</p>
+<p>Cô đi vì có người nhờ, và người nhờ thì nhờ qua ba chặng, và ở chặng đầu là một câu hỏi của ban thư ký kỹ thuật gửi cho giáo sư Elias Rourke, và câu hỏi ấy là nguồn của hai mươi chín trang có còn không, và nếu còn thì nguồn ấy có tới được không.</p>
+<p>Rourke không biết cái nguồn ấy là ai. Ông không biết năm 2064 và ông không biết năm 2069, và ông chuyển câu hỏi ấy đi theo đúng cái đường mà tài liệu đã đi tới ông, tức là đường ngược lại.</p>
+<p>Cô đi chuyến đò sớm với Bảo Thư và hai người tới nhà lúc gần chín giờ, và hai người ở lại tới bữa cơm trưa rồi về chuyến đò chiều.</p>
+<p>Cô nói hết cái phải nói trong hai mươi lăm phút.</p>
+<p>Người trong nhà ấy nghe hết, hỏi hai câu, và cả hai câu đều là câu hỏi về khoảng cách và về số lượt. Rồi người ấy nói mấy câu về mình, và mấy câu ấy là chuyện của người ấy và Diễm không chép lại ở đâu. Rồi người ấy nói không.</p>
+<p>Cô đã tính trước là sẽ nghe chữ ấy. Cô có tính trước cả chuyện cô sẽ hỏi lại một lần, và cô bỏ cái tính ấy.</p>
+<p>Lúc tiễn ra cổng, người đàn bà trong nhà ấy đưa cho cô một thứ khác.</p>
+<p>Cái ấy không cầm được. Bà đọc cho Diễm nghe bốn câu, đọc thuộc, đọc chậm, và bà đọc như người đọc lại một chỗ mình đã chép chứ không phải như người kể một chuyện.</p>
+<p>Bốn câu ấy nói về việc bên kia giữ cái gì, và ở lại giữ nó ở chỗ nào.</p>
+<p>Trong bốn câu ấy không có một đại từ nào chỉ người nói.</p>
+<p>Diễm nghe hết. Cô hỏi đúng một câu, và câu ấy là ghi được không, và bà nói không.</p>
+<p>Tối hôm ấy cô mở sổ của cô ra, lật tới trang có mục nguồn bốn, và cô kẻ một nét ngang dưới dòng cuối cùng của mục ấy.</p>
+<p>Từ đó tới nay mục nguồn bốn không có thêm dòng nào.</p>
+<p>Trong hai mươi chín tháng, phần kết luận của sổ tay có mười hai mục. Bốn mục dưới đây là bốn mục nói về cái vật, và cả bốn đều dài dưới mười dòng.</p>
+<p>Kết luận số bảy, ghi ngày 11 tháng 2 năm 2070, phiên thứ 128.</p>
+<p>Bên kia mang tới mỗi phiên một cái vật, và họ mang nó về khi phiên kết thúc. Cái vật ấy cùng một họ với cái vật đã lưu ở phòng thí nghiệm từ năm 2067: hình hộp, bề mặt liền, không mối nối, không bộ phận chuyển động, nhiệt độ bề mặt mười một độ và không đổi.</p>
+<p>Trong hai mươi hai phiên có cân, người ta cân được mười bảy cái khác nhau. Kích thước cả mười bảy cái đều bằng nhau tới từng milimét. Khối lượng thì không: từ mười bốn cân hai tới hai mươi mốt cân tám.</p>
+<p>Mỗi lần đặt vật xuống, bên kia gõ dấu bắt đầu rồi gõ một con số.</p>
+<p>Con số ấy đi cùng với khối lượng. Lấy khối lượng chia cho con số thì ra một hằng số, và hằng số ấy giữ nguyên qua cả mười bảy cái vật, và nó là bốn phẩy bốn không gam, sai số chưa tới nửa phần trăm.</p>
+<p>Con số nhỏ nhất là ba nghìn hai trăm hai mươi tám. Con số lớn nhất là bốn nghìn chín trăm năm mươi lăm.</p>
+<p>Người viết kết luận số bảy là một người ba mươi bốn tuổi và người ấy viết thêm một câu ở cuối, và câu ấy nói rằng chưa xác định được đơn vị của con số ấy là đơn vị của cái gì.</p>
+<p>Kết luận số chín, ghi ngày 6 tháng 4 năm 2070, phiên thứ 156.</p>
+<p>Con số vào cái vật từng cái một.</p>
+<p>Ở phiên 154, bên kia làm một chuỗi mà tổ ghi lại được đầy đủ: một dạng ba nhịp, rồi một nhịp lẻ, rồi đặt tay lên vật. Rồi lặp lại. Họ lặp mười bảy lần liền, đều, không sai một chỗ, và giữa các lần có chờ.</p>
+<p>Sau mười bảy lần ấy, họ gõ dấu bắt đầu và gõ mười bảy.</p>
+<p>Cái dạng ba nhịp ấy là cái dạng mà từ kế của phòng thí nghiệm đã ghi được ở hiện vật lưu năm 2067, trong ba trăm hai mươi giờ đo, và người viết phụ lục hồi đó đã ghi thêm rằng có thể là trùng hợp và cần thêm mẫu.</p>
+<p>Bây giờ thì có thêm mẫu.</p>
+<p>Nó cũng là dạng ba nhịp trùng với hai mươi hai giây đầu của bản ghi lưu kho GC-2058-1141, ghi lúc 04:51 ngày 11 tháng 11 năm 2058.</p>
+<p>Kết luận số chín viết rằng cái vào vật thì đi cùng dạng ba nhịp, mỗi lần một, và cái không đi cùng dạng ba nhịp thì không vào.</p>
+<p>Diễm ngồi ở hàng sau khi tổ trình bày kết luận số chín, ngày 6 tháng 4, và cô ngồi im hết cả buổi.</p>
+<p>Năm 2064 cô có ngồi hai đêm để kiểm lại phần tính hướng tương đối của một bản đánh máy hai mươi chín trang, và cô kiểm nó hai lần, và vì kiểm hai lần nên cô đọc hết cả hai mươi chín trang.</p>
+<p>Trong hai mươi chín trang ấy có một mục chép nguyên, và mục ấy tả một dạng ba nhịp: một cái sức nặng lên tới bậc hai rồi đứng, một cái hướng không chỉ đi đâu cả mà quay ngược lại chính chỗ nó phát ra, và một cái lạnh tụt xuống rồi giữ hai ba giây.</p>
+<p>Ba đại lượng, cùng lên và cùng xuống, theo cùng một thứ tự.</p>
+<p>Trong hai mươi chín trang ấy còn có một câu nữa, và câu ấy nói rằng cái dạng ba nhịp ghi được bốn mươi mốt lần, và bốn mươi mốt lần ấy đều nằm ở đầu, và không lần nào nằm ở chỗ khác.</p>
+<p>Tổ mất bốn tháng để tới chỗ ấy. Bản đánh máy nói nó trong một dòng, và bản ấy có từ tháng 3 năm 2064.</p>
+<p>Bản đánh máy ấy không có tên, không có ngày, không có địa danh, và không có nét chữ nào.</p>
+<p>Cô không nói gì với người kỹ sư trưởng, và cô không nói vì cô không nói được. Muốn nói thì phải nói ra cái bản ấy ở đâu, và cái bản ấy ở đâu thì có ba người đã bỏ ba ngày năm 2064 để làm cho nó không còn ở đâu cả.</p>
+<p>Kết luận số mười một, ghi ngày 27 tháng 7 năm 2070, phiên thứ 188.</p>
+<p>Trong ba phiên, tổ hỏi một câu, và cái vốn chín thứ thì chỉ hỏi được bằng cách đặt hai con số cạnh nhau.</p>
+<p>Bên kia trả lời bằng một con số, và con số ấy rất lớn, và họ gõ nó trong bốn mươi chín phút không nghỉ, và hai người ghi độc lập ra hai kết quả lệch nhau ba, và cái từ kế thì cho một kết quả thứ ba, và người ta lấy kết quả của từ kế.</p>
+<p>Ở phiên sau, tổ hỏi lại đúng câu ấy. Con số nhỏ hơn.</p>
+<p>Ở phiên sau nữa, nhỏ hơn nữa.</p>
+<p>Trong ba phiên trải một tuần rưỡi, con số ấy xuống theo một mức đều, và người viết kết luận có làm một phép chia, và phép chia ấy cho ra một cái ngày, và cái ngày ấy nằm ở khoảng giữa những năm hai nghìn một trăm.</p>
+<p>Kết luận số mười một viết ba dòng và không viết dòng thứ tư.</p>
+<p>Kết luận số mười hai, ghi ngày 9 tháng 9 năm 2070, phiên thứ 209.</p>
+<p>Tổ đặt một câu hỏi cuối cùng của loạt ấy, và câu hỏi là con số kia có xuống tới không hay không.</p>
+<p>Bên kia gõ dấu bắt đầu, gõ một, gõ dấu hết.</p>
+<p>Rồi họ chờ một lúc lâu hơn bình thường, và rồi họ làm lại đúng cái chuỗi ở phiên 154, tức là dạng ba nhịp, một nhịp lẻ, đặt tay lên vật.</p>
+<p>Họ làm nó một lần. Rồi họ dừng và họ không gõ con số nào sau đó.</p>
+<p>Kết luận số mười hai dài bảy dòng. Nó viết rằng con số dừng ở một. Nó viết rằng cái ở lại thì không đưa vào vật được, vì đưa vào vật thì phải có người làm cái chuỗi ấy, và người làm chuỗi ấy phải có mặt. Nó viết rằng chưa xác định được đơn vị.</p>
+<p>Nó không viết cái dòng thứ tám.</p>
+<p>Diễm ngồi ở hàng sau và cô có mặt ở cả bốn phiên của loạt ấy, ba phiên hỏi và phiên cuối.</p>
+<p>Cô là người duy nhất trong phòng cầm cả hai nửa.</p>
+<p>Nửa thứ nhất là bốn kết luận có số hiệu, có ngày, có hai người ghi độc lập, có một cái từ kế, và có một hằng số bốn phẩy bốn không gam.</p>
+<p>Nửa thứ hai là bốn câu một người đàn bà đọc thuộc cho cô nghe ở cổng một cái nhà ở Gò Sen vào tháng 4 năm 2069, và bốn câu ấy nói cái đơn vị ấy là đơn vị của cái gì.</p>
+<p>Cô không nối hai nửa ấy lại thành lời với ai, không ở trạm và cũng không về sau.</p>
+<p>Cái hiện vật số hiệu K9/2067/0311 nặng mười chín cân bốn.</p>
+<p>Con số ấy nằm ở dòng thứ sáu trong mục kê hiện vật của một biên bản hiện trường lập lúc 06:20 ngày 25 tháng 9 năm 2067, ở cây số bốn đường công vụ đông, và người lập biên bản cân bằng cái cân dã chiến của tổ thu hồi và ghi tới một chữ số thập phân.</p>
+<p>Mười chín cân bốn chia cho bốn phẩy bốn không gam ra bốn nghìn bốn trăm lẻ chín.</p>
+<p>Sai số của phép cân ấy là một lạng, và một lạng chia cho bốn phẩy bốn không gam ra hai mươi ba.</p>
+<p>Trong hai trăm bảy mươi trang báo cáo của bốn phòng thí nghiệm, viết trong năm tháng năm 2067 và 2068, không có chỗ nào ghi con số bốn nghìn bốn trăm lẻ chín, và không có chỗ nào ghi con số hai mươi ba.</p>
+<p>Không phòng nào giấu chuyện gì. Bốn phòng ấy đo cái đo được và viết cái đo được. Cái họ không làm là họ không chia, vì muốn chia thì phải biết chia cho cái gì, và cái ấy thì tới tháng 2 năm 2070 mới có.</p>
+<p>Trong biểu mẫu tiếp nhận hiện vật của phân khu bảy, in năm 2059 và dùng tới năm 2068, có mười bốn mục.</p>
+<p>Trong mười bốn mục ấy có mục khối lượng, mục kích thước, mục chất liệu, mục nhiệt độ, và mục tình trạng bề mặt.</p>
+<p>Không có mục nào hỏi bao nhiêu.</p>
+<p>Ngày 3 tháng 10 năm 2070, ban thư ký kỹ thuật gửi lên uỷ ban thường trực một văn bản ba trang.</p>
+<p>Văn bản ấy nói rằng theo vốn chín thứ đã xác lập, cái chuỗi bốn nhịp mà ba người của trạm nhận được ngày 14 tháng 4 năm 2068 đọc ra được, và nó đọc ra là dấu bắt đầu, một, dấu hết, và cái vừa rồi đúng.</p>
+<p>Nghĩa là cái nằm ở chỗ chữ ký trong tập hồ sơ gốc của hiệp định, đóng ở đó từ năm 2068, là con số một.</p>
+<p>Văn bản ba trang ấy đề nghị hai việc: ghi nhận cách đọc mới, và bổ sung một trang chú giải vào tập hồ sơ gốc.</p>
+<p>Việc thứ nhất được ghi nhận trong biên bản phiên họp ngày 19 tháng 10.</p>
+<p>Việc thứ hai chưa làm, vì bổ sung một trang vào tập hồ sơ gốc của một hiệp định đã ký bằng sáu thứ tiếng thì phải có một quyết định riêng, và cái quyết định ấy phải do Hội Đồng ra, và tính tới hết năm 2070 thì chưa ai đưa nó vào chương trình làm việc.</p>
+<p>Ba người lập biên bản năm 2068 thì một người đã chuyển đơn vị và hai người còn ở trạm.</p>
+<p>Hai người ấy có được hỏi lại vào tháng 10 năm 2070, và cả hai đều xác nhận là họ gõ đúng bốn bước và nhận đúng bốn cái trả lời, và cả hai đều nói là hồi đó họ không biết bốn cái ấy nghĩa là gì.</p>
+<p>Bây giờ họ biết cả bốn cái ấy nghĩa là gì, và một trong hai người có hỏi lại rằng cái thứ hai là con số một thì con số ấy đếm cái gì, và người kia nói là trong văn bản không nói.</p>
+<p>Đêm 12 tháng 10, Diễm ngồi ở phòng tài liệu của trạm.</p>
+<p>Phòng ấy có một cái máy chữ, và cái máy chữ ấy dùng để đánh biên bản giao nhận, và nó là cái máy duy nhất trong trạm còn đánh được bản ba liên.</p>
+<p>Cô lắp một tờ giấy vào.</p>
+<p>Cô đã không viết một bài nào từ năm 2055. Mười lăm năm.</p>
+<p>Trong mười lăm năm ấy cô đã gõ tay hai trăm mấy chục trang một tuần, đã dựng bảng mười bảy cột, đã kiểm một giả thuyết bằng năm cách và đã tự viết ra rằng cô không chứng minh được nhân quả, và đã ghi vào một cột thứ ba cái con số mà công chúng đang chờ, kể cả khi cô biết con số ấy sai.</p>
+<p>Có hồ sơ, có bảng, có bản thảo nộp hai nơi, và không có một bài nào.</p>
+<p>Cô ngồi trước cái máy chữ chừng hai mươi phút và cô không gõ chữ nào.</p>
+<p>Chỗ kẹt không phải là chỗ mở đầu.</p>
+<p>Chỗ kẹt là cô chỉ có một nửa. Nửa cô có thì có số hiệu, có ngày, có hai người ghi độc lập, và nó nói được rằng bên kia đếm cái gì đó và đếm rất kỹ. Nửa kia thì không dẫn được nguồn, và cô là người đã bỏ mười lăm năm để nói với người khác rằng cái không dẫn được nguồn thì không viết ra.</p>
+<p>Rồi cô làm cái cô làm được.</p>
+<p>Cô rút tờ giấy ra, lấy một tờ khác, xoay ngang, và cô kẻ bảng.</p>
+<p>Bốn cột. Mười bảy dòng cho mười bảy cái vật đã cân, và một dòng thứ mười tám cho cái vật ở phòng thí nghiệm cách đây mười hai nghìn cây.</p>
+<p>Cột thứ nhất: số hiệu phiên. Cột thứ hai: khối lượng. Cột thứ ba: con số gõ được.</p>
+<p>Cột thứ tư cô để trống cho tới lúc kẻ xong, rồi cô viết đầu cột một chữ.</p>
+<p>Cô viết: bao nhiêu.</p>
+<p>Rồi cô điền. Cô điền mười bảy dòng từ sổ tay, và dòng thứ mười tám cô tự chia, và ở dòng thứ mười tám cô ghi cả cái sai số hai mươi ba.</p>
+<p>Xong rồi cô làm cái việc cô vẫn làm.</p>
+<p>Cô làm lại phép chia của cả mười tám dòng lần thứ hai, từ đầu, không nhìn kết quả lần thứ nhất, và việc ấy mất bốn mươi phút.</p>
+<p>Cả mười tám dòng đều ra đúng con số cũ.</p>
+<p>Sáng hôm sau cô mang tờ bảng sang chỗ người kỹ sư trưởng và cô nhờ ông ta kiểm hộ phép chia.</p>
+<p>Ông ta kiểm trong mười một phút, bằng máy tính bàn của tổ, và ông ta nói đúng hết.</p>
+<p>Rồi ông ta hỏi cột thứ tư là cột gì.</p>
+<p>"Bao nhiêu." Diễm nói.</p>
+<p>Ông ta đọc cái đầu cột ấy. Rồi ông ta đọc lại lần nữa.</p>
+<p>Rồi ông ta đứng dậy, lấy một tờ giấy trắng trong ngăn bàn, kẻ bốn cột bằng thước, và chép lại cả mười tám dòng.</p>
+</article>
+
+
+<svg class="rift-small" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+</svg>
+
+
+<div class="chapter-foot">
+  <nav class="chapter-nav" aria-label="Điều hướng chương">
+    <a class="prev" href="chuong-25.html"><span class="lbl">Trước</span><span class="ttl">Đường Ống</span></a>
+    <a class="toc-link" href="index.html" aria-label="Về mục lục"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></a>
+    <a class="next" href="chuong-27.html"><span class="lbl">Sau</span><span class="ttl">Tờ Giấy Không Đọc Được Nữa</span></a>
+  </nav>
+</div>
+
+<footer class="sitefoot">
+  <p>Khúc Ai Ca Cho Những Kẻ Vô Danh — Vòng Tuần Hoàn Người Gieo Hạt · Quyển II</p>
+  <p>© 2026 Nguyễn Duy Anh (bút danh: Mendingur). Bản quyền tác phẩm thuộc về tác giả.</p>
+</footer>
+
+<script src="glow.js" defer></script>
+</body>
+</html>

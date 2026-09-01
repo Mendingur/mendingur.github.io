@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cái Tên Viết Sai — Khúc Ai Ca Cho Những Kẻ Vô Danh</title>
+<meta name="description" content="Vòng Tuần Hoàn Người Gieo Hạt · Quyển II — tiểu thuyết của Mendingur">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="style.css">
+<script src="reader.js" defer></script>
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem('mendingur-theme');
+    var theme = saved === 'dark' || saved === 'light'
+      ? saved
+      : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+  <linearGradient id="wingGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="55%" stop-color="#C99A3E"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+  <radialGradient id="coreGlow" cx="50%" cy="55%" r="55%">
+    <stop offset="0%" stop-color="#FFF6DE" stop-opacity="0.95"/>
+    <stop offset="55%" stop-color="#E4C077" stop-opacity="0.35"/>
+    <stop offset="100%" stop-color="#E4C077" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="flowerGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+</defs>
+</svg>
+<div class="grain"></div>
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+<div class="settings-menu" id="settingsMenu">
+  <button class="menu-toggle" type="button" id="settingsMenuToggle" aria-haspopup="true" aria-expanded="false" aria-controls="settingsPopover" aria-label="Cài đặt giao diện">
+    <span class="menu-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+  </button>
+  <div class="settings-popover" id="settingsPopover" role="menu">
+    <div class="settings-group">
+      <p class="settings-group-label">Giao diện</p>
+      <div class="theme-switcher" id="themeSwitcher" role="group" aria-label="Giao diện sáng / tối">
+        <button class="theme-btn active" type="button" data-theme-choice="light" aria-pressed="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <span>Sáng</span>
+        </button>
+        <button class="theme-btn" type="button" data-theme-choice="dark" aria-pressed="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+          <span>Tối</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<header class="sitebar">
+  <a class="brand" href="index.html">
+    <span class="mark"><svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sower's Cycle mark">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+<g transform="translate(200,278)">
+  <g><ellipse rx="14" ry="21" transform="rotate(0)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(72)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(144)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(216)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(288)" fill="url(#flowerGrad)"/></g>
+  <circle r="9.5" fill="#FFF6DE"/>
+</g>
+<g transform="translate(200,96)"><path d="M0,-24 C2,-7 7,-2 24,0 C7,2 2,7 0,24 C-2,7 -7,2 -24,0 C-7,-2 -2,-7 0,-24 Z" fill="#F3D488"/></g>
+</svg></span>
+    <span class="word">Khúc Ai Ca Cho Những Kẻ Vô Danh</span>
+  </a>
+  <nav>
+    <a href="index.html" class="toc-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      Mục lục
+    </a>
+  </nav>
+</header>
+<div class="progress-track"><div class="progress-fill"></div></div>
+
+<header class="chapter-head">
+  <p class="crumb"><a href="index.html">INTROITUS · BỘ BÁT ĐĨA ĐỦ SÁU NGƯỜI</a></p>
+  <span class="cnum">Chương 2</span>
+  <h1>Cái Tên Viết Sai</h1>
+  <div class="font-toggle" role="group" aria-label="Cỡ chữ">
+    <button type="button" data-size="sm" aria-pressed="false">A-</button>
+    <button type="button" data-size="md" aria-pressed="true">A</button>
+    <button type="button" data-size="lg" aria-pressed="false">A+</button>
+  </div>
+</header>
+
+<article class="prose" data-size="md">
+<p>Tàu dừng ở Zwolle chín phút để kiểm tra giấy tờ.</p>
+<p>Không ai thông báo trước. Cửa toa đóng lại, và hai người mặc đồng phục màu xanh sẫm đi từ đầu toa xuống, phía sau là người soát vé của hãng đường sắt, trông ngượng nghịu vì hôm nay anh ta không phải người quan trọng nhất trong toa. Đồng phục xanh sẫm không phải cảnh sát. Trên vai áo họ có phù hiệu của một công ty được thuê làm việc này từ mùa hè.</p>
+<p>Hành khách lấy thẻ ra trước khi được yêu cầu. Đó là chi tiết Elin để ý mỗi lần. Không ai phàn nàn, không ai hỏi họ đang đối chiếu với danh sách nào, và cũng không ai biết danh sách ấy là danh sách gì.</p>
+<p>Người phụ nữ ngồi cạnh cô cầm thẻ sẵn trong tay từ lúc tàu rời Deventer.</p>
+<p>"Tháng trước mất hai mươi phút." Bà ta nói. "Bây giờ nhanh rồi."</p>
+<p>Một người đàn ông ngồi cách ba hàng ghế không mang thẻ. Ông ta giải thích, bình tĩnh, rằng thẻ để trong áo khoác kia và áo khoác kia thì để ở nhà. Hai người đồng phục cũng bình tĩnh. Họ mời ông ta xuống tàu ở Zwolle để làm rõ. Ông ta gật đầu, lấy túi trên giá, và xuống. Không ai trong toa ngẩng lên nhìn theo.</p>
+<p>Toa có sáu mươi hai chỗ và hôm nay gần đầy. Chín phút nhân sáu mươi hai người là năm trăm năm mươi tám phút, tức là hơn chín tiếng đồng hồ của con người, tiêu ở Zwolle sáng nay để đối chiếu một danh sách mà không ai được biết nội dung. Elin làm phép nhân đó trong đầu, biết nó vô nghĩa, và vẫn làm.</p>
+<p>Tàu chạy tiếp lúc chín giờ hai mươi tư. Cô về Ommen mỗi tháng một lần, đôi khi hai, và cô đã đi tuyến này đủ nhiều để biết đoạn nào sóng điện thoại mất.</p>
+<hr class="scene-break" aria-hidden="true">
+<p>Ommen nằm ở Overijssel, dãy nhà gạch xây những năm hai nghìn, vườn sau rộng bằng chỗ đậu hai cái xe hơi. Ông Wim ra đón cô ở ga. Ông đi nhanh hơn cô, rồi chậm lại chờ ở chỗ rẽ, đúng như mọi lần, và không lần nào ông nói gì về chuyện đó.</p>
+<p>Bữa tối lúc năm giờ bốn mươi lăm. Khoai bắc lên bếp lúc năm giờ mười. Trong ba mươi bốn năm làm ca sáng ở nhà máy sữa Ommen, ông Wim đã ăn tối vào giờ đó, và ông không đổi khi về hưu, vì đổi thì để làm gì.</p>
+<p>Cái nồi to nằm úp trên nóc tủ ly. Đường nứt chạy chéo ở chân hàn, dài chừng bốn phân, và nhìn kỹ thì thấy nó không phải mới nứt hồi tháng chín, nó đã rạn từ lâu và hồi tháng chín chỉ là lúc nó hở ra. Nồi ấy ba mươi mốt năm, có từ hồi ông bà còn chưa chuyển về Ommen.</p>
+<p>Cái nồi thay thế nhỏ hơn một cỡ. Nước khoai trào ra vành bếp. Ông Wim lau, ngồi xuống, ba phút sau đứng lên lau lần nữa.</p>
+<p>"Cháu đặt cái đúng cỡ nhé ạ." Elin nói. "Ba hôm là có."</p>
+<p>"Để đấy." Ông nói.</p>
+<p>Bà Trees dọn dao dĩa. Bộ bát đĩa trong tủ ly đủ sáu người. Nhà có ba người. Bà lấy ba cái đĩa ở chồng bên trái, như mọi bữa, và chồng bên phải thì vẫn nguyên, và bụi trên đó mỏng vì bà vẫn lau.</p>
+<p>Giữa lúc dọn, bà ngồi xuống ghế. Bà ngồi khoảng bốn mươi giây, hai tay để trên mặt bàn, rồi đứng lên dọn tiếp. Trong bữa, bà làm như vậy thêm một lần nữa.</p>
+<p>Ông Wim có nhìn thấy. Elin biết ông có nhìn thấy, vì ông đứng lên lấy hộ bà lọ muối ở đầu bàn bên kia, mà lọ muối thì bà vẫn với tới được.</p>
+<p>Bà ho hai lần trong bữa, kiểu ho khan, ngắn.</p>
+<p>"Phòng khô quá." Bà nói. "Mùa đông năm nào cũng thế."</p>
+<p>Sau bữa, bà ra bồn rửa, lấy hộp thuốc nhựa chia ô theo thứ ở dưới cái khăn lau tay, ấn nắp một ô bằng mu bàn tay, uống, rồi đẩy hộp về chỗ cũ và kéo khăn phủ lên. Cả động tác gọn trong bốn giây. Nó gọn theo cái lối của một việc đã làm rất nhiều lần và không muốn ai nhìn.</p>
+<p>Trên cửa tủ lạnh có tờ giấy ghi đồ cần mua. Chữ bà Trees. Elin đã nhìn tờ giấy ấy hồi tháng tư, và chữ hồi tháng tư nhỏ hơn.</p>
+<p>Nóc tủ ly trống. Elin nhớ trước kia trên đó có ít nhất bốn cái khung ảnh xếp hàng, hai cái to hai cái nhỏ. Cô không nhớ chúng biến mất lúc nào. Có thể chúng nằm trong ngăn kéo, có thể trong phòng cuối hành lang. Ba năm nay cô chưa hỏi câu nào về chuyện đó, và tối nay cô cũng không hỏi.</p>
+<p>Tản nhiệt phòng cuối hành lang vặn ở nấc thấp nhất suốt mùa đông. Ông Wim để vậy để ống nước trong tường không đóng băng. Ông đã nói lý do ấy đúng một lần, năm 2055, và không nói lại.</p>
+<p>"Cháu lên gác mái lấy hộ bà cái thùng Giáng sinh." Bà Trees nói. "Bà không lên được cái thang ấy nữa."</p>
+<p>Trên gác mái có bốn cái thùng. Elin lấy thùng Giáng sinh và một thùng lọ thuỷ tinh mà bà dặn lấy luôn. Ba thùng còn lại cô không mở.</p>
+<hr class="scene-break" aria-hidden="true">
+<p>Tối đó ông Wim mở đài ở mức nhỏ nhất, đúng như mọi tối, và ngồi ở đầu bàn với tờ báo địa phương.</p>
+<p>"Ở trường cháu đang làm gì?" Ông hỏi.</p>
+<p>"Đo muối trong đất ạ."</p>
+<p>"Đo bằng gì?"</p>
+<p>"Máy đo độ dẫn điện. Nước càng mặn thì dẫn điện càng khoẻ."</p>
+<p>Ông gật đầu, lật một trang.</p>
+<p>"Thế làm sao biết cái máy nó nói thật?"</p>
+<p>"Hiệu chuẩn ạ." Elin nói. "Pha một dung dịch mình đã biết trước đáp số, cho máy đo, xem nó ra đúng không. Đúng thì mới đo mẫu thật."</p>
+<p>"Ừ." Ông nói. "Ở nhà máy mỗi ca cũng thế. Có mẫu chuẩn. Sáng ra chạy mẫu chuẩn trước, sai thì dừng dây chuyền."</p>
+<p>"Có bao giờ dừng chưa ạ?"</p>
+<p>"Có." Ông nói. "Năm chín mươi tám. Dừng mười một tiếng. Hoá ra hỏng cái cảm biến nhiệt, không phải hỏng sữa. Nhưng lúc chưa biết thì phải dừng."</p>
+<p>Elin ngồi xuống ghế bên kia bàn.</p>
+<p>"Dung dịch chuẩn của cháu chưa về." Cô nói. "Đặt từ tháng bảy. Người ta bảo đang giữ ở khâu kiểm soát xuất khẩu."</p>
+<p>Ông Wim không hỏi lại chữ đó nghĩa là gì. Ông lật thêm một trang.</p>
+<p>"Thế thì tự pha." Ông nói.</p>
+<p>"Cháu pha rồi ạ."</p>
+<p>"Ừ."</p>
+<p>Đó là toàn bộ những gì ông nói về chuyện ấy, và với Elin thì như thế là đủ. Cô ngồi thêm một lúc, nghe đài, và đài đang đọc giá đấu giá bò sữa ở Zwolle.</p>
+<p>"Chuỗi số liệu chỗ cháu đo có mấy năm?" Ông hỏi.</p>
+<p>"Ba năm ạ."</p>
+<p>"Ba năm ít." Ông nói.</p>
+<p>"Vâng ạ." Elin nói. "Ba năm ít."</p>
+<hr class="scene-break" aria-hidden="true">
+<p>Thư đến ngày mười tám.</p>
+<p>Bà Trees nhặt ở khe cửa lúc mười giờ sáng, xem tên người nhận, rồi để lên bàn bếp và không mở. Bà đợi ông Wim đi bộ về, vì phong bì đề tên ông.</p>
+<p>Công văn của cơ quan bảo hiểm hàng không, ba trang, kèm một tờ hướng dẫn khiếu nại và một biểu mẫu chưa điền. Ngày ban hành in ở góc phải: mười bốn tháng mười một năm 2057. Nó đi mất một tháng bốn ngày.</p>
+<p>Nó gửi cho ông Wim Hoogendijk với tư cách người thừa kế hợp pháp. Tên Elin không có ở bất cứ dòng nào trong ba trang.</p>
+<p>Hồ sơ mở đầu năm 2055. Lúc đó Elin mười sáu tuổi và ông Wim là người giám hộ, nên ông là người ký tờ khai đầu tiên, và tên ông đi vào ô người đại diện. Cô mười tám vào năm 2056. Không ai ở cơ quan kia có lý do gì để biết chuyện đó, và cũng không có ô nào trong hệ thống của họ để ghi chuyện đó vào.</p>
+<p>Trang một là căn cứ pháp lý và số hiệu chuyến bay. Trang hai có một cái bảng ba dòng. Mỗi dòng một cái tên, một ngày sinh, một số tiền.</p>
+<p>Pieter van der Berg.</p>
+<p>Anneke van der Berg-Hoogendijk.</p>
+<p>Maertje van der Berg.</p>
+<p>Ba số tiền không bằng nhau. Chú thích in nhỏ ở cuối trang giải thích cách tính, có nhắc đến độ tuổi và thu nhập dự phóng, và có dẫn số hiệu một văn bản hướng dẫn ban hành năm 2056. Số tiền ở dòng thứ ba nhỏ hơn hai dòng trên rất nhiều, vì Maartje mười ba tuổi, và mười ba tuổi thì chưa có thu nhập dự phóng nào để mà tính.</p>
+<p>Elin lấy hiệu số giữa dòng hai và dòng ba. Rồi cô chia hiệu số đó cho số năm chênh lệch giữa hai người, và ra một con số trên một năm, và con số đó tròn trịa đến mức chắc chắn là kết quả của một công thức có sẵn.</p>
+<p>Cô dừng ở đó. Cô không tính tiếp.</p>
+<p>Trong bếp không ai nói gì về chuyện ba số tiền không bằng nhau. Ông Wim đọc hết trang hai, lật sang trang ba, rồi lật ngược lại trang hai.</p>
+<p>"Sai tên con bé." Ông nói.</p>
+<p>Bà Trees kéo tờ giấy về phía mình và đọc.</p>
+<p>"Gọi cho người ta." Bà nói. "Số điện thoại đây này. Có giờ làm việc."</p>
+<p>"Gọi không ăn thua." Ông Wim nói. "Cái này phải nộp lại bằng biểu mẫu."</p>
+<p>"Vậy thì nộp."</p>
+<p>Ông cầm tờ hướng dẫn, đọc đến đoạn giữa, rồi để xuống mặt bàn.</p>
+<p>"Sáu tuần từ ngày ban hành." Ông nói.</p>
+<p>Elin kéo tờ hướng dẫn về phía mình. Cô đọc hai lượt. Ngày ban hành mười bốn tháng mười một. Bốn mươi hai ngày sau là ngày hai mươi sáu tháng mười hai.</p>
+<p>"Còn tám ngày ạ." Cô nói.</p>
+<p>"Bưu điện nghỉ hai ngày lễ." Ông Wim nói. "Với lại người ta tính theo ngày họ đóng dấu đến, không phải ngày mình gửi."</p>
+<p>Elin lật sang tờ biểu mẫu.</p>
+<p>Nó có mười một ô. Ô thứ nhất là số hiệu công văn, in sẵn ở góc trang một, dễ. Ô thứ hai là nội dung khiếu nại, có ba dòng kẻ. Ô thứ ba yêu cầu ghi rõ dữ liệu đúng và dẫn giấy tờ chứng minh. Cô có thể ghi cả ba ô đó trong bốn phút.</p>
+<p>Cô đọc xuống dưới cùng.</p>
+<p>Ô cuối cùng là chữ ký. Bên dưới dòng kẻ có một dòng in nhỏ, ghi rằng biểu mẫu chỉ hợp lệ khi có chữ ký của người thụ hưởng hoặc người thừa kế hợp pháp đứng tên trong công văn, và tiếp đó là một dòng nữa để ghi họ tên viết hoa.</p>
+<p>Elin đọc dòng ấy hai lần.</p>
+<p>Cô là chị của Maartje van der Berg. Cô là người duy nhất còn sống trong nhà ấy. Cô là người biết chính xác cái tên đó viết thế nào, biết cả nét chữ mà Maartje dùng để viết nó, biết con bé hay kéo dài cái đuôi chữ j xuống dưới dòng.</p>
+<p>Cô không có mặt trên bất cứ dòng nào trong ba trang giấy này, và biểu mẫu này không có chỗ nào cho cô ký.</p>
+<p>Cô đặt tờ biểu mẫu xuống bàn, mặt ngửa, phẳng.</p>
+<p>Rồi cô lấy cây bút bi trong ngăn kéo thứ hai của tủ bếp, ngăn có kéo và dây chun và ba cục pin không rõ còn hay hết, và kéo trang hai về phía mình.</p>
+<p>Cô gạch chữ e trong Maertje bằng một nét ngắn, viết chữ a lên phía trên, nhỏ và ngay ngắn, đúng cỡ chữ in.</p>
+<p>Cô đọc lại cả dòng một lần cho chắc.</p>
+<p>Rồi cô gấp ba trang làm tư theo đúng nếp cũ, xếp lại cùng tờ hướng dẫn và tờ biểu mẫu chưa điền, và cho cả xấp vào phong bì.</p>
+<p>Cô để phong bì lên nóc tủ ly, cạnh cái nồi.</p>
+<p>Ông Wim đứng dậy bật ấm nước.</p>
+<p>Tối hôm ấy bà Trees mở thùng Giáng sinh và bày ba con hươu gỗ lên bậu cửa sổ, và một con bị gãy sừng từ năm nào không rõ, và bà vẫn bày nó ra, quay mặt gãy vào trong.</p>
+<hr class="scene-break" aria-hidden="true">
+<p>Nghĩa trang ở rìa Ommen, đi bộ hai mươi phút.</p>
+<p>Sáng hôm sau ông Wim bảo cô ra kho lấy cái bàn chải cọ rêu, treo ở đinh thứ hai bên trái cửa.</p>
+<p>Trong kho có xe đạp của ông, cái xe cút kít, hai bao phân bón, và một cái xe đạp cỡ nhỏ dựng sát tường trong cùng, loại xe của trẻ con chừng mười một mười hai tuổi, khung màu xanh lá đã bạc. Xích xe sạch và có dầu.</p>
+<p>Ông Wim tra dầu xích cho nó mỗi mùa xuân. Elin biết chuyện đó vì cô đã nhìn thấy ông làm, một lần, vào tháng tư năm 2056, và cô đã đi vòng ra cửa trước và không bước vào kho hôm ấy.</p>
+<p>Cô lấy cái bàn chải ở đinh thứ hai và đi ra.</p>
+<p>Phiến đá bằng granit xám, nằm ngang, cao hơn mặt cỏ chừng một gang. Trên đó khắc ba cái tên và một ngày, mười chín tháng mười một năm 2054.</p>
+<p>Không có ai nằm dưới. Người ta không tìm được gì để chôn.</p>
+<p>Ông Wim trả tiền phiến đá năm 2055. Bà Trees là người chọn kiểu chữ, và bà đã ngồi ở bàn bếp với ba tờ mẫu chữ trong hai buổi tối, và cuối cùng bà chọn kiểu đơn giản nhất trong ba tờ.</p>
+<p>Ông quỳ một chân xuống cỏ, đổ nước từ cái chai một lít rưỡi lên mặt đá, rồi cọ rêu trong các nét khắc. Rêu đọng nhiều nhất ở những nét ngang. Elin cầm chai và rót thêm mỗi khi ông chìa tay ra. Hai người làm việc đó trong khoảng mười lăm phút và không ai nói gì.</p>
+<p>Bên trái phiến đá là mộ một ông cụ mất năm 2049. Bên phải là mộ một bà cụ mất năm 2053, có ảnh sứ gắn trên bia, ảnh chụp hồi bà cụ còn trẻ, tóc uốn, cổ áo trắng.</p>
+<p>Elin nhìn cái ảnh sứ ấy gần hết mười lăm phút.</p>
+<p>Cô đứng ở đây và cô không thấy gì cả. Không có gì dâng lên, không có gì nghẹn lại. Cô đã đứng ở đây bốn lần trong ba năm và lần nào cũng vậy. Đó là điều cô sợ nhất về chính mình, và cô chưa nói với ai.</p>
+<p>"Đưa chai đây." Ông Wim nói.</p>
+<p>Cô đưa chai. Ông xối nốt chỗ nước còn lại lên mặt đá cho trôi vụn rêu, dựng cái chai không lên cỏ, rồi đứng dậy bằng cách chống tay lên đầu gối.</p>
+<p>"Xong." Ông nói.</p>
+<p>Trên đường về ông đi nhanh hơn cô, rồi chậm lại chờ ở chỗ rẽ.</p>
+<hr class="scene-break" aria-hidden="true">
+<p>Bà Dekker ở nhà số bốn đứng ngoài lối đi chung khi hai ông cháu về tới. Máng nước nhà bà vẫn lệch từ hồi sửa mái, và nước vẫn đổ đúng xuống lối đi chung, và bà đã hứa gọi thợ từ tháng mười.</p>
+<p>Bà nói chuyện thợ, nói chuyện giá vật liệu, rồi quay sang Elin.</p>
+<p>"Cháu học ngành gì rồi ấy nhỉ?"</p>
+<p>"Khoa học môi trường ạ."</p>
+<p>"Ừ." Bà Dekker gật gù. "Cũng phải. Sau chuyện của bố mẹ cháu thì cháu chọn thế cũng phải."</p>
+<p>"Không ạ." Elin nói. "Cháu chọn từ năm 2052."</p>
+<p>Bà Dekker nhìn cô.</p>
+<p>"Hồi lớp mười có ông thầy đưa cho cháu một mẫu đất." Elin nói. "Bảo cháu tìm xem vì sao chỗ ấy trồng gì cũng chết. Cháu tìm ra. Cháu giỏi cái đó hơn mấy môn khác. Với lại cháu thích chuyện câu trả lời nằm trong đất chứ không nằm trong người."</p>
+<p>"À." Bà Dekker nói.</p>
+<p>Ông Wim mở cổng, và cả ba người cùng nói chuyện máng nước thêm hai phút nữa, và bà Dekker nói rằng nếu ra giêng mà thợ vẫn chưa đến thì bà tự trèo lên.</p>
+<hr class="scene-break" aria-hidden="true">
+<p>Tàu sáng hôm sau đi lúc bảy giờ hai mươi.</p>
+<p>Bà Trees đứng ở cửa nhà. Bà không mặc áo khoác. Bà dặn về đến nơi thì nhắn, rồi vào trong đóng cửa trước khi hai người ra khỏi lối đi, vì ngoài trời hai độ.</p>
+<p>Ông Wim đi với cô ra ga. Ông đi nhanh hơn cô, rồi chậm lại chờ ở chỗ rẽ.</p>
+<p>Trên sân ga, ông không ôm. Ông cũng không đứng lại vẫy qua cửa kính, vì ông không thích cái đoạn đó, ông đã nói vậy từ lâu và Elin đã quen.</p>
+<p>Trước khi cô lên tàu, ông lấy trong túi áo khoác ra một cuộn băng dính vải màu xám, loại to bản, còn nguyên nhãn giá, và dúi vào tay cô.</p>
+<p>"Cái này dính được cả trong mưa." Ông nói.</p>
+<p>Cuộn băng nặng hơn cô tưởng.</p>
+<p>"Đừng để trong túi ngoài." Ông nói. "Bẹp."</p>
+<hr class="scene-break" aria-hidden="true">
+</article>
+
+
+<svg class="rift-small" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+</svg>
+
+
+<div class="chapter-foot">
+  <nav class="chapter-nav" aria-label="Điều hướng chương">
+    <a class="prev" href="chuong-01.html"><span class="lbl">Trước</span><span class="ttl">Mẫu Số Tám</span></a>
+    <a class="toc-link" href="index.html" aria-label="Về mục lục"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></a>
+    <a class="next" href="chuong-03.html"><span class="lbl">Sau</span><span class="ttl">Tương Quan Bằng Không</span></a>
+  </nav>
+</div>
+
+<footer class="sitefoot">
+  <p>Khúc Ai Ca Cho Những Kẻ Vô Danh — Vòng Tuần Hoàn Người Gieo Hạt · Quyển II</p>
+  <p>© 2026 Nguyễn Duy Anh (bút danh: Mendingur). Bản quyền tác phẩm thuộc về tác giả.</p>
+</footer>
+
+<script src="glow.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Đất Trung Lập, Không Tên — Khúc Ai Ca Cho Những Kẻ Vô Danh</title>
+<meta name="description" content="Vòng Tuần Hoàn Người Gieo Hạt · Quyển II — tiểu thuyết của Mendingur">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="style.css">
+<script src="reader.js" defer></script>
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem('mendingur-theme');
+    var theme = saved === 'dark' || saved === 'light'
+      ? saved
+      : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+  <linearGradient id="wingGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="55%" stop-color="#C99A3E"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+  <radialGradient id="coreGlow" cx="50%" cy="55%" r="55%">
+    <stop offset="0%" stop-color="#FFF6DE" stop-opacity="0.95"/>
+    <stop offset="55%" stop-color="#E4C077" stop-opacity="0.35"/>
+    <stop offset="100%" stop-color="#E4C077" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="flowerGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+</defs>
+</svg>
+<div class="grain"></div>
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+<div class="settings-menu" id="settingsMenu">
+  <button class="menu-toggle" type="button" id="settingsMenuToggle" aria-haspopup="true" aria-expanded="false" aria-controls="settingsPopover" aria-label="Cài đặt giao diện">
+    <span class="menu-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+  </button>
+  <div class="settings-popover" id="settingsPopover" role="menu">
+    <div class="settings-group">
+      <p class="settings-group-label">Giao diện</p>
+      <div class="theme-switcher" id="themeSwitcher" role="group" aria-label="Giao diện sáng / tối">
+        <button class="theme-btn active" type="button" data-theme-choice="light" aria-pressed="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <span>Sáng</span>
+        </button>
+        <button class="theme-btn" type="button" data-theme-choice="dark" aria-pressed="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+          <span>Tối</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<header class="sitebar">
+  <a class="brand" href="index.html">
+    <span class="mark"><svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sower's Cycle mark">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+<g transform="translate(200,278)">
+  <g><ellipse rx="14" ry="21" transform="rotate(0)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(72)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(144)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(216)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(288)" fill="url(#flowerGrad)"/></g>
+  <circle r="9.5" fill="#FFF6DE"/>
+</g>
+<g transform="translate(200,96)"><path d="M0,-24 C2,-7 7,-2 24,0 C7,2 2,7 0,24 C-2,7 -7,2 -24,0 C-7,-2 -2,-7 0,-24 Z" fill="#F3D488"/></g>
+</svg></span>
+    <span class="word">Khúc Ai Ca Cho Những Kẻ Vô Danh</span>
+  </a>
+  <nav>
+    <a href="index.html" class="toc-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      Mục lục
+    </a>
+  </nav>
+</header>
+<div class="progress-track"><div class="progress-fill"></div></div>
+
+<header class="chapter-head">
+  <p class="crumb"><a href="index.html">DIES IRAE · HAI NHÀ CHƯA CHỊU ĐI</a></p>
+  <span class="cnum">Chương 9</span>
+  <h1>Đất Trung Lập, Không Tên</h1>
+  <div class="font-toggle" role="group" aria-label="Cỡ chữ">
+    <button type="button" data-size="sm" aria-pressed="false">A-</button>
+    <button type="button" data-size="md" aria-pressed="true">A</button>
+    <button type="button" data-size="lg" aria-pressed="false">A+</button>
+  </div>
+</header>
+
+<article class="prose" data-size="md">
+<p>Thông báo dán lên tường ủy ban xã lúc chín giờ sáng ngày mười tháng mười hai, và trên thông báo có một cái hạn chót ghi tới từng phút.</p>
+<p>Mười bảy giờ không không, ngày mười hai tháng mười hai.</p>
+<p>Bốn mươi giờ sau đó là con đường. Một tiểu đoàn công binh nước ngoài sẽ mở mười một cây số đường đất thành đường quân sự cấp hai, nối cảng với một bãi tập kết mới ở phía tây, và tuyến ấy đi qua giữa một cái xóm ba mươi mốt hộ. Bản đồ dán bên cạnh thông báo là bản in màu, tỉ lệ một trên năm nghìn, và cái xóm nằm gọn trong một dải tô xám kẻ hai đường song song.</p>
+<p>Trên dải xám không có tên hộ nào. Có số.</p>
+<p>Elin đọc được thông báo ấy. Cô đọc chậm và cô phải hỏi Bảo Thư ba chữ, nhưng cô đọc được.</p>
+<p>Máy vào từ chiều hôm trước.</p>
+<p>Chín cái máy xúc, bốn xe lu, hai máy san, và một hàng xe ben xếp dọc đường cái từ ngã ba vào. Chúng có sơn ngụy trang và có số hiệu sơn trắng ở đuôi, và tất cả đều mới, và mùi cao su mới của lốp xe ben là thứ đầu tiên Elin ngửi thấy khi cô đạp xe qua.</p>
+<p>Thứ thứ hai thì đến vào buổi chiều, khi máy san bắt đầu cắt lớp mặt.</p>
+<p>Đất ở đây bị lật lên thành một dải rộng mười tám mét, lật đến độ sâu bảy tám tấc, và chỗ lật ra là đất ẩm chưa bao giờ ra ngoài không khí. Cùng lúc đó, tổ dọn tuyến gom cây bụi chặt hạ thành từng đống và đốt, và cây thì tươi và trời thì có sương, nên các đống ấy cháy không thành ngọn, chỉ âm ỉ và ra khói trắng nằm sát mặt đất. Máy chạy dầu. Ba mươi mấy cái máy chạy dầu trên một dải dài mười một cây.</p>
+<p>Đất lật, cây tươi cháy ướt, dầu máy.</p>
+<p>Elin đứng ở mép ruộng cách tuyến chừng bốn chục mét, hai tay còn cầm cái ống nguyên dạng chưa dán nhãn, và cô đứng như vậy đủ lâu để ông Tứ quay lại nhìn.</p>
+<p>"Cô ni răng rứa?"</p>
+<p>"Không sao ạ."</p>
+<p>Cô dán nhãn cái ống. Cô ghi giờ, ghi độ sâu, ghi số điểm.</p>
+<p>Tối hôm ấy, ở dòng cuối tờ nhật ký thực địa, dưới mục ghi chú hiện trường, cô viết một dòng: <em>mùi: đất lật cộng dầu cộng cây cháy ướt.</em></p>
+<p>Cô không viết thêm gì. Cuốn sổ kia nằm trong ngăn trong ba lô và cô không mở nó ra tối hôm ấy.</p>
+<p>Con đường ấy không đi tới đâu trong tỉnh này. Nó nối cảng với một bãi tập kết, và bãi tập kết nối với cảng, và từ cảng thì hàng đi xuống phía nam mười hai nghìn cây số. Ba mươi mốt hộ dời đi cho một tuyến đường mà không một hộ nào trong ba mươi mốt hộ ấy sẽ được đi trên đó.</p>
+<p>Ở cây số bảy, người ta dựng một kho nhiên liệu dã chiến gồm mười hai bồn cao su đặt trong ụ đất, và ụ đất ấy đắp bằng chính đất moi lên từ tuyến. Ở cây số hai, một tổ đặt hai vòi nước có đồng hồ đo, và trên đồng hồ có dán một tờ giấy ghi rằng nước này dành cho phương tiện.</p>
+<p>Biển báo dựng lúc bốn giờ chiều, cách nhau hai trăm mét, in hai thứ tiếng. Dòng trên bằng tiếng Anh. Dòng dưới bằng tiếng Việt.</p>
+<p>Bảo Thư đọc cái biển thứ ba rồi dừng xe đạp lại đọc lần nữa.</p>
+<p>"Cái này dịch sai." Cô nói.</p>
+<p>"Sai chỗ nào."</p>
+<p>"Tiếng Anh là cấm vào. Tiếng Việt thì họ viết không lối vào." Bảo Thư nói. "Không lối vào là cái biển người ta treo ở cái cửa không mở được. Nó không phải cấm. Nó là chỉ đường."</p>
+<p>Cô ghi câu ấy vào sổ của mình, ghi cả số hiệu tấm biển, và đạp tiếp.</p>
+<p>Trong ba ngày, cái trạm thôi là một cái trạm đo đất.</p>
+<p>Nó nằm cách tuyến sáu cây, nó có nước máy, nó có một cái sân đổ bê tông, và nó nằm đúng chỗ con đường mòn từ xóm ra đường cái gặp nhau. Đến trưa ngày mười một thì trong sân có bốn mươi mấy người, và đến tối thì có hơn tám chục, và chị Liên thôi đếm.</p>
+<p>Chị Liên làm cái việc chị biết làm. Chị lập bảng. Ai đến, mấy người, đi đâu, có ai đau ốm không, ai cần gọi cho ai. Chị dùng mặt sau của một tập biểu mẫu lấy mẫu đất in thừa từ năm ngoái, và đến chiều ngày mười hai thì hết tập, và chị lấy tập thứ hai.</p>
+<p>Ông Đô đến trưa ngày mười một, đi bộ, dẫn theo bốn mươi ba người.</p>
+<p>Ông tên Trần Minh Huân, và cả tiểu đoàn cũ gọi ông là Đô, và cái tên ấy có từ trước khi ông đi lính. Ông năm mươi hai tuổi, giải ngũ được sáu năm, và ông đi trước đoàn chừng hai chục mét rồi lại đứng lại chờ, đứng ở chỗ đường rẽ.</p>
+<p>Ông không giới thiệu mình. Ông vào sân, nhìn một vòng, rồi hỏi chị Liên ba câu: nước ở đâu, nhà vệ sinh ở đâu, và cái sân này chứa được bao nhiêu người nếu nằm.</p>
+<p>"Chú là ai ạ?" Chị Liên hỏi.</p>
+<p>"Anh Hùng nhờ tui đưa mấy người ni ra." Ông nói. "Anh Hùng thì đang chạy ghe, không lên được."</p>
+<p>Ông ở lại. Không ai mời ông ở lại và ông cũng không xin.</p>
+<p>Việc đầu tiên ông làm là chia cái sân thành bốn ô bằng cách kéo bốn sợi dây nilon, và ông kéo dây thấp, ngang đầu gối, để người ta bước qua được mà vẫn biết mình đang ở ô nào. Việc thứ hai là bảo hai thanh niên trong đoàn ra đứng ở cổng và chỉ làm một việc duy nhất là đếm người vào.</p>
+<p>Toản vẫn còn ở trạm.</p>
+<p>Hợp đồng khoán của cậu hết ngày ba mươi tháng mười một. Viện không cử ai xuống nghiệm thu và cũng không gọi cậu về, và đường truyền của trạm thì bây giờ là đường truyền dân sự duy nhất còn chạy trong bán kính bốn chục cây, vì các tuyến khác đã bị trưng dụng hoặc bị cắt để nhường băng thông. Cậu ở lại vì cậu không có cách gì về, và vì cậu là người duy nhất biết cái đường truyền ấy đang chạy nhờ vào những chỗ vá nào.</p>
+<p>Chiều ngày mười một, một người đàn bà đi bộ vào sân.</p>
+<p>Cô ta chừng hai mươi bảy hai mươi tám tuổi, tóc buộc, đi giày thể thao đã há mõm ở mũi bên trái và được quấn lại bằng dây dù. Cô ta không mang ba lô. Cô ta mang một cái túi vải đeo chéo, và trong túi có một cái ổ cứng ngoài bọc trong hai lớp túi bóng và một lớp bìa các tông cắt vừa khít.</p>
+<p>Cô ta không xin ăn. Cô ta xin nước, uống hết một chai, rồi hỏi hai câu.</p>
+<p>Câu thứ nhất: ở đây có chỗ cắm điện không.</p>
+<p>Câu thứ hai: đường truyền của trạm có ra ngoài được không, và ra ngoài bằng tuyến nào.</p>
+<p>Toản trả lời câu thứ hai trong bốn phút và trả lời quá kỹ, và giữa chừng cậu nhận ra người hỏi hiểu hết những gì cậu nói và hiểu trước cậu nửa câu.</p>
+<p>"Chị làm bên mô?" Cậu hỏi.</p>
+<p>"Tôi làm báo." Cô ta nói.</p>
+<p>Ông Đô đang ngồi ở bậc thềm, đối chiếu một danh sách hộ với một tờ bản đồ vẽ tay. Ông ngẩng lên nhìn cô ta, nhìn lâu hơn mức cần, rồi đứng dậy đi ra chỗ cổng và gọi điện.</p>
+<p>Cuộc gọi ấy dài một phút mười giây.</p>
+<p>Việt được nhóm ông Đô nhặt ở cây số bốn, tối ngày mười một, và nhặt theo nghĩa đen.</p>
+<p>Cậu ta ngồi ở rãnh thoát nước bên đường, một chân duỗi ra, cái xe máy đổ cách đó mươi mét với cái càng trước gập lại. Xe ben tránh cậu, hoặc cậu tránh xe ben, và trong bóng tối thì cậu không kể được là cái nào. Cẳng chân phải sưng và không gãy. Ông Đô cõng cậu ba trăm mét ra chỗ có xe rồi thôi, vì ông năm mươi hai tuổi.</p>
+<p>Phạm Quốc Việt, hai mươi bốn tuổi, kỹ thuật viên mạng, làm cho một nhà thầu phụ của công ty viễn thông tỉnh.</p>
+<p>Đến trạm lúc chín giờ tối, băng chân xong lúc chín rưỡi, và đến mười giờ kém thì cậu đã ngồi cạnh Toản trước cái bộ chuyển mạch của trạm.</p>
+<p>Mười lăm phút.</p>
+<p>"Cái ni ông vá bằng chi rứa?" Việt hỏi.</p>
+<p>"Bằng cái dây tui kéo từ cột bên kia qua."</p>
+<p>"Kéo ngang đường à."</p>
+<p>"Ừ."</p>
+<p>"Rồi xe ben nó cán chưa?"</p>
+<p>"Chưa."</p>
+<p>"Rồi nó sẽ cán."</p>
+<p>Hai người bò ra sân với cái đèn pin đội đầu trong bốn mươi phút để nâng sợi dây lên cao và neo lại vào ba cái cột, và trong bốn mươi phút ấy Việt nói cho Toản nghe cái mẹo.</p>
+<p>"Ông đọc tin đồn kiểu chi?" Việt hỏi.</p>
+<p>"Thì tui coi ba bốn chỗ. Chỗ mô khớp nhau thì tui tin."</p>
+<p>"Sai." Việt nói. "Cái nớ là cách nhanh nhất để tin một cái tin bịa."</p>
+<p>Cậu ngồi xuống bậc, duỗi cái chân đau ra.</p>
+<p>"Mỗi cái tin có ba thứ. Nội dung, người đưa, và cái giờ nó xuất hiện lần đầu. Người ta cãi nhau suốt về nội dung. Cái giờ mới là cái không nói dối được. Ông đi ngược cái giờ. Cái mô sớm nhất thì cái nớ là gốc, còn lại là chép. Nếu ba chỗ cùng ra trong vòng mười phút thì không phải ba nguồn, là một nguồn với hai cái loa."</p>
+<p>"Rồi biết cái mô là gốc thì răng?"</p>
+<p>"Thì so bản dài nhất với bản ngắn nhất. Chép lại thì nó rụng. Chỗ mô rụng thì chỗ nớ là chỗ thằng chép không hiểu. Mà chỗ thằng chép không hiểu thường là chỗ thiệt nhất, vì cái chi bịa ra thì ai cũng hiểu được hết."</p>
+<p>Toản không nói gì một lúc.</p>
+<p>"Cái ni ông học ở mô?"</p>
+<p>"Chỗ tui làm. Tháng mô cũng có tin đồn cắt hợp đồng. Đứa mô tin sớm thì đứa nớ nghỉ sớm."</p>
+<p>Trong sân, ở ô thứ ba, có hai người đàn ông đang cãi nhau về một cái tin.</p>
+<p>"Nghe nói tụi nó xuống tới dưới Úc rồi."</p>
+<p>"Xuống Úc răng được. Úc cách Nam Cực mấy ngàn cây."</p>
+<p>"Thì người ta nói rứa."</p>
+<p>"Người mô nói?"</p>
+<p>"Thì người ta."</p>
+<p>Việt nghe hết, không quay đầu lại, và nói với Toản vừa đủ nghe.</p>
+<p>"Đó. Người ta. Ông đi tìm cái giờ của người ta thử coi."</p>
+<p>Mười giờ rưỡi Việt hỏi chị Liên một câu, hỏi bình thường, hỏi kiểu người hỏi giờ tàu.</p>
+<p>"Chị ơi, cái hiệu thuốc trên thị xã còn mở không chị?"</p>
+<p>"Chị không biết. Tuần trước còn."</p>
+<p>"Dạ." Việt nói. "Em gái em uống một loại, hai mươi tám ngày lấy một lần. Hôm ni là ngày thứ hai mươi tư."</p>
+<p>Cậu nói xong thì quay lại với cái bộ chuyển mạch, và cả buổi tối ấy cậu không nhắc lại chuyện đó nữa.</p>
+<p>Hùng đến chiều ngày mười hai, ba mươi tiếng sau cuộc gọi một phút mười giây.</p>
+<p>Anh vào sân, đi qua bốn ô dây nilon, và ông Đô chỉ tay về phía phòng máy mà không nói gì.</p>
+<p>Cửa phòng máy không đóng được vì cái bản lề dưới đã lệch từ tháng bảy. Trong phòng có Diễm, cái ổ cứng, và một sợi cáp mạng chạy ra cửa sổ.</p>
+<p>Elin ở phòng mẫu bên cạnh, đang dán nhãn, và tường ngăn giữa hai phòng là tường gạch không trát, dày mười centimet.</p>
+<p>Cô nghe hết.</p>
+<p>Cô không hiểu hầu hết. Cô hiểu chừng một phần tư số chữ, và cô hiểu toàn bộ chỗ còn lại.</p>
+<p>Hai phút đầu là hai người nói bình thường. Anh hỏi cô đi đâu. Cô nói tên bốn chỗ. Anh hỏi từ bao giờ. Cô nói một cái năm.</p>
+<p>Rồi giọng anh đổi độ cao, và từ đó thì hai người nói chồng lên nhau.</p>
+<p>"Anh tưởng em chết mười tám tháng."</p>
+<p>"Em biết."</p>
+<p>"Em biết."</p>
+<p>"Em biết. Người ta cho em đọc hồ sơ của chính em. Có cả tờ giấy anh ký."</p>
+<p>Trong phòng im đúng ba nhịp.</p>
+<p>"Mẹ cần cái giấy đó." Hùng nói. "Không có cái giấy đó thì mẹ không lấy được tiền tuất. Mười một tháng anh đi tìm. Tháng thứ mười một anh ký."</p>
+<p>"Tôi biết."</p>
+<p>Elin đang cầm cái bút dạ và cô để nó xuống.</p>
+<p>Câu tiếp theo của Hùng nhỏ hơn hẳn câu trước.</p>
+<p>"Ăn chi chưa."</p>
+<p>"Chưa."</p>
+<p>"Ra ngoài kia ăn."</p>
+<p>Hai người ra sân lúc gần bảy giờ. Họ ngồi ăn ở bậc thềm, cách nhau chừng một mét, và không ai nói gì thêm về mười tám tháng, không tối hôm ấy và cũng không trong nhiều năm sau.</p>
+<p>Trong ba ngày ấy không ai nói ra một câu nào về việc mấy người này từ nay đi với nhau.</p>
+<p>Ông Đô ở lại vì bốn mươi ba người ông dẫn ra chưa có chỗ để đi tiếp. Toản ở lại vì cậu không có cách gì về, và vì cậu là người duy nhất biết cái đường truyền đang chạy nhờ vào những chỗ vá nào. Việt ở lại vì cái chân, ba bốn hôm nữa mới đi được. Diễm ở lại vì cái ổ cứng của cô gửi chưa xong, và gửi xong một phần thì lại có phần tiếp theo. Hùng ở lại một đêm rồi xuống ghe, và cứ bốn năm hôm anh lại lên một lần, và lần nào lên anh cũng mang theo cái gì đó nặng.</p>
+<p>Bảo Thư thì vẫn ba buổi một tuần, và tuần ấy cô đi cả bảy buổi.</p>
+<p>Trong bảng của chị Liên, ở cột ghi lý do có mặt, sáu người ấy được ghi sáu lý do khác nhau, và không lý do nào giống lý do nào.</p>
+<p>Điểm tập kết số 2 đặt ở sân kho hợp tác cũ, cách trạm một cây rưỡi.</p>
+<p>Elin xuống đó sáng ngày mười hai vì trạm hết can nhựa và ở sân kho thì có.</p>
+<p>Sân kho lát gạch vỡ. Có một cái mái tôn dài đã thủng ba chỗ. Dưới mái, xếp thành một hàng không đều, có mấy cái ghế nhựa màu xanh, loại xếp chồng được.</p>
+<p>Elin đếm.</p>
+<p>Năm.</p>
+<p>Cô đếm lại. Năm.</p>
+<p>Cô đếm lần thứ ba. Năm.</p>
+<p>Rồi cô thôi đếm và đứng yên chừng nửa phút.</p>
+<p>Dựa vào chân cái ghế thứ hai từ trái sang có một tấm bìa các tông cắt không thẳng, viết tay, mực đen, chữ to. Cô đọc được. Cô đọc được từng chữ một mà không cần ai dịch.</p>
+<p>DANH SÁCH HỘ. ĐIỂM TẬP KẾT SỐ 2.</p>
+<p>Ở đầu kia sân kho, một người đàn bà cầm tờ danh sách và gọi số hộ.</p>
+<p>Bà ta gọi theo thứ tự, mỗi số một lần, và có người dạ. Đến số hai mươi mấy thì bà ta dừng, nhìn xuống tờ giấy, ngẩng lên nhìn cái đám người trước mặt, rồi bắt đầu lại từ số một.</p>
+<p>Bà ta làm như thế ba lần.</p>
+<p>Elin đứng ở mép sân với hai cái can nhựa rỗng trong tay và cô không đi vào.</p>
+<p>Ở góc sân có một cái bể nước ăn xây gạch, nắp bê tông đã nứt, và có mấy người đang múc. Sáng nay tổ dọn tuyến đã đốt bụi cách chỗ ấy chừng hai trăm mét, ngược gió, và Elin thì đã lấy mẫu ở khoảnh đất ngay trên bể ấy hồi tháng mười và cô nhớ con số.</p>
+<p>Cô đi tới chỗ cái bể.</p>
+<p>"Nước này không uống được." Cô nói.</p>
+<p>Người đàn bà đang múc dừng tay và nhìn cô.</p>
+<p>"Không uống. Đun cũng không được. Lấy nước ở trạm."</p>
+<p>Người đàn bà bỏ cái gáo xuống, đứng dậy, và lùi lại một bước. Chị ta không hỏi vì sao. Chị ta gọi một đứa bé lại, kéo nó ra khỏi chỗ cái bể, rồi đứng nhìn Elin theo cái lối người ta nhìn một người vừa ra lệnh mà mình không biết là lệnh gì.</p>
+<p>Bảo Thư đi tới.</p>
+<p>Cô ấy nói với người đàn bà chừng bốn mươi giây, nói dài hơn hẳn cái cô vừa nghe, và trong bốn mươi giây ấy cô ấy chỉ tay về phía đám khói, chỉ về phía cái bể, và chỉ về phía trạm. Người đàn bà gật đầu ba lần, rồi nói một câu, rồi cầm gáo lên và múc tiếp một gáo cuối để rửa tay.</p>
+<p>Hai người đi bộ về, mỗi người xách hai cái can.</p>
+<p>"Nhà Trúc có nằm trong dải xám không?"</p>
+<p>"Không." Bảo Thư nói. "Bên kia hói. Cách tuyến gần hai cây."</p>
+<p>"Bạn ấy có sao không?"</p>
+<p>"Không sao. Nhà nó đang có hai nhà tới ở nhờ. Nó dọn cái buồng trong ra để sách, chất hết lên gác."</p>
+<p>Cô ấy nói xong thì đổi tay xách can.</p>
+<p>"Cậu nói gì với chị ấy?"</p>
+<p>"Mình nói mình là người phiên dịch của trạm, mình nói khói cháy nó rơi xuống nước và tuần trước có người đau bụng, mình nói ở trạm có nước máy và mình chỉ đường."</p>
+<p>"Còn mình nói gì?"</p>
+<p>Bảo Thư đi thêm mấy bước.</p>
+<p>"Cậu nói nước không uống được. Cậu nói ba câu."</p>
+<p>"Cậu nói bốn mươi giây."</p>
+<p>"Ừ."</p>
+<p>"Vì sao lâu thế?"</p>
+<p>"Vì mình phải nói mình là ai đã." Bảo Thư nói.</p>
+<p>Cô ấy không nói thêm và Elin không hỏi thêm.</p>
+<p>Tối ngày mười hai, ông Đô ngồi ở cái bàn dài trong phòng họp, đối chiếu danh sách ba mươi mốt hộ với tờ bản đồ vẽ tay, và ông làm việc ấy chậm vì ông đối chiếu bằng cách đọc to số hộ rồi lấy bút chì đánh dấu.</p>
+<p>Elin vào lấy tờ nhật ký thực địa trong ba lô để lên bàn.</p>
+<p>Cuốn sổ thứ hai rơi ra.</p>
+<p>Nó rơi úp mặt xuống sàn, bật mở, và ông Đô cúi nhặt lên theo phản xạ của người nhặt giấy tờ rơi.</p>
+<p>Nó mở ở trang giấy kẻ ô có một hàng nằm ngang giữa trang, mỗi âm một ô.</p>
+<p>Ông Đô đọc.</p>
+<p>"Một, hai, ba, bốn, năm, sáu, bảy, tám, chín, mười."</p>
+<p>Ông đọc bằng cái giọng người ta đọc một dãy số ghi trong sổ kho. Đọc xong ông nhìn thêm một giây.</p>
+<p>"Viết thiếu dấu." Ông nói.</p>
+<p>Ông rút cái bút chì đang cầm, và ông thêm dấu, sáu chỗ, không hỏi ai, theo đúng cái lối một người lính già sửa hộ một tờ khai điền sai.</p>
+<p>Rồi ông gấp sổ lại, đưa cho cô, và quay về với danh sách hộ.</p>
+<p>Từ tháng hai đến giờ, đó là lần đầu tiên mười cái âm ấy đi liền nhau ra khỏi miệng một người khác.</p>
+<p>Elin cầm cuốn sổ, nói cảm ơn, và đi ra.</p>
+<p>Tối hôm ấy cô dán nhãn hai mươi hai cái ống, và ba cái trong số đó cô ghi sai ngày, và cô phát hiện ra lúc rà lại cuối buổi, và cô bóc cả ba cái nhãn ra dán lại. Bóc nhãn loại chịu ẩm thì phải bóc bằng dao lam và mất chừng bốn phút một cái.</p>
+<p>Ngày mười ba cô làm từ năm giờ sáng đến bốn giờ chiều và không nghỉ trưa.</p>
+<p>Cô đi ba điểm, lấy mười tám ống, chạy hai mươi sáu mẫu, viết xong bảng tuần, và gửi bảng đi lúc ba giờ năm mươi, và cái đường truyền vá bằng sợi dây neo vào ba cột hôm ấy chạy được một mạch không rớt lần nào.</p>
+<p>Bốn giờ mười, cô đi ra sau nhà tôn.</p>
+<p>Cô nôn hai lần. Lần thứ nhất là bữa sáng. Lần thứ hai thì không còn gì.</p>
+<p>Cô ngồi xuống chỗ chân tường tôn chừng một phút, rồi đứng lên, ra bể nước, súc miệng ba lần, rửa mặt, vuốt nước lên gáy.</p>
+<p>Bảo Thư đứng ở góc nhà tôn với cuốn sổ trong tay.</p>
+<p>Cô ấy đứng đó từ lúc nào thì Elin không biết. Cô ấy không đi tới. Cô ấy không nói gì.</p>
+<p>Cuốn sổ của cô ấy hôm ấy có mười bốn dòng, ghi giờ, ghi tên, ghi nguyên văn những câu người ta nói. Không có dòng nào về chuyện sau nhà tôn.</p>
+<p>Elin lau tay vào ống quần và quay vào phòng mẫu, và cô dán nốt số nhãn còn lại trước bữa tối.</p>
+<p>Mười bảy giờ không không, ngày mười hai tháng mười hai, đã trôi qua từ hôm trước.</p>
+<p>Đến chiều ngày mười ba, trong ba mươi mốt hộ của cái xóm, có hai mươi chín hộ đã ra khỏi dải xám.</p>
+<p>Sĩ quan liên lạc của tiểu đoàn công binh xuống cùng một người phiên dịch lúc bốn giờ. Ông ta không quát ai. Ông ta hỏi hai câu, nghe trả lời, rồi lấy bút ghi vào tờ kiểm đếm kẹp trên bìa cứng, ghi ở cột hộ chưa di dời, và ông ta ghi hai con số.</p>
+<p>Hộ mười chín là một bà cụ và một người con trai bị liệt hai chân từ nhỏ. Hộ hai mươi ba là một ông thợ mộc, vợ, và ba đứa nhỏ, và trong nhà có một cái bàn thờ mà ông ta nói là chưa đến ngày để dời.</p>
+<p>Sĩ quan liên lạc gọi về sở chỉ huy tiểu đoàn. Sở chỉ huy trả lời trong sáu phút. Câu trả lời là tuyến sẽ nắn tránh hai hộ ấy một trăm hai mươi mét về phía bắc, và việc nắn tuyến làm phát sinh thêm bốn nghìn mét khối đào đắp, và bốn nghìn mét khối ấy được ghi vào một mẫu điều chỉnh khối lượng có ba chữ ký.</p>
+<p>Không ai nói với hai nhà ấy rằng họ đã thắng.</p>
+<p>Hai nhà ấy vẫn sáng đèn. Cái máy xúc gần nhất đỗ cách nhà thứ nhất bốn mươi mét, gàu hạ xuống đất, và ca đêm của nó bắt đầu lúc sáu giờ sáng hôm sau.</p>
+</article>
+
+
+<svg class="rift-small" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+</svg>
+
+
+<div class="chapter-foot">
+  <nav class="chapter-nav" aria-label="Điều hướng chương">
+    <a class="prev" href="chuong-08.html"><span class="lbl">Trước</span><span class="ttl">Mười Bảy Cái Ghế</span></a>
+    <a class="toc-link" href="index.html" aria-label="Về mục lục"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></a>
+    <a class="next" href="chuong-10.html"><span class="lbl">Sau</span><span class="ttl">Người Ta Chờ Ba Mươi Tám</span></a>
+  </nav>
+</div>
+
+<footer class="sitefoot">
+  <p>Khúc Ai Ca Cho Những Kẻ Vô Danh — Vòng Tuần Hoàn Người Gieo Hạt · Quyển II</p>
+  <p>© 2026 Nguyễn Duy Anh (bút danh: Mendingur). Bản quyền tác phẩm thuộc về tác giả.</p>
+</footer>
+
+<script src="glow.js" defer></script>
+</body>
+</html>

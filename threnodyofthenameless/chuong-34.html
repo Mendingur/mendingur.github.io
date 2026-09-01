@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Điều Trúc Không Kể Ai — Khúc Ai Ca Cho Những Kẻ Vô Danh</title>
+<meta name="description" content="Vòng Tuần Hoàn Người Gieo Hạt · Quyển II — tiểu thuyết của Mendingur">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="style.css">
+<script src="reader.js" defer></script>
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem('mendingur-theme');
+    var theme = saved === 'dark' || saved === 'light'
+      ? saved
+      : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+  <linearGradient id="wingGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="55%" stop-color="#C99A3E"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+  <radialGradient id="coreGlow" cx="50%" cy="55%" r="55%">
+    <stop offset="0%" stop-color="#FFF6DE" stop-opacity="0.95"/>
+    <stop offset="55%" stop-color="#E4C077" stop-opacity="0.35"/>
+    <stop offset="100%" stop-color="#E4C077" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="flowerGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+</defs>
+</svg>
+<div class="grain"></div>
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+<div class="settings-menu" id="settingsMenu">
+  <button class="menu-toggle" type="button" id="settingsMenuToggle" aria-haspopup="true" aria-expanded="false" aria-controls="settingsPopover" aria-label="Cài đặt giao diện">
+    <span class="menu-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+  </button>
+  <div class="settings-popover" id="settingsPopover" role="menu">
+    <div class="settings-group">
+      <p class="settings-group-label">Giao diện</p>
+      <div class="theme-switcher" id="themeSwitcher" role="group" aria-label="Giao diện sáng / tối">
+        <button class="theme-btn active" type="button" data-theme-choice="light" aria-pressed="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <span>Sáng</span>
+        </button>
+        <button class="theme-btn" type="button" data-theme-choice="dark" aria-pressed="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+          <span>Tối</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<header class="sitebar">
+  <a class="brand" href="index.html">
+    <span class="mark"><svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sower's Cycle mark">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+<g transform="translate(200,278)">
+  <g><ellipse rx="14" ry="21" transform="rotate(0)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(72)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(144)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(216)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(288)" fill="url(#flowerGrad)"/></g>
+  <circle r="9.5" fill="#FFF6DE"/>
+</g>
+<g transform="translate(200,96)"><path d="M0,-24 C2,-7 7,-2 24,0 C7,2 2,7 0,24 C-2,7 -7,2 -24,0 C-7,-2 -2,-7 0,-24 Z" fill="#F3D488"/></g>
+</svg></span>
+    <span class="word">Khúc Ai Ca Cho Những Kẻ Vô Danh</span>
+  </a>
+  <nav>
+    <a href="index.html" class="toc-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      Mục lục
+    </a>
+  </nav>
+</header>
+<div class="progress-track"><div class="progress-fill"></div></div>
+
+<header class="chapter-head">
+  <p class="crumb"><a href="index.html">IN PARADISUM · NGƯỜI CUỐI CÙNG ĐÓNG SỔ</a></p>
+  <span class="cnum">Chương 34</span>
+  <h1>Điều Trúc Không Kể Ai</h1>
+  <div class="font-toggle" role="group" aria-label="Cỡ chữ">
+    <button type="button" data-size="sm" aria-pressed="false">A-</button>
+    <button type="button" data-size="md" aria-pressed="true">A</button>
+    <button type="button" data-size="lg" aria-pressed="false">A+</button>
+  </div>
+</header>
+
+<article class="prose" data-size="md">
+<p>Trúc bắt đầu lập mục lục ngày 2 tháng giêng năm 2071, và cô bắt đầu vì một chuyện thực tế.</p>
+<p>Tháng 11 năm 2070 cô tìm một mục cô nhớ là có, mục về một cái sân có mái bạt, và cô tìm nó trong hai buổi tối và không ra. Cô nhớ nó nằm ở khoảng quyển bảy mươi, và nó nằm ở quyển năm mươi tư.</p>
+<p>Bộ biên niên đến năm 2071 là hai trăm bốn mươi mốt quyển và ba nghìn tám trăm bảy mươi trang. Quyển thứ nhất đề năm 2056. Quyển hai trăm bốn mươi mốt đang viết dở và nó nằm trên bàn ở gian ngoài chứ không nằm trong thùng.</p>
+<p>Bốn cái thùng gỗ đầu do một ông thợ ở xóm Cồn đóng năm 2060, gỗ mít, kê cao khỏi nền một gang, và bốn cái ấy giống nhau vì đóng một lượt. Cái thùng thứ năm mua năm 2069, thùng gỗ tạp của hợp tác thanh lý, cao hơn ba phân và không có nắp rời, và nắp của nó là hai tấm ván bắt bản lề.</p>
+<p>Trên nắp mỗi thùng có một tờ giấy ghi số hiệu quyển từ mấy tới mấy.</p>
+<p>Bảo Thư nói làm mục lục thì mất chừng nửa năm.</p>
+<p>Bảo Thư tính sai. Đến tháng 7 thì hai người mới xong quyển thứ một trăm sáu mươi ba.</p>
+<p>Cách làm thì có ba bước và ba bước ấy đều chán.</p>
+<p>Bước thứ nhất là đánh số mục. Trong ba nghìn tám trăm bảy mươi trang, mục thì không đánh số, vì hồi 2056 không ai nghĩ tới chuyện phải tìm lại. Hai người đánh số bằng bút chì ở lề trái, chạy suốt từ quyển thứ nhất.</p>
+<p>Bước thứ hai là ghi mỗi mục một dòng vào sổ mục lục: số mục, số quyển, số trang, ngày, và ba bốn chữ nói mục ấy về cái gì.</p>
+<p>Bước thứ ba là xếp lại theo chữ cái.</p>
+<p>Bước thứ ba chưa làm được, vì muốn xếp lại thì phải cắt sổ mục lục ra thành từng dòng rời rồi xếp, hoặc phải chép lại cả sổ lần thứ hai. Bảo Thư định chép lại. Cô tính chép lại mất bao lâu và ra bốn tháng, và cô ghi con số ấy vào sổ nháp.</p>
+<p>Hai người làm việc ấy ba bốn tối một tuần, từ bảy giờ rưỡi tới chín giờ rưỡi, dưới cái đèn dầu ở gian ngoài, và mùa hè thì thêm cái quạt nan.</p>
+<p>Ba bốn chữ ở bước thứ hai là chỗ khó nhất, vì phải chọn chữ, và chọn chữ thì phải quyết mục ấy nói về cái gì, và có những mục thì hai người quyết khác nhau.</p>
+<p>Mục số 88, đề ngày 17 tháng 5 năm 2057, có bốn dòng nói về một cái xe chở đầy nồi niêu đi ngược chiều với dòng người. Bảo Thư ghi ba chữ là xe, đồ đạc, đường. Trúc nói mục ấy không phải về cái xe.</p>
+<p>Hai người ngồi với mục số 88 hai mươi phút rồi bỏ nó lại và làm tiếp, và tối hôm sau Bảo Thư ghi thêm hai chữ nữa, và hai chữ ấy là ngược chiều.</p>
+<p>Mục số 511, đề ngày 2 tháng 9 năm 2064, có ba chữ, và ba chữ ấy là <em>người ta chờ</em>. Trúc không nhớ gì thêm về nó và Bảo Thư ghi ba chữ ấy vì Trúc nói ra ba chữ ấy.</p>
+<p>Ở bước thứ hai, hai người ngồi với mục số 511 mười phút rồi Bảo Thư ghi vào sổ mục lục đúng ba chữ ấy, vì không có ba bốn chữ nào khác để ghi.</p>
+<p>Tới cuối tháng 5, hai người đánh số xong một trăm sáu mươi ba quyển, và số mục đánh được là sáu trăm bốn mươi ba.</p>
+<p>Sáu trăm bốn mươi ba mục trên một trăm sáu mươi ba quyển, tức là chừng bốn mục một quyển, và cái đó thì đúng, vì phần lớn mỗi quyển là những trang chép lại kinh sách, chép lại sách mượn, và những trang Trúc ghi việc đọc của mình.</p>
+<p>Một giấc mộng thì không ra một mục. Trúc nhớ ra từng mảnh, và mỗi mảnh là một mục, và có giấc ra một mục và có giấc ra một chục.</p>
+<p>Bộ biên niên không phải là một bộ sách tiên tri. Nó là vở học sinh của một người tự học trong mười lăm năm, và trong đó có những chỗ nhìn thấy.</p>
+<p>Ngày 11 tháng 4, Bảo Thư mở thùng thứ tư và lấy ra cái bảng ba cột cô bỏ dở năm 2061.</p>
+<p>Cái bảng ấy là bốn tờ giấy kẻ tay, kẹp bằng một cái kẹp sắt đã gỉ. Cô làm nó trong bốn tháng rồi bỏ, và bỏ vì cột thứ ba không điền được, vì muốn điền cột thứ ba thì phải biết cái gì đã xảy ra, và cái gì đã xảy ra thì phần lớn không ai báo cho cái nhà cuối đường đất.</p>
+<p>Năm 2061 cô điền được hai trăm mười một mục. Mười chín mục xảy ra thật. Một trăm bảy mươi tư mục chưa xảy ra. Mười tám mục không xác định được.</p>
+<p>Bây giờ thì có mục lục, và có mười năm nữa đã đi qua, và có một cái đài, và có Elin, và có những thứ Bảo Thư ghi ở trạm suốt mười ba năm.</p>
+<p>Cô làm lại cái bảng ấy trong sáu tuần.</p>
+<p>Cô làm nó buổi tối, sau khi làm xong phần mục lục của ngày, và cô làm nó một mình, vì cột thứ ba không phải việc của Trúc.</p>
+<p>Ngày 27 tháng 5 cô xong.</p>
+<p>Sáu trăm bốn mươi ba mục. Bảy mươi mốt mục xảy ra thật. Bốn trăm sáu mươi sáu mục chưa xảy ra. Một trăm lẻ sáu mục không xác định được.</p>
+<p>Rồi cô làm một việc nữa, và việc ấy không ai bảo cô làm.</p>
+<p>Cô lấy bảy mươi mốt mục xảy ra thật và cô chia chúng làm hai. Cột bên trái là những mục mà một người lạ, không biết gì về cái nhà này, cũng đoán ra được. Một cái chợ đông. Một chuyến xe không tới. Một người khóc ở bến. Trong mười năm chiến tranh thì mấy cái ấy xảy ra mỗi ngày ở mọi chỗ.</p>
+<p>Cột bên phải là những mục mà một người lạ không đoán ra được, vì nó có chi tiết không đoán được.</p>
+<p>Cột bên trái có sáu mươi hai mục. Cột bên phải có chín.</p>
+<p>Mục số 19 đề ngày 11 tháng 8 năm 2056 nằm ở cột bên phải.</p>
+<p>Nó có hai dòng. Người ấy sẽ đến, mình không phải đi tìm, người nhà mình dẫn về. Và người ấy không biết gọi ai là gì.</p>
+<p>Một buổi chiều chủ nhật cuối tháng 7 năm 2058, Bảo Thư dẫn một cô gái người Hà Lan về nhà này ăn cơm, và cô gái ấy hôm đó gọi Trúc là bạn và tự xưng là tôi.</p>
+<p>Ở cột thứ ba, Bảo Thư ghi là xảy ra thật, rồi cô ghi thêm một dòng dưới, và dòng ấy nói người dẫn về là người ghi.</p>
+<p>Mục số 296 đề ngày 14 tháng 6 năm 2060 cũng nằm ở cột bên phải.</p>
+<p>Nó có một dòng. Một cái máy nổ ở chỗ không có ai, chạy bốn phút rồi tự tắt.</p>
+<p>Ở trạm thực địa, tháng 10 năm 2068, Toản lắp cho cái máy bơm một cái phao tự động, và từ đó thì nó nổ một mình, bơm đầy bể, và tự tắt. Bảo Thư có ghi việc lắp phao vào sổ của cô, kèm ngày.</p>
+<p>Một tối tháng 3 năm 2069 cô ở lại trạm muộn, và tối ấy trong trạm không còn ai khác, và cái máy bơm nổ. Cô bấm giờ vì cô muốn biết nó chạy bao lâu.</p>
+<p>Bốn phút.</p>
+<p>Cô ghi vào cột thứ ba là xảy ra thật, và ở đây cô không ghi thêm dòng nào.</p>
+<p>Bảo Thư nói con số ấy ra thành tiếng vào tối 27 tháng 5, trong lúc hai người đang ăn cơm.</p>
+<p>"Chín trên sáu trăm bốn mươi ba." Cô nói.</p>
+<p>"Ừ."</p>
+<p>"Mà chín cái đó thì tao cũng không dám chắc cả chín. Có hai cái tao xếp vô đó vì tao muốn nó ở đó."</p>
+<p>"Rứa thì bảy." Trúc nói.</p>
+<p>Bảo Thư ăn hết bát cơm rồi cô đứng dậy lấy cái bảng ra và sửa lại hai chỗ. Cô không tẩy. Cô ghi lại ở dòng dưới.</p>
+<p>Mục số 141 đề ngày 4 tháng 11 năm 2058, nét chữ Bảo Thư, hai dòng.</p>
+<p class="p-epigraph"><span class="line">"Một đứa nhỏ mặc áo lính. Áo rộng ở vai. Nó đứng ở chỗ có tuyết."</span><span class="line">"Chỗ đó không có tên trên bản đồ nhà mình."</span></p>
+<p>Trên cái bảng năm 2061, ở cột thứ ba của mục ấy, có mấy chữ Bảo Thư chép sang từ biên niên, viết bằng bút bi xanh, và mấy chữ ấy là chưa xảy ra.</p>
+<p>Ngày 27 tháng 5 năm 2071, Bảo Thư cầm bút và dừng lại trước mục ấy.</p>
+<p>Cô ngồi với nó chừng một phút rồi cô hỏi.</p>
+<p>"Cái ni có ai thấy không?"</p>
+<p>Trúc nghĩ. Cô nghĩ theo lối cô vẫn nghĩ khi Bảo Thư hỏi một câu như thế, tức là cô đi qua trong đầu từng người một.</p>
+<p>Ông Đô, Toản và Elin ra tới chốt K-9 tháng 9 năm 2067, và ba người ngồi ở nhà chờ từ ba giờ mười hai tới ba giờ năm mươi hai, và ba người không thấy ai cả.</p>
+<p>Ở vành đai thì có hơn hai trăm người, và không ai trong số ấy quen ai ở cái nhà này, và không ai trong số ấy biết là có một cuốn vở.</p>
+<p>Cái giấy tờ về tới xã thì có ba thứ và cả ba đều là giấy tờ.</p>
+<p>"Không." Trúc nói.</p>
+<p>Bảo Thư viết vào cột thứ ba, ở dòng dưới mấy chữ cũ.</p>
+<p class="p-note">Không xác định được.</p>
+<p>Rồi cô ghi ngày bên cạnh và cô sang mục 142.</p>
+<p>Trúc ngồi đó và nhìn cô viết, và Trúc không nói gì.</p>
+<p>Chữ họ tới lượt vào ngày 14 tháng 6.</p>
+<p>Nó tới lượt vì tới bước thứ ba thì phải xếp theo chữ cái, và xếp theo chữ cái thì phải có một dòng cho mỗi chữ hay dùng.</p>
+<p>Bảo Thư đếm. Cô đếm trong hai tuần, mỗi tối chừng một tiếng, đếm bằng cách lật từng quyển và đánh dấu vào giấy nháp, và cô đếm hết một trăm sáu mươi ba quyển đã đánh số.</p>
+<p>Chữ ấy xuất hiện một nghìn bốn trăm mấy chục lần.</p>
+<p>Lần thứ nhất nằm ở quyển hai mươi ba, mục đề ngày 3 tháng 2 năm 2059.</p>
+<p>Trước ngày ấy thì trong ba quyển liền kề, phía bên kia được gọi bằng bốn chữ khác nhau, và bốn chữ ấy là chữ người ta dùng hồi ấy.</p>
+<p>Từ ngày 3 tháng 2 năm 2059 trở đi thì một chữ, không sai một lần, trong mười hai năm.</p>
+<p>Trong một trăm sáu mươi ba quyển ấy, chỗ nói vì sao thì không có.</p>
+<p>Bảo Thư hỏi Trúc còn nhớ chuyện đổi chữ không.</p>
+<p>Trúc nói cô không nhớ. Cô nói cô không nhớ có một hôm nào ngồi nghĩ chuyện ấy, và cô không nhớ có ai bảo cô, và cô cũng không nhớ là cô có thấy nó lạ không.</p>
+<p>Bảo Thư ngồi với chuyện đó một lúc rồi cô để bút xuống và không ghi gì.</p>
+<p>Cô không đưa chữ ấy vào mục lục.</p>
+<p>Một dòng mục lục có một nghìn bốn trăm mấy chục số mục thì dài hơn cái mục lục.</p>
+<p>Cô ghi vào phần hướng dẫn dùng ở đầu sổ một câu, và câu ấy nói rằng chữ này không tra được vì nó có ở gần như mọi mục từ năm 2059.</p>
+<p>Trúc ba mươi ba tuổi.</p>
+<p>Cô nhận mộng báo lần thứ nhất vào đầu năm 2054, năm cô mười sáu tuổi, trước khi loài người biết là có Cánh Cổng. Từ đó tới nay là mười bảy năm, và nó tới chừng mười một lần một năm, và con số ấy không đổi.</p>
+<p>Cô đã tin từ lần thứ nhất và cô chưa lần nào thôi tin.</p>
+<p>Cô cũng đúng. Chín mục, hoặc bảy mục, trong sáu trăm bốn mươi ba.</p>
+<p>Trong mười bảy năm ấy, số người hỏi cô một câu về chuyện này là một, và người ấy là Bảo Thư, năm 2054.</p>
+<p>Có một cô gái người Hà Lan tới nhà một buổi chiều chủ nhật năm 2058. Cô gái ấy không hỏi. Cô ấy nhìn ba cái cột kẻ tay.</p>
+<p>Trong mười năm chiến tranh, số người từ ngoài cái đường đất này vào hỏi cô một câu là không.</p>
+<p>Năm 2062 cô có một mục mà cô nghĩ là mục quan trọng nhất trong cả mười bảy năm.</p>
+<p>Mục ấy đề ngày 19 tháng 5, mang số 402, và nó có ba dòng.</p>
+<p>Ba dòng ấy nói về một cái giếng. Người ta thả gàu xuống, và gàu không chạm nước, và người thả gàu đứng đó và không kéo lên.</p>
+<p>Cô đọc cho Bảo Thư chép, và hôm ấy cô ngồi thêm một tiếng để nhớ thêm, và cô nhớ thêm được hai chữ, và hai chữ ấy là ban ngày.</p>
+<p>Rồi hai người ngồi với ba dòng ấy và bàn xem làm gì với nó.</p>
+<p>Cái làm được thì có ba việc. Việc thứ nhất là nói cho người trong xóm, và trong xóm có mười một cái giếng và cả mười một cái đều có nước. Việc thứ hai là nhờ Bảo Thư nói ở trạm, và ở trạm thì có bốn người và cả bốn đang làm việc khác. Việc thứ ba là viết ra và gửi đi, và gửi thì phải có địa chỉ, và một cái giếng thì không có địa chỉ.</p>
+<p>Hai người bàn hết một buổi tối. Rồi Bảo Thư đóng vở, ghi giờ, và cất vào thùng.</p>
+<p>Ngày hôm sau Trúc nhận vá bốn cái áo.</p>
+<p>Năm 2071, ở cột thứ ba của mục số 402, Bảo Thư ghi lại đúng cái cô đã ghi năm 2061.</p>
+<p class="p-note">Chưa xảy ra.</p>
+<p>Cô sống bằng việc khâu vá. Cô nhận vá và may lại quần áo cho người trong xóm từ năm 2060, chừng hai chục cái một tháng, và tiền công thì lấy bằng gạo hoặc bằng tiền tuỳ nhà. Việc ấy làm ở gian ngoài, cạnh cái bàn có chồng vở, và cô làm nó vào ban ngày.</p>
+<p>Ba mươi mốt quyển vở chép tay hồi 2058 nay đã thành một trăm mấy chục quyển, nằm trong hai cái thùng riêng, không phải năm cái thùng kia.</p>
+<p>Bảo Thư ba mươi ba tuổi. Cô vẫn làm ở trạm thực địa, và từ tháng giêng năm 2071 thì việc của cô có thêm phần sổ sách kho, vì trạm nhận thêm một chân coi kho và người coi kho thì mới.</p>
+<p>Cô vẫn ghi mọi thứ kèm giờ. Sổ của cô ở trạm bây giờ là quyển thứ hai mươi chín, và cô để chúng trong một cái hộp tôn dưới gầm bàn, và cái hộp ấy thì chị Liên có hỏi một lần năm 2064 là để làm chi, và cô nói để đó.</p>
+<p>Chiều mồng một tháng 7, Bảo Thư từ trạm về lúc gần sáu giờ.</p>
+<p>Cô đạp xe, và cô mang theo hai con cá và một gói muối, vì hôm ấy chợ có cá.</p>
+<p>Hai người nấu cơm. Bữa ấy có cá kho, canh rau tập tàng, và cà. Trong bữa cơm thì Bảo Thư kể bốn chuyện.</p>
+<p>Chuyện thứ nhất là cái đò bây giờ chạy ba chuyến và chuyến cuối là bốn rưỡi chiều.</p>
+<p>Chuyện thứ hai là Elin đã nhận lại điểm 4 và điểm 5 bên kia hói từ tháng giêng, và bên đó đò một tuần hai buổi nên mỗi lần đi mất trọn một ngày, và tháng này cô ấy đi bốn lần.</p>
+<p>Chuyện thứ ba là con bé nhà cô Mai năm nay mười bốn tuổi và đi học xa bảy cây, và trường có thi học sinh giỏi toán cấp huyện, và nó được chọn đi thi, và nó nói với mẹ nó là nó không đi vì đi thì mất hai ngày.</p>
+<p>"Rồi nó có đi không?" Trúc hỏi.</p>
+<p>"Có. Cô Mai bảo đi thì nó đi."</p>
+<p>Chuyện thứ tư là chuyện cả chợ nói hôm nay. Kỳ rà soát định biên năm nay duyệt cho bệnh viện huyện thêm một chân bác sĩ ngoại khoa, và người ta điều một người về, và người ấy nhận việc sáng nay.</p>
+<p>"Sáng ni hả?"</p>
+<p>"Mồng một. Nhận việc thì nhận đầu tháng."</p>
+<p>Trúc nói ừ, và cô gắp cho Bảo Thư miếng cá.</p>
+<p>Rửa bát xong thì hai người ra gian ngoài làm mục lục.</p>
+<p>Tối ấy làm được từ quyển một trăm sáu mươi tư tới quyển một trăm sáu mươi bảy, tức là mười một mục. Bảo Thư đọc, Trúc ghi số, và tới quyển một trăm sáu mươi sáu thì hai người đổi cho nhau vì mắt Bảo Thư mỏi.</p>
+<p>Chín giờ rưỡi thì nghỉ.</p>
+<p>Rồi Bảo Thư mở quyển hai trăm bốn mươi mốt ra và kẻ sẵn trang sau, ba cột, kẻ bằng thước, vì mười lăm năm nay tối nào cô cũng kẻ trước một trang.</p>
+<p>Ở đầu trang ấy cô ghi ngày, và ngày ấy là ngày 2 tháng 7 năm 2071.</p>
+<p>Rồi cô để cái thước lên nắp thùng thứ tư, đúng chỗ nó vẫn nằm, và hai người vào buồng trong.</p>
+<p>Bảo Thư ngủ lại. Cô ngủ lại ở nhà này chừng ba đêm một tuần và cô đã ngủ lại như thế từ năm 2059, tức là chừng một nghìn tám trăm đêm.</p>
+<p>Hai người nằm trên một cái chõng tre, chung một cái chiếu, đầu quay ra phía cửa buồng. Bảo Thư nằm phía ngoài vì cô dậy trước.</p>
+<p>Đêm ấy trời không mưa. Ngoài sân có tiếng dế, và ở phía sau nhà thì có tiếng con chó nhà bên kia bờ rào.</p>
+<p>Mộng của Trúc, trong mười bảy năm, có năm chỗ giống nhau.</p>
+<p>Chỗ thứ nhất là cô luôn ở ngoài trời, hoặc ở một chỗ mà cô không chạm được vào vách nào.</p>
+<p>Chỗ thứ hai là cô không có mặt trong đó. Cô nhìn thấy, và không ai nhìn thấy cô, và cô chưa lần nào thấy tay mình hay chân mình.</p>
+<p>Chỗ thứ ba là không ai trong đó nói ra tiếng mà cô nghe thành chữ được. Có tiếng, có người mở miệng, và cái ra thì là tiếng chứ không thành chữ.</p>
+<p>Chỗ thứ tư là cô chưa bao giờ đọc được một chữ nào trong mộng. Có chữ. Trong sáu trăm bốn mươi ba mục thì có bốn mươi mấy mục nói tới chữ viết: một tấm biển, một tờ giấy dán tường, một cái bảng gỗ, một trang sổ. Cô thấy được rằng đó là chữ. Cô chưa lần nào đọc được nó.</p>
+<p>Chỗ thứ năm là cái cô thấy thì chưa xảy ra.</p>
+<p>Đêm mồng một rạng mồng hai tháng 7 năm 2071, cô ở trong một cái phòng.</p>
+<p>Cô biết đó là một cái phòng vì cô chạm được vào vách. Vách nhẵn, không phải gỗ, không phải vôi, không phải xi măng, và nó không lạnh và không ấm. Nền dưới chân cũng nhẵn như thế. Không có cửa sổ và cô không đi tìm cửa.</p>
+<p>Trong phòng có một cái bàn, một cái ghế, và một cái đèn để trên bàn. Đèn không phải đèn dầu và không có ngọn.</p>
+<p>Ở góc bàn, phía tay phải, có một cái cốc. Trong cốc còn chừng một đốt ngón tay nước, và ở thành cốc phía trong có một ngấn khô, và ngấn ấy cao hơn chỗ nước bây giờ.</p>
+<p>Có một người ngồi ở bàn, quay lưng ra.</p>
+<p>Người ấy mặc áo, tóc ngắn, và người ấy đang viết. Cô không thấy mặt. Cô đứng cách chừng hai bước và người ấy không quay lại và không biết là cô ở đó.</p>
+<p>Trong phòng không có tiếng gì. Không có tiếng ngoài phòng vọng vào và không có tiếng của cái đèn. Cái duy nhất có tiếng là cái bút chạm giấy, và tiếng ấy thì đều, và nó dừng ở cuối mỗi dòng chừng một nhịp.</p>
+<p>Trên bàn, bên tay trái người ấy, có một chồng vở.</p>
+<p>Chồng ấy có chừng mười lăm quyển. Chúng là vở học sinh, khổ nhỏ, bìa mềm, và bìa thì không viết gì.</p>
+<p>Người ấy đang viết vào một quyển đang mở.</p>
+<p>Trang giấy kẻ tay. Ba cột.</p>
+<p>Cột thứ nhất hẹp, cột thứ hai hẹp hơn, cột thứ ba rộng bằng hai cột kia cộng lại. Đường kẻ chia cột thứ nhất với cột thứ hai thì thẳng. Đường kẻ chia cột thứ hai với cột thứ ba thì ở đoạn dưới cùng có một chỗ chệch ra ngoài chừng nửa phân rồi lại vào, vì cái thước bị trượt.</p>
+<p>Trúc biết cái chỗ chệch ấy. Nó có ở trang nào Bảo Thư kẻ vào buổi tối muộn, và trong mười lăm năm thì nó có ở chừng một phần năm số trang, và nó ở đúng chỗ ấy vì tay cầm thước của Bảo Thư mỏi ở đúng đoạn ấy.</p>
+<p>Đầu mỗi trang có một dòng nhỏ ghi số hiệu quyển và số hiệu trang.</p>
+<p>Nét chữ trong sổ là nét chữ của Bảo Thư.</p>
+<p>Nó là nét chữ của Bảo Thư ở chỗ chữ h có cái móc ngắn, ở chỗ chữ số 4 viết hở, và ở chỗ cuối dòng thì chữ nhỏ lại vì cô tính chỗ để không thừa dòng.</p>
+<p>Bảo Thư đang nằm ngủ cách chỗ Trúc nằm chừng một gang tay.</p>
+<p>Trúc bước tới nửa bước và cô đọc được.</p>
+<p>Đó là chỗ thứ tư gãy, và cô nhận ra nó gãy ngay lúc ấy, và cái nhận ra ấy đến trước cả chuyện cô đọc được cái gì.</p>
+<p>Cô đọc ba dòng cuối cùng ở nửa dưới trang.</p>
+<p>Dòng thứ nhất và dòng thứ hai thì cô đọc và cô quên ngay, theo cái lối người ta đọc lướt hai dòng để tới dòng mình cần.</p>
+<p>Dòng thứ ba, cột thứ nhất, ghi ngày 2 tháng 4.</p>
+<p>Cột thứ hai ghi 9 giờ 05.</p>
+<p>Cột thứ ba có hai câu.</p>
+<p class="p-note">Người ta bắt đầu đếm lại. Lần này cái được đếm cũng đếm.</p>
+<p>Ở cột thứ nhất, sau ngày và tháng, có bốn chữ số.</p>
+<p>Bốn chữ số ấy là 2079.</p>
+<p>Cô đọc lại cả dòng ấy một lần nữa để chắc từng chữ đúng, và cô đọc lại được, và đó là chỗ thứ tư gãy lần thứ hai.</p>
+<p>Người ngồi ở bàn viết xong dòng ấy, để bút xuống, và với tay lấy quyển tiếp theo trong chồng bên trái.</p>
+<p>Người ấy không quay lại.</p>
+<p>Trúc tỉnh lúc trời chưa sáng.</p>
+<p>Cô nằm im. Cô đếm cái đầu tiên cô nghĩ ra để đếm, và cái ấy là tiếng con chó bên kia bờ rào, và nó sủa bốn tiếng rồi thôi.</p>
+<p>Bảo Thư nằm nghiêng, quay mặt ra phía cửa buồng, và một tay để dưới má.</p>
+<p>Trúc không gọi cô.</p>
+<p>Trong những đêm Bảo Thư ngủ lại, số lần Trúc tỉnh dậy sau một giấc mộng mà không gọi cô là không.</p>
+<p>Không phải vì có quy tắc nào. Hồi 2054 hai đứa mười sáu tuổi và một đứa lay đứa kia dậy vì sợ, và về sau thì nó thành cái nếp, và Bảo Thư ngủ lại ba đêm một tuần chính là vì cái nếp ấy. Bảo Thư dậy, thắp đèn, lấy vở, ghi ngày, ghi giờ, và hỏi thấy chi.</p>
+<p>Trúc nằm đó chừng nửa tiếng.</p>
+<p>Cô nghĩ tới việc dậy, và cô nghĩ tới nó một cách cụ thể. Thắp cái đèn thì mất chừng mười giây. Lấy quyển hai trăm bốn mươi mốt thì cô với tay tới, vì nó ở trên bàn gian ngoài, cách chỗ nằm bảy tám bước. Ghi thì mất chừng ba phút, vì cái phải ghi có bốn thứ: cái phòng, chồng vở, ba cột, và một dòng.</p>
+<p>Gọi Bảo Thư dậy thì mất một tiếng, vì Bảo Thư sẽ hỏi lại từng chỗ một, và Bảo Thư sẽ hỏi cái đường kẻ chệch ấy ở đoạn nào của trang, và Trúc sẽ trả lời được.</p>
+<p>Cô đi qua trong đầu năm chỗ giống nhau. Chỗ thứ nhất gãy. Chỗ thứ tư gãy. Chỗ thứ năm thì cô không biết nó có gãy hay không, vì cái cô đọc được là một dòng đã viết ra rồi, và cái ngày ở đầu dòng ấy thì chưa tới.</p>
+<p>Chỗ thứ hai và chỗ thứ ba thì còn nguyên.</p>
+<p>Cô ngồi dậy và ra gian ngoài.</p>
+<p>Trên bàn có quyển hai trăm bốn mươi mốt, mở dở, và có sổ mục lục, và có trang Bảo Thư kẻ sẵn cho ngày mồng hai, ba cột, đề ngày ở đầu trang.</p>
+<p>Cô đứng trước cái bàn ấy.</p>
+<p>Trong mười lăm năm, cái nhà này ghi cả những mục Trúc nói là chắc không phải, và ghi luôn cả câu Trúc nói là chắc không phải. Nó ghi cả những trang kẻ hỏng, vì kẻ hỏng thì không xé, kẻ lại ở dưới.</p>
+<p>Trúc đứng đó chừng bốn phút.</p>
+<p>Cô không cầm quyển hai trăm bốn mươi mốt lên.</p>
+<p>Cô không viết vào trang kẻ sẵn, và trang kẻ sẵn ấy đề ngày mồng hai, và đêm nay là đêm rạng mồng hai, nên nếu cô viết thì nó vào đúng chỗ và đúng ngày và không sai một cái gì hết.</p>
+<p>Cô vào buồng trong và ngồi xuống mép chõng.</p>
+<p>Cô ngồi đó tới lúc chân lạnh. Rồi cô nằm xuống ở chỗ cô vẫn nằm, và quay mặt vào vách.</p>
+<p>Bảo Thư ngủ tới sáu giờ.</p>
+<p class="p-part-end">Hết Phần V: Thiên Đường Chưa Đóng Sổ</p>
+<p class="p-book-end">HẾT QUYỂN II</p>
+<p class="p-note">Còn tiếp ở Quyển III</p>
+</article>
+
+
+<svg class="rift-small" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+</svg>
+
+
+<div class="chapter-foot">
+  <nav class="chapter-nav" aria-label="Điều hướng chương">
+    <a class="prev" href="chuong-33.html"><span class="lbl">Trước</span><span class="ttl">Rà Phá</span></a>
+    <a class="toc-link" href="index.html" aria-label="Về mục lục"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></a>
+    <span></span>
+  </nav>
+</div>
+
+<footer class="sitefoot">
+  <p>Khúc Ai Ca Cho Những Kẻ Vô Danh — Vòng Tuần Hoàn Người Gieo Hạt · Quyển II</p>
+  <p>© 2026 Nguyễn Duy Anh (bút danh: Mendingur). Bản quyền tác phẩm thuộc về tác giả.</p>
+</footer>
+
+<script src="glow.js" defer></script>
+</body>
+</html>

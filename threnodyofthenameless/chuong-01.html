@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mẫu Số Tám — Khúc Ai Ca Cho Những Kẻ Vô Danh</title>
+<meta name="description" content="Vòng Tuần Hoàn Người Gieo Hạt · Quyển II — tiểu thuyết của Mendingur">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="style.css">
+<script src="reader.js" defer></script>
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem('mendingur-theme');
+    var theme = saved === 'dark' || saved === 'light'
+      ? saved
+      : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+  <linearGradient id="wingGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="55%" stop-color="#C99A3E"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+  <radialGradient id="coreGlow" cx="50%" cy="55%" r="55%">
+    <stop offset="0%" stop-color="#FFF6DE" stop-opacity="0.95"/>
+    <stop offset="55%" stop-color="#E4C077" stop-opacity="0.35"/>
+    <stop offset="100%" stop-color="#E4C077" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="flowerGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+</defs>
+</svg>
+<div class="grain"></div>
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+<div class="settings-menu" id="settingsMenu">
+  <button class="menu-toggle" type="button" id="settingsMenuToggle" aria-haspopup="true" aria-expanded="false" aria-controls="settingsPopover" aria-label="Cài đặt giao diện">
+    <span class="menu-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+  </button>
+  <div class="settings-popover" id="settingsPopover" role="menu">
+    <div class="settings-group">
+      <p class="settings-group-label">Giao diện</p>
+      <div class="theme-switcher" id="themeSwitcher" role="group" aria-label="Giao diện sáng / tối">
+        <button class="theme-btn active" type="button" data-theme-choice="light" aria-pressed="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <span>Sáng</span>
+        </button>
+        <button class="theme-btn" type="button" data-theme-choice="dark" aria-pressed="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+          <span>Tối</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<header class="sitebar">
+  <a class="brand" href="index.html">
+    <span class="mark"><svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sower's Cycle mark">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+<g transform="translate(200,278)">
+  <g><ellipse rx="14" ry="21" transform="rotate(0)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(72)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(144)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(216)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(288)" fill="url(#flowerGrad)"/></g>
+  <circle r="9.5" fill="#FFF6DE"/>
+</g>
+<g transform="translate(200,96)"><path d="M0,-24 C2,-7 7,-2 24,0 C7,2 2,7 0,24 C-2,7 -7,2 -24,0 C-7,-2 -2,-7 0,-24 Z" fill="#F3D488"/></g>
+</svg></span>
+    <span class="word">Khúc Ai Ca Cho Những Kẻ Vô Danh</span>
+  </a>
+  <nav>
+    <a href="index.html" class="toc-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      Mục lục
+    </a>
+  </nav>
+</header>
+<div class="progress-track"><div class="progress-fill"></div></div>
+
+<header class="chapter-head">
+  <p class="crumb"><a href="index.html">INTROITUS · BỘ BÁT ĐĨA ĐỦ SÁU NGƯỜI</a></p>
+  <span class="cnum">Chương 1</span>
+  <h1>Mẫu Số Tám</h1>
+  <div class="font-toggle" role="group" aria-label="Cỡ chữ">
+    <button type="button" data-size="sm" aria-pressed="false">A-</button>
+    <button type="button" data-size="md" aria-pressed="true">A</button>
+    <button type="button" data-size="lg" aria-pressed="false">A+</button>
+  </div>
+</header>
+
+<article class="prose" data-size="md">
+<p>Trong giấc mơ, hai tay Elin bận.</p>
+<p>Cô đang bê một thứ gì đó, bê bằng cả hai tay, sát bụng, theo cái lối người ta bê một vật sẽ đổ nếu nghiêng. Vật ấy có sức nặng phân đều. Cô không cúi xuống được để nhìn. Cổ cô không quay, và trong giấc mơ chuyện đó không phải là một điều đáng sợ, nó chỉ là một điều kiện, giống như trời tối hay như sàn nhà cứng.</p>
+<p>Không khí nóng và có nước trong đó. Nó có trọng lượng. Thở là một việc phải làm chứ không phải một việc tự xảy ra.</p>
+<p>Mặt đất ấm. Cô cảm được hơi ấm ấy qua đế chân. Nó không phải cái ấm của một chỗ vừa có nắng. Nó là cái ấm của một thứ vừa cháy xong và đã hết cháy.</p>
+<p>Có mùi tro ướt. Dưới lớp mùi ấy còn một mùi khác, mùi thực vật, ngọt, gần với mùi cỏ bị dập nát nhưng không phải cỏ. Hai mùi nằm cạnh nhau mà không hoà vào nhau. Ngay trong giấc mơ, cô đã ghi nhận điều đó như ghi nhận một kết quả bất thường: hai chất bay hơi cùng một thể tích khí thì phải trộn, mà chúng không trộn.</p>
+<p>Có một tiếng vang dài bằng kim loại. Nó ngân, nhưng không tròn, kiểu một thứ bị gõ vào mà vốn không được làm ra để gõ.</p>
+<p>Và có người. Nhiều người, ở gần, nói một thứ tiếng cô không biết. Cô không hiểu một từ nào. Cô nghe được nhịp. Những cụm ngắn, đều, cụm nào cũng chấm hết bằng một âm đi xuống. Cô biết chắc họ đang đếm. Không phải cô đoán họ đang đếm. Cô biết, theo cái cách trong mơ người ta biết những thứ không ai nói cho mình.</p>
+<p>Hai bàn tay cô sai kích thước. Chúng lớn hơn và nhỏ hơn tay cô cùng một lúc, và cô không thấy chuyện đó mâu thuẫn.</p>
+<p>Tiếng đếm dừng lại ở một con số cô không nghe ra.</p>
+<p>Có ai đó đi ngang qua, rất gần, gần đến mức cô cảm được luồng khí bị đẩy đi. Cô không quay đầu. Cô cũng không thấy cần quay đầu.</p>
+<p>Cô muốn đặt cái vật đang bê xuống. Tay cô mỏi và cô muốn đặt nó xuống. Nhưng mặt đất ấm, và cô biết không được đặt nó xuống chỗ ấm.</p>
+<p>Cô không biết vì sao mình biết. Không ai nói với cô điều đó.</p>
+<p>Elin tỉnh dậy lúc bốn giờ mười hai phút.</p>
+<p>Cô nằm yên một lúc, mắt mở, đợi cho cái nóng trong người tan ra. Phòng cô lạnh. Tháng chín ở Wageningen đã bắt đầu lạnh về đêm và cô chưa mở tản nhiệt. Cô với tay lấy điện thoại, nhìn con số, rồi úp màn hình xuống chăn.</p>
+<p>Trên bàn cạnh giường có cuốn sổ thí nghiệm và cây bút. Cô không nhớ mình đã ngồi dậy. Cô chỉ nhớ mình sợ quên, và cái sợ quên ấy mạnh hơn cơn buồn ngủ khoảng ba mươi giây.</p>
+<p>Cô viết mà không bật đèn.</p>
+<p>Rồi cô nằm xuống và ngủ lại.</p>
+<hr class="scene-break" aria-hidden="true">
+<p>Sáng hôm sau, cô đến phòng thí nghiệm lúc bảy giờ kém mười lăm.</p>
+<p>Đợt mẫu Zeeland có mười bốn mẫu, mỗi mẫu ba tầng, lấy hồi tháng năm từ một mảnh ruộng bỏ hoang mà chủ đã bỏ đi từ năm 2049. Bốn mươi hai phép đo độ dẫn điện, cộng sáu ống nguyên dạng để xác định dung trọng. Bà Veenstra cần toàn bộ con số vào thứ Sáu. Không phải để công bố. Để nộp kèm hồ sơ xin gia hạn kinh phí cho hai mươi mốt điểm quan trắc mà khoa còn giữ được, trong đó có mảnh ruộng ấy.</p>
+<p>Elin muốn xong đúng thứ Sáu vì một lý do riêng và cô biết lý do đó nhỏ. Tháng sáu cô đã viết một trang đề nghị tăng số đợt lấy mẫu lên bốn lần một năm và mở thêm hai điểm phía tây con đê. Thứ cô nhận lại là một biểu mẫu. Biểu mẫu ấy có một ô yêu cầu dẫn chứng chuỗi số liệu liên tục ba năm gần nhất. Chuỗi ba năm gần nhất của mảnh ruộng đó là 8,7 rồi 9,2 rồi con số cô sẽ đo trong tuần này. Nếu đến thứ Sáu mà cô chưa có con số thứ ba, hồ sơ đi thiếu một dòng, và hai điểm phía tây con đê sẽ không có trong năm 2058, và có lẽ sẽ không có bao giờ.</p>
+<p>Đó là toàn bộ tham vọng của cô ở tuổi mười chín: hai cái lỗ trên một tấm bản đồ.</p>
+<p>Cô bật máy đo, để nó khởi động, và mở tủ hoá chất.</p>
+<p>Lô dung dịch chuẩn kali clorua 0,01 mol đặt từ tháng bảy vẫn chưa về. Cô đã biết điều đó, nhưng cô vẫn mở tủ ra nhìn, giống như người ta mở tủ lạnh lần thứ hai. Trong hộp thư của cô có bốn dòng của phòng vật tư, gửi từ hôm thứ Ba, viết bằng thứ tiếng Hà Lan của người đã gõ câu đó nhiều lần trong tháng:</p>
+<p class="p-epigraph"><span class="line">Lô hàng vẫn đang giữ ở khâu kiểm soát xuất khẩu. Chưa có ngày dự kiến. Đề nghị các nhóm sắp xếp phương án thay thế. Không cần trả lời thư này.</span></p>
+<p>Không có chữ nào trong bốn dòng ấy nói đến chiến tranh. Ở Hà Lan năm 2057 người ta không viết chữ đó vào email nội bộ. Người ta viết "khâu kiểm soát xuất khẩu", và ai cũng hiểu, và ai cũng sắp xếp phương án thay thế.</p>
+<p>Phương án thay thế của Elin là tự pha lấy dung dịch chuẩn, theo quy trình cũ, quy trình mà giáo trình còn in nhưng gần như không ai làm nữa. Sấy kali clorua ở một trăm linh năm độ trong hai tiếng. Để nguội trong bình hút ẩm. Cân trên cân phân tích tới một phần mười miligam. Hoà bằng nước khử ion vừa đun sôi để đuổi khí, vì khí cacbonic tan trong nước sẽ làm con số nhích lên, và ở dải đo này thì một cái nhích cũng đủ hỏng.</p>
+<p>Cô làm việc đó trong ba tiếng và cô làm giỏi. Cân của cô đứng số ngay lần đầu. Cô không làm rơi một hạt muối nào ra ngoài mặt kính đồng hồ. Khi cô hiệu chuẩn máy, con số hiện lên là 1,411 mili siemen trên centimet ở hai mươi lăm độ, lệch chưa tới một phần nghìn so với giá trị lý thuyết, và đó là một kết quả đẹp.</p>
+<p>Trong phòng lúc ấy không có ai. Tuần này không có buổi thực hành nào, nhóm bà Veenstra họp ở toà nhà bên kia, và người kỹ thuật viên đã đi ăn trưa lúc mười một rưỡi.</p>
+<p>Elin lau mặt bàn, ghi giờ hiệu chuẩn vào sổ, rồi bắt đầu chạy mẫu.</p>
+<p>Đến mẫu thứ tư thì cô lật ngược trang để xem lại số hiệu, và cô nhìn thấy ba nét chữ ở lề trang hôm trước.</p>
+<p>Chúng nằm chồng lên nhau một chút, viết to hơn chữ thường ngày của cô, nghiêng xuống dưới theo cái lối chữ của người viết trong bóng tối và không nhìn thấy tay mình. Hai nét đầu đọc được.</p>
+<p><strong>mot</strong></p>
+<p><strong>hai</strong></p>
+<p>Nét thứ ba là một vệt. Nó có thể là một chữ b, cũng có thể là hai chữ dính vào nhau. Nó tận cùng bằng một cái móc kéo hết xuống mép lề rồi mất.</p>
+<p>Cô ngồi nhìn ba nét chữ ấy khoảng nửa phút.</p>
+<p>Cô không nhớ đã viết. Cô có nhớ mang máng chuyện mình sợ quên, nhưng cái mình sợ quên là gì thì không còn. Đêm qua có mơ, cô biết vậy, vì buổi sáng cô dậy với một cái mùi trong mũi và cái mùi ấy không có nguồn nào trong phòng.</p>
+<p>Cô kiểm tra cây bút. Bút bi xanh, ngòi 0,7, loại cô để ở đầu giường chứ không phải loại cô để trong áo khoác phòng thí nghiệm. Vậy là cô đã viết ở nhà.</p>
+<p>Elin lấy bút, viết dưới ba nét chữ ấy một dòng bằng nét chữ ban ngày của mình, gọn và thẳng:</p>
+<p class="p-note">không đọc được.</p>
+<p>Rồi cô lật lại trang đang làm và ghi kết quả mẫu số bốn.</p>
+<p>Buổi chiều đi rất trôi. Độ dẫn điện tầng mặt là 11,6 đêxi siemen trên mét. Năm 2055 chỗ đó đo được 8,7. Năm 2056 là 9,2. Không phải một cú nhảy, mà là một đường đi lên đều, và những đường đi lên đều thì khó bắt người ta chú ý hơn nhiều so với một cú nhảy.</p>
+<p>Sáu ống nguyên dạng cho dung trọng từ 1,47 đến 1,63 gam trên centimet khối. Cô ghi cả sáu con số. Ở 1,63 thì rễ không đi qua được nữa. Mảnh ruộng ấy có một ống chạm 1,63.</p>
+<p>Cô đóng sổ lúc sáu giờ và tắt máy đo. Ba nét chữ vẫn ở lề trang hôm trước, và cô không nghĩ đến chúng nữa cho tới tận nửa đêm.</p>
+<hr class="scene-break" aria-hidden="true">
+<p>Tối thứ Năm là Joris nấu.</p>
+<p>Joris nấu mì với xúc xích và một thứ nước sốt tự pha, và chưa lần nào nước sốt ấy giống lần trước. Hôm nay trong đó có mù tạt. Sanne ăn hai đĩa và nói rằng ngon, và cách cô ấy nói cho thấy cô ấy đang nghĩ chuyện khác.</p>
+<p>Nhà ở Bornsesteeg có sáu phòng và sáu người. Trong nhà xe có mười một cái xe đạp, ba cái không nhúc nhích từ mùa xuân. Trên cửa tủ lạnh dán tờ lịch nấu ăn in từ mùa thu năm ngoái, đã sửa bằng bốn thứ mực khác nhau, và ở tuần thứ ba có một ô bị bôi đen mà không ai còn nhớ vì sao.</p>
+<p>"Nhà cậu có nồi to không?" Joris hỏi, tay còn cầm cái chảo. Quai chảo lỏng. Trên bậu cửa sổ có một cái tua vít, và ai dùng chảo cũng vặn lại quai một vòng trước khi bắc lên bếp, và không ai gọi thợ.</p>
+<p>"Ở đâu?"</p>
+<p>"Ở nhà cậu."</p>
+<p>"Nhà ông bà cháu có một cái." Elin nói, rồi nghe thấy mình vừa dùng từ đó bằng tiếng Hà Lan một cách bình thường. "Vừa nứt tuần trước."</p>
+<p>"Thế thì mua cái mới." Joris đặt chảo xuống. "Nồi có phải đồ gia truyền đâu."</p>
+<p>"Ừ."</p>
+<p>"Bố mẹ cậu không mua cho à?"</p>
+<p>Cả bàn không ai dừng lại. Sanne vẫn đang gắp. Joris hỏi kiểu đó với tất cả mọi người, và trong sáu tháng ở chung, Elin đã thấy cậu ta hỏi một người mới chia tay là bây giờ ai trả tiền internet.</p>
+<p>"Bố mẹ và em gái mình mất năm 2054." Cô nói. "Chuyến bay di tản. Không ai sống sót. Mình ở với ông bà ngoại từ đó."</p>
+<p>Bốn giây.</p>
+<p>"À." Joris nói. "Ừ."</p>
+<p>Rồi cậu ta hỏi Sanne đề cương đến đâu rồi, và Sanne nói gần hai phút, và trong hai phút đó cô ấy không trả lời câu hỏi một lần nào. Iris ở tầng hai xuống lấy phần của mình, múc vào một cái đĩa sâu lòng, cảm ơn, và mang lên phòng. Chồng thư của Iris trên bậu cầu thang là chồng dày nhất nhà.</p>
+<p>Elin rửa bát vì hôm nay không phải phiên cô nấu. Trên thảm sau cửa có thư buổi chiều, cô chia theo phòng như mọi hôm. Có một phong bì đề tên một người đã chuyển đi từ năm 2055. Nó đến hằng tháng. Cô để nó vào ô cũ của người ấy, như mọi tháng.</p>
+<p>Điều hoà tầng hai kêu từ tháng tám. Nhà đã viết cho chủ hai lần.</p>
+<p>"Viết lần thứ ba đi." Sanne nói với lên cầu thang. "Lần này cậu viết. Cậu viết nghe có vẻ nghiêm túc hơn."</p>
+<p>"Vì mình kẻ bảng." Elin nói.</p>
+<p>"Ừ. Cậu kẻ cột đẹp thế."</p>
+<hr class="scene-break" aria-hidden="true">
+<p>Trời mưa lúc cô đạp xe về, thứ mưa tháng chín ở đây, hạt nhỏ, ngang, không nặng hơn cũng không nhẹ hơn hôm qua. Đường Rijnsteeg vẫn đào từ đầu tháng để thay ống, rào chắn đã ngả màu, và người ta vẫn chưa lấp.</p>
+<p>Cô gọi cho ông bà lúc chín giờ, đứng ở hành lang vì trong phòng sóng kém.</p>
+<p>"Cháu ăn chưa?" Ông Wim hỏi.</p>
+<p>"Rồi ạ. Joris nấu."</p>
+<p>"Thằng ấy nấu được không?"</p>
+<p>"Được ạ."</p>
+<p>"Ừ." Ông nói. Rồi ông đưa máy cho bà.</p>
+<p>Bà Trees kể chuyện cái nồi. Nồi to, ba mươi mốt năm, có từ hồi ông bà còn chưa chuyển về Ommen. Nó nứt một đường chéo ở chân hàn, và thợ bảo hàn lại thì được nhưng chỗ hàn sẽ hở ra sau vài tháng, mà nồi hở thì để làm gì.</p>
+<p>"Ông cháu đi hỏi giá cái mới rồi." Bà nói.</p>
+<p>"Bao nhiêu ạ?"</p>
+<p>"Ông bảo đắt."</p>
+<p>Elin không nói gì. Cô biết giá loại nồi đó, vì tháng trước cô đã tra, và nó không đắt.</p>
+<p>"Bây giờ nấu bằng cái nhỏ." Bà nói. "Nấu khoai thì trào."</p>
+<p>"Bà mua cái đúng cỡ đi ạ. Cháu chuyển tiền."</p>
+<p>"Thôi."</p>
+<p>Bà nói tiếp về máng nước nhà bà Dekker ở số bốn, sau khi sửa mái thì lệch, và bây giờ nước đổ đúng xuống lối đi chung. Ông Wim đã sang nói một lần. Bà Dekker bảo sẽ gọi thợ.</p>
+<p>Không ai nhắc đến ai đã chết. Trong ba năm gọi điện hằng tuần, đề tài đó chưa bao giờ có mặt, và Elin không biết chuyện ấy là do ông bà tránh hay do chính cô tránh, và cô cũng chưa bao giờ thử.</p>
+<p>"Thôi bà cúp nhé." Bà Trees nói, rồi cúp luôn, trước cả khi Elin kịp đáp. Bà vẫn chưa quen chuyện phải đợi người kia cúp trước.</p>
+<hr class="scene-break" aria-hidden="true">
+<p>Elin quay lại phòng thí nghiệm lúc mười giờ tối để chạy nốt bốn mẫu cuối, vì cô không ngủ được và vì thứ Sáu là ngày kia.</p>
+<p>Đến mẫu số tám, tầng sâu nhất, máy hiện 4,1.</p>
+<p>Cô nhìn con số ấy khoảng chín mươi giây và trong chín mươi giây đó cô đã tin nó.</p>
+<p>Tầng sâu nhất của mẫu số một đo được 0,84. Của mẫu số hai, ba, bốn, năm, sáu, bảy đều nằm trong khoảng 0,7 đến 0,9. Một tầng sâu 4,1 nghĩa là muối đã xuống tới độ sâu đó ở ít nhất một điểm, nghĩa là chuyện đang xảy ra ở mảnh ruộng ấy nhanh hơn tất cả những gì ba năm số liệu nói ra, nghĩa là hồ sơ gia hạn kinh phí của bà Veenstra sẽ có một dòng mà không ai bỏ qua được, nghĩa là hai điểm phía tây con đê.</p>
+<p>Rồi cô lật sổ về trang thao tác và soát lại thứ tự.</p>
+<p>Giữa mẫu bảy và mẫu tám không có dòng nào ghi tráng điện cực.</p>
+<p>Cô ngồi yên. Không có gì để tranh cãi. Mẫu số bảy là tầng mặt, 10,9. Điện cực chưa tráng thì mang theo phần dung dịch cũ, và một điện cực bẩn bỏ vào một dung dịch loãng sẽ cho ra đúng cái kiểu con số vừa hiện lên: cao, ổn định, và sai.</p>
+<p>Cô tráng điện cực ba lần bằng nước khử ion, thấm khô mép, và lấy phần lưu của mẫu số tám ra làm lại từ đầu.</p>
+<p>Máy chạy mười một phút.</p>
+<p>0,79.</p>
+<p>Cô ghi 0,79 vào ô của nó. Cô gạch con số 4,1 bằng một nét, không tẩy, và ghi bên cạnh: <em>điện cực chưa tráng, đo lại lúc 23:58.</em> Cô để nguyên cả hai con số trên trang giấy, vì đó là quy tắc, và vì trong bốn năm học cô đã thấy đủ người tẩy đi con số đầu tiên của mình.</p>
+<p>Lúc ấy cô ngửi thấy nó.</p>
+<p>Tro ướt. Và dưới lớp ấy, thoáng một mùi thực vật ngọt.</p>
+<p>Cô đứng dậy trước khi kịp nghĩ. Phòng thí nghiệm về đêm chỉ còn dãy đèn giữa, hai đầu phòng tối, và tủ hút chạy ù ù ở chế độ ban đêm. Cô đi dọc bàn, mở tủ hút, kiểm tra van, xem lại nhãn ba cái chai để trên giá. Cô mở cửa phòng cân. Cô cúi xuống nhìn gầm bàn.</p>
+<p>Cái xô ở góc, cạnh vòi nước, có một cái giẻ lau bàn nằm trong đó. Ai đó đã vắt qua loa rồi bỏ lại từ hôm trước. Nó ướt, nó ấm hơn không khí một chút vì nằm cạnh ống nước nóng, và nó bốc mùi.</p>
+<p>Cô nhấc nó lên ngửi để chắc chắn.</p>
+<p>Đúng nó.</p>
+<p>Elin xả nước, vò cái giẻ, vắt kỹ, rồi treo lên thành xô cho ráo. Cô rửa tay hai lần. Cô tắt tủ hút, thu bốn cái cốc mỏ, xếp phần lưu vào hộp và dán nhãn ngày.</p>
+<p>Trước khi tắt đèn, cô mở sổ về trang hôm trước.</p>
+<p>Ba nét chữ vẫn nằm ở lề. Bên dưới là dòng <em>không đọc được</em> của cô.</p>
+<p>Cô cầm bút, và bên cạnh ba nét chữ ấy cô ghi thêm ngày, rồi ghi 4:12.</p>
+<p>Ngoài hành lang, đèn cảm ứng tắt sau chín mươi giây. Cô phải giậm chân một cái cho nó sáng lại.</p>
+<hr class="scene-break" aria-hidden="true">
+</article>
+
+
+<svg class="rift-small" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+</svg>
+
+
+<div class="chapter-foot">
+  <nav class="chapter-nav" aria-label="Điều hướng chương">
+    <span></span>
+    <a class="toc-link" href="index.html" aria-label="Về mục lục"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></a>
+    <a class="next" href="chuong-02.html"><span class="lbl">Sau</span><span class="ttl">Cái Tên Viết Sai</span></a>
+  </nav>
+</div>
+
+<footer class="sitefoot">
+  <p>Khúc Ai Ca Cho Những Kẻ Vô Danh — Vòng Tuần Hoàn Người Gieo Hạt · Quyển II</p>
+  <p>© 2026 Nguyễn Duy Anh (bút danh: Mendingur). Bản quyền tác phẩm thuộc về tác giả.</p>
+</footer>
+
+<script src="glow.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Người Ta Chờ Ba Mươi Tám — Khúc Ai Ca Cho Những Kẻ Vô Danh</title>
+<meta name="description" content="Vòng Tuần Hoàn Người Gieo Hạt · Quyển II — tiểu thuyết của Mendingur">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="style.css">
+<script src="reader.js" defer></script>
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem('mendingur-theme');
+    var theme = saved === 'dark' || saved === 'light'
+      ? saved
+      : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+  <linearGradient id="wingGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="55%" stop-color="#C99A3E"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+  <radialGradient id="coreGlow" cx="50%" cy="55%" r="55%">
+    <stop offset="0%" stop-color="#FFF6DE" stop-opacity="0.95"/>
+    <stop offset="55%" stop-color="#E4C077" stop-opacity="0.35"/>
+    <stop offset="100%" stop-color="#E4C077" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="flowerGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+</defs>
+</svg>
+<div class="grain"></div>
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+<div class="settings-menu" id="settingsMenu">
+  <button class="menu-toggle" type="button" id="settingsMenuToggle" aria-haspopup="true" aria-expanded="false" aria-controls="settingsPopover" aria-label="Cài đặt giao diện">
+    <span class="menu-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+  </button>
+  <div class="settings-popover" id="settingsPopover" role="menu">
+    <div class="settings-group">
+      <p class="settings-group-label">Giao diện</p>
+      <div class="theme-switcher" id="themeSwitcher" role="group" aria-label="Giao diện sáng / tối">
+        <button class="theme-btn active" type="button" data-theme-choice="light" aria-pressed="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <span>Sáng</span>
+        </button>
+        <button class="theme-btn" type="button" data-theme-choice="dark" aria-pressed="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+          <span>Tối</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<header class="sitebar">
+  <a class="brand" href="index.html">
+    <span class="mark"><svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sower's Cycle mark">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+<g transform="translate(200,278)">
+  <g><ellipse rx="14" ry="21" transform="rotate(0)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(72)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(144)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(216)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(288)" fill="url(#flowerGrad)"/></g>
+  <circle r="9.5" fill="#FFF6DE"/>
+</g>
+<g transform="translate(200,96)"><path d="M0,-24 C2,-7 7,-2 24,0 C7,2 2,7 0,24 C-2,7 -7,2 -24,0 C-7,-2 -2,-7 0,-24 Z" fill="#F3D488"/></g>
+</svg></span>
+    <span class="word">Khúc Ai Ca Cho Những Kẻ Vô Danh</span>
+  </a>
+  <nav>
+    <a href="index.html" class="toc-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      Mục lục
+    </a>
+  </nav>
+</header>
+<div class="progress-track"><div class="progress-fill"></div></div>
+
+<header class="chapter-head">
+  <p class="crumb"><a href="index.html">DIES IRAE · HAI NHÀ CHƯA CHỊU ĐI</a></p>
+  <span class="cnum">Chương 10</span>
+  <h1>Người Ta Chờ Ba Mươi Tám</h1>
+  <div class="font-toggle" role="group" aria-label="Cỡ chữ">
+    <button type="button" data-size="sm" aria-pressed="false">A-</button>
+    <button type="button" data-size="md" aria-pressed="true">A</button>
+    <button type="button" data-size="lg" aria-pressed="false">A+</button>
+  </div>
+</header>
+
+<article class="prose" data-size="md">
+<p>Số liệu đến dưới dạng ảnh chụp màn hình, và ảnh thì chụp bằng điện thoại, chụp nghiêng.</p>
+<p>Mỗi tuần một đợt, hai trăm mấy chục trang, tải về trong khoảng thời gian từ một giờ đến ba giờ sáng vì đó là lúc đường truyền của trạm rảnh nhất. Diễm không dùng phần mềm nhận dạng chữ, vì phần mềm nhận dạng chữ đọc bảng biểu thì nhập nhằng cột, và một con số nhảy cột thì cả bảng thành rác.</p>
+<p>Cô gõ tay.</p>
+<p>Hai trăm mấy chục trang một tuần, gõ tay, mỗi trang chừng bốn phút nếu trang rõ và mười một phút nếu trang mờ. Cô gõ vào một bảng tính có mười bảy cột, và cột thứ nhất bao giờ cũng là số hiệu trang gốc, để sau này còn tìm lại được.</p>
+<p>Cô làm việc ấy trong phòng máy của trạm, từ mười một giờ đêm.</p>
+<p>Máy phát chạy dầu đặt sau nhà tôn, và lịch chạy máy là từ mười tám giờ đến hai mươi hai giờ, rồi từ không giờ đến bốn giờ sáng, vì hai khung ấy là hai khung dầu rẻ nhất tính theo cách chị Liên tính. Trong hai tiếng ở giữa thì trạm dùng bình tích, và bình tích thì đủ cho cái máy tính chứ không đủ cho cái quạt.</p>
+<p>Ông Đô đi ngủ lúc chín rưỡi và dậy lúc bốn giờ, và cứ đến bốn giờ ông lại để ở góc bàn một bát cơm nguội với ít cá kho, không nói gì, không đợi ai cảm ơn.</p>
+<p>Hai chuỗi số.</p>
+<p>Chuỗi thứ nhất là đường kính Cánh Cổng công bố theo tuần, do ban thư ký hội đồng phát hành vào chiều thứ Sáu, làm tròn đến một chữ số thập phân, đơn vị mét.</p>
+<p>Chuỗi thứ hai là khối lượng đạn dược tiêu thụ theo tuần trên toàn mặt trận, cộng từ các bảng kê xuất kho cấp chiến dịch, đơn vị tấn.</p>
+<p>Mười bốn tuần, tính từ tuần đầu tháng mười năm 2058.</p>
+<p>Việc đầu tiên cô làm là vẽ hai chuỗi lên cùng một trục thời gian, bằng tay, trên giấy kẻ ô, vì cô muốn nhìn thấy nó trước khi tính nó.</p>
+<p>Hai đường ấy đi cùng nhau. Không cùng nhau khít. Đường đường kính đi sau đường đạn dược chừng một quãng.</p>
+<p>Cô tính hệ số tương quan bốn lần, với bốn độ trễ.</p>
+<p>Trễ không tuần: 0,52. Trễ một tuần: 0,89. Trễ hai tuần: 0,71. Trễ ba tuần: 0,38.</p>
+<p>Đỉnh nằm ở trễ một tuần, và đỉnh nhọn chứ không tù, và một cái đỉnh nhọn thì khó bịa hơn một cái đỉnh tù.</p>
+<p>Hai giờ sáng ngày hai mươi mốt tháng giêng, Elin vào phòng máy để ghi một mẫu vào sổ.</p>
+<p>Cô đi ngang qua bàn, nhìn xuống tờ giấy kẻ ô có hai đường vẽ tay, rồi dừng lại.</p>
+<p>"Trục dưới không đều."</p>
+<p>Diễm ngẩng lên.</p>
+<p>"Chỗ nào?"</p>
+<p>Elin đặt ngón tay lên tờ giấy, giữa hai vạch.</p>
+<p>"Chỗ này rộng gấp đôi chỗ kia. Thiếu một tuần."</p>
+<p>Diễm cúi xuống nhìn, rồi đối chiếu với bảng tính, rồi tìm.</p>
+<p>Tuần thứ sáu thiếu thật. Bảng kê tuần ấy về muộn bốn ngày và cô đã gõ nó sau tuần thứ bảy, và khi vẽ tay thì cô vẽ theo thứ tự gõ.</p>
+<p>Sửa cái trục thì hai đường không đổi hình bao nhiêu. Nhưng nếu cô nộp bài với cái trục ấy thì người phản biện đầu tiên nhìn ra nó trong nửa phút, và bài sẽ bị trả về vì một chuyện không liên quan gì đến kết luận.</p>
+<p>"Cảm ơn." Diễm nói.</p>
+<p>Elin ghi cái mẫu của cô vào sổ và đi ra. Cả cuộc trao đổi ấy dài chưa tới một phút, và trong nhiều năm sau, khi có người hỏi hai người ấy quen nhau từ lúc nào, cả hai đều không nhớ ra là lúc nào.</p>
+<p>Rồi cô ngồi tự phá nó.</p>
+<p>Cả hai chuỗi đều tăng dần theo thời gian. Hai đại lượng cùng tăng dần thì bao giờ cũng tương quan với nhau, kể cả khi chúng chẳng liên quan gì, vì cả hai cùng tương quan với cái đồng hồ. Cô lấy sai phân bậc một, tức là bỏ hai chuỗi đi và chỉ giữ lại phần thay đổi giữa tuần này với tuần trước, rồi tính lại.</p>
+<p>Sai phân, trễ một tuần: 0,61. Với mười ba cặp.</p>
+<p>Yếu hơn. Vẫn còn.</p>
+<p>Cô làm thêm ba cách nữa. Cô bỏ hai tuần cao nhất ra để xem có phải cả cái tương quan ấy chỉ dựa vào hai điểm. Không phải. Cô xáo thứ tự một chuỗi lên hai trăm lần và tính lại hai trăm lần để xem tương quan 0,61 có hay xuất hiện do ngẫu nhiên không. Nó xuất hiện chín lần trên hai trăm. Cô chia đôi mười bốn tuần, tính riêng từng nửa, và hai nửa cho ra 0,58 và 0,64.</p>
+<p>Đến tuần thứ tư của tháng giêng thì cô tìm ra chỗ mình sai.</p>
+<p>Cột đạn dược trong ba tuần đầu, cô lấy nhầm sang một cột bên cạnh. Đầu cột ấy ghi tổng vật tư tiêu hao, và tổng vật tư tiêu hao thì gồm cả nhiên liệu. Nhiên liệu nặng hơn đạn nhiều, nên ba tuần ấy bị thổi lên.</p>
+<p>Cô gõ lại ba tuần. Mất một đêm rưỡi.</p>
+<p>Tương quan sau khi sửa: 0,68.</p>
+<p>Cô ngồi trước con số ấy khá lâu.</p>
+<p>Một chỗ sửa mà làm cho giả thuyết của mình mạnh lên thì đáng ngờ hơn một chỗ sửa làm nó yếu đi, vì người ta chỉ tìm cho tới khi thấy cái mình muốn thấy. Cô dò lại ba tuần ấy hai lần nữa, dò ngược từ dưới lên, và cô nhờ Việt đọc số cho cô gõ để mắt cô không phải làm cả hai việc.</p>
+<p>Ba lần đều ra một kết quả.</p>
+<p>Bản thảo dài chín trang. Bảy trang là bảng và cách kiểm. Trang thứ tám là hình vẽ. Trang thứ chín có bốn dòng, và Diễm viết bốn dòng ấy sau cùng, viết chậm hơn cả chín trang trước cộng lại.</p>
+<p>Tương quan mạnh, ổn định qua năm cách kiểm, và có độ trễ nhất quán một tuần.</p>
+<p>Tôi không chứng minh được đây là quan hệ nhân quả.</p>
+<p>Tôi cũng không có cách nào chứng minh được, vì phép kiểm duy nhất có giá trị là đối chứng, và đối chứng ở đây có nghĩa là một khoảng thời gian đủ dài trong đó không có tuần nào bắn.</p>
+<p>Từ ngày mười sáu tháng chín năm 2058 đến nay, chuỗi thứ hai chưa có một tuần nào bằng không.</p>
+<p>Đường nộp mở của Ủy ban Cố vấn Khoa học đòi ba thứ: bản thảo, một tóm tắt hai trăm từ, và tên cơ quan công tác của tác giả.</p>
+<p>Diễm không có cơ quan công tác. Ô ấy không cho bỏ trống, và ô ấy cũng không cho ghi chữ không.</p>
+<p>Cô ghi tên tờ báo cũ của mình, tờ báo mà cô đã thôi làm từ năm 2055, và cô ghi vì đó là câu trả lời đúng duy nhất mà cái ô ấy nhận.</p>
+<p>Cô gửi bản thảo đi ngày hai mươi chín tháng giêng, hai nơi.</p>
+<p>Nơi thứ nhất là một máy chủ tiền ấn phẩm về địa vật lý. Nó lên trang trong bốn giờ. Trong sáu tuần sau đó nó được tải bốn mươi mốt lần.</p>
+<p>Nơi thứ hai là Ủy ban Cố vấn Khoa học của hội đồng, theo đường nộp mở, có mã tiếp nhận.</p>
+<p>Trả lời về ngày hai mươi tháng hai, hai mươi hai ngày sau, và trả lời sớm hơn hạn tám ngày.</p>
+<p>Nó gồm một thư của thư ký ủy ban và ba nhận xét phản biện, đánh số, không tên.</p>
+<p>Phản biện thứ nhất dài một trang. Người viết cho rằng cách kiểm là chặt và cách trình bày là rõ. Người viết nêu một vấn đề: chuỗi khối lượng đạn dược tiêu thụ do tác giả cung cấp không dẫn được nguồn công khai kiểm chứng được, và theo quy định của ủy ban thì mọi số liệu trong bài phải dẫn nguồn truy cập được. Đề nghị tác giả bổ sung nguồn.</p>
+<p>Diễm đọc đoạn ấy hai lần. Người viết nói đúng. Không có một cách nào trên đời để cô dẫn nguồn cho hai trăm mấy chục trang ảnh chụp nghiêng mà không giết ba người.</p>
+<p>Phản biện thứ hai dài nửa trang và lịch sự hơn nữa. Người viết nêu khả năng cả hai chuỗi cùng phản ánh một biến thứ ba chưa được nhận diện. Để loại trừ khả năng ấy, người viết đề nghị tác giả bổ sung một chuỗi đo đường kính độc lập, không do các cơ quan quân sự công bố.</p>
+<p>Không có chuỗi nào như thế. Mọi thiết bị đưa vào đều ngừng gửi tín hiệu ở khoảng cách chín mươi mét, và trong chín mươi mét ấy thì chỉ có quân đội đứng được. Yêu cầu ấy đúng về phương pháp và không ai trên đời thực hiện được, và người viết nó có lẽ không nghĩ tới điều đó, hoặc có nghĩ tới và vẫn phải viết ra vì đó là việc của người phản biện.</p>
+<p>Phản biện thứ ba dài hai dòng. Người viết đề nghị chấp nhận sau khi sửa nhỏ.</p>
+<p>Thư của thư ký ủy ban dài bốn dòng. Bài chưa đủ điều kiện đưa ra ủy ban toàn thể. Tác giả có thể nộp lại bất cứ lúc nào sau khi bổ sung theo hai nhận xét trên. Ủy ban cảm ơn tác giả đã quan tâm. Ký tên, chức danh, số điện thoại.</p>
+<p>Không ai nói dối một chữ nào trong cả tập ấy.</p>
+<p>Diễm đọc hết, rồi đọc lại cái thư bốn dòng, và cô nhận ra cô đã đọc một cái thư gần giống hệt như vậy vào năm 2055, về một chuyện hoàn toàn khác, và cái thư năm 2055 ấy cũng không có chữ nào sai.</p>
+<p>Cô in cả tập ra, kẹp vào bản thảo, và cất.</p>
+<p>Rồi cô lấy một tấm bìa các tông, cắt bằng con dao rọc giấy của Toản, và viết lên đó hai dòng.</p>
+<p>Dòng thứ nhất: nguồn công khai cho chuỗi hai.</p>
+<p>Dòng thứ hai: chuỗi đo đường kính không do quân đội công bố.</p>
+<p>Cô ghim tấm bìa lên tường, ngay trên chỗ đặt máy tính, và cô ghim nó ở đó không phải để nhớ mà vì hai dòng ấy bây giờ là hai việc phải làm, và việc phải làm thì cô ghim lên tường.</p>
+<p>Toản đọc tấm bìa và hỏi cái thứ hai nghĩa là răng. Diễm giải thích trong hai câu. Toản đứng nhìn tấm bìa thêm một lúc rồi đi ra sân.</p>
+<p>Bốn hôm sau cậu quay lại và nói bốn mươi mốt lượt tải trên máy chủ tiền ấn phẩm thì ba mươi sáu lượt đến từ ba dải địa chỉ, và ba dải ấy tải trong cùng hai ngày.</p>
+<p>"Rứa là mấy nguồn?" Cậu hỏi.</p>
+<p>"Ba." Diễm nói.</p>
+<p>"Sai." Toản nói. "Ba cái loa."</p>
+<p>Cậu nói câu ấy bằng cái giọng của người vừa dùng một cái mà mình mới được cho.</p>
+<p>Diễm không trả lời. Cô mở bảng tính lên và gõ tiếp số liệu của tuần thứ mười tám, vì tuần thứ mười tám đã về từ đêm hôm trước.</p>
+<p>Rourke nhận được bản thảo ngày hai tháng ba, qua một người mà ông đã hai năm không gặp.</p>
+<p>Chỗ hẹn là một quán ăn ở tầng trệt một tòa nhà cũ, mười một cái bàn, sàn lát đá mài, và cái quạt trần chạy số hai suốt cả mùa đông vì công tắc hỏng ở số một. Ông chọn cái bàn thứ tư vì nó gần cửa. Người kia đến trước ông bảy phút và gọi sẵn hai cốc nước.</p>
+<p>Ông đọc chín trang trong bốn mươi phút, ở bàn, không nói gì.</p>
+<p>Phần bảng biểu thì ông kiểm được. Ông kiểm ba chỗ và ba chỗ đều đúng.</p>
+<p>Tháng ba năm 2057 ông ra điều trần lần thứ mười một. Lần ấy ông trình bày trong mười hai phút về việc chín tháng theo dõi cho thấy chu kỳ dao động của cấu trúc đang ngắn lại, và ông đề nghị hoãn hai quyết định triển khai cho tới khi có thêm số liệu. Người ta hỏi ông hoãn thì bao lâu. Ông nói ông không biết. Sau câu ấy thì cuộc điều trần kết thúc sớm bốn phút, và bốn phút thừa được chuyển sang mục sau.</p>
+<p>Ông vẫn còn nhớ chuyện bốn phút ấy được chuyển sang mục sau, vì cô thư ký thứ hai có ghi lại việc chuyển giờ, và ông có xin bản sao.</p>
+<p>Cái làm ông dừng lại là các chú thích nguồn.</p>
+<p>Người viết dẫn các bảng kê không theo tên tài liệu mà theo số hiệu biểu mẫu nội bộ, và dẫn cả số hiệu đợt lưu, và cách dẫn ấy chỉ đúng nếu người viết cầm bản gốc trong tay chứ không phải cầm một bản chép lại. Chỉ có một chỗ trên đời còn giữ các đợt lưu ấy theo cách đánh số đó.</p>
+<p>Đó là chỗ của ông.</p>
+<p>Ông đặt tập giấy xuống.</p>
+<p>"Mấy tập kê này là các ông đưa cho người ta, hay người ta tự lấy?"</p>
+<p>"Ba tháng đầu thì chúng tôi đưa." Người kia nói. "Từ tháng sáu thì tự lấy, và lấy được nhiều hơn chúng tôi đưa."</p>
+<p>"Ai viết cái này?"</p>
+<p>Người kia không trả lời ngay. Ông ta xoay cái cốc trên bàn nửa vòng.</p>
+<p>"Ông đã biết rồi."</p>
+<p>"Tôi muốn nghe."</p>
+<p>Người kia nói tên.</p>
+<p>Rourke ngồi yên chừng mười giây.</p>
+<p>"Tháng sáu năm 2057 các ông báo cho tôi rằng cô ấy chết." Ông nói. "Tôi có viết một trang cho hồ sơ. Tôi có ghi ngày."</p>
+<p>"Tôi biết."</p>
+<p>"Vì sao?"</p>
+<p>"Vì tháng ba năm 2057 ông ra điều trần lần thứ mười một và ông thua." Người kia nói. "Sau lần đó chúng tôi không giữ nổi một nhân chứng sống. Giữ một người sống thì phải có chỗ để đưa người ta tới, và sau tháng ba năm 2057 thì không còn chỗ nào cả. Cách duy nhất còn lại là làm cho không ai đi tìm nữa."</p>
+<p>"Các ông có thể nói với tôi."</p>
+<p>"Không." Người kia nói. "Ông sẽ nói ra. Ông không nói dối được, thưa giáo sư, chúng tôi đã thử ba lần rồi. Đó là lý do ông có ích, và cũng là lý do có những việc chúng tôi làm mà không hỏi ông."</p>
+<p>Rourke gấp tập giấy lại theo nếp.</p>
+<p>"Cô ấy ở đâu."</p>
+<p>"Chỗ nào đó có đường truyền."</p>
+<p>"Cô ấy có biết là tôi được báo cô ấy chết không?"</p>
+<p>"Cô ấy đọc hồ sơ của chính mình rồi." Người kia nói. "Cả tập."</p>
+<p>Người ấy trả tiền cho cả hai và đi trước.</p>
+<p>Rourke ngồi lại thêm hai mươi phút.</p>
+<p>Ông không viết thư cho cô. Ông không gọi cho ai. Việc ông làm chiều hôm ấy, sau khi về, là lấy bút chì ra và viết lên góc trên bên phải trang nhất của bản in một dòng, và dòng ấy chỉ có một cái ngày.</p>
+<p>Ngày mười chín tháng sáu năm 2057.</p>
+<p>Rồi ông cho tập giấy vào một cái cặp hồ sơ của riêng ông, không phải cặp của tổ chức, và ông cất cái cặp ấy vào ngăn dưới cùng.</p>
+<p>Sáng hôm sau ông nộp bản thảo vào bộ tài liệu của Tổ công tác 7 với tư cách thành viên đương nhiên, kèm một đề nghị đưa ra thảo luận. Tài liệu nộp theo cách ấy thì được đánh số và không rút ra được nữa, kể cả khi không ai đọc.</p>
+<p>Nó được đánh số TC7 dấu gạch chéo 2059 dấu gạch chéo 0114.</p>
+<p>Phiên họp tháng tư của Tổ công tác 7 có hai mươi ba tài liệu trong chương trình và họp hết ba tiếng. Tài liệu số 0114 nằm ở mục cuối cùng, mục các vấn đề khác.</p>
+<p>Mục các vấn đề khác không được bàn tới, vì hết giờ.</p>
+<p>Chiều thứ Sáu ngày hai mươi bảy tháng hai, ban thư ký hội đồng phát hành con số tuần.</p>
+<p>Bản tin tuần của ban thư ký là một trang, phát cho các cơ quan thông tin thành viên, và nó có bốn mục cố định.</p>
+<p>Mục một là đường kính cấu trúc, công bố đến một chữ số thập phân.</p>
+<p>Mục hai là tình hình chung của mặt trận, viết bằng bốn câu, và bốn câu ấy tháng nào cũng gần giống nhau.</p>
+<p>Mục ba là các quy định mới có hiệu lực trong tuần, tuần này gồm một quy định về giới hạn phát sóng dân sự trên hai dải tần và một quy định về việc đăng ký phương tiện thủy trên bốn tuyến sông.</p>
+<p>Mục bốn là các chỉ số sản xuất. Tuần này mục bốn có một dòng nói rằng sản lượng công nghiệp quốc phòng của các nước thành viên đạt một trăm mười hai phần trăm kế hoạch quý.</p>
+<p>Mục một và mục bốn nằm cách nhau đúng một trang giấy, và trong cả năm 2059 không có một bản tin nào của một cơ quan thông tin nào đặt hai mục ấy vào cùng một bài.</p>
+<p>Ba mươi tư mét.</p>
+<p>Đài đọc nó lúc bảy giờ tối, trong bản tin chính, và người đọc là một viên chức của ban thông tin chứ không phải phát thanh viên. Ông ta đọc chậm và đọc rõ, và sau khi đọc con số thì ông ta nói thêm hai câu.</p>
+<p>Câu thứ nhất: con số chính thức là ba mươi tư mét.</p>
+<p>Câu thứ hai: con số này thấp hơn đáng kể so với các con số đang được lan truyền trên mạng, và đề nghị nhân dân tiếp nhận thông tin từ nguồn chính thức.</p>
+<p>Ông ta nói câu thứ hai bằng giọng của người đang mang một tin tốt về nhà.</p>
+<p>Trong sổ của Diễm, ba mươi tư phẩy không là dòng thứ hai mươi mốt.</p>
+<p>Cô ghi nó vào ô, ghi ngày phát hành bên cạnh, rồi kẻ dòng cho tuần sau bằng thước, và ô của tuần sau thì để trống.</p>
+<p>Tối ấy cô ra quán nước đầu ngã ba mua thuốc lá cho ông Đô.</p>
+<p>Ở quán có bốn người và cái đài đang phát lại bản tin bảy giờ.</p>
+<p>"Ba mươi tư." Một ông nói. "Ba mươi tư với ba mươi thì khác chi nhau."</p>
+<p>"Khác chớ." Một ông khác nói. "Năm ngoái ba mươi. Năm ni ba mươi tư. Rứa sang năm ba mươi tám."</p>
+<p>"Ừ."</p>
+<p>"Ba mươi tám thì cũng có răng mô."</p>
+<p>Không ai bàn tiếp câu đó.</p>
+<p>Diễm trả tiền bao thuốc, cầm tiền thối, và đi bộ một cây rưỡi về trạm.</p>
+<p>Về tới nơi cô lật lại dòng thứ hai mươi mốt, và ở khoảng trống bên phải con số ba mươi tư phẩy không, cô ghi thêm sáu chữ.</p>
+<p>Người ta chờ ba mươi tám.</p>
+</article>
+
+
+<svg class="rift-small" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+</svg>
+
+
+<div class="chapter-foot">
+  <nav class="chapter-nav" aria-label="Điều hướng chương">
+    <a class="prev" href="chuong-09.html"><span class="lbl">Trước</span><span class="ttl">Đất Trung Lập, Không Tên</span></a>
+    <a class="toc-link" href="index.html" aria-label="Về mục lục"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></a>
+    <a class="next" href="chuong-11.html"><span class="lbl">Sau</span><span class="ttl">Một Cái Máy Đo</span></a>
+  </nav>
+</div>
+
+<footer class="sitefoot">
+  <p>Khúc Ai Ca Cho Những Kẻ Vô Danh — Vòng Tuần Hoàn Người Gieo Hạt · Quyển II</p>
+  <p>© 2026 Nguyễn Duy Anh (bút danh: Mendingur). Bản quyền tác phẩm thuộc về tác giả.</p>
+</footer>
+
+<script src="glow.js" defer></script>
+</body>
+</html>

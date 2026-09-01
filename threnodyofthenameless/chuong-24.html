@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ba Giờ Sáng — Khúc Ai Ca Cho Những Kẻ Vô Danh</title>
+<meta name="description" content="Vòng Tuần Hoàn Người Gieo Hạt · Quyển II — tiểu thuyết của Mendingur">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="style.css">
+<script src="reader.js" defer></script>
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem('mendingur-theme');
+    var theme = saved === 'dark' || saved === 'light'
+      ? saved
+      : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+  <linearGradient id="wingGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="55%" stop-color="#C99A3E"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+  <radialGradient id="coreGlow" cx="50%" cy="55%" r="55%">
+    <stop offset="0%" stop-color="#FFF6DE" stop-opacity="0.95"/>
+    <stop offset="55%" stop-color="#E4C077" stop-opacity="0.35"/>
+    <stop offset="100%" stop-color="#E4C077" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="flowerGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+</defs>
+</svg>
+<div class="grain"></div>
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+<div class="settings-menu" id="settingsMenu">
+  <button class="menu-toggle" type="button" id="settingsMenuToggle" aria-haspopup="true" aria-expanded="false" aria-controls="settingsPopover" aria-label="Cài đặt giao diện">
+    <span class="menu-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+  </button>
+  <div class="settings-popover" id="settingsPopover" role="menu">
+    <div class="settings-group">
+      <p class="settings-group-label">Giao diện</p>
+      <div class="theme-switcher" id="themeSwitcher" role="group" aria-label="Giao diện sáng / tối">
+        <button class="theme-btn active" type="button" data-theme-choice="light" aria-pressed="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <span>Sáng</span>
+        </button>
+        <button class="theme-btn" type="button" data-theme-choice="dark" aria-pressed="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+          <span>Tối</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<header class="sitebar">
+  <a class="brand" href="index.html">
+    <span class="mark"><svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sower's Cycle mark">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+<g transform="translate(200,278)">
+  <g><ellipse rx="14" ry="21" transform="rotate(0)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(72)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(144)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(216)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(288)" fill="url(#flowerGrad)"/></g>
+  <circle r="9.5" fill="#FFF6DE"/>
+</g>
+<g transform="translate(200,96)"><path d="M0,-24 C2,-7 7,-2 24,0 C7,2 2,7 0,24 C-2,7 -7,2 -24,0 C-7,-2 -2,-7 0,-24 Z" fill="#F3D488"/></g>
+</svg></span>
+    <span class="word">Khúc Ai Ca Cho Những Kẻ Vô Danh</span>
+  </a>
+  <nav>
+    <a href="index.html" class="toc-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      Mục lục
+    </a>
+  </nav>
+</header>
+<div class="progress-track"><div class="progress-fill"></div></div>
+
+<header class="chapter-head">
+  <p class="crumb"><a href="index.html">IN PARADISUM · THIẾU MỘT TIẾNG ĐỘNG</a></p>
+  <span class="cnum">Chương 24</span>
+  <h1>Ba Giờ Sáng</h1>
+  <div class="font-toggle" role="group" aria-label="Cỡ chữ">
+    <button type="button" data-size="sm" aria-pressed="false">A-</button>
+    <button type="button" data-size="md" aria-pressed="true">A</button>
+    <button type="button" data-size="lg" aria-pressed="false">A+</button>
+  </div>
+</header>
+
+<article class="prose" data-size="md">
+<p>Bản tin tuần của ban thư ký, số 535, ngày 9 tháng 11 năm 2068.</p>
+<p>Mục ba, hai dòng.</p>
+<p>Bãi bỏ Quy định về chế độ báo cáo tình hình ngày của các phân khu, ban hành năm 2059. Các phân khu nộp nốt biểu mẫu của kỳ đang làm dở rồi thôi.</p>
+<p>Dòng cuối cùng của mục bốn: 690,0 mét.</p>
+<p>Chị Liên tỉnh dậy lúc ba giờ sáng ngày 14 tháng 11 và chị nằm im chừng một phút để tìm xem có chuyện gì.</p>
+<p>Chị làm cái việc chị vẫn làm khi có chuyện, tức là chị đi qua trong đầu từng thứ một theo thứ tự. Cửa phòng mẫu chị khoá lúc chín giờ. Cái tủ lạnh mẫu chị có coi lại. Nồi nước chị tắt bếp rồi. Ngoài sân không có tiếng chi. Trong nhà không có tiếng chi.</p>
+<p>Trong nhà không có tiếng chi.</p>
+<p>Cái máy phát của trạm đặt ở phòng máy, sát bức tường gạch không trát dày mười phân, và bức tường ấy là bức tường đầu giường chị Liên. Từ tháng chạp năm 2058, cái máy ấy chạy hai khung mỗi ngày, từ sáu giờ chiều tới mười giờ tối, và từ nửa đêm tới bốn giờ sáng. Hai khung ấy là hai khung dầu rẻ nhất tính theo cách chị tính hồi 2058, và trong mười năm không ai đề nghị tính lại.</p>
+<p>Ngày 2 tháng 10 năm 2068, tổ điện lực huyện thay xong cái máy biến áp ở đầu xã. Cái máy ấy nằm trong danh mục cần thay từ năm 2062, và nó nằm ở đó sáu năm, và nó được thay vì đầu quý bốn có một khoản chuyển sang mục sửa chữa lưới hạ thế và mục ấy phải có chỗ để tiêu.</p>
+<p>Từ đó lưới không cắt nữa. Máy phát chỉ nổ khi lưới rớt, và trong sáu tuần lưới rớt bốn lần, mỗi lần chưa tới một tiếng.</p>
+<p>Chị Liên nằm thêm chừng nửa tiếng.</p>
+<p>Chị không nghĩ tới chiến tranh. Chị nghĩ tới cái can dầu hai mươi lít thứ tư, cái can chị mua tuần trước theo thói quen, và chị nghĩ rằng bây giờ chỗ dầu ở phòng máy là một phuy hai trăm lít còn chừng hai phần ba cộng bốn can hai mươi lít đầy, và với mức nổ bốn lần sáu tuần thì chỗ ấy đủ dùng tới năm nào thì chị chưa tính ra.</p>
+<p>Chị dậy lúc ba giờ bốn mươi. Chị ra phòng máy, bật đèn, và đứng ở cửa.</p>
+<p>Cái máy vẫn ở đó. Nó sạch, vì chị lau nó thứ Bảy nào cũng lau. Cái lon hứng dầu ở đầu nối vẫn ở chỗ cũ và trong lon có chừng một phân dầu, và chỗ dầu ấy là chỗ rỉ ra trong bốn lần nổ vừa rồi.</p>
+<p>Chị tắt đèn, ra bàn ngoài, lấy một tờ giấy và cây thước.</p>
+<p>Chị kẻ hai cột. Cột trái ghi cái gì. Cột phải ghi từ ngày nào.</p>
+<p>Dòng thứ nhất chị viết máy phát, và bên phải chị viết ngày 2 tháng 10.</p>
+<p>Rồi chị ngồi đó.</p>
+<p>Chị ngồi chừng mười phút và chị không nghĩ ra dòng thứ hai. Chị biết là có, chị biết chắc là có, và cái biết ấy không đưa ra được cái tên nào cả. Đến bốn giờ chị đi đun nước.</p>
+<p>Trong ba tuần sau đó chị điền thêm được bảy dòng. Bản tin chín giờ tối rút từ hai mươi phút xuống mười hai phút, từ ngày 21 tháng 10. Xe vật tư đổi từ hai tuần một chuyến sang một tháng một chuyến, từ tháng 11, vì kho thị xã gom hai tuyến làm một. Cái chốt ở cây số chín dỡ ngày 3 tháng 11, và người ta để lại hai cái cọc bê tông vì chở đi thì tốn hơn là để. Bốn dòng còn lại chị ghi vào tuần cuối tháng và cả bốn đều là chuyện giấy tờ.</p>
+<p>Trong lúc lục ngăn kéo tìm cái thước dài, chị tìm ra một quyển sổ bìa nâu.</p>
+<p>Quyển ấy chị lập tháng 8 năm 2058. Trong đó có mười một dòng, mỗi dòng một ngày công và một số tiền, và cả mười một dòng đều là tiền công chị trả cho Bảo Thư trong tháng đầu tiên bằng công tác phí của chính chị, hồi viện chưa duyệt được cái hợp đồng phiên dịch. Chị lập quyển sổ ấy để sau này còn đòi.</p>
+<p>Chị cộng lại. Chị cộng nhẩm, hết chừng nửa phút, và chị cộng đúng ngay lần thứ nhất.</p>
+<p>Chị không đòi ai, và chị cũng không bỏ quyển sổ ấy đi. Chị để nó lại vào ngăn kéo, xuống dưới tập biểu mẫu, và chị lấy cái thước.</p>
+<p>Ông Đô đi ngày 19 tháng 11.</p>
+<p>Ông báo trước ba ngày, và ông báo bằng cách nói với chị Liên rằng từ thứ Hai ông không ăn cơm ở đây nữa, để chị bớt một suất.</p>
+<p>Ông tới trạm ngày 11 tháng chạp năm 2058, đi bộ, dẫn theo bốn mươi ba người. Tính tới ngày 19 tháng 11 năm 2068 là chín năm mười một tháng và tám ngày, và không ai ở trạm biết con số đó, kể cả ông.</p>
+<p>Ông xếp đồ trong hai mươi phút. Ông có một cái ba lô bộ đội cũ, hai bộ quần áo, một cái ca nhôm, một đôi dép, một cái đèn pin, và một cuộn giấy kẻ ô. Ông có mang theo một cuộn giấy kẻ ô, và không ai hỏi là cuộn nào.</p>
+<p>Chiều 18 ông ra ngoài chừng một tiếng và về với một cuộn dây nilon mới.</p>
+<p>Trong sân có bốn sợi dây căng ngang từ năm 2058, và đến năm 2060 thì còn một sợi, và sợi ấy dùng để phơi. Nó đã bợt và ở quãng giữa nó xoắn lại một chỗ. Ông tháo nó xuống, căng sợi mới, buộc hai đầu vào đúng hai cái cọc cũ, và thử bằng cách treo lên đó cái chiếu ướt.</p>
+<p>Sợi cũ ông cuộn lại và để ở nhà tôn, trên cái thùng xốp thứ hai.</p>
+<p>Ông nói với Elin đúng một chuyện, và ông nói nó bằng giọng ông vẫn dùng khi làm việc.</p>
+<p>"Cái chặng qua cầu tràn tôi có ghi lại cho cô." Ông nói. "Để ở nóc tủ hồ sơ. Mùa ni nước lên thì cái cầu đó qua được tới chừng mười giờ sáng, sau mười giờ thì phải vòng. Vòng thì thêm hai mươi hai phút. Cô cứ tính hai mươi hai phút đó vô trong ngày, đừng tính lúc tới nơi mới tính."</p>
+<p>"Dạ." Elin nói. "Cháu ghi lại."</p>
+<p>"Với cái xe của cô cái phanh sau nó ăn không đều. Tôi có chỉnh rồi. Chừng ba tháng nữa nó lại rứa."</p>
+<p>Ông không nói ông đi đâu. Toản có hỏi, và ông nói ngoài nớ, và Toản không hỏi lại.</p>
+<p>Bốn giờ sáng ngày 19, ông để ở góc bàn ngoài một cái bát cơm nguội với mấy miếng cá kho, đậy bằng cái đĩa, như mọi sáng từ tháng chạp năm 2058. Ông không nói gì và ông không đợi ai cảm ơn, và mười năm nay chưa ai cảm ơn ông về chuyện ấy, vì chưa ai chắc được là nó để cho mình.</p>
+<p>Sáu giờ ông ra ngã ba đón chuyến xe.</p>
+<p>Toản đi theo. Cậu dậy sớm để đi theo và cậu không nói lý do, và ông Đô không hỏi.</p>
+<p>Hai người đi bộ hết bốn trăm mét đường đất và nói với nhau ba câu, và cả ba câu đều về cái xe khách chạy tuyến ấy có hay bỏ chuyến hay không.</p>
+<p>Ở ngã ba, trong lúc đợi, ông Đô mặc thêm cái áo khoác. Ông cài khuy, rồi ông đưa hai ngón tay lên chạm vào cái túi trong bên trái, ấn nhẹ một cái, theo lối người ta kiểm cái ví. Rồi ông bỏ tay xuống. Chừng nửa phút sau ông làm lại lần nữa.</p>
+<p>Toản có nhìn thấy cả hai lần và cậu không hỏi.</p>
+<p>Cậu định nói một chuyện.</p>
+<p>Cậu đã sắp câu ấy trong đầu từ đêm qua, và câu ấy có hai vế. Vế thứ nhất là bốn năm trước ở cái sân này ông có nói với cậu một câu, và cậu đã hiểu ra câu đó năm ngoái. Vế thứ hai là bây giờ ông đi rồi thì cái chữ chừ ấy nó thuộc về ai.</p>
+<p>Xe tới sớm hơn giờ chừng bốn phút.</p>
+<p>Ông Đô xách ba lô lên, nói ừ thôi, rồi lên xe. Ông ngồi ghế thứ hai bên phải và ông không quay ra cửa kính.</p>
+<p>Toản đi bộ về một mình.</p>
+<p>Trong tháng 10 năm 2068, Toản ghi được bốn mẩu.</p>
+<p>Cùng tháng ấy năm 2062, cậu ghi được ba trăm mười chín mẩu, và tháng ấy còn chưa phải tháng đông nhất.</p>
+<p>Cậu vẫn ngồi ở chỗ cũ, vẫn mở đài, vẫn xếp phiếu theo cột giờ. Cái mẹo vẫn chạy. Nó chạy tốt như mọi khi và bây giờ nó chỉ ra được những chuyện chán ngắt.</p>
+<p>Ngày 5 tháng 11 có tin một cái xe bồn lật ở cây số hai mươi bảy. Cậu đi ngược cái giờ hết một buổi chiều, ra ba nguồn, bản sớm nhất là của một người bán quán ở ngã ba, và bản ngắn nhất rụng mất cái đoạn nói xe không chở gì.</p>
+<p>Cậu tra ra rằng cái xe bồn ấy đúng là một cái xe bồn, và nó lật thật, và người lái gãy tay, và cái xe chở nước.</p>
+<p>Cậu ghi vào phiếu, xếp vào cột giờ, và ngồi nhìn cái phiếu ấy một lúc.</p>
+<p>Phiếu của cậu cắt từ tập biểu mẫu lấy mẫu đất in thừa năm 2057, cắt làm bốn, và cậu đã cắt như thế từ năm 2059. Ngày 8 tháng 11 cậu ra nhà tôn lấy thêm và cậu đếm cái tập còn lại.</p>
+<p>Sáu mươi tờ. Sáu mươi tờ ra hai trăm bốn mươi cái phiếu.</p>
+<p>Với mức bốn mẩu một tháng thì chỗ ấy dùng được năm năm. Cậu tính lại lần nữa bằng mức cả năm 2068, tức là chín mẩu một tháng, và ra hai năm hai tháng. Cậu không tính lần thứ ba.</p>
+<p>Việt đi tháng 5 năm 2068.</p>
+<p>Cậu ấy đi vì có việc ở thị xã, ở một chỗ lắp đặt cho một nhà thầu mới, và cậu ấy có báo trước hai tuần, và cậu ấy có để lại địa chỉ. Địa chỉ ấy Toản ghi vào một cái phiếu, đúng ba dòng như mọi cái phiếu khác: nội dung, người đưa, và cái giờ nó xuất hiện lần đầu.</p>
+<p>Cái phiếu ấy nằm trong xấp, ở cột giờ của ngày hôm ấy.</p>
+<p>Tối 21 tháng 11, hai hôm sau khi ông Đô đi, Toản lấy một tờ giấy và viết một dòng.</p>
+<p>Cậu viết: Việt à, tao có chuyện muốn nói với mày, mà nói ra thì cũng chẳng để làm gì.</p>
+<p>Cậu đọc lại cái dòng ấy. Rồi cậu để cây bút xuống và cậu không viết dòng thứ hai.</p>
+<p>Cậu gấp tờ giấy làm tư và cậu bỏ nó vào xấp phiếu, không phải vì cậu định làm thế, mà vì tay cậu đang xếp phiếu và nó đi vào chỗ đó.</p>
+<p>Nó vẫn nằm ở đó.</p>
+<p>Elin ba mươi tuổi. Cô đi điểm 11 ngày 26 tháng 11 và cô đi vì cô đã ba tuần không đi.</p>
+<p>Điểm 11 nằm ở rìa một mảnh ruộng bỏ, cách trạm bốn cây, và nó là điểm cô lấy mẫu đều nhất trong mười năm, vì nó là điểm dễ tới nhất trong mười một điểm còn tới được.</p>
+<p>Hôm ấy cô làm cả quy trình, đủ, không bỏ bước nào.</p>
+<p>Cô pha lại dung dịch chuẩn từ đầu, vì lô mua cuối cùng hết hạn từ tháng 7. Sấy kali clorua ở một trăm lẻ năm độ hai tiếng bằng cái tủ sấy của trạm, để nguội trong bình hút ẩm, cân, hoà bằng nước khử ion vừa đun sôi để nguội. Hiệu chuẩn ra 1,412 mS/cm ở hai mươi lăm độ, và giá trị chuẩn là 1,413.</p>
+<p>Cô lấy sáu ống nguyên dạng, ba tầng, hai chỗ. Cô tráng điện cực giữa mỗi mẫu và cô ghi từng lần tráng vào cột bên phải, vì bản quy trình của chính cô nói phải ghi.</p>
+<p>Tầng mặt điểm 11, tháng 11 năm 2068: bốn phẩy chín.</p>
+<p>Cô đo lại. Bốn phẩy tám.</p>
+<p>Chuỗi mười năm của cái tầng ấy nằm trong khoảng từ bảy phẩy tám tới chín phẩy sáu, và nó chưa xuống dưới bảy phẩy tám lần nào, kể cả sau những mùa mưa lớn.</p>
+<p>Cô ngồi với con số ấy tới gần một giờ sáng.</p>
+<p>Cô tìm lỗi trước. Cô tìm theo thứ tự: máy, dung dịch chuẩn, điện cực, ống, chỗ lấy, và người lấy. Cô chạy lại mẫu chuẩn ba lần, cách nhau bốn mươi phút, và cả ba lần đều nằm trong sai số. Cô đo lại hai ống lưu của tháng 8 và cả hai ra đúng con số cũ, chín phẩy một và tám phẩy bảy. Cô ra ngoài, mở đèn pin, đi bộ ra chỗ cắm cọc mốc để chắc là cô không lấy nhầm chỗ, và cái cọc vẫn ở đó, và cô không lấy nhầm chỗ.</p>
+<p>Rồi cô tìm nguyên nhân.</p>
+<p>Nguyên nhân thứ nhất là mưa. Từ ngày 21 tới ngày 23 tháng 11 mưa được bốn mươi mấy li, và bốn mươi mấy li thì rửa được tầng mặt, và rửa tầng mặt thì con số xuống.</p>
+<p>Nguyên nhân thứ hai là cái cống ở đầu hói.</p>
+<p>Cái cống ấy đóng từ tháng 6 năm 2062, khi người ta lấy khoảnh đất phía trên làm bãi tập kết, và nó đóng suốt sáu năm, và trong sáu năm ấy nước ngọt mùa mưa không xuống được quãng dưới. Tháng 9 năm nay bãi tập kết dỡ, và người ta mở cống lại, và người ta mở nó vì cái bãi không còn dùng nữa chứ không phải vì ai xin.</p>
+<p>Hai nguyên nhân ấy đều đứng vững, và cô không có cách nào tách chúng ra khỏi nhau.</p>
+<p>Cô cũng biết một chuyện thứ ba, và chuyện thứ ba là muốn tách được thì phải có ba mùa mưa nữa, phải có số liệu tháng của cả ba mùa, và phải có một điểm đối chứng phía trên cống. Điểm đối chứng phía trên cống thì cô đã đề nghị mở từ năm 2059 và không ai trả lời.</p>
+<p>Ba mùa mưa nữa là ba năm.</p>
+<p>Cô ngồi với ý ấy chừng một phút. Cái làm cô dừng lại là cô đã đưa ba năm ấy vào phép tính mà không hề hỏi mình một câu nào, và cô đã đưa nó vào như đưa vào một cái đã nằm sẵn ở đó.</p>
+<p>Năm 2057, ở Wageningen, cô có một con số sai và cô có một quy trình cho nó.</p>
+<p>Cái quy trình ấy là gạch một nét, không tẩy, và ghi lý do bên cạnh, để cả hai con số còn nguyên trên trang giấy.</p>
+<p>Bây giờ cô có một con số có thể đúng và cô không có quy trình nào cả, vì cái quy trình cô có chỉ xử lý được chuyện mình sai.</p>
+<p>Cô ghi bốn phẩy chín và bốn phẩy tám vào đúng ô của chúng, không gạch cái nào. Ở cột ghi chú cô viết bốn dòng, và bốn dòng ấy không giải thích gì. Dòng thứ nhất là lượng mưa ba ngày và nguồn của con số ấy. Dòng thứ hai là ngày mở cống, và cô ghi cả chuyện cô nghe được ngày ấy từ ai. Dòng thứ ba nói rằng không tách được hai cái. Dòng thứ tư nói rằng cần ba mùa và một điểm đối chứng.</p>
+<p>Rồi cô kẻ tiếp bảng của tuần và dán nhãn cho sáu cái ống.</p>
+<p>Cái ống thứ tư nứt ở mép nắp, và cô lấy cuộn băng dính vải màu xám ở ngăn trong ba lô ra để quấn.</p>
+<p>Cuộn ấy còn chừng một phần tư. Cái nhãn giá dán ở mặt bên đã bợt từ lâu và nay chỉ còn dính ở một góc, và khi cô cầm cuộn băng lên thì nó rơi xuống mặt bàn.</p>
+<p>Cô cắt một đoạn, quấn cái nắp hai vòng, miết cho phẳng.</p>
+<p>Rồi cô nhặt cái nhãn giá lên và bỏ nó vào cái lon đựng rác dưới gầm bàn, cùng với mấy mẩu nhãn ống cô cắt hỏng.</p>
+<p>Đêm ấy cô ngủ được chừng hai tiếng.</p>
+<p>Cô nằm nghe và cái cô nghe được thì có: con chó nhà bên kia đường sủa hai lần lúc gần bốn giờ, một cái xe máy đi qua đường cái, và cái tủ lạnh mẫu ở phòng bên cắt rồi chạy lại, ba lần.</p>
+<p>Năm giờ bốn mươi, cái máy bơm nổ.</p>
+<p>Nó nổ một mình. Toản lắp cho nó cái phao tự động hồi tháng 10, sau khi lưới điện thôi cắt, vì có lưới thì bơm được cả đêm và bơm được cả đêm thì không cần ai canh cái bể.</p>
+<p>Nó chạy bốn phút, đầy bể, rồi tự tắt.</p>
+<p>Elin nghe hết cả bốn phút.</p>
+</article>
+
+
+<svg class="rift-small" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+</svg>
+
+
+<div class="chapter-foot">
+  <nav class="chapter-nav" aria-label="Điều hướng chương">
+    <a class="prev" href="chuong-23.html"><span class="lbl">Trước</span><span class="ttl">Khu Vực Chưa Xác Định</span></a>
+    <a class="toc-link" href="index.html" aria-label="Về mục lục"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></a>
+    <a class="next" href="chuong-25.html"><span class="lbl">Sau</span><span class="ttl">Đường Ống</span></a>
+  </nav>
+</div>
+
+<footer class="sitefoot">
+  <p>Khúc Ai Ca Cho Những Kẻ Vô Danh — Vòng Tuần Hoàn Người Gieo Hạt · Quyển II</p>
+  <p>© 2026 Nguyễn Duy Anh (bút danh: Mendingur). Bản quyền tác phẩm thuộc về tác giả.</p>
+</footer>
+
+<script src="glow.js" defer></script>
+</body>
+</html>

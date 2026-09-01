@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tờ Giấy Không Đọc Được Nữa — Khúc Ai Ca Cho Những Kẻ Vô Danh</title>
+<meta name="description" content="Vòng Tuần Hoàn Người Gieo Hạt · Quyển II — tiểu thuyết của Mendingur">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="style.css">
+<script src="reader.js" defer></script>
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem('mendingur-theme');
+    var theme = saved === 'dark' || saved === 'light'
+      ? saved
+      : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+  <linearGradient id="wingGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="55%" stop-color="#C99A3E"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+  <radialGradient id="coreGlow" cx="50%" cy="55%" r="55%">
+    <stop offset="0%" stop-color="#FFF6DE" stop-opacity="0.95"/>
+    <stop offset="55%" stop-color="#E4C077" stop-opacity="0.35"/>
+    <stop offset="100%" stop-color="#E4C077" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="flowerGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+</defs>
+</svg>
+<div class="grain"></div>
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+<div class="settings-menu" id="settingsMenu">
+  <button class="menu-toggle" type="button" id="settingsMenuToggle" aria-haspopup="true" aria-expanded="false" aria-controls="settingsPopover" aria-label="Cài đặt giao diện">
+    <span class="menu-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+  </button>
+  <div class="settings-popover" id="settingsPopover" role="menu">
+    <div class="settings-group">
+      <p class="settings-group-label">Giao diện</p>
+      <div class="theme-switcher" id="themeSwitcher" role="group" aria-label="Giao diện sáng / tối">
+        <button class="theme-btn active" type="button" data-theme-choice="light" aria-pressed="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <span>Sáng</span>
+        </button>
+        <button class="theme-btn" type="button" data-theme-choice="dark" aria-pressed="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+          <span>Tối</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<header class="sitebar">
+  <a class="brand" href="index.html">
+    <span class="mark"><svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sower's Cycle mark">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+<g transform="translate(200,278)">
+  <g><ellipse rx="14" ry="21" transform="rotate(0)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(72)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(144)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(216)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(288)" fill="url(#flowerGrad)"/></g>
+  <circle r="9.5" fill="#FFF6DE"/>
+</g>
+<g transform="translate(200,96)"><path d="M0,-24 C2,-7 7,-2 24,0 C7,2 2,7 0,24 C-2,7 -7,2 -24,0 C-7,-2 -2,-7 0,-24 Z" fill="#F3D488"/></g>
+</svg></span>
+    <span class="word">Khúc Ai Ca Cho Những Kẻ Vô Danh</span>
+  </a>
+  <nav>
+    <a href="index.html" class="toc-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      Mục lục
+    </a>
+  </nav>
+</header>
+<div class="progress-track"><div class="progress-fill"></div></div>
+
+<header class="chapter-head">
+  <p class="crumb"><a href="index.html">IN PARADISUM · KHÔNG CÓ AI NẰM DƯỚI</a></p>
+  <span class="cnum">Chương 27</span>
+  <h1>Tờ Giấy Không Đọc Được Nữa</h1>
+  <div class="font-toggle" role="group" aria-label="Cỡ chữ">
+    <button type="button" data-size="sm" aria-pressed="false">A-</button>
+    <button type="button" data-size="md" aria-pressed="true">A</button>
+    <button type="button" data-size="lg" aria-pressed="false">A+</button>
+  </div>
+</header>
+
+<article class="prose" data-size="md">
+<p>Giấy gói gạc của phòng mổ, viện dã chiến số 4, xấp cắt tháng 3 năm 2069.</p>
+<p>Mặt sau tờ thứ hai còn ba dòng, và ba dòng ấy cụt ở mép phải, vì tờ giấy cắt theo khổ gói.</p>
+<p>Bản tin tuần của ban thư ký, số 552, ngày 8 tháng 3 năm 20</p>
+<p>Đường kính cấu trúc 690,0</p>
+<p>Mục ba: từ ngày 1 tháng 4, mẫu đề nghị cấp vật tư y tế dã ch</p>
+<p>Viện dã chiến số 4 có tên trong danh sách nhận bản tin từ tháng 8 năm 2062, và tên ấy chưa ai gạch. Bản tin in một mặt, và từ năm 2066 thì phòng hành chính cắt mặt sau ra làm giấy gói.</p>
+<p>Phép thử của Sarah mất chừng bốn mươi giây mỗi sáng.</p>
+<p>Chị gấp một miếng gạc làm tư, kẹp nó giữa đầu ngón trỏ và ngón cái tay trái, giơ thẳng tay ra trước mặt ngang vai, và chị đếm tới lúc miếng gạc nhúc nhích.</p>
+<p>Tháng 5 năm 2062 chị đếm được bốn mươi. Tháng 11 năm ấy chị đếm được hai mươi hai.</p>
+<p>Chị ghi con số vào mặt trong nắp hộp kim, bằng bút chì, một dòng một tháng.</p>
+<p>Tháng 3 năm 2069, ba lần thử đầu tháng cho ra mười ba, mười hai, và mười bốn.</p>
+<p>Ở mặt trong nắp hộp kim, dưới dòng cuối cùng, cách một quãng, có một con số khác. Nó ở đó từ tháng 11 năm 2062 và nó không đứng thành hàng với những con số kia.</p>
+<p>Nó là số mười.</p>
+<p>Chị viết nó vào một buổi tối và chị không nói với ai, không hồi ấy và cũng không trong bảy năm sau, và trong bảy năm ấy chị mở cái hộp kim ấy mỗi ngày.</p>
+<p>Viện dã chiến số 4 giải thể ngày 30 tháng 6 năm 2069.</p>
+<p>Nó dựng trong một trường tiểu học hai dãy từ tháng 5 năm 2062, và nó chạy bảy năm một tháng, và trong bảy năm một tháng ấy nó nhận mười chín nghìn hai trăm mấy chục người, và con số chính xác thì nằm ở tờ tổng hợp cuối cùng và tờ ấy làm hai lần vì lần thứ nhất cộng thiếu một tháng.</p>
+<p>Trả lại trường thì mất hai tháng.</p>
+<p>Dọn hết ba tuần. Phần còn lại là danh mục tài sản, vì tài sản của viện có ba nguồn, và ba nguồn ấy có ba cách đánh số, và có bốn mươi bảy món nằm trong hai danh mục cùng lúc và có mười một món không nằm trong danh mục nào.</p>
+<p>Cái vách giữa phòng hai và phòng ba, tháo năm 2062 để lấy chỗ mổ, xây lại trong tuần thứ hai của tháng 8. Người xây lại là tổ xây của huyện, và họ xây bằng gạch mới, và chỗ ấy bây giờ nhìn ra được vì gạch mới khác gạch cũ.</p>
+<p>Ngày cuối cùng có bảy người ở lại làm nốt.</p>
+<p>Chị Hoa đếm ghế. Ghế của viện là ghế của trường, và ghế của trường thì có sơn số ở lưng, và trong bảy năm thì mười bốn cái mất số vì sơn bong. Chị đếm ra một trăm bảy mươi ba, và trong danh mục là một trăm tám mươi hai, và chị đi tìm chín cái còn lại trong hai tiếng và tìm được bảy.</p>
+<p>Hai cái kia thì chị ghi vào cột ghi chú là không tìm thấy, và chị ghi đúng như thế, vì chị không biết viết cái gì khác.</p>
+<p>Anh Thịnh tháo cái bảng gỗ ở sân giữa, cái bảng ghi lịch ca. Anh tháo bốn con vít, và ở chỗ bốn con vít ấy thì tường có bốn cái lỗ, và anh trát lại bằng vữa trộn ở cái xô, và anh trát bốn chỗ ấy phẳng.</p>
+<p>Bốn giờ chiều, người ta giao chìa khoá cho ông hiệu trưởng.</p>
+<p>Ông hiệu trưởng năm mươi tư tuổi và ông là hiệu trưởng của trường ấy từ năm 2054, và trong bảy năm qua ông vẫn tới đây mỗi năm hai lần để ký các giấy tờ liên quan tới cái nhà.</p>
+<p>Ông nhận chìa khoá, đếm bốn cái, và ký.</p>
+<p>Rồi ông đi một vòng qua sáu phòng dãy A, và ở phòng thứ ba ông đứng lại chừng mười giây, và ông không nói gì cả, và chuyện ông đứng lại ở đó thì chỉ có Sarah nhìn thấy, vì chị đi sau ông chừng bốn bước.</p>
+<p>Tháng 9 trường khai giảng. Phòng thứ ba là lớp bốn.</p>
+<p>Giá tư trang trong phòng hồ sơ có bốn tầng.</p>
+<p>Tầng thứ tư là tầng để quá sáu tháng. Tháng 6 năm 2069 nó có hai trăm ba mươi mốt túi.</p>
+<p>Hai trăm ba mươi mốt túi ấy chuyển về kho của phòng lao động thương binh huyện ngày 21 tháng 6, có biên bản, có ba chữ ký, và trên biên bản người ta ghi số túi và không ghi cái gì khác, vì mẫu biên bản bàn giao chỉ có ô số lượng và ô tình trạng.</p>
+<p>Sarah ký vào biên bản ấy với tư cách người bàn giao.</p>
+<p>Chị ký vì tới tháng 6 thì cô Mai đã thôi làm ở viện từ tháng 3, và người tiếp nhận sổ tư trang sau cô ấy đã chuyển đi, và người thứ ba thì mới về được sáu tuần và không biết cái tầng thứ tư ấy có từ bao giờ.</p>
+<p>Sarah biết. Chị không nói.</p>
+<p>Từ tháng 9 chị làm ở bệnh viện huyện.</p>
+<p>Bệnh viện huyện có hai phòng mổ, một cái chạy được và một cái đang chờ đèn. Nó có hai người mổ được ca lớn, và người thứ hai sáu mươi mốt tuổi.</p>
+<p>Tháng 10 chị viết một cái đề nghị.</p>
+<p>Đề nghị dài một trang và nó xin bổ sung một bác sĩ ngoại khoa cho bệnh viện huyện, và trong một trang ấy chị đưa ra số ca mổ theo tháng của hai năm gần nhất, số ca phải chuyển tuyến, và quãng đường chuyển tuyến tính bằng giờ chứ không tính bằng ki lô mét, vì mùa mưa thì ki lô mét không nói lên gì.</p>
+<p>Chị viết nó bằng tiếng Việt và chị nhờ người đọc lại giúp hai lần.</p>
+<p>Trả lời về sau bốn tuần. Nó là một biểu mẫu.</p>
+<p>Biểu mẫu ấy đề nghị bổ sung bảng định biên có xác nhận của cơ quan chủ quản, kèm bản kê nhu cầu ba năm, và ở dưới cùng có một dòng nói rằng đề nghị được xem xét trong kỳ rà soát định biên tiếp theo.</p>
+<p>Kỳ rà soát định biên tiếp theo là năm 2071.</p>
+<p>Chị điền biểu mẫu ấy và chị nộp lại, vì không điền thì chắc chắn không có, và điền thì chưa chắc.</p>
+<p>Tháng 11, chị bỏ khâu nối ruột.</p>
+<p>Chị bỏ nó theo đúng cái cách chị đã bỏ việc nối mạch nhỏ hồi tháng 8 năm 2062, tức là chị không nói với ai một câu nào về tay chị. Chị vào sổ phân công, tìm cột ghi chú của mục khâu nối ruột, và chị viết vào đó hai chữ.</p>
+<p>Chuyên trách.</p>
+<p>Bác sĩ Khang ba mươi sáu tuổi. Anh về đây từ tháng 9 cùng chị, và anh đọc cái cột ghi chú ấy vào chiều hôm sau.</p>
+<p>"Chị." Anh nói.</p>
+<p>"Ừ."</p>
+<p>"Em nhận."</p>
+<p>Anh không hỏi vì sao và anh không cảm ơn chị lần này. Bảy năm trước anh có cảm ơn chị, và chị nhớ chuyện đó.</p>
+<p>Sau tháng 11 thì cái còn lại là ca lớn.</p>
+<p>Ca lớn thì chị không giao cho ai được, vì người thứ hai sáu mươi mốt tuổi và tay ông ấy thì tốt hơn tay chị, còn mắt ông ấy thì không.</p>
+<p>Ca lớn chị nhớ được từng cái.</p>
+<p>Năm 2062 chị nhớ được mười bảy cái và chị đếm được. Bây giờ là mười chín. Hai cái thêm vào đều ở năm 2066, cách nhau chín ngày, và cả hai đều là cái chị làm đúng.</p>
+<p>Cái mòn chị đi vẫn là cái cũ, tức là mỗi ngày bốn năm lần phải chọn giữa hai người mà cả hai đều còn cứu được nếu hôm đó chỉ có một người.</p>
+<p>Ở bệnh viện huyện thì con số ấy xuống còn chừng một lần một tuần, và chị có nhận ra chuyện đó vào tháng 10, và chị nhận ra nó muộn, và chị nhận ra nó trong lúc đang nghĩ về một chuyện khác.</p>
+<p>Ngày 4 tháng 10 năm 2069, chị mở tờ giấy ra.</p>
+<p>Chị viết nó năm 2056. Mười một cái tên. Cạnh ba cái tên có một cái ngày. Cạnh tám cái còn lại thì không có gì.</p>
+<p>Tháng 3 năm 2062 chị chép lại tờ ấy, đúng từng chữ, kể cả cái tên chị viết sai từ đầu và chưa bao giờ sửa, chép bằng bút bi trên giấy dày hơn.</p>
+<p>Tờ cũ chị không bỏ. Nó nằm dưới tờ mới, gấp cùng nếp, và hai tờ ấy đi cùng nhau qua bốn cái túi áo từ đó tới nay.</p>
+<p>Từ hôm chép lại chị không mở tờ mới ra lần nào.</p>
+<p>Bảy năm rưỡi. Bảy năm rưỡi trong một túi áo blouse, và một cái túi áo blouse thì mỗi ngày có mồ hôi, có nước rửa tay, có cái nóng của một cái phòng mổ không có điều hoà, và mỗi tuần có hai lần giặt.</p>
+<p>Chị mở nó ra ở phòng trực, buổi tối, dưới cái đèn bàn.</p>
+<p>Tờ mới đọc được ba cái tên.</p>
+<p>Ba cái ấy đọc được vì chúng nằm ở giữa tờ, xa cả bốn nếp gấp. Tám cái còn lại thì mực đã tãi ra thành những vệt tím nhạt, và ở hai chỗ thì giấy đã mòn thủng ở đúng nếp gấp và chỗ thủng ấy đi qua giữa một cái tên.</p>
+<p>Tờ cũ thì không đọc được cái nào.</p>
+<p>Chị ngồi với hai tờ giấy ấy chừng nửa tiếng và trong nửa tiếng ấy chị không thử ghép chữ, vì chị không cần ghép.</p>
+<p>Chị nhớ hết mười một cái tên. Chị nhớ cả thứ tự chị đã viết chúng năm 2056, và chị nhớ cái tên nào chị viết sai và sai chỗ nào, và chị nhớ cả chuyện năm 2062 chị đã chép lại cái sai ấy nguyên xi, và vì nhớ được hết như thế nên tờ giấy ấy chưa bao giờ là để nhớ.</p>
+<p>Cái tên viết sai là cái thứ sáu. Chị viết thiếu một chữ cái ở giữa. Chị biết chuyện đó từ năm 2057, khi chị nghe một người đọc tên ấy lên thành tiếng, và chị nhớ cả cái buổi chiều chị nghe.</p>
+<p>Năm 2062, lúc chép lại, chị có dừng bút ở đúng chỗ ấy chừng ba giây. Rồi chị chép y nguyên.</p>
+<p>Chị không sửa nó, và lý do thì chị không viết ra ở đâu, và trong bảy năm chị cũng không nghĩ nó thành lời.</p>
+<p>Chị ngồi thêm một lúc rồi chị gấp cả hai tờ lại theo đúng nếp cũ và bỏ lại vào túi.</p>
+<p>Ngày 18 tháng 10 chị xin nghỉ hai ngày và chị đi tìm một cái tên.</p>
+<p>Cái tên ấy là một trong tám cái không có ngày. Chị chọn nó vì nó là cái duy nhất trong tám cái mà chị có một chỗ để bắt đầu, và chỗ ấy là tên một thị trấn cách đây một trăm sáu mươi cây, và chị biết tên thị trấn ấy từ năm 2055 vì có người nói với chị một lần, một câu, trong một cái hành lang.</p>
+<p>Chị đi xe khách sáu tiếng.</p>
+<p>Xe chạy được hai tiếng thì dừng bốn mươi phút ở một quán cơm, vì tuyến ấy vẫn dừng ở quán ấy, và chị xuống ăn một bát cơm với rau muống xào và chị trả tiền đúng bằng số ghi trên tấm bảng treo ở cột.</p>
+<p>Ở quán có một cái đài đang mở. Chị nghe được ba phút cuối của bản tin và ba phút ấy nói về giá phân bón.</p>
+<p>Chị tới thị trấn lúc gần một giờ chiều. Chị hỏi ở bến, và người ở bến chỉ chị ra chợ. Chị hỏi ở chợ, và hai người ở chợ nói không biết, và người thứ ba nói bà lên uỷ ban mà hỏi.</p>
+<p>Người ở uỷ ban tra sổ hộ khẩu và tìm ra trong mười lăm phút, vì thị trấn ấy nhỏ và vì cái tên ấy không phải cái tên phổ biến.</p>
+<p>Người ấy nói địa chỉ và nói thêm một câu, và câu ấy là bà đi ra đó thì hỏi nhà bên cạnh.</p>
+<p>Nhà bên cạnh là một người đàn ông chừng sáu mươi tuổi đang sửa cái xe đạp ở hiên.</p>
+<p>Ông ấy nghe cái tên, ngẩng lên, và nói mất rồi.</p>
+<p>Sarah hỏi mất năm nào.</p>
+<p>Ông ấy nghĩ. Ông ấy nghĩ một lúc lâu hơn Sarah tưởng, và trong lúc nghĩ ông ấy vẫn cầm cái cờ lê, và ông ấy tính bằng cách kể ra mấy chuyện khác trước.</p>
+<p>Ông ấy nói năm đó là năm cái cầu chưa làm. Rồi ông ấy nói năm đó thằng con ông ấy học lớp bảy. Rồi ông ấy nói sáu mốt.</p>
+<p>Sarah hỏi vì sao.</p>
+<p>Ông ấy nói bị bỏng.</p>
+<p>Ông ấy kể thêm, và ông ấy kể đủ và không nhấn chỗ nào, như người ta kể một chuyện cũ của hàng xóm. Bỏng nước sôi ở bắp chân, hôm đi đám giỗ về, cái nồi trên bếp củi. Băng ở nhà mấy hôm. Sang tuần thứ hai thì sưng lên và sốt. Đưa lên trên thì trên nói phải xuống dưới. Xuống tới dưới thì đã bốn ngày.</p>
+<p>Ông ấy nói cái đó hồi nớ thường lắm.</p>
+<p>Ông ấy nói câu ấy như nói một dữ kiện, vì hồi ấy nó là một dữ kiện.</p>
+<p>Sarah đứng ở đó chừng một phút nữa.</p>
+<p>Có một câu thứ hai chị mang đi một trăm sáu mươi cây để hỏi, và câu ấy chị đã sắp trong đầu ở trên xe, và nó là một câu hỏi về năm 2055.</p>
+<p>Chị không hỏi.</p>
+<p>Chị cảm ơn ông ấy, và ông ấy hỏi bà là chi của cô ấy, và chị nói chị là bác sĩ, và ông ấy nói à, rồi ông ấy quay lại với cái xe đạp.</p>
+<p>Chị ra bến, đợi một tiếng mười phút, và về bằng chuyến bốn giờ.</p>
+<p>Trên xe chị không nghĩ tới người đàn bà ấy.</p>
+<p>Chị nghĩ tới cái quãng bốn ngày. Chị nghĩ nó theo lối chị vẫn nghĩ, tức là chị đi ngược lại từng chặng và ở mỗi chặng chị hỏi hôm ấy ở chỗ ấy có cái gì và không có cái gì, và ở chặng thứ ba thì chị dừng, vì năm 2061 thì cái bệnh viện tuyến dưới ấy không có kháng sinh tuyến hai, và cái đó chị biết chắc, vì năm 2061 chị làm ở bệnh viện tỉnh và bệnh viện tỉnh cũng không có.</p>
+<p>Chị không có gì để làm với cái ý ấy. Chị để nó ở đó và chị nhìn ra ngoài cửa kính, và ngoài cửa kính thì trời tốt, nắng, và người ta đang gặt.</p>
+<p>Ngày 6 tháng 11, phép thử buổi sáng cho ra chín.</p>
+<p>Chị làm lại lần thứ hai, cách mười phút, và ra mười.</p>
+<p>Chị ghi cả hai con số vào mặt trong nắp hộp kim, cách nhau một dấu phẩy, và chị không gạch cái nào.</p>
+<p>Rồi chị ngồi ở phòng trực chừng bốn phút.</p>
+<p>Trong bảy năm chị đã tính chuyện này nhiều lần và chị đã tính nó xong từ lâu, và cái chị chưa tính là chị sẽ làm gì sau khi tính xong.</p>
+<p>Mốc ấy chị đặt cho một cái bệnh viện có hai người mổ được ca lớn và có một người thứ ba đang học. Bệnh viện huyện có hai người mổ được ca lớn và người thứ hai sáu mươi mốt tuổi, và cái đề nghị bổ sung một bác sĩ ngoại khoa thì đang nằm chờ kỳ rà soát định biên năm 2071.</p>
+<p>Chị lấy bút chì, và chị viết thêm một dòng dưới con số mười, và dòng ấy chỉ có một cái ngày.</p>
+<p>Ngày ấy là ngày 1 tháng 7 năm 2071.</p>
+<p>Chị đóng hộp kim lại.</p>
+<p>Chín giờ sáng hôm ấy chị mổ một ca thoát vị bẹn cho một thằng nhỏ mười bốn tuổi.</p>
+<p>Đó là ca nhỏ. Nó không nằm trong nhóm ca chị đã giao cho Khang và nó không nằm trong nhóm ca lớn. Nó mất bốn mươi phút và nó không có gì để kể.</p>
+<p>Chị rửa tay ở cái chậu ngoài hành lang, cái chậu có bàn đạp chân, và cái bàn đạp ấy kẹt ở một chỗ và phải nhấn mạnh hơn một chút ở đúng chỗ ấy, và chị biết chỗ ấy ở đâu từ tháng thứ hai.</p>
+<p>Chị đếm đủ. Chị đếm ba lần hai mươi giây và chị đếm thành tiếng bằng tiếng Việt, vì trong phòng còn một người phụ chưa quen.</p>
+<p>Trong bốn mươi phút ấy tay trái chị không run.</p>
+<p>Nó không run khi chị đang mổ và nó bắt đầu lại chừng bốn nhịp thở sau khi chị bỏ tay ra khỏi người bệnh, và chuyện đó thì từ năm 2062 tới giờ không đổi.</p>
+<p>Cái đổi là bây giờ chị biết bốn nhịp thở ấy dài bao nhiêu.</p>
+<p>Thằng nhỏ ấy về nhà ngày thứ Năm.</p>
+<p>Chị không nhớ tên nó, và chị biết là chị sẽ không nhớ, và chị đã thôi coi chuyện đó là một cái mất từ lâu.</p>
+<p>Buổi chiều chị vào phòng mổ ca thứ hai.</p>
+</article>
+
+
+<svg class="rift-small" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+</svg>
+
+
+<div class="chapter-foot">
+  <nav class="chapter-nav" aria-label="Điều hướng chương">
+    <a class="prev" href="chuong-26.html"><span class="lbl">Trước</span><span class="ttl">Nhịp Gõ</span></a>
+    <a class="toc-link" href="index.html" aria-label="Về mục lục"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></a>
+    <a class="next" href="chuong-28.html"><span class="lbl">Sau</span><span class="ttl">Danh Sách Trên Tường</span></a>
+  </nav>
+</div>
+
+<footer class="sitefoot">
+  <p>Khúc Ai Ca Cho Những Kẻ Vô Danh — Vòng Tuần Hoàn Người Gieo Hạt · Quyển II</p>
+  <p>© 2026 Nguyễn Duy Anh (bút danh: Mendingur). Bản quyền tác phẩm thuộc về tác giả.</p>
+</footer>
+
+<script src="glow.js" defer></script>
+</body>
+</html>

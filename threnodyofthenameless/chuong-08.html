@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mười Bảy Cái Ghế — Khúc Ai Ca Cho Những Kẻ Vô Danh</title>
+<meta name="description" content="Vòng Tuần Hoàn Người Gieo Hạt · Quyển II — tiểu thuyết của Mendingur">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="style.css">
+<script src="reader.js" defer></script>
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem('mendingur-theme');
+    var theme = saved === 'dark' || saved === 'light'
+      ? saved
+      : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+  <linearGradient id="wingGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="55%" stop-color="#C99A3E"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+  <radialGradient id="coreGlow" cx="50%" cy="55%" r="55%">
+    <stop offset="0%" stop-color="#FFF6DE" stop-opacity="0.95"/>
+    <stop offset="55%" stop-color="#E4C077" stop-opacity="0.35"/>
+    <stop offset="100%" stop-color="#E4C077" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="flowerGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+</defs>
+</svg>
+<div class="grain"></div>
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+<div class="settings-menu" id="settingsMenu">
+  <button class="menu-toggle" type="button" id="settingsMenuToggle" aria-haspopup="true" aria-expanded="false" aria-controls="settingsPopover" aria-label="Cài đặt giao diện">
+    <span class="menu-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+  </button>
+  <div class="settings-popover" id="settingsPopover" role="menu">
+    <div class="settings-group">
+      <p class="settings-group-label">Giao diện</p>
+      <div class="theme-switcher" id="themeSwitcher" role="group" aria-label="Giao diện sáng / tối">
+        <button class="theme-btn active" type="button" data-theme-choice="light" aria-pressed="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <span>Sáng</span>
+        </button>
+        <button class="theme-btn" type="button" data-theme-choice="dark" aria-pressed="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+          <span>Tối</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<header class="sitebar">
+  <a class="brand" href="index.html">
+    <span class="mark"><svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sower's Cycle mark">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+<g transform="translate(200,278)">
+  <g><ellipse rx="14" ry="21" transform="rotate(0)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(72)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(144)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(216)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(288)" fill="url(#flowerGrad)"/></g>
+  <circle r="9.5" fill="#FFF6DE"/>
+</g>
+<g transform="translate(200,96)"><path d="M0,-24 C2,-7 7,-2 24,0 C7,2 2,7 0,24 C-2,7 -7,2 -24,0 C-7,-2 -2,-7 0,-24 Z" fill="#F3D488"/></g>
+</svg></span>
+    <span class="word">Khúc Ai Ca Cho Những Kẻ Vô Danh</span>
+  </a>
+  <nav>
+    <a href="index.html" class="toc-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      Mục lục
+    </a>
+  </nav>
+</header>
+<div class="progress-track"><div class="progress-fill"></div></div>
+
+<header class="chapter-head">
+  <p class="crumb"><a href="index.html">DIES IRAE · LẦN NÀY CHÚNG KHÔNG CHẠY</a></p>
+  <span class="cnum">Chương 8</span>
+  <h1>Mười Bảy Cái Ghế</h1>
+  <div class="font-toggle" role="group" aria-label="Cỡ chữ">
+    <button type="button" data-size="sm" aria-pressed="false">A-</button>
+    <button type="button" data-size="md" aria-pressed="true">A</button>
+    <button type="button" data-size="lg" aria-pressed="false">A+</button>
+  </div>
+</header>
+
+<article class="prose" data-size="md">
+<p>Ông có mười hai phút.</p>
+<p>Cô thư ký thứ hai ngồi ở đầu bàn giữ cái đồng hồ bấm giờ, một cái máy nhỏ màu đen có ba nút, và cô bấm nút thứ nhất khi chủ tọa đọc xong tên ông. Elias Rourke đứng lên.</p>
+<p>Ông vẫn đứng khi phát biểu. Người ta đã bảo ông rằng ngồi cũng được, micro đủ nhạy, và ông vẫn đứng, vì ngồi thì ông nói dài hơn.</p>
+<p>Phòng họp hình móng ngựa. Mười bảy chỗ ở vòng ngoài, mỗi chỗ một tấm biển tên và một cái micro có đèn đỏ ở cổ. Bốn tấm biển ghi Hợp chúng quốc Hoa Kỳ. Bốn tấm ghi Liên bang Nga. Hai tấm ghi Cộng hòa Nhân dân Trung Hoa. Còn lại bảy tấm, mỗi nước một tấm.</p>
+<p>Mười trên mười bảy. Ông đã biết con số ấy từ tháng thứ hai của năm đầu tiên, và từ đó ông thôi tính phiếu.</p>
+<p>Đây là lần thứ mười chín ông ngồi trước cái bàn này trong ba năm. Ông có đếm. Ông đếm vì không đếm thì mỗi lần lại tưởng là lần đầu.</p>
+<p>Trong mười chín lần ấy, có bốn cái micro chưa bao giờ ông thấy sáng đèn. Ông không rút ra kết luận gì từ chuyện đó. Ông chỉ để ý, theo cái lối một người quen đo đạc thì để ý đến những ô trống trong bảng.</p>
+<p>"Tôi sẽ nói ba điều." Ông nói. "Cả ba đều đã có trong bản đệ trình quý vị nhận hôm thứ Sáu. Tôi nói lại vì tôi cho rằng ba điều ấy quan trọng hơn phần còn lại của bản đệ trình."</p>
+<p>Ông nói điều thứ nhất trong hai phút.</p>
+<p>Cánh Cổng không đóng lại được. Không phải là chưa tìm ra cách. Là cấu trúc ấy không có chỗ nào để đóng. Nó không phải một lỗ thủng trên một bức tường, và mọi phép loại suy dùng chữ lỗ thủng đều đã dẫn bốn năm ngân sách nghiên cứu đi sai hướng. Trong mười một đại lượng đo được của nó, có ba đại lượng ứng xử như biên của một vật thể, và tám đại lượng thì không.</p>
+<p>Ông nói điều thứ hai trong ba phút rưỡi.</p>
+<p>Nó là một cấu trúc sống. Ông dùng chữ sống và ông giải thích ngay rằng ông dùng chữ ấy theo nghĩa hẹp: nó dao động theo chu kỳ, chu kỳ ấy không do tác động bên ngoài, và nó phản hồi. Công trình đo chu kỳ là của tiến sĩ Elena Marsh, công bố năm 2056, và cho đến nay chưa ai bác được và cũng chưa ai lặp lại được.</p>
+<p>"Tiến sĩ Marsh có thể ra trình bày trước hội đồng không?" Chủ tọa hỏi.</p>
+<p>Người thư ký nhìn xuống tập hồ sơ.</p>
+<p>"Thưa ngài, tiến sĩ Marsh hiện không liên lạc được."</p>
+<p>"Ghi vào biên bản." Chủ tọa nói. "Mời giáo sư tiếp tục."</p>
+<p>Ông nói điều thứ ba trong bốn phút, và điều thứ ba là chúng ta không biết gì.</p>
+<p>Ông trình bày nó như trình bày một bảng kiểm kê. Chúng ta không biết bên kia là gì. Chúng ta không biết ở bên kia có bao nhiêu. Chúng ta chưa từng thấy một vật thể nào bên kia bằng bất cứ thiết bị nào của mình, vì mọi thiết bị đưa vào đều ngừng gửi tín hiệu ở khoảng cách chín mươi mét tính từ mặt phẳng cấu trúc, và cái con số chín mươi mét ấy chúng ta cũng không giải thích được. Đợt xâm nhập ngày mười sáu tháng chín đi ra từ một nơi mà chưa một ai trong phòng này nhìn thấy.</p>
+<p>"Tôi không đề nghị quý vị dừng lại." Ông nói. "Tôi đề nghị quý vị viết vào mọi văn bản của mình rằng chúng ta đang quyết định trong tình trạng không có dữ liệu. Đó là toàn bộ đề nghị của tôi."</p>
+<p>Ông ngồi xuống.</p>
+<p>Cô thư ký thứ hai bấm nút thứ hai và ghi con số vào cột bên phải. Mười một phút bốn mươi giây.</p>
+<p>Đèn đỏ ở ghế thứ chín sáng lên.</p>
+<p>Bà Reinholt, ghế Đức, là người duy nhất trong mười bảy người đã đọc cả ba bản đệ trình của ông từ đầu tới cuối. Ông biết điều đó vì hai lần bà hỏi ông về những chỗ chỉ có trong phụ lục. Bà là người ông trông cậy nhất trong căn phòng này.</p>
+<p>"Thưa giáo sư." Bà nói. "Tôi hiểu ba điểm của ông. Tôi muốn hỏi một câu thực tế. Nếu chúng ta quyết định đóng nó lại thì chi phí là bao nhiêu?"</p>
+<p>Rourke nghe câu hỏi ấy hết một lần.</p>
+<p>Rồi ông nghe lại nó lần thứ hai, trong đầu, và ở lần thứ hai ông đã biết chuyện gì vừa xảy ra.</p>
+<p>"Thưa bà, câu hỏi ấy không có câu trả lời." Ông nói. "Không phải vì con số quá lớn. Vì không có cái việc để mà tính chi phí."</p>
+<p>"Nhưng nếu có?"</p>
+<p>"Thưa bà, tôi không tính được chi phí của một việc không tồn tại."</p>
+<p>"Vậy thì ta cần biết nó có tồn tại hay không, và biết bằng cách nào." Bà Reinholt nói. "Tôi đề nghị lập một tổ công tác đánh giá tính khả thi và chi phí của phương án phong tỏa hoặc đóng vĩnh viễn cấu trúc."</p>
+<p>Ghế thứ tư ủng hộ đề nghị. Ghế thứ mười một ủng hộ.</p>
+<p>Trong ba mươi giây, cả căn phòng đã tỉnh hẳn.</p>
+<p>Người ta bàn thành phần tổ công tác, bàn nước nào chủ trì, bàn ngân sách sơ bộ, bàn thời hạn báo cáo, bàn xem tổ ấy báo cáo lên tiểu ban nào. Hai đại biểu tranh nhau chức chủ trì. Có người rút bút ra. Có người gọi trợ lý vào.</p>
+<p>Suốt hai mươi sáu phút ấy, cô thư ký thứ hai không bấm cái đồng hồ, vì đồng hồ chỉ bấm cho phần trình bày. Thảo luận về một đề nghị thì không tính giờ.</p>
+<p>Đề nghị được thông qua.</p>
+<p>Tổ công tác 7 họp phiên thứ nhất vào tháng hai năm sau. Rourke được mời tham gia với tư cách thành viên đương nhiên. Thành viên đương nhiên thì được dự họp, được phát biểu, và không biểu quyết.</p>
+<p>Trong biên bản phiên họp thứ bốn mươi mốt, mục bảy, có ba dòng ghi rằng Giáo sư Elias Rourke đã trình bày về đặc tính của cấu trúc và hội đồng nhất trí thành lập Tổ công tác 7 về phương án phong tỏa.</p>
+<p>Ba điều ông nói không nằm trong biên bản. Chúng nằm trong bản đệ trình, và bản đệ trình được đính kèm biên bản dưới dạng phụ lục.</p>
+<p>Tướng Marcus Webb được sáu phút và dùng bốn phút mười giây.</p>
+<p>Ông không mang theo giấy. Ông đặt hai bàn tay lên mặt bàn và nói bằng thứ tiếng của người đã đọc bảng số liệu trước khi vào phòng.</p>
+<p>"Ngày mười sáu tháng chín, đối tượng vượt qua mặt phẳng cấu trúc theo ba mũi. Mũi thứ nhất tiến sâu bốn mươi mốt ki lô mét trước khi có tiếp xúc đầu tiên. Bốn mươi mốt ki lô mét là khoảng cách từ chỗ tôi đang ngồi tới sân bay. Trong bốn mươi mốt ki lô mét ấy chúng tôi có hai trạm quan sát và cả hai đều đang hoạt động bình thường vào thời điểm đó."</p>
+<p>Ông nói tiếp về cự ly tiếp vận, về việc một vành đai ở vĩ độ ấy tiêu tốn bao nhiêu tấn nhiên liệu cho mỗi ki lô mét chiều dài mỗi tuần, về tỉ lệ bổ sung quân số mà ba nước lớn có thể duy trì trong mười tám tháng. Ông không nói một câu nào về việc phía bên kia là gì.</p>
+<p>"Tôi xin nói rõ một điểm." Ông nói. "Tôi vừa nghe giáo sư Rourke và tôi không phản đối một chữ nào của ông ấy. Chúng tôi không cần biết chúng là gì để giữ được một vành đai. Chúng tôi cần biết chúng đi nhanh bao nhiêu và chúng chịu được bao nhiêu. Hai cái đó thì đo được."</p>
+<p>Không ai trong phòng cãi được câu ấy, vì nó đúng.</p>
+<p>Đèn đỏ ở ghế thứ mười bảy sáng lên.</p>
+<p>Amara Osei giữ ghế của Liên minh châu Phi. Bà làm ngoại giao mười chín năm và làm nhân quyền mười một năm trước đó, và bà đọc quy chế của chính hội đồng này kỹ hơn cả ban thư ký.</p>
+<p>"Thưa chủ tọa, tôi phản đối về thủ tục." Bà nói. "Phương án tướng quân vừa trình bày là một chiến dịch quy mô chiến trường. Theo mục bốn điều mười hai của quy chế, chiến dịch quy mô chiến trường phải kèm một đánh giá tác động đối với dân cư khu vực triển khai. Bản đánh giá ấy không có trong hồ sơ gửi cho tôi hôm thứ Sáu."</p>
+<p>Người thư ký lật hồ sơ.</p>
+<p>"Thưa bà, đánh giá tác động đã được miễn trừ theo quyết định khẩn cấp ngày mười tám tháng chín."</p>
+<p>"Quyết định khẩn cấp ấy do ai ký?"</p>
+<p>"Do chủ tọa luân phiên, thưa bà."</p>
+<p>"Vậy thì tôi đề nghị ghi vào biên bản rằng hội đồng đang phê chuẩn một chiến dịch mà chính quy chế của mình đòi phải có đánh giá, và đánh giá ấy đã được miễn trừ bởi một người ngồi trong phòng này."</p>
+<p>"Đã ghi." Người thư ký nói.</p>
+<p>Osei chưa ngồi xuống.</p>
+<p>"Và tôi xin nói thêm một câu ngoài thủ tục. Chúng ta đang gọi họ là đối tượng. Trong bản đệ trình của giáo sư Rourke có một dòng nói rằng chúng ta chưa từng nhìn thấy bên kia. Nếu chúng ta chưa từng nhìn thấy bên kia thì chúng ta cũng chưa biết họ là ai, và tôi cho rằng một hội đồng không biết mình đang đối diện với ai thì nên cẩn thận với từ ngữ của mình."</p>
+<p>Ông Tarasov, ghế Nga thứ hai, bật micro.</p>
+<p>"Thưa bà Osei." Ông nói, và ông nói không hề nặng lời. "Bà vừa dùng chữ họ hai lần. Chúng ta chưa biết có ai để mà gọi là họ. Tôi đề nghị bà đợi đến khi có."</p>
+<p>Có hai người cười. Không phải cười ác ý. Cười theo kiểu người ta cười khi một người tử tế nói một câu không dùng được vào việc gì.</p>
+<p>Chủ tọa cảm ơn bà Osei và đưa vấn đề ra biểu quyết.</p>
+<p>Thuận mười bốn. Chống một. Trắng hai.</p>
+<p>Hai phiếu trắng là ghế Nhật Bản và ghế Ấn Độ. Ông Sekiguchi giải thích phiếu trắng của mình bằng bốn mươi giây nói về lịch bảo dưỡng đội tàu tiếp vận. Bà Bhattacharya thì không giải thích.</p>
+<p>Rourke ngồi ở hàng ghế dành cho người được mời, phía sau vòng móng ngựa, và ông không có phiếu nào. Ông chưa bao giờ có phiếu. Ba năm trước, khi mười bảy cái ghế này được đặt lên trên cái hội đồng mà chính ông lập ra, người ta có mời ông một chức danh cố vấn thường trực, và ông đã nhận, và chức danh ấy nghĩa là ông được mười hai phút.</p>
+<p>Phòng họp giải tán lúc gần bảy giờ tối. Ở hành lang, bà Osei đi cùng ông một đoạn ra chỗ thang máy.</p>
+<p>"Ông không phản đối." Bà nói.</p>
+<p>"Tôi không có phiếu, thưa bà."</p>
+<p>"Ông có mười hai phút."</p>
+<p>"Tôi đã dùng mười một phút bốn mươi giây."</p>
+<p>Bà Osei bấm nút thang máy và đứng nhìn dãy số trên bảng đèn.</p>
+<p>"Lần sau ông dùng hết mười hai phút." Bà nói. "Hai mươi giây ấy tôi cần."</p>
+<p>Cửa mở. Bà bước vào, ông thì không, vì ông xuống bằng thang bộ, và ông đã xuống bằng thang bộ từ lần thứ tám.</p>
+<p>Chiến dịch mở màn ngày ba tháng mười một và có tên gọi gồm hai chữ mà không ai trong phòng phân tích dùng, vì trong phòng phân tích người ta gọi nó bằng số hiệu.</p>
+<p>Đại úy Mira Halvorsen làm ở tổ ba, phòng phân tích, ban tác chiến liên minh. Việc của cô là điền vào bảng.</p>
+<p>Bảng của cô có tên là Hiệu lực hỏa lực theo ngày, mười bảy cột, và cột cô quan tâm nhất là cột ghi tỉ lệ vô hiệu hóa mục tiêu trên mỗi loạt bắn của đầu đạn mảnh định hướng ký hiệu B4. Đây là loại đạn chủ lực của ba mũi tiến công, và đây là loại đạn mà cả chiến dịch dựa vào.</p>
+<p>Ngày thứ nhất, tỉ lệ là 0,71.</p>
+<p>Con số ấy tốt. Con số ấy tốt hơn cả con số người ta hy vọng. Trong hai ngày đầu, các bản tóm tắt gửi lên cấp trên đều có một dòng nói rằng vũ khí thông thường có hiệu lực, và dòng ấy đúng, và nó là dòng quan trọng nhất của cả chiến dịch, vì trước ngày ba tháng mười một chưa ai chắc.</p>
+<p>Ngày thứ tư, 0,66.</p>
+<p>Ngày thứ bảy, 0,41.</p>
+<p>Ngày thứ chín, 0,19.</p>
+<p>Ngày thứ mười một, 0,04.</p>
+<p>Ở buổi giao ban chiều ngày thứ hai, một đại tá đọc to con số 0,71 và trong phòng có tiếng vỗ tay. Halvorsen nhớ chuyện ấy, vì trong bốn năm làm ở tổ ba, đó là lần duy nhất cô nghe thấy tiếng vỗ tay trong phòng giao ban.</p>
+<p>Ngày thứ chín thì không ai đọc to con số nào. Bản tóm tắt hôm ấy vẫn dài đúng một trang rưỡi như mọi hôm, vì mẫu bản tóm tắt quy định một trang rưỡi.</p>
+<p>Giả thuyết đầu tiên của Halvorsen là lô đạn.</p>
+<p>Cô viết một tờ trình ba trang đề nghị dừng sử dụng hai lô sản xuất trong quý hai và cho bắn kiểm tra lại. Tờ trình chuyển đi lúc mười giờ sáng ngày thứ mười hai. Bốn giờ chiều thì kết quả từ thao trường về, và hai lô ấy đạt chuẩn, và một trong hai lô còn vượt chuẩn.</p>
+<p>Cô rút tờ trình. Rút một tờ trình thì phải viết một tờ nữa nói rõ vì sao rút, và tờ ấy dài một trang, và nó nằm trong hồ sơ cá nhân của cô từ đó về sau.</p>
+<p>Rồi cô làm lại từ đầu.</p>
+<p>Halvorsen đi tìm nguyên nhân trong bốn ngày. Cô kiểm tra chất lượng lô đạn và lô đạn không có vấn đề. Cô kiểm tra cự ly bắn trung bình và cự ly không đổi. Cô kiểm tra thời tiết, kiểm tra độ ẩm, kiểm tra cả việc có phải các đơn vị đã mệt và bắn kém đi hay không, và không có cái nào giải thích được một đường cong dốc như thế.</p>
+<p>Nguyên nhân nằm ở giãn cách.</p>
+<p>Đầu đạn mảnh định hướng được thiết kế cho một chùm mục tiêu đứng gần nhau. Trong tám ngày đầu, giãn cách trung bình giữa hai đối tượng trong đội hình là một mét chín. Từ ngày thứ chín, giãn cách trung bình là chín mét tư.</p>
+<p>Một loạt bắn trước kia trùm được sáu. Bây giờ trùm được một.</p>
+<p>Cô kiểm lại bằng một đường khác. Cô lấy ảnh nhiệt của hai mươi bảy lần tiếp xúc, đo giãn cách bằng tay chứ không cho phần mềm đo, và cô đo hai đợt cách nhau ba ngày để biết chính cô có đo lệch hay không. Hai đợt lệch nhau bốn phần trăm. Bốn phần trăm thì không cứu được cái gì.</p>
+<p>Cô viết đoạn ấy vào báo cáo và cô viết thêm một câu nữa, và câu ấy là lý do cô nhớ chiến dịch này suốt phần đời còn lại.</p>
+<p>Giãn cách đổi vào đêm ngày thứ sáu. Nó đổi ở cả ba mũi. Ba mũi cách nhau xa nhất là chín trăm hai mươi ki lô mét. Không một đơn vị nào ghi nhận được liên lạc giữa ba mũi ấy, bằng sóng, bằng ánh sáng, hay bằng bất cứ dạng tín hiệu nào có trong danh mục theo dõi.</p>
+<p>Cô đọc lại câu mình vừa viết. Rồi cô để nguyên nó.</p>
+<p>Trong bản báo cáo sau chiến dịch, dài hai trăm mười bốn trang, câu ấy nằm ở phụ lục C, mục 4.2, trang một trăm bảy mươi chín. Bản tóm tắt dành cho hội đồng dài chín trang và nói rằng đối phương đã thay đổi đội hình.</p>
+<p>Phụ lục B là bảng nguyên nhân thương vong.</p>
+<p>Bảng ấy chia bốn nhóm, và nhóm thứ ba chiếm bảy mươi tám phần trăm. Nhóm thứ ba tên là tổn thương mô do năng lượng. Phần mô tả lâm sàng dài nửa trang, viết bằng thứ tiếng của người viết bệnh án: mô sống lão hóa nhanh bất thường, bề mặt da chuyển xám và khô, ranh giới tổn thương sắc nét. Ở cuối đoạn có một câu nói rằng vết cháy do vũ khí của đối tượng luôn có tiết diện tròn và đường viền đều, và trong ba nghìn hai trăm ca ghi nhận được thì chưa có một vết nào méo.</p>
+<p>Halvorsen đọc câu ấy ba lần rồi lật sang trang sau, vì bảng của cô không có cột nào để điền cái đó vào.</p>
+<p>Phụ lục A là bảng thương vong theo đơn vị.</p>
+<p>Halvorsen không lập bảng ấy, nhưng cô phải đối chiếu nó với bảng của mình trước khi báo cáo được đóng. Ở dòng thứ hai mươi ba của phụ lục A có một đơn vị bộ binh Hoa Kỳ, quân số biên chế sáu trăm mười một, quân số còn hiệu lực chiến đấu tính đến ngày thứ mười hai là không.</p>
+<p>Ký hiệu đơn vị ấy làm cô dừng lại, vì cô đã thấy nó ở một chỗ khác trong tuần.</p>
+<p>Cô tìm lại. Nó nằm trong một chú thích tiểu sử ở tập hồ sơ giới thiệu thành viên hội đồng, phần lý lịch quân vụ của Tướng Marcus Webb, chiến trường Đại Chiến Thứ Ba, các năm 2054 đến 2056.</p>
+<p>Ký hiệu đơn vị được tái sử dụng khá thường. Cô mất bốn mươi phút để tra và xác nhận rằng lần này thì không.</p>
+<p>Cô viết vào lề bản đối chiếu của mình ba chữ: không phải trùng ký hiệu.</p>
+<p>Rồi cô đóng tập hồ sơ và chuyển nó sang tổ hiệu đính, vì đến bốn giờ chiều thì tổ hiệu đính về hết.</p>
+<p>Trong khối dữ liệu thu được của chiến dịch có một tệp mà không tổ nào nhận.</p>
+<p>Nó do dàn cảm biến địa từ của Trạm Quan Sát Số 3 ghi được lúc bốn giờ năm mươi mốt phút sáng ngày thứ chín, tức ngày mười một tháng mười một. Nó dài bốn mươi giây.</p>
+<p>Nó không phải âm thanh. Không có sóng áp suất nào trong không khí ở thời điểm ấy, và ba micro ngoài trời của trạm không ghi được gì cả. Cái ghi được nó là hai từ kế và một cuộn dây đo cường độ trường, và cả ba thiết bị ấy ghi được cùng một thứ, lệch pha nhau đúng bằng khoảng cách giữa chúng chia cho một vận tốc mà không ai xác định được đơn vị.</p>
+<p>Nó có cấu trúc. Đó là điều duy nhất ba phòng thí nghiệm đồng ý với nhau. Nó không phải nhiễu nền, vì nhiễu nền không lặp lại, và cái này lặp lại.</p>
+<p>Mỗi lần lặp yếu hơn lần trước. Ở giây thứ ba mươi bảy nó thôi lặp. Ba giây cuối cùng là một giá trị không đổi.</p>
+<p>Phòng thí nghiệm thứ nhất chạy nó qua mười một bộ giải mã tín hiệu tiêu chuẩn và không ra gì. Phòng thứ hai đề nghị coi nó là hiện tượng địa vật lý và ngừng. Phòng thứ ba viết một trang rưỡi, kết luận rằng cấu trúc lặp lại của tệp không tương thích với bất kỳ mô hình nhiễu tự nhiên nào mà họ có, và đề nghị cấp thêm kinh phí.</p>
+<p>Không ai cấp thêm kinh phí. Chiến dịch tháng mười một tiêu bằng ngân sách của cả năm 2059, và đến tháng giêng thì mọi đề nghị dưới một mức nhất định đều bị gộp vào một danh mục chờ.</p>
+<p>Halvorsen là người điền tờ khai lưu trữ. Tờ khai có bốn ô. Ô loại hiện tượng, cô điền: chưa xác định. Ô mức ưu tiên, cô điền: thấp. Ô liên hệ tác chiến, cô điền: không. Ô cuối cùng là số hiệu kho.</p>
+<p>GC-2058-1141.</p>
+<p>Tệp ấy nằm ở đó năm năm.</p>
+<p>Rourke quay lại tòa nhà hội đồng ngày mười chín tháng mười hai, muộn, để lấy một tập tài liệu mà ban thư ký giữ lại vì ông không ký nhận kịp trước giờ đóng cửa.</p>
+<p>Hành lang tầng bốn để một dãy đèn ban đêm, cách bốn mét một bóng. Điều hòa của các phòng nhỏ ở tầng này chỉ chạy được khi cửa hé, nên phòng nào có người thì cửa phòng ấy mở một khoảng bằng bàn tay.</p>
+<p>Phòng 412 có người.</p>
+<p>Ông nghe thấy một giọng đọc, đều, không nhanh không chậm, đọc theo cái nhịp của người đọc một danh sách chứ không phải đọc một bài. Ông đi tới trước khi kịp nghĩ về việc mình đang đi tới.</p>
+<p>Qua khe cửa ông nhìn thấy lưng của Tướng Webb, và một tập giấy in đặt trên bàn, và bàn tay ông ta giữ mép tờ trên cùng.</p>
+<p>Ông ta đọc tên. Đọc họ, đọc tên, đọc quân hàm, không đọc gì thêm. Đọc xong một cái tên thì ngừng chừng một nhịp rồi đọc tên tiếp theo. Trong phòng không có ai khác. Không có máy ghi âm. Không có micro. Cái cửa hé ra là vì điều hòa.</p>
+<p>Rourke đứng ở hành lang.</p>
+<p>Ông đã chuẩn bị sẵn trong đầu ba câu để nói với người này, chuẩn bị từ tháng mười, và cả ba câu ấy đều đúng, và cả ba đều dựa trên giả định rằng người này không đếm.</p>
+<p>Ông đếm được mười chín cái tên rồi ông đi.</p>
+<p>Ông xuống thang bộ, ký nhận tập tài liệu ở quầy tầng một, và về.</p>
+<p>Danh sách ấy có sáu trăm mười một cái tên. Rourke biết con số đó vì nó nằm ở phụ lục A, dòng hai mươi ba, trong bản báo cáo ông đã đọc hết cả hai trăm mười bốn trang.</p>
+<p>Ông không kể chuyện này với ai, không năm ấy và cũng không mười năm sau.</p>
+</article>
+
+
+<svg class="rift-small" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+</svg>
+
+
+<div class="chapter-foot">
+  <nav class="chapter-nav" aria-label="Điều hướng chương">
+    <a class="prev" href="chuong-07.html"><span class="lbl">Trước</span><span class="ttl">Ngày Không Ai Kịp Đặt Tên</span></a>
+    <a class="toc-link" href="index.html" aria-label="Về mục lục"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></a>
+    <a class="next" href="chuong-09.html"><span class="lbl">Sau</span><span class="ttl">Đất Trung Lập, Không Tên</span></a>
+  </nav>
+</div>
+
+<footer class="sitefoot">
+  <p>Khúc Ai Ca Cho Những Kẻ Vô Danh — Vòng Tuần Hoàn Người Gieo Hạt · Quyển II</p>
+  <p>© 2026 Nguyễn Duy Anh (bút danh: Mendingur). Bản quyền tác phẩm thuộc về tác giả.</p>
+</footer>
+
+<script src="glow.js" defer></script>
+</body>
+</html>

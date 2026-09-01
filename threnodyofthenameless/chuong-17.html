@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Không Ai Đo Được Ranh Giới — Khúc Ai Ca Cho Những Kẻ Vô Danh</title>
+<meta name="description" content="Vòng Tuần Hoàn Người Gieo Hạt · Quyển II — tiểu thuyết của Mendingur">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="style.css">
+<script src="reader.js" defer></script>
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem('mendingur-theme');
+    var theme = saved === 'dark' || saved === 'light'
+      ? saved
+      : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+  <linearGradient id="wingGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="55%" stop-color="#C99A3E"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+  <radialGradient id="coreGlow" cx="50%" cy="55%" r="55%">
+    <stop offset="0%" stop-color="#FFF6DE" stop-opacity="0.95"/>
+    <stop offset="55%" stop-color="#E4C077" stop-opacity="0.35"/>
+    <stop offset="100%" stop-color="#E4C077" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="flowerGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+</defs>
+</svg>
+<div class="grain"></div>
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+<div class="settings-menu" id="settingsMenu">
+  <button class="menu-toggle" type="button" id="settingsMenuToggle" aria-haspopup="true" aria-expanded="false" aria-controls="settingsPopover" aria-label="Cài đặt giao diện">
+    <span class="menu-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+  </button>
+  <div class="settings-popover" id="settingsPopover" role="menu">
+    <div class="settings-group">
+      <p class="settings-group-label">Giao diện</p>
+      <div class="theme-switcher" id="themeSwitcher" role="group" aria-label="Giao diện sáng / tối">
+        <button class="theme-btn active" type="button" data-theme-choice="light" aria-pressed="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <span>Sáng</span>
+        </button>
+        <button class="theme-btn" type="button" data-theme-choice="dark" aria-pressed="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+          <span>Tối</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<header class="sitebar">
+  <a class="brand" href="index.html">
+    <span class="mark"><svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sower's Cycle mark">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+<g transform="translate(200,278)">
+  <g><ellipse rx="14" ry="21" transform="rotate(0)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(72)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(144)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(216)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(288)" fill="url(#flowerGrad)"/></g>
+  <circle r="9.5" fill="#FFF6DE"/>
+</g>
+<g transform="translate(200,96)"><path d="M0,-24 C2,-7 7,-2 24,0 C7,2 2,7 0,24 C-2,7 -7,2 -24,0 C-7,-2 -2,-7 0,-24 Z" fill="#F3D488"/></g>
+</svg></span>
+    <span class="word">Khúc Ai Ca Cho Những Kẻ Vô Danh</span>
+  </a>
+  <nav>
+    <a href="index.html" class="toc-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      Mục lục
+    </a>
+  </nav>
+</header>
+<div class="progress-track"><div class="progress-fill"></div></div>
+
+<header class="chapter-head">
+  <p class="crumb"><a href="index.html">LACRIMOSA · CÔNG CHÚNG TỰ BỊT TAI</a></p>
+  <span class="cnum">Chương 17</span>
+  <h1>Không Ai Đo Được Ranh Giới</h1>
+  <div class="font-toggle" role="group" aria-label="Cỡ chữ">
+    <button type="button" data-size="sm" aria-pressed="false">A-</button>
+    <button type="button" data-size="md" aria-pressed="true">A</button>
+    <button type="button" data-size="lg" aria-pressed="false">A+</button>
+  </div>
+</header>
+
+<article class="prose" data-size="md">
+<p class="p-epigraph"><span class="line">Biên niên, quyển sáu mươi ba, trang 12. Mục đề ngày 2 tháng 2 năm 2061, nét chữ Nguyễn Bảo Thư.</span><span class="line">"Người ta sẽ biểu quyết đúng phép."</span><span class="line">"Cái đó là chỗ khó nhất."</span></p>
+<p>Bản tin tuần của ban thư ký, số 296, ngày 11 tháng 4 năm 2064.</p>
+<p>Mục một: đường kính cấu trúc 541,7 mét.</p>
+<p>Mục ba: từ ngày 1 tháng 5, đơn đề nghị cấp thuốc theo diện bệnh mạn tính nộp một lần cho sáu tháng thay cho ba tháng, kèm bản sao hồ sơ bệnh án có xác nhận trong vòng ba mươi ngày.</p>
+<p>Tướng Marcus Webb trình bày trong hai mươi hai phút và ông không dùng chữ nào để doạ ai.</p>
+<p>Ông bắt đầu bằng một điều mà mọi người trong phòng đều đã biết và chưa ai nói ra ở đây: cấu trúc ấy không đóng lại được. Mười ba năm, mười một đại lượng đo được, ba đại lượng ứng xử như biên của một vật thể và tám đại lượng thì không, và mọi thiết bị đưa vào đều chết ở chín mươi mét. Ông nói ông không phải nhà vật lý và ông không định trở thành nhà vật lý.</p>
+<p>Rồi ông đặt bài toán ở dạng ông làm được.</p>
+<p>Nếu không đóng được cái cửa, thì cái còn lại là cái ngưỡng. Một vành đai không phải để chặn. Một vành đai để làm cho việc đi qua cái ngưỡng ấy trở thành việc không ai đi qua mà còn nguyên.</p>
+<p>Hoả lực duy trì, không gián đoạn, không theo ca chiến đấu mà theo lịch bảo dưỡng, đặt ở khoảng cách một nghìn tám trăm mét, phủ trọn chu vi. Ông đọc bảng: số nòng, chu kỳ thay nòng, định mức tiêu hao trên một ki lô mét chu vi trên một tuần, và số người cần cho một ca. Ông đọc luôn cả chi phí năm thứ nhất và chi phí trung bình từ năm thứ hai trở đi, và chi phí từ năm thứ hai thấp hơn năm thứ nhất, vì năm thứ nhất phải xây.</p>
+<p>Không phân biệt. Ông nói rõ chữ ấy và ông nói nó một lần.</p>
+<p>Trong toàn bộ hai mươi hai phút, ông không nói một câu nào về việc bên kia là cái gì.</p>
+<p>Ông đưa ra ba phương án và ông bác hai phương án của chính mình trước khi ai kịp bác.</p>
+<p>Phương án thứ nhất là giữ nguyên cách đang làm, tức là phản ứng theo điểm. Ông đưa ra số liệu bốn năm và ông nói cách ấy đã hỏng, và ông nói ông là người ký cái lệnh chuyển sang nó.</p>
+<p>Phương án thứ hai là lập lại việc đếm. Ông đưa ra chi phí, đưa ra thời gian dựng lại ba trạm, và đưa ra một con số nữa, là số người cần đưa xuống đó trong mùa đông để dựng, và số người ấy lớn hơn số người hiện có ở toàn bộ phân khu bảy.</p>
+<p>Phương án thứ ba là cái ông đang trình bày.</p>
+<p>Cái đáng sợ của bản trình bày ấy nằm ở chỗ nó chạy được.</p>
+<p>Bà Reinholt, ghế Đức, hỏi câu thứ nhất. Bà hỏi con số thương vong dự phóng của lực lượng vận hành vành đai trong mười năm.</p>
+<p>Webb đưa ra con số. Ông đưa ra cả cách tính, và cách tính ấy dựa trên bốn năm số liệu vận hành thật.</p>
+<p>Bà Osei, ghế Liên minh châu Phi, hỏi câu thứ hai. Bà hỏi giao thức này dự kiến chấm dứt vào lúc nào và theo điều kiện nào.</p>
+<p>"Không có điều kiện chấm dứt." Webb nói. "Cái cửa đó không đóng. Cái này chạy chừng nào cái đó còn."</p>
+<p>"Vậy nó là vĩnh viễn."</p>
+<p>"Vâng."</p>
+<p>Bà Osei đề nghị ghi câu trả lời ấy vào biên bản. Nó được ghi.</p>
+<p>Văn bản đưa ra biểu quyết hôm ấy gồm mười chín trang. Trong mười chín trang, phía bên kia được gọi bằng một chữ, và chữ ấy là vật thể. Nó xuất hiện hai mươi sáu lần.</p>
+<p>Hai mươi hai phút ấy được phát lại nguyên văn trên bốn đài trong tuần, và bản chép ra giấy dài mười một trang, và Diễm có bản mười một trang ấy vào ngày thứ ba.</p>
+<p>Toản không có mặt ở cái phòng ấy và cậu chưa bao giờ thấy nó.</p>
+<p>Cái cậu có là ba trăm bốn mươi mốt trang hồ sơ, làm trong sáu năm, và cậu biết từng trang nằm ở đâu.</p>
+<p>Kế hoạch của cậu tốt.</p>
+<p>Nó không phải kế hoạch công bố. Công bố thì cậu đã làm bốn lần và bốn lần đều rơi vào chỗ không có gì. Kế hoạch của cậu là đưa hồ sơ vào biên bản, và đưa vào biên bản thì phải qua một người có quyền đọc tài liệu trước phiên họp, và có mười chín người như thế, và trong mười chín người thì có hai người từng nhận tài liệu từ một địa chỉ mà Diễm biết.</p>
+<p>Đường đi có bốn chặng và mỗi chặng có một chỗ hỏng được. Toản viết cả bốn chỗ hỏng ấy ra giấy, cùng với việc phải làm nếu nó hỏng.</p>
+<p>Chặng thứ ba là chặng khó nhất, vì chặng thứ ba là chặng có tư liệu của Kaito.</p>
+<p>Mai xuống trạm ngày 7 tháng 3.</p>
+<p>Cô đi một mình, đi chuyến đò sớm, và cô mang theo một cái túi vải và trong túi có cuốn vở học sinh bìa xanh.</p>
+<p>Nhóm đã có phần của họ: mười một tờ giấy in lại của bản ghi bốn mươi giây, cộng bảng đối chiếu mà Diễm dựng từ hai chuỗi số của chính cô. Cái thiếu là cái nối. Bản ghi ấy là bốn mươi giây năm 2058, và nó chỉ nói được một chuyện, là có một cái gì đó có cấu trúc và nó lặp mười chín lần rồi thôi. Nó không nói được rằng cái ấy còn đang xảy ra, và nó không nói được rằng có hai bên.</p>
+<p>Cái nói được hai chuyện đó là hai trăm sáu mươi mốt mục trong cuốn vở.</p>
+<p>"Đưa cái ni." Mai nói. "Mà đưa thì phải đưa cái ruột thôi."</p>
+<p>Diễm mở vở ra và đọc chừng bốn trang.</p>
+<p>"Cái ni ai ghi?"</p>
+<p>"Không ai."</p>
+<p>Diễm gấp vở lại.</p>
+<p>"Chị nói thiệt với em." Diễm nói. "Cái ni mà đưa nguyên si thì nó có giá trị hơn gấp mười lần. Người ta cần biết ai ghi, ghi ở đâu, ghi bằng cái gì. Không có ba cái đó thì bên kia họ gọi nó là giấy lộn, và họ gọi đúng."</p>
+<p>"Chị biết."</p>
+<p>"Rứa chị vẫn muốn bóc?"</p>
+<p>"Ừ."</p>
+<p>Diễm không hỏi lần thứ hai.</p>
+<p>Việc bóc mất ba ngày, và Mai tự làm.</p>
+<p>Cô không chép lại bằng chữ mình, vì chữ mình cũng là một nét chữ. Cô làm cách khác. Cô đọc từng mục cho Bảo Thư đánh máy, trên cái máy chữ của trạm, cái máy vẫn dùng để đánh biên bản giao nhận. Bảo Thư đánh máy chứ không viết, vì bản đánh máy thì không có nét chữ nào.</p>
+<p>Bỏ ngày tháng. Mỗi mục còn lại một số thứ tự và một khoảng cách tới mục trước, tính bằng ngày.</p>
+<p>Bỏ tên. Trong hai trăm sáu mươi mốt mục không có tên người nào, nhưng có bốn chỗ nhắc tới cái sân, cái ngõ, cái máy phát, và bụi tre. Bốn chỗ ấy bỏ.</p>
+<p>Bỏ hướng thật. Hướng trong bảng ghi theo tám phương, và tám phương thì chỉ ra một chỗ đứng. Mai đổi cả hai trăm sáu mươi mốt mục sang hướng tương đối, tức là ghi so với mục đầu tiên. Việc ấy mất một ngày rưỡi và Diễm phải kiểm lại hai lần.</p>
+<p>Bỏ cột số đo cổ tay.</p>
+<p>Cột ấy nằm ở đầu mỗi dòng suốt bảy năm. Nó không phải là bảng phân loại. Nó là cái khác. Bỏ nó đi thì bản đánh máy không mất gì cả.</p>
+<p>Mai đọc hai trăm sáu mươi mốt mục trong ba ngày và cô không đọc con số nào ở đầu dòng.</p>
+<p>Còn một dòng nữa.</p>
+<p>Ở dòng ngày mồng chín tháng chạp năm 2058, cuối dòng, sau con số, có một cái giờ. 19:40.</p>
+<p>Nó không phải dữ liệu. Nó là cái Mai ghi năm 2058 khi cô chưa biết nó là gì, và bây giờ thì cô biết nó là gì, và biết rồi thì nó lại càng không phải dữ liệu, vì nó không đo cái gì hết.</p>
+<p>Cô đọc mục thứ hai cho Bảo Thư, đầy đủ, và cô dừng lại trước cái giờ ấy, và cô không đọc nó.</p>
+<p>Bảo Thư đánh xong mục thứ hai và chờ.</p>
+<p>"Hết chưa chị?"</p>
+<p>"Hết."</p>
+<p>Bản đánh máy dày hai mươi chín trang. Trên đó không có một cái tên, một cái ngày, một cái địa danh, và không có nét chữ nào.</p>
+<p>Nó là dữ liệu không gắn với người nào.</p>
+<p>Elin đọc hai mươi chín trang ấy trong hai buổi tối.</p>
+<p>Cô đọc theo lối cô đọc mọi thứ, tức là cô đọc phần phương pháp trước và phần kết quả sau. Ở đây thì không có phần phương pháp. Có một cái thang gồm ba đại lượng, và ba đại lượng ấy đo bằng cách so với một cái nón, một bao gạo, một quả nắm cửa, và nước giếng tháng chạp.</p>
+<p>"Cái này không kiểm được." Cô nói. "Không ai lặp lại được nó. Không có dụng cụ nào ở đây cả, chị. Cái thang này là một người."</p>
+<p>"Chị biết." Diễm nói.</p>
+<p>"Nếu em là người phản biện thì em bác nó trong ba dòng."</p>
+<p>"Chị cũng bác nó trong ba dòng." Diễm nói. "Em coi giùm chị chỗ tính hướng tương đối, chỗ đó chị làm hai lần ra hai kiểu."</p>
+<p>Elin ngồi lại và kiểm chỗ tính hướng tương đối. Cô kiểm hết đêm, tìm được hai chỗ sai, và cả hai chỗ sai đều làm bảng yếu đi chứ không mạnh lên.</p>
+<p>Cô ghi hai chỗ ấy ra giấy, đưa cho Diễm, và cô không nói gì thêm về chuyện tin hay không tin.</p>
+<p>Mai cầm cuốn vở bìa xanh về Gò Sen chiều mồng mười, và cô để nó lên nóc tủ, gáy quay ra ngoài, đúng chỗ cũ.</p>
+<p>Việt đi thị xã ngày 14 tháng 3 và về ngày 15.</p>
+<p>Cậu vẫn đi bốn tuần một lần từ năm 2058, và trong sáu năm ấy có hai lần cậu về tay không, một lần tháng 8 năm 2061 và một lần tháng 2 năm 2063.</p>
+<p>Em cậu hai mươi hai tuổi. Bệnh của cô ấy là bệnh phải uống mỗi ngày, và bỏ một ngày thì chưa sao, bỏ một tuần thì mệt, bỏ một tháng thì vào viện, và vào viện thì ra được nhưng lần sau nặng hơn lần trước. Cô ở với mẹ, cách thị xã mười bảy cây.</p>
+<p>Trong sáu năm, Việt nói về chuyện ấy đúng ba lần, và cả ba lần đều là nói về ngày, không phải nói về bệnh. Lần thứ nhất là tối 11 tháng chạp năm 2058, ở trạm, khi cậu hỏi hiệu thuốc trên thị xã còn mở không, và hôm ấy là ngày thứ hai mươi tư.</p>
+<p>Tháng 8 năm 2061, Việt là người đọc ra một cái tên trong danh sách trưng tập dán ở ủy ban, và vì cái tên ấy mà nhóm đổi chỗ ngủ trước hai ngày, và cái nhà kho họ đã ở ba tháng thì đêm thứ ba không còn.</p>
+<p>Elin ngủ ở cái nhà kho ấy hai đêm cuối cùng.</p>
+<p>Lần thứ ba là ngày 15 tháng 3 năm 2064.</p>
+<p>Quy định mới nộp một lần sáu tháng đòi bản sao hồ sơ bệnh án có xác nhận trong vòng ba mươi ngày. Hồ sơ bệnh án của em cậu nằm ở bệnh viện tỉnh. Bệnh viện tỉnh từ tháng 11 năm 2063 chỉ xác nhận cho người có giấy giới thiệu của nơi công tác, và nơi công tác của Việt là một nhà thầu phụ đã giải thể năm 2060.</p>
+<p>Cậu đi ba cửa trong hai ngày. Cửa thứ ba nói đúng cái câu mà hai cửa trước đã nói, và nói tử tế.</p>
+<p>Thuốc của em cậu còn tới ngày 11 tháng 4.</p>
+<p>Cửa thứ nhất là phòng tiếp dân của bệnh viện tỉnh. Người ở đó đọc quy định cho cậu nghe, đọc chậm, đọc đủ, và chỉ cho cậu xuống phòng hành chính.</p>
+<p>Cửa thứ hai là phòng hành chính. Người ở đó nói giấy giới thiệu của nơi công tác thì phải là nơi đang công tác, và hỏi cậu đang làm ở đâu, và cậu nói cậu làm cho một tổ khảo sát, và người ấy hỏi tổ khảo sát ấy thuộc cơ quan nào, và cậu không trả lời được trong một câu.</p>
+<p>Cửa thứ ba là ủy ban phường. Người ở đó xác nhận được nơi cư trú, và nói rõ rằng cái người ta cần không phải nơi cư trú.</p>
+<p>Ba người ấy đều nói đúng. Không ai trong ba người ấy làm sai một chữ nào so với văn bản, và cả ba đều có nói câu chúc cậu may mắn ở cuối.</p>
+<p>Cái người tìm cậu thì tìm đúng lúc, và người ấy không doạ cậu câu nào, và không nói tới tiền.</p>
+<p>Người ấy đưa ra một tờ giấy phép cấp thuốc, in sẵn, có số hiệu, có dấu, có tên người thụ hưởng đánh máy sẵn và đúng chính tả, thời hạn hai mươi bốn tháng. Người ấy để tờ giấy trên bàn và không đẩy nó về phía Việt.</p>
+<p>Cái người ấy hỏi là lịch trình và vị trí của nhóm trong hai tuần cuối tháng ba.</p>
+<p>Không hỏi hồ sơ. Không hỏi nguồn. Không hỏi tên ai.</p>
+<p>Người ấy nói thêm một câu, và câu ấy cũng không phải doạ.</p>
+<p>"Cái này tôi ký được hôm nay. Tuần sau thì tôi không chắc, vì tuần sau tôi không còn ngồi ở chỗ này."</p>
+<p>Việt ngồi với tờ giấy ấy bốn mươi phút.</p>
+<p>Trong bốn mươi phút ấy cậu không nghĩ tới em cậu một lần nào. Cậu nghĩ tới em cậu trong hai ngày trước đó và cậu đã nghĩ hết rồi. Bốn mươi phút này cậu dùng để tính.</p>
+<p>Cậu tính. Cậu tính theo lối cậu vẫn dạy Toản, tức là cậu đi ngược lại xem cái tin ấy đi tới đâu thì dừng. Lịch trình hai tuần thì hết hai tuần là hết. Vị trí thì nhóm đổi chỗ ngủ ba lần một tháng. Hồ sơ thì nằm ở bốn chỗ và cậu không nói chỗ nào.</p>
+<p>Cậu tính ra rằng cái cậu bán thì hai tuần nữa là hết hạn, và cái cậu mua thì hai mươi bốn tháng.</p>
+<p>Cậu không tính sai chỗ nào. Cậu tính thiếu một chỗ, và chỗ thiếu ấy là cái mà không ai ngồi ở cái bàn đó tính được, vì nó nằm ở phía bên kia.</p>
+<p>Cậu cầm tờ giấy.</p>
+<p>Cậu về trạm chiều 15 tháng 3, đưa thuốc cho người quen mang xuống cho mẹ cậu như mọi lần, rồi cậu ra đấu nối lại chỗ vá thứ chín trên đường truyền, vì chỗ ấy chập từ hôm mồng bảy.</p>
+<p>Trong mười một ngày sau đó cậu không đổi một thói quen nào. Cậu vẫn ngủ ở chỗ cũ, vẫn ăn cùng mâm, vẫn cãi nhau với Toản về chuyện xếp phiếu theo cột giờ hay theo cột nguồn.</p>
+<p>Ngày 22 tháng 3, khi cả nhóm chốt lịch đi cây số bốn mươi, cậu ngồi ở đầu bàn và cậu là người ghi lịch ấy lên bảng gỗ, vì việc ghi bảng là việc của cậu từ năm 2062.</p>
+<p>Ngày 26 tháng 3, ở cây số bốn mươi, xe của nhóm bị chặn ở một chốt không có trên bảng chốt.</p>
+<p>Người ta giữ ba tiếng, xem giấy, lập biên bản, và trả lại đủ. Không mất tờ nào. Không ai bị đánh. Ông Đô ký vào biên bản và ghi giờ.</p>
+<p>Cái mất là ba ngày, và ba ngày ấy là ba ngày cuối trước hạn nộp tài liệu cho phiên họp.</p>
+<p>Chặng thứ ba trượt.</p>
+<p>Toản tìm ra chuyện đó ngày 2 tháng 4, và cậu tìm ra bằng cách của cậu.</p>
+<p>Cậu không đi hỏi ai. Cậu xếp phiếu. Cái chốt ở cây số bốn mươi xuất hiện lần đầu trong tin lúc mười giờ hai mươi ngày 25, và tin ấy có ba bản, và bản sớm nhất là bản của một người bán xăng ở ngã ba. Cậu đi ngược cái giờ.</p>
+<p>Cái chốt ấy dựng lúc bốn giờ chiều ngày 24.</p>
+<p>Lịch trình đi cây số bốn mươi thì cả nhóm chốt lại vào tối 22, và trong nhóm có sáu người biết.</p>
+<p>Trong sáu người, ngày 23 có một người ra khỏi vùng và về ngày hôm sau.</p>
+<p>Toản ngồi với sáu cái phiếu ấy hết một buổi chiều, và cậu làm đúng cái việc cậu vẫn làm, là bỏ ra cái nào cùng ra một lúc, giữ lại cái nào sớm nhất, và so bản dài nhất với bản ngắn nhất.</p>
+<p>Cái mẹo ấy là của Việt.</p>
+<p>Cậu không nói với ai trong ba ngày. Ngày thứ tư cậu nói với ông Đô, một câu, và ông Đô nghe xong thì hỏi lại một câu.</p>
+<p>"Mày chắc chưa?"</p>
+<p>"Chắc."</p>
+<p>"Rứa thì thôi." Ông Đô nói. "Chừ không phải lúc."</p>
+<p>Toản không hiểu câu ấy trong hôm đó.</p>
+<p>Phiên họp ngày 11 tháng 4 năm 2064.</p>
+<p>Hồ sơ vào được biên bản.</p>
+<p>Nó vào muộn ba ngày so với hạn, nên nó không nằm trong bộ tài liệu chính. Nó nằm ở phụ lục, mục các tài liệu tham khảo do thành viên đệ trình, số thứ tự bảy trên chín.</p>
+<p>Bà Reinholt đọc nó. Bà là người duy nhất trong mười bảy người đọc hết, và bà đọc hết vì bà vẫn đọc hết.</p>
+<p>Giáo sư Elias Rourke phát biểu mười hai phút.</p>
+<p>Ông đứng. Ông bảy mươi mốt tuổi và ông có một cây gậy, và ông để cây gậy dựa vào bàn chứ không cầm.</p>
+<p>Trong mười ba năm, đây là lần thứ bốn mươi ba ông ra điều trần, và ông có đếm.</p>
+<p>Ông trình bày ba điều: bản ghi bốn mươi giây năm 2058 và số hiệu lưu kho của nó; hai mươi chín trang dữ liệu không gắn với người nào, và ông nói thẳng rằng ông không dẫn được nguồn của nó và ông biết điều đó có nghĩa là gì; và một câu hỏi.</p>
+<p>Câu hỏi là: nếu bên kia có hai bên, thì giao thức này giết bên nào.</p>
+<p>Ông dùng hết mười hai phút. Ông dùng cả hai mươi giây cuối.</p>
+<p>Bà Osei phát biểu bốn phút. Bà không tranh luận về tư liệu.</p>
+<p>Bà nêu ba điểm về thủ tục. Thứ nhất, một biện pháp không có điều kiện chấm dứt thì theo quy chế phải kèm cơ chế rà soát định kỳ, và văn bản mười chín trang không có mục ấy. Thứ hai, phụ lục nộp muộn ba ngày thì theo quy chế được đưa ra thảo luận nếu có một phần ba thành viên yêu cầu, và bà yêu cầu. Thứ ba, biểu quyết về một biện pháp vĩnh viễn thì cần hai kỳ họp liên tiếp, trừ trường hợp khẩn cấp.</p>
+<p>Điểm thứ nhất được ghi nhận, và ban thư ký ghi thêm một mục rà soát năm năm một lần vào bản cuối, và mục ấy dài hai dòng.</p>
+<p>Điểm thứ hai được đưa ra lấy ý kiến, và số người yêu cầu là năm trên mười bảy.</p>
+<p>Điểm thứ ba bị bác, vì phiên họp đã được tuyên bố là phiên khẩn cấp từ đầu tháng ba, và cái tuyên bố ấy do chủ toạ luân phiên ký, và nó có thật, và nó đúng quy chế.</p>
+<p>Bà Osei đề nghị ghi cả ba điểm và cách xử lý của cả ba vào biên bản. Nó được ghi.</p>
+<p>Rồi tướng Webb được mời trả lời.</p>
+<p>"Nếu có hai bên." Ông nói. "Tôi không biết là có hay không. Giáo sư cũng không biết. Điều tôi biết là bốn năm nay chúng ta không đếm được nữa, và một lực lượng không đếm được thì không chọn được. Muốn chọn thì phải phân biệt được. Muốn phân biệt được thì phải đo được. Chúng ta không đo được."</p>
+<p>Ông nói tiếp, và câu tiếp theo là câu làm phòng họp im.</p>
+<p>"Giả sử giáo sư đúng. Giả sử có một bên không đáng chết. Xin quý vị cho tôi biết cái ranh giới. Cho tôi một dấu hiệu đo được ở khoảng cách một nghìn tám trăm mét, ban đêm, trong bão tuyết. Tôi sẽ đưa nó vào giao thức trong hai tuần."</p>
+<p>Không ai đưa ra được cái dấu hiệu ấy.</p>
+<p>Rourke không đưa ra được. Ông có hai trăm sáu mươi mốt mục về sức nặng, hướng, và nhiệt độ, và cả ba thứ ấy chỉ đo được bằng một người, và người ấy thì không có trong tài liệu, và không được phép có trong tài liệu.</p>
+<p>Biểu quyết: thuận mười một, chống bốn, trắng hai.</p>
+<p>Trong mười một phiếu thuận có bốn ghế Mỹ, bốn ghế Nga, và hai ghế Trung Quốc. Mười trên mười bảy là quá bán.</p>
+<p>Phiếu thuận thứ mười một là ghế Đức.</p>
+<p>Hai phiếu trắng là ghế Nhật Bản và ghế Ấn Độ. Ghế Nhật Bản giải thích trong ba mươi giây. Ghế Ấn Độ không giải thích.</p>
+<p>Bà Reinholt giải thích phiếu của mình trong bốn mươi giây, và bà giải thích chân thành. Bà nói bà đã đọc hết phụ lục bảy. Bà nói nếu tài liệu ấy đúng thì nó là lý do mạnh nhất để tìm một cách khác, và bà nói bà đã tìm cách ấy trong ba năm ở tổ công tác và không tìm ra. Bà nói bà bỏ phiếu cho cái đang có, vì bà không có cái nào khác để bỏ phiếu cho.</p>
+<p>Bà quay sang Rourke sau phiên họp và bà nói với ông một câu, và câu ấy bà nói với đúng cái thiện ý bà đã có sáu năm trước.</p>
+<p>"Ông đưa tôi cái ranh giới đó thì tôi đổi phiếu ngay hôm sau, thưa giáo sư."</p>
+<p>Bản tin phát lúc bảy giờ tối ngày 11 tháng 4.</p>
+<p>Trong bốn mươi tám giờ sau đó, hai mươi ba tờ báo lớn đăng bài, và mười chín bài trong hai mươi ba bài hỏi cùng một câu, là vì sao đến bây giờ mới làm.</p>
+<p>Không ai bưng bít cái gì hết. Phụ lục bảy được công bố cùng biên bản, đầy đủ hai mươi chín trang, đúng quy chế, và trong sáu tuần đầu nó được tải về bốn trăm mười một lượt.</p>
+<p>Bốn trăm mười một lượt trên một văn bản mà cả thế giới đang bàn.</p>
+<p>Trong sáu tuần ấy, cùng cái trang mạng đó, biên bản phiên họp được tải về hai mươi mốt nghìn lượt.</p>
+<p>Ba tổ chức lên tiếng phản đối giao thức, và cả ba đều phản đối ở phần chi phí. Một tổ chức thứ tư phản đối ở phần đạo lý, ra thông cáo dài hai trang, và thông cáo ấy được sáu tờ báo đăng lại ở mục quốc tế, và không tờ nào trong sáu tờ đặt nó lên trang nhất.</p>
+<p>Ngày 19 tháng 4, một đài lớn có mời một người phản biện lên nói tám phút về phụ lục bảy. Người ấy nói đúng: tài liệu không dẫn được nguồn, không kiểm chứng được, không lặp lại được. Người dẫn chương trình cảm ơn và chuyển sang phần sau.</p>
+<p>Toản ngồi trước cái kho lưu trữ của cậu tối 19 tháng 4.</p>
+<p>Ba trăm bốn mươi mốt trang. Sáu năm. Bốn địa chỉ.</p>
+<p>Cậu ngồi trước nó và cậu nghĩ tới việc xoá.</p>
+<p>Cậu nghĩ tới nó một cách cụ thể, tức là cậu nghĩ tới việc xoá thì mất bao lâu, phải xoá ở mấy chỗ, và ở hai trong bốn chỗ thì cậu không xoá được vì cậu không tới được.</p>
+<p>Rồi cậu nghĩ tới cái khác. Nếu xoá thì ba trăm bốn mươi mốt trang ấy thành ra chưa từng có, và cái xóm Bàu Sanh thành ra chưa từng có chín hộ, và cái danh sách thương vong tháng mười năm 2059 thành ra đúng là ba mươi hai tên.</p>
+<p>Cậu không xoá cái gì cả.</p>
+<p>Cậu chỉ ngừng gửi đi.</p>
+<p>Hai việc ấy khác nhau, và cái khác nhau giữa chúng thì đêm ấy chưa ai trong trạm biết là sẽ quan trọng.</p>
+<p>Cậu ngồi đó chừng một tiếng, rồi cậu đứng dậy, xếp lại xấp phiếu trên bàn theo cột giờ như mọi tối, và cậu xếp hết cả những cái phiếu của hai tuần chưa xếp.</p>
+<p>Elin về trạm lúc gần chín giờ và thấy cậu đang xếp.</p>
+<p>"Anh xếp cả mấy cái đã gạch." Cô nói.</p>
+<p>"Ừ."</p>
+<p>Cậu xếp tới gần hai giờ sáng. Xong thì cậu để cả xấp lên nóc tủ hồ sơ, ngay ngắn, cạnh cuộn bản đồ.</p>
+</article>
+
+
+<svg class="rift-small" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+</svg>
+
+
+<div class="chapter-foot">
+  <nav class="chapter-nav" aria-label="Điều hướng chương">
+    <a class="prev" href="chuong-16.html"><span class="lbl">Trước</span><span class="ttl">Người Giữ Ký Ức</span></a>
+    <a class="toc-link" href="index.html" aria-label="Về mục lục"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></a>
+    <a class="next" href="chuong-18.html"><span class="lbl">Sau</span><span class="ttl">Sáu Trăm Chín Mươi Mét</span></a>
+  </nav>
+</div>
+
+<footer class="sitefoot">
+  <p>Khúc Ai Ca Cho Những Kẻ Vô Danh — Vòng Tuần Hoàn Người Gieo Hạt · Quyển II</p>
+  <p>© 2026 Nguyễn Duy Anh (bút danh: Mendingur). Bản quyền tác phẩm thuộc về tác giả.</p>
+</footer>
+
+<script src="glow.js" defer></script>
+</body>
+</html>

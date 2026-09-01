@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tôi Và Anh — Khúc Ai Ca Cho Những Kẻ Vô Danh</title>
+<meta name="description" content="Vòng Tuần Hoàn Người Gieo Hạt · Quyển II — tiểu thuyết của Mendingur">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="style.css">
+<script src="reader.js" defer></script>
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem('mendingur-theme');
+    var theme = saved === 'dark' || saved === 'light'
+      ? saved
+      : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+  <linearGradient id="wingGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="55%" stop-color="#C99A3E"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+  <radialGradient id="coreGlow" cx="50%" cy="55%" r="55%">
+    <stop offset="0%" stop-color="#FFF6DE" stop-opacity="0.95"/>
+    <stop offset="55%" stop-color="#E4C077" stop-opacity="0.35"/>
+    <stop offset="100%" stop-color="#E4C077" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="flowerGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+</defs>
+</svg>
+<div class="grain"></div>
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+<div class="settings-menu" id="settingsMenu">
+  <button class="menu-toggle" type="button" id="settingsMenuToggle" aria-haspopup="true" aria-expanded="false" aria-controls="settingsPopover" aria-label="Cài đặt giao diện">
+    <span class="menu-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+  </button>
+  <div class="settings-popover" id="settingsPopover" role="menu">
+    <div class="settings-group">
+      <p class="settings-group-label">Giao diện</p>
+      <div class="theme-switcher" id="themeSwitcher" role="group" aria-label="Giao diện sáng / tối">
+        <button class="theme-btn active" type="button" data-theme-choice="light" aria-pressed="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <span>Sáng</span>
+        </button>
+        <button class="theme-btn" type="button" data-theme-choice="dark" aria-pressed="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+          <span>Tối</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<header class="sitebar">
+  <a class="brand" href="index.html">
+    <span class="mark"><svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sower's Cycle mark">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+<g transform="translate(200,278)">
+  <g><ellipse rx="14" ry="21" transform="rotate(0)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(72)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(144)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(216)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(288)" fill="url(#flowerGrad)"/></g>
+  <circle r="9.5" fill="#FFF6DE"/>
+</g>
+<g transform="translate(200,96)"><path d="M0,-24 C2,-7 7,-2 24,0 C7,2 2,7 0,24 C-2,7 -7,2 -24,0 C-7,-2 -2,-7 0,-24 Z" fill="#F3D488"/></g>
+</svg></span>
+    <span class="word">Khúc Ai Ca Cho Những Kẻ Vô Danh</span>
+  </a>
+  <nav>
+    <a href="index.html" class="toc-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      Mục lục
+    </a>
+  </nav>
+</header>
+<div class="progress-track"><div class="progress-fill"></div></div>
+
+<header class="chapter-head">
+  <p class="crumb"><a href="index.html">IN PARADISUM · HOÁ ĐƠN ĐẾN MUỘN</a></p>
+  <span class="cnum">Chương 32</span>
+  <h1>Tôi Và Anh</h1>
+  <div class="font-toggle" role="group" aria-label="Cỡ chữ">
+    <button type="button" data-size="sm" aria-pressed="false">A-</button>
+    <button type="button" data-size="md" aria-pressed="true">A</button>
+    <button type="button" data-size="lg" aria-pressed="false">A+</button>
+  </div>
+</header>
+
+<article class="prose" data-size="md">
+<p>Triển lãm ảnh Mười Lăm Năm, nhà văn hoá huyện, mở cửa từ ngày 2 tháng 8 năm 2070, vào cửa tự do.</p>
+<p>Bốn mươi bảy ảnh treo trên tường, chú thích in trên giấy dán vào góc dưới khung.</p>
+<p>Ảnh số 41. Chú thích: Cấu trúc. Ảnh tư liệu, chụp năm 2066.</p>
+<p>Tập chú thích đánh máy để ở bàn tiếp khách có thêm một cụm ở dòng của ảnh số 41, và cụm ấy là đường kính non một cây số.</p>
+<p>Tập ấy in mười lăm bản. Đến ngày đóng cửa triển lãm còn mười ba bản.</p>
+<p>Toản ba mươi tư tuổi.</p>
+<p>Cậu tới trạm năm hai mươi hai tuổi để vá đường truyền, hợp đồng khoán, hết hạn ngày 30 tháng 11 năm 2058, và viện không cử ai xuống nghiệm thu và cũng không gọi cậu về. Từ đó tới nay cậu chưa làm việc gì khác.</p>
+<p>Cái kho lưu trữ của cậu bây giờ là bốn trăm bảy mươi hai trang, ba mươi mốt hồ sơ, và một xấp phiếu.</p>
+<p>Hồ sơ cuối cùng cậu lập xong tháng 5 năm 2067. Từ đó tới nay cậu vẫn ghi phiếu, và cậu ghi vì tay cậu quen, và trong ba năm ấy không có cái phiếu nào ghép được với cái phiếu nào.</p>
+<p>Cậu chưa công bố một hồ sơ nào.</p>
+<p>Ngày mồng hai tháng 8, cậu đi coi cái triển lãm ở nhà văn hoá huyện, vì hôm ấy cậu lên huyện lấy giấy gia hạn cho trạm và triển lãm thì ở ngay bên cạnh.</p>
+<p>Bốn mươi bảy ảnh. Cậu đi hết một vòng trong mười tám phút.</p>
+<p>Trong bốn mươi bảy ảnh có hai ảnh cậu biết. Ảnh số 12 chụp một cái sân kho hợp tác tháng 8 năm 2059, và chú thích đúng. Ảnh số 26 chụp một đoàn xe trên đường tỉnh, chú thích ghi tháng 10 năm 2062, và tháng ấy sai, vì cái đoạn đường trong ảnh tới tháng chạp năm 2062 mới rải đá.</p>
+<p>Cậu đứng trước ảnh số 26 chừng nửa phút.</p>
+<p>Ở bàn tiếp khách có một quyển sổ ghi ý kiến, mười một dòng, và cả mười một đều là lời cảm ơn ban tổ chức.</p>
+<p>Cậu không ghi gì. Cậu về, và hai hôm sau cậu lấy xấp phiếu xuống.</p>
+<p>Ngày 4 tháng 8 năm 2070, cậu lấy xấp phiếu trên nóc tủ hồ sơ xuống để tìm một địa chỉ.</p>
+<p>Xấp ấy để trên đó từ đêm 19 tháng 4 năm 2064, ngay ngắn, cạnh cuộn bản đồ. Nó xếp theo cột giờ. Cậu tìm tới cột giờ của tháng 5 năm 2068 và cậu tìm ra cái phiếu ba dòng, và ở dòng nội dung có tên một xã và tên một xóm.</p>
+<p>Ở cột giờ ngày 21 tháng 11 năm 2068 có một tờ giấy gấp làm tư nằm lẫn giữa hai cái phiếu.</p>
+<p>Cậu mở ra. Nó có một dòng.</p>
+<p class="p-note">Việt à, tao có chuyện muốn nói với mày, mà nói ra thì cũng chẳng để làm gì.</p>
+<p>Cậu đọc lại một lần. Rồi cậu gấp nó theo đúng nếp cũ và để lại vào chỗ nó vẫn nằm.</p>
+<p>Cái địa chỉ ấy sai từ năm 2069.</p>
+<p>Cậu đi tới nơi mất một ngày rưỡi, và ở đó người ta nói người nhà ấy chuyển đi cuối năm ngoái, chuyển theo chỗ làm, và không ai biết chuyển đi đâu.</p>
+<p>Cậu về trạm và cậu làm cái việc cậu làm được.</p>
+<p>Cậu ngồi với ba tờ thông báo cắt điện dán ở ba xã trong tháng 6, tháng 7 và tháng 8. Cả ba đều là thông báo cắt điện để thi công tuyến cáp, và cả ba đều có bốn dòng giống nhau.</p>
+<p>Tờ tháng 6 có dòng thứ năm. Dòng thứ năm ghi tên đội thi công và ghi số người.</p>
+<p>Hai tờ kia không có dòng thứ năm, vì hai tờ kia là tờ chép lại, và người chép lại thì chép cái phần cần cho dân, và tên đội thi công thì dân không cần.</p>
+<p>Cái mẹo ấy là của Việt. Cậu đã dùng nó mười hai năm, và đây là lần thứ hai cậu dùng nó để tìm một người.</p>
+<p>Từ tên đội thi công, cậu tra ra nhà thầu. Từ nhà thầu, cậu tra kết quả trúng thầu công bố trên bản tin của sở, quý hai và quý ba, và ra hai công trình. Công trình thứ hai cách trạm sáu mươi cây.</p>
+<p>Cả ba bước ấy đều là nguồn công khai và cả ba đều chán ngắt.</p>
+<p>Việc ấy mất của cậu chín ngày. Sáu ngày là chờ. Ba tờ thông báo thì cậu phải đi ba xã để chép lại, và một xã thì cán bộ văn phòng đi họp ba hôm, và bản tin của sở thì ra một tháng một số và số quý ba về muộn bốn ngày.</p>
+<p>Trong chín ngày ấy cậu không ghi một cái phiếu nào, vì cậu đang dùng cái mẹo chứ không đang thu tin, và hai việc ấy khác nhau.</p>
+<p>Em gái Việt mất ngày 2 tháng 7 năm 2066, hai mươi bốn tuổi.</p>
+<p>Chuyện ấy nằm ở ba chỗ giấy tờ và cả ba chỗ đều đầy đủ.</p>
+<p>Chỗ thứ nhất là sổ cấp phát thuốc của trạm y tế xã. Sổ ấy có hai mươi sáu dòng mang tên cô, dòng thứ nhất đề ngày 12 tháng 4 năm 2064 và dòng cuối cùng đề ngày 27 tháng 2 năm 2066, và khoảng cách giữa hai dòng liền nhau là hai mươi tám ngày, và trong hai mươi lăm lần thì không lần nào lệch quá một ngày.</p>
+<p>Chỗ thứ hai là tờ giấy phép cấp thuốc, số hiệu, có dấu, tên đánh máy đúng chính tả, ký ngày 18 tháng 3 năm 2064, thời hạn hai mươi bốn tháng. Nó hết hiệu lực ngày 18 tháng 3 năm 2066.</p>
+<p>Người ta ký trước và Việt đưa sau, và giữa hai việc ấy là năm ngày.</p>
+<p>Chỗ thứ ba là quyết định ngày 4 tháng 11 năm 2065 của sở y tế, có hiệu lực từ ngày mồng một tháng giêng năm 2066, đưa loại thuốc ấy vào danh mục cấp thường xuyên ở tuyến huyện.</p>
+<p>Nghĩa là ba lần lấy thuốc cuối cùng thì tờ giấy phép không cần nữa. Không ai ở trạm y tế nói chuyện đó với ai, vì việc của trạm y tế là phát thuốc chứ không phải là nói cho người ta biết cái giấy của người ta đã thôi cần thiết.</p>
+<p>Ngày 2 tháng 7 năm 2066, sáu giờ sáng, cô ra sân rửa rau ở cái máy bơm.</p>
+<p>Cái bơm ấy nhà mua năm 2065. Dây của nó chạy dọc chân tường, và ở chỗ qua bậc thềm thì lớp vỏ đã sờn, và sờn từ mùa mưa năm trước.</p>
+<p>Mẹ cô đứng cách đó bốn mét, ở bếp.</p>
+<p>Trạm y tế cách nhà chín trăm mét. Người trực hôm ấy đạp xe tới, và từ lúc có người chạy đi gọi tới lúc người trực tới nơi là mười một phút, và người trực làm hết cái làm được.</p>
+<p>Tờ giấy phép nằm trong ngăn kéo cái bàn ở gian ngoài, gấp làm đôi, cùng chỗ với sổ hộ khẩu. Nó đã hết hiệu lực từ ba tháng rưỡi trước.</p>
+<p>Không ai bỏ nó đi.</p>
+<p>Việt hôm ấy đang ở một công trình cách nhà hai trăm cây. Người ta báo cho cậu ấy chiều mồng hai và cậu ấy về tới nhà trưa mồng ba, đi hai chặng xe khách và một chặng đò.</p>
+<p>Mẹ cậu ấy sáu mươi ba tuổi năm ấy. Bà không ốm. Bà vẫn đi chợ, vẫn nuôi gà, và ba năm sau thì bà theo con trai chuyển đi.</p>
+<p>Toản không biết một chữ nào trong ba chỗ giấy tờ ấy, không năm 2066 và cũng không về sau.</p>
+<p>Cậu tới công trình thứ hai chiều ngày 19 tháng 8.</p>
+<p>Đó là một đoạn tuyến cáp chạy dọc đường tỉnh, và người ta đang kéo cáp qua một cái mương. Cậu ngồi ở quán nước bên kia đường từ ba giờ tới năm giờ mười lăm, uống hai chén, và cậu nhận ra Việt lúc bốn giờ, từ cách chừng bốn chục mét, vì cái kiểu cuộn dây ở khuỷu tay thì mười hai năm không đổi.</p>
+<p>Việt ba mươi sáu tuổi. Việt gầy hơn, tóc cắt ngắn, và Việt vẫn là người trong tổ hay nói nhất, vì suốt hai tiếng Toản ngồi bên kia đường thì cái miệng ấy không nghỉ.</p>
+<p>Năm giờ mười lăm thì tổ nghỉ. Việt ra ngoài đường, và Toản đứng dậy đi tới.</p>
+<p>Việt nhìn thấy cậu và mặt Việt sáng lên, và cái sáng lên ấy là thật, và nó kéo dài chừng hai giây.</p>
+<p>"Ủa. Toản." Việt nói. "Mày ra đây khi mô?"</p>
+<p>"Tôi ra hồi sáng."</p>
+<p>Việt đứng đó. Việt không nói gì về cái chữ ấy.</p>
+<p>Hai người đi bộ chừng ba chục mét, ra chỗ có cái gốc cây, và Việt hỏi hai câu về trạm, hỏi chị Liên còn ở đó không, hỏi cái đường truyền bây giờ đi bằng tuyến nào. Toản trả lời cả hai câu, ngắn, và trả lời đúng.</p>
+<p>Rồi Toản nói cái cậu tới để nói.</p>
+<p>Cậu nói bằng số. Cậu nói cái chốt ở cây số bốn mươi dựng lúc bốn giờ chiều ngày 24 tháng 3 năm 2064. Cậu nói lịch trình đi cây số bốn mươi thì nhóm chốt tối 22, và trong nhóm có sáu người biết. Cậu nói trong sáu người ấy, ngày 23 có một người ra khỏi vùng và về hôm sau.</p>
+<p>Cậu nói hết trong chừng một phút và cậu không nói thêm một chữ nào ngoài số.</p>
+<p>Việt không cãi.</p>
+<p>Việt nghe hết. Trong lúc nghe thì Việt cầm cái găng tay trong tay phải và Việt gấp nó lại làm đôi rồi mở ra, hai lần.</p>
+<p>"Mày..." Việt nói.</p>
+<p>Việt dừng ở chữ ấy. Việt không nói tiếp cái câu ấy và Việt cũng không nói lại nó theo lối khác.</p>
+<p>Việt đứng nhìn ra phía cái mương một lúc rồi Việt nói.</p>
+<p>"Em tôi bệnh phải uống mỗi ngày." Việt nói. "Tháng ba năm nớ thuốc còn tới ngày mười một tháng tư. Tôi đi ba cửa trong hai ngày. Ba người đều nói đúng."</p>
+<p>"Tôi biết ba cửa đó." Toản nói.</p>
+<p>"Người ta đưa cái giấy hai mươi bốn tháng. Tôi tính bốn mươi phút. Cái tôi bán thì hai tuần nữa là hết hạn, cái tôi mua thì hai mươi bốn tháng."</p>
+<p>Việt nói câu ấy không to lên và cũng không nhỏ đi.</p>
+<p>"Tôi biết là tôi bán." Việt nói. "Tôi không đi tìm lý do khác."</p>
+<p>Việt nói tiếp, và câu tiếp theo là câu Việt đã nghĩ trong sáu năm và chưa nói với ai.</p>
+<p>"Cái tôi tính sai là tôi tưởng hai tuần là hết. Hai tuần thì hết thiệt. Cái chốt đó nó hết ngày 28. Mà cái hồ sơ thì nộp ngày 8."</p>
+<p>Toản không nói gì. Chuyện ấy cậu đã biết từ tháng 4 năm 2064, biết chính xác tới từng ngày. Ngoài Việt thì có hai người biết, và người thứ hai đã rời trạm từ năm 2068 và chưa lần nào nói lại chuyện ấy với ai.</p>
+<p>"Tôi có nghĩ tới chuyện đi nói." Việt nói. "Tôi nghĩ trong hai năm. Rồi tôi thôi, vì nói ra thì nó cũng ở đó chứ nó không đi đâu."</p>
+<p>Rồi Việt nói thêm một câu, và câu ấy Việt nói bằng giọng người trả lời một câu hỏi chưa ai hỏi.</p>
+<p>"Em tôi mất năm 2066."</p>
+<p>Toản đứng đó chừng bốn giây.</p>
+<p>Cậu là người mười hai năm nay đi ngược cái giờ, và cái cậu làm khi nghe một câu như thế thì bao giờ cũng là hỏi thêm ngày, hỏi thêm chỗ, hỏi thêm ai nói.</p>
+<p>Cậu không hỏi.</p>
+<p>"Chừ tôi nói cho anh biết là tôi biết." Toản nói. "Rứa thôi."</p>
+<p>Cậu quay đi. Cậu đi được chừng mười bước thì Việt nói với theo một câu, và câu ấy là hỏi cậu có về kịp chuyến xe không.</p>
+<p>"Kịp." Toản nói.</p>
+<p>Cậu đi bộ hai cây ra ngã ba và cậu chờ bốn mươi phút. Trên xe cậu ngồi ghế thứ hai bên phải và cậu không ngủ.</p>
+<p>Diễm rời trạm kỹ thuật số hai ngày 28 tháng chạp năm 2070, khi hết hạn công tác.</p>
+<p>Cô về bằng suất của tổ chức cứu trợ, đi mười chín ngày và hai chặng bay, và cô về tới nơi ngày 16 tháng giêng năm 2071.</p>
+<p>Ngày 26 tháng giêng cô lên trạm thực địa. Chị Liên nấu cơm và ba người ăn trưa, và trong bữa cơm thì nói chuyện cái đò và chuyện chợ mới. Elin hôm ấy đi điểm 4 và điểm 5, đi từ sáu giờ sáng, và chiều mới về.</p>
+<p>Xong bữa thì Toản mang ra ba cái thùng các tông.</p>
+<p>Thùng thứ nhất là ba mươi mốt hồ sơ, xếp theo năm, mỗi hồ sơ một cái kẹp. Thùng thứ hai là bảng đối chiếu và bản sao tài liệu gốc. Thùng thứ ba là xấp phiếu, xếp theo cột giờ, và cậu buộc dây quanh nó theo chiều xấp phiếu vẫn nằm.</p>
+<p>Trong thùng thứ ba, ở cột giờ ngày 21 tháng 11 năm 2068, có một tờ giấy gấp làm tư.</p>
+<p>"Chị lấy hết." Toản nói. "Tôi không làm nữa."</p>
+<p>Từ tháng hai cậu nhận chân coi kho vật tư của trạm. Chị Liên đã ghi tên cậu vào bảng nhân sự quý một từ tháng chạp, và chị ghi trước khi hỏi cậu, và khi chị hỏi thì cậu nói ừ.</p>
+<p>Cái chân ấy có lương, thấp hơn khoán cũ chừng một phần tư, và nó có bảo hiểm.</p>
+<p>Diễm không hỏi vì sao. Cô mở thùng thứ nhất, lấy hồ sơ trên cùng, đọc trang đầu và trang cuối, rồi để lại.</p>
+<p>Rồi cô lấy cuốn sổ của cô ra để vào biên nhận.</p>
+<p>Toản đứng cạnh bàn và cậu nhìn cái trang cô mở ra.</p>
+<p>Trang ấy có bốn mục. Mục thứ nhất, mục thứ hai, mục thứ ba, mỗi mục là một cái tên viết tắt và một cột ngày. Mục thứ tư không có tên viết tắt nào. Nó có một cột ngày, dòng cuối cùng của cột ấy đề tháng 4 năm 2069, và dưới dòng cuối cùng có một nét kẻ ngang.</p>
+<p>Diễm lật sang trang bên, viết một dòng đầu trang, và dòng ấy là nguồn năm.</p>
+<p>"Nguồn bốn là ai?" Toản hỏi.</p>
+<p>"Nguồn bốn không có chỗ ngồi trong cơ quan nào." Diễm nói.</p>
+<p>Cô viết tiếp, ghi ngày, ghi số thùng, ghi số hồ sơ.</p>
+<p>Toản không hỏi lại.</p>
+<p>Cậu đã làm cái nghề đi tìm nguồn trong mười hai năm, và cậu đã ngồi cùng bàn với người đàn bà này chín năm, và trong chín năm ấy cậu không biết là có một mục thứ tư.</p>
+<p>Tờ bảng bốn cột Diễm kẻ đêm 12 tháng 10 năm 2070 thì cô không mang về. Bản của cô nằm trong cặp tài liệu của cô. Bản thứ hai, do người kỹ sư trưởng tự kẻ bằng thước và tự chép lại cả mười tám dòng, thì nằm ở trạm kỹ thuật số hai, và người ấy có ghế trong một cơ quan, và người ấy công bố được.</p>
+<p>Diễm biết chuyện đó và cô không viết nó vào sổ.</p>
+<p>Biên nhận làm ba liên, và Toản ký ở ô người giao, và cậu ghi giờ bên cạnh chữ ký, vì mười hai năm nay cậu ghi giờ.</p>
+<p>Xong thì cậu ra chỗ cái tủ hồ sơ.</p>
+<p>Nóc tủ bây giờ trống, trừ cuộn bản đồ.</p>
+<p>Nó là bản đồ địa hình một phần hai lăm nghìn in năm 2049, gấp mười sáu ô, bảy nếp gấp đã rách và đã dán bằng băng dính vải. Trên nó có ba nét chữ, và một trong ba nét chữ ấy là chữ in hoa viết bằng bút chì.</p>
+<p>Toản để nó ở đó. Cái bản đồ là của trạm chứ không phải của cậu, và trong thùng thứ ba thì không có chỗ cho nó.</p>
+<p>Trên bàn còn lại một tập giấy chưa cắt.</p>
+<p>Đó là chỗ biểu mẫu lấy mẫu đất in thừa năm 2057 còn lại, và Toản đếm nó lần cuối vào tháng 11 năm 2068, và hồi ấy còn sáu mươi tờ.</p>
+<p>"Cái ni là chi?" Diễm hỏi.</p>
+<p>"Phiếu." Toản nói.</p>
+<p>Diễm cầm tập giấy lên, gõ mép cho đều, và bỏ nó vào ngăn kéo bên trái, cái ngăn cô vẫn để giấy.</p>
+</article>
+
+
+<svg class="rift-small" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+</svg>
+
+
+<div class="chapter-foot">
+  <nav class="chapter-nav" aria-label="Điều hướng chương">
+    <a class="prev" href="chuong-31.html"><span class="lbl">Trước</span><span class="ttl">Không Có Toà Nào</span></a>
+    <a class="toc-link" href="index.html" aria-label="Về mục lục"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></a>
+    <a class="next" href="chuong-33.html"><span class="lbl">Sau</span><span class="ttl">Rà Phá</span></a>
+  </nav>
+</div>
+
+<footer class="sitefoot">
+  <p>Khúc Ai Ca Cho Những Kẻ Vô Danh — Vòng Tuần Hoàn Người Gieo Hạt · Quyển II</p>
+  <p>© 2026 Nguyễn Duy Anh (bút danh: Mendingur). Bản quyền tác phẩm thuộc về tác giả.</p>
+</footer>
+
+<script src="glow.js" defer></script>
+</body>
+</html>

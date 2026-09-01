@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rà Phá — Khúc Ai Ca Cho Những Kẻ Vô Danh</title>
+<meta name="description" content="Vòng Tuần Hoàn Người Gieo Hạt · Quyển II — tiểu thuyết của Mendingur">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="style.css">
+<script src="reader.js" defer></script>
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem('mendingur-theme');
+    var theme = saved === 'dark' || saved === 'light'
+      ? saved
+      : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+  <linearGradient id="wingGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="55%" stop-color="#C99A3E"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+  <radialGradient id="coreGlow" cx="50%" cy="55%" r="55%">
+    <stop offset="0%" stop-color="#FFF6DE" stop-opacity="0.95"/>
+    <stop offset="55%" stop-color="#E4C077" stop-opacity="0.35"/>
+    <stop offset="100%" stop-color="#E4C077" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="flowerGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+</defs>
+</svg>
+<div class="grain"></div>
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+<div class="settings-menu" id="settingsMenu">
+  <button class="menu-toggle" type="button" id="settingsMenuToggle" aria-haspopup="true" aria-expanded="false" aria-controls="settingsPopover" aria-label="Cài đặt giao diện">
+    <span class="menu-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+  </button>
+  <div class="settings-popover" id="settingsPopover" role="menu">
+    <div class="settings-group">
+      <p class="settings-group-label">Giao diện</p>
+      <div class="theme-switcher" id="themeSwitcher" role="group" aria-label="Giao diện sáng / tối">
+        <button class="theme-btn active" type="button" data-theme-choice="light" aria-pressed="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <span>Sáng</span>
+        </button>
+        <button class="theme-btn" type="button" data-theme-choice="dark" aria-pressed="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+          <span>Tối</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<header class="sitebar">
+  <a class="brand" href="index.html">
+    <span class="mark"><svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sower's Cycle mark">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+<g transform="translate(200,278)">
+  <g><ellipse rx="14" ry="21" transform="rotate(0)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(72)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(144)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(216)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(288)" fill="url(#flowerGrad)"/></g>
+  <circle r="9.5" fill="#FFF6DE"/>
+</g>
+<g transform="translate(200,96)"><path d="M0,-24 C2,-7 7,-2 24,0 C7,2 2,7 0,24 C-2,7 -7,2 -24,0 C-7,-2 -2,-7 0,-24 Z" fill="#F3D488"/></g>
+</svg></span>
+    <span class="word">Khúc Ai Ca Cho Những Kẻ Vô Danh</span>
+  </a>
+  <nav>
+    <a href="index.html" class="toc-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      Mục lục
+    </a>
+  </nav>
+</header>
+<div class="progress-track"><div class="progress-fill"></div></div>
+
+<header class="chapter-head">
+  <p class="crumb"><a href="index.html">IN PARADISUM · NGƯỜI CUỐI CÙNG ĐÓNG SỔ</a></p>
+  <span class="cnum">Chương 33</span>
+  <h1>Rà Phá</h1>
+  <div class="font-toggle" role="group" aria-label="Cỡ chữ">
+    <button type="button" data-size="sm" aria-pressed="false">A-</button>
+    <button type="button" data-size="md" aria-pressed="true">A</button>
+    <button type="button" data-size="lg" aria-pressed="false">A+</button>
+  </div>
+</header>
+
+<article class="prose" data-size="md">
+<p>Nhà ăn của đội, một buổi tối tháng 3 năm 2071.</p>
+<p>Một người nói cái cấu trúc ngoài đó bảy trăm mét.</p>
+<p>Người kia nói ừ, rồi nói từ tháng giêng thẻ ra vào không phải đổi theo quý nữa, đổi một lần cho cả năm.</p>
+<p>Không ai viết xuống cái nào trong hai cái đó.</p>
+<p>Thư của tổ chức cứu trợ tới trạm thực địa ngày 14 tháng 5 năm 2070, đề tên Trần Minh Huân.</p>
+<p>Chị Liên giữ nó bốn ngày rồi gửi tiếp về thị xã, vì ông Đô có để lại một địa chỉ hồi tháng 11 năm 2068 và địa chỉ ấy là nhà người em họ.</p>
+<p>Thư dài một trang. Nó nói tổ chức có hợp đồng phần đánh dấu tuyến cho khu định cư, nói thời hạn mười tám tháng, nói mức công và mức phụ cấp, và ở đoạn giữa nó nói lý do người ta hỏi ông.</p>
+<p>Lý do là năm 2067 ông có đi tuyến ấy và ông có làm một cái bảng.</p>
+<p>Trong hồ sơ chuyến đi năm 2067, ở phần phụ lục của tổ khảo sát điều kiện đất và nước, có một bản chụp ba trang, và ba trang ấy là bảng chặng của ông. Người soạn hồ sơ hồi ấy đưa nó vào vì mẫu hồ sơ có mục hành trình thực địa, và không đưa cái gì vào thì mục ấy trống.</p>
+<p>Ông Đô sáu mươi tư tuổi.</p>
+<p>Từ tháng chạp năm 2068 ông làm ở một đội xây dựng trên thị xã, việc trông kho và chấm công. Ông làm hai mươi mốt tháng và ông không bỏ buổi nào.</p>
+<p>Ông trả lời thư sau chín ngày. Ông viết bốn dòng, và trong bốn dòng có một câu hỏi, và câu hỏi ấy là đi ra đó thì mỗi năm về được mấy lần.</p>
+<p>Ông ra tới nơi ngày 29 tháng 9 năm 2070.</p>
+<p>Cái ông làm không phải rà phá. Rà phá là việc của hai tổ, mười bốn người, tuổi từ hai mươi sáu tới bốn mươi mốt, và họ đi trước.</p>
+<p>Ở vành đai cũ có bốn mươi bốn cụm hoả lực. Tính tới tháng 9 năm 2070 thì ba mươi chín cụm đã tháo. Năm cụm còn lại thì tháo một cụm mất chín ngày, và ngân sách tháo nằm ở một mục chi khác, và mục chi ấy hết tiền từ quý hai.</p>
+<p>Quanh mỗi chỗ cụm đã tháo còn lại một vùng bán kính hai trăm mét, và trong vùng ấy có đạn chưa nổ, có cáp chôn, có bồn dầu, có móng bê tông, và có mười hai năm đồ thừa của người ở.</p>
+<p>Trong tuần thứ nhất ông ở đó, hai tổ ấy đưa ra khỏi vùng bốn đầu đạn chưa nổ, một thùng dầu bảy chục lít còn nguyên, hai trăm mấy chục mét cáp, và bốn xe rưỡi thứ không có tên trong danh mục nào.</p>
+<p>Thứ không có tên thì người ta gọi là đồ. Trong bốn xe rưỡi ấy có: một đôi ủng trái, sáu cái can nhựa, ba cái ghế băng gãy chân, một cái bảng gỗ còn bốn lỗ vít, hai bao tải chăn đã mục, một cái ấm nhôm, và bốn mươi mấy cái thìa.</p>
+<p>Đồ thì chở ra bãi tập kết ngoài đường vòng, chất thành đống, và mỗi tháng có một chuyến xe chở đi.</p>
+<p>Trong mười tám tháng của hợp đồng, có một người của một hãng tin tới, ở một ngày, đi theo tổ hai buổi. Bài của người ấy đăng tháng 4 năm 2071, dài chừng bảy trăm chữ, và bài ấy viết về cái trường học đầu tiên của khu định cư, và trong bài có một câu nhắc tới việc dọn mặt bằng.</p>
+<p>Việc của ông là đi sau khi hai tổ ấy đi xong, và đánh dấu, và làm bảng.</p>
+<p>Đánh dấu thì có ba loại cọc. Cọc sơn trắng là đi được. Cọc sơn trắng có một vòng đỏ là đi được nhưng không đào. Cọc đỏ là chưa xong.</p>
+<p>Bảng thì có bốn cột: đoạn, độ dài, thời gian đi bộ, và thời gian đi xe.</p>
+<p>Ông thêm cột thứ năm vào tuần thứ hai.</p>
+<p>Cột thứ năm là thời gian đi bộ nếu vác nặng.</p>
+<p>Ông đã có cột ấy trong một cái bảng khác, ở một chỗ khác, năm 2067, và hồi ấy ông làm cột ấy một mình và ông không có ai để đưa nó cho.</p>
+<p>Lần này ông đưa nó cho người phụ trách hậu cần của đội, một người ba mươi bảy tuổi, và người ấy hỏi ông vác nặng là bao nhiêu cân, và ông nói ba chục.</p>
+<p>Người ấy nói ba chục thì ít quá, ở đây người ta vác bốn lăm.</p>
+<p>Ông làm lại cột ấy theo bốn lăm cân, mất hai ngày, và bảng dán ở nhà ca có năm cột từ ngày 8 tháng 10.</p>
+<p>Cuộn giấy kẻ ô ông mang theo khi rời trạm năm 2068 là cuộn ấy.</p>
+<p>Không ai hỏi là cuộn nào, và cũng không ai hỏi vì sao ông mang nó đi, vì trong mắt người ở trạm thì đó là một cuộn giấy.</p>
+<p>Trên tờ giấy ấy có mười một chặng và có ba nét chữ. Chặng thứ mười và chặng thứ mười một thì trên giấy không có số nào.</p>
+<p>Tuyến của khu định cư đi qua đúng chỗ ấy.</p>
+<p>Ông đi bộ nó ngày 4 tháng 11, hai lượt, đếm bước cả hai lượt. Bước ở đây ngắn hơn bước ở nhà vì tuyết nén, và ông có đo cả cái ngắn hơn ấy từ năm 2067 nên ông không phải đo lại.</p>
+<p>Cái chỗ không có số trên tờ giấy cũ, đo ra thì là bốn trăm mét.</p>
+<p>Ông ghi bốn trăm mét vào bảng mới, cột thứ hai, đoạn số bảy.</p>
+<p>Tờ giấy cũ ông không viết thêm gì vào. Ông để nó vào đáy ba lô, dưới bộ quần áo.</p>
+<p>Cái sổ nhỏ ông mang trong túi ngực thì ghi việc trong ngày. Mỗi trang một ngày, ba bốn dòng, và dòng nào xong thì đánh dấu ở đầu dòng.</p>
+<p>Trong sáu tháng đầu, có mười một dòng ông không gạch. Chín dòng là chờ vật tư. Hai dòng còn lại là hai đoạn cọc đỏ, và hai đoạn ấy tới lúc ông về vẫn là cọc đỏ.</p>
+<p>Ở khu này có một chuyện ông biết và ông không nói với ai, và nó không phải chuyện của ông.</p>
+<p>Cha của Mai mất tích khi đi dò gỡ bom mìn, cuối năm 2054 hoặc đầu năm 2055, và cái đó thì ông biết từ hồi Hùng kể, và Hùng kể trong một bữa cơm chứ không phải trong một câu chuyện.</p>
+<p>Không ai ở đây biết chuyện đó và không ai hỏi ông vì sao ông nhận việc này.</p>
+<p>Quy trình vào vùng chưa xong có bốn bước, và bước thứ hai là bỏ kim loại.</p>
+<p>Máy dò thì kêu cả với cái kim loại người ta mang trên người, nên trước khi vào thì mỗi người bỏ hết kim loại vào một cái khay nhôm ở nhà ca, và người trực ghi vào sổ: tên, giờ ra, giờ vào.</p>
+<p>Trong khay bỏ chìa khoá, tiền xu, khoá thắt lưng, đồng hồ, và bút.</p>
+<p>Sổ khay có bốn cột. Cột thứ tư là cột ghi chú, và trong chín tháng nó có ba dòng, và cả ba dòng đều về thời tiết.</p>
+<p>Người trực đếm người. Đồ thì ai bỏ vào người nấy lấy ra.</p>
+<p>Kỹ sư của phần đường là một người tên Alex, năm mươi mốt tuổi, sang đây từ tháng 8 năm 2070.</p>
+<p>Ông ta nói được tiếng Việt đủ để làm việc. Vốn của ông ta là chừng ba trăm chữ và trong ba trăm chữ ấy thì hai phần ba là chữ kỹ thuật, và ông ta xưng tôi và gọi ông Đô là ông, và ông Đô cũng gọi lại như thế.</p>
+<p>Tay trái ông ta yếu. Ông ta cầm đèn bằng tay phải và kẹp cái bảng vào giữa cánh tay trái với người, và ông ta làm việc ấy nhanh và gọn nên người mới tới thì hai ba tuần mới nhận ra.</p>
+<p>Ngày thứ nhất ông ta bỏ vào khay: một chùm chìa khoá, một cái đồng hồ, một cái bút bi có vỏ kim loại, và một cái nhẫn.</p>
+<p>Cái nhẫn ấy ông ta lấy từ túi áo trong bên phải chứ không phải từ ngón tay.</p>
+<p>Nó bằng bạc, trơn, và nó nhỏ. Nó không phải cỡ tay ông ta.</p>
+<p>Ra khỏi vùng thì ông ta lấy lại bốn thứ. Chìa khoá vào túi quần, đồng hồ vào cổ tay, bút vào túi ngực, và cái nhẫn vào túi áo trong bên phải.</p>
+<p>Ông Đô thấy chuyện đó ngày thứ nhất và thấy lại ngày thứ tư, và ông không hỏi.</p>
+<p>Ông cũng bỏ khay. Ông bỏ một cái đồng hồ, một cái bật lửa, và một chùm chìa khoá.</p>
+<p>Trong túi áo trong bên trái của ông có một tờ giấy, và giấy thì máy dò không kêu, nên ông không phải bỏ nó ra.</p>
+<p>Ông vẫn đưa hai ngón tay lên chạm vào chỗ ấy, ấn nhẹ một cái, rồi bỏ tay xuống, và ông làm việc ấy ở cửa nhà ca, trước khi bước ra.</p>
+<p>Alex thấy chuyện đó và Alex không hỏi.</p>
+<p>Hai người làm chung với nhau chín tháng và họ nói với nhau chừng vài trăm câu, và gần hết là câu về đất và về nước.</p>
+<p>"Đoạn bảy cho đi vòng." Alex nói. "Dưới có bê tông."</p>
+<p>"Vòng thì thêm bao nhiêu."</p>
+<p>"Sáu trăm mét. Đào lên thì sáu tuần."</p>
+<p>Ông Đô đi lại đoạn ấy một lượt vào buổi chiều, đếm bước, rồi ông ghi vào bảng cả hai con số, cả đoạn thẳng lẫn đoạn vòng, và ông ghi cột thứ năm cho cả hai.</p>
+<p>Hai tuần sau, bản vẽ tuyến gửi về đội có thêm một ô ở góc dưới bên phải, và trong ô ấy có ba con số tính bằng phút.</p>
+<p>Ba con số ấy là cột thứ năm của ba đoạn dài nhất. Trong ô không ghi chúng ở đâu ra.</p>
+<p>Định mức vật tư dự phòng mùa đông cho tuyến cấp nước gửi về đội tháng 11 năm 2070, hai trang.</p>
+<p>Trong hai trang có một bảng, và trong bảng có dòng ống thép, và ở dòng ống thép thì cột số lượng dự phòng tại kho tính theo một công thức, và công thức ấy dựa trên hai con số.</p>
+<p>Con số thứ nhất là nhiệt độ âm mà tuyến chịu được không phải sấy. Con số thứ hai là chín ngày, tức là thời gian thay một đoạn hỏng nếu có ống ở kho.</p>
+<p>Ở chân trang có một chú thích dẫn số hiệu một văn bản một trang, nộp cho ban thư ký uỷ ban tháng 7 năm 2070 bởi một cố vấn thường trực.</p>
+<p>Ông Đô đọc cái định mức ấy vì ông phải ký nhận. Ông đọc cả bảng, và ông thấy con số chín ngày là con số của người biết việc, và ông nói với người hậu cần một câu là cái ni ai làm mà làm đúng hè.</p>
+<p>Ông không đọc chú thích ở chân trang.</p>
+<p>Ông về nghỉ phép ngày 18 tháng chạp và về tới nhà ngày 27.</p>
+<p>Hùng lên chơi ngày mồng bốn tháng giêng, ở một đêm.</p>
+<p>Hùng bốn mươi bảy tuổi. Hùng vẫn chạy ghe, và bây giờ ghe của Hùng chở vật liệu chứ không chở người, vì tuyến khách thì có xe.</p>
+<p>Hai người ngồi ở hiên từ bảy giờ tối. Có một chai rượu và một đĩa lạc rang, và hai người uống chậm, vì cả hai đều không còn uống được như trước.</p>
+<p>Chuyện họ nói trong ba tiếng thì có: giá dầu, giá tôn, cái bến mới ngoài cửa lạch làm xong tháng 8, chuyện xin giấy phép phương tiện bây giờ nộp ở huyện chứ không phải lên tỉnh, chuyện một người quen chung đã mất năm ngoái, và chuyện con ghe của Hùng phải thay ván sàn.</p>
+<p>Ông Đô ngồi tách lạc trong lúc nói. Ông tách cả đĩa, bỏ vỏ vào một cái bát, và ông tách hết chỗ ấy trong hai tiếng.</p>
+<p>Hùng hỏi ngoài nớ làm chi.</p>
+<p>Ông kể. Ông kể cọc trắng, cọc trắng vòng đỏ, cọc đỏ. Ông kể cái bảng năm cột. Ông kể chuyện bỏ kim loại vào khay.</p>
+<p>Hùng hỏi rứa cái vụ nớ chừ coi như xong chưa.</p>
+<p>"Xong cái mô." Ông Đô nói. "Chỗ tao làm thì hai chục năm nữa cũng chưa xong. Bên mình thì lâu hơn."</p>
+<p>Ông tách thêm mấy hột lạc.</p>
+<p>"Đi đánh thì có giấy." Ông nói. "Có ngày đi, có ngày về, có đơn vị. Cái ni thì không có giấy chi hết. Rứa nên không ai tính được nó dài mấy năm."</p>
+<p>Hùng nói ừ.</p>
+<p>Hùng ngồi im chừng một lúc rồi Hùng nói cái đó thì đúng, và Hùng nói năm ngoái xã có làm một cái danh sách để đề nghị chế độ, và trong danh sách ấy phải ghi thời gian tham gia từ ngày nào tới ngày nào, và có bốn nhà không ghi được ngày bắt đầu.</p>
+<p>Rồi Hùng nói cái ván sàn thì mua ở ngoài Cửa Việt rẻ hơn ba phần, mà chở về thì tốn hơn phần rưỡi, nên rốt cuộc cũng rứa.</p>
+<p>Ông Đô nói mua chỗ gần đi cho khỏi mệt.</p>
+<p>Hai người ngồi thêm chừng nửa tiếng rồi đi ngủ.</p>
+<p>Tháng 2 năm 2071, đơn vị cũ quản lý chốt K-9 giải thể.</p>
+<p>Nó giải thể vì tuyến trung chuyển đã có bộ máy khác, và nó giải thể theo một quyết định dài một trang, và sổ sách của nó chuyển về một kho lưu trữ ở tuyến trên.</p>
+<p>Người ta có mời ông Đô tới để đối chiếu một số tuyến đường và một số tên gọi cũ, vì trong danh sách người còn liên hệ được thì ông là người duy nhất đã đi tuyến ấy bằng chân.</p>
+<p>Việc ấy làm trong bốn ngày, ở một cái phòng có hai cái bàn ghép.</p>
+<p>Cái phải đối chiếu là mười bảy tên gọi. Sổ sách của đơn vị dùng số hiệu tuyến, còn người đi thì gọi bằng tên, và tên thì có tên chính thức và tên người ta gọi ở nhà ca, và hai cái ấy trùng nhau ở chín chỗ và không trùng ở tám chỗ.</p>
+<p>Ông đối chiếu được mười lăm. Hai cái còn lại thì ông không biết, và ông nói ông không biết, và người ghi biên bản ghi vào cột ghi chú hai chữ là chưa rõ.</p>
+<p>Ngày thứ hai, một người trẻ trong tổ lưu trữ có hỏi ông một câu. Người ấy hỏi hồi năm 2067 ông ra tới đây bằng đường nào.</p>
+<p>Ông chưa kịp trả lời thì có người gọi người ấy sang phòng bên vì xe đóng gói tới sớm. Người ấy đi, và chiều thì người ấy làm việc khác, và câu ấy không hỏi lại.</p>
+<p>Ngày thứ ba, quyển bốn của sổ trực K-9 nằm trên bàn, trong chồng thứ hai, chờ đóng gói.</p>
+<p>Ông mở nó ra. Ông tìm tới trang 216.</p>
+<p>Sổ trực K-9 có bốn cột: giờ, nội dung, số hiệu, và chữ ký. Ở trang 216, dòng thứ chín, cột giờ ghi 02:04, cột số hiệu ghi hai số hiệu quân nhân, và cột chữ ký có hai chữ ký.</p>
+<p>Không có cột nào ghi tên.</p>
+<p>Trên bản gốc thì cái tên ấy không có ở đó, và không có ở đó thì không có gì để sửa.</p>
+<p>Ông đóng sổ lại, để vào đúng chỗ trong chồng thứ hai, và ông đi sang bàn bên kia làm nốt phần tên gọi cũ.</p>
+<p>Bản trích lục ông giữ là bản sao, đánh máy, một trang, gấp làm bốn.</p>
+<p>Ông sửa nó ngày 28 tháng 9 năm 2067, ở một cái hành lang, dưới một cái đèn, gạch một nét qua chữ sai và viết chữ đúng lên phía trên, nhỏ và ngay ngắn, đúng cỡ chữ đánh máy, rồi đọc lại cả dòng một lần cho chắc.</p>
+<p>Ba năm rưỡi nay nó nằm trong túi áo trong bên trái.</p>
+<p>Ông có nghĩ tới việc đưa nó cho một chỗ. Ông nghĩ tới chuyện đó hai lần, một lần năm 2068 và một lần trong bốn ngày ở cái phòng có hai bàn ghép.</p>
+<p>Cả hai lần ông đều dừng ở cùng một chỗ, và chỗ ấy là không có ô nào để nộp nó vào. Nộp một bản sao đã sửa tay thì phải kèm đơn, và đơn thì phải có người đứng đơn, và người đứng đơn thì phải là thân nhân hoặc cơ quan chủ quản, và ông không phải thân nhân và cái cơ quan chủ quản thì vừa giải thể tháng trước.</p>
+<p>Ông không đưa cho ai.</p>
+<p>Tháng 3 năm 2071 đội phát áo mới.</p>
+<p>Áo cũ phát tháng 9 năm 2070, và sau sáu tháng thì lớp vải ở khuỷu tay rách, và trong bảng định mức thì áo ngoài phát mười hai tháng một lần, nhưng lô cũ hết cỡ và lô mới về sớm, nên người ta phát luôn.</p>
+<p>Áo mới cùng màu, dày hơn một chút, và cái túi trong của nó nằm bên phải.</p>
+<p>Ông Đô ngồi ở bậc cửa nhà ca, chuyển đồ từ áo cũ sang áo mới. Bật lửa. Cái sổ nhỏ. Cây bút chì. Tờ giấy gấp làm bốn.</p>
+<p>Tờ giấy vào túi bên phải thì hơi rộng, vì túi bên phải may sâu hơn.</p>
+<p>Sáng hôm sau, ở cửa nhà ca, trước khi bước ra, ông đưa hai ngón tay lên chạm vào ngực áo bên trái.</p>
+<p>Ở đó không có gì.</p>
+<p>Ông bỏ tay xuống và đi ra. Trưa hôm ấy ông làm lại như thế một lần nữa.</p>
+</article>
+
+
+<svg class="rift-small" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+</svg>
+
+
+<div class="chapter-foot">
+  <nav class="chapter-nav" aria-label="Điều hướng chương">
+    <a class="prev" href="chuong-32.html"><span class="lbl">Trước</span><span class="ttl">Tôi Và Anh</span></a>
+    <a class="toc-link" href="index.html" aria-label="Về mục lục"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></a>
+    <a class="next" href="chuong-34.html"><span class="lbl">Sau</span><span class="ttl">Điều Trúc Không Kể Ai</span></a>
+  </nav>
+</div>
+
+<footer class="sitefoot">
+  <p>Khúc Ai Ca Cho Những Kẻ Vô Danh — Vòng Tuần Hoàn Người Gieo Hạt · Quyển II</p>
+  <p>© 2026 Nguyễn Duy Anh (bút danh: Mendingur). Bản quyền tác phẩm thuộc về tác giả.</p>
+</footer>
+
+<script src="glow.js" defer></script>
+</body>
+</html>

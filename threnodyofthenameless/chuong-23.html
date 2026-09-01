@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Khu Vực Chưa Xác Định — Khúc Ai Ca Cho Những Kẻ Vô Danh</title>
+<meta name="description" content="Vòng Tuần Hoàn Người Gieo Hạt · Quyển II — tiểu thuyết của Mendingur">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="style.css">
+<script src="reader.js" defer></script>
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem('mendingur-theme');
+    var theme = saved === 'dark' || saved === 'light'
+      ? saved
+      : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+  <linearGradient id="wingGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="55%" stop-color="#C99A3E"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+  <radialGradient id="coreGlow" cx="50%" cy="55%" r="55%">
+    <stop offset="0%" stop-color="#FFF6DE" stop-opacity="0.95"/>
+    <stop offset="55%" stop-color="#E4C077" stop-opacity="0.35"/>
+    <stop offset="100%" stop-color="#E4C077" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="flowerGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+</defs>
+</svg>
+<div class="grain"></div>
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+<div class="settings-menu" id="settingsMenu">
+  <button class="menu-toggle" type="button" id="settingsMenuToggle" aria-haspopup="true" aria-expanded="false" aria-controls="settingsPopover" aria-label="Cài đặt giao diện">
+    <span class="menu-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+  </button>
+  <div class="settings-popover" id="settingsPopover" role="menu">
+    <div class="settings-group">
+      <p class="settings-group-label">Giao diện</p>
+      <div class="theme-switcher" id="themeSwitcher" role="group" aria-label="Giao diện sáng / tối">
+        <button class="theme-btn active" type="button" data-theme-choice="light" aria-pressed="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <span>Sáng</span>
+        </button>
+        <button class="theme-btn" type="button" data-theme-choice="dark" aria-pressed="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+          <span>Tối</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<header class="sitebar">
+  <a class="brand" href="index.html">
+    <span class="mark"><svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sower's Cycle mark">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+<g transform="translate(200,278)">
+  <g><ellipse rx="14" ry="21" transform="rotate(0)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(72)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(144)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(216)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(288)" fill="url(#flowerGrad)"/></g>
+  <circle r="9.5" fill="#FFF6DE"/>
+</g>
+<g transform="translate(200,96)"><path d="M0,-24 C2,-7 7,-2 24,0 C7,2 2,7 0,24 C-2,7 -7,2 -24,0 C-7,-2 -2,-7 0,-24 Z" fill="#F3D488"/></g>
+</svg></span>
+    <span class="word">Khúc Ai Ca Cho Những Kẻ Vô Danh</span>
+  </a>
+  <nav>
+    <a href="index.html" class="toc-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      Mục lục
+    </a>
+  </nav>
+</header>
+<div class="progress-track"><div class="progress-fill"></div></div>
+
+<header class="chapter-head">
+  <p class="crumb"><a href="index.html">LIBERA ME · CHÍN NGÀY</a></p>
+  <span class="cnum">Chương 23</span>
+  <h1>Khu Vực Chưa Xác Định</h1>
+  <div class="font-toggle" role="group" aria-label="Cỡ chữ">
+    <button type="button" data-size="sm" aria-pressed="false">A-</button>
+    <button type="button" data-size="md" aria-pressed="true">A</button>
+    <button type="button" data-size="lg" aria-pressed="false">A+</button>
+  </div>
+</header>
+
+<article class="prose" data-size="md">
+<p>Bảng gỗ dựng ở đầu hành lang trung chuyển, sơn trắng, chữ đen, kẻ tay.</p>
+<p>NGÀY 2 THÁNG 11 NĂM 2068 · CẤU TRÚC 690,0 M · TUYẾN NÀY CẤM XE TRÊN 3,5 TẤN</p>
+<p>Bảng in đặt hàng tháng 8 chưa về. Cái bảng gỗ này do tổ vật tư kẻ, và người kẻ nó là một hạ sĩ quan có nét chữ đẹp.</p>
+<p>Bản đồ phân định in ngày 4 tháng 7 năm 2068, khổ lớn, tỉ lệ một phần năm mươi nghìn, và trên nó có ba loại đường kẻ.</p>
+<p>Đường kẻ liền là hành lang trung chuyển. Nó rộng bốn trăm mét, dài mười một cây, chạy từ mép cấu trúc ra tới đầu tuyến hậu cần cũ, và nó nằm đúng chỗ con đường công vụ đông từng nằm.</p>
+<p>Đường kẻ đứt là vành đai cũ. Bốn mươi bốn cụm hoả lực. Ba mươi mốt cụm đã tháo tính tới tháng 10, mười ba cụm còn nguyên vì tháo một cụm mất chín ngày và ngân sách tháo nằm ở một mục chi khác với ngân sách vận hành.</p>
+<p>Đường kẻ chấm là ranh giới khu vực hạn chế đi lại, và nó trùng với ranh giới cũ, vì chưa ai làm cái quyết định để đổi nó.</p>
+<p>Phần bỏ trống nằm ở góc trên bên phải, một hình chữ nhật rộng bằng bàn tay, không có đường kẻ nào bên trong, và ở giữa nó có bốn chữ in nghiêng: khu vực chưa xác định.</p>
+<p>Chú giải của bản đồ có mười bảy mục. Mục thứ mười bảy giải thích hình chữ nhật ấy bằng hai dòng, và hai dòng ấy nói rằng vị trí khu vực định cư sẽ do một uỷ ban thường trực đề xuất và Hội Đồng quyết định, và không nêu thời hạn.</p>
+<p>Hiệp định có hai mươi bốn điều và cái làm ra hai mươi bốn điều ấy chạy được là một cái thứ hai mươi lăm không nằm trong hiệp định.</p>
+<p>Cái thứ hai mươi lăm là nước.</p>
+<p>Hành lang trung chuyển cần nước cho ba trạm kỹ thuật và cho một trạm y tế, và nước ở đó phải lấy từ băng và phải nấu, và nấu thì cần điện. Hợp đồng hạ tầng nước và điện ký ngày 19 tháng 5 năm 2068, thời hạn hai mươi năm, và bên trúng thầu là bên đã nộp mười một trang hồi tháng chạp.</p>
+<p>Bà Osei có mặt ở lễ ký. Bà đứng ở hàng thứ hai và bà không phát biểu.</p>
+<p>Việc bà làm trong bảy tháng ấy thì không ai viết bài về nó.</p>
+<p>Bà chủ trì mười chín phiên họp kỹ thuật. Bà giải quyết chuyện luật nào áp dụng trong hành lang, và câu trả lời sau bốn tháng là luật của quốc gia đăng ký phương tiện, và câu trả lời ấy sai về nguyên tắc và chạy được trên thực tế, và bà biết cả hai chuyện đó.</p>
+<p>Bà giải quyết chuyện ai cấp phép cho phóng viên, ai chịu trách nhiệm nếu một cái xe hỏng ở cây số bảy, ai trả tiền cho cái trạm y tế, và ai được ký vào tờ giấy khi có người chết trong hành lang.</p>
+<p>Cái cuối cùng mất năm tuần và cuối cùng thì người ký là chỉ huy trạm kỹ thuật số hai, và ông ta không muốn nhận, và ông ta nhận vì không còn ai khác.</p>
+<p>Cái làm bà mất nhiều thời gian nhất trong bảy tháng ấy không phải là những chuyện lớn.</p>
+<p>Nó là biểu mẫu.</p>
+<p>Hành lang trung chuyển cần mười chín loại biểu mẫu để chạy được, và mười chín loại ấy phải soạn mới, vì mọi biểu mẫu đang có đều là biểu mẫu quân sự và biểu mẫu quân sự thì có những ô không dùng được ở đây.</p>
+<p>Ô đầu tiên phải bỏ là ô đơn vị.</p>
+<p>Ô thứ hai là ô quốc tịch, và cái ô ấy thì bỏ dễ và thay thì khó, và sau bốn phiên họp người ta thay nó bằng một ô tên là bên, và ô bên có hai giá trị, và hai giá trị ấy được ghi trong phần hướng dẫn điền là A và B.</p>
+<p>Không phiên họp nào bàn xem A là ai và B là ai. Ban thư ký kỹ thuật soạn phần hướng dẫn điền và họ xếp theo thứ tự chữ cái của tên hai bên trong bản tiếng Anh, và cái đó là một quy tắc có sẵn trong sổ tay soạn thảo, và không ai để ý.</p>
+<p>Bà Osei để ý. Bà đọc phần hướng dẫn điền vào một buổi tối tháng 7 và bà đọc đi đọc lại cái đoạn ấy ba lần, và rồi bà không đề nghị sửa gì.</p>
+<p>Bà ghi vào sổ tay của bà một dòng, và dòng ấy là dòng duy nhất trong cả cuốn sổ tay năm 2068 không phải là một việc phải làm.</p>
+<p>Có bốn chuyện chưa ai quyết được tính tới tháng 11 năm 2068.</p>
+<p>Chuyện thứ nhất là vị trí khu vực định cư.</p>
+<p>Chuyện thứ hai là nếu một người bên kia chết ở đây thì lập giấy gì, và nếu một người bên này bị một người bên kia làm chết thì xử ở đâu, theo luật nào, và ai là bị hại.</p>
+<p>Chuyện thứ hai được đưa ra uỷ ban ngày 6 tháng 8 và nó ở đó tới hết năm.</p>
+<p>Nó không phải là một câu hỏi triết học. Nó là một câu hỏi về biểu mẫu. Một người chết thì phải có một tờ giấy, và tờ giấy ấy phải có ô họ tên, ô ngày sinh, ô nơi cư trú, và ô nguyên nhân, và bên kia không có ô nào trong bốn ô ấy điền được.</p>
+<p>Ban thư ký kỹ thuật soạn một mẫu tạm, sáu ô, và mẫu tạm ấy dùng chữ đối tượng ở ô thứ nhất, và bà Osei trả lại bản thảo.</p>
+<p>Bản thứ hai dùng chữ cá thể. Bà trả lại lần nữa.</p>
+<p>Bản thứ ba bỏ hẳn ô thứ nhất và thay bằng một ô ghi số hiệu do trạm cấp, và bà duyệt bản thứ ba, và bà biết bản thứ ba là bản tệ nhất trong ba bản về mặt đạo lý và là bản duy nhất chạy được.</p>
+<p>Chuyện thứ ba là ngôn ngữ của bản gốc hiệp định.</p>
+<p>Hiệp định được ký bằng sáu thứ tiếng và cả sáu bản đều có giá trị như nhau, theo Điều 24, và Điều 24 là điều duy nhất trong hai mươi bốn điều không có ai tranh cãi.</p>
+<p>Cái chưa ai quyết được là bên kia ký vào bản nào.</p>
+<p>Bên kia không ký. Bên kia không viết. Cái gọi là chữ ký của bên kia trong hồ sơ lưu là một biên bản xác nhận do ba người của trạm kỹ thuật số hai lập tại chỗ ngày 14 tháng 4, và trong biên bản ấy ba người xác nhận rằng họ đã làm đúng bốn bước của một quy trình dài mười một dòng và đã nhận được đúng bốn cái trả lời tương ứng.</p>
+<p>Bốn cái trả lời ấy là bốn cái nhịp gõ.</p>
+<p>Không ai trong ba người ấy biết bốn cái nhịp gõ ấy nghĩa là gì. Họ chỉ biết là quy trình nói gõ như thế thì phải nhận lại được như thế, và họ đã gõ, và họ đã nhận lại được.</p>
+<p>Biên bản ấy được đóng vào tập hồ sơ gốc của hiệp định, ở vị trí lẽ ra là chữ ký, và nó dài một trang rưỡi.</p>
+<p>Chuyện thứ tư là ai đếm.</p>
+<p>Chương trình cải tạo Sao Hoả công bố ngày 8 tháng 6 năm 2068, tám mươi bảy ngày sau cuộc biểu quyết.</p>
+<p>Nó không phải là một chương trình mới. Ba trong bốn cơ quan tham gia đã có hồ sơ từ những năm 2040, và các hồ sơ ấy nằm im từ năm 2054, vì trong mười bốn năm ấy không ai có tiền cho một chuyện xa như thế.</p>
+<p>Bây giờ thì có, vì ngân sách vận hành giao thức chuyển sang mục chi khác, và mục chi khác thì phải có chỗ để tiêu.</p>
+<p>Chương trình được công bố như một tương lai chung, và trong bản công bố có một câu nói rằng loài người sẽ không còn phải tranh nhau chỗ đứng trên một hành tinh, và câu ấy do một người viết thật lòng.</p>
+<p>Trong sáu tuần sau đó, năm phái đoàn dẫn chương trình Sao Hoả trong phần phát biểu của mình ở uỷ ban thường trực, và cả năm đều dẫn nó ở chỗ nói về Điều 9.</p>
+<p>Lập luận có ba bước và cả ba bước đều đúng: khu vực định cư là một giải pháp tạm; giải pháp lâu dài là một hành tinh khác; nếu giải pháp lâu dài tới trong hai mươi năm thì việc nhượng đất bây giờ nên tính ở quy mô nhỏ hơn.</p>
+<p>Bước thứ ba không sai về logic. Nó chỉ đứng trên một cái nếu.</p>
+<p>Bà Osei ghi cả ba bước ấy vào biên bản, nguyên văn, và bà không phản đối, vì phản đối một lập luận đúng thì thua, và vì bà cần cái biên bản ấy còn nguyên chữ vào năm 2071.</p>
+<p>Trong bản công bố chương trình Sao Hoả có một cái mốc, và cái mốc ấy là chuyến người có mặt đầu tiên vào năm 2091.</p>
+<p>Hai mươi ba năm.</p>
+<p>Trong hồ sơ của ba cơ quan có từ những năm 2040, cái mốc tương ứng là mười chín năm, và mười chín năm ấy tính từ 2044.</p>
+<p>Bà Osei có tra chuyện đó và bà tra nó trong một buổi chiều, và bà không đưa nó ra ở phiên họp nào, vì đưa ra thì cũng chỉ chứng minh được một chuyện mà ai làm nghề này cũng biết, là một cái mốc hai mươi năm thì không có ai còn ngồi ở đây khi nó tới.</p>
+<p>Elin ba mươi tuổi.</p>
+<p>Tháng 8 năm 2068, ban thư ký uỷ ban thường trực mời cô ra trình bày trước phiên họp mở, ba mươi phút, về công việc của một tổ khảo sát dân sự trong vùng chiến sự.</p>
+<p>Thư mời có ba dòng lý do và dòng thứ hai nói rằng tiếng nói của những người đã ở đó có giá trị đặc biệt.</p>
+<p>Cô đọc thư hai lần rồi cô viết thư từ chối.</p>
+<p>Thư từ chối của cô dài bốn dòng và trong bốn dòng ấy không có một chữ nào về lý do. Cô viết rằng cô không nhận lời, cô cảm ơn, cô đề nghị nếu uỷ ban cần số liệu thì uỷ ban gửi văn bản yêu cầu số liệu, và cô ký.</p>
+<p>Toản có hỏi cô vì sao.</p>
+<p>Cô nói cô không có gì để nói mà không có trong bảng.</p>
+<p>Cậu hỏi lại một câu nữa, và câu ấy là ba mươi phút thì cũng được chớ.</p>
+<p>"Ba mươi phút thì em phải kể." Cô nói. "Kể thì em phải chọn cái gì kể trước. Cái em chọn kể trước là cái người ta nhớ."</p>
+<p>Cậu không hỏi thêm.</p>
+<p>Có một chuyện cô không nói với ai, và cô cũng không nghĩ nó thành lời cho tới sau này.</p>
+<p>Năm nay cô ba mươi tuổi. Cô tới đây năm hai mươi tuổi, ngày 3 tháng 6 năm 2058, với một hợp đồng sáu tháng và một vé một chiều, và cái hợp đồng ấy đình chỉ từ ngày 31 tháng 5 năm 2059 và chưa bao giờ có ai gọi lại.</p>
+<p>Mười năm ở giữa hai con số ấy thì cô không chọn lấy một ngày nào. Cô đã ở lại vì không có chuyến, rồi vì có việc, rồi vì có người, rồi vì đã ở lại rồi.</p>
+<p>Chưa có ai trong mười năm ấy hỏi cô có muốn thế không.</p>
+<p>Bây giờ có một cái thư mời ba dòng, và ba dòng ấy hỏi cô một câu, và câu ấy là cô có muốn đứng lên nói về mười năm ấy không.</p>
+<p>Đó là lần thứ nhất người ta hỏi cô, và cô trả lời không, và cô trả lời trong buổi chiều hôm nhận thư.</p>
+<p>Cái cô làm thay vào đó thì mất mười một tuần và không ai nhìn thấy.</p>
+<p>Cô lập một bộ hồ sơ bàn giao cho mười chín điểm quan trắc.</p>
+<p>Bộ ấy dày hai trăm mười sáu trang. Nó gồm: toạ độ và mô tả đường tới của từng điểm, có ảnh chụp chỗ cắm cọc mốc; quy trình lấy mẫu theo đúng cách cô vẫn làm từ năm 2058, có cả bước tráng điện cực và có cả lý do vì sao phải tráng; toàn bộ chuỗi số liệu mười năm, chép tay, và ba chỗ đứt của nó, và lý do của cả ba chỗ đứt; và một danh mục những gì cô đã làm sai trong mười năm ấy, mười bốn mục, có cả cái tuần cô cộng nhầm một cột và cái tháng cô để mẫu quá lâu trước khi đo.</p>
+<p>Cô lập nó vì cô sẽ không ở đây mãi, và vì một chuỗi số liệu chỉ dùng được nếu người sau đọc được nó mà không phải hỏi người trước.</p>
+<p>Ở cuối bộ hồ sơ có một trang không đánh số.</p>
+<p>Trang ấy nói về một người đàn ông tên Hoè, tám mươi bốn tuổi năm 2058, có một mảnh ruộng gần một con hói, và ông biết ranh giới đất mặn bằng cách nhìn một loại cỏ trong năm mươi năm, và chỗ đứt gãy đo bằng máy nằm trong khoảng mười một mét so với chỗ ông gõ gậy.</p>
+<p>Trên trang ấy có tên loại cỏ theo cách gọi ở xã, phiên âm theo cách Elin nghe được năm 2058, và một dòng ghi rằng cô chưa xác định được nó là loài nào.</p>
+<p>Có bốn con số: chỗ ông gõ gậy năm 2058, và ba lần đo lại sau đó, năm 2060, năm 2065, và tháng 9 năm 2068.</p>
+<p>Đám cỏ ấy bây giờ ở trên chỗ ông gõ gậy sáu mươi mốt mét.</p>
+<p>Ông Hoè mất năm 2061, tám mươi bảy tuổi. Từ năm 2061 tới nay, người đo đám cỏ ấy là Elin.</p>
+<p>Trang ấy không đánh số vì nó không thuộc bộ số liệu, và cô để nó ở đó vì nếu bỏ nó ra thì hai trăm mười sáu trang kia không nói được cái gì đã có ở đây trước khi có chúng.</p>
+<p>Ngày 14 tháng 9, ở một phiên họp kỹ thuật về sổ tay vận hành hành lang, có người hỏi cô một câu.</p>
+<p>Sổ tay phải dịch ra sáu thứ tiếng và bản tiếng Việt đang được rà. Người rà bản tiếng Việt là một dịch giả ở ban thư ký, và người ấy đề nghị dùng chữ cư dân, đúng như trong hiệp định, và ban thư ký hỏi ý kiến những người có làm việc ở vùng nói thứ tiếng ấy.</p>
+<p>Elin đọc chín trang bản dịch trong hai buổi tối.</p>
+<p>Chữ cư dân thì đúng. Nó đúng ở mọi chỗ nó xuất hiện, ba mươi mốt chỗ.</p>
+<p>Cái không đúng nằm ở chỗ khác, và cái đó thì cô nghĩ được rất rõ, và cô nghĩ nó bằng tiếng Việt.</p>
+<p>Trong tiếng Việt, cái người ta gọi nhau không phải là một cái nhãn dán lên người kia. Nó là hai chỗ đứng, nói ra cùng một lúc, và mở miệng là phải nói. Không có cách nào không nói. Một cuốn sổ tay vận hành viết bằng tiếng Việt thì ở mỗi câu có người đang đứng ở đâu đó so với người kia, và cái đó thì chữ cư dân không giải quyết được, vì chữ cư dân là một cái nhãn.</p>
+<p>Đến lượt phát biểu, cô nói bằng tiếng Anh và cô nói được hai câu rồi cô dừng.</p>
+<p>Rồi cô nói một chữ tiếng Việt.</p>
+<p>"Xưng hô." Cô nói.</p>
+<p>Người thư ký ghi biên bản hỏi cô đánh vần thế nào.</p>
+<p>Cô đánh vần, cả dấu, và người ấy ghi lại và hỏi tiếng Anh là gì, và cô ngồi im chừng bốn giây rồi cô nói rằng cô sẽ gửi một ghi chú bằng văn bản.</p>
+<p>Trong biên bản phiên họp ngày 14 tháng 9 năm 2068, ở trang 11, có một chữ tiếng Việt in nghiêng và không có chú giải.</p>
+<p>Cô không gửi ghi chú nào.</p>
+<p>Cuối tháng 9 cô có việc ở Gò Sen, và việc ấy là đưa một bản sao bảng tuần cho trạm y tế xã, vì trạm y tế xã có xin và vì cô đi ngang.</p>
+<p>Cô tới lúc gần trưa. Cổng mở.</p>
+<p>Thiên mười một tuổi. Nó ra sân, nhận cái phong bì, và nó nói mẹ nó đi viện, chiều mới về.</p>
+<p>"Cô để đây được không con?" Elin nói.</p>
+<p>"Dạ được. Mà có phải ký chi không cô?"</p>
+<p>"Có một tờ biên nhận."</p>
+<p>Con bé cầm tờ biên nhận, đọc hết cả tờ, rồi nó hỏi ký ở mô, và Elin chỉ, và nó ký, và chữ nó rõ và thẳng hàng.</p>
+<p>Rồi nó hỏi cô uống nước không, và Elin nói thôi, và cô đi.</p>
+<p>Trên đường ra ngã ba cô có nghĩ tới một chuyện, và chuyện ấy là con bé đọc hết cả tờ giấy trước khi ký.</p>
+<p>Lượt vượt Cổng đầu tiên trong ngừng bắn là ngày 2 tháng 11 năm 2068.</p>
+<p>Nó không phải lượt đầu tiên có người bên kia đi qua. Từ tháng 3 tới tháng 10 đã có bảy lượt và cả bảy lượt đều là tiếp xúc kỹ thuật ở cự ly xa, đo, chụp, và không ai đi vào hành lang.</p>
+<p>Lượt ngày 2 tháng 11 là lượt đầu tiên có người đi hết mười một cây của hành lang và ra tới đầu tuyến hậu cần cũ.</p>
+<p>Trời hôm ấy tốt. Âm mười chín độ, không gió, và người ta nói đó là một ngày đẹp so với tháng 11.</p>
+<p>Có bốn mươi mấy người đứng ở hai bên cuối hành lang. Trong bốn mươi mấy người ấy có mười một người của ba hãng tin, ba người của uỷ ban thường trực, tổ trực trạm kỹ thuật số hai, hai người của trạm y tế, và một số người không có nhiệm vụ gì ở đó.</p>
+<p>Người ta có dựng một cái khung để đặt máy quay, và cái khung ấy dựng lệch, và trong hai đoạn phim phát lại về sau thì chân trời nghiêng.</p>
+<p>Họ tới cửa hành lang lúc 10:12 và ra tới đầu tuyến hậu cần cũ lúc 13:41.</p>
+<p>Mười một cây trong ba tiếng hai mươi chín phút. Người ta có tính ra tốc độ và người ta tính ra ba cây một giờ, và có người nói với nhau rằng như thế là chậm.</p>
+<p>Họ đi thành hàng, hàng cách hàng đều.</p>
+<p>Giãn cách hàng là chín mét bốn, và con số ấy có người đo, và người đo là một người của uỷ ban thường trực, đo bằng cách đếm cọc mốc bên đường vì cọc mốc cắm cách nhau năm mươi mét.</p>
+<p>Ở chỗ mặt đường có băng, hai bên cùng hạ thấp rồi cùng nâng lên.</p>
+<p>Họ khiêng.</p>
+<p>Cái được khiêng nằm ngang, dài, và ở hai bên có hai cái đỡ, và trong hàng ấy có bảy cái là cái được khiêng.</p>
+<p>Không ai ở cuối hành lang hôm ấy biết cái đó là cái gì.</p>
+<p>Ở một cái khay men trắng, trong một phòng thí nghiệm cách đây mười hai nghìn cây, có một cái như thế, dài sáu mươi mốt phân, nặng mười chín cân bốn, nhiệt độ bề mặt mười một độ, đã nằm đó mười ba tháng, và hai trăm bảy mươi trang báo cáo về nó thì có mười chín người trên đời đã đọc hết.</p>
+<p>Ở cây số bốn, hàng dừng lại chừng một phút.</p>
+<p>Người ta ghi cái dừng ấy vào biên bản và người ta không giải thích được nó. Về sau, khi xem lại đoạn phim, có người nói là ở chỗ ấy có một quãng mặt đường sẫm màu hơn hai bên, dài chừng bốn chục mét, và chỗ ấy là chỗ người ta đã san lại vào tháng 5 năm 2068.</p>
+<p>Không có gì trong hồ sơ nói vì sao phải san lại chỗ đó, vì phiếu thi công tháng 5 ghi ở ô nội dung ba chữ là san mặt đường.</p>
+<p>Sau một phút thì hàng đi tiếp.</p>
+<p>Có người khóc. Một người của hãng tin khóc và người ấy vẫn cầm máy và vẫn quay, và về sau người ấy nói với đồng nghiệp là mình không hiểu vì sao mình khóc.</p>
+<p>Có người không thấy gì cả. Một anh ở tổ trực về sau nói với người ta là anh chỉ nghĩ tới chuyện lát nữa phải đi nhận dầu.</p>
+<p>Có một người trong đám đứng xem nói một câu, và câu ấy là chúng nó đi chậm hè.</p>
+<p>Không ai sửa người ấy.</p>
+<p>Có người đếm.</p>
+<p>Đếm không phải là nhiệm vụ của ai trong bốn mươi mấy người đứng đó, vì trong bốn chuyện chưa ai quyết được thì chuyện thứ tư là ai đếm.</p>
+<p>Ba người đếm, và ba người ấy đếm vì đếm là việc con người vẫn làm khi có một hàng đi qua trước mặt.</p>
+<p>Người thứ nhất là một hạ sĩ quan của tổ trực, và anh ta đếm ra bốn mươi sáu.</p>
+<p>Người thứ hai là một người của uỷ ban thường trực, đếm ra bốn mươi tư.</p>
+<p>Người thứ ba là một y tá của trạm y tế, đếm ra năm mươi mốt, và chị đếm cả những cái được khiêng.</p>
+<p>Ba con số lệch nhau bảy.</p>
+<p>Theo mục 4 của bản hướng dẫn trạm đếm, ban hành năm 2059 và dài mười một dòng, ba con số lệch nhau quá ba thì cả ca phải đếm lại từ đầu ca.</p>
+<p>Bản hướng dẫn ấy đã hết hiệu lực từ tháng 9 năm 2062, khi ba trạm đếm ngừng hoạt động, và nó chưa bao giờ được bãi bỏ bằng văn bản vì không ai làm cái quyết định ấy.</p>
+<p>Không ai ở cuối hành lang ngày 2 tháng 11 biết là có một bản hướng dẫn như thế.</p>
+<p>Elin không đếm.</p>
+<p>Cô đứng ở phía sau, cạnh cái xe của trạm y tế, và cô ở đó vì tổ chức cứu trợ có một suất quan sát viên và họ đưa suất ấy cho cô, và cô nhận vì nhận thì không phải nói gì.</p>
+<p>Cô nhìn hàng ấy đi qua và cô nghĩ tới mảnh ruộng của một ông già ở cách đây mười hai nghìn cây, và cô nghĩ tới nó vì cái mặt đường ở đây có hai màu, một quãng sẫm và một quãng nhạt, và ranh giới giữa hai quãng thì rõ và nó không thẳng.</p>
+<p>Cô đã đứng ở một cái bờ như thế năm hai mươi tuổi và cô đã ghi vào sổ ba chữ, và ba chữ ấy là bờ, một bờ, hỏi.</p>
+<p>Cô không nghĩ tiếp chuyện đó. Cô đang làm quan sát viên và quan sát viên thì có một tờ mẫu phải điền, và tờ mẫu ấy có mười một ô, và cô điền hết mười một ô trước khi hàng đi hết.</p>
+<p>Người hạ sĩ quan đếm lại.</p>
+<p>Anh ta đếm lại vì hai người kia ra hai con số khác anh ta, và anh ta đếm lại từ đầu, tức là từ một, và lúc ấy thì hàng đã đi qua được hơn nửa và anh ta chỉ đếm được cái phần còn lại rồi cộng vào cái phần anh ta nhớ.</p>
+<p>Anh ta ra bốn mươi bảy.</p>
+<p>Anh ta ghi bốn mươi bảy vào sổ trực của trạm kỹ thuật số hai.</p>
+<p>Sổ trực của trạm kỹ thuật số hai có bốn cột: giờ, nội dung, số hiệu, chữ ký. Nó không có cột nào để ghi bao nhiêu người đi qua, vì nó là sổ trực của một trạm kỹ thuật và trạm kỹ thuật thì ghi máy móc và ghi phương tiện.</p>
+<p>Anh ta ghi con số ấy ra lề, bên phải cột thứ tư, bằng bút chì.</p>
+<p>Ba hôm sau, ngày 5 tháng 11, mười ba cụm hoả lực còn lại của vành đai vẫn còn nguyên ở chỗ cũ, vì ngân sách tháo nằm ở một mục chi khác.</p>
+<p>Lệnh cấm đi lại ban đêm trên bảy tuyến quốc lộ ở một tỉnh miền Trung vẫn chưa bỏ, vì cái lệnh ấy do quân khu ban hành năm 2062 và bỏ nó thì phải có một quyết định của quân khu.</p>
+<p>Giấy đi đường liên huyện vẫn bảy ngày.</p>
+<p>Khu vực định cư vẫn là một hình chữ nhật rỗng ở góc trên bên phải một tấm bản đồ in ngày 4 tháng 7, và tính tới ngày 5 tháng 11 thì uỷ ban thường trực đã họp về nó bốn lần và chưa có một đề xuất nào được đưa ra bỏ phiếu.</p>
+<p>Cái đổi thì có một cái.</p>
+<p>Từ ngày 12 tháng 3 năm 2068, ở cái chỗ ấy, không còn cái gì bắn vào cái gì đi qua nữa.</p>
+<p>Trong sổ trực trạm kỹ thuật số hai, ở trang một trăm linh chín, dòng thứ mười bốn, cột giờ ghi 13:41, cột nội dung ghi lượt thứ tám qua hành lang, hoàn tất, cột số hiệu để trống vì không có phương tiện, cột chữ ký có một chữ ký.</p>
+<p>Ở lề bên phải, bằng bút chì, có hai chữ số.</p>
+<p class="p-part-end">Hết Phần IV: Cửa Mở, Chưa Ai Qua</p>
+</article>
+
+
+<svg class="rift-small" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+</svg>
+
+
+<div class="chapter-foot">
+  <nav class="chapter-nav" aria-label="Điều hướng chương">
+    <a class="prev" href="chuong-22.html"><span class="lbl">Trước</span><span class="ttl">Mười Bảy Cái Ghế, Lần Cuối</span></a>
+    <a class="toc-link" href="index.html" aria-label="Về mục lục"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></a>
+    <a class="next" href="chuong-24.html"><span class="lbl">Sau</span><span class="ttl">Ba Giờ Sáng</span></a>
+  </nav>
+</div>
+
+<footer class="sitefoot">
+  <p>Khúc Ai Ca Cho Những Kẻ Vô Danh — Vòng Tuần Hoàn Người Gieo Hạt · Quyển II</p>
+  <p>© 2026 Nguyễn Duy Anh (bút danh: Mendingur). Bản quyền tác phẩm thuộc về tác giả.</p>
+</footer>
+
+<script src="glow.js" defer></script>
+</body>
+</html>

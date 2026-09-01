@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mười Bảy Cái Ghế, Lần Cuối — Khúc Ai Ca Cho Những Kẻ Vô Danh</title>
+<meta name="description" content="Vòng Tuần Hoàn Người Gieo Hạt · Quyển II — tiểu thuyết của Mendingur">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="style.css">
+<script src="reader.js" defer></script>
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem('mendingur-theme');
+    var theme = saved === 'dark' || saved === 'light'
+      ? saved
+      : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+  <linearGradient id="wingGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="55%" stop-color="#C99A3E"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+  <radialGradient id="coreGlow" cx="50%" cy="55%" r="55%">
+    <stop offset="0%" stop-color="#FFF6DE" stop-opacity="0.95"/>
+    <stop offset="55%" stop-color="#E4C077" stop-opacity="0.35"/>
+    <stop offset="100%" stop-color="#E4C077" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="flowerGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+</defs>
+</svg>
+<div class="grain"></div>
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+<div class="settings-menu" id="settingsMenu">
+  <button class="menu-toggle" type="button" id="settingsMenuToggle" aria-haspopup="true" aria-expanded="false" aria-controls="settingsPopover" aria-label="Cài đặt giao diện">
+    <span class="menu-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+  </button>
+  <div class="settings-popover" id="settingsPopover" role="menu">
+    <div class="settings-group">
+      <p class="settings-group-label">Giao diện</p>
+      <div class="theme-switcher" id="themeSwitcher" role="group" aria-label="Giao diện sáng / tối">
+        <button class="theme-btn active" type="button" data-theme-choice="light" aria-pressed="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <span>Sáng</span>
+        </button>
+        <button class="theme-btn" type="button" data-theme-choice="dark" aria-pressed="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+          <span>Tối</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<header class="sitebar">
+  <a class="brand" href="index.html">
+    <span class="mark"><svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sower's Cycle mark">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+<g transform="translate(200,278)">
+  <g><ellipse rx="14" ry="21" transform="rotate(0)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(72)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(144)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(216)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(288)" fill="url(#flowerGrad)"/></g>
+  <circle r="9.5" fill="#FFF6DE"/>
+</g>
+<g transform="translate(200,96)"><path d="M0,-24 C2,-7 7,-2 24,0 C7,2 2,7 0,24 C-2,7 -7,2 -24,0 C-7,-2 -2,-7 0,-24 Z" fill="#F3D488"/></g>
+</svg></span>
+    <span class="word">Khúc Ai Ca Cho Những Kẻ Vô Danh</span>
+  </a>
+  <nav>
+    <a href="index.html" class="toc-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      Mục lục
+    </a>
+  </nav>
+</header>
+<div class="progress-track"><div class="progress-fill"></div></div>
+
+<header class="chapter-head">
+  <p class="crumb"><a href="index.html">LIBERA ME · CHÍN NGÀY</a></p>
+  <span class="cnum">Chương 22</span>
+  <h1>Mười Bảy Cái Ghế, Lần Cuối</h1>
+  <div class="font-toggle" role="group" aria-label="Cỡ chữ">
+    <button type="button" data-size="sm" aria-pressed="false">A-</button>
+    <button type="button" data-size="md" aria-pressed="true">A</button>
+    <button type="button" data-size="lg" aria-pressed="false">A+</button>
+  </div>
+</header>
+
+<article class="prose" data-size="md">
+<p>Bản tin tuần của ban thư ký, số 500, ngày 9 tháng 3 năm 2068</p>
+<p>Từ số này, đường kính cấu trúc không còn là mục một. Nó chuyển xuống dòng cuối cùng của mục bốn, theo đề nghị của ban thư ký, vì theo quy định thì mục một dành cho thông tin có thay đổi trong kỳ.</p>
+<p>690,0 mét.</p>
+<p>Mục một của số này: các quy định mới có hiệu lực trong tuần.</p>
+<p>Hiện vật K9/2067/0311 nằm trên bàn, trong một cái khay men trắng, và cái khay men trắng ấy là của phòng thí nghiệm chứ không phải của ban thư ký.</p>
+<p>Nó ở đó từ tám giờ sáng. Người ta đưa nó vào phòng bằng xe đẩy, hai người, và hai người ấy đeo găng, và găng thì không cần thiết và cả hai đều biết là không cần thiết.</p>
+<p>Cái bàn dài của phòng họp hình móng ngựa có mười bảy chỗ ngồi. Trong mười bảy chỗ ấy, mỗi chỗ có một biển tên và một cái micro có đèn đỏ.</p>
+<p>Trong bốn mươi bảy lần Rourke ra điều trần ở căn phòng này, có bốn cái micro ông chưa bao giờ thấy sáng đèn.</p>
+<p>Sáng ngày 11 tháng 3 năm 2068, người ta phải đổi bốn cái bóng đèn bàn ở phía tây, vì phía tây có cửa sổ và người ta kéo rèm để chiếu tài liệu lên tường, và bốn cái đèn ấy không sáng từ hồi tháng giêng, và không ai để ý cho tới hôm phải kéo rèm.</p>
+<p>Người của ban quản trị đổi xong lúc bảy giờ mười lăm.</p>
+<p>Năm tháng nghiên cứu ở bốn phòng thí nghiệm cho ra một tập báo cáo hai trăm bảy mươi trang, và hai trăm bảy mươi trang ấy nói được ba chuyện.</p>
+<p>Chuyện thứ nhất: nó không phải là một cái máy. Không có bộ phận chuyển động, không có nguồn, không có mạch, không có chỗ mở, và trong năm tháng ấy không ai làm cho nó thay đổi bất cứ điều gì bằng bất cứ cách nào, kể cả bằng nhiệt, kể cả bằng dòng điện.</p>
+<p>Chuyện thứ hai: nhiệt độ bề mặt của nó là 11 độ C. Nó là 11 độ C trong phòng lạnh và nó là 11 độ C trong lò. Bốn phòng thí nghiệm viết chuyện đó bằng bốn cách và không phòng nào giải thích được nó.</p>
+<p>Chuyện thứ ba, và chuyện này nằm ở phụ lục chứ không nằm ở phần kết luận: trong ba trăm hai mươi giờ đo liên tục bằng từ kế đặt cách nó bốn mươi phân, có một dạng ba nhịp lặp lại, và dạng ấy trùng với hai mươi hai giây đầu của bản ghi lưu kho số hiệu GC-2058-1141, ghi tại Trạm Quan Sát Số 3 lúc 04:51 ngày 11 tháng 11 năm 2058.</p>
+<p>Trùng ở đây nghĩa là ba đại lượng cùng lên và cùng xuống theo cùng một thứ tự, ở cùng một tỉ lệ, và người viết phụ lục là một người ba mươi tư tuổi và người ấy viết thêm một câu rằng chuyện này có thể là trùng hợp và cần thêm mẫu.</p>
+<p>Không có thêm mẫu. Cả thế giới có một cái.</p>
+<p>Giáo sư Elias Rourke bảy mươi lăm tuổi.</p>
+<p>Ông vào phòng lúc chín giờ kém mười, bằng thang máy, và ông ngồi xuống chỗ dành cho cố vấn thường trực, chỗ ấy nằm ngoài hình móng ngựa, hàng thứ hai.</p>
+<p>Ông có mười hai phút.</p>
+<p>Trong mười ba năm ông đã ra điều trần bốn mươi bảy lần và ông có đếm, và trong bốn mươi bảy lần ấy ông đứng bốn mươi sáu lần, vì ngồi thì ông nói dài hơn.</p>
+<p>Hôm nay ông ngồi.</p>
+<p>Ông ngồi vì tháng chạp năm ngoái ông đứng hai mươi phút ở một buổi làm việc của tổ công tác và cuối buổi ông không đứng lên khỏi ghế được ngay, và có hai người thấy, và một trong hai người ấy là bà Osei.</p>
+<p>Ông cũng ngồi vì một lý do khác, và lý do ấy ông không nói với ai: ngồi thì hai bàn tay ông có chỗ để đặt.</p>
+<p>Cái ông mang ra hôm nay không phải là bằng chứng.</p>
+<p>Bằng chứng thì mỏng. Một hiện vật không giải thích được, một sự trùng khớp ở phụ lục mà chính người viết phụ lục đã tự cảnh báo, và hai mươi chín trang dữ liệu không gắn với người nào mà bốn năm trước ông đã đứng ở chính căn phòng này và nói thẳng rằng ông không dẫn được nguồn.</p>
+<p>Cái ông có là mười ba năm.</p>
+<p>Ông là người duy nhất trong căn phòng ấy đã ở đó từ năm 2054, từ cái tuần người ta còn gọi nó là Vết Nứt Genesis và đo được ba mươi mét. Trong mười ba năm, mười bảy cái ghế kia đã đổi người bốn mươi mốt lần. Ban thư ký đổi ba lần cả bộ máy. Bốn phòng thí nghiệm ông làm việc cùng thì hai đã giải thể.</p>
+<p>Ông trình bày mười hai phút và ông trình bày một chuỗi.</p>
+<p>Ông đọc theo năm, mỗi năm một câu, và mỗi câu là một cái người ta đã nói ở căn phòng này vào năm ấy.</p>
+<p>Năm 2055 người ta nói cấu trúc ấy có thể đóng lại được. Năm 2058 người ta nói chưa biết có ai để mà gọi là họ. Năm 2059 người ta nói con số ba mươi tư mét thấp hơn đáng kể so với các con số đang lan truyền. Năm 2061 người ta nói việc đếm sẽ được khôi phục trong quý sau. Năm 2062 người ta nói tình hình đã bước sang giai đoạn ổn định hơn. Năm 2064 người ta nói không có điều kiện chấm dứt. Năm 2065 người ta nói nó dừng rồi.</p>
+<p>Ông không bình luận một câu nào trong bảy câu ấy. Ông đọc cả bảy câu kèm ngày, kèm số phiên họp, và kèm số trang biên bản, và ông đọc số trang vì ông biết cái gì có số trang thì người ta không cãi.</p>
+<p>Rồi ông nói câu của mình, và câu của ông là một câu về thời gian.</p>
+<p>"Mỗi câu tôi vừa đọc đều do một người thành thật nói ra, và người ấy nói ra vì lúc ấy người ấy tin như vậy. Không ai trong bảy người ấy còn ngồi trong phòng này. Tôi còn ngồi ở đây, thưa quý vị, và đó là toàn bộ chỗ đứng của tôi. Tôi không có gì hơn để đưa ra."</p>
+<p>Rồi ông nói thêm ba câu nữa, và ba câu ấy là ba câu ông đã sửa đi sửa lại trong bốn tháng và cuối cùng thì ông bỏ hết chỉ giữ lại ba.</p>
+<p>"Năm 2058 tôi đứng ở đây và tôi nói chúng ta không biết gì. Mười năm sau tôi vẫn nói như vậy, và trong mười năm ấy đã có một biện pháp vĩnh viễn được thông qua đúng phép trên cái không biết đó."</p>
+<p>"Tôi không xin quý vị tin tài liệu của tôi. Tài liệu của tôi mỏng và tôi đã nói ra chỗ mỏng của nó vào năm 2064, trong căn phòng này, và biên bản có ghi."</p>
+<p>"Tôi xin quý vị một điều khác. Một biện pháp không có điều kiện chấm dứt thì cái nó đòi hỏi ở chúng ta không phải là chắc chắn. Nó đòi hỏi chúng ta phải chắc chắn mãi mãi. Tôi bảy mươi lăm tuổi và tôi chưa gặp ai làm được việc đó."</p>
+<p>Ông dùng mười một phút bốn mươi giây, và ông dừng.</p>
+<p>Rồi ông làm một việc mà quy chế cho phép và trong mười ba năm chưa ai làm ở căn phòng ấy: ông xin nhường phần thời gian còn lại của mình cho một thành viên có ghế.</p>
+<p>Chủ toạ hỏi cho ai. Ông nói cho bà Osei.</p>
+<p>Bà Osei nhận hai mươi giây và bà dùng hết hai mươi giây.</p>
+<p>Bà không nói gì về bên kia. Bà đề nghị dự thảo hiệp định được đưa ra biểu quyết như một khối, một câu hỏi, một lần bỏ phiếu, thay vì biểu quyết theo từng điều.</p>
+<p>Đề nghị ấy được ghi nhận và được đưa vào chương trình làm việc ngày hôm sau.</p>
+<p>Nếu biểu quyết theo từng điều thì Điều 9 rơi và Điều 21 rơi, và bà đã đếm cả hai chuyện đó từ tháng 11 năm ngoái.</p>
+<p>Bà Amara Osei đã đếm phiếu từ tháng 11 năm 2067.</p>
+<p>Cái bà đếm không phải là lương tâm. Bà đã đếm lương tâm một lần, năm 2058, và bà đã đếm hai lần nữa sau đó, và cả ba lần bà đều ra một con số quá nhỏ.</p>
+<p>Lần này bà đếm cái khác.</p>
+<p>Bà bắt đầu từ một chỗ mà không ai để ý tới trong bốn năm: mục rà soát năm năm một lần, dài hai dòng, do ban thư ký thêm vào bản cuối của Giao Thức Vành Đai theo đề nghị của bà tại phiên họp ngày 11 tháng 4 năm 2064.</p>
+<p>Hai dòng ấy nói rằng đến năm 2069 phải có một cuộc rà soát, và rà soát thì phải có một cơ chế, và cơ chế thì chưa ai lập.</p>
+<p>Nghĩa là có một cái ghế chủ trì chưa ai ngồi, và một cái ghế chủ trì thì có nhiệm kỳ, có ngân sách, có ban thư ký riêng, và có quyền yêu cầu số liệu từ mọi phân khu.</p>
+<p>Bà Bhattacharya, ghế Ấn Độ, là người bỏ phiếu trắng năm 2058 và bỏ phiếu trắng năm 2064, và cả hai lần đều không giải thích.</p>
+<p>Bà Osei tới gặp bà Bhattacharya ngày 14 tháng 11 năm 2067 và hai người nói chuyện bốn mươi phút, và trong bốn mươi phút ấy không ai nhắc tới hiện vật, không ai nhắc tới hai mươi chín trang, và không ai nói một câu nào về chuyện bên kia có mấy bên.</p>
+<p>Hai người nói về cơ chế rà soát.</p>
+<p>Bà Osei đưa ra một bản thảo bốn trang. Trong bốn trang ấy, cơ chế rà soát của năm 2069 được nâng thành một uỷ ban thường trực về hành lang trung chuyển, có nhiệm kỳ bốn năm, có ngân sách riêng lấy từ mục chi chung, có ban thư ký chín người, và có quyền yêu cầu số liệu từ mọi phân khu mà không cần qua ban thư ký của Hội Đồng.</p>
+<p>Ghế chủ trì nhiệm kỳ thứ nhất, theo bản thảo, thuộc về một thành viên không nằm trong nhóm bốn ghế đông nhất.</p>
+<p>Trong mười bảy ghế thì có mười một ghế thoả điều kiện ấy. Bà Bhattacharya đọc bản thảo và bà đếm ra mười một, và bà cũng đếm ra rằng trong mười một ghế ấy chỉ có hai ghế đã bỏ phiếu trắng hai lần và vì thế không mắc nợ bên nào.</p>
+<p>Bà hỏi bà Osei một câu, và câu ấy là bà Osei có định ngồi vào cái ghế đó không.</p>
+<p>Bà Osei nói không.</p>
+<p>Bà nói không vì bà đã tính rằng nếu bà ngồi vào đó thì cả cái uỷ ban ấy sẽ bị đọc thành một chuyện khác, và bà nói câu đó ra thành lời, và đó là câu thành thật nhất trong bốn mươi phút.</p>
+<p>Ngày 2 tháng chạp năm 2067, phái đoàn Ấn Độ cho ban thư ký biết họ sẽ không bỏ phiếu trắng ở kỳ họp tới.</p>
+<p>Họ không nói sẽ bỏ phiếu gì.</p>
+<p>Ông Sekiguchi, ghế Nhật Bản, thì khó hơn, và khó vì một lý do cụ thể.</p>
+<p>Điều 9 của dự thảo hiệp định nói phần lãnh thổ nhượng lại sẽ do các quốc gia có lãnh thổ phù hợp đóng góp trên cơ sở tự nguyện. Nhật Bản không có lãnh thổ phù hợp và Nhật Bản cũng không thể để người ta thấy mình từ chối.</p>
+<p>Bà Osei đề nghị sửa Điều 9 thành một quỹ chung, đóng góp bằng lãnh thổ hoặc bằng nguồn lực tương đương, và tỉ lệ tính theo một công thức có ba biến.</p>
+<p>Ba biến là diện tích lãnh thổ, tổng sản phẩm, và một biến thứ ba do ban thư ký kỹ thuật đề xuất, và biến thứ ba ấy tính theo khả năng cung ứng lương thực trên đầu người.</p>
+<p>Ông Sekiguchi đọc công thức ấy trong hai tuần rồi ông cho biết ông ủng hộ.</p>
+<p>Với công thức ba biến, phần đóng góp của Nhật Bản quy ra bằng một khoản chi trong mười hai năm và không có một mét vuông đất nào.</p>
+<p>Bà Osei biết chuyện đó khi bà viết công thức. Bà viết biến thứ ba trước rồi mới viết hai biến kia.</p>
+<p>Bà không viết chuyện ấy vào bất cứ đâu, và trong hai mươi năm làm nghề bà đã làm việc này chừng ba chục lần, và bà chưa lần nào thấy nó dễ chịu hơn lần trước.</p>
+<p>Hai ghế Trung Quốc thì không ai phải thuyết phục. Tháng chạp năm 2067, phái đoàn Trung Quốc đưa ra một bản đề xuất mười một trang về việc quản lý hành lang trung chuyển, và trong mười một trang ấy có một mục về hạ tầng nước và một mục về điện, và cả hai mục đều nói rõ ai xây và ai vận hành.</p>
+<p>Không có mục nào trong mười một trang nói về việc bên kia là cái gì.</p>
+<p>Ngày 12 tháng 3 năm 2068, ở hành lang, bà Osei nói với giáo sư Rourke một câu.</p>
+<p>"Tôi mua được hai ghế bằng một cái mục hai dòng và một cái công thức ba biến, thưa giáo sư. Ông có thấy chuyện đó bẩn không."</p>
+<p>"Tôi thấy nó là chuyện của người biết việc." Rourke nói.</p>
+<p>"Ông trả lời tránh."</p>
+<p>"Vâng." Ông nói. "Tôi trả lời tránh."</p>
+<p>Tướng Marcus Webb phát biểu mười lăm phút và ông không đọc giấy.</p>
+<p>Ông không cãi về hiện vật. Ông nói ông đã đọc cả hai trăm bảy mươi trang và ông nói ông không đủ trình độ để bác một chỗ nào trong đó, và ông nói câu ấy không phải để nhún.</p>
+<p>Ông cãi về một chuyện khác.</p>
+<p>"Giao thức hiện hành có một tính chất mà tôi chưa nghe ai nói tới trong hai ngày qua." Ông nói. "Nó không cần ai tin nó. Nó chạy theo lịch bảo dưỡng. Nó không có ý kiến. Người vận hành nó có thể thay hết, và nó vẫn chạy."</p>
+<p>"Cái quý vị sắp biểu quyết thì cần người tin nó, ở khoảng bốn nghìn chỗ cùng một lúc."</p>
+<p>Rồi ông đặt câu hỏi của ông, và câu hỏi ấy là câu hỏi không ai trả lời được.</p>
+<p>"Trong giai đoạn chuyển tiếp, bao nhiêu con người sẽ chết."</p>
+<p>Ông đưa ra bốn cách người ta có thể chết trong giai đoạn ấy và cả bốn cách đều là những cách bình thường: lệnh không tới nơi, lệnh tới nơi mà người ta không tin, một chốt bắn vì tưởng bên kia bội ước, và một chỗ nào đó bên kia bắn vì tưởng bên này bội ước.</p>
+<p>"Tôi không nói là quý vị sai." Ông nói. "Tôi nói là quý vị không biết. Tôi cũng không biết. Khác nhau ở chỗ tôi có đứng dậy nói ra là tôi không biết."</p>
+<p>Không ai đưa ra được một con số.</p>
+<p>Ban thư ký kỹ thuật có một con số, và con số ấy nằm ở phụ lục D của tài liệu 2068/117, và nó là một khoảng từ bốn trăm tới sáu nghìn, và khoảng ấy rộng như vậy vì ba biến trong bốn biến của mô hình đều là biến ước.</p>
+<p>Ông Webb đọc cả phụ lục D lên, cả cái khoảng ấy và cả cái câu về ba biến ước, và ông đọc nó chậm.</p>
+<p>"Bốn trăm tới sáu nghìn." Ông nói. "Tôi ở trong nghề ba mươi năm và tôi biết một cái khoảng như thế nghĩa là gì. Nó nghĩa là chúng ta đang bỏ phiếu mà không có mô hình."</p>
+<p>Rồi ông nói câu cuối cùng trong phần trình bày của ông, và ông nói nó không to hơn những câu trước.</p>
+<p>"Tôi sẽ bỏ phiếu chống. Tôi bỏ phiếu chống một cái tôi không bác được, vì tôi không có cái gì tốt hơn để đưa ra, và vì trong nghề của tôi, khi không biết thì người ta giữ nguyên cái đang chạy. Tôi biết đó là một lý do nghèo nàn. Tôi không có lý do nào khác và tôi không định bịa ra một cái."</p>
+<p>Bà Reinholt, ghế Đức, hỏi tướng Webb rằng nếu giữ nguyên giao thức thì trong cùng khoảng thời gian ấy sẽ có bao nhiêu con người chết, và Webb trả lời rằng ông cũng không biết, và ông nói thêm rằng đó là một câu hỏi công bằng.</p>
+<p>Bà Reinholt bỏ phiếu thuận. Bà không giải thích phiếu của mình lần này.</p>
+<p>Buổi sáng ngày 12, ban thư ký đọc lại toàn văn dự thảo hiệp định, hai mươi bốn điều, mất một tiếng bốn mươi phút.</p>
+<p>Trong hai mươi bốn điều ấy, phía bên kia được gọi bằng một chữ, và chữ ấy là cư dân.</p>
+<p>Chữ vật thể không còn trong văn bản. Không có ai đề nghị bỏ nó và không có một cuộc thảo luận nào về chuyện đó. Ban thư ký kỹ thuật soạn dự thảo từ tháng 10 năm 2067 và họ dùng chữ cư dân ngay từ bản đầu, vì bản đầu soạn theo mẫu của các hiệp định về khu định cư và trong mẫu ấy có chữ cư dân.</p>
+<p>Ba đại biểu vẫn nói chữ cũ trong phần thảo luận buổi sáng, và không ai sửa họ, và biên bản chép nguyên văn.</p>
+<p>Biểu quyết lúc 16:12 ngày 12 tháng 3 năm 2068.</p>
+<p>Thuận chín. Chống tám.</p>
+<p>Chín phiếu thuận: Anh, Pháp, Đức, Brazil, Liên minh châu Phi, hai ghế Trung Quốc, Nhật Bản, Ấn Độ.</p>
+<p>Tám phiếu chống: bốn ghế Hoa Kỳ và bốn ghế Liên bang Nga.</p>
+<p>Trong mười ba năm, đây là lần biểu quyết thứ nhất mà khối mười ghế không còn là mười ghế.</p>
+<p>Cái làm khối ấy vỡ không phải là hai mươi chín trang, không phải là hai trăm bảy mươi trang, và cũng không phải là mười một phút bốn mươi giây của một ông già bảy mươi lăm tuổi.</p>
+<p>Cái làm nó vỡ là mười một trang về hạ tầng nước và điện, nộp tháng chạp năm 2067.</p>
+<p>Bà Osei biết như vậy. Rourke cũng biết như vậy, và ông biết từ tháng giêng, và ông không nói chuyện đó với ai vì nói ra thì cũng không đổi được gì và vì ông còn cần hai ghế nữa.</p>
+<p>Ở hàng ghế thư ký, hàng thứ ba tính từ tường, có một người phụ nữ chừng bốn mươi tuổi ngồi ghi biên bản kỹ thuật, và bà không phát biểu câu nào trong cả hai ngày, vì công việc của bà là điền vào bảng.</p>
+<p>Chín năm trước, ở Trạm Quan Sát Số 3, chính bà là người điền tờ khai lưu trữ cho một bản ghi bốn mươi giây, và ở ô mức ưu tiên bà điền chữ thấp, và ở ô liên hệ tác chiến bà điền chữ không, và bà điền đúng theo hướng dẫn.</p>
+<p>Bà không nhìn cái khay men trắng lấy một lần.</p>
+<p>Rourke xin phát biểu một phút sau khi có kết quả, và chủ toạ cho.</p>
+<p>Ông vẫn ngồi.</p>
+<p>"Tôi xin ghi vào biên bản một việc." Ông nói. "Trong bốn năm qua tướng quân Webb có đủ điều kiện để làm cho tài liệu của tôi biến mất khỏi phụ lục, và ông đã không làm. Ông có đủ điều kiện để trì hoãn cuộc rà soát và ông đã không làm. Hôm nay ông thua bằng lá phiếu và tôi chưa thấy ông làm một việc nào ngoài lá phiếu."</p>
+<p>"Tôi đề nghị ghi câu này vào biên bản, và tôi đề nghị nó được ghi nguyên văn."</p>
+<p>Nó được ghi.</p>
+<p>Webb nghe hết, và ông không nói gì trong phòng họp.</p>
+<p>Ông nói ở hành lang, chừng hai mươi phút sau, khi ông đi ngang chỗ bà Osei đang đứng với hai người của ban thư ký.</p>
+<p>Ông dừng lại. Ông nói bà đã thắng đúng phép, và ông nói câu ấy không có một chút mỉa mai nào, vì ông đã bỏ ba mươi năm trong một cái ngành mà thắng đúng phép là chuyện đáng nói.</p>
+<p>Rồi ông nói câu thứ hai.</p>
+<p>"Tôi mong bà đúng về chúng."</p>
+<p>Rồi ông đi.</p>
+<p>Tướng Marcus Webb mất ngày 4 tháng 8 năm 2069 tại nhà riêng, thọ bảy mươi mốt tuổi. Trong mười bảy tháng cuối ông không phát biểu công khai về chuyện này thêm lần nào, và ông cũng không viết gì.</p>
+<p>Không ai trong hành lang hôm ấy sửa ông, và cũng không ai nhận ra là có gì để sửa.</p>
+<p>Lệnh ngừng bắn đi ra từ ban thư ký lúc 16:40.</p>
+<p>Nó đi bằng ba đường, và nó đi bằng ba đường vì bản hướng dẫn đòi ba đường.</p>
+<p>Bốn mươi trên bốn mươi bốn cụm nhận được lệnh và ngừng trong vòng chín mươi phút. Cụm cuối cùng trong bốn mươi cụm ấy ngừng lúc 18:09.</p>
+<p>Bốn cụm còn lại là bốn cụm ở cung tây nam, và bốn cụm ấy đang chạy chế độ tự động từ ngày 9 tháng 3 vì đợt bão tuyết thứ hai của mùa, và trạm chuyển tiếp liên lạc của cung tây nam thì đang trong lịch bảo dưỡng từ 15:00 ngày 12, và lịch ấy được duyệt từ tháng giêng.</p>
+<p>Người ta phải cho xe ra tận nơi.</p>
+<p>Xe ra lúc 04:20 ngày 13 và tới cụm đầu tiên lúc 06:05. Cụm cuối cùng trong bốn cụm ngừng lúc 06:50.</p>
+<p>Từ 16:40 ngày 12 tới 06:50 ngày 13 là mười bốn tiếng mười phút.</p>
+<p>Trong mười bốn tiếng mười phút ấy, bốn cụm ở cung tây nam bắn theo đúng chu trình đã đặt, bốn mươi giây một loạt, loạt bốn phát, bốn nòng luân phiên.</p>
+<p>Không ai biết trong mười bốn tiếng ấy có bao nhiêu.</p>
+<p>Biểu mẫu tình hình ngày của phân khu bảy có mười bốn mục, và trong mười bốn mục ấy không có mục nào hỏi bao nhiêu, và cái đó là thiết kế, và cái thiết kế ấy không bị bãi bỏ cùng với giao thức, vì bãi bỏ một biểu mẫu thì phải có một quyết định riêng.</p>
+<p>Người lái cái xe ra cung tây nam đêm 12 rạng 13 là một trung sĩ hai mươi bảy tuổi, và trong biên bản anh ta khai rằng anh ta đã chạy hết tốc độ cho phép trên đoạn có tuyết nén và không chạy quá tốc độ cho phép trên đoạn có băng, vì bản hướng dẫn quy định như vậy.</p>
+<p>Anh ta khai đúng, và anh ta được biểu dương, và tờ biểu dương đề ngày 20 tháng 3.</p>
+<p>Ở cụm thứ tư, khi anh ta tới nơi lúc 06:44, tổ trực đang ăn sáng, và họ đã ăn sáng ở đó mỗi ngày trong ba mươi hai tháng, và họ không biết rằng từ chiều hôm trước cả thế giới đã thôi bắn.</p>
+<p>Ở hành lang, lúc gần sáu giờ tối, bà Osei đứng lại chờ giáo sư Rourke ở chỗ thang máy.</p>
+<p>Bà không nói gì. Bà lấy trong cặp ra một tờ giấy gấp làm đôi và bà mở nó ra và đưa cho ông.</p>
+<p>Trên tờ giấy có tám cái chấm và một đường cong nối chúng lại, vẽ bằng bút mực, và ở góc dưới bên phải có một cái ngày, và cái ngày ấy là ngày 3 tháng 9 năm 2065.</p>
+<p>Rourke cầm tờ giấy và ông nhìn nó chừng mười giây rồi ông đưa lại.</p>
+<p>"Tôi có một tờ như thế này." Ông nói.</p>
+<p>"Tôi biết." Bà Osei nói. "Tôi biết từ hôm ấy."</p>
+<p>Rồi bà đi vào thang máy và ông đi thang máy chuyến sau, vì hai người không cùng tầng.</p>
+<p>Ông về phòng làm việc lúc bảy giờ kém.</p>
+<p>Ông không gọi ai. Ông không viết thư cho ai. Ông ngồi xuống và ông mở ngăn dưới cùng của cái cặp hồ sơ riêng của ông ra.</p>
+<p>Trong ngăn ấy có ba thứ.</p>
+<p>Thứ nhất là một bản in cũ, ở góc trên bên phải có một dòng viết bằng bút chì và dòng ấy chỉ có một cái ngày.</p>
+<p>Thứ hai là mặt sau một tờ chương trình họp, trên đó có tám cái chấm.</p>
+<p>Thứ ba là một bản sao trích lục sổ trực của một tổ kiểm soát trung chuyển, quyển bốn, trang 216, đính kèm hồ sơ hiện vật K9/2067/0311.</p>
+<p>Ông đã đọc tờ thứ ba nhiều lần trong năm tháng.</p>
+<p>Ông biết cái giờ ở cột thứ nhất. Ông biết cái số hiệu quân nhân ở cột thứ ba. Ông biết cái tên đánh máy trong ngoặc sau cái số hiệu ấy, và trong năm tháng ông đã đọc cái tên ấy trong đầu mình chừng vài trăm lần, và ông đọc nó theo cách nó được đánh máy.</p>
+<p>Ông không biết tiếng Việt. Ông không biết cái tên ấy đánh máy sai một chữ.</p>
+<p>Sẽ không có ai nói cho ông biết chuyện đó, không năm ấy và cũng không về sau.</p>
+<p>Ông để tờ thứ ba xuống, cầm tờ thứ hai lên, và đặt nó trước mặt.</p>
+<p>Rồi ông lấy bút và chấm thêm một cái chấm.</p>
+<p>Chấm thứ chín nằm cách chấm thứ tám một quãng bằng một năm, và nó nằm ở đúng độ cao của chấm thứ tám.</p>
+</article>
+
+
+<svg class="rift-small" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+</svg>
+
+
+<div class="chapter-foot">
+  <nav class="chapter-nav" aria-label="Điều hướng chương">
+    <a class="prev" href="chuong-21.html"><span class="lbl">Trước</span><span class="ttl">Mấy Giờ?</span></a>
+    <a class="toc-link" href="index.html" aria-label="Về mục lục"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></a>
+    <a class="next" href="chuong-23.html"><span class="lbl">Sau</span><span class="ttl">Khu Vực Chưa Xác Định</span></a>
+  </nav>
+</div>
+
+<footer class="sitefoot">
+  <p>Khúc Ai Ca Cho Những Kẻ Vô Danh — Vòng Tuần Hoàn Người Gieo Hạt · Quyển II</p>
+  <p>© 2026 Nguyễn Duy Anh (bút danh: Mendingur). Bản quyền tác phẩm thuộc về tác giả.</p>
+</footer>
+
+<script src="glow.js" defer></script>
+</body>
+</html>

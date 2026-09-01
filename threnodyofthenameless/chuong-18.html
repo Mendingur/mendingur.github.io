@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sáu Trăm Chín Mươi Mét — Khúc Ai Ca Cho Những Kẻ Vô Danh</title>
+<meta name="description" content="Vòng Tuần Hoàn Người Gieo Hạt · Quyển II — tiểu thuyết của Mendingur">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="style.css">
+<script src="reader.js" defer></script>
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem('mendingur-theme');
+    var theme = saved === 'dark' || saved === 'light'
+      ? saved
+      : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+  <linearGradient id="wingGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="55%" stop-color="#C99A3E"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+  <radialGradient id="coreGlow" cx="50%" cy="55%" r="55%">
+    <stop offset="0%" stop-color="#FFF6DE" stop-opacity="0.95"/>
+    <stop offset="55%" stop-color="#E4C077" stop-opacity="0.35"/>
+    <stop offset="100%" stop-color="#E4C077" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="flowerGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+</defs>
+</svg>
+<div class="grain"></div>
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+<div class="settings-menu" id="settingsMenu">
+  <button class="menu-toggle" type="button" id="settingsMenuToggle" aria-haspopup="true" aria-expanded="false" aria-controls="settingsPopover" aria-label="Cài đặt giao diện">
+    <span class="menu-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+  </button>
+  <div class="settings-popover" id="settingsPopover" role="menu">
+    <div class="settings-group">
+      <p class="settings-group-label">Giao diện</p>
+      <div class="theme-switcher" id="themeSwitcher" role="group" aria-label="Giao diện sáng / tối">
+        <button class="theme-btn active" type="button" data-theme-choice="light" aria-pressed="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <span>Sáng</span>
+        </button>
+        <button class="theme-btn" type="button" data-theme-choice="dark" aria-pressed="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+          <span>Tối</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<header class="sitebar">
+  <a class="brand" href="index.html">
+    <span class="mark"><svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sower's Cycle mark">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+<g transform="translate(200,278)">
+  <g><ellipse rx="14" ry="21" transform="rotate(0)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(72)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(144)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(216)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(288)" fill="url(#flowerGrad)"/></g>
+  <circle r="9.5" fill="#FFF6DE"/>
+</g>
+<g transform="translate(200,96)"><path d="M0,-24 C2,-7 7,-2 24,0 C7,2 2,7 0,24 C-2,7 -7,2 -24,0 C-7,-2 -2,-7 0,-24 Z" fill="#F3D488"/></g>
+</svg></span>
+    <span class="word">Khúc Ai Ca Cho Những Kẻ Vô Danh</span>
+  </a>
+  <nav>
+    <a href="index.html" class="toc-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      Mục lục
+    </a>
+  </nav>
+</header>
+<div class="progress-track"><div class="progress-fill"></div></div>
+
+<header class="chapter-head">
+  <p class="crumb"><a href="index.html">LACRIMOSA · CÔNG CHÚNG TỰ BỊT TAI</a></p>
+  <span class="cnum">Chương 18</span>
+  <h1>Sáu Trăm Chín Mươi Mét</h1>
+  <div class="font-toggle" role="group" aria-label="Cỡ chữ">
+    <button type="button" data-size="sm" aria-pressed="false">A-</button>
+    <button type="button" data-size="md" aria-pressed="true">A</button>
+    <button type="button" data-size="lg" aria-pressed="false">A+</button>
+  </div>
+</header>
+
+<article class="prose" data-size="md">
+<p>Bản tin tuần của ban thư ký, số 358, ngày 19 tháng 6 năm 2065. Mục một: đường kính cấu trúc 690,0 mét.</p>
+<p>Bản tin số 359, ngày 26 tháng 6 năm 2065. Mục một: đường kính cấu trúc 690,0 mét.</p>
+<p>Mục ba của cả hai bản tin: không có quy định mới trong tuần.</p>
+<p>Bảy tuần liền con số không đổi.</p>
+<p>Ban thư ký không thông báo gì. Ban thư ký in ra cùng một con số bảy lần. Ở lần thứ tư thì có người ở phòng in gọi điện hỏi lại, và ban thư ký trả lời là số đúng, cứ in.</p>
+<p>Tuần thứ tám, một tờ báo ở Đông Á đặt cái đầu đề mà cả thế giới dùng lại trong ba ngày sau đó.</p>
+<p>Nó dừng rồi.</p>
+<p>Ngày 14 tháng 8 người ta đổ ra đường ở mười một thành phố. Ở bốn thành phố thì đó là người tự đi. Ở bảy thành phố còn lại thì có tổ chức, và ở hai trong bảy thành phố ấy người ta phát cờ.</p>
+<p>Ở đây thì không đổ ra đường, vì ở đây không có chỗ để đổ ra. Chợ sáng hôm ấy đông hơn thường lệ và người ta đứng lại lâu hơn. Bà bán cá nói một câu mà mấy hàng bên cạnh nhắc lại suốt buổi, là rứa thì thôi hè.</p>
+<p>Trong tuần ấy có bốn nước tuyên bố sẽ xem xét lại kế hoạch di dân nội địa. Có hai nơi mở lại trường học đã đóng từ 2062. Giá gạo ở đây xuống một lần, xuống mười bốn phần trăm, rồi ba tuần sau lên lại.</p>
+<p>Cái không đổi thì nhiều hơn cái đổi.</p>
+<p>Vành đai vẫn chạy, và nó chạy theo lịch bảo dưỡng chứ không theo tình hình, vì văn bản tháng 4 năm 2064 đã quy định như vậy. Định mức tiêu hao quý bốn không sửa. Lệnh cấm đi lại ban đêm trên bảy tuyến quốc lộ không bỏ. Giấy đi đường liên huyện vẫn mười ngày.</p>
+<p>Ở tuần thứ ba sau ngày 14 tháng 8, một đài lớn có làm một chương trình bốn mươi phút hỏi bây giờ thì sao. Trong bốn mươi phút ấy, chữ vật thể được dùng ba mươi mốt lần.</p>
+<p>Elias Rourke nghe tin lúc chín giờ mười sáu, ở trong xe.</p>
+<p>Ông hiểu ra trong khoảng một tiếng, và ông hiểu ra bằng đúng cái cách ông vẫn hiểu mọi thứ, tức là ông lấy giấy ra và vẽ.</p>
+<p>Ông vẽ tám cái chấm. Ba mươi mét năm 2058, năm mươi tám, một trăm mười hai, hai trăm lẻ năm, ba trăm bốn mươi tư, bốn trăm chín mươi tám, sáu trăm mười bảy, sáu trăm chín mươi.</p>
+<p>Ông vẽ chúng lên mặt sau một tờ chương trình họp, và cái nối tám cái chấm ấy lại là một chữ S.</p>
+<p>Một chữ S có ba đoạn. Đoạn dưới là đoạn không ai tin. Đoạn giữa là đoạn không ai kịp làm gì. Đoạn trên là đoạn nó thôi.</p>
+<p>Đoạn trên không có nghĩa là nó nhỏ lại.</p>
+<p>Ông ngồi với tờ giấy ấy cho tới khi xe tới nơi, và ông nghĩ tiếp một chuyện nữa, và chuyện ấy là chuyện đường cong này ông đã vẽ thử ba lần rồi, năm 2061, năm 2062 và năm 2063, và cả ba lần ông đều vẽ ra bốn dạng khác nhau, và ông đã trình bày cả bốn dạng ấy ở tổ công tác, và ba trong bốn dạng có một đoạn trên.</p>
+<p>Ông đã nói trước điều này ba năm. Ông nói nó ở dạng bốn khả năng, và bốn khả năng thì không ai làm gì được với chúng.</p>
+<p>Bây giờ thì nó là một khả năng và nó đã xảy ra rồi.</p>
+<p>Sáu trăm chín mươi mét sẽ là sáu trăm chín mươi mét vào năm 2100, và vào năm 2300. Loài người sẽ sống cạnh nó cho tới hết phần lịch sử còn lại của mình, và cái vành đai chạy quanh nó thì đã được biểu quyết là vĩnh viễn từ tháng tư năm ngoái, và hai chữ vĩnh viễn ấy có trong biên bản, do chính bà Osei đề nghị ghi.</p>
+<p>Ông bảy mươi hai tuổi. Ông đi lại bằng gậy từ năm 2063 và từ tháng 6 năm nay thì ở toà nhà này ông đi thang máy, vì cầu thang bộ ông đi được nhưng đi xong thì ông không nói được ngay, và ông cần nói được ngay.</p>
+<p>Buổi chiều ông có mười hai phút ở phiên họp thứ 214, và ông dùng chúng để nói về ngân sách bảo dưỡng vành đai giai đoạn hai.</p>
+<p>Ông nói về ngân sách vì trong mười hai phút thì ngân sách là cái người ta nghe hết. Ông đã học chuyện đó năm 2059 và ông đã dùng nó mười tám lần.</p>
+<p>Sau phiên họp, ở hành lang, bà Osei có hỏi ông một câu, và câu ấy là hôm nay giáo sư thấy thế nào.</p>
+<p>Ông định nói.</p>
+<p>Ông đã mở lời được ba chữ, và ba chữ ấy là cái đường cong, rồi ông dừng, vì ông nhìn thấy mặt bà và ông nhận ra rằng bà đã tự vẽ nó rồi, và bà đang chờ ông nói ra để bà khỏi phải là người duy nhất đã vẽ.</p>
+<p>"Tôi thấy mệt." Ông nói.</p>
+<p>"Vâng." Bà Osei nói.</p>
+<p>Hai người đứng đó thêm chừng nửa phút rồi ai về chỗ nấy.</p>
+<p>Ông không nói với ai cái ông vẽ trong xe.</p>
+<p>Tối hôm ấy ông cất tờ chương trình họp có tám cái chấm vào cặp hồ sơ riêng của ông, không phải cặp của tổ chức, ngăn dưới cùng, chỗ đã có sẵn một bản in cũ đề ở góc trên bên phải một cái ngày.</p>
+<p>Nhân về nhà ngày 3 tháng 9 năm 2065.</p>
+<p>Cậu không báo trước. Cậu về lúc gần trưa, đi bộ từ ngã ba vào, và cậu về khi mọi chuyện đã xong.</p>
+<p>Tóc đã cắt. Giấy tờ đã đủ, bốn tờ, nằm trong một cái túi ni lông gấp làm đôi bỏ ở túi quần. Bốn tờ ấy là giấy gọi, giấy khám sức khoẻ, giấy xác nhận cư trú, và một tờ ghi ngày tập trung. Ngày tập trung là mồng chín.</p>
+<p>Danh sách nam giới dán ở ủy ban xã từ cuối năm 2058 là danh sách sinh từ 2038 đến 2040, dán để đối chiếu chứ chưa để làm gì. Năm 2063 dán lại, 2040 đến 2044. Tháng 6 năm 2065 dán lần nữa, 2045 đến 2047.</p>
+<p>Nhân sinh năm 2047.</p>
+<p>Cậu không đợi gọi. Cậu lên xã ngày 28 tháng 8 và tự đi.</p>
+<p>Lý do thì không có gì để kể. Từ tháng 5, viện dã chiến số 4 rút tổ khiêng cáng từ mười một người xuống bảy, vì mặt trận lùi ra xa và cáng về ít hơn. Đi trước thì được chọn đơn vị, đi sau thì người ta xếp. Cậu chọn đơn vị có anh Tuyên, người khiêng cáng cùng cậu ba năm và đi hồi tháng 4.</p>
+<p>Cậu nói với anh Thịnh trước khi nói với Mai, vì phải bàn giao cái sổ ca.</p>
+<p>Mai đang phơi thóc ở sân khi cậu vào tới cổng.</p>
+<p>Cô nhìn cái đầu cậu trước. Rồi cô nhìn cái túi ni lông ở túi quần, vì nó gấp vuông và nó cộm lên.</p>
+<p>"Em ăn chi chưa?"</p>
+<p>"Chưa."</p>
+<p>Cô vào bếp. Cô nấu cơm, rán trứng, hâm lại nồi cá kho từ hôm qua, và luộc mớ rau vừa hái. Cậu ăn ba bát.</p>
+<p>Trong lúc cậu ăn thì cô ngồi ở bậc cửa và cô không hỏi một câu nào.</p>
+<p>Thiên tám tuổi. Nó ngồi đối diện cậu, chống cằm, và nó hỏi cậu bảy tám câu liền, hỏi ở trển có tuyết không, tuyết có ăn được không, đi bao lâu thì tới, và có phải đi qua chỗ mẹ đi làm không.</p>
+<p>Cậu trả lời bốn câu và không trả lời ba câu.</p>
+<p>"Em ni." Mai nói. "Để anh ăn."</p>
+<p>Ăn xong cậu rửa bát, rồi ra sân cào lại chỗ thóc cho đều, vì lúc cậu vào thì cô đang cào dở.</p>
+<p>"Hồi trước em có nói với chị một câu." Cậu nói.</p>
+<p>"Câu chi?"</p>
+<p>"Hồi em còn nhỏ. Em nói cái hạt giống nó không biết được là nó có mọc hay không. Mà mình vẫn gieo."</p>
+<p>"Ừ."</p>
+<p>"Chừ em biết rồi." Cậu nói. "Có chỗ đất nó không mọc chi hết. Biết trước luôn. Mà vẫn phải có người đứng coi cái chỗ nớ."</p>
+<p>Mai cào tiếp chỗ thóc của cô. Cô cào hết một luống rồi mới nói.</p>
+<p>"Ừ."</p>
+<p>Cô không giảng cho cậu một câu nào. Cô cũng không hỏi lại cậu câu nào về chuyện ấy, không chiều ấy và cũng không trong sáu ngày sau.</p>
+<p>Chiều ấy cô vào buồng trong, mở hòm, và lấy ra một cái áo len.</p>
+<p>Áo len xám, dày, tay dài, cỡ người lớn. Nó là của Kaito từ hồi trước và Kaito không mặc vừa nữa từ năm ngoái.</p>
+<p>Cô đưa cho cậu.</p>
+<p>Chỗ cậu tới là vành đai. Ở vành đai thì người ta phát quân trang, và quân trang ở đó dày hơn cái áo này bốn lần, và cái áo len xám này thì không dùng được vào việc gì ở dưới âm ba mươi độ. Vác nó đi thì nặng thêm chín lạng, và chín lạng trong một cái ba lô đã đủ nặng là chín lạng phải bỏ ra ở đâu đó.</p>
+<p>Cả hai người đều biết như vậy.</p>
+<p>Cậu cầm, gấp lại, và bỏ vào ba lô.</p>
+<p>Cô còn đưa cậu một gói muối tiêu, hai đôi tất, và một cuộn chỉ đen có cắm sẵn ba cái kim. Ba thứ ấy thì dùng được, và cậu cũng bỏ vào ba lô, ở ngăn ngoài.</p>
+<p>Nhân ở nhà sáu ngày.</p>
+<p>Ngày thứ nhất cậu ngủ từ hai giờ chiều tới sáu giờ tối, và Mai không gọi.</p>
+<p>Ngày thứ hai và ngày thứ ba cậu sửa cái mái bếp. Nó dột hai chỗ từ mùa mưa năm ngoái, và Kaito đã lợp lại một chỗ, và chỗ thứ hai thì ở gần nóc và Kaito không trèo được nữa. Nhân trèo lên, gỡ sáu tấm tôn, lót lại, và lợp xuống. Cậu làm hết một ngày rưỡi và cậu làm một mình.</p>
+<p>Ngày thứ tư cậu đẩy cái xe cút kít lên nhà ông Hoạch trả mấy cây tre mượn từ năm ngoái. Cái xe ấy cậu lắp bánh sau năm 2058 và nó vẫn lệch sang trái, và miếng ván kê bên phải thì đã thay ba lần.</p>
+<p>Ngày thứ năm cậu đi với Thiên ra hói. Con bé đòi đi từ hôm cậu về. Hai anh em đi từ ba giờ tới gần sáu giờ, và lúc về thì con bé cầm một cái vỏ ốc và cậu cầm cái dép của nó.</p>
+<p>Trong sáu ngày ấy, Nhân với Kaito nói với nhau chừng hai chục câu, và mười mấy câu trong đó là về cái mái bếp.</p>
+<p>Ngày thứ ba, lúc Nhân ở trên mái, Kaito đứng dưới đưa tôn lên. Anh đưa được bốn tấm thì phải nghỉ, và anh không nói là anh nghỉ, anh chỉ để tấm thứ năm dựa vào tường và đi ra bể rửa mặt.</p>
+<p>Nhân ngồi trên mái đợi. Cậu đợi bốn phút. Rồi anh quay lại và đưa nốt hai tấm.</p>
+<p>Buổi tối ngày thứ năm, Thiên hỏi cậu một câu ở bàn ăn.</p>
+<p>"Anh đi bao lâu?"</p>
+<p>"Không biết."</p>
+<p>"Rứa khi mô anh về?"</p>
+<p>Cậu ăn hết miếng cơm trong miệng rồi mới trả lời.</p>
+<p>"Ăn đi em."</p>
+<p>Mai ngồi đầu chiếu và cô không sửa cậu.</p>
+<p>Đến chiều mồng bảy Mai mới nhớ ra cái khung cửa bếp.</p>
+<p>Cô ra đứng ở đó một lúc.</p>
+<p>Trên cái đố dọc bên trái có tám vết dao khắc ngang. Ba vết dưới cùng đề 2049, 2050, 2052. Bốn vết trên đề 2055, 2056, 2057, 2058. Rồi có một quãng gỗ trống dài, vì từ 2059 tới 2063 không có vết nào, vì năm 2059 thì không ai nhớ, và bốn năm sau thì cậu không có nhà vào những ngày cô nhớ ra.</p>
+<p>Vết trên cùng đề 2064, khắc tháng chạp năm ngoái, cái lần cậu về được ba ngày.</p>
+<p>Bên trên vết 2064, chỗ gỗ còn nguyên, có một khoảng chừng hai đốt ngón tay rồi hết đố.</p>
+<p>Cô lấy con dao con ở gác bếp xuống và cô đứng đó cầm nó.</p>
+<p>Nhân đứng ở cửa bếp, sau lưng cô. Cậu nhìn cái đố dọc, rồi nhìn cái đầu cậu so với cái đố, và cậu không cần đứng vào để biết.</p>
+<p>"Thôi chị." Cậu nói.</p>
+<p>Cậu nói bằng giọng người nói một chuyện thực tế.</p>
+<p>"Hết chỗ rồi."</p>
+<p>Mai để con dao xuống bậu cửa.</p>
+<p>Cô đứng đó thêm một lúc, rồi cô lấy giẻ lau cái đố dọc, lau từ trên xuống, lau cả chỗ gỗ trống bên trên, rồi cô treo cái giẻ lên và đi ra.</p>
+<p>Vết cuối cùng trên khung cửa bếp Vô Ưu Cổ Tự đề năm 2064.</p>
+<p>Đêm mồng tám, Nhân ra sân với Kaito.</p>
+<p>Máy phát tối ấy không nổ, vì tối ấy không phải tối trực và vì từ tháng 3 thì mỗi tuần chỉ nổ hai tối. Hai người ngồi ở bậc thềm, chỗ hồi trước để cái ghế đẩu.</p>
+<p>Kaito ba mươi hai tuổi. Cái vân dưới da cổ tay trái anh tháng này là chín phẩy hai. Tay phải anh viết được chừng ba đêm trong một tuần.</p>
+<p>Bảy năm nay Nhân gọi anh là chú. Cậu gọi như thế từ năm cậu tám tuổi và cậu chưa đổi lần nào. Có một lần thầy Tịnh Không trêu về chuyện ấy, hồi 2058, và cậu không trả lời, và cậu không đổi.</p>
+<p>Hai người ngồi chừng mười lăm phút và nói ba bốn câu, toàn chuyện xe cộ.</p>
+<p>Rồi Nhân đứng dậy.</p>
+<p>"Mai em đi chuyến sáu giờ." Cậu nói. "Anh khỏi ra ngã ba."</p>
+<p>Cậu đi vào.</p>
+<p>Kaito ngồi lại ở bậc thềm. Hai bàn tay anh để trên đầu gối. Rồi anh bỏ xuống. Rồi anh lại để lên.</p>
+<p>Không ai trong nhà nhắc lại chuyện ấy, không đêm ấy và cũng không về sau.</p>
+<p>Sáu giờ sáng mồng chín, Nhân đi.</p>
+<p>Cậu dậy lúc bốn rưỡi, ăn cơm nguội với cá kho, và rửa cái bát của cậu. Cậu xếp lại chiếu ở chỗ cậu nằm và dựng vào chân cột. Cậu để cái áo len xám ở trong ba lô.</p>
+<p>Thiên còn ngủ. Cậu không gọi nó.</p>
+<p>Mai ra tới ngã ba. Cô đứng ở đó tới khi xe khuất, rồi cô quay về, và về tới nhà thì cô vo gạo, vì bảy giờ có người tới lấy chỗ thóc phơi hôm kia. Cô đong ba lon. Cô vo hai nước, chắt, và đổ nước ngâm, và cô làm cả ba việc ấy đúng như mọi sáng.</p>
+<p>Trưa mồng chín, khi dọn cơm, cô dọn ba cái bát.</p>
+<p>Cô nhận ra ở cái bát thứ ba, và cô để nó lại vào chạn, và cô ăn cơm với Kaito và Thiên.</p>
+<p>Chiều mồng chín cô ra viện làm ca chiều, vì cô có đăng ký ca chiều mồng chín từ hai tuần trước.</p>
+<p>Nhà Trúc ở cuối đường đất, và trên cái bàn ở gian ngoài, năm 2058, có ba mươi mốt quyển vở.</p>
+<p>Tháng 9 năm 2065 thì con số ấy là một trăm chín mươi bốn quyển, và chúng không còn ở trên bàn. Chúng nằm trong bốn cái thùng gỗ kê cao khỏi nền một gang, ở buồng trong, và trên nắp mỗi thùng dán một tờ giấy ghi số hiệu quyển từ mấy tới mấy.</p>
+<p>Ba nghìn một trăm trang.</p>
+<p>Bảo Thư kẻ cột. Ba cột: ngày, giờ, nội dung. Đầu mỗi trang có một dòng nhỏ ghi số hiệu quyển và số hiệu trang. Cô kẻ tay, bằng thước, và trong bảy năm cô kẻ hỏng bốn trang, và bốn trang ấy cô không xé, cô kẻ lại ở dưới.</p>
+<p>Trúc đọc. Cô đọc theo lối một người đọc lại cái mình vừa nhớ ra chứ không phải theo lối một người nghe ai nói.</p>
+<p>Mộng báo vẫn tới đều. Nó tới chừng mười một lần một năm và con số ấy không đổi từ năm 2056. Nó không nhiều lên khi chiến tranh nặng lên, và cái đó là chuyện Bảo Thư có đối chiếu, và cô đối chiếu vì cô nghĩ nếu nó nhiều lên theo chiến tranh thì nó là chuyện trong đầu Trúc.</p>
+<p>Nó không nhiều lên.</p>
+<p>Trong ba nghìn một trăm trang, hai người biết có chừng bốn chục trang là trang quan trọng. Hai người không biết là bốn chục trang nào.</p>
+<p>Bảo Thư có thử tìm ra chúng vào năm 2061. Cô lập một bảng, ba cột, và cột thứ ba là cột đánh dấu mục nào về sau xảy ra thật. Cô làm bảng ấy trong bốn tháng rồi bỏ. Để đánh dấu được cột thứ ba thì phải biết cái gì đã xảy ra, và cái gì đã xảy ra thì phần lớn không ai báo cho cái nhà cuối đường đất, và cái phần được báo thì là cái phần đã lên đài, và cái đã lên đài thì ai cũng biết rồi.</p>
+<p>Trong bốn tháng ấy cô điền được cột thứ ba cho hai trăm mười một mục. Trong hai trăm mười một mục, cô đánh dấu xảy ra thật cho mười chín mục, chưa xảy ra cho một trăm bảy mươi tư mục, và không xác định được cho mười tám mục.</p>
+<p>Mười chín trên hai trăm mười một thì không nói lên chuyện gì cả, và Bảo Thư biết như vậy, và cô vẫn giữ cái bảng ấy trong thùng thứ tư.</p>
+<p>Một mục thì ngắn. Mục dài nhất trong ba nghìn một trăm trang là mười một dòng, và mục ấy đề ngày 2 tháng 3 năm 2060. Mục ngắn nhất là ba chữ.</p>
+<p>Chúng không phải lời tiên tri theo lối người ta hay nghĩ. Chúng là những chỗ nhìn thấy. Một cái sân. Một cái tên viết sai. Một người đàn bà đếm lại từ đầu. Một cái bàn dài có mười bảy chỗ ngồi và bốn cái đèn không sáng.</p>
+<p>Bảo Thư ghi hết, và cô ghi cả những mục mà chính Trúc nói là chắc không phải, và cô ghi luôn cả câu Trúc nói là chắc không phải, vào cột thứ ba.</p>
+<p>Cái đổi trong bảy năm nằm ở chỗ khác.</p>
+<p>Năm 2056, một mục ghi xong thì hai người ngồi bàn với nhau cả buổi tối. Năm 2065, ghi xong thì Bảo Thư ghi giờ, đóng vở, cất vào thùng, và về, vì chín giờ tối cô phải có mặt ở trạm.</p>
+<p>Sự hoài nghi của cô thì không mất đi. Nó đông lại thành một thứ khác, và thứ ấy là bổn phận. Cô không tin, và cô ghi, và hai việc ấy đã thôi cãi nhau trong người cô từ lâu.</p>
+<p>Đêm 20 tháng 9 năm 2065, ở phòng máy trạm thực địa, sáu người ngồi nghe bản tin chín giờ.</p>
+<p>Bản tin đọc lại con số của tuần. Sáu trăm chín mươi mét. Tuần thứ mười lăm.</p>
+<p>Người đọc nói thêm một câu, và câu ấy là câu của ban thông tin chứ không phải của người đọc, rằng đây là dấu hiệu cho thấy tình hình đã bước sang một giai đoạn ổn định hơn.</p>
+<p>Ông Đô đứng dậy đi ra ngoài trước khi hết bản tin.</p>
+<p>Toản tắt đài. Việt hỏi Toản mai có đi ngã ba không, và Toản nói có. Chị Liên đi coi nồi nước.</p>
+<p>Elin tới nhà Trúc ngày 22 tháng 9, lần đầu sau bốn năm.</p>
+<p>Cô tới vì Bảo Thư rủ, và cô đi vì hôm ấy trạm không có việc phải làm ngay.</p>
+<p>Trúc hai mươi bảy tuổi. Cô rót nước, mời cơm, và cô không hỏi Elin một câu nào về công việc của nhóm, y như bảy năm trước cô không hỏi Elin có tin cô không.</p>
+<p>Elin có nhìn quanh gian ngoài một lượt. Cái bàn vẫn cái bàn cũ. Cái từ điển thần học bìa cứng vẫn ở đó, và cái gáy sách vẫn dán bằng băng dính vải màu xám, và chỗ dán ấy đã bợt và cong lên ở hai mép.</p>
+<p>Cô không hỏi về cái gáy sách.</p>
+<p>Trong bảy năm, Trúc gầy đi, và tóc cô dài hơn, và ngoài hai chuyện ấy thì Elin không tìm ra chuyện gì khác để nói là đã đổi. Cô có tìm, vì cô là người quen tìm cái đổi.</p>
+<p>Ba người ngồi ở gian ngoài. Bảo Thư mở cái thùng thứ nhất và lấy ra quyển thứ hai mươi hai.</p>
+<p>Trúc cầm quyển vở, lật, và lật tới đúng trang cô cần.</p>
+<p>Mục đề ngày 4 tháng 11 năm 2058. Trúc đọc, và cô đọc bằng giọng đều.</p>
+<p class="p-epigraph"><span class="line">"Một đứa nhỏ mặc áo lính. Áo rộng ở vai. Nó đứng ở chỗ có tuyết."</span><span class="line">"Chỗ đó không có tên trên bản đồ nhà mình."</span></p>
+<p>Elin ngồi im.</p>
+<p>Cô nghĩ tới ba chuyện, và cô nghĩ chúng theo đúng thứ tự nghề nghiệp của cô.</p>
+<p>Thứ nhất, năm 2058 thì áo lính rộng ở vai là chuyện thường, và tuyết thì có ở nhiều chỗ, và trong bảy năm chiến tranh thì cái mô tả ấy hợp với vài triệu người.</p>
+<p>Thứ hai, cô đã ngồi ở cái nhà này năm 2058 và đã đọc một mục đề ngày 11 tháng 8 năm 2056, và hôm ấy cô cũng đã tự nhủ đúng một câu như vậy.</p>
+<p>Thứ ba, cái làm cô tin hai người con gái ở cái nhà này chưa bao giờ là mấy trang giấy ấy.</p>
+<p>Cô cúi xuống nhìn ba cái cột kẻ tay.</p>
+<p>Rồi cô nhìn cột thứ ba. Trong cột thứ ba của mục ngày 4 tháng 11 năm 2058 có chữ Bảo Thư, viết bằng bút bi xanh, hai chữ.</p>
+<p class="p-note">"chưa xảy ra."</p>
+<p>Cô đọc nốt trang ấy từ trên xuống dưới, rồi hai trang trước, rồi hai trang sau, và cô đọc không phải để tìm lời tiên tri.</p>
+<p>Cô đọc để xem hai người này gọi bên kia bằng chữ gì.</p>
+<p>Trang 4 tháng 11 năm 2058 không có chữ nào để gọi.</p>
+<p>Cô xin phép lật tiếp, sang quyển hai mươi ba, rồi quyển hai mươi bốn.</p>
+<p>Trang 3 tháng 2 năm 2059: một chữ.</p>
+<p>Trang 27 tháng 2 năm 2059: cùng chữ ấy.</p>
+<p>Tháng ba, tháng tư, tháng sáu, tháng chín, và tất cả những trang cô lật qua cho tới lúc trời tối, cùng chữ ấy, không sai một lần.</p>
+<p>Chữ ấy là họ.</p>
+<p>Elin không hỏi vì sao. Cô không nói cho hai người kia biết rằng cô vừa đọc cái gì, và cô cũng không nói cho ai ở trạm.</p>
+<p>Cô về chuyến bảy giờ.</p>
+<p>Từ năm 2059 tới đêm nay là sáu năm. Ba nghìn một trăm trang. Ba người đọc.</p>
+<p class="p-part-end">Hết Phần III: Nước Mắt Không Rơi</p>
+</article>
+
+
+<svg class="rift-small" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+</svg>
+
+
+<div class="chapter-foot">
+  <nav class="chapter-nav" aria-label="Điều hướng chương">
+    <a class="prev" href="chuong-17.html"><span class="lbl">Trước</span><span class="ttl">Không Ai Đo Được Ranh Giới</span></a>
+    <a class="toc-link" href="index.html" aria-label="Về mục lục"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></a>
+    <a class="next" href="chuong-19.html"><span class="lbl">Sau</span><span class="ttl">Tôi Biết Ghi Sổ</span></a>
+  </nav>
+</div>
+
+<footer class="sitefoot">
+  <p>Khúc Ai Ca Cho Những Kẻ Vô Danh — Vòng Tuần Hoàn Người Gieo Hạt · Quyển II</p>
+  <p>© 2026 Nguyễn Duy Anh (bút danh: Mendingur). Bản quyền tác phẩm thuộc về tác giả.</p>
+</footer>
+
+<script src="glow.js" defer></script>
+</body>
+</html>

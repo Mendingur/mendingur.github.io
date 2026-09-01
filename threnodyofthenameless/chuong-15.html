@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ba Món Đồ — Khúc Ai Ca Cho Những Kẻ Vô Danh</title>
+<meta name="description" content="Vòng Tuần Hoàn Người Gieo Hạt · Quyển II — tiểu thuyết của Mendingur">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="style.css">
+<script src="reader.js" defer></script>
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem('mendingur-theme');
+    var theme = saved === 'dark' || saved === 'light'
+      ? saved
+      : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+  <linearGradient id="wingGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="55%" stop-color="#C99A3E"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+  <radialGradient id="coreGlow" cx="50%" cy="55%" r="55%">
+    <stop offset="0%" stop-color="#FFF6DE" stop-opacity="0.95"/>
+    <stop offset="55%" stop-color="#E4C077" stop-opacity="0.35"/>
+    <stop offset="100%" stop-color="#E4C077" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="flowerGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+</defs>
+</svg>
+<div class="grain"></div>
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+<div class="settings-menu" id="settingsMenu">
+  <button class="menu-toggle" type="button" id="settingsMenuToggle" aria-haspopup="true" aria-expanded="false" aria-controls="settingsPopover" aria-label="Cài đặt giao diện">
+    <span class="menu-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+  </button>
+  <div class="settings-popover" id="settingsPopover" role="menu">
+    <div class="settings-group">
+      <p class="settings-group-label">Giao diện</p>
+      <div class="theme-switcher" id="themeSwitcher" role="group" aria-label="Giao diện sáng / tối">
+        <button class="theme-btn active" type="button" data-theme-choice="light" aria-pressed="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <span>Sáng</span>
+        </button>
+        <button class="theme-btn" type="button" data-theme-choice="dark" aria-pressed="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+          <span>Tối</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<header class="sitebar">
+  <a class="brand" href="index.html">
+    <span class="mark"><svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sower's Cycle mark">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+<g transform="translate(200,278)">
+  <g><ellipse rx="14" ry="21" transform="rotate(0)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(72)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(144)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(216)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(288)" fill="url(#flowerGrad)"/></g>
+  <circle r="9.5" fill="#FFF6DE"/>
+</g>
+<g transform="translate(200,96)"><path d="M0,-24 C2,-7 7,-2 24,0 C7,2 2,7 0,24 C-2,7 -7,2 -24,0 C-7,-2 -2,-7 0,-24 Z" fill="#F3D488"/></g>
+</svg></span>
+    <span class="word">Khúc Ai Ca Cho Những Kẻ Vô Danh</span>
+  </a>
+  <nav>
+    <a href="index.html" class="toc-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      Mục lục
+    </a>
+  </nav>
+</header>
+<div class="progress-track"><div class="progress-fill"></div></div>
+
+<header class="chapter-head">
+  <p class="crumb"><a href="index.html">LACRIMOSA · HAI NÉT CHỮ</a></p>
+  <span class="cnum">Chương 15</span>
+  <h1>Ba Món Đồ</h1>
+  <div class="font-toggle" role="group" aria-label="Cỡ chữ">
+    <button type="button" data-size="sm" aria-pressed="false">A-</button>
+    <button type="button" data-size="md" aria-pressed="true">A</button>
+    <button type="button" data-size="lg" aria-pressed="false">A+</button>
+  </div>
+</header>
+
+<article class="prose" data-size="md">
+<p>Ngày 12 tháng 11 năm 2062.</p>
+<p>Đường kính cấu trúc: 331,6 mét.</p>
+<p>Quy định mới trong tuần: giấy chứng tử cấp ở tuyến huyện trở lên, tuyến xã chỉ được cấp giấy báo tử tạm thời theo mẫu số 4b.</p>
+<p>Bệnh viện dã chiến số 4 dựng trong trường tiểu học hai dãy, từ tháng năm.</p>
+<p>Dãy A sáu phòng, tháo hết vách ngăn giữa phòng hai và phòng ba để lấy chỗ mổ. Dãy B bốn phòng, để nằm. Sân giữa hai dãy lợp bạt, và dưới bạt là chỗ nhận cáng. Phòng hồ sơ là cái kho cũ ở đầu hồi, có một cửa sổ chấn song, và người ta chọn nó vì nó là phòng duy nhất khoá được.</p>
+<p>Từ tháng năm đến ngày 12 tháng 11, viện nhận hai nghìn một trăm bốn mươi người. Trung bình mười một người một ngày. Hai ngày đông nhất là mồng bảy tháng tám với chín mươi tư người, và mười chín tháng mười với sáu mươi tám người.</p>
+<p>Mai làm ba việc.</p>
+<p>Việc thứ nhất là vật tư. Băng, gạc, dịch truyền, cồn, chỉ khâu, và bốn thứ đếm theo cái, là kim, dao mổ, ống dẫn lưu, và găng.</p>
+<p>Găng thì đếm đôi, và đếm cả số đôi đã dùng lại. Găng dùng lại phải luộc, mỗi đôi luộc được ba lần, và Mai đánh dấu số lần luộc bằng ba cái gạch ở góc tờ giấy gói. Đến cái gạch thứ ba thì đôi găng ấy chuyển sang việc khác, việc không đụng vào vết mổ.</p>
+<p>Dịch truyền về theo quý. Định mức quý được tính trên một bảng quân số lập tháng sáu năm 2061. Bảng ấy chưa cập nhật lần nào, và như vậy là định mức của quý này tính trên số người của mười tám tháng trước.</p>
+<p>Mai viết ba cái đề nghị điều chỉnh, tháng bảy, tháng tám, tháng mười. Cái thứ ba được trả lời bằng một biểu mẫu, đề nghị bổ sung bảng quân số có xác nhận của đơn vị chủ quản, và viện dã chiến số 4 thì có ba đơn vị chủ quản.</p>
+<p>Việc thứ hai là hồ sơ. Mỗi người vào là một tờ. Tờ ấy có bốn ô ở góc trên bên phải, và người phân loại gạch một ô.</p>
+<p>Ô một là mổ ngay. Ô hai là mổ được, chờ. Ô ba là băng, không mổ. Ô bốn thì trên giấy in là chăm sóc giảm nhẹ, và trong viện không ai đọc cái tên đó thành tiếng, người ta nói ô bốn.</p>
+<p>Thứ tự vào phòng mổ không theo thứ tự nặng nhẹ. Nó theo thứ tự ai còn cứu được trong số người còn mổ được. Cái ấy có nghĩa là một người nặng hơn có thể nằm sau một người nhẹ hơn, và người quyết định cái đó không phải Mai. Việc của Mai là ghi giờ vào ô giờ, và ghi đúng.</p>
+<p>Có hai cái giờ phải ghi, giờ nhận và giờ vào phòng mổ, và khoảng giữa hai cái giờ ấy là thứ mà sau này người ta sẽ đọc lại nếu có ai hỏi. Chưa có ai hỏi.</p>
+<p>Cáng xếp thành hai dãy dưới bạt, đầu quay ra phía cửa, cách nhau một khoảng đủ để một người đi lọt và quỳ được xuống. Khoảng ấy đo bằng bàn chân, sáu bàn chân. Anh Thịnh phụ trách sân là người đo, và anh đo lại mỗi lần dồn cáng.</p>
+<p>Việc thứ ba là tư trang người chết.</p>
+<p>Sổ tư trang không phải mẫu của quân y. Nó là mẫu của phòng lao động thương binh, in năm 2054, và ba cái ô của nó vốn là ba ô ghi di vật của người mất tích trong bão lụt. Năm 2062 người ta không in mẫu mới. Người ta dùng cái còn trong kho.</p>
+<p>Mỗi dòng có tên, số hiệu tờ hồ sơ, ngày, và ba ô.</p>
+<p>Người nào có hơn ba món thì ghi ba món, và ba món ấy là ba món người ghi chọn.</p>
+<p>Mai tự đặt cho mình một quy tắc từ tuần thứ hai. Cô không chọn món đắt nhất. Cô chọn ba món mà nếu có ai tới tìm thì nhìn vào là nhận ra được.</p>
+<p>Nghĩa là một cái nhẫn thì thường bị bỏ ra, và một cái lược gãy răng thì thường được ghi vào.</p>
+<p>Từ hôm mở sổ đến ngày 12 tháng 11, sổ có tám trăm sáu mươi ba dòng.</p>
+<p>Trong tám trăm sáu mươi ba dòng có bốn mươi mốt dòng để trắng cả ba ô. Bốn mươi mốt người ấy đến viện mà trên người không có gì. Cột tên của họ thì có, vì cột tên lấy ở thẻ, và ai cũng có thẻ.</p>
+<p>Ngày của Mai bắt đầu lúc năm giờ mười lăm ở bến đò và kết thúc lúc sáu giờ rưỡi chiều ở cũng chỗ ấy. Giữa hai đầu ấy có bốn cái mốc cố định: bảy giờ kiểm kho, mười một giờ nộp bảng vật tư buổi sáng, ba giờ ghi sổ tư trang, và năm giờ đối chiếu lại tư trang khi đồ xuống tới nơi.</p>
+<p>Viện có mười chín người làm thường xuyên. Trong mười chín người có bốn người là bác sĩ, và trong bốn người ấy có hai người mổ được ca lớn.</p>
+<p>Cuốn vở học sinh bìa xanh nằm trong cái túi vải Mai đeo, cùng với hai cây bút chì và một cục tẩy. Cô mang nó theo mỗi ngày, vì tối cô về Gò Sen và sáng cô đi.</p>
+<p>Sarah mổ ca thứ tư của buổi sáng lúc mười giờ hai mươi.</p>
+<p>Chị bốn mươi tư tuổi. Chị ở đây từ năm 2055, bảy năm, và bảy năm ấy vừa là chỗ chị sống vừa là cái đang lấy dần chị đi.</p>
+<p>Chị nói tiếng Việt từ năm 2059. Từ đầu năm nay chị không dùng tiếng Anh với Mai nữa, và cả hai không ai nhắc tới chuyện đó.</p>
+<p>Tay trái chị run.</p>
+<p>Nó run khi để không. Nó run rõ nhất sau giờ thứ tư, và nó run theo lối biên độ nhỏ và đều, không phải theo lối giật. Nó không run khi chị đang mổ. Nó bắt đầu lại trong khoảng chừng bốn nhịp thở sau khi chị bỏ tay ra khỏi người bệnh.</p>
+<p>Mỗi sáng, trước ca đầu, chị làm một phép thử. Chị cầm một miếng gạc gấp tư ở đầu ngón trỏ và ngón cái tay trái, giơ thẳng tay ra trước mặt, và đếm. Chị đếm tới bao nhiêu thì miếng gạc bắt đầu nhúc nhích, chị ghi con số ấy vào mặt trong nắp hộp kim.</p>
+<p>Tháng năm con số ấy là bốn mươi. Tháng mười một là hai mươi hai.</p>
+<p>Chị có đặt cho mình một cái mốc, và chị có viết nó ra, và chị không nói cho ai.</p>
+<p>Chị bù bằng ba cách. Cách thứ nhất là không để tay xuống giữa các thì, chị tì cổ tay lên chỗ nào đó trên người bệnh và giữ nguyên ở đó. Cách thứ hai là đổi thứ tự thao tác, làm cái cần chính xác nhất trong giờ thứ nhất và giờ thứ hai. Cách thứ ba là chị đã bỏ hẳn một loại việc.</p>
+<p>Loại việc ấy là nối mạch nhỏ. Tháng tám chị viết lại bảng phân công, chuyển toàn bộ mục ấy cho bác sĩ Khang, hai mươi chín tuổi, và chị viết bằng chữ của chị vào cột ghi chú hai chữ, là chuyên trách. Không ai hỏi chị vì sao. Bác sĩ Khang cảm ơn chị.</p>
+<p>Chín giờ bốn mươi chị gạch một ô bốn.</p>
+<p>Người ấy hai mươi ba tuổi, vết ở bụng, và cái quyết định ấy đúng theo bảng: mất máu tới mức đó, với chỗ vỡ ở chỗ đó, thì mổ ra là chết trên bàn và chết luôn cả chỗ máu truyền vào.</p>
+<p>Năm 2058, với cùng cái vết ấy, chị sẽ gạch ô hai. Năm 2058 thì có máu.</p>
+<p>Chị ghi giờ, ký tắt, chuyển tờ, và gọi ca tiếp theo. Việc gọi ca tiếp theo mất ba giây và chị không dừng lại giữa hai việc.</p>
+<p>Ca thứ tư là một cậu lính mười chín tuổi, ô hai, vết ở đùi phải, và chỗ khó là chỗ vết đi chếch vào trong. Chị mổ bốn mươi phút. Chị tì cổ tay trái lên xương chậu cậu ta suốt từ thì thứ hai tới thì cuối, và cái tư thế ấy làm mỏi vai, và chị biết là mỏi vai, và chị đã tính cả cái mỏi vai vào trong bốn mươi phút.</p>
+<p>Xong thì chị ra rửa tay.</p>
+<p>Trong bảy năm chị đã học được một điều và điều ấy chị không nói với ai: cái làm chị mòn đi không phải mấy cái ca lớn. Mấy cái ca lớn thì chị nhớ được từng cái, chị nhớ được mười bảy cái, và chị đếm được. Cái mòn đi nằm ở chỗ mỗi ngày có bốn năm lần chị phải chọn giữa hai người mà cả hai đều còn cứu được nếu như hôm đó chỉ có một người.</p>
+<p>Về Mai thì chị nghĩ một chuyện đơn giản. Chị nghĩ rằng nếu cái viện này mất Mai thì trong ba ngày sẽ không ai biết trong kho còn gì.</p>
+<p>Tờ giấy nằm trong túi áo trong, gấp làm sáu.</p>
+<p>Trên đó có mười một cái tên. Cạnh ba cái tên có một cái ngày. Cạnh tám cái tên còn lại không có gì.</p>
+<p>Nó là tờ giấy chị viết năm 2056. Chị đã cầm nó qua bốn cái túi áo khác nhau, và đến năm nay thì nó rách ở bốn nếp gấp, và ở nếp giữa thì rách hẳn thành hai mảnh dính nhau bằng một chỗ rộng chừng đốt ngón tay.</p>
+<p>Tháng ba chị chép lại.</p>
+<p>Chị chép đúng từng chữ, kể cả cái tên chị viết sai từ đầu và chưa bao giờ sửa. Chị chép bằng bút bi, không bằng bút chì, và chị chép trên một tờ giấy dày hơn.</p>
+<p>Tờ cũ chị không bỏ. Nó nằm trong cùng cái túi áo, dưới tờ mới.</p>
+<p>Từ hôm chép lại, chị không mở tờ mới ra lần nào.</p>
+<p>Mười một giờ chị ra sân rửa tay. Mai ngồi ở bậc cửa phòng hồ sơ với cuốn vở bìa xanh mở trên đùi, đang ghi.</p>
+<p>Sarah nhìn qua vai Mai một cái, không cố tình, kiểu người đi ngang nhìn xuống một trang giấy đang mở.</p>
+<p>Trên trang có ngày, có một cột số một chữ số thập phân, và bên cạnh vài con số có mấy chữ.</p>
+<p>"Em đo cái đó bằng chi?" Sarah hỏi.</p>
+<p>"Bằng sợi chỉ."</p>
+<p>"Sợi chỉ thì sai số lớn." Sarah nói. "Em đo hai lần rồi lấy trung bình. Với lại đo cùng một giờ trong ngày, đừng sáng ni đo sáng mai đo tối. Sáng với tối nó khác nhau, phù nề nó khác nhau."</p>
+<p>"Dạ."</p>
+<p>"Em đo cho ai?"</p>
+<p>"Dạ nhà em."</p>
+<p>Sarah gật một cái và đi vào. Chị còn hai ca trước bữa trưa và cả hai đều ô hai.</p>
+<p>Ngày 14 tháng 11 trời tốt. Nắng, gió nhẹ, và ở sân sau có người đem chăn ra phơi.</p>
+<p>Thiên năm tuổi bảy tháng.</p>
+<p>Con bé theo mẹ đi viện từ tháng chín, vì ở Gò Sen ban ngày không có ai coi nó. Nó ngồi ở phòng hồ sơ, ở cái ghế thấp kê sát cửa sổ chấn song, và Mai giao cho nó việc xếp kẹp giấy vào hộp theo cỡ. Nó làm việc ấy được chừng bốn mươi phút mỗi lần.</p>
+<p>Hôm ấy cửa phòng hồ sơ chèn mở, vì trong phòng bí.</p>
+<p>Từ sáu giờ sáng tới mười giờ có bốn chuyến cáng vào. Người của tờ 2062-B-4417 vào ở chuyến thứ ba, chín giờ mười.</p>
+<p>Trên tờ ấy: nam, chừng năm mươi tuổi, ô nghề nghiệp để trống, ô đơn vị để trống, ô địa chỉ ghi tên một xã cách đây bốn mươi cây. Người phân loại gạch ô bốn lúc chín giờ mười bốn.</p>
+<p>Ô bốn nằm ở đầu dãy B, bốn cái cáng cuối, chỗ có cái quạt trần không quay. Chỗ ấy không có ai trực riêng. Cứ hai tiếng có người đi qua một lượt, và người đi qua là người đang đi làm việc khác.</p>
+<p>Ông không nằm yên. Từ chín giờ rưỡi tới gần mười hai giờ ông không yên. Ông đạp chân phải, và cái chân sắt của cáng cạ xuống nền xi măng, và anh Thịnh phải kê một cái chăn gấp xuống dưới. Hai người nằm hai bên đều xin đổi chỗ. Người ta đổi được một người.</p>
+<p>Mười một giờ, chị y tá tên Hoa đi qua ô bốn đếm chai dịch. Lúc ấy ông vẫn chưa yên.</p>
+<p>Mười hai giờ mười lăm, chị Hoa đi qua lần nữa, và thấy con bé.</p>
+<p>Nó ngồi dưới gầm cáng, giữa hai cái chân sắt, hai đầu gối co lên. Một tay nó luồn qua khe giữa mặt cáng với thanh ngang, và tay kia nó đặt trên đùi mình.</p>
+<p>Cái tay luồn lên nắm tay người đàn ông.</p>
+<p>Ông yên.</p>
+<p>Chị Hoa không kéo nó ra ngay. Chị nói với nó ba lần trước khi nó nhả tay, và ba lần ấy chị nói mỗi lúc một to hơn.</p>
+<p>Chị đếm nhịp thở của ông lúc mười hai giờ mười lăm, vì đếm là việc của chị. Mười lăm một phút.</p>
+<p>Mười hai giờ ba mươi lăm, ông không thở nữa.</p>
+<p>Không ai nói được cái nào tới trước. Chị Hoa ghi vào phiếu theo dõi giờ ngừng thở là mười hai giờ ba mươi lăm, và chị ghi cái giờ ấy vì đó là giờ chị đo lại, không phải giờ chị nhìn thấy.</p>
+<p>Mai tới nơi lúc mười hai giờ hai mươi.</p>
+<p>Cô xốc nách kéo con bé ra khỏi gầm cáng, và con bé để yên cho cô làm.</p>
+<p>"Con đi được chưa?" Thiên nói.</p>
+<p>"Đứng đây."</p>
+<p>Con bé đứng ở chỗ cô chỉ, cách cái cáng một bước rưỡi, hai tay buông xuống, và nó nhìn cái quạt trần không quay.</p>
+<p>Bàn tay nó lạnh.</p>
+<p>Mai cầm cả hai bàn tay con bé trong tay mình, và cả hai đều lạnh hơn không khí trong sân. Cái đó thì Mai biết chắc, vì cô vừa cầm chồng phiếu ở phòng hồ sơ và chồng phiếu ấy ấm hơn hai bàn tay này.</p>
+<p>Chúng lạnh như thế trong khoảng một tiếng. Đến gần hai giờ chiều thì hết.</p>
+<p>Chị Hoa quay lại lúc một giờ với cái xe đẩy chai dịch.</p>
+<p>"Con bé làm được cái mà cả cái viện ni không làm được." Chị nói. "Nó làm cho người ta chết cho êm."</p>
+<p>Chị nói câu đó bằng giọng người đọc một dòng trong bảng, rồi đẩy cái xe đi tiếp, vì chị còn mười bảy cái chai phải đếm trước một giờ rưỡi.</p>
+<p>Không ai trong sân dùng cái chữ chữa.</p>
+<p>Bác sĩ Khang có ra xem, đứng chừng nửa phút, rồi anh nói một câu đúng về mặt y học, là ở giai đoạn đó thì kích thích ngoài giảm đi cũng làm nhịp thở chậm lại. Anh nói câu ấy với chị Hoa chứ không nói với Mai. Nói xong thì anh vào phòng mổ, vì mười ba giờ có ca.</p>
+<p>Sarah ra sân lúc gần một giờ, khi chị Hoa đã đi. Chị nhìn hai bàn tay con bé, cầm cổ tay nó, đếm mạch, và bảo Mai cho nó uống nước đường.</p>
+<p>"Chắc nó ngồi lâu quá dưới đó." Chị nói.</p>
+<p>Câu ấy đúng về mặt y học và nó giải thích được cái lạnh, và Sarah biết là nó không giải thích được cái gì khác, và chị không nói thêm.</p>
+<p>Chiều ấy con bé xếp nốt chỗ kẹp giấy. Nó không nhắc tới ông ấy, không hôm ấy và cũng không hôm nào sau.</p>
+<p>Tối về nó ngủ từ bảy giờ tới chín giờ sáng hôm sau. Nó chưa ngủ như thế bao giờ.</p>
+<p>Hai giờ chiều, phiếu kê tư trang của tờ 2062-B-4417 xuống tới phòng hồ sơ. Phiếu kê thì xuống trước, đồ thì xuống sau, vì đồ phải qua chỗ rửa.</p>
+<p>Ba giờ chiều Mai ngồi xuống ghi sổ tư trang.</p>
+<p>Theo phiếu kê, người của tờ 2062-B-4417 có bốn món: một đôi dép, một cái lược, một mảnh giấy gấp tư đã nhoè hết không đọc được, và một cái bật lửa còn ga.</p>
+<p>Cô ghi ba món. Cô bỏ cái bật lửa ra.</p>
+<p>Ghi xong dòng ấy thì cô ngồi yên một lúc, và trong lúc ngồi yên ấy cô nghĩ ra một chuyện, và chuyện ấy đến trọn vẹn chứ không phải nghĩ ra từng khúc.</p>
+<p>Cái ánh sáng kia không chọn con bé.</p>
+<p>Nếu nó chọn thì người ta sẽ biết. Người ta bao giờ cũng biết cái nó chọn, vì cái nó chọn thì nhìn thấy được, và cái gì nhìn thấy được thì có người tới lấy. Sẽ có một cái xe, và một cái phòng, và giấy tờ hẳn hoi có dấu, và mỗi tháng cho gặp một lần.</p>
+<p>Con bé không được chọn. Con bé chỉ làm cho một ông năm mươi tuổi ở ô bốn thôi giãy trong hai mươi phút cuối cùng, và cái đó thì không có tên trong bảng nào, và cái gì không có tên trong bảng nào thì không ai đi lấy.</p>
+<p>Nên nó an toàn.</p>
+<p>Cái ý nghĩ ấy đi tiếp một quãng nữa, và quãng ấy có tính toán trong đó. Nếu người ta tới lấy thì họ sẽ lấy vào lúc nào. Không phải bây giờ, vì bây giờ chưa ai biết. Vậy thì phải làm sao cho không ai biết, mà con bé thì ngày nào cũng ở trong cái sân này với mười chín người, và trong mười chín người thì đã có ba người nhìn thấy.</p>
+<p>Ba người. Chị Hoa, anh Thịnh, và cái người nằm ở cáng bên cạnh mà hồi sáng người ta đã đổi chỗ được.</p>
+<p>Mai ngồi với cái ý nghĩ ấy chừng bằng thời gian đun một ấm nước.</p>
+<p>Rồi cô hiểu ra cô vừa thấy nhẹ người vì con gái cô chỉ có chừng đó.</p>
+<p>Cô để bút xuống. Cô đứng dậy, đi qua sân, vào kho, và đếm lại số cuộn băng.</p>
+<p>Cô đã đếm số cuộn băng lúc bảy giờ sáng. Cô đếm lại lần nữa, ra đúng con số ban sáng, và cô ghi lại vào đúng cái ô đã ghi rồi, đè lên. Cái ô ấy bây giờ có hai con số chồng lên nhau và cả hai con số đều là một trăm bốn mươi hai.</p>
+<p>Chị Hoa đi ngang, dừng lại ở cửa kho.</p>
+<p>"Đợt ni chúng nó xuống tới đường cái rồi hả cô?"</p>
+<p>"Nghe nói ngoài truông." Mai nói.</p>
+<p>"Rứa thì còn xa." Chị Hoa nói, và đi.</p>
+<p>Năm giờ rưỡi chiều Mai đi bộ ra bến. Đường từ viện ra bến là tám trăm mét, đi qua chỗ tường trường tiểu học cũ còn nguyên một dòng chữ sơn đã bạc, dòng chữ ấy là khẩu hiệu của một năm học nào đó, và Mai đi qua nó hai lần mỗi ngày từ tháng năm và chưa lần nào đọc hết.</p>
+<p>Tối ấy về tới Gò Sen là bảy giờ kém.</p>
+<p>Kaito hỏi hôm nay ở viện thế nào.</p>
+<p>Mai kể chuyện hai mươi bốn cái cáng gấp mới nhận, kể chuyện biên bản giao nhận ghi hai mươi bốn cái mà không ghi ai ký nhận, nên chị phụ trách phải đi hỏi vòng ba chỗ. Cô kể hết chuyện đó rồi thôi.</p>
+<p>Bữa tối có cơm, cá kho, và rau muống luộc. Thiên ăn hết bát của nó rồi xin thêm nửa bát nữa, và Mai cho.</p>
+<p>Rồi cô lấy cuốn vở trên nóc tủ xuống.</p>
+<p>Anh đưa cổ tay trái ra và lật ngửa. Cô đo bằng sợi chỉ, đặt lên thước.</p>
+<p>"Bảy phẩy một." Cô nói.</p>
+<p>Cô ghi. Tuần trước bảy phẩy không.</p>
+<p>Anh cầm bút và tự viết thêm ba dòng vào dưới, bằng chữ của anh, thứ chữ ký hiệu anh dùng cho việc ấy. Đêm qua anh có ghi được. Có đêm thì không.</p>
+<p>Anh gấp vở lại và đưa cho cô. Cô cầm, và cô cầm hơi lâu, và anh có nhìn cô một cái.</p>
+<p>"Chi rứa em?"</p>
+<p>"Không." Cô nói. "Mai anh nhớ đổ nước vô cái chum ngoài, con bé nó nghịch cạn rồi."</p>
+<p>Trong sáu năm, cô chưa giữ với anh chuyện gì. Cô đã kể cho anh nghe cả những chuyện cô không kể cho ai, kể cả cái chuyện năm 2055 mà đến bây giờ cô vẫn không biết gọi tên là gì.</p>
+<p>Cô để cuốn vở lên nóc tủ, gáy quay ra ngoài, đúng chỗ cũ.</p>
+<p>Bé Nhân mười lăm tuổi. Cậu khiêng cáng ở sân, ca từ sáu giờ sáng, và cậu cao hơn Mai từ mùa hè.</p>
+<p>Tay cậu chai ở bốn chỗ, hai chỗ trong lòng bàn tay và hai chỗ ở khấc ngón. Cậu quấn giẻ vào chỗ tay cầm của cáng, quấn hai lớp, và cậu quấn cho cả cái cáng của người khiêng đằng trước.</p>
+<p>Khiêng cáng thì cái khó không phải là nặng. Cái khó là bước. Người đi trước và người đi sau phải không cùng chân, vì cùng chân thì cáng lắc, và lắc thì người nằm trên đó chảy máu thêm. Bé Nhân dạy cái đó cho người mới bằng cách đi chậm hai chục bước đầu rồi mới vào nhịp, và cậu nói đúng một câu để dạy, là bước ngược chân với tui.</p>
+<p>Cậu nói lại từ đầu năm 2060 và cậu nói ít. Người trong viện tưởng đó là tính cậu.</p>
+<p>Chiều 14 tháng 11, lúc dồn cáng, có một chị mới tới hỏi anh Thịnh.</p>
+<p>"Thằng nhỏ đó em ruột cô Mai hả anh?"</p>
+<p>Anh Thịnh nói không biết.</p>
+<p>Bé Nhân đứng cách đó chừng ba bước, đang gỡ cái quai giẻ ra khỏi tay cầm. Cậu nghe thấy. Cậu không đính chính, và cậu cũng không trả lời.</p>
+<p>Cậu quấn lại cái quai giẻ, siết một vòng nữa cho chặt, rồi ra đầu sân đợi chuyến bốn giờ.</p>
+<p>Người của tờ 2062-B-4417 là cái cáng thứ chín bé Nhân khiêng ra hôm ấy. Cậu khiêng đầu trước. Ra tới cuối sân thì phải đợi bốn phút, vì xe chưa lùi vào, và trong bốn phút ấy cậu để cáng xuống đất chứ không giữ trên tay, vì để xuống đất thì tay đỡ mỏi hơn.</p>
+<p>Chuyến bốn giờ là cái xe chở vỏ chai rỗng về kho huyện. Nó đi qua ngã ba cách Gò Sen hai cây, và bé Nhân đi nhờ nó ba buổi một tuần, và ba buổi còn lại thì cậu ngủ lại ở cái nhà kho đầu hồi cùng với anh Thịnh và hai người nữa.</p>
+<p>Ở khung cửa bếp Vô Ưu Cổ Tự, vết trên cùng vẫn đề 2058. Hai năm nay không có vết mới, vì hai năm nay cậu không có nhà vào những ngày Mai nhớ ra chuyện đó.</p>
+<p>Sáu giờ chiều, chị Hoa đưa cái túi ni lông đựng đồ của tờ 2062-B-4417 xuống phòng hồ sơ.</p>
+<p>Mai đã ghi sổ từ ba giờ. Cô mở túi ra đối chiếu lại lần nữa, vì quy trình là đối chiếu lại lần nữa khi đồ xuống tới nơi, rồi cô buộc túi, dán nhãn, và để lên giá. Giá có bốn tầng, và tầng thứ tư là tầng của những túi để quá sáu tháng. Trên tầng thứ tư hiện có hai trăm mười chín cái túi. Mỗi tháng Mai đếm lại một lần, và con số ấy tháng nào cũng lớn hơn tháng trước, vì chưa có tháng nào có ai tới lấy quá bốn cái.</p>
+<p>Dòng thứ tám trăm bảy mươi mốt, ngày 14 tháng 11 năm 2062.</p>
+<p>Một đôi dép. Một cái lược. Một mảnh giấy không đọc được.</p>
+</article>
+
+
+<svg class="rift-small" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+</svg>
+
+
+<div class="chapter-foot">
+  <nav class="chapter-nav" aria-label="Điều hướng chương">
+    <a class="prev" href="chuong-14.html"><span class="lbl">Trước</span><span class="ttl">Ngày Không Có Con Số</span></a>
+    <a class="toc-link" href="index.html" aria-label="Về mục lục"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></a>
+    <a class="next" href="chuong-16.html"><span class="lbl">Sau</span><span class="ttl">Người Giữ Ký Ức</span></a>
+  </nav>
+</div>
+
+<footer class="sitefoot">
+  <p>Khúc Ai Ca Cho Những Kẻ Vô Danh — Vòng Tuần Hoàn Người Gieo Hạt · Quyển II</p>
+  <p>© 2026 Nguyễn Duy Anh (bút danh: Mendingur). Bản quyền tác phẩm thuộc về tác giả.</p>
+</footer>
+
+<script src="glow.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thị Trấn Không Đổi Gì Cả — Khúc Ai Ca Cho Những Kẻ Vô Danh</title>
+<meta name="description" content="Vòng Tuần Hoàn Người Gieo Hạt · Quyển II — tiểu thuyết của Mendingur">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="style.css">
+<script src="reader.js" defer></script>
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem('mendingur-theme');
+    var theme = saved === 'dark' || saved === 'light'
+      ? saved
+      : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+  <linearGradient id="wingGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="55%" stop-color="#C99A3E"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+  <radialGradient id="coreGlow" cx="50%" cy="55%" r="55%">
+    <stop offset="0%" stop-color="#FFF6DE" stop-opacity="0.95"/>
+    <stop offset="55%" stop-color="#E4C077" stop-opacity="0.35"/>
+    <stop offset="100%" stop-color="#E4C077" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="flowerGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+</defs>
+</svg>
+<div class="grain"></div>
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+<div class="settings-menu" id="settingsMenu">
+  <button class="menu-toggle" type="button" id="settingsMenuToggle" aria-haspopup="true" aria-expanded="false" aria-controls="settingsPopover" aria-label="Cài đặt giao diện">
+    <span class="menu-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+  </button>
+  <div class="settings-popover" id="settingsPopover" role="menu">
+    <div class="settings-group">
+      <p class="settings-group-label">Giao diện</p>
+      <div class="theme-switcher" id="themeSwitcher" role="group" aria-label="Giao diện sáng / tối">
+        <button class="theme-btn active" type="button" data-theme-choice="light" aria-pressed="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <span>Sáng</span>
+        </button>
+        <button class="theme-btn" type="button" data-theme-choice="dark" aria-pressed="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+          <span>Tối</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<header class="sitebar">
+  <a class="brand" href="index.html">
+    <span class="mark"><svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sower's Cycle mark">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+<g transform="translate(200,278)">
+  <g><ellipse rx="14" ry="21" transform="rotate(0)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(72)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(144)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(216)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(288)" fill="url(#flowerGrad)"/></g>
+  <circle r="9.5" fill="#FFF6DE"/>
+</g>
+<g transform="translate(200,96)"><path d="M0,-24 C2,-7 7,-2 24,0 C7,2 2,7 0,24 C-2,7 -7,2 -24,0 C-7,-2 -2,-7 0,-24 Z" fill="#F3D488"/></g>
+</svg></span>
+    <span class="word">Khúc Ai Ca Cho Những Kẻ Vô Danh</span>
+  </a>
+  <nav>
+    <a href="index.html" class="toc-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      Mục lục
+    </a>
+  </nav>
+</header>
+<div class="progress-track"><div class="progress-fill"></div></div>
+
+<header class="chapter-head">
+  <p class="crumb"><a href="index.html">IN PARADISUM · HOÁ ĐƠN ĐẾN MUỘN</a></p>
+  <span class="cnum">Chương 30</span>
+  <h1>Thị Trấn Không Đổi Gì Cả</h1>
+  <div class="font-toggle" role="group" aria-label="Cỡ chữ">
+    <button type="button" data-size="sm" aria-pressed="false">A-</button>
+    <button type="button" data-size="md" aria-pressed="true">A</button>
+    <button type="button" data-size="lg" aria-pressed="false">A+</button>
+  </div>
+</header>
+
+<article class="prose" data-size="md">
+<p>Niên giám thống kê bỏ túi, bản in năm 2069, phần các số liệu tham khảo, trang 118.</p>
+<p>Một mục ba dòng, xếp giữa mục chiều dài đường sắt trong nước và mục giá cước bưu chính.</p>
+<p>Cập nhật tháng 6 năm 2069 · Cấu trúc 690 (không đổi từ 2065) · Thư thường trong nước dưới hai mươi gam, 0,92.</p>
+<p>Ở phần này các số in không kèm đơn vị, vì đơn vị nằm ở đầu bảng của từng chương, và mục này không thuộc chương nào.</p>
+<p>Bản in năm 2070 vẫn giữ mục ấy và vẫn giữ nguyên con số ấy, vì mục các số liệu tham khảo chỉ sửa khi có cơ quan gửi số mới.</p>
+<p>Elin về Ommen ngày 21 tháng 4 năm 2070.</p>
+<p>Cô đi ba chặng bay, mất ba mươi mốt tiếng kể cả hai lần chờ, rồi tàu, rồi đổi tàu ở Zwolle. Từ ga Ommen về nhà ông ngoại đi bộ mười tám phút, và cô không phải hỏi đường một lần nào.</p>
+<p>Máng nước nhà bà Dekker vẫn lệch.</p>
+<p>Nó lệch từ hồi sửa mái năm 2057. Bà Dekker hứa gọi thợ từ tháng 10 năm ấy và đến tháng chạp thì chưa gọi. Bây giờ chỗ lệch ấy vẫn lệch đúng chừng ấy, và dưới nó trên nền gạch có một vệt xanh dài bằng bàn tay, là chỗ nước rơi xuống trong mười ba năm.</p>
+<p>Bà Dekker tám mươi mốt tuổi. Bà sang chào, mang theo một khay bánh, và bà ngồi hai mươi phút.</p>
+<p>Bà hỏi bên đó ăn uống thế nào, hỏi có điện không, hỏi cô có bị ốm lần nào không. Cô trả lời cả ba câu. Rồi bà nói tuần trước trên đài có nói tới cái chỗ ấy, và bà nói bà có nghe hết cả mục, và bà nói thêm một câu.</p>
+<p>"Bây giờ thì chúng nó cũng có chỗ rồi."</p>
+<p>Bà nói câu ấy bằng giọng người mừng cho ai đó. Trong hai mươi phút bà ngồi, đó là câu duy nhất bà nói mà không phải là câu hỏi.</p>
+<p>Không ai sửa bà.</p>
+<p>Nhà máy sữa vẫn chạy, có thêm một dãy nhà phía sau xây năm 2061, và ca sáng vẫn vào lúc sáu giờ. Cửa hàng ở góc đường đổi chủ một lần năm 2064 và cái chuông trên cửa vẫn là cái chuông cũ. Xe buýt ra ga vẫn hai chuyến một giờ.</p>
+<p>Trong mười hai năm, thị trấn này mất một cái cầu gỗ ở rìa phía đông, dỡ năm 2059 vì mục.</p>
+<p>Tờ tin quý của xã nằm trên bàn bếp, bốn trang, phát tới từng nhà. Trang ba có một mục năm dòng về phần đóng góp của nước này vào quỹ chung, và trong năm dòng ấy phía bên kia được gọi bằng một chữ, và chữ ấy là cư dân.</p>
+<p>Trên mặt bàn bếp có một vệt xước hình chữ V.</p>
+<p>Elin thấy nó lần đầu năm 2055 và chưa bao giờ hỏi. Nó vẫn ở đúng chỗ cũ, chếch về phía cửa sổ, dài chừng ba đốt ngón tay.</p>
+<p>Cái nồi nứt vẫn úp trên nóc tủ ly.</p>
+<p>Nó nứt một đường chéo ở chân hàn từ tháng 9 năm 2057. Ông Wim đã đi hỏi giá nồi mới một lần, bảo là đắt, rồi không mua, và nó không đắt. Cái nồi thay thế nhỏ hơn một cỡ, nên nấu nhiều thì nước trào ra bếp.</p>
+<p>Chiều hôm ấy ông Wim nấu khoai và nước trào ra bếp, và ông lau hai lần trong mười phút, và ông lau bằng cái khăn vắt ở tay nắm lò.</p>
+<p>Bà Trees mất ngày 9 tháng 3 năm 2063.</p>
+<p>Bà mất ở bệnh viện Zwolle, sau bốn ngày nằm, và ông Wim ở đó cả bốn ngày.</p>
+<p>Thư báo tin gửi đi ngày hôm sau, thư thường, và nó đi hai mươi lăm ngày. Nó tới trạm thực địa ngày 4 tháng 4, và Elin cầm nó ở phòng mẫu lúc gần trưa, và cô đọc nó hai lần.</p>
+<p>Cô không về được, và cái không về được ấy thì tính ra bằng giấy tờ.</p>
+<p>Từ tháng chạp năm 2062, mọi chuyến bay dân dụng qua hành lang phía nam đều cần một mã thông hành cấp theo quý, và mã ấy cấp cho người có cơ quan bảo lãnh. Cơ quan bảo lãnh của Elin là Bodemherstel, và Bodemherstel đã đình chỉ chương trình từ ngày 31 tháng 5 năm 2059. Giấy tạm trú của cô do công an xã gia hạn sáu tháng một lần và nó là giấy tạm trú chứ không phải giấy công tác.</p>
+<p>Cô hỏi ba nơi trong mười ngày.</p>
+<p>Nơi thứ nhất trả lời rằng việc riêng có một thủ tục riêng, và thủ tục ấy đòi giấy xác nhận thân nhân hợp pháp hoá lãnh sự, và hợp pháp hoá mất bốn đến sáu tuần. Nơi thứ hai trả lời rằng họ cấp được giấy đi đường tuyến nội địa. Nơi thứ ba là tổ chức cứu trợ, và tổ chức cứu trợ chỉ mua vé cho người có tên trong danh sách nhân sự của một chương trình đang chạy.</p>
+<p>Tiền thì Diễm có cách xoay và Diễm đã nói ra cách ấy vào ngày thứ tư. Chỗ đắt là bốn đến sáu tuần, cộng chặng bay vòng, cộng chuyện quay lại, vì mã thông hành ra một chiều thì không tự có chiều ngược lại.</p>
+<p>Bốn đến sáu tuần cộng chặng bay vòng thì ra khoảng bảy tuần, và bảy tuần tính từ ngày 4 tháng 4 thì ra cuối tháng 5. Cô làm phép tính ấy một lần, trên mặt sau một cái nhãn ống, rồi cô bỏ cái nhãn vào lon rác dưới gầm bàn.</p>
+<p>Ngày mồng sáu và ngày mồng bảy tháng 3 năm 2063, ông Wim có gọi.</p>
+<p>Ông gọi từ cái máy ở hành lang bệnh viện, hai lần, mỗi lần vào chín giờ tối giờ bên này. Cả hai lần đều không nối được tới tổng đài tỉnh, và cả hai lần đều là một giọng ghi sẵn nói bằng một thứ tiếng ông không biết, và ông nghe hết cái giọng ấy rồi ông đặt máy xuống. Lần thứ nhất mất bốn mươi mốt giây. Lần thứ hai mất bốn mươi mốt giây.</p>
+<p>Ông không kể chuyện đó với cô, không năm 2063 và cũng không năm 2070.</p>
+<p>Đám tang làm ngày 14 tháng 3.</p>
+<p>Elin biết chuyện đó vào ngày 4 tháng 4, tức là ba tuần sau khi nó xong.</p>
+<p>Cô viết thư trả lời ngay chiều hôm ấy, và cô viết bốn dòng, và trong bốn dòng ấy cô không viết một chữ nào về giấy tờ, vì viết ra thì thành ra cô đang giải thích.</p>
+<p>Ông Wim tám mươi tám tuổi.</p>
+<p>Ông vẫn dậy lúc năm giờ, vì ba mươi tư năm ca sáng ở nhà máy sữa thì cái giờ ấy không bỏ được. Ông vẫn bắc khoai lúc năm giờ mười và ăn tối lúc sáu giờ kém mười lăm. Ông vẫn để cái tản nhiệt ở phòng cuối hành lang ở mức thấp nhất suốt mùa đông, để ống trong tường không đóng băng, và ông đã nói lý do ấy đúng một lần, năm 2055.</p>
+<p>Ông không trách cô một câu nào.</p>
+<p>Ông không nói tới tháng 3 năm 2063 trong hai ngày đầu. Sang ngày thứ ba, sau bữa tối, ông đứng dậy, đi vào phòng cuối hành lang, và mang ra một tờ giấy gấp làm đôi.</p>
+<p>Ông để nó lên bàn và đẩy sang phía cô.</p>
+<p>Tờ ấy viết tay, một mặt, mười bốn dòng. Dòng thứ nhất là tên và số điện thoại của một người ở nhà tang lễ, và bên cạnh có ghi trong ngoặc là đã trả tiền năm 2055. Dòng thứ hai là chỗ để hồ sơ bảo hiểm. Dòng thứ tư là chỗ khoá van nước chính, và ông vẽ cả một cái hình vuông nhỏ ở lề để chỉ chỗ. Dòng cuối cùng nói cái tủ lạnh phải rút điện trước khi khoá cửa, nếu không thì mùa hè nó chảy nước.</p>
+<p>Ở góc trên bên phải có một cái ngày, và cái ngày ấy là tháng 6 năm 2063.</p>
+<p>"Ông để đây." Ông nói. "Cháu biết là nó ở đâu."</p>
+<p>"Dạ."</p>
+<p>Ông cầm tờ giấy lên, gấp lại theo đúng nếp cũ, và mang trả về phòng cuối hành lang. Ông đi hết bốn mươi giây, và cô ngồi nghe tiếng ngăn kéo mở và đóng.</p>
+<p>Trên gác mái vẫn có ba cái thùng chưa mở. Bụi trên nắp thùng thứ nhất mỏng hơn hai thùng kia, vì có người đã cầm nó lên và đặt xuống.</p>
+<p>Cô không mở.</p>
+<p>Ngày 23 tháng 4 cô đi Wageningen.</p>
+<p>Ông Wim đi cùng cô ra ga.</p>
+<p>Từ nhà ra ga Ommen có bốn chỗ rẽ. Ông đi trước và ông đi nhanh hơn cô, và ở cả bốn chỗ rẽ ông đều đứng lại chờ.</p>
+<p>Ở sân ga ông đưa cô một gói bánh mì kẹp phô mai và nói cô ăn trên tàu.</p>
+<p>Chỗ đào ở đường Rijnsteeg đã lấp. Người ta lấp nó năm 2058, hai tháng sau khi cô đi, và mặt đường ấy bây giờ đã cũ bằng mặt đường hai bên, và chỗ nối chỉ nhìn ra được nếu biết mà tìm.</p>
+<p>Bà Veenstra sáu mươi ba tuổi và vẫn ở phòng cũ, tầng hai, cửa thứ tư.</p>
+<p>Bà không hỏi mười hai năm ấy như thế nào. Bà hỏi bộ số liệu.</p>
+<p>Elin mang theo bộ hồ sơ bàn giao, hai trăm mười sáu trang, bản sao chụp, đóng ba cái kẹp. Nó gồm toạ độ mười chín điểm quan trắc và ảnh chỗ cắm cọc mốc, quy trình lấy mẫu có cả bước tráng điện cực và lý do phải tráng, toàn bộ chuỗi mười năm chép tay với ba chỗ đứt và lý do của từng chỗ, và một danh mục mười bốn mục những việc cô đã làm sai trong mười năm ấy.</p>
+<p>Bà Veenstra đọc phần chuỗi số trước, rồi đọc danh mục mười bốn mục, và bà đọc danh mục ấy lâu hơn.</p>
+<p>Mục thứ chín nói rằng ở điểm 14, trong hai năm, người viết đã lấy mẫu lệch chỗ cắm cọc chừng ba mét, vì chỗ cọc có một bụi gai, và người viết biết chuyện đó từ đợt thứ ba và vẫn lấy lệch cho tới hết, để chuỗi khỏi đứt.</p>
+<p>Bà Veenstra đọc mục ấy hai lần và không nói gì.</p>
+<p>Chữ trong bảng chú thích ở trang một trăm bốn mươi in nhỏ, vì bản sao chụp thu nhỏ một lần rồi thu nhỏ lần nữa. Elin lấy cái kính lúp trong ngăn trong túi ra.</p>
+<p>Vỏ đồng, gấp mười, xếp lại thì bằng đốt ngón tay cái. Cô mua nó năm thứ hai, hàng cũ, và người bán nói dùng bốn chục năm nữa vẫn được.</p>
+<p>Cô mở nó ra và đọc dòng chú thích, và dòng ấy nói con số ở cột thứ năm là con số của dịch chiết bão hoà chứ không phải của huyền phù một phần năm, và hai cái ấy không đổi cho nhau bằng một hệ số.</p>
+<p>Cô đọc đúng cả dòng, và cái kính lúp vẫn tốt.</p>
+<p>Cô xếp nó lại và bỏ vào ngăn trong.</p>
+<p>Trong hai trăm mười sáu trang có một trang không đánh số.</p>
+<p>Nó nằm ở cuối, sau trang hai trăm mười sáu. Nó nói về một người đàn ông tên Hoè, về tên một loại cỏ theo cách gọi ở xã kèm phiên âm năm 2058, và có một dòng ghi rằng người viết chưa xác định được nó là loài nào. Rồi bốn con số: chỗ ông gõ gậy năm 2058, và ba lần đo lại năm 2060, năm 2065, và tháng 9 năm 2068.</p>
+<p>Bà Veenstra hỏi trang này có đánh số không.</p>
+<p>"Không."</p>
+<p>"Nếu đưa vào kho dữ liệu thì phải có số. Không có số thì sau này nó rời ra."</p>
+<p>"Nó không thuộc bộ số liệu."</p>
+<p>Bà Veenstra đọc lại trang ấy một lần nữa, rồi bà xếp nó ra ngoài kẹp và ghi vào tờ nhận hồ sơ một dòng, và dòng ấy nói đây là phụ lục không đánh số, một trang, nhận cùng bộ.</p>
+<p>Buổi chiều Elin ngồi ở phòng đọc và lấy ra chuỗi số của hai điểm quan trắc phía tây con đê.</p>
+<p>Cô đề nghị mở hai điểm ấy trong một trang viết tháng 6 năm 2057, và thứ cô nhận lại hồi ấy là một biểu mẫu đòi chuỗi số liệu liên tục ba năm gần nhất.</p>
+<p>Hai điểm ấy mở tháng 4 năm 2064, mang số 22 và 23. Chuỗi đã sáu năm, bốn đợt một năm, không đứt đợt nào.</p>
+<p>Lý do mở là một chương trình khác cần một nền so sánh cho vùng đó. Phần căn cứ của tờ trình dẫn ba văn bản, và không văn bản nào trong ba là trang cô viết năm 2057.</p>
+<p>Cô đọc ba năm số liệu trong một buổi chiều. Nó sạch. Ai làm nó cũng tráng điện cực và cũng ghi từng lần tráng.</p>
+<p>Bà Veenstra đưa cô một cái tin vào cuối ngày, và bà đưa nó theo đúng cách bà đưa cái tin năm 2058, tức là bà nói ra rồi bà để đấy.</p>
+<p>Có một chỗ ở cơ quan quản lý nước vùng, đóng tại Zwolle. Chuyên viên chất lượng đất và nước mặt, hợp đồng dài hạn, có bảo hiểm, có lương hưu, mười chín ngày phép. Từ nhà ông Wim tới đó là bốn mươi phút, tính cả đoạn đi bộ ra ga.</p>
+<p>"Tôi không khuyên cô nhận." Bà Veenstra nói. "Tôi cũng không khuyên cô đừng nhận."</p>
+<p>Bà đã nói đúng câu ấy tháng 4 năm 2058, ở cùng cái phòng ấy, về một chuyện khác.</p>
+<p>Cả hai người đều nhận ra. Cả hai đều không nói ra.</p>
+<p>Ở nhà ga Zwolle, trong lúc chờ chuyến về Ommen, Elin đếm số toa của một đoàn tàu hàng đi qua.</p>
+<p>Cô đếm được ba mươi mốt toa. Cô đếm thầm, và cô đếm bằng tiếng Việt, và cô không nhận ra chuyện đó.</p>
+<p>Tối ấy ông Wim hỏi cô một câu.</p>
+<p>Ông hỏi ở đó cháu với người ta sống với nhau thế nào.</p>
+<p>Elin bắt đầu một câu và dừng ở chữ thứ tư.</p>
+<p>Cái cô muốn nói thì cô nghĩ được rất rõ, và cô nghĩ nó thành một chữ, và chữ ấy có hai âm. Cô ngồi tìm chừng bốn giây một chữ tiếng Hà Lan cho nó và không có chữ nào.</p>
+<p>"Cũng bình thường ạ." Cô nói.</p>
+<p>Ông Wim nói ừ và hỏi sang chuyện tàu.</p>
+<p>Thư của Bảo Thư tới ngày 28 tháng 4, gửi từ trước khi Elin đi, bốn tuần đường.</p>
+<p>Trong thư có bốn chuyện. Chuyện thứ nhất là cái đò bây giờ chạy ba chuyến. Chuyện thứ hai là ông kỹ sư ở viện có hỏi về mục thứ chín trong danh mục mười bốn mục, và Bảo Thư đã trả lời hộ, và cô chép lại cả câu cô trả lời để Elin coi có đúng không. Chuyện thứ ba là cái xe đạp của Elin đã xẹp bánh sau.</p>
+<p>Chuyện thứ tư là một dòng.</p>
+<p class="p-note">Mày về thì báo trước một hôm, tao ra bến.</p>
+<p>Elin đọc lại dòng ấy một lần, rồi cô gấp thư và để vào ngăn trong túi, cùng chỗ với cái kính lúp.</p>
+<p>Cô nhận chỗ làm ở Zwolle hay không thì cô đã biết từ hôm ở phòng đọc, và cô biết nó lúc đang đọc ba năm số liệu sạch của hai cái điểm mang số 22 và 23.</p>
+<p>Hai điểm ấy đã có người làm. Có người làm bốn đợt một năm, không đứt, sáu năm liền.</p>
+<p>Mười chín điểm ở kia thì có mười một điểm còn tới được, và có một trang không đánh số về một người đàn ông đã mất năm 2061, và cái đám cỏ ấy thì từ 2061 tới nay chỉ có một người đo.</p>
+<p>Cái chỗ ở Zwolle thì có một cái bàn, một cái tủ hồ sơ, và một phòng thí nghiệm dùng chung. Có tiền mua dung dịch chuẩn, đặt là có. Có người thay khi nghỉ phép. Mười chín ngày phép thì đủ để về Ommen sáu lần một năm.</p>
+<p>Elin viết mấy dòng ấy ra mặt sau một tờ giấy, ở phòng đọc. Cô viết hết mặt sau và cô không lật tờ giấy lại.</p>
+<p>Ngày 1 tháng 5 cô điền tờ khai người liên hệ của tổ chức cứu trợ.</p>
+<p>Ô thứ nhất là người liên hệ khẩn cấp, và cô viết Wim Hoogendijk, số máy bàn, quan hệ ông ngoại, y như năm 2058.</p>
+<p>Ô thứ hai là người liên hệ dự phòng, và ô ấy để trống từ tháng 5 năm 2058.</p>
+<p>Cô điền một cái tên vào đó.</p>
+<p>Bà Dekker sang lần thứ hai chiều mồng hai để lấy cái khay. Bà nói bà biết vì sao cô chọn cái nghề này, và bà nói ra lý do ấy, và lý do ấy là chuyện năm 2054.</p>
+<p>"Dạ." Elin nói.</p>
+<p>Cô không sửa bà.</p>
+<p>Chuyện năm 2052 thì cô chưa kể với ai và cô cũng chưa bao giờ thấy nó đáng kể.</p>
+<p>Tháng 6 năm 2052 người ta rào một khoảnh ruộng cách nhà ba trăm mét và cắm một tấm biển có một dãy số. Ba tuần sau có một người đàn bà tới lấy mẫu. Elin mười bốn tuổi, đứng ở bờ, hỏi cái dãy số trên biển là số gì.</p>
+<p>Người ấy nói đó là số hiệu hồ sơ. Rồi Elin hỏi đất này bao giờ trồng lại được, và người ấy nói bốn năm, có thể sáu, chưa biết, phải đo mới biết.</p>
+<p>Người ấy nói câu cuối bằng giọng người đang trả lời một câu hỏi thật.</p>
+<p>Elin về nhà và không kể với ai. Bốn năm sau cô đăng ký ngành, và trong tờ đơn có một ô hỏi lý do, và cô viết ba dòng, và ba dòng ấy không có chữ nào về khoảnh ruộng ấy.</p>
+<p>Buổi sáng mồng ba tháng 5, cô dậy lúc sáu giờ và ra bếp đun nước.</p>
+<p>Cửa bếp nhìn ra vườn sau, và từ cửa bếp thì thấy cái kho ở góc.</p>
+<p>Cửa kho mở. Ông Wim đang ngồi trên cái ghế đẩu, quay lưng ra, cúi xuống một cái xe đạp khung xanh đã bạc, cỡ trẻ con mười một mười hai tuổi.</p>
+<p>Ông đang nhỏ dầu vào xích. Ông nhỏ từng giọt, quay bàn đạp một vòng, rồi nhỏ giọt tiếp, và ông làm việc ấy mỗi mùa xuân từ năm 2055.</p>
+<p>Năm 2056 Elin đã nhìn thấy ông làm việc này một lần, và hôm ấy cô đi vòng ra cửa trước.</p>
+<p>Cô cầm cái ấm nước ra khỏi bếp, đi qua vườn, và đi vào kho.</p>
+<p>"Ông để cháu giữ bàn đạp cho." Cô nói.</p>
+<p>Ông Wim dịch sang một bên chừng một gang để lấy chỗ.</p>
+</article>
+
+
+<svg class="rift-small" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+</svg>
+
+
+<div class="chapter-foot">
+  <nav class="chapter-nav" aria-label="Điều hướng chương">
+    <a class="prev" href="chuong-29.html"><span class="lbl">Trước</span><span class="ttl">Một Vạch Mới Phía Trên</span></a>
+    <a class="toc-link" href="index.html" aria-label="Về mục lục"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></a>
+    <a class="next" href="chuong-31.html"><span class="lbl">Sau</span><span class="ttl">Không Có Toà Nào</span></a>
+  </nav>
+</div>
+
+<footer class="sitefoot">
+  <p>Khúc Ai Ca Cho Những Kẻ Vô Danh — Vòng Tuần Hoàn Người Gieo Hạt · Quyển II</p>
+  <p>© 2026 Nguyễn Duy Anh (bút danh: Mendingur). Bản quyền tác phẩm thuộc về tác giả.</p>
+</footer>
+
+<script src="glow.js" defer></script>
+</body>
+</html>

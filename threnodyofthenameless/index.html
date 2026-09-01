@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Khúc Ai Ca Cho Những Kẻ Vô Danh — Vòng Tuần Hoàn Người Gieo Hạt · Quyển II</title>
+<meta name="description" content="Vòng Tuần Hoàn Người Gieo Hạt · Quyển II — tiểu thuyết của Mendingur">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="style.css">
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem('mendingur-theme');
+    var theme = saved === 'dark' || saved === 'light'
+      ? saved
+      : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {}
+})();
+</script>
+
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+  <linearGradient id="wingGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="55%" stop-color="#C99A3E"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+  <radialGradient id="coreGlow" cx="50%" cy="55%" r="55%">
+    <stop offset="0%" stop-color="#FFF6DE" stop-opacity="0.95"/>
+    <stop offset="55%" stop-color="#E4C077" stop-opacity="0.35"/>
+    <stop offset="100%" stop-color="#E4C077" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="flowerGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+</defs>
+</svg>
+<div class="grain"></div>
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+<div class="settings-menu" id="settingsMenu">
+  <button class="menu-toggle" type="button" id="settingsMenuToggle" aria-haspopup="true" aria-expanded="false" aria-controls="settingsPopover" aria-label="Cài đặt" data-aria-vi="Cài đặt" data-aria-en="Settings">
+    <span class="menu-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+  </button>
+  <div class="settings-popover" id="settingsPopover" role="menu">
+    <div class="settings-group">
+      <p class="settings-group-label" data-i18n data-vi="Ngôn ngữ" data-en="Language">Ngôn ngữ</p>
+      <div class="language-switcher" id="languageSwitcher" role="group" aria-label="Ngôn ngữ / Language">
+        <button class="lang-btn active" type="button" data-lang="vi" aria-pressed="true">VI</button>
+        <button class="lang-btn" type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+    <div class="settings-divider" role="separator"></div>
+    <div class="settings-group">
+      <p class="settings-group-label" data-i18n data-vi="Giao diện" data-en="Theme">Giao diện</p>
+      <div class="theme-switcher" id="themeSwitcher" role="group" aria-label="Giao diện sáng / tối" data-aria-vi="Giao diện sáng / tối" data-aria-en="Light / dark theme">
+        <button class="theme-btn active" type="button" data-theme-choice="light" aria-pressed="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <span data-i18n data-vi="Sáng" data-en="Light">Sáng</span>
+        </button>
+        <button class="theme-btn" type="button" data-theme-choice="dark" aria-pressed="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+          <span data-i18n data-vi="Tối" data-en="Dark">Tối</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============ MASTHEAD (N6, tùy biến — đồng bộ với thesowerscycle/donate) ============ -->
+<header class="mast">
+  <p class="mast-line">
+    <a href="https://mendingur.github.io/thesowerscycle/" data-i18n data-vi="← Về Bộ Ba" data-en="← Back to The Trilogy">← Về Bộ Ba</a>
+  </p>
+  <p class="mast-name" data-i18n data-vi="Khúc Ai Ca Cho Những Kẻ Vô Danh" data-en="Threnody of the Nameless">Khúc Ai Ca Cho Những Kẻ Vô Danh</p>
+  <hr class="mast-rule" aria-hidden="true">
+</header>
+
+<section class="hero">
+  <div class="hero-rift"><svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bieu tuong vet nut anh sang">
+<circle cx="200" cy="215" r="145" fill="url(#coreGlow)"/>
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)" opacity="0.97"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)" opacity="0.97"/>
+<path d="M195,312 C160,298 122,272 100,230 C82,196 80,155 90,118" fill="none" stroke="#FBF6EC" stroke-width="2" opacity="0.45"/>
+<path d="M205,312 C240,298 278,272 300,230 C318,196 320,155 310,118" fill="none" stroke="#FBF6EC" stroke-width="2" opacity="0.45"/>
+<path d="M200,340 L200,295" stroke="#8A4423" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+<path d="M200,320 C185,313 172,314 163,323" stroke="#8A4423" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+<path d="M200,320 C215,313 228,314 237,323" stroke="#8A4423" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+<g transform="translate(200,278)">
+  <g stroke="#FBF6EC" stroke-width="1.1" stroke-opacity="0.55">
+    <ellipse rx="14" ry="21" transform="rotate(0)" fill="url(#flowerGrad)"/>
+    <ellipse rx="14" ry="21" transform="rotate(72)" fill="url(#flowerGrad)"/>
+    <ellipse rx="14" ry="21" transform="rotate(144)" fill="url(#flowerGrad)"/>
+    <ellipse rx="14" ry="21" transform="rotate(216)" fill="url(#flowerGrad)"/>
+    <ellipse rx="14" ry="21" transform="rotate(288)" fill="url(#flowerGrad)"/>
+  </g>
+  <circle r="9.5" fill="#FFF6DE"/>
+  <circle r="9.5" fill="none" stroke="#A8532A" stroke-width="1" opacity="0.5"/>
+  <circle r="3" fill="#E4A94E"/>
+</g>
+<g transform="translate(200,96)">
+  <path d="M0,-24 C2,-7 7,-2 24,0 C7,2 2,7 0,24 C-2,7 -7,2 -24,0 C-7,-2 -2,-7 0,-24 Z" fill="#F3D488"/>
+</g>
+<g transform="translate(255,148) scale(0.42)">
+  <path d="M0,-24 C2,-7 7,-2 24,0 C7,2 2,7 0,24 C-2,7 -7,2 -24,0 C-7,-2 -2,-7 0,-24 Z" fill="#E4C077"/>
+</g>
+<g transform="translate(145,148) scale(0.42)">
+  <path d="M0,-24 C2,-7 7,-2 24,0 C7,2 2,7 0,24 C-2,7 -7,2 -24,0 C-7,-2 -2,-7 0,-24 Z" fill="#E4C077"/>
+</g>
+<g transform="translate(200,142) scale(0.28)">
+  <path d="M0,-24 C2,-7 7,-2 24,0 C7,2 2,7 0,24 C-2,7 -7,2 -24,0 C-7,-2 -2,-7 0,-24 Z" fill="#F3D488"/>
+</g>
+</svg></div>
+  <p class="eyebrow" data-i18n data-vi="Một bộ trường ca hậu tận thế" data-en="A post-apocalyptic saga">Một bộ trường ca hậu tận thế</p>
+  <h1 data-i18n data-vi="Khúc Ai Ca Cho Những Kẻ Vô Danh" data-en="Threnody of the Nameless">Khúc Ai Ca Cho Những Kẻ Vô Danh</h1>
+  <p class="subtitle" data-i18n data-vi="Vòng Tuần Hoàn Người Gieo Hạt · Quyển II" data-en="The Sower's Cycle · Volume II">Vòng Tuần Hoàn Người Gieo Hạt · Quyển II</p>
+  <p class="blurb" data-i18n data-vi="Năm 2058, một làn sóng có tổ chức vượt Cánh Cổng ở Nam Cực, và thế giới bước vào cuộc chiến với một bên mà không ai gọi được tên. Elin, cô sinh viên môi trường người Hà Lan sang miền Trung đo độ mặn của đất, ở lại mười ba năm. Một hội đồng mười bảy ghế biểu quyết một giao thức không có điều kiện chấm dứt; một người đàn ông ở Gò Sen nghe được thứ không máy nào đo được; và không ai đưa ra nổi cái ranh giới để phân biệt kẻ tới xâm lược với kẻ đang chạy trốn. Đây là câu chuyện về những gì được ghi lại, những gì bị bỏ trống, và cái giá của việc gọi đúng tên một điều." data-en="In 2058 an organised wave crossed the Gate in Antarctica, and the world went to war with something no one could name. Elin, a Dutch environmental student who came to central Vietnam to measure salt in the soil, stayed thirteen years. A council of seventeen seats voted through a protocol with no condition for ending; a man in Gò Sen heard what no instrument could measure; and no one could produce the boundary that would tell an invader from someone running away. This is a story about what gets written down, what is left blank, and the price of calling a thing by its right name.">Năm 2058, một làn sóng có tổ chức vượt Cánh Cổng ở Nam Cực, và thế giới bước vào cuộc chiến với một bên mà không ai gọi được tên. Elin, cô sinh viên môi trường người Hà Lan sang miền Trung đo độ mặn của đất, ở lại mười ba năm. Một hội đồng mười bảy ghế biểu quyết một giao thức không có điều kiện chấm dứt; một người đàn ông ở Gò Sen nghe được thứ không máy nào đo được; và không ai đưa ra nổi cái ranh giới để phân biệt kẻ tới xâm lược với kẻ đang chạy trốn. Đây là câu chuyện về những gì được ghi lại, những gì bị bỏ trống, và cái giá của việc gọi đúng tên một điều.</p>
+  <a class="btn-start" href="chuong-01.html">
+    <span data-i18n data-vi="Bắt đầu đọc" data-en="Start reading">Bắt đầu đọc</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+  </a>
+  <div class="meta-strip">
+    <span>
+      <a href="https://mendingur.github.io/"><b>Mendingur</b></a>
+    </span>
+    <span data-i18n data-vi="5 Phần · 14 Tập · 34 Chương" data-en="5 Parts · 14 Books · 34 Chapters">5 Phần · 14 Tập · 34 Chương</span>
+    <span data-i18n data-vi="~122.000 chữ" data-en="~122,000 words">~122.000 chữ</span>
+  </div>
+</section>
+
+<svg class="rift-divider" viewBox="0 0 400 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <path d="M0,30 C120,30 160,5 200,5 C240,5 280,30 400,30" fill="none" stroke="url(#wingGrad)" stroke-width="1.4" opacity="0.6"/>
+</svg>
+
+<main class="toc">
+<details class="toc-part" open>
+  <summary>
+    <span class="pnum">I</span>
+    <span class="ptitle" data-i18n data-vi="INTROITUS · KHÚC MỞ ĐƯỜNG" data-en="INTROITUS · PRELUDE ON THE ROAD">INTROITUS · KHÚC MỞ ĐƯỜNG</span>
+    <span class="chev">›</span>
+  </summary>
+  <div class="toc-body">
+<div class="toc-book">
+  <h3 data-i18n data-vi="Tập 1 — BỘ BÁT ĐĨA ĐỦ SÁU NGƯỜI" data-en="Book 1 — A TABLE STILL SET FOR SIX">Tập 1 — BỘ BÁT ĐĨA ĐỦ SÁU NGƯỜI</h3>
+  <ul><li><a href="chuong-01.html"><span class="cnum">01</span><span data-i18n data-vi="Mẫu Số Tám" data-en="The Uncorrected Eight">Mẫu Số Tám</span></a></li><li><a href="chuong-02.html"><span class="cnum">02</span><span data-i18n data-vi="Cái Tên Viết Sai" data-en="One Letter, Corrected">Cái Tên Viết Sai</span></a></li><li><a href="chuong-03.html"><span class="cnum">03</span><span data-i18n data-vi="Tương Quan Bằng Không" data-en="Inconclusive">Tương Quan Bằng Không</span></a></li></ul>
+</div>
+<div class="toc-book">
+  <h3 data-i18n data-vi="Tập 2 — NGƯỜI ĐÃ NGỒI SẴN Ở ĐÓ" data-en="Book 2 — THE ONE ALREADY SEATED THERE">Tập 2 — NGƯỜI ĐÃ NGỒI SẴN Ở ĐÓ</h3>
+  <ul><li><a href="chuong-04.html"><span class="cnum">04</span><span data-i18n data-vi="Mười Bốn Cái Biểu Mẫu" data-en="The Second Box, Blank">Mười Bốn Cái Biểu Mẫu</span></a></li><li><a href="chuong-05.html"><span class="cnum">05</span><span data-i18n data-vi="Dãy Ghế Không Nằm Được" data-en="One Drop of Ink">Dãy Ghế Không Nằm Được</span></a></li><li><a href="chuong-06.html"><span class="cnum">06</span><span data-i18n data-vi="Vết Dao Đề Năm 2058" data-en="This Year&#x27;s Notch">Vết Dao Đề Năm 2058</span></a></li></ul>
+</div>
+  </div>
+</details>
+
+<details class="toc-part">
+  <summary>
+    <span class="pnum">II</span>
+    <span class="ptitle" data-i18n data-vi="DIES IRAE · NGÀY KHÔNG GỌI TÊN" data-en="DIES IRAE · THE DAY NOTHING WAS NAMED">DIES IRAE · NGÀY KHÔNG GỌI TÊN</span>
+    <span class="chev">›</span>
+  </summary>
+  <div class="toc-body">
+<div class="toc-book">
+  <h3 data-i18n data-vi="Tập 3 — LẦN NÀY CHÚNG KHÔNG CHẠY" data-en="Book 3 — NOT RUNNING, THIS TIME">Tập 3 — LẦN NÀY CHÚNG KHÔNG CHẠY</h3>
+  <ul><li><a href="chuong-07.html"><span class="cnum">07</span><span data-i18n data-vi="Ngày Không Ai Kịp Đặt Tên" data-en="The Day No One Could Name">Ngày Không Ai Kịp Đặt Tên</span></a></li><li><a href="chuong-08.html"><span class="cnum">08</span><span data-i18n data-vi="Mười Bảy Cái Ghế" data-en="Seventeen Chairs">Mười Bảy Cái Ghế</span></a></li></ul>
+</div>
+<div class="toc-book">
+  <h3 data-i18n data-vi="Tập 4 — HAI NHÀ CHƯA CHỊU ĐI" data-en="Book 4 — THE TWO HOUSEHOLDS WHO WOULDN&#x27;T GO">Tập 4 — HAI NHÀ CHƯA CHỊU ĐI</h3>
+  <ul><li><a href="chuong-09.html"><span class="cnum">09</span><span data-i18n data-vi="Đất Trung Lập, Không Tên" data-en="Neutral Land, No Names">Đất Trung Lập, Không Tên</span></a></li><li><a href="chuong-10.html"><span class="cnum">10</span><span data-i18n data-vi="Người Ta Chờ Ba Mươi Tám" data-en="Waiting for Thirty-Eight">Người Ta Chờ Ba Mươi Tám</span></a></li></ul>
+</div>
+<div class="toc-book">
+  <h3 data-i18n data-vi="Tập 5 — KẺ CANH NGƯỠNG CỬA" data-en="Book 5 — THE KEEPER OF THE THRESHOLD">Tập 5 — KẺ CANH NGƯỠNG CỬA</h3>
+  <ul><li><a href="chuong-11.html"><span class="cnum">11</span><span data-i18n data-vi="Một Cái Máy Đo" data-en="A Kind of Instrument">Một Cái Máy Đo</span></a></li><li><a href="chuong-12.html"><span class="cnum">12</span><span data-i18n data-vi="Đêm Vô Ưu" data-en="A Night Without Sorrow">Đêm Vô Ưu</span></a></li></ul>
+</div>
+  </div>
+</details>
+
+<details class="toc-part">
+  <summary>
+    <span class="pnum">III</span>
+    <span class="ptitle" data-i18n data-vi="LACRIMOSA · NƯỚC MẮT KHÔNG RƠI" data-en="LACRIMOSA · TEARS UNSHED">LACRIMOSA · NƯỚC MẮT KHÔNG RƠI</span>
+    <span class="chev">›</span>
+  </summary>
+  <div class="toc-body">
+<div class="toc-book">
+  <h3 data-i18n data-vi="Tập 6 — CHỈ CÒN NÓI VỀ MÙA ĐÔNG" data-en="Book 6 — NOTHING LEFT TO SAY BUT WINTER">Tập 6 — CHỈ CÒN NÓI VỀ MÙA ĐÔNG</h3>
+  <ul><li><a href="chuong-13.html"><span class="cnum">13</span><span data-i18n data-vi="Một Chữ" data-en="One Word">Một Chữ</span></a></li><li><a href="chuong-14.html"><span class="cnum">14</span><span data-i18n data-vi="Ngày Không Có Con Số" data-en="The Day the Number Stopped">Ngày Không Có Con Số</span></a></li></ul>
+</div>
+<div class="toc-book">
+  <h3 data-i18n data-vi="Tập 7 — HAI NÉT CHỮ" data-en="Book 7 — TWO HANDS, ONE PAGE">Tập 7 — HAI NÉT CHỮ</h3>
+  <ul><li><a href="chuong-15.html"><span class="cnum">15</span><span data-i18n data-vi="Ba Món Đồ" data-en="Three Things Left Behind">Ba Món Đồ</span></a></li><li><a href="chuong-16.html"><span class="cnum">16</span><span data-i18n data-vi="Người Giữ Ký Ức" data-en="The One Who Keeps the Record">Người Giữ Ký Ức</span></a></li></ul>
+</div>
+<div class="toc-book">
+  <h3 data-i18n data-vi="Tập 8 — CÔNG CHÚNG TỰ BỊT TAI" data-en="Book 8 — THE PUBLIC STOPS ITS OWN EARS">Tập 8 — CÔNG CHÚNG TỰ BỊT TAI</h3>
+  <ul><li><a href="chuong-17.html"><span class="cnum">17</span><span data-i18n data-vi="Không Ai Đo Được Ranh Giới" data-en="The Boundary No One Could Measure">Không Ai Đo Được Ranh Giới</span></a></li><li><a href="chuong-18.html"><span class="cnum">18</span><span data-i18n data-vi="Sáu Trăm Chín Mươi Mét" data-en="Six Hundred and Ninety Meters">Sáu Trăm Chín Mươi Mét</span></a></li></ul>
+</div>
+  </div>
+</details>
+
+<details class="toc-part">
+  <summary>
+    <span class="pnum">IV</span>
+    <span class="ptitle" data-i18n data-vi="LIBERA ME · CỬA MỞ, CHƯA AI QUA" data-en="LIBERA ME · A DOOR OPENED, NOT CROSSED">LIBERA ME · CỬA MỞ, CHƯA AI QUA</span>
+    <span class="chev">›</span>
+  </summary>
+  <div class="toc-body">
+<div class="toc-book">
+  <h3 data-i18n data-vi="Tập 9 — BIẾT MÀ KHÔNG LÀM GÌ ĐƯỢC" data-en="Book 9 — KNOWING, AND UNABLE">Tập 9 — BIẾT MÀ KHÔNG LÀM GÌ ĐƯỢC</h3>
+  <ul><li><a href="chuong-19.html"><span class="cnum">19</span><span data-i18n data-vi="Tôi Biết Ghi Sổ" data-en="I Know How to Keep Records">Tôi Biết Ghi Sổ</span></a></li><li><a href="chuong-20.html"><span class="cnum">20</span><span data-i18n data-vi="Viết Ra Cả Bìa" data-en="When the Pages Run Out">Viết Ra Cả Bìa</span></a></li></ul>
+</div>
+<div class="toc-book">
+  <h3 data-i18n data-vi="Tập 10 — CHÍN NGÀY" data-en="Book 10 — NINE DAYS">Tập 10 — CHÍN NGÀY</h3>
+  <ul><li><a href="chuong-21.html"><span class="cnum">21</span><span data-i18n data-vi="Mấy Giờ?" data-en="What Time?">Mấy Giờ?</span></a></li><li><a href="chuong-22.html"><span class="cnum">22</span><span data-i18n data-vi="Mười Bảy Cái Ghế, Lần Cuối" data-en="Seventeen Chairs, One Last Time">Mười Bảy Cái Ghế, Lần Cuối</span></a></li><li><a href="chuong-23.html"><span class="cnum">23</span><span data-i18n data-vi="Khu Vực Chưa Xác Định" data-en="The Undetermined Zone">Khu Vực Chưa Xác Định</span></a></li></ul>
+</div>
+  </div>
+</details>
+
+<details class="toc-part">
+  <summary>
+    <span class="pnum">V</span>
+    <span class="ptitle" data-i18n data-vi="IN PARADISUM · THIÊN ĐƯỜNG CHƯA ĐÓNG SỔ" data-en="IN PARADISUM · PARADISE WITH THE BOOKS STILL OPEN">IN PARADISUM · THIÊN ĐƯỜNG CHƯA ĐÓNG SỔ</span>
+    <span class="chev">›</span>
+  </summary>
+  <div class="toc-body">
+<div class="toc-book">
+  <h3 data-i18n data-vi="Tập 11 — THIẾU MỘT TIẾNG ĐỘNG" data-en="Book 11 — ONE SOUND MISSING">Tập 11 — THIẾU MỘT TIẾNG ĐỘNG</h3>
+  <ul><li><a href="chuong-24.html"><span class="cnum">24</span><span data-i18n data-vi="Ba Giờ Sáng" data-en="Three in the Morning">Ba Giờ Sáng</span></a></li><li><a href="chuong-25.html"><span class="cnum">25</span><span data-i18n data-vi="Đường Ống" data-en="The Pipeline">Đường Ống</span></a></li><li><a href="chuong-26.html"><span class="cnum">26</span><span data-i18n data-vi="Nhịp Gõ" data-en="The Tap Code">Nhịp Gõ</span></a></li></ul>
+</div>
+<div class="toc-book">
+  <h3 data-i18n data-vi="Tập 12 — KHÔNG CÓ AI NẰM DƯỚI" data-en="Book 12 — NO ONE LIES BENEATH">Tập 12 — KHÔNG CÓ AI NẰM DƯỚI</h3>
+  <ul><li><a href="chuong-27.html"><span class="cnum">27</span><span data-i18n data-vi="Tờ Giấy Không Đọc Được Nữa" data-en="The Paper No One Can Read Anymore">Tờ Giấy Không Đọc Được Nữa</span></a></li><li><a href="chuong-28.html"><span class="cnum">28</span><span data-i18n data-vi="Danh Sách Trên Tường" data-en="The List on the Wall">Danh Sách Trên Tường</span></a></li><li><a href="chuong-29.html"><span class="cnum">29</span><span data-i18n data-vi="Một Vạch Mới Phía Trên" data-en="A New Notch, Higher Up">Một Vạch Mới Phía Trên</span></a></li></ul>
+</div>
+<div class="toc-book">
+  <h3 data-i18n data-vi="Tập 13 — HOÁ ĐƠN ĐẾN MUỘN" data-en="Book 13 — THE INVOICE THAT CAME LATE">Tập 13 — HOÁ ĐƠN ĐẾN MUỘN</h3>
+  <ul><li><a href="chuong-30.html"><span class="cnum">30</span><span data-i18n data-vi="Thị Trấn Không Đổi Gì Cả" data-en="The Town Where Nothing Changed">Thị Trấn Không Đổi Gì Cả</span></a></li><li><a href="chuong-31.html"><span class="cnum">31</span><span data-i18n data-vi="Không Có Toà Nào" data-en="No Court At All">Không Có Toà Nào</span></a></li><li><a href="chuong-32.html"><span class="cnum">32</span><span data-i18n data-vi="Tôi Và Anh" data-en="What We Call Each Other Now">Tôi Và Anh</span></a></li></ul>
+</div>
+<div class="toc-book">
+  <h3 data-i18n data-vi="Tập 14 — NGƯỜI CUỐI CÙNG ĐÓNG SỔ" data-en="Book 14 — THE LAST TO CLOSE THE BOOKS">Tập 14 — NGƯỜI CUỐI CÙNG ĐÓNG SỔ</h3>
+  <ul><li><a href="chuong-33.html"><span class="cnum">33</span><span data-i18n data-vi="Rà Phá" data-en="The Clearance">Rà Phá</span></a></li><li><a href="chuong-34.html"><span class="cnum">34</span><span data-i18n data-vi="Điều Trúc Không Kể Ai" data-en="What Trúc Told No One">Điều Trúc Không Kể Ai</span></a></li></ul>
+</div>
+  </div>
+</details>
+
+</main>
+
+<footer class="sitefoot">
+  <p data-i18n data-vi="Khúc Ai Ca Cho Những Kẻ Vô Danh — Vòng Tuần Hoàn Người Gieo Hạt · Quyển II" data-en="Threnody of the Nameless — The Sower's Cycle · Volume II">Khúc Ai Ca Cho Những Kẻ Vô Danh — Vòng Tuần Hoàn Người Gieo Hạt · Quyển II</p>
+  <p data-i18n data-vi="© 2026 Nguyễn Duy Anh (bút danh: Mendingur). Bản quyền tác phẩm thuộc về tác giả." data-en="© 2026 Nguyễn Duy Anh (pen name: Mendingur). All rights to this work belong to the author.">© 2026 Nguyễn Duy Anh (bút danh: Mendingur). Bản quyền tác phẩm thuộc về tác giả.</p>
+</footer>
+
+<script>
+  (function () {
+    var switcher = document.getElementById('languageSwitcher');
+    var buttons = switcher.querySelectorAll('.lang-btn');
+    var translatable = document.querySelectorAll('[data-i18n]');
+
+    function setLanguage(lang, save) {
+      document.documentElement.lang = lang;
+      document.body.classList.add('language-changing');
+
+      setTimeout(function () {
+        translatable.forEach(function (el) {
+          var value = el.getAttribute('data-' + lang);
+          if (value !== null) el.innerHTML = value;
+        });
+
+        buttons.forEach(function (button) {
+          var active = button.getAttribute('data-lang') === lang;
+          button.classList.toggle('active', active);
+          button.setAttribute('aria-pressed', active ? 'true' : 'false');
+        });
+
+        switcher.classList.toggle('en', lang === 'en');
+        document.title = lang === 'en'
+          ? "Threnody of the Nameless — The Sower's Cycle · Volume II"
+          : 'Khúc Ai Ca Cho Những Kẻ Vô Danh — Vòng Tuần Hoàn Người Gieo Hạt · Quyển II';
+
+        var description = document.querySelector('meta[name="description"]');
+        if (description) {
+          description.setAttribute(
+            'content',
+            lang === 'en'
+              ? "The Sower's Cycle · Volume II — a novel by Mendingur"
+              : 'Vòng Tuần Hoàn Người Gieo Hạt · Quyển II — tiểu thuyết của Mendingur'
+          );
+        }
+
+        document.body.classList.remove('language-changing');
+        if (save) {
+          try { localStorage.setItem('mendingur-language', lang); } catch (e) {}
+        }
+      }, 90);
+    }
+
+    buttons.forEach(function (button) {
+      button.addEventListener('click', function () {
+        var lang = button.getAttribute('data-lang');
+        if (document.documentElement.lang !== lang) setLanguage(lang, true);
+      });
+    });
+
+    var saved = null;
+    try { saved = localStorage.getItem('mendingur-language'); } catch (e) {}
+    if (saved === 'en' || saved === 'vi') setLanguage(saved, false);
+  })();
+
+  // ===== THEME SWITCHER (light / dark) =====
+  (function () {
+    var switcher = document.getElementById('themeSwitcher');
+    if (!switcher) return;
+    var themeButtons = switcher.querySelectorAll('.theme-btn');
+
+    function setTheme(theme, save) {
+      document.documentElement.setAttribute('data-theme', theme);
+
+      themeButtons.forEach(function (button) {
+        var active = button.getAttribute('data-theme-choice') === theme;
+        button.classList.toggle('active', active);
+        button.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+
+      switcher.classList.toggle('dark', theme === 'dark');
+
+      if (save) {
+        try { localStorage.setItem('mendingur-theme', theme); } catch (e) {}
+      }
+    }
+
+    themeButtons.forEach(function (button) {
+      button.addEventListener('click', function () {
+        var theme = button.getAttribute('data-theme-choice');
+        if (document.documentElement.getAttribute('data-theme') !== theme) {
+          setTheme(theme, true);
+        }
+      });
+    });
+
+    var currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+    setTheme(currentTheme, false);
+  })();
+
+  // ===== SETTINGS MENU (hamburger → popover) =====
+  (function () {
+    var menu = document.getElementById('settingsMenu');
+    var toggle = document.getElementById('settingsMenuToggle');
+    if (!menu || !toggle) return;
+
+    function closeMenu() {
+      menu.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+
+    function openMenu() {
+      menu.classList.add('open');
+      toggle.setAttribute('aria-expanded', 'true');
+    }
+
+    toggle.addEventListener('click', function (e) {
+      e.stopPropagation();
+      if (menu.classList.contains('open')) closeMenu(); else openMenu();
+    });
+
+    document.addEventListener('click', function (e) {
+      if (menu.classList.contains('open') && !menu.contains(e.target)) closeMenu();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && menu.classList.contains('open')) {
+        closeMenu();
+        toggle.focus();
+      }
+    });
+  })();
+</script>
+
+<script src="glow.js" defer></script>
+</body>
+</html>

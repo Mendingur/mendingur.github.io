@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Đêm Vô Ưu — Khúc Ai Ca Cho Những Kẻ Vô Danh</title>
+<meta name="description" content="Vòng Tuần Hoàn Người Gieo Hạt · Quyển II — tiểu thuyết của Mendingur">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="style.css">
+<script src="reader.js" defer></script>
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem('mendingur-theme');
+    var theme = saved === 'dark' || saved === 'light'
+      ? saved
+      : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+  <linearGradient id="wingGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="55%" stop-color="#C99A3E"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+  <radialGradient id="coreGlow" cx="50%" cy="55%" r="55%">
+    <stop offset="0%" stop-color="#FFF6DE" stop-opacity="0.95"/>
+    <stop offset="55%" stop-color="#E4C077" stop-opacity="0.35"/>
+    <stop offset="100%" stop-color="#E4C077" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="flowerGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+</defs>
+</svg>
+<div class="grain"></div>
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+<div class="settings-menu" id="settingsMenu">
+  <button class="menu-toggle" type="button" id="settingsMenuToggle" aria-haspopup="true" aria-expanded="false" aria-controls="settingsPopover" aria-label="Cài đặt giao diện">
+    <span class="menu-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+  </button>
+  <div class="settings-popover" id="settingsPopover" role="menu">
+    <div class="settings-group">
+      <p class="settings-group-label">Giao diện</p>
+      <div class="theme-switcher" id="themeSwitcher" role="group" aria-label="Giao diện sáng / tối">
+        <button class="theme-btn active" type="button" data-theme-choice="light" aria-pressed="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <span>Sáng</span>
+        </button>
+        <button class="theme-btn" type="button" data-theme-choice="dark" aria-pressed="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+          <span>Tối</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<header class="sitebar">
+  <a class="brand" href="index.html">
+    <span class="mark"><svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sower's Cycle mark">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+<g transform="translate(200,278)">
+  <g><ellipse rx="14" ry="21" transform="rotate(0)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(72)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(144)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(216)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(288)" fill="url(#flowerGrad)"/></g>
+  <circle r="9.5" fill="#FFF6DE"/>
+</g>
+<g transform="translate(200,96)"><path d="M0,-24 C2,-7 7,-2 24,0 C7,2 2,7 0,24 C-2,7 -7,2 -24,0 C-7,-2 -2,-7 0,-24 Z" fill="#F3D488"/></g>
+</svg></span>
+    <span class="word">Khúc Ai Ca Cho Những Kẻ Vô Danh</span>
+  </a>
+  <nav>
+    <a href="index.html" class="toc-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      Mục lục
+    </a>
+  </nav>
+</header>
+<div class="progress-track"><div class="progress-fill"></div></div>
+
+<header class="chapter-head">
+  <p class="crumb"><a href="index.html">DIES IRAE · KẺ CANH NGƯỠNG CỬA</a></p>
+  <span class="cnum">Chương 12</span>
+  <h1>Đêm Vô Ưu</h1>
+  <div class="font-toggle" role="group" aria-label="Cỡ chữ">
+    <button type="button" data-size="sm" aria-pressed="false">A-</button>
+    <button type="button" data-size="md" aria-pressed="true">A</button>
+    <button type="button" data-size="lg" aria-pressed="false">A+</button>
+  </div>
+</header>
+
+<article class="prose" data-size="md">
+<p>Cái danh sách viết trên hai tờ giấy, và tờ thứ hai chỉ dùng có một mặt.</p>
+<p>Cột bên trái là chở được. Cột bên phải là không chở được. Ai cũng biết cột bên phải mới là cột thật, vì cột bên trái thì cứ chở dần rồi cũng hết, còn cột bên phải thì viết xong là xong.</p>
+<p>Bé Nhân cầm bút. Cậu viết chậm và viết to, và Mai đọc cho cậu viết vì cô còn phải xếp đồ.</p>
+<p>Chở được: tượng nhỏ, ba cái. Chuông. Hai hòm kinh sách. Cái tủ lạnh của trạm y tế xã gửi nhờ, có thuốc bên trong, ưu tiên số một. Chăn màn. Nồi niêu. Bao gạo. Cái máy phát.</p>
+<p>Không chở được: cái tủ đựng kinh sách ở gian bên trái chánh điện. Ba cái chum nước. Bàn thờ tổ. Cái giếng.</p>
+<p>Cậu viết chữ giếng rồi ngẩng lên.</p>
+<p>"Chị ơi, cái giếng thì viết vô làm chi?"</p>
+<p>"Viết vô để biết là mình bỏ lại cái chi." Mai nói. "Viết đi."</p>
+<p>Chuyện cái tủ mất hai mươi phút.</p>
+<p>Nó là tủ gỗ mít, hai cánh, cao quá đầu người, và trong nó có sáu chục cuốn kinh sách đóng bìa vải mà thầy Tịnh Không đã vá lại từng cuốn trong ba mươi năm. Bốn người khiêng được. Chú Ba Cẩn nói cứ khiêng ra rồi tính. Anh Hoạch nói khiêng ra mà không lên xe được thì phơi mưa còn tệ hơn.</p>
+<p>Kaito lấy cái thước dây ra đo.</p>
+<p>Lòng thùng xe một mét sáu mươi tám. Cái tủ một mét bảy mươi bảy.</p>
+<p>Chín phân.</p>
+<p>Không ai nói gì thêm về cái tủ. Người ta lấy sáu chục cuốn kinh sách ra, xếp vào hai cái hòm, và cái tủ ở lại, hai cánh mở, trống, và cả buổi chiều không ai đóng nó lại.</p>
+<p>Ở cái lòng chảo này không có gì để mà nhắm vào.</p>
+<p>Không có đồn. Không có kho. Không có cầu, vì cái hói thì lội qua được vào mùa này. Cái to nhất trong bán kính năm cây là cái trường tiểu học một dãy sáu phòng, và trên nóc nó không có gì ngoài mấy tấm tôn.</p>
+<p>Chuyện đang tới không tới vì ở đây có cái gì. Nó tới vì đất ở đây bằng, và một cái gì đang đi từ bên tê rú xuống bờ biển thì đi chỗ bằng.</p>
+<p>Bản tin lúc mười một giờ trưa nói trục di chuyển đi qua khu vực phía đông, cách trung tâm xã chừng mười tám cây, hướng đông bắc.</p>
+<p>Bản tin ấy do huyện đọc, huyện lấy của tỉnh, tỉnh lấy của quân khu. Không có ai trong cái chuỗi ấy nói dối. Con số mười tám cây là con số họ có lúc mười một giờ trưa.</p>
+<p>Vì con số ấy nên người ta đi về phía đông nam, tức là đi ra xa cái trục, và đi theo đường lớn vì đường lớn thì đêm còn thấy đường.</p>
+<p>Đi thì không phải ai cũng đi.</p>
+<p>Xóm Trung bốn mươi hai hộ, đi hai mươi tám. Xóm Cồn ba mươi lăm hộ, đi mười chín. Người ở lại thì ở lại vì mấy lý do rất chán: nhà có bò, nhà có người nằm một chỗ, nhà không có chỗ để tới, nhà đã đi một lần hồi tháng tám rồi về và lần này nhất định không đi nữa. Trường tiểu học tuần trước còn ba mươi mấy đứa chưa chuyển hồ sơ.</p>
+<p>Cả cái lòng chảo, từ rú bên tê qua tới hói bên ni, đêm ấy còn chừng bốn trăm người.</p>
+<p>Mai và Thiên đi chuyến ba giờ chiều, cùng nhóm thứ nhất.</p>
+<p>Con bé hai tuổi hai tháng. Nó ngồi trong cái thúng buộc sau xe, tay cầm cái muôi gỗ, và trong suốt hai tiếng đầu nó không khóc mà chỉ hỏi một chữ, hỏi chừng bốn chục lần, và chữ đó là chữ đi.</p>
+<p>Lúc lên xe, Mai không dặn bé Nhân câu nào dài. Cô sửa lại cái quai dép cậu đang xỏ ngược, hỏi cậu cầm tiền chưa, rồi bảo cậu ngủ sớm.</p>
+<p>"Sáng mai em đi cùng chuyến với anh Kaito." Cô nói.</p>
+<p>"Vâng ạ."</p>
+<p>Xe chạy được chừng hai chục mét thì Thiên quay lại và giơ cái muôi gỗ lên, và bé Nhân giơ tay, và con bé giơ cao hơn, và cứ thế cho tới khúc quanh.</p>
+<p>Kaito ở lại chở chuyến cuối. Chuyến cuối là cái tủ lạnh thuốc, hai hòm kinh sách, và cái máy phát, và cái máy phát thì phải tháo bệ ra mới khiêng nổi, và tháo bệ thì mất một tiếng rưỡi.</p>
+<p>Sáu giờ chiều thì hết xe.</p>
+<p>Chú Ba Cẩn hẹn năm giờ sáng mai quay lại với cái xe bò, và Kaito đi cùng chuyến ấy, và đi bây giờ thì cũng chỉ đi bộ trong đêm với hai cái hòm mà thôi.</p>
+<p>"Con ở lại một đêm với thầy." Bé Nhân nói.</p>
+<p>Không ai bàn cãi câu ấy. Chùa cách trục mười tám cây. Đường thì đông. Một đứa mười hai tuổi đi bộ trong đêm trên đường đông thì nguy hiểm hơn một đứa mười hai tuổi nằm ngủ ở chùa, và cả bốn người lớn có mặt hôm ấy đều tính đúng như thế, và cả bốn người đều tính bằng con số mười tám cây.</p>
+<p>Thầy Tịnh Không thì không đi.</p>
+<p>Ông nói ông không đi vào lúc hai giờ chiều, nói một lần, và không nói lại. Ông không viện lý do tuổi tác. Ông không nói câu nào về chuyện giữ chùa. Người ta hỏi thêm hai lần và cả hai lần ông đều trả lời bằng cách hỏi lại một chuyện khác, và đến lần thứ ba thì không ai hỏi nữa.</p>
+<p>Bảy giờ tối, ăn xong, thầy Tịnh Không bảo bé Nhân đi lấy hộ cái xô.</p>
+<p>"Cái xô tôn ở sau bếp. Con xách nước đổ đầy ba cái đèn ngoài chánh điện, rồi khêu bấc lên cho thầy."</p>
+<p>"Dạ."</p>
+<p>Đổ dầu chứ không phải đổ nước, và cậu biết ông nói nhầm, và cậu không sửa, vì mấy tháng nay ông hay nhầm mấy chữ như thế và cậu đã quen.</p>
+<p>Cậu xách dầu ra chánh điện.</p>
+<p>Ba cái đèn dầu đặt trên ba cái đế đồng, cách nhau chừng hai mét, kê thành hàng ngang trước bệ. Cậu là người đổ dầu cho chúng từ năm ngoái, nên cậu biết mỗi cái đầy thì cháy được chừng bảy tiếng, và cậu biết mực dầu xuống tới cái ngấn thứ hai trên thành bầu thì là chừng ba tiếng.</p>
+<p>Thầy Tịnh Không ngồi xuống chiếu, quay mặt ra cửa.</p>
+<p>Ông không quay vào bệ thờ. Cậu để ý chuyện đó vì bốn năm nay ông chưa ngồi kiểu đó lần nào.</p>
+<p>"Con ngồi xuống đây thầy nói cái ni."</p>
+<p>Cậu ngồi.</p>
+<p>"Thầy ngồi trước cái phiến đá ngoài hậu điện bốn mươi ba năm." Ông nói. "Bốn mươi ba năm rứa thì không đánh được ai. Không đỡ được đòn mô hết. Ngồi chừng nớ năm thì được đúng một việc, là giữ cho một chỗ nó im."</p>
+<p>"Im răng thầy?"</p>
+<p>"Không phải cái im con nghe." Ông nói. "Con nghe thử coi."</p>
+<p>Bé Nhân nghe. Có tiếng gà nhà anh Hoạch. Có tiếng nước ở máng. Có tiếng xe ngoài đường cái, xa.</p>
+<p>"Con nghe chi?"</p>
+<p>"Con nghe tiếng gà."</p>
+<p>"Ừ. Cái im thầy nói không phải là hết mấy cái nớ." Ông nói. "Mấy cái ngoài kia hắn không nhìn bằng con mắt. Hắn dò. Hắn dò rồi hắn biết chỗ mô có chi, chỗ mô trống, chỗ mô có người. Chỗ mô im quá thì hắn dò không ra. Mà cái chi hắn dò không ra thì với hắn là không có."</p>
+<p>"Rứa thầy làm cho chùa mình thành không có hả thầy?"</p>
+<p>"Không phải mỗi chùa mình." Ông nói. "Cả cái lòng chảo ni. Từ rú bên tê qua tới hói bên ni."</p>
+<p>Bé Nhân ngồi im. Cậu mười hai tuổi và cậu không hiểu gì cả, và cậu biết là mình không hiểu, và cậu cũng biết là hỏi thêm thì cũng rứa.</p>
+<p>Thầy Tịnh Không không cố làm cho cậu hiểu. Ông không giải thích lại lần thứ hai và không hỏi con hiểu chưa.</p>
+<p>"Rứa thầy có mệt không?" Bé Nhân hỏi.</p>
+<p>"Sáng mai chú Ba Cẩn tới thì có ba việc." Ông nói. "Con nghe cho kỹ rồi nói lại thầy nghe."</p>
+<p>"Dạ."</p>
+<p>"Một, cái tủ lạnh thuốc chở trước, chở một mình nó, đừng chất chi lên trên. Hai, hai cái hòm kinh sách để nằm chứ đừng dựng, dựng thì lật. Ba, cái xô tôn với cái phễu con để trong hòm gạo, đừng bỏ lại, chỗ mới không có."</p>
+<p>"Một, cái tủ lạnh chở trước, một mình nó. Hai, hòm kinh sách để nằm. Ba, cái xô với cái phễu bỏ trong hòm gạo."</p>
+<p>"Ừ." Ông nói. "Cái xe cút kít con nống càng ra rồi hả?"</p>
+<p>"Dạ rồi. Mà nó lệch qua trái."</p>
+<p>"Kê miếng ván."</p>
+<p>"Dạ, con kê rồi."</p>
+<p>"Ừ."</p>
+<p>Ông không hỏi thêm câu nào và cậu cũng không.</p>
+<p>"Đèn thứ ba con khêu cao lên một chút." Ông nói. "Rồi con vô buồng trong, đóng cửa buồng lại, nằm ngủ. Có chi thì cũng nằm nguyên đó."</p>
+<p>"Dạ."</p>
+<p>"Sáng mai chú Ba Cẩn tới thì con nhớ cái tủ lạnh chở trước."</p>
+<p>"Dạ."</p>
+<p>Cậu khêu cái đèn thứ ba lên. Cậu xách cái xô không ra sau bếp, úp lên cái cọc, đúng chỗ nó vẫn úp.</p>
+<p>Có một câu ông vẫn hay nói, nói từ hồi cậu mới về chùa, nói kiểu người ta nói một câu đã nói mòn. Kẻ canh giữ ngưỡng cửa không phải lúc nào cũng là kẻ thù. Cậu đã nghe câu ấy chắc phải mấy chục lần, và lần nào cậu cũng dạ, và cậu chưa lần nào hỏi nó nghĩa là chi.</p>
+<p>Tối ấy ông không nói câu đó.</p>
+<p>Cậu không vào buồng trong.</p>
+<p>Cậu nằm ở gian bên phải chánh điện, sau cái cột, trên chiếu, và cậu nằm đó vì từ chỗ đó nhìn ra thì thấy được cả ba cái đèn.</p>
+<p>Chín giờ hai mươi thì tai cậu bắt đầu tức.</p>
+<p>Nó tức kiểu lặn xuống nước sâu, và cậu làm cái việc cậu vẫn làm khi lặn, là ngậm miệng bịt mũi và thổi ra. Nó thông được một nhịp rồi tức lại. Cậu làm thêm hai lần nữa rồi thôi.</p>
+<p>Rồi tiếng gà nhà anh Hoạch hết.</p>
+<p>Không phải hết kiểu con gà thôi gáy. Hết kiểu cậu vẫn nghe thấy trong đầu là ngoài kia có tiếng, mà tiếng ấy không tới tai cậu nữa.</p>
+<p>Tiếng nước ở máng cũng hết.</p>
+<p>Còn lại cái gì thì cậu nghe rất rõ. Cậu nghe tiếng cậu nuốt nước bọt. Cậu nghe tiếng chiếu cọ vào nền khi cậu nhích chân. Cậu nghe tiếng tim cậu ở trong tai. Ba cái đó to lên, to hơn mọi khi rất nhiều, và cậu nằm nghe chúng và không dám nhích nữa.</p>
+<p>Cậu thử ho một tiếng để nghe xem tiếng ho đi tới đâu. Nó đi tới hết gian chánh điện rồi thôi, không dội lại từ tường bên kia sân như mọi khi.</p>
+<p>Cậu định ra giếng xách nước. Cậu ngồi dậy được nửa chừng rồi lại nằm xuống, vì cái giếng ở ngoài sân và ngoài sân thì cậu không biết bên ngoài cái sân có gì.</p>
+<p>Cửa chánh điện không đóng. Nó không đóng được từ hồi bản lề trên bị bong, và đêm nào cũng có gió lùa qua khe ấy, và ba cái đèn dầu đêm nào cũng lay.</p>
+<p>Ngọn đèn thứ nhất đứng yên.</p>
+<p>Ngọn thứ hai đứng yên.</p>
+<p>Ngọn thứ ba, cái ngọn cậu vừa khêu cao lên, cũng đứng yên.</p>
+<p>Chúng không nhỏ lại. Chúng không lụi. Chúng cháy đúng như một ngọn đèn cháy trong một cái hộp kín, và cái cửa thì vẫn mở ra ngoài trời.</p>
+<p>Bé Nhân nằm nhìn ba cái ngọn ấy rất lâu, và trong suốt đêm đó cậu không nhìn cái gì khác lâu bằng.</p>
+<p>Mười giờ mấy, cậu bò ra tới mép cửa.</p>
+<p>Ngoài kia trăng non, đủ để thấy hình.</p>
+<p>Trên đường đất, cách bờ tường chùa chừng bốn chục mét, có những cái đi qua.</p>
+<p>Chúng đi thành hàng. Hàng cách hàng đều. Cậu đếm được mười một cái thì bỏ đếm, vì chúng đi liên tục và cậu không biết cái nào đã đếm rồi.</p>
+<p>Chúng đi qua chỗ cái cổng.</p>
+<p>Cái cổng chùa nằm cách đường đất bảy mét. Từ cổng nhìn thẳng vô là thấy cái sân, thấy bậc thềm, thấy cửa chánh điện đang mở, thấy ba cái đèn đang cháy.</p>
+<p>Không cái nào quay đầu.</p>
+<p>Chúng khiêng.</p>
+<p>Cậu thấy cái đó rõ hơn cả, vì cái đó làm cho hàng đi chậm lại ở chỗ đường lõm. Cứ mấy hàng thì có một cái nằm ngang, dài, và hai bên có hai cái đỡ, và chỗ nào đường xấu thì cả hai bên cùng hạ thấp xuống rồi cùng nâng lên.</p>
+<p>Cậu không biết chúng khiêng cái gì. Cậu chỉ thấy là chúng khiêng, và cách chúng khiêng thì giống hệt cách người ta khiêng một cái gì mà làm rơi thì hỏng.</p>
+<p>Có một cái đi sát bờ tường tới mức nó chạm phải cái nhánh khế thò ra, và cái nhánh khế gãy, và cậu thấy cái nhánh rơi xuống, và cậu không nghe thấy tiếng nó rơi.</p>
+<p>Nó không dừng lại. Nó không nhìn vô. Nó đi tiếp.</p>
+<p>Cậu bò ra thêm nửa mét nữa để nhìn cho rõ chỗ cổng.</p>
+<p>Từ cổng nhìn vô thì thấy hết. Cậu biết chắc là thấy hết, vì trưa nào cậu cũng ngồi ở cổng ăn cơm nắm và cậu thuộc cái tầm nhìn đó. Ba cái đèn thì sáng, và cái sân thì trống, và bậc thềm thì trắng dưới trăng.</p>
+<p>Một cái đi ngang cổng, cách bảy mét, và chỗ nó đi ngang thì cái hình của nó chắn mất một quãng cái sân trong mắt cậu.</p>
+<p>Rồi nó khuất.</p>
+<p>Rồi cái tiếp theo.</p>
+<p>Cậu ngồi ở mép cửa với hai bàn tay đặt trên nền gạch và cậu ngồi như thế cho tới khi hai bàn chân cậu tê hết.</p>
+<p>Có cái gì đó ấm chảy ra ở tai phải.</p>
+<p>Cậu quệt bằng mu bàn tay rồi đưa ra chỗ có ánh đèn. Không nhiều. Chừng bằng cái đầu đũa. Cậu quệt vào vạt áo, rồi lát sau lại quệt lần nữa, rồi thôi không quệt nữa vì nó cũng không chảy thêm.</p>
+<p>Cậu lùi vào trong, ngồi tựa cột.</p>
+<p>Cậu ngồi đó và cậu làm cái việc cậu vẫn làm khi phải chờ, là kể trong đầu những thứ mình phải làm sáng mai. Cái tủ lạnh chở trước, một mình nó. Hòm kinh sách để nằm. Cái xô với cái phễu bỏ trong hòm gạo.</p>
+<p>Cậu kể ba cái đó ba lần.</p>
+<p>Rồi cậu nghĩ tới cái tủ gỗ mít ở gian bên trái, cái tủ trống, hai cánh mở, và cậu nghĩ là lẽ ra hồi chiều cậu nên đóng nó lại. Cậu nghĩ chuyện đó lâu hơn mức nó đáng được nghĩ.</p>
+<p>Rồi cậu nghĩ tới cái khung cửa bếp.</p>
+<p>Trên cái đố dọc bên trái có bảy vết. Bốn vết trên là của cậu, 2055, 2056, 2057, 2058. Ba vết dưới cùng đề 2049, 2050 và 2052, và ba vết ấy khắc bằng nét chữ thầy, và ba vết ấy không phải của cậu.</p>
+<p>Cậu biết chuyện đó từ năm chín tuổi, từ cái lần cậu ngồi ăn cơm ở bậc cửa và đếm.</p>
+<p>Cậu chưa hỏi bao giờ.</p>
+<p>Cậu không hỏi vì lúc chín tuổi thì cậu chưa nghĩ ra là phải hỏi, và lúc mười một tuổi thì cậu nghĩ ra rồi mà lại thấy hỏi cái đó ở giữa bữa cơm thì kỳ, và lúc mười hai tuổi thì cậu đã để dành nó vào cái chỗ trong đầu chuyên để dành những câu hỏi không gấp.</p>
+<p>Ngồi tựa cột trong chánh điện đêm ấy, cậu quyết định là sáng mai, lúc chở xong cái tủ lạnh, cậu sẽ hỏi.</p>
+<p>Có lúc cậu nghĩ tới chuyện chạy ra cổng để đóng hai cánh cổng lại, vì cổng đóng thì trong nhà kín hơn. Cậu nghĩ tới chuyện đó chừng hai phút rồi thôi, không phải vì sợ, mà vì cậu nhớ ra hai cánh cổng ấy kêu, kêu rất to, kêu từ hồi thầy còn đi lại được nhiều.</p>
+<p>Mực dầu trong cái đèn thứ ba xuống tới ngấn thứ hai.</p>
+<p>Ba tiếng.</p>
+<p>Thầy Tịnh Không ngồi nguyên chỗ ấy, quay mặt ra cửa, hai tay đặt trên đùi.</p>
+<p>Ông không nói câu nào từ lúc bảy giờ rưỡi.</p>
+<p>Bé Nhân nhích lại gần hơn, ngồi cách ông chừng hai mét, và cậu nhìn hai bàn tay ông vì hai bàn tay là chỗ sáng nhất.</p>
+<p>Chuyện xảy ra chậm đến mức phải nhìn lâu mới thấy.</p>
+<p>Da trên mu bàn tay ông vốn đã mỏng. Bây giờ nó mỏng thêm. Mấy cái gân nổi lên rõ hơn, rồi rõ hơn nữa, rồi cái khớp ngón trở thành chỗ to nhất của cả ngón tay. Móng tay ông đục đi.</p>
+<p>Tóc ông thì cậu không thấy đổi, vì tóc ông đã trắng từ trước khi cậu về chùa.</p>
+<p>Hơi thở ông thưa dần. Cậu đếm bằng cách nhìn vai áo. Lúc mười giờ là mười bốn nhịp một phút. Lúc mười hai giờ là mười một. Lúc gần một giờ sáng là chín.</p>
+<p>Cậu đi lấy cái ca nước.</p>
+<p>Cậu ghé miệng ca vào môi ông và nghiêng rất ít, chỉ đủ ướt. Nước không vào. Nó chảy xuống cằm ông rồi xuống cổ áo. Cậu lấy vạt áo mình lau chỗ ấy, lau hai lần, rồi để cái ca xuống chiếu bên phải ông, chỗ ông vẫn để ca nước.</p>
+<p>Cái vòng gỗ trên cổ tay ông, lúc mười giờ còn nằm trên chỗ xương, đến gần hai giờ thì tụt xuống quá chỗ xương và nằm hẳn vào lòng bàn tay khi cậu nhấc tay ông lên.</p>
+<p>Cậu không hiểu cái gì đang xảy ra. Cậu chỉ biết một chuyện, và chuyện đó thì cậu biết chắc chắn: chừng nào thầy còn ngồi cái kiểu đó thì thầy còn đi tiếp về phía cái chỗ mà thầy đang đi.</p>
+<p>Nên phải làm cho thầy thôi ngồi.</p>
+<p>Gần hai giờ sáng cậu bò tới.</p>
+<p>Cậu không gọi. Cậu đã thử gọi hai lần trước đó, gọi to, gọi sát tai, và cả hai lần cậu đều nghe rõ tiếng mình mà ông thì không động.</p>
+<p>Cậu túm vai áo ông.</p>
+<p>Tay cậu quá nhỏ để làm được cái việc mà lẽ ra phải làm. Cậu không xốc nổi một người lớn lên. Cậu không luồn tay qua nách ông mà nhấc được. Cái duy nhất cậu làm được là túm lấy vải và kéo lê.</p>
+<p>Cậu túm chỗ vai áo, hai tay, và cậu ngồi bệt xuống lấy đà bằng hai gót chân, và cậu kéo.</p>
+<p>Đường chỉ ở chỗ khớp vai bục ra. Một đoạn chừng ba ngón tay.</p>
+<p>Và người ông nhích.</p>
+<p>Nhích được chừng một gang. Cậu kéo được. Cậu mười hai tuổi và tay cậu quá nhỏ, mà cậu vẫn kéo được, vì kéo lê một người ngồi trên chiếu thì không cần khỏe, chỉ cần nặng hơn cái ma sát.</p>
+<p>Ngay lúc ấy, ngọn đèn gần nhất nghiêng.</p>
+<p>Cái lưỡi lửa của nó ngả về phía cửa, ngả hẳn, kiểu một ngọn đèn có gió tạt. Nó ngả đúng một lần.</p>
+<p>Bé Nhân dừng tay.</p>
+<p>Ngọn đèn dựng lại và đứng yên.</p>
+<p>Cậu ngồi đó, hai tay còn nắm vải, và cậu nhìn cái ngọn đèn ấy, và cậu hiểu ra.</p>
+<p>Cậu hiểu ra không phải bằng chữ. Trong đầu cậu không có câu nào cả. Cậu chỉ có ba thứ đặt cạnh nhau, là ba ngọn đèn không lay suốt bốn tiếng, là cái ngọn vừa lay đúng lúc cậu kéo, và là những cái đang đi ngoài đường đất cách bờ tường bốn chục mét.</p>
+<p>Ba thứ ấy ráp lại thì ra một chuyện.</p>
+<p>Cậu ngồi với cái chuyện đó trong khoảng thời gian bằng mấy chục nhịp thở của chính cậu.</p>
+<p>Trong lòng chảo này có chùa, có xóm Trung, có xóm Cồn, có trạm y tế xã, có nhà anh Hoạch, có nhà chú Ba Cẩn, có cái trường tiểu học mà tuần trước còn ba mươi mấy đứa chưa đi.</p>
+<p>Cậu buông tay ra.</p>
+<p>Cậu buông từng ngón một, vì hai bàn tay cậu đã cứng lại quanh chỗ vải ấy.</p>
+<p>Rồi cậu ngồi xuống bên cạnh ông, quay mặt ra cửa như ông, và cậu đưa hai ngón tay giữ lấy cái mép vải bục ra ở vai áo, và cậu giữ nó như thế, không kéo.</p>
+<p>Ba ngọn đèn đứng yên.</p>
+<p>Ngoài kia, trên đường đất, vẫn còn những cái đi qua.</p>
+<p>Hai giờ bốn mươi mấy, tai cậu thông.</p>
+<p>Nó thông một cái, cả hai bên, và tiếng gà nhà anh Hoạch trở lại, và tiếng nước ở máng trở lại, và ngoài đường có tiếng một cái xe máy đi xa dần.</p>
+<p>Và ba ngọn đèn lay.</p>
+<p>Cả ba cùng lay, cùng một lúc, cùng ngả về một phía, vì cửa chánh điện mở và đêm nào cũng có gió lùa qua khe ấy.</p>
+<p>Bé Nhân nhìn ba cái ngọn ấy lay.</p>
+<p>Rồi cậu mới nhìn xuống.</p>
+<p>Cậu ngồi thêm một lúc rồi đứng dậy, vào buồng trong, lấy cái mền cậu vẫn đắp, mang ra, và đắp lên hai chân ông từ đầu gối xuống, vì nền gạch về sáng thì lạnh.</p>
+<p>Rồi cậu sửa lại chỗ vai áo bục. Cậu vuốt hai mép vải cho chúng nằm sát vào nhau. Chúng không nằm sát được, vì chỉ đã đứt, nên cậu vuốt thêm mấy lần nữa rồi thôi.</p>
+<p>Rồi cậu ngồi xuống chỗ cũ, quay mặt ra cửa.</p>
+<p>Bốn giờ hai mươi mấy thì trời bắt đầu xám ở phía cổng. Cậu đứng dậy dập ba cái đèn, đậy nắp bầu dầu cả ba cái, và mang cái ca nước ra sau bếp đổ đi rồi úp lên cọc.</p>
+<p>Chú Ba Cẩn tới lúc năm giờ mười với cái xe bò. Kaito đi bộ theo sau xe.</p>
+<p>Mai xuống xe ở cổng và đi vào sân, và cô đi nhanh hơn bình thường, và tới bậc thềm thì cô dừng lại.</p>
+<p>Bé Nhân đang ngồi ở bậc thềm, quay lưng vào chánh điện.</p>
+<p>Cậu đã dập ba cái đèn. Cậu đã đậy nắp bầu dầu cả ba cái, đúng cách, vì để hở thì kiến vô. Cậu đã xếp cái chiếu lại và dựng vào chân cột.</p>
+<p>"Em." Mai nói.</p>
+<p>Cậu đứng dậy.</p>
+<p>Cô nhìn thấy vệt máu khô ở tai phải cậu và vệt thứ hai ở vạt áo. Cô lấy khăn thấm nước lau chỗ ấy, lau kỹ, xoay đầu cậu nghiêng ra ánh sáng để nhìn vào trong tai. Cậu để yên cho cô làm.</p>
+<p>"Đau không?"</p>
+<p>Cậu lắc đầu.</p>
+<p>"Đêm qua có chi không?"</p>
+<p>Cậu không trả lời.</p>
+<p>Kaito vào tới sân. Anh đi qua chỗ hai chị em, đi tới cửa chánh điện, và anh dừng lại ở ngưỡng cửa và không bước vào. Anh đứng đó chừng nửa phút, hai tay buông xuôi, hai bàn tay mở. Rồi anh mới bước vào.</p>
+<p>Bé Nhân không nhìn theo và không nghĩ gì về chuyện ấy.</p>
+<p>Người lớn vào trong. Có tiếng chú Ba Cẩn nói cái gì đó rất khẽ rồi thôi hẳn.</p>
+<p>Một lúc sau chú ra sân, đứng ở bậc thềm, nhìn ra phía cổng, rồi nhìn cái nhánh khế gãy nằm dưới chân tường.</p>
+<p>"Tụi nó có vô đây không?"</p>
+<p>Mai đang xếp lại cái khăn ướt. Cô không ngẩng lên.</p>
+<p>"Đi ngang thôi." Cô nói. "Ngoài đường đất."</p>
+<p>"Rứa mà cả xóm không ai nghe chi hết." Chú Ba Cẩn nói. "Sáng ni tui hỏi ba nhà rồi. Không ai nghe chi."</p>
+<p>"Dạ."</p>
+<p>Cô không nói thêm câu nào, và chú Ba Cẩn đứng thêm một lúc rồi đi ra dắt bò.</p>
+<p>Bé Nhân đi vòng ra sau, ra bếp, vì cái tủ lạnh thuốc phải chở trước.</p>
+<p>Cậu đẩy cái tủ ra khỏi góc, kê tay vào hai bên hông tủ, và ghé vai. Nó nặng hơn cậu tưởng. Cậu để nó xuống, đi lấy hai đoạn tre gác làm con lăn, rồi đẩy tiếp.</p>
+<p>Khung cửa bếp bằng gỗ, đã cũ.</p>
+<p>Trên cái đố dọc bên trái có bảy vết dao khắc ngang. Ba vết dưới cùng đề 2049, 2050 và 2052. Vết trên cùng đề 2058, khắc bằng con dao con, năm chữ số, nét chưa mòn.</p>
+<p>Bên trên nó, chỗ gỗ còn nguyên, chưa có vết nào.</p>
+<p>Bé Nhân đẩy cái tủ lạnh qua khung cửa ấy, nghiêng một bên cho lọt, rồi đẩy tiếp ra sân.</p>
+<p class="p-part-end">Hết Phần II: Ngày Không Gọi Tên</p>
+</article>
+
+
+<svg class="rift-small" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+</svg>
+
+
+<div class="chapter-foot">
+  <nav class="chapter-nav" aria-label="Điều hướng chương">
+    <a class="prev" href="chuong-11.html"><span class="lbl">Trước</span><span class="ttl">Một Cái Máy Đo</span></a>
+    <a class="toc-link" href="index.html" aria-label="Về mục lục"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></a>
+    <a class="next" href="chuong-13.html"><span class="lbl">Sau</span><span class="ttl">Một Chữ</span></a>
+  </nav>
+</div>
+
+<footer class="sitefoot">
+  <p>Khúc Ai Ca Cho Những Kẻ Vô Danh — Vòng Tuần Hoàn Người Gieo Hạt · Quyển II</p>
+  <p>© 2026 Nguyễn Duy Anh (bút danh: Mendingur). Bản quyền tác phẩm thuộc về tác giả.</p>
+</footer>
+
+<script src="glow.js" defer></script>
+</body>
+</html>

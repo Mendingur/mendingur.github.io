@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Một Vạch Mới Phía Trên — Khúc Ai Ca Cho Những Kẻ Vô Danh</title>
+<meta name="description" content="Vòng Tuần Hoàn Người Gieo Hạt · Quyển II — tiểu thuyết của Mendingur">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="style.css">
+<script src="reader.js" defer></script>
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem('mendingur-theme');
+    var theme = saved === 'dark' || saved === 'light'
+      ? saved
+      : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+  <linearGradient id="wingGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="55%" stop-color="#C99A3E"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+  <radialGradient id="coreGlow" cx="50%" cy="55%" r="55%">
+    <stop offset="0%" stop-color="#FFF6DE" stop-opacity="0.95"/>
+    <stop offset="55%" stop-color="#E4C077" stop-opacity="0.35"/>
+    <stop offset="100%" stop-color="#E4C077" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="flowerGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+</defs>
+</svg>
+<div class="grain"></div>
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+<div class="settings-menu" id="settingsMenu">
+  <button class="menu-toggle" type="button" id="settingsMenuToggle" aria-haspopup="true" aria-expanded="false" aria-controls="settingsPopover" aria-label="Cài đặt giao diện">
+    <span class="menu-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+  </button>
+  <div class="settings-popover" id="settingsPopover" role="menu">
+    <div class="settings-group">
+      <p class="settings-group-label">Giao diện</p>
+      <div class="theme-switcher" id="themeSwitcher" role="group" aria-label="Giao diện sáng / tối">
+        <button class="theme-btn active" type="button" data-theme-choice="light" aria-pressed="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <span>Sáng</span>
+        </button>
+        <button class="theme-btn" type="button" data-theme-choice="dark" aria-pressed="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+          <span>Tối</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<header class="sitebar">
+  <a class="brand" href="index.html">
+    <span class="mark"><svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sower's Cycle mark">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+<g transform="translate(200,278)">
+  <g><ellipse rx="14" ry="21" transform="rotate(0)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(72)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(144)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(216)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(288)" fill="url(#flowerGrad)"/></g>
+  <circle r="9.5" fill="#FFF6DE"/>
+</g>
+<g transform="translate(200,96)"><path d="M0,-24 C2,-7 7,-2 24,0 C7,2 2,7 0,24 C-2,7 -7,2 -24,0 C-7,-2 -2,-7 0,-24 Z" fill="#F3D488"/></g>
+</svg></span>
+    <span class="word">Khúc Ai Ca Cho Những Kẻ Vô Danh</span>
+  </a>
+  <nav>
+    <a href="index.html" class="toc-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      Mục lục
+    </a>
+  </nav>
+</header>
+<div class="progress-track"><div class="progress-fill"></div></div>
+
+<header class="chapter-head">
+  <p class="crumb"><a href="index.html">IN PARADISUM · KHÔNG CÓ AI NẰM DƯỚI</a></p>
+  <span class="cnum">Chương 29</span>
+  <h1>Một Vạch Mới Phía Trên</h1>
+  <div class="font-toggle" role="group" aria-label="Cỡ chữ">
+    <button type="button" data-size="sm" aria-pressed="false">A-</button>
+    <button type="button" data-size="md" aria-pressed="true">A</button>
+    <button type="button" data-size="lg" aria-pressed="false">A+</button>
+  </div>
+</header>
+
+<article class="prose" data-size="md">
+<p>Bảng tin uỷ ban xã, tường phía đông, dưới mái che.</p>
+<p>Từ tháng 8 năm 2069, người dán thôi dán bản tin. Bó về thì cất vào cặp. Ở góc phải tấm bảng có một tờ giấy kẻ tay, và trên tờ giấy ấy có ba dòng viết bằng bút mực.</p>
+<p>Ngày 12 tháng 10 năm 2069 · Cấu trúc 690 · Đơn xin cấp lại giấy tờ hộ tịch nộp tại xã, không phải lên huyện, từ ngày 1 tháng 11.</p>
+<p>Người viết ba dòng ấy là một cán bộ văn phòng hai mươi ba tuổi. Anh ta chép con số từ tờ trên cùng trong cặp, và tờ trên cùng là tờ cũ nhất, vì cặp xếp từ dưới lên. Tờ ấy đề ngày 6 tháng 9.</p>
+<p>Không có gì để chôn.</p>
+<p>Chuyện ấy nằm trong giấy tờ, ở ba chỗ, và cả ba chỗ đều nói bằng ngôn ngữ của giấy tờ.</p>
+<p>Biên bản hiện trường lập lúc 06:20 ngày 25 tháng 9 năm 2067 có một mục kê hiện vật gồm bảy dòng, và bảy dòng ấy là đồ vật. Giấy báo tử ghi ngày và ghi địa điểm, và ở ô nguyên nhân nó ghi tổn thương mô do năng lượng. Quyết định trợ cấp có một dòng nói về việc an táng, và dòng ấy dẫn tới một điều khoản, và điều khoản ấy áp dụng cho trường hợp không thu hồi được.</p>
+<p>Ba thứ giấy ấy tới ba lúc và đi ba đường, đúng như Diễm đã nói trước với chị Liên hồi tháng 10 năm 2067.</p>
+<p>Giấy báo tử về xã ngày 8 tháng 11 năm 2067. Biên bản về sau, một bản sao, ngày 3 tháng giêng năm 2068. Quyết định trợ cấp về ngày 19 tháng 3 năm 2068, tức là gần sáu tháng, và gần sáu tháng thì đúng bằng cái mức Diễm đã nói.</p>
+<p>Hai túi tư trang thì ông Đô mang về tận nhà, tháng chạp năm 2067, và ông ở lại ăn một bữa cơm rồi ông đi.</p>
+<p>Mai mở hai cái túi ấy một lần, buổi tối hôm ông đi, và cô đối chiếu với tờ sổ tư trang ba ô.</p>
+<p>Cô đối chiếu đủ ba ô. Rồi cô buộc lại hai cái túi và để chúng vào hòm gỗ, ở ngăn giữa, và cô không mở lại lần nào nữa.</p>
+<p>Mai hoãn hai năm.</p>
+<p>Cô hoãn tám lần và cả tám lần đều có lý do, và cả tám lý do đều thật.</p>
+<p>Lần thứ nhất là mùa mưa năm 2067, và đường ra chỗ nghĩa địa mùa ấy thì xe không vô được. Lần thứ hai là tháng 3 năm 2068, khi trạm y tế xã thiếu người và cô làm sáu buổi một tuần trong bảy tuần. Lần thứ ba là chuyện tiền, và chuyện tiền thì kéo sang lần thứ tư. Lần thứ năm là con bé ốm. Lần thứ sáu là thầy thợ đá trên huyện nghỉ để làm một công trình khác. Lần thứ bảy là tháng 5 năm 2069, khi nhà lợp lại mái bếp. Lần thứ tám thì cô không nhớ ra lý do, và cô có thử nhớ một lần, vào tháng 8, và cô không nhớ ra.</p>
+<p>Trong hai năm ấy cô làm việc của cô.</p>
+<p>Cô làm ở trạm y tế xã bốn buổi một tuần từ tháng giêng năm 2068, việc sổ sách và cấp phát, và từ tháng 3 năm 2069 thì cô thôi làm ở viện dã chiến số 4, vì viện ấy đang rút dần người từ cuối năm ngoái.</p>
+<p>Cô nuôi con bé đi học. Cô lo cái mái bếp. Cô đi chợ đường vòng từ tháng 10 năm ngoái. Cô kẻ thêm mấy dòng vào cái bảng trên vách buồng trong.</p>
+<p>Cô không bỏ một buổi trực nào ở trạm y tế trong hai năm, và chuyện đó thì có sổ, và sổ ấy ở trạm y tế xã.</p>
+<p>Người trong xóm không ai nói với cô về chuyện cái bia. Họ không nói vì họ nghĩ cô có lý do, và họ nghĩ đúng, và tới cuối tháng 8 thì họ thôi nghĩ như thế.</p>
+<p>Bốn nhà trong xóm bàn với nhau chuyện ấy vào cuối tháng 8. Bốn nhà ấy là bốn nhà thay nhau quét chánh điện từ năm 2059, mỗi nhà một tuần, và tới năm 2069 thì họ vẫn quét.</p>
+<p>Chú Ba Cẩn tới nói với Mai một câu ở ngoài sân, và câu ấy là để qua rằm tui chở lên.</p>
+<p>Mai nói dạ.</p>
+<p>Nghĩa địa nằm ở rìa xóm Trung, phía đông, trên một cái gò cát.</p>
+<p>Ngôi bên trái là của một ông mất năm 2059. Bia của ông là một tấm xi măng đúc tay, chữ khắc lúc xi măng còn ướt, và chữ ấy nghiêng dần về cuối vì người khắc phải khắc nhanh.</p>
+<p>Ngôi bên phải là của một bà mất năm 2066, tám mươi tư tuổi. Bia bà bằng đá, có tên, có hai cái năm, và không có gì khác.</p>
+<p>Dưới cả hai ngôi ấy đều có người.</p>
+<p>Bia của Nhân đặt ở giữa hai ngôi ấy, vì đó là chỗ còn trống, và chỗ ấy còn trống vì nó hẹp hơn một chỗ bình thường chừng hai gang.</p>
+<p>Nó bằng đá, cùng loại đá với bia bên phải, vì cùng một thầy thợ và cùng một lô đá mua năm 2064.</p>
+<p>Tiền bia và tiền công là hai trăm mấy chục, và chỗ ấy Mai trả một nửa và bốn nhà trong xóm góp một nửa, và chuyện góp thì cô biết sau khi họ đã góp xong.</p>
+<p>Cô có tính chuyện trả lại. Cô tính nó trong hai đêm và cô thôi, vì trả lại thì phải nói ra, và nói ra thì thành một chuyện khác.</p>
+<p>Chở bia lên gò mất một buổi. Cái xe bò của chú Ba Cẩn lên tới lưng dốc thì không lên nữa, và bốn người phải khiêng đoạn cuối, và đoạn cuối chừng bốn chục mét.</p>
+<p>Trên bia có tên, năm sinh, và năm mất.</p>
+<p>Mai viết cái tên ấy ra giấy cho thầy thợ đá ngày 2 tháng 9. Cô viết bằng chữ in, từng chữ cái rời, và cô đưa tờ giấy rồi cô nhờ ông ấy đọc lại cho cô nghe.</p>
+<p>Ông ấy đọc lại. Ông ấy đọc đúng.</p>
+<p>Cô cầm tờ giấy về và cô để nó vào mặt trong nắp hòm gỗ, cạnh chỗ cô chép đơn vị và hòm thư và số hiệu quân nhân từ tháng 9 năm 2065.</p>
+<p>Ngày 12 tháng 10 trời tốt. Nắng, không gió, và trên gò cát thì nắng tháng mười đứng bóng vẫn còn gắt.</p>
+<p>Có mười bốn người.</p>
+<p>Không ai nói gì dài. Chú Ba Cẩn có định nói, và ông ấy đã bước lên nửa bước và đã hắng giọng, rồi ông ấy nhìn Mai, rồi ông ấy lùi lại và không nói.</p>
+<p>Người ta thắp hương, đứng chừng mười lăm phút, rồi về.</p>
+<p>Elin ba mươi mốt tuổi.</p>
+<p>Cô biết chuyện này từ Bảo Thư, biết trước bốn ngày, và cô xin nghỉ một ngày, và cô xin nghỉ bằng cách viết một dòng vào sổ của trạm như mọi khi.</p>
+<p>Hai người đi chuyến đò năm giờ mười lăm, rồi đi bộ từ bến vào bốn cây.</p>
+<p>Trên đường Bảo Thư nói chuyện xe cộ, và cô nói chuyện xe cộ suốt bốn cây, và Elin biết vì sao và cô để cho cô ấy nói.</p>
+<p>Ở gò, Bảo Thư đứng chừng năm phút rồi cô lấy quyển sổ ở túi vải ra.</p>
+<p>Cô ghi một dòng. Ngày, giờ, và nội dung. Cô ghi nó trong chừng hai chục giây, đóng sổ, và bỏ lại vào túi.</p>
+<p>Cô ghi vì cô ghi mọi thứ, và trong mười một năm thì chưa có chuyện gì cô để lọt, và hôm nay cũng vậy.</p>
+<p>Elin nhìn thấy cô ghi. Cô không thấy có gì lạ ở chuyện đó, và cô nghĩ rằng ở đây thì có đúng một người sẽ ghi lại việc sáng nay, và người ấy đang đứng cạnh cô.</p>
+<p>Cô đứng ở hàng sau, cạnh Bảo Thư, và trong mười lăm phút ấy cô không làm gì cả.</p>
+<p>Cái cô nhìn là hai ngôi hai bên.</p>
+<p>Ngôi bên trái có một cái bát hương bằng sành, mẻ ở vành. Ngôi bên phải có một cái lọ cắm hoa và trong lọ có nước, và nước ấy đã cạn còn chừng một đốt ngón tay, và có ai đó đã đổ nước vào cái lọ ấy trong vòng mươi hôm.</p>
+<p>Cô nhìn hai ngôi ấy chừng nửa phút rồi cô nhìn ra chỗ khác.</p>
+<p>Cô không nói gì với ai cả ngày hôm ấy về chuyện ấy, và cô không nói về sau.</p>
+<p>Mười một giờ mọi người về.</p>
+<p>Elin không về.</p>
+<p>Cô ở lại chừng bốn mươi phút và trong bốn mươi phút ấy cô không làm gì đáng kể.</p>
+<p>Cô đứng chừng mười phút. Rồi cô ngồi xuống, xổm, ở phía chân bia, và cô nhổ hai cây cỏ mọc sát chân đá, và cô nhổ chúng vì chúng ở đó.</p>
+<p>Rồi cô nhìn cái nền.</p>
+<p>Nó là cát pha, hạt thô, thoát nước tốt, và ở đây thì tháng mười là tháng dễ đào nhất trong năm vì mực nước ngầm còn thấp và cát chưa bết.</p>
+<p>Cô nghĩ tới chuyện ấy trong chừng ba giây, bằng cái đầu nghề nghiệp của cô, và rồi cô ngừng.</p>
+<p>Cô ngừng vì cô nhận ra cô đang nghĩ tới cái nền đất này như một chỗ có thể nhận một người, và cái này thì không.</p>
+<p>Cô biết chính xác một tấm bia không có ai nằm dưới là cái gì.</p>
+<p>Trong ba năm, từ 2055 tới 2058, cô đã đứng bốn lần trước một phiến đá granit xám ở rìa một thị trấn Hà Lan, và trên phiến đá ấy có ba cái tên, và cả bốn lần cô đều không thấy gì cả.</p>
+<p>Hai bên phiến đá ấy cũng có hai ngôi, và dưới cả hai ngôi ấy đều có người, và ở một trong hai ngôi có một tấm ảnh sứ.</p>
+<p>Cô đã nhìn tấm ảnh sứ ấy gần hết mười lăm phút, một lần, và cô không nhìn phiến đá.</p>
+<p>Cô chưa nói chuyện đó với ai. Đó là điều cô sợ nhất về chính mình.</p>
+<p>Hôm nay, ở đây, cô có thấy một cái gì đó, và cái ấy cô cũng không gọi được tên.</p>
+<p>Cô không đi tìm cách gọi tên nó. Cô có nhận ra rằng đi tìm cách gọi tên nó thì đúng là việc cô vẫn làm với mọi thứ khác, và cô không làm.</p>
+<p>Cô đứng dậy, phủi cát ở gấu quần, và cô đi bộ về xóm, và cô đi mất mười tám phút.</p>
+<p>Mai đang bắc nồi khi cô về tới cổng.</p>
+<p>Mười một năm nay Mai gọi cô là cô và tự xưng là tôi.</p>
+<p>"Em ăn cơm rồi hãy về." Mai nói.</p>
+<p>"Dạ." Elin nói. "Để em phụ chị."</p>
+<p>Không ai bình luận. Elin bưng rổ rau vào bếp và ngồi xuống nhặt.</p>
+<p>Mai bới cơm cho bốn người. Cơm, cá kho, canh rau, và một đĩa dưa.</p>
+<p>Trong bữa cơm không ai nhắc tới buổi sáng. Người ta nói chuyện cái đò bây giờ chạy hai chuyến một ngày, chuyện con bé sang năm đi học xa bảy cây, và chuyện cái mái bếp.</p>
+<p>Kaito hỏi Elin một câu về cái điểm quan trắc bên kia hói, và Elin trả lời, và hai người nói chừng năm phút về chuyện cái đò qua hói bên đó vẫn chỉ chạy hai buổi một tuần.</p>
+<p>Elin về chuyến hai giờ.</p>
+<p>Chú Ba Cẩn qua lúc gần bốn giờ chiều.</p>
+<p>Ông sang để hỏi mượn cái bánh xe của cái xe cút kít, vì bánh xe cút kít nhà ông vỡ moay ơ và trên chợ hết loại ấy.</p>
+<p>Cái xe cút kít nằm ở đầu hồi, dưới mái tôn. Nó vẫn lệch sang trái. Miếng ván kê bên phải đã thay bốn lần và miếng thứ tư thay năm ngoái.</p>
+<p>"Chú lấy đi." Mai nói.</p>
+<p>Rồi cô nói câu thứ hai.</p>
+<p>"Cái nớ bé Nhân lắp bánh hồi mười một tuổi. Nó lắp bằng cách kê khúc gỗ rồi lấy búa đập, nên nó lệch. Chú kê thêm miếng ván bên phải thì nó đi thẳng."</p>
+<p>Chú Ba Cẩn nói ừ.</p>
+<p>Ông không nói gì thêm và ông không nhìn Mai.</p>
+<p>"Để tôi đi lấy cái cờ lê." Mai nói.</p>
+<p>Cô đi vào bếp.</p>
+<p>Cô vào bếp, đứng ở chỗ cái gác bếp, và cô ở trong đó chừng một phút rưỡi.</p>
+<p>Rồi cô đi ra.</p>
+<p>Cô đi ra tay không.</p>
+<p>Chú Ba Cẩn nhìn hai bàn tay cô, rồi ông nhìn ra chỗ khác, rồi ông nói để tui vô lấy, và ông vô bếp, và ông lấy cái cờ lê ở chỗ nó vẫn nằm, và ông ra tháo bánh xe.</p>
+<p>Ông tháo hết chừng mười lăm phút. Ông tháo xong thì ông lắp lại cái đai ốc vào trục không cho nó rơi, và ông dựng cái xe vào vách, và ông vác cái bánh xe về.</p>
+<p>Mai đứng ở sân suốt mười lăm phút ấy và cô không nói gì thêm.</p>
+<p>Lúc ông đi rồi, cô ra chỗ cái xe cút kít và cô dựng lại nó cho ngay, vì ông dựng nó hơi nghiêng.</p>
+<p>Cái xe không có bánh thì hai càng chống xuống đất và cái thùng chúc về phía trước.</p>
+<p>Cô đứng đó chừng một phút rồi cô vào bếp và cô vo gạo.</p>
+<p>Cô đong gạo, vo, chắt, và bắc lên. Cô làm cả bốn việc ấy đúng như mọi chiều và cô không làm hỏng việc nào.</p>
+<p>Trong ngăn kéo cái bàn ở gian ngoài có một tờ đơn.</p>
+<p>Nó là mẫu đơn đề nghị đính chính thông tin trong hồ sơ, một tờ, hai mặt, lấy ở uỷ ban xã ngày 19 tháng 11 năm 2067.</p>
+<p>Mặt trước có mười một ô.</p>
+<p>Mai điền chín ô.</p>
+<p>Ô thứ nhất là họ tên người có hồ sơ. Ô thứ hai là năm sinh. Ô thứ ba là số hiệu. Ô thứ tư là đơn vị. Ô thứ năm là nội dung đề nghị đính chính, và cô viết vào đó rằng ô người thân trong hồ sơ ghi tên một tổ chức và một số hợp đồng, và đề nghị sửa lại.</p>
+<p>Ô thứ chín là họ tên người làm đơn.</p>
+<p>Ô thứ mười là địa chỉ.</p>
+<p>Ô thứ mười một là chữ ký, và cô chưa ký, vì ký thì phải điền hết.</p>
+<p>Ô thứ sáu để trống.</p>
+<p>Ô thứ sáu là ô quan hệ với người có hồ sơ, và ở dưới ô ấy, in nghiêng trong ngoặc, có một dòng hướng dẫn ghi các quan hệ được chấp nhận.</p>
+<p>Dòng ấy liệt kê chín thứ: cha, mẹ, vợ, chồng, con, anh, chị, em ruột, người giám hộ.</p>
+<p>Mai đã cầm bút trước cái ô ấy hai lần.</p>
+<p>Lần thứ nhất là tháng 12 năm 2067, và lần thứ hai là tháng 6 năm 2068.</p>
+<p>Cô không viết chữ nào.</p>
+<p>Cô không viết vì cái đúng thì không có trong chín thứ ấy, và cái có trong chín thứ ấy thì không đúng, và cô là người mười một năm nay chưa điền sai một cái biểu mẫu nào.</p>
+<p>Cô có nghĩ tới chữ người giám hộ. Chữ ấy có trong danh sách và nó là chữ gần nhất.</p>
+<p>Nó không đúng. Cô chưa bao giờ là người giám hộ của cậu, không trên giấy và cũng không trong nhà, và nếu có ai hỏi cậu thì cậu cũng sẽ nói không.</p>
+<p>Cái đúng thì có hai chữ và cô nói nó ra mỗi ngày trong mười hai năm, và cả hai chữ ấy đều không phải là quan hệ ruột thịt, và biểu mẫu thì có ghi rõ hai chữ ruột ở cuối.</p>
+<p>Tờ đơn ấy vẫn nằm trong ngăn kéo, gấp làm đôi, và hai năm nay nó không cũ đi mấy vì ngăn kéo thì khô.</p>
+<p>Không ai trong nhà biết là nó ở đó.</p>
+<p>Chiều muộn, con bé đi học về.</p>
+<p>Thiên mười hai tuổi. Nó vào bếp, uống nước, rồi nó hỏi mẹ nó có việc chi làm không, và Mai nói không.</p>
+<p>Rồi Mai nói một câu khác.</p>
+<p>"Đứng vô đây mẹ đo."</p>
+<p>Con bé đứng vào cái đố dọc bên trái khung cửa bếp, gót sát chân đố, lưng thẳng.</p>
+<p>Nó biết phải đứng thế nào vì nó đã nhìn người ta đo từ hồi nó còn bé, và nó đứng đúng ngay lần đầu.</p>
+<p>Nó có nhón gót lên một tí.</p>
+<p>"Bỏ chân xuống." Mai nói.</p>
+<p>Con bé bỏ chân xuống.</p>
+<p>Mai lấy con dao con ở gác bếp xuống.</p>
+<p>Trên cái đố dọc ấy, ba vết dưới cùng đề 2049, 2050, 2052. Bốn vết trên đề 2055, 2056, 2057, 2058. Rồi một quãng gỗ trống dài. Rồi vết trên cùng đề 2064, và bên trên vết ấy còn chừng hai đốt ngón tay rồi hết đố.</p>
+<p>Cái quãng gỗ trống ấy dài bằng năm năm, từ 2059 tới 2063, và nó trống vì năm 2059 thì không ai nhớ, và bốn năm sau thì cậu không có nhà vào những ngày cô nhớ ra.</p>
+<p>Đỉnh đầu con bé nằm ở trong quãng gỗ trống, cao hơn vết 2058 chừng bốn đốt ngón tay, và thấp hơn vết 2064 nhiều.</p>
+<p>Mai đứng nhìn chỗ ấy chừng mấy giây.</p>
+<p>Cô có nghĩ tới việc khắc lên phía trên vết 2064, chỗ còn hai đốt ngón tay. Cô nghĩ tới nó trong chừng một giây và cô bỏ, vì con bé không cao tới đó, và vì khắc sai chỗ thì cái đố này không còn đọc được nữa.</p>
+<p>Mai khắc.</p>
+<p>Cô khắc một vạch ngang, ngắn, sâu vừa phải, rồi cô khắc cái năm bằng chữ số bên cạnh, ở phía trong.</p>
+<p>Con bé bước ra và quay lại nhìn.</p>
+<p>Nó nhìn cái vạch của nó. Rồi nó nhìn xuống.</p>
+<p>"Mấy cái ni là của anh Nhân hả mẹ?"</p>
+<p>"Bốn cái ở trên đó. Với cái trên cùng."</p>
+<p>"Rứa ba cái dưới?"</p>
+<p>Mai đứng nhìn cái đố một lúc rồi cô mới trả lời.</p>
+<p>"Không phải của anh con."</p>
+<p>"Rứa của ai?"</p>
+<p>Trong mười hai năm ở cái bếp này, đó là lần thứ nhất có người hỏi cô câu ấy.</p>
+<p>Cô có hỏi thầy một lần. Chuyện ấy là năm 2057, và cô hỏi vào một buổi trưa trong lúc đang rửa mấy cái bát, và cô hỏi cho biết chứ không phải vì cần biết.</p>
+<p>Thầy có nói.</p>
+<p>Ông đang ngồi ở bậc thềm và ông không đứng dậy, và ông nói trong lúc cô vẫn đang rửa bát.</p>
+<p>Ông nói ba cái tên, và ông nói mỗi cái tên đi với một cái năm, và ông nói thêm mấy câu về từng đứa, và ông nói cả ba trong chừng một phút rồi ông thôi.</p>
+<p>Cô nghe hết. Cô nghe đủ và cô không cất nó đi, vì lúc ấy tay cô đang bận và chuyện ấy là chuyện của người khác.</p>
+<p>Hồi ấy cô hai mươi tuổi, và cái nhà này với cô còn mới, và cô đang phải nhớ chỗ để mọi thứ trong bếp, nhớ lịch chợ, nhớ tên bốn nhà trong xóm, và nhớ giờ nước lên.</p>
+<p>Ông không nói lại lần nào nữa, và cô không hỏi lại lần nào nữa.</p>
+<p>Ông mất năm 2059.</p>
+<p>Mười hai năm.</p>
+<p>Trong mười hai năm ấy cô đã nhớ nguyên vẹn hai trăm mấy chục cái số hiệu, ngày, giờ, định mức, và cô nhớ được đơn vị và hòm thư và số hiệu quân nhân của một người mà không cần nhìn vào mặt trong nắp hòm.</p>
+<p>Cái này thì cô quên hai phần ba.</p>
+<p>"Mẹ nhớ được một cái." Cô nói.</p>
+<p>"Cái mô hả mẹ?"</p>
+<p>"Mẹ không biết."</p>
+<p>Con bé nhìn cô.</p>
+<p>"Mẹ nhớ được một cái tên. Mẹ không nhớ nó là cái vết mô trong ba cái."</p>
+<p>Con bé nhìn ba cái vết dưới cùng. Nó ngồi xuống để nhìn cho ngang tầm, và nó nhìn ba cái năm khắc bên cạnh ba cái vết, và nó đọc cả ba cái năm.</p>
+<p>"Tên chi hả mẹ?"</p>
+<p>Mai nhìn ba cái vết ấy.</p>
+<p>"Hiền." Cô nói.</p>
+</article>
+
+
+<svg class="rift-small" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+</svg>
+
+
+<div class="chapter-foot">
+  <nav class="chapter-nav" aria-label="Điều hướng chương">
+    <a class="prev" href="chuong-28.html"><span class="lbl">Trước</span><span class="ttl">Danh Sách Trên Tường</span></a>
+    <a class="toc-link" href="index.html" aria-label="Về mục lục"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></a>
+    <a class="next" href="chuong-30.html"><span class="lbl">Sau</span><span class="ttl">Thị Trấn Không Đổi Gì Cả</span></a>
+  </nav>
+</div>
+
+<footer class="sitefoot">
+  <p>Khúc Ai Ca Cho Những Kẻ Vô Danh — Vòng Tuần Hoàn Người Gieo Hạt · Quyển II</p>
+  <p>© 2026 Nguyễn Duy Anh (bút danh: Mendingur). Bản quyền tác phẩm thuộc về tác giả.</p>
+</footer>
+
+<script src="glow.js" defer></script>
+</body>
+</html>

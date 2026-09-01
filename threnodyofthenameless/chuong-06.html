@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vết Dao Đề Năm 2058 — Khúc Ai Ca Cho Những Kẻ Vô Danh</title>
+<meta name="description" content="Vòng Tuần Hoàn Người Gieo Hạt · Quyển II — tiểu thuyết của Mendingur">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="style.css">
+<script src="reader.js" defer></script>
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem('mendingur-theme');
+    var theme = saved === 'dark' || saved === 'light'
+      ? saved
+      : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+  <linearGradient id="wingGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="55%" stop-color="#C99A3E"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+  <radialGradient id="coreGlow" cx="50%" cy="55%" r="55%">
+    <stop offset="0%" stop-color="#FFF6DE" stop-opacity="0.95"/>
+    <stop offset="55%" stop-color="#E4C077" stop-opacity="0.35"/>
+    <stop offset="100%" stop-color="#E4C077" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="flowerGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+</defs>
+</svg>
+<div class="grain"></div>
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+<div class="settings-menu" id="settingsMenu">
+  <button class="menu-toggle" type="button" id="settingsMenuToggle" aria-haspopup="true" aria-expanded="false" aria-controls="settingsPopover" aria-label="Cài đặt giao diện">
+    <span class="menu-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+  </button>
+  <div class="settings-popover" id="settingsPopover" role="menu">
+    <div class="settings-group">
+      <p class="settings-group-label">Giao diện</p>
+      <div class="theme-switcher" id="themeSwitcher" role="group" aria-label="Giao diện sáng / tối">
+        <button class="theme-btn active" type="button" data-theme-choice="light" aria-pressed="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <span>Sáng</span>
+        </button>
+        <button class="theme-btn" type="button" data-theme-choice="dark" aria-pressed="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+          <span>Tối</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<header class="sitebar">
+  <a class="brand" href="index.html">
+    <span class="mark"><svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sower's Cycle mark">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+<g transform="translate(200,278)">
+  <g><ellipse rx="14" ry="21" transform="rotate(0)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(72)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(144)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(216)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(288)" fill="url(#flowerGrad)"/></g>
+  <circle r="9.5" fill="#FFF6DE"/>
+</g>
+<g transform="translate(200,96)"><path d="M0,-24 C2,-7 7,-2 24,0 C7,2 2,7 0,24 C-2,7 -7,2 -24,0 C-7,-2 -2,-7 0,-24 Z" fill="#F3D488"/></g>
+</svg></span>
+    <span class="word">Khúc Ai Ca Cho Những Kẻ Vô Danh</span>
+  </a>
+  <nav>
+    <a href="index.html" class="toc-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      Mục lục
+    </a>
+  </nav>
+</header>
+<div class="progress-track"><div class="progress-fill"></div></div>
+
+<header class="chapter-head">
+  <p class="crumb"><a href="index.html">INTROITUS · NGƯỜI ĐÃ NGỒI SẴN Ở ĐÓ</a></p>
+  <span class="cnum">Chương 6</span>
+  <h1>Vết Dao Đề Năm 2058</h1>
+  <div class="font-toggle" role="group" aria-label="Cỡ chữ">
+    <button type="button" data-size="sm" aria-pressed="false">A-</button>
+    <button type="button" data-size="md" aria-pressed="true">A</button>
+    <button type="button" data-size="lg" aria-pressed="false">A+</button>
+  </div>
+</header>
+
+<article class="prose" data-size="md">
+<p>Sang tuần thứ tư thì ông Tứ bảo cô ngừng nói.</p>
+<p>Lúc đó là bốn giờ chiều, ngoài ruộng, và hai người đang lấy ống nguyên dạng ở điểm số bảy. Elin đóng ống, xoay, moi lên, gạt bằng hai đầu, dán nhãn. Cô làm thạo. Đến giữa tháng bảy cô đã lấy được hai trăm mười một mẫu và chưa hỏng cái nào.</p>
+<p>"Bạn giữ ống thẳng." Cô nói. "Tôi gõ."</p>
+<p>Ông Tứ ngồi xuống bờ ruộng.</p>
+<p>Ông chừng sáu mươi lăm tuổi, làm ở trạm từ hồi trạm còn là một cái kho, và ông là người duy nhất ở đây biết đủ tiếng Anh để cãi nhau về kỹ thuật nhưng lại chỉ dùng tiếng Việt với cô.</p>
+<p>"Cô ni." Ông nói. "Ngồi xuống đây tui nói cái ni."</p>
+<p>Elin ngồi xuống.</p>
+<p>"Mấy tuần ni cô kêu tui là bạn." Ông nói. "Cô kêu chị Liên là bạn. Cô kêu thằng Đạt là bạn. Cô kêu cả ông giám đốc viện là bạn."</p>
+<p>"Đúng ngữ pháp mà ạ."</p>
+<p>"Đúng ngữ pháp." Ông Tứ nói. "Ừ. Đúng ngữ pháp."</p>
+<p>Ông rút một điếu thuốc ra, không châm, chỉ cầm.</p>
+<p>"Tiếng Việt không có cái từ mô để hai người nói với nhau mà không ai phải nói mình là ai." Ông nói. "Cô mở miệng ra là phải nói cô đứng ở mô, và tui đứng ở mô. Mỗi câu. Không tránh được. Cô kêu tui là bạn thì cô đặt tui ngang cô, mà tui thì hơn cô bốn chục tuổi, nên cái câu đó nó không sai lịch sự, nó sai chỗ đứng. Người ta nghe xong không giận, người ta chỉ thấy khó chịu mà không biết vì răng."</p>
+<p>"Vậy tôi phải gọi thế nào ạ?"</p>
+<p>"Tui là chú. Cô xưng cháu."</p>
+<p>"Còn chị Liên?"</p>
+<p>"Chị Liên là chị. Cô xưng em."</p>
+<p>"Còn anh Đạt?"</p>
+<p>"Thằng Đạt hơn cô hai tuổi. Anh. Cô xưng em."</p>
+<p>"Còn ông giám đốc viện?"</p>
+<p>"Ông ni thì cô cứ tôi với ông." Ông Tứ nói. "Người lạ, việc công, thì tôi với ông là đúng. Chỗ mô cũng dùng cháu được thì hỏng."</p>
+<p>Elin lấy sổ ra và ghi.</p>
+<p>Cô ghi thành cột, vì đó là cách cô ghi mọi thứ. Cột người, cột mình gọi họ, cột mình xưng. Cô ghi được năm dòng thì dừng lại, vì cô nhận ra cái bảng này không có quy tắc chung nào cả, nó chỉ là một danh sách, và mỗi người mới thì phải hỏi một lần.</p>
+<p>"Chú." Cô nói, thử.</p>
+<p>"Ừ."</p>
+<p>"Cháu giữ ống. Chú gõ ạ."</p>
+<p>"Được." Ông Tứ nói, rồi đứng dậy. "Mà nghe còn cứng lắm. Cứ nói. Ba tháng là quen."</p>
+<p>Chiều hôm ấy, đi bộ về trạm, Elin nghĩ về cái bảng năm dòng trong sổ và thấy khó chịu theo một kiểu cô đã thấy trước đây, và cô mất một lúc mới nhớ ra là ở đâu.</p>
+<p>Hồi tháng hai, ở Wageningen, trước một cái mùi mà cô không có từ để gọi.</p>
+<p>Bây giờ là một cái khác. Bây giờ là cô không có từ để gọi người.</p>
+<hr class="scene-break" aria-hidden="true">
+<p>Anh Đạt nghỉ việc ngày mười chín tháng bảy, báo trước hai ngày.</p>
+<p>Mẹ anh ốm, và nhà anh ở cách đây một trăm sáu mươi cây, và anh nói xin lỗi khoảng bốn lần. Trạm mất người phiên dịch duy nhất trong ba ngày, và đợt khảo sát hộ dân thì đã lên lịch với xã.</p>
+<p>Chị Liên hỏi quanh, và hôm sau dẫn về một cô gái tầm tuổi Elin, tóc cắt ngắn ngang tai, đi xe đạp, mang theo một cái túi vải có quai đã khâu lại.</p>
+<p>"Nguyễn Bảo Thư." Cô ấy nói bằng tiếng Anh. "Mình học ở trường huyện. Mình dịch được nhưng mình không biết từ chuyên môn. Cậu nói chậm thì mình dịch được."</p>
+<p>Hai người làm việc với nhau trong hai ngày và đi ba nơi.</p>
+<p>Nơi thứ nhất là uỷ ban xã, lấy danh sách hộ có ruộng bỏ. Danh sách in trên giấy, lập năm 2054, và người đưa nói thẳng là từ đó tới nay chưa cập nhật lần nào vì không có kinh phí. Trong danh sách có hai mươi ba hộ. Ông cán bộ địa chính bảo bây giờ phải hơn.</p>
+<p>"Hơn bao nhiêu ạ?" Elin hỏi qua Bảo Thư.</p>
+<p>Ông ta nghĩ một lúc rồi nói không biết, và ông nói câu đó không hề ngại ngùng, vì đó là sự thật và ông không có cách nào biết.</p>
+<p>Nơi thứ hai là một xóm cách đó chín cây. Bảy hộ. Elin hỏi cùng một bộ câu hỏi bảy lần: ruộng bỏ từ năm nào, trước đó trồng gì, bỏ vì lý do gì, có thử trồng lại không, thử mấy lần.</p>
+<p>Câu trả lời lần nào cũng có ba phần. Phần thứ nhất là một năm. Phần thứ hai là một loại cây. Phần thứ ba dài hơn hai phần kia cộng lại và không nằm trong biểu mẫu của cô.</p>
+<p>Đến hộ thứ năm thì Bảo Thư ngừng dịch giữa chừng và nói:</p>
+<p>"Đoạn này ông ấy kể chuyện con trai. Cậu có cần không?"</p>
+<p>Elin nhìn cái biểu mẫu. Nó có mười một ô và không ô nào chứa được đoạn ấy.</p>
+<p>"Cậu cứ ghi vào sổ cậu." Cô nói. "Mình không đưa vào bảng được."</p>
+<p>"Ừ." Bảo Thư nói, và ghi.</p>
+<p>Nơi thứ ba là chỗ Elin nhớ lâu nhất.</p>
+<p>Một mảnh ruộng gần một con hói, chủ là một ông cụ tám mươi tư tuổi, người xóm gọi là ông Hoè. Ông đi ra bờ cùng hai người, chống gậy, đi chậm nhưng không cần ai đỡ.</p>
+<p>Ông dừng lại ở khoảng một phần ba mảnh ruộng tính từ đầu bờ, gõ gậy xuống đất hai cái.</p>
+<p>Ông nói một câu ngắn.</p>
+<p>"Ông bảo từ đây trở xuống là chết." Bảo Thư dịch. "Từ đây trở lên còn được."</p>
+<p>Elin lấy mẫu ở sáu điểm dọc theo mảnh ruộng đó, ba điểm trên, ba điểm dưới, và tối hôm ấy chạy ở trạm.</p>
+<p>Ba điểm trên: 2,1 rồi 2,4 rồi 3,0 đêxi siemen trên mét. Ba điểm dưới: 7,8 rồi 8,6 rồi 8,9.</p>
+<p>Chỗ đứt gãy nằm trong khoảng mười một mét so với chỗ ông Hoè gõ gậy.</p>
+<p>Hôm sau Elin quay lại hỏi ông làm sao ông biết.</p>
+<p>Câu trả lời mất bốn phút để dịch và chán ngắt. Có một thứ cỏ, ông gọi tên nó bằng tiếng địa phương và Bảo Thư không biết dịch sang tiếng Anh là gì. Cỏ ấy mọc thành đám ở chỗ mặn, và chỉ mọc ở chỗ mặn, và mỗi năm cái đám ấy nhích lên trên mấy gang. Ông đã nhìn nó nhích suốt năm chục năm.</p>
+<p>"Ông có ghi lại không ạ?" Elin hỏi.</p>
+<p>Bảo Thư dịch. Ông Hoè cười.</p>
+<p>Ông nói ghi làm chi, ruộng của ông thì ông biết.</p>
+<p>Elin ghi câu ấy vào sổ, nguyên văn, qua bản dịch của Bảo Thư, và ghi cả tên cái loại cỏ bằng cách phiên âm, vì cô không có cách nào khác để giữ nó.</p>
+<p>Năm chục năm số liệu, độ chính xác mười một mét, và không có một trang giấy nào.</p>
+<p>Bảo Thư dịch chậm và chính xác, và khi không biết một từ thì cô ấy nói thẳng là không biết chứ không đoán. Đến chỗ thứ hai, Elin đã để ý rằng Bảo Thư ghi lại mọi thứ, kể cả những thứ không cần ghi. Tên người. Giờ. Câu người ta nói, ghi nguyên văn, không tóm tắt.</p>
+<p>"Cậu ghi nhiều thế." Elin nói.</p>
+<p>"Ừ." Bảo Thư nói. "Mình quen tay."</p>
+<p>Ngày thứ ba là chủ nhật, không có lịch làm việc, và Bảo Thư rủ cô về nhà ăn cơm.</p>
+<p>Nhà ở cuối một con đường đất, có cái giếng ngoài sân và một cây khế. Trong nhà, ngồi ở bàn giữa với một chồng vở, có một cô gái nữa.</p>
+<p>"Trúc." Bảo Thư nói. "Bạn mình. Ở đây từ nhỏ."</p>
+<hr class="scene-break" aria-hidden="true">
+<p>Trúc bằng tuổi Elin.</p>
+<p>Chỗ Trúc ngồi có ba chồng sách. Chồng thứ nhất là sách thư viện huyện, có dấu, có phiếu mượn kẹp trong bìa, và phiếu nào cũng ghi cùng một cái tên. Chồng thứ hai là sách photo, đóng gáy lò xo, chữ mờ ở mép trong vì bản gốc dày quá không ép phẳng được. Chồng thứ ba là vở, vở học sinh, loại rẻ nhất, và có nhiều lắm.</p>
+<p>Trên bàn còn một cuốn từ điển thần học, bìa cứng, gáy đã rách và được dán lại bằng băng dính vải màu xám.</p>
+<p>Elin nhìn cái gáy sách ấy lâu hơn cần thiết.</p>
+<p>"Bốn năm rồi." Bảo Thư nói. "Tự học hết. Không ai dạy."</p>
+<p>Trúc rót nước. Cô rót cho Elin trước, rồi Bảo Thư, rồi mình.</p>
+<p>"Bạn ngồi." Trúc nói bằng tiếng Việt, chậm, tách từng chữ ra cho dễ nghe. "Ăn cơm."</p>
+<p>"Cảm ơn bạn." Elin nói.</p>
+<p>Trúc nhìn cô. Rồi Trúc quay sang Bảo Thư và nói một câu, và nói bình thường, cùng cái giọng vừa mời cơm.</p>
+<p>Bảo Thư không dịch câu đó.</p>
+<p>Cô ấy đứng dậy, đi tới chồng vở thứ ba, và lật. Cô ấy lật nhanh, không tìm mò, kiểu người biết chính xác nó nằm ở quyển nào và khoảng chỗ nào.</p>
+<p>Cô ấy mở ra ở một trang, đặt xuống bàn, và đẩy về phía Elin.</p>
+<p>Trang giấy có nét chữ của Bảo Thư. Elin nhận ra nó vì cô đã nhìn nét chữ ấy suốt hai ngày.</p>
+<p>Ở đầu trang có một ngày: 11 tháng 8 năm 2056.</p>
+<p>Bảo Thư đọc, và dịch, và giọng cô ấy đều cho đến chữ cuối cùng.</p>
+<p>"Người ấy sẽ đến. Mình không phải đi tìm. Người nhà mình dẫn về."</p>
+<p>"Người ấy không biết gọi ai là gì."</p>
+<p>Trong nhà, ngoài sân, có tiếng gà.</p>
+<p>Elin không nói gì. Trúc cũng không nói gì. Trúc kéo cái đĩa rau về phía Elin và đẩy đôi đũa lại gần hơn, như thể vừa rồi không có chuyện gì xảy ra, và với Trúc thì đúng là không có chuyện gì xảy ra, vì Trúc đã sống bốn năm trong chuyện này.</p>
+<p>Người đứng lên là Bảo Thư.</p>
+<p>Cô ấy đứng lên, nói một câu ngắn, rồi đi ra sân.</p>
+<p>Elin nhìn theo. Trúc thì không nhìn theo. Trúc đưa cho Elin cái bát và nói "ăn cơm" lần nữa.</p>
+<p>Ngoài sân, Bảo Thư đứng cạnh cái giếng, quay lưng lại, hai tay chống lên thành giếng.</p>
+<p>Cô ấy đứng đó rất lâu.</p>
+<p>Bốn năm trời, người ghi chép là cô. Người viết câu ấy xuống giấy, tháng tám năm 2056, là cô. Cô đã ghi vì Trúc nhờ ghi, và cô đã ghi đủ, và cô đã không tin một chữ nào, và chính chuyện không tin ấy mới là lý do cô ghi cẩn thận đến thế.</p>
+<p>Không ai đi ra chỗ cô ấy.</p>
+<hr class="scene-break" aria-hidden="true">
+<p>Bữa cơm vẫn ăn hết.</p>
+<p>Có cá kho, rau muống luộc, và một bát nước rau vắt chanh mà Elin không biết là để làm gì cho đến khi Trúc chan một ít vào bát cô. Hai người ăn với nhau gần bốn mươi phút và không có chung quá năm chục từ.</p>
+<p>Trúc không hỏi cô có tin không.</p>
+<p>Đó là chuyện Elin nghĩ lại nhiều lần về sau. Trúc không giải thích một câu nào, không kể lại giấc mộng nào, không đưa thêm một trang nào ra để làm bằng. Cô ấy mở một trang, rồi gấp lại, rồi mời cơm. Với Trúc, chuyện Elin tin hay không tin hình như không nằm trong danh sách những việc phải làm hôm nay.</p>
+<p>Ăn xong, Elin chỉ vào chồng vở.</p>
+<p>"Bao nhiêu?" Cô hỏi.</p>
+<p>Trúc hiểu. Cô ấy đếm bằng cách đặt tay lên từng chồng.</p>
+<p>"Ba mươi mốt." Cô nói. "Còn nữa. Ở trong."</p>
+<p>Cô ấy chỉ vào buồng trong, dưới gầm giường.</p>
+<p>Elin xin phép cầm một quyển. Trúc gật.</p>
+<p>Quyển ấy là vở học sinh, một trăm trang, và nó được kẻ cột.</p>
+<p>Ba cột. Cột thứ nhất hẹp, ghi ngày. Cột thứ hai hẹp hơn, ghi giờ. Cột thứ ba chiếm gần hết trang, và trong cột thứ ba là chữ, viết bằng hai nét chữ khác nhau, một nét nghiêng và nhỏ, một nét đứng và tròn hơn.</p>
+<p>Kẻ bằng tay. Bằng thước. Đường kẻ liền, không đứt quãng, và ở đầu mỗi trang có một dòng chữ nhỏ ghi số hiệu quyển và số hiệu trang.</p>
+<p>Elin nhìn cái bảng ấy hơi lâu.</p>
+<p>Ở Wageningen, trong ngăn trong ba lô cô, có một cuốn sổ bìa cứng chín cột, và ở lề trang đầu của nó có một dòng viết cho chính mình về việc không được dùng biến chủ quan để kết luận.</p>
+<p>Cô đặt quyển vở xuống, đúng chỗ cũ, đúng chiều cũ.</p>
+<p>"Ai kẻ?" Cô hỏi, và chỉ vào đường kẻ.</p>
+<p>Trúc chỉ ra sân, về phía cái giếng.</p>
+<p>Elin gật đầu.</p>
+<p>Cô không nói thêm gì về chuyện đó, không hôm ấy và cũng không trong nhiều năm sau. Nhưng từ chiều chủ nhật ấy trở đi, khi người ta hỏi cô vì sao cô tin hai người con gái ở cái nhà cuối đường đất, câu trả lời thật của cô không bao giờ là trang giấy đề ngày mười một tháng tám.</p>
+<p>Nó là những đường kẻ.</p>
+<p>Bảo Thư vào lúc gần hai giờ. Cô ấy ngồi xuống, ăn phần cơm nguội của mình, và dịch bình thường trở lại, và tay cô ấy không run.</p>
+<hr class="scene-break" aria-hidden="true">
+<p>Cách đó bốn mươi cây số, ở Gò Sen, chiều hôm ấy Mai phải xong cái ống nước trước khi trời tối.</p>
+<p>Đường ống cũ từ mạch nước sau chùa xuống bếp Vô Ưu Cổ Tự đã mục hai đoạn, và mỗi lần gánh nước thay ống thì mất một buổi, và thầy Tịnh Không thì bảy mươi chín tuổi, không gánh nữa. Kaito đào rãnh từ sáng. Mai nối ống. Nhân trộn vữa để trát lại chỗ chân bể.</p>
+<p>"Anh nghỉ tay đi." Mai nói. "Uống nước."</p>
+<p>Kaito lên khỏi rãnh, ngồi xuống thềm. Anh cầm cái ca bằng cả hai tay, và khi anh chìa tay ra thì cái vân đen bạc dưới da cổ tay lộ ra ngoài mép áo. Hôm nay nó rõ hơn hôm qua, một chút.</p>
+<p>"Đêm qua anh ngủ được không?"</p>
+<p>"Được." Kaito nói. "Hơn hôm kia."</p>
+<p>"Ừ."</p>
+<p>Mai cúi xuống vặn tiếp cái khớp nối. Chuyện ấy khép lại ở đó, như mọi lần.</p>
+<p>Thiên ngồi trên chiếu ở hiên, có cái rổ úp bên cạnh để nó khỏi bò ra chỗ vữa. Con bé một tuổi hai tháng. Nó đang cầm một cái muôi gỗ và gõ xuống chiếu, và mỗi lần gõ nó lại nhìn lên xem có ai nhìn nó không.</p>
+<p>"Mẹ." Nó nói.</p>
+<p>"Ừ." Mai nói, không ngẩng lên.</p>
+<p>"Mẹ."</p>
+<p>"Ừ."</p>
+<p>Nó gõ tiếp. Nó biết đúng một chữ và nó dùng chữ ấy cho tất cả mọi thứ, và ba tuần nay cả nhà đã quen với việc cái chữ ấy có thể có nghĩa là đói, là ướt, hoặc là nhìn con này.</p>
+<p>"Chị ơi." Nhân gọi từ chỗ bể nước. "Vữa em trộn khô quá hay được rồi?"</p>
+<p>Mai đi lại xem.</p>
+<p>"Thêm nước. Ít thôi. Đổ ừng ực là hỏng cả xô."</p>
+<p>"Vâng ạ."</p>
+<p>Cậu bé mười một tuổi, cao đến vai Mai, tay và cổ chân đầy vết muỗi cắn cũ. Giọng cậu chưa vỡ. Cậu trộn vữa bằng cái bay, hai tay, người ngả theo, và cậu trộn kỹ hơn mức cần, vì thầy Tịnh Không đã dạy cậu trộn vữa hồi năm ngoái và cậu vẫn làm y như bài đã dạy.</p>
+<p>Thầy Tịnh Không ra thềm lúc gần năm giờ.</p>
+<p>Ông đi chậm, một tay men theo tường. Ông nhìn cái rãnh, nhìn chỗ nối, rồi nhìn đống ống thừa.</p>
+<p>"Chừa lại một đoạn." Ông nói. "Cái khúc trên gần bể cũng sắp mục. Sang năm phải thay nốt. Chừa lại thì đỡ phải mua."</p>
+<p>"Dạ." Kaito nói.</p>
+<p>"Chú Kaito lấy hộ con cái xẻng." Nhân nói.</p>
+<p>Thầy Tịnh Không quay đầu lại nhìn thằng bé.</p>
+<p>"Chị thì con kêu là chị." Ông nói. "Chồng chị thì con kêu là chú. Rứa hai người đó là chi của nhau?"</p>
+<p>Nhân không trả lời. Cậu cầm cái bay quẹt vào thành xô.</p>
+<p>Kaito lấy cái xẻng đưa cho cậu.</p>
+<p>"Cảm ơn chú." Nhân nói.</p>
+<p>Thầy Tịnh Không cười một tiếng ngắn rồi thôi, và không ai nhắc lại chuyện đó nữa, không phải chiều hôm ấy, và cũng không phải trong nhiều năm sau.</p>
+<p>Sáu giờ kém mười lăm thì nước lên tới bếp. Nó chảy ra ở vòi, đục trong nửa phút đầu, rồi trong.</p>
+<p>Mai xả cho chảy một lúc rồi hứng đầy hai cái xô.</p>
+<p>Cơm dọn ra ở hiên vì trong bếp còn ướt. Cá kho, canh rau tập tàng, và một đĩa dưa muối mà thầy Tịnh Không muối từ tuần trước và muối hơi mặn tay. Kaito ăn hết chỗ dưa mặn ấy, và ăn hết một cách rất bình thường, và thầy Tịnh Không không nói gì nhưng lần sau ông muối nhạt hơn.</p>
+<p>Nhân ăn ba bát.</p>
+<p>"Chị." Cậu nói giữa bát thứ hai. "Cái xe của chú Ba Cẩn có cái bánh sau tháo ra được. Chú ấy bảo cuối tháng chú ấy bỏ."</p>
+<p>"Rồi sao?"</p>
+<p>"Em xin. Em lắp vào cái xe cút kít, thì đẩy nặng đỡ mỏi hơn nhiều."</p>
+<p>"Cái bánh ấy to hơn cái cũ à?"</p>
+<p>"Vâng. To hơn. Nhưng em đo rồi." Cậu buông đũa, lấy tay so ra trên chiếu. "Em đo cái càng rồi. Vừa. Chỉ phải nống ra một tí."</p>
+<p>"Ừ." Mai nói. "Cuối tháng thì đi xin. Đi một mình được không?"</p>
+<p>"Được ạ."</p>
+<p>Cậu ăn tiếp, và cậu ăn nhanh hơn một chút, theo cái lối của một người vừa được giao một việc.</p>
+<p>Trời tối lúc sáu giờ rưỡi, tối nhanh, kiểu tháng bảy.</p>
+<p>Kaito bế Thiên vào trong, đặt nó lên phản, và lau chân cho nó bằng cái khăn đã vắt sẵn. Con bé đạp chân. Anh giữ một cổ chân, lau xong thì đổi bên.</p>
+<p>Rồi anh nói với nó một từ.</p>
+<p>Không phải tiếng Việt. Hai âm tiết, nói nhỏ, nói vào chỗ giữa tai và vai con bé.</p>
+<p>Anh nói từ ấy mỗi tối, từ hồi con bé chưa mở mắt được, và anh chưa dịch nó ra cho ai bao giờ, kể cả Mai. Mai đã hỏi một lần, năm ngoái, và anh nói để sau, và cô không hỏi lại.</p>
+<p>Thiên cười, và đạp chân, và nói "mẹ".</p>
+<p>"Chưa phải." Kaito nói bằng tiếng Việt. "Từ từ."</p>
+<p>Trong bếp, Mai bật cái bóng đèn treo trên khung cửa và gọi vọng ra hiên.</p>
+<p>"Nhân. Vào đây chị đo."</p>
+<p>"Để em rửa tay đã ạ."</p>
+<p>"Rửa đi rồi vào."</p>
+<p>Khung cửa bếp bằng gỗ, đã cũ, và trên cái đố dọc bên trái có sáu vết dao khắc ngang.</p>
+<p>Ba vết dưới cùng đề 2049, 2050 và 2052, và chúng không phải của Nhân. Nét chữ ở đó là nét thầy Tịnh Không, và chúng thuộc về những đứa trẻ khác đã ở chùa trước cậu. Chưa ai nói với Nhân đó là ai, và cậu chưa hỏi bao giờ, và cậu vẫn đứng vào cái khung ấy mỗi năm một lần.</p>
+<p>Vết của cậu bắt đầu từ 2055.</p>
+<p>Nhân đứng vào, lưng áp vào khung, gót sát chân đố.</p>
+<p>Mai đặt cái thước lên đỉnh đầu cậu, giữ ngang, và lấy con dao con khắc một vạch. Rồi cô khắc năm chữ số bên cạnh.</p>
+<p>2058.</p>
+<p>"Bao nhiêu ạ?"</p>
+<p>"Chị không đo. Chị chỉ khắc."</p>
+<p>"Nhưng hơn năm ngoái bao nhiêu?"</p>
+<p>Mai lấy ngón tay đo khoảng cách giữa hai vết.</p>
+<p>"Ba đốt." Cô nói. "Hơn năm ngoái ba đốt."</p>
+<p>Nhân nhìn hai cái vạch một lúc lâu.</p>
+<p>Rồi cậu đứng lại vào chỗ cũ, lưng thẳng, cằm hơi hếch lên, và nhón gót lên khỏi mặt đất chừng nửa phân.</p>
+<p>"Em bỏ chân xuống." Mai nói, không quay đầu lại.</p>
+<hr class="scene-break" aria-hidden="true">
+<p class="p-part-end">Hết Phần I: Khúc Mở Đường</p>
+</article>
+
+
+<svg class="rift-small" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+</svg>
+
+
+<div class="chapter-foot">
+  <nav class="chapter-nav" aria-label="Điều hướng chương">
+    <a class="prev" href="chuong-05.html"><span class="lbl">Trước</span><span class="ttl">Dãy Ghế Không Nằm Được</span></a>
+    <a class="toc-link" href="index.html" aria-label="Về mục lục"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></a>
+    <a class="next" href="chuong-07.html"><span class="lbl">Sau</span><span class="ttl">Ngày Không Ai Kịp Đặt Tên</span></a>
+  </nav>
+</div>
+
+<footer class="sitefoot">
+  <p>Khúc Ai Ca Cho Những Kẻ Vô Danh — Vòng Tuần Hoàn Người Gieo Hạt · Quyển II</p>
+  <p>© 2026 Nguyễn Duy Anh (bút danh: Mendingur). Bản quyền tác phẩm thuộc về tác giả.</p>
+</footer>
+
+<script src="glow.js" defer></script>
+</body>
+</html>

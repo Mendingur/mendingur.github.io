@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tôi Biết Ghi Sổ — Khúc Ai Ca Cho Những Kẻ Vô Danh</title>
+<meta name="description" content="Vòng Tuần Hoàn Người Gieo Hạt · Quyển II — tiểu thuyết của Mendingur">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="style.css">
+<script src="reader.js" defer></script>
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem('mendingur-theme');
+    var theme = saved === 'dark' || saved === 'light'
+      ? saved
+      : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+  <linearGradient id="wingGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="55%" stop-color="#C99A3E"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+  <radialGradient id="coreGlow" cx="50%" cy="55%" r="55%">
+    <stop offset="0%" stop-color="#FFF6DE" stop-opacity="0.95"/>
+    <stop offset="55%" stop-color="#E4C077" stop-opacity="0.35"/>
+    <stop offset="100%" stop-color="#E4C077" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="flowerGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+</defs>
+</svg>
+<div class="grain"></div>
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+<div class="settings-menu" id="settingsMenu">
+  <button class="menu-toggle" type="button" id="settingsMenuToggle" aria-haspopup="true" aria-expanded="false" aria-controls="settingsPopover" aria-label="Cài đặt giao diện">
+    <span class="menu-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+  </button>
+  <div class="settings-popover" id="settingsPopover" role="menu">
+    <div class="settings-group">
+      <p class="settings-group-label">Giao diện</p>
+      <div class="theme-switcher" id="themeSwitcher" role="group" aria-label="Giao diện sáng / tối">
+        <button class="theme-btn active" type="button" data-theme-choice="light" aria-pressed="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <span>Sáng</span>
+        </button>
+        <button class="theme-btn" type="button" data-theme-choice="dark" aria-pressed="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+          <span>Tối</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<header class="sitebar">
+  <a class="brand" href="index.html">
+    <span class="mark"><svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sower's Cycle mark">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+<g transform="translate(200,278)">
+  <g><ellipse rx="14" ry="21" transform="rotate(0)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(72)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(144)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(216)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(288)" fill="url(#flowerGrad)"/></g>
+  <circle r="9.5" fill="#FFF6DE"/>
+</g>
+<g transform="translate(200,96)"><path d="M0,-24 C2,-7 7,-2 24,0 C7,2 2,7 0,24 C-2,7 -7,2 -24,0 C-7,-2 -2,-7 0,-24 Z" fill="#F3D488"/></g>
+</svg></span>
+    <span class="word">Khúc Ai Ca Cho Những Kẻ Vô Danh</span>
+  </a>
+  <nav>
+    <a href="index.html" class="toc-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      Mục lục
+    </a>
+  </nav>
+</header>
+<div class="progress-track"><div class="progress-fill"></div></div>
+
+<header class="chapter-head">
+  <p class="crumb"><a href="index.html">LIBERA ME · BIẾT MÀ KHÔNG LÀM GÌ ĐƯỢC</a></p>
+  <span class="cnum">Chương 19</span>
+  <h1>Tôi Biết Ghi Sổ</h1>
+  <div class="font-toggle" role="group" aria-label="Cỡ chữ">
+    <button type="button" data-size="sm" aria-pressed="false">A-</button>
+    <button type="button" data-size="md" aria-pressed="true">A</button>
+    <button type="button" data-size="lg" aria-pressed="false">A+</button>
+  </div>
+</header>
+
+<article class="prose" data-size="md">
+<p>Lịch bảo dưỡng phân khu bảy, bảng dán ở nhà ca số hai, dòng thứ mười một.</p>
+<p>Ngày 4 tháng 2 năm 2066 · cụm hoả lực 7-C · thay nòng, lượt thứ mười một trong tháng · đường kính cấu trúc theo bản tin tuần: 690,0 mét · người ký nhận: bỏ trống.</p>
+<p>Vành đai dài mười ba cây số rưỡi.</p>
+<p>Con số ấy tính từ mép cấu trúc ra một nghìn tám trăm mét rồi khép vòng, và nó là con số duy nhất trong toàn bộ giao thức mà ai cũng thuộc, vì nó nằm ở dòng đầu của mọi biểu mẫu.</p>
+<p>Trên mười ba cây số rưỡi ấy có bốn mươi bốn cụm hoả lực, cách nhau ba trăm lẻ sáu mét. Mỗi cụm bốn nòng. Mỗi cụm bắn một loạt bốn phát, chu trình bốn mươi giây, và bốn nòng luân phiên nhau nên không nòng nào phải chịu quá một phần tư số phát.</p>
+<p>Không ai ngắm.</p>
+<p>Chúng đi qua ở chỗ nào thì giao thức không hỏi, vì giao thức phủ trọn chu vi và một cái phủ trọn chu vi thì không cần biết chỗ nào.</p>
+<p>Giao thức không hỏi ngoài kia có gì. Giao thức chỉ hỏi nòng đã bắn được bao nhiêu phát, và khi con số ấy tới mười hai nghìn, hoặc khi giờ bắn tích luỹ tới chín mươi giờ, tuỳ cái nào tới trước, thì nòng ấy được thay.</p>
+<p>Một tổ bảo dưỡng bốn người phụ trách sáu cụm. Ba ca một ngày. Ca tám tiếng, và tám tiếng là tám tiếng thật, vì từ tháng 5 năm 2064 phân khu bảy không thiếu người nữa.</p>
+<p>Nó cũng không thiếu gì khác.</p>
+<p>Găng tay lớp trong về đủ và về đúng hạn. Pin cảm biến về đủ. Giày về đủ và về đúng cỡ, vì đơn hàng năm 2065 có kèm một phụ lục ba trang quy đổi bảng cỡ, và cái phụ lục ấy do một người ở ban vật tư viết sau khi đọc lại hồ sơ mua sắm bốn năm trước. Dầu về đủ, và dầu không còn phải nhập vào dòng chung, vì từ tháng 6 năm 2064 giao thức có dòng ngân sách riêng và dòng ấy được duyệt trước tất cả các dòng khác.</p>
+<p>Cái gì nằm trong giao thức thì được cấp đủ. Cái đó đúng, và nó đúng ngay từ quý đầu tiên, và không ai ở phân khu bảy phải chờ một cái công ten nơ nào trên bến nữa.</p>
+<p>Biểu mẫu tình hình ngày của phân khu bảy có mười bốn mục.</p>
+<p>Mục 2.1 vẫn còn trên giấy, vì biểu mẫu in sẵn và người ta in một lần cho cả năm. Ô của nó bỏ trống từ tháng 9 năm 2062, và bây giờ, sau ba năm rưỡi, không còn ai ở nhà ca biết mục 2.1 vốn là mục ghi cái gì.</p>
+<p>Mục 7 là mục nòng. Nó có bốn cột: số hiệu cụm, số phát tích luỹ, giờ bắn tích luỹ, và ngày thay gần nhất. Cột thứ tư là cột hay bị ghi sai nhất, vì người ta hay ghi ngày lập biểu mẫu thay vì ngày thay, và bản hướng dẫn có một đoạn dài chín dòng nói về chuyện đó.</p>
+<p>Một nòng chịu được năm ngày rưỡi. Một cụm bốn nòng thì cứ chừng ba mươi tư tiếng lại phải thay một cái.</p>
+<p>Trong quý bốn năm 2065, phân khu bảy thay hai nghìn chín trăm mười bốn cái nòng.</p>
+<p>Trong mười bốn mục của biểu mẫu ấy không có mục nào hỏi bao nhiêu.</p>
+<p>Chuyện đó không phải là giấu. Nó là thiết kế. Một biện pháp không phân biệt thì không cần đếm cái nó vô hiệu hoá, vì con số ấy không dùng vào việc gì trong vận hành. Điều đó được viết rõ ở trang bảy của bản hướng dẫn, mục ba, và bản hướng dẫn ấy công bố đầy đủ.</p>
+<p>Từ tháng 6 năm 2064 tới tháng 2 năm 2066 là hai mươi tháng, và trong hai mươi tháng ấy vành đai không ngừng bắn một giờ nào, kể cả trong hai đợt bão tuyết phải rút người khỏi bốn cụm, vì bốn cụm ấy chuyển sang chế độ tự động và chế độ tự động là một phần của thiết kế.</p>
+<p>Ở khoảng cách một nghìn tám trăm mét, cái người ta nghe được không phải tiếng nổ. Nó là một tiếng thấp, và nó đi qua nền đất trước rồi mới đi qua không khí.</p>
+<p>Nó không có nhịp.</p>
+<p>Bốn mươi bốn cụm cùng chạy chu trình bốn mươi giây, và bốn mươi bốn cái chu trình ấy chưa bao giờ được đặt cho khớp nhau, vì không có lý do gì để đặt cho khớp. Cho nên ở một chỗ bất kỳ trên vành đai, cứ chừng một giây lại có một loạt ở đâu đó, và cái thứ tự thì không lặp lại.</p>
+<p>Tổ bảo dưỡng ngủ trong tiếng ấy. Người mới xuống thì mất chừng ba tuần, và có người mất hai tháng, và có một người ở tổ số năm không quen được và người ấy được chuyển đi vào tháng 8 năm 2065 theo diện sức khoẻ, và trong hồ sơ ghi là rối loạn giấc ngủ, và cái đó đúng.</p>
+<p>Ban đêm, mỗi loạt làm sáng một quãng tuyết trước mặt cụm, sáng chừng một phần mười giây, đủ để thấy mặt tuyết và không đủ để thấy cái gì trên mặt tuyết. Tháng đầu người ta còn nhìn. Sang tháng thứ hai thì không ai nhìn nữa, và chuyện thôi nhìn ấy không ai bảo ai, nó tự đến, giống như chuyện thôi nghe.</p>
+<p>Ở Gò Sen, trên vách buồng trong, cũng có một tờ giấy.</p>
+<p>Nó là mặt sau một tờ lịch năm 2064, dán bằng cơm nguội ở bốn góc, và trên đó Mai kẻ hai cột bằng thước.</p>
+<p>Cột trái là giờ. Cột phải là việc.</p>
+<p>Năm giờ rưỡi, dậy. Sáu giờ, ăn. Bảy giờ, ra bể rửa mặt và ngồi ngoài hiên tới bảy rưỡi. Mười một giờ, ăn. Một giờ, nằm. Ba giờ, dậy. Năm giờ, ra sân. Sáu giờ rưỡi, ăn. Chín giờ, vào buồng.</p>
+<p>Ở dưới cùng có một dòng thứ mười viết nhỏ hơn: nếu không nhớ đang làm chi thì coi cột trái.</p>
+<p>Kaito ba mươi ba tuổi.</p>
+<p>Từ tháng 8 năm 2064, anh mất khả năng phân biệt tín hiệu của chính cơ thể mình. Chuyện này Mai phát hiện ra trước anh, vì cô là người dọn mâm.</p>
+<p>Anh không biết mình đói. Anh biết có một cái gì đó không đúng ở khoảng giữa ngực và bụng, và cái đó có thể là đói, có thể là cái sức nặng bậc bốn của đêm hôm trước còn lại, có thể là cả hai. Anh không biết mình đau. Có hôm anh cắt vào ngón cái lúc gọt sắn và anh biết là mình cắt vì anh thấy máu, không phải vì anh thấy đau, và anh biết chuyện đó là không đúng, và anh ghi nó ra lề.</p>
+<p>Anh không biết tiếng động nào ở trong đầu và tiếng động nào ở ngoài sân.</p>
+<p>Cái này là cái khó nhất, vì nó không cho anh cách nào để tự kiểm.</p>
+<p>Hai người thoả thuận chuyện ấy vào một tối tháng 9 năm 2064, ngoài hiên, bằng bốn câu.</p>
+<p>"Anh hỏi thì em nói thiệt hè." Anh nói.</p>
+<p>"Ừ."</p>
+<p>"Cả lúc không có chi cũng nói."</p>
+<p>"Ừ. Cả lúc không có chi."</p>
+<p>Từ tối ấy, khi anh hỏi ngoài sân có tiếng chi không, cô đáp có hoặc không, và cô đáp bằng đúng một chữ, và cô không bao giờ hỏi lại là anh nghe thấy cái gì. Trong hai năm cô đáp không nhiều hơn đáp có, và cô đáp không bằng cùng một giọng cô đáp có.</p>
+<p>Cho nên cô lập cái bảng.</p>
+<p>Cô lập nó theo lối cô lập mọi bảng, tức là cô lập nó cho một người không nhớ được, chứ không lập cho một người bệnh. Cô không hỏi anh có muốn không. Cô kẻ hai cột, viết mười dòng, dán lên vách, và tối ấy cô nói đúng một câu về nó, là "Anh coi cột trái."</p>
+<p>Cái bảng chạy được vì nó không cần anh nhớ gì cả. Nó chỉ cần anh biết bây giờ là mấy giờ, và cái đồng hồ treo ở gian ngoài thì Nhân đã lên dây cho nó từ hồi còn ở nhà và bây giờ Thiên lên dây, sáng chủ nhật, mười hai vòng.</p>
+<p>Có ba dòng trong mười dòng ấy là dòng ăn. Mai xếp như vậy có lý do, và lý do là trong tám tháng cuối năm 2064 anh sút bảy cân, và bảy cân thì cô đo được bằng cái dây lưng, ba lỗ.</p>
+<p>Đến năm 2066 thì anh không sút thêm nữa. Cô ghi chuyện đó vào cuốn vở, ở lề, không phải ở cột.</p>
+<p>Anh không gào.</p>
+<p>Trong hai mươi tháng ấy anh không gào lần nào, và chuyện đó không phải vì anh chịu được. Nó là vì cái đến với anh không đến theo lối một cái đau đến. Nó đến theo lối một cái sức nặng đặt xuống, và cái sức nặng ấy đặt xuống rồi thôi, rồi lại đặt xuống, và giữa hai lần đặt xuống thì không có gì cả, và người ta không gào vào một cái không có gì.</p>
+<p>Ba thang đo vẫn là ba thang đo. Anh không tìm ra thang thứ tư, và đến năm nay thì anh đã thôi tìm.</p>
+<p>Cái đổi là ở chỗ khác.</p>
+<p>Bậc bốn trở lên, thứ mà trong năm năm đầu chỉ có mười chín đêm, bây giờ là chuyện hằng đêm. Chữ vào, thứ mà trong năm năm đầu xuất hiện mười bốn lần, bây giờ anh thôi ghi, vì ghi một chữ mà đêm nào cũng ghi thì chữ ấy không còn phân biệt được cái gì với cái gì.</p>
+<p>Đó là chỗ cái bảng của anh hỏng. Nó hỏng không phải vì nó sai. Nó hỏng vì tất cả các giá trị đều dồn lên đỉnh thang, và một cái thang mà mọi thứ đều nằm ở bậc cao nhất thì không còn là thang nữa.</p>
+<p>Trong hai mươi tháng ấy số mục anh ghi được ít hơn hẳn hai năm trước, và cái ít ấy không phải vì ít chuyện.</p>
+<p>Cuốn vở bìa xanh đến tháng 2 năm 2066 còn chín trang trắng.</p>
+<p>Có những đêm anh đọc và Mai chép, và những đêm ấy nhiều hơn những đêm anh viết được. Cô chép cả chỗ anh nói lắp, chép nguyên, không sửa, và cô đã chép như vậy từ năm 2062 nên bây giờ nó là một việc trong ngày của cô, xếp sau việc dọn mâm và trước việc tắt đèn.</p>
+<p>Cô vẫn đo cổ tay. Tháng 2 năm 2066 là 10,4. Tháng 9 năm 2065 là 9,2.</p>
+<p>Nó lên chậm và nó chưa bao giờ xuống.</p>
+<p>Thiên chín tuổi.</p>
+<p>Nó cao đến vai mẹ nó, nó tự đi bộ ra hói và về được, và nó là đứa duy nhất trong nhà biết cái máy phát phải hé le gió một phần ba trong bốn phút đầu, vì Nhân dạy nó chuyện đó vào tháng 9 năm 2065, trong sáu ngày cậu ở nhà.</p>
+<p>Nó biết bố nó có những buổi không nói được. Nó biết cái bảng trên vách là để làm gì, vì nó đọc được cả mười dòng từ hồi bảy tuổi. Nó không hỏi vì sao phải có cái bảng ấy, và Mai để ý chuyện nó không hỏi, và Mai không hỏi lại nó.</p>
+<p>Chiều 12 tháng 8 năm 2066, Kaito ngồi ở bậc thềm từ năm giờ, đúng dòng thứ bảy trên bảng.</p>
+<p>Anh ngồi hết năm giờ tới sáu giờ mà không đứng dậy, và sáu giờ rưỡi Mai gọi ăn thì anh không vào.</p>
+<p>Thiên ra sân.</p>
+<p>Nó không hỏi bố nó làm sao. Nó ngồi xuống bên phải anh, cách chừng một gang, và nó ngồi im chừng một phút, và rồi nó cầm lấy cổ tay trái của anh bằng cả hai tay, chỗ có cái vân, và nó giữ như thế.</p>
+<p>Nó đã làm việc ấy một lần rồi, hồi nó năm tuổi bảy tháng, ở sân sau một cái viện dã chiến, dưới gầm một cái cáng.</p>
+<p>Lần này không có gì xảy ra.</p>
+<p>Anh vẫn ngồi. Cái sức nặng vẫn ở đó, không nhẹ đi một bậc nào, và cái hướng vẫn chỉ, và con bé thì ngồi đó cầm cổ tay anh trong bốn phút rồi buông ra.</p>
+<p>Bàn tay nó không lạnh.</p>
+<p>Đó mới là chỗ nó biết. Lần trước, sau khi nó nhả tay ra, tay nó lạnh hơn không khí trong sân và lạnh như thế gần một tiếng, và tối ấy nó ngủ từ bảy giờ tới chín giờ sáng hôm sau. Nó không hiểu cái lạnh ấy là cái gì và nó chưa bao giờ hỏi ai. Nó chỉ biết là có, và bây giờ nó biết là không có.</p>
+<p>Con bé ngồi nhìn hai bàn tay mình chừng mấy giây, lật lên rồi lật xuống, theo lối một đứa vừa đánh rơi cái gì và đang tìm ở chỗ nó không rơi.</p>
+<p>Rồi nó thôi.</p>
+<p>Nó ngồi thêm một lúc rồi vào bếp ăn cơm.</p>
+<p>Mai nhìn thấy hết từ chỗ cô đứng, và cô không nói gì, và cô xới cơm cho con bé như mọi bữa. Trong bữa ấy Thiên ăn hai bát và nó nói chuyện con chó nhà bà Sáu Đen bị xe cán ở ngã ba, và nó kể hết đầu đuôi, và không ai trong nhà nhắc tới chuyện ngoài sân.</p>
+<p>Đêm ấy con bé ngủ bình thường.</p>
+<p>Sáng hôm sau nó dậy đúng giờ, ăn, và ra hói. Trưa nó về. Chiều nó ra sân với bố nó lúc năm giờ và nó ngồi bên phải anh và nó không cầm cổ tay anh nữa.</p>
+<p>Nó không thử lại lần nào.</p>
+<p>Có một điều Kaito biết mà không một con người nào khác trên Trái Đất biết, và anh biết nó bằng cách đếm.</p>
+<p>Ba nhịp xưng danh, cái anh vẫn gọi là ba nhịp, là thứ duy nhất trong bảy năm không sai một chấm. Một sức nặng bậc hai tới rồi đứng. Một hướng không chỉ đi đâu cả, quay ngược lại chính chỗ nó phát ra. Một nhiệt độ tụt xuống mức nước giếng tháng chạp và giữ hai ba giây.</p>
+<p>Bốn mươi mốt lần trong năm năm đầu. Luôn ở đầu. Đống hai không bao giờ có nó.</p>
+<p>Năm 2064, từ tháng giêng tới tháng chạp, anh ghi được mười chín lần.</p>
+<p>Năm 2065, mười một lần.</p>
+<p>Năm 2066, tính tới hết tháng chạp, bốn lần, và bốn lần ấy cách nhau lần lượt là hai tháng, ba tháng, và bốn tháng rưỡi.</p>
+<p>Cái tới thay vào chỗ ấy không phải là im lặng. Đống hai vẫn tới, tới đều, tới nhiều hơn trước. Cái lạnh, cái nặng, cái hướng vào, cái đè lên chỗ chưa xong, tất cả những thứ ấy đầy lên trong hai năm.</p>
+<p>Cái thưa đi chỉ có một thứ, và đó là thứ tới trước rồi mới tới cái khác, thứ đứng ở đầu, thứ mà Mai đã đặt tên cho anh vào một buổi tối năm 2063 bằng cách nói về bàn thờ.</p>
+<p>Anh đối chiếu chuyện ấy với ngày tháng của giao thức và nó khớp, và anh biết một chuỗi khớp thì chưa phải là một chuỗi nhân quả, vì Diễm đã nói câu ấy trong hai mươi chín trang và Elin đã nói lại câu ấy khi đọc hai mươi chín trang.</p>
+<p>Nhưng anh có một chỗ mà một cái bảng số không có.</p>
+<p>Cái tới sau, cái đầy lên, cái không bao giờ mang ba nhịp ấy ở đầu, thì không hề thưa đi, và nó cũng không tới từ phía miệng Cổng.</p>
+<p>Anh có thử ba lối bác.</p>
+<p>Lối thứ nhất là tai anh. Có thể ba nhịp ấy vẫn tới đủ và anh thôi nghe ra nó, vì cái gì cũng dồn lên bậc cao thì cái nhỏ chìm mất. Anh không loại được lối này bằng lý lẽ, nên anh làm cách khác: anh lấy hai mươi bốn mục cũ trong đó ba nhịp nằm lẫn giữa một đêm nặng, và anh nhận ra là ở cả hai mươi bốn mục ấy anh vẫn ghi được nó, kể cả những đêm bậc năm. Cái tới trước thì tới trước, và cái đến sau không xoá được cái đến trước.</p>
+<p>Lối thứ hai là số mục. Anh ghi ít mục hơn trước, nên chuyện gì cũng ít đi. Anh chia: năm 2062 anh ghi bảy mươi mốt mục và có mười hai lần ba nhịp. Năm 2066 anh ghi ba mươi tám mục và có bốn lần. Tỉ lệ tụt từ một phần sáu xuống một phần chín rưỡi. Anh viết cả hai con số ra lề và anh ghi thêm một dòng là mẫu nhỏ.</p>
+<p>Lối thứ ba là chính anh, và lối thứ ba thì anh đã loại được từ năm 2064, bằng mười một tờ giấy.</p>
+<p>Anh ghi cái ấy vào cuốn vở tháng 11 năm 2066, ở mục thứ ba trăm hai mươi bảy, bằng chín chữ không có ký hiệu nào: cái không xưng danh thì không đi qua chỗ đó.</p>
+<p>Rồi anh ngồi với chín chữ ấy.</p>
+<p>Anh không có cách nào chứng minh nó. Anh không có cách nào đo nó. Anh có một cái thang ba bậc do một người đàn ông ba mươi ba tuổi ở một cái sân đất dựng lên bằng một cái nón, một bao gạo, một quả nắm cửa và nước giếng tháng chạp, và cái thang ấy đã bị bác trong ba dòng bởi một người có nghề, và người ấy bác đúng.</p>
+<p>Cái vành đai đang giết cái đi qua miệng Cổng. Cái không đi qua miệng Cổng thì cái vành đai không chạm tới.</p>
+<p>Anh không nói câu ấy với Mai trong hai tháng.</p>
+<p>Không phải vì anh giấu. Năm 2064 anh đã đọc cho cô chép cả một mục hai mươi phút về chuyện lớn hơn chuyện này, và cô chép hết, và cô nói cái ni phải có người khác biết.</p>
+<p>Lần này thì anh không biết nói cái gì. Cái anh có là một cái thang thưa dần ở một bậc, và một câu chín chữ, và không có chỗ nào trong chín chữ ấy nói được là phải làm gì. Năm 2064, cái anh mang tới cho cô là một chuyện đã xảy ra rồi. Lần này là một chuyện đang xảy ra, và nó đang xảy ra ở một chỗ cách đây mười một nghìn cây, và cả hai người trong cái nhà ấy đều không có cách nào đi tới đó, và cũng không có ai để gọi.</p>
+<p>Cho nên anh chờ, và anh không biết là mình đang chờ cái gì.</p>
+<p>Nhân mười chín tuổi.</p>
+<p>Cậu ở cụm 7-C từ tháng 11 năm 2065, tổ bảo dưỡng số hai, và tổ số hai phụ trách sáu cụm từ 7-A tới 7-F.</p>
+<p>Việc của cậu là tháo nòng ra, lắp nòng mới vào, ghi số phát vào cột thứ ba của mục 7, và ký. Một nòng nặng ba mươi tám cân. Hai người khiêng thì được, một người thì không, và trong tổ có bốn người nên bao giờ cũng có hai người.</p>
+<p>Cậu khiêng tốt.</p>
+<p>Cái khó của khiêng một cái nòng không phải là nặng, mà là chỗ đặt tay, vì nòng nóng ở đoạn giữa và người mới hay đặt tay vào đoạn giữa. Cậu quấn giẻ hai lớp vào chỗ tay cầm và cậu quấn cho cả người khiêng đằng kia. Cậu dạy người mới bằng cách đi chậm hai chục bước đầu.</p>
+<p>Anh Tuyên ở cụm 7-B, cách cậu một cụm, và hai người gặp nhau ba bốn lần một tuần ở nhà ca. Anh Tuyên hơn cậu bốn tuổi, khiêng cáng với cậu ba năm ở viện dã chiến số 4, và ở đây thì anh làm ở tổ nạp đạn, và hai người không nói nhiều, vì hai người đã nói hết những thứ cần nói từ hồi còn khiêng cáng.</p>
+<p>Tháng chạp năm 2065, cậu được phát giày.</p>
+<p>Đôi giày ấy vừa chân cậu. Nó vừa ở cả hai bên, nó vừa ở mũi và nó vừa ở gót, và cậu đi bốn ngày rồi mới tin là nó vừa.</p>
+<p>Cậu mười tám tuổi khi ấy, và đó là lần đầu tiên trong đời cậu đi một đôi giày đúng cỡ chân mình.</p>
+<p>Cậu không nói chuyện ấy với ai. Anh Tuyên có hỏi giày mới đi có rát không, và cậu nói không, và đó là hết.</p>
+<p>Đơn vị quý cậu.</p>
+<p>Cậu không uống, cậu đổi ca cho người khác, cậu nhớ được ai đang chờ thư và ai thì không chờ, và cậu là người trong tổ hay bị nhờ đi lấy đồ ở kho, vì cậu là người duy nhất trong tổ không cãi nhau với người giữ kho bao giờ.</p>
+<p>Cậu cũng là người ghi mục 7.</p>
+<p>Việc ấy không ai giao cho cậu. Tháng giêng năm 2066, tổ trưởng ghi sai cột thứ tư hai ngày liền và bị trả lại biểu mẫu, và hôm sau ông ta đưa cây bút cho cậu và nói mày ghi. Từ đó cậu ghi.</p>
+<p>Cậu ghi được vì cậu đã ghi sổ dầu ở Gò Sen từ năm chín tuổi, giờ nổ, giờ tắt, mực dầu đo bằng que tre khắc vạch, và vì cậu đã giữ sổ ca ở viện dã chiến số 4 trong ba năm rồi bàn giao nó cho anh Thịnh vào tháng 8 năm 2065.</p>
+<p>Cậu không thấy đó là một cái nghề. Cậu thấy đó là cái việc người ta hay nhờ cậu, giống như việc đi lấy đồ ở kho.</p>
+<p>Cậu cũng là người duy nhất trong cả đại đội từng nghe một người đàn bà nói rằng những thứ bước ra từ đó cũng biết sợ.</p>
+<p>Cậu nghe câu ấy năm 2059, trong một cái bếp, từ một người không nói câu ấy với cậu mà nói với một người khác, và cậu mười hai tuổi, và cậu để nó nằm trong người bảy năm.</p>
+<p>Đêm 3 tháng 4 năm 2066, ở nhà ca số hai, cậu nói nó ra.</p>
+<p>Cậu nói với một thằng lính mười chín tuổi tên Chuẩn, người cùng tổ, trong lúc hai đứa ngồi chờ nòng nguội. Cậu nói vụng. Cậu bắt đầu bằng một câu về chuyện có người nói là bên đó cũng có đứa không muốn qua, rồi cậu thấy câu ấy nghe ngu nên cậu nói lại từ đầu.</p>
+<p>"Tao có nghe một bà nói," cậu nói. "Bà nói chúng nó cũng biết sợ. Bà nói y như rứa. Tao nhớ tới chừ."</p>
+<p>Thằng Chuẩn cười.</p>
+<p>Nó không cười ác. Nó cười cái kiểu người ta cười một câu nói lỡ, rồi nó hỏi bà nớ là bà mô, và cậu nói là bà chị nuôi tao, và thằng Chuẩn cười thêm một tiếng nữa rồi thôi.</p>
+<p>Cậu nói tiếp, và cậu nói tiếp vì cậu đã trót nói rồi.</p>
+<p>"Mà tao nghĩ là đúng." Cậu nói. "Ở đây mình bắn suốt ngày. Bắn suốt ngày rứa mà tụi nó vẫn qua. Đứa mô ngu chi mà qua chỗ có súng bắn suốt ngày. Trừ khi ở bên tê còn tệ hơn."</p>
+<p>"Ừ." Thằng Chuẩn nói.</p>
+<p>"Rứa thì họ cũng biết sợ chớ răng."</p>
+<p>Cậu nghe thấy chính mình đổi.</p>
+<p>Cậu nghe thấy nó rõ như nghe một người khác nói, ở đúng chữ thứ hai của câu cuối, và cậu biết mình vừa đổi, và cậu để nguyên như thế.</p>
+<p>Thằng Chuẩn không nghe thấy gì hết. Nó đang lấy móng tay cạy một chỗ sơn bong trên cái ghế băng, và nó nói ừ thêm một lần nữa, rồi nó hỏi mai ai đi lấy dầu.</p>
+<p>Hai đứa đi lấy nòng lúc mười giờ mười.</p>
+<p>Cậu không nói lại chuyện ấy với ai, không đêm ấy và cũng không về sau.</p>
+<p>Ngày 19 tháng 11 năm 2066, Nhân nộp đơn xin chuyển công tác.</p>
+<p>Mẫu đơn có số hiệu, in hai mặt, mặt trước là phần khai và mặt sau là phần xác nhận của ba cấp.</p>
+<p>Nơi xin chuyển tới: tổ kiểm soát trung chuyển K-9, cách vành đai bốn mươi hai cây về phía bắc, làm nhiệm vụ kiểm tra giấy tờ và hàng hoá qua lại giữa vùng vành đai và tuyến hậu cần. Ba ca. Không có súng ở cụm nào. Việc chính là ghi và ký.</p>
+<p>Cái làm cậu nộp đơn xảy ra ngày 6 tháng 11, và nó không có gì để kể.</p>
+<p>Cậu đang ghi cột thứ hai của cụm 7-D thì cậu ghi sai một chữ số, ghi tám nghìn bốn trăm thay vì tám nghìn bốn mươi, và cậu nhận ra ngay và cậu gạch đi và ghi lại. Rồi cậu ngồi nhìn cái chỗ gạch ấy.</p>
+<p>Trong mười một tháng cậu ghi mục 7, đó là lần thứ nhất cậu ghi sai.</p>
+<p>Cậu ngồi thêm chừng hai phút, rồi cậu đứng dậy đi ra cửa nhà ca và đứng ở đó, và ở ngoài cửa thì cái tiếng ấy to hơn ở trong.</p>
+<p>Cậu thử đếm nó. Cậu đếm được tới mười bảy rồi cậu mất chỗ, vì nó không có chỗ để bắt đầu lại. Cậu đứng đó chừng bốn phút rồi vào.</p>
+<p>Cậu xin chuyển vì cậu mệt.</p>
+<p>Cậu không viết chữ đó vào đơn, và cậu cũng không nghĩ chữ đó thành lời trong đầu mình. Cái cậu nghĩ là cậu đã hai mươi hai tháng ở một chỗ mà cái tiếng bắn không dừng lấy một giờ, và cậu đã thôi nghe thấy nó từ tháng thứ tư, và mấy tuần nay cậu bắt đầu nghe thấy nó trở lại, và nghe thấy trở lại thì tệ hơn.</p>
+<p>Đơn được duyệt trong mười một ngày, vì tổ kiểm soát trung chuyển K-9 đang thiếu người ghi sổ.</p>
+<p>Ô lý do trên mẫu đơn có bốn dòng kẻ sẵn.</p>
+<p>Nhân dùng một dòng, và cậu viết bốn chữ.</p>
+<p>Tôi biết ghi sổ.</p>
+</article>
+
+
+<svg class="rift-small" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+</svg>
+
+
+<div class="chapter-foot">
+  <nav class="chapter-nav" aria-label="Điều hướng chương">
+    <a class="prev" href="chuong-18.html"><span class="lbl">Trước</span><span class="ttl">Sáu Trăm Chín Mươi Mét</span></a>
+    <a class="toc-link" href="index.html" aria-label="Về mục lục"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></a>
+    <a class="next" href="chuong-20.html"><span class="lbl">Sau</span><span class="ttl">Viết Ra Cả Bìa</span></a>
+  </nav>
+</div>
+
+<footer class="sitefoot">
+  <p>Khúc Ai Ca Cho Những Kẻ Vô Danh — Vòng Tuần Hoàn Người Gieo Hạt · Quyển II</p>
+  <p>© 2026 Nguyễn Duy Anh (bút danh: Mendingur). Bản quyền tác phẩm thuộc về tác giả.</p>
+</footer>
+
+<script src="glow.js" defer></script>
+</body>
+</html>

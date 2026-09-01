@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ngày Không Có Con Số — Khúc Ai Ca Cho Những Kẻ Vô Danh</title>
+<meta name="description" content="Vòng Tuần Hoàn Người Gieo Hạt · Quyển II — tiểu thuyết của Mendingur">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="style.css">
+<script src="reader.js" defer></script>
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem('mendingur-theme');
+    var theme = saved === 'dark' || saved === 'light'
+      ? saved
+      : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+  <linearGradient id="wingGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="55%" stop-color="#C99A3E"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+  <radialGradient id="coreGlow" cx="50%" cy="55%" r="55%">
+    <stop offset="0%" stop-color="#FFF6DE" stop-opacity="0.95"/>
+    <stop offset="55%" stop-color="#E4C077" stop-opacity="0.35"/>
+    <stop offset="100%" stop-color="#E4C077" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="flowerGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+</defs>
+</svg>
+<div class="grain"></div>
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+<div class="settings-menu" id="settingsMenu">
+  <button class="menu-toggle" type="button" id="settingsMenuToggle" aria-haspopup="true" aria-expanded="false" aria-controls="settingsPopover" aria-label="Cài đặt giao diện">
+    <span class="menu-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+  </button>
+  <div class="settings-popover" id="settingsPopover" role="menu">
+    <div class="settings-group">
+      <p class="settings-group-label">Giao diện</p>
+      <div class="theme-switcher" id="themeSwitcher" role="group" aria-label="Giao diện sáng / tối">
+        <button class="theme-btn active" type="button" data-theme-choice="light" aria-pressed="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <span>Sáng</span>
+        </button>
+        <button class="theme-btn" type="button" data-theme-choice="dark" aria-pressed="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+          <span>Tối</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<header class="sitebar">
+  <a class="brand" href="index.html">
+    <span class="mark"><svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sower's Cycle mark">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+<g transform="translate(200,278)">
+  <g><ellipse rx="14" ry="21" transform="rotate(0)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(72)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(144)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(216)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(288)" fill="url(#flowerGrad)"/></g>
+  <circle r="9.5" fill="#FFF6DE"/>
+</g>
+<g transform="translate(200,96)"><path d="M0,-24 C2,-7 7,-2 24,0 C7,2 2,7 0,24 C-2,7 -7,2 -24,0 C-7,-2 -2,-7 0,-24 Z" fill="#F3D488"/></g>
+</svg></span>
+    <span class="word">Khúc Ai Ca Cho Những Kẻ Vô Danh</span>
+  </a>
+  <nav>
+    <a href="index.html" class="toc-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      Mục lục
+    </a>
+  </nav>
+</header>
+<div class="progress-track"><div class="progress-fill"></div></div>
+
+<header class="chapter-head">
+  <p class="crumb"><a href="index.html">LACRIMOSA · CHỈ CÒN NÓI VỀ MÙA ĐÔNG</a></p>
+  <span class="cnum">Chương 14</span>
+  <h1>Ngày Không Có Con Số</h1>
+  <div class="font-toggle" role="group" aria-label="Cỡ chữ">
+    <button type="button" data-size="sm" aria-pressed="false">A-</button>
+    <button type="button" data-size="md" aria-pressed="true">A</button>
+    <button type="button" data-size="lg" aria-pressed="false">A+</button>
+  </div>
+</header>
+
+<article class="prose" data-size="md">
+<p class="p-epigraph"><span class="line">Biên niên, quyển bốn mươi sáu, trang 61. Mục đề ngày 3 tháng 9 năm 2059, nét chữ Nguyễn Bảo Thư.</span><span class="line">"Rồi sẽ tới một ngày người ta thôi đếm."</span><span class="line">"Không phải vì hết cái để đếm."</span></p>
+<p>Bản tin tuần của ban thư ký, số 141, ngày 4 tháng 6 năm 2061.</p>
+<p>Mục một: đường kính cấu trúc 151,3 mét.</p>
+<p>Mục ba: từ ngày 1 tháng 7, mẫu báo cáo tổn thất vật tư cấp chiến dịch rút từ ba liên xuống hai liên, và liên lưu tại đơn vị bị bỏ.</p>
+<p>Con số của ngày mồng bốn tháng sáu là hai trăm bảy mươi mốt.</p>
+<p>Nó nằm ở mục 2.1 của biểu mẫu tình hình ngày, và tên đầy đủ của nó là số lượt mục tiêu vượt mặt phẳng cấu trúc trong hai mươi bốn giờ. Ở ban tác chiến người ta gọi nó là con số ngày. Ở ba trạm đếm người ta gọi nó là con số.</p>
+<p>Vành đai có hai vòng. Vòng trong cách mặt phẳng cấu trúc một nghìn tám trăm mét. Vòng ngoài sáu nghìn mét. Ba trạm đếm đặt ở ba hướng, mỗi trạm nhìn được một cung, và ba cái cung ấy chồng lên nhau ở sáu chỗ, và sáu chỗ chồng ấy là lý do con số dùng được.</p>
+<p>Mỗi trạm đếm bằng ba cách, và ba cách không nói chuyện với nhau.</p>
+<p>Cách thứ nhất là quang học. Bốn cụm ống kính, ghi hình liên tục, máy tự đếm, và người soát lại những đoạn máy đánh dấu là chưa chắc.</p>
+<p>Cách thứ hai là hai cuộn dây chôn dưới lớp băng nền, đếm bằng số lần cường độ trường vượt qua một ngưỡng đặt trước.</p>
+<p>Cách thứ ba là người. Hai người mỗi ca, ca sáu tiếng, bốn ca một ngày. Người đếm nộp phiếu trước, rồi mới được biết số của máy.</p>
+<p>Người đếm không nhìn thấy cái cấu trúc. Họ nhìn một dải đất rộng bốn trăm mét được chiếu sáng bằng đèn hồng ngoại, và trên dải ấy có hai vạch sơn cách nhau ba mươi mét, và cái gì đi qua hết cả hai vạch theo cùng một chiều thì tính một. Cái gì đi qua vạch thứ nhất rồi dừng lại thì không tính. Quy tắc ấy nằm ở mục 4 của bản hướng dẫn, và mục 4 dài mười một dòng.</p>
+<p>Trạm đếm số hai là một cái nhà lắp ghép dài chín mét, hai lớp vách, một cửa, và một dãy sáu ô kính chịu nhiệt nhìn ra dải đất. Bên trong có hai cái ghế, một cái bàn dài, một cái đồng hồ treo tường, và cái lò sưởi điện chạy bằng dòng của máy phát riêng. Hai người đếm ngồi cách nhau một mét rưỡi và không được nói với nhau về số. Cứ sáu phút họ đổi ô kính cho nhau, vì nhìn một chỗ quá sáu phút thì mắt bắt đầu tự bù.</p>
+<p>Phiếu đếm là một tờ giấy in sẵn, chia thành sáu ô mười phút cho mỗi giờ, và cuối ca thì cộng lại ở dòng dưới cùng. Cộng bằng tay. Người đếm ký, người kia ký, rồi bỏ vào cái hộp có khoá, và chìa khoá thì ở chỗ ca trưởng.</p>
+<p>Ba con số lệch nhau quá ba thì cả ca đếm lại từ đầu ca. Đếm lại thì ca ấy ở lại thêm sáu tiếng, và ca sau bị đẩy lùi, và cả bốn ca trong ngày hôm ấy đều muộn.</p>
+<p>Trong hai năm bốn tháng, việc ấy xảy ra năm mươi hai lần. Trong năm mươi hai lần, có bốn mươi lần nguyên nhân là ở máy, chín lần là do người ghi nhầm dòng, và ba lần thì đếm lại xong vẫn không ra vì sao, và ba lần ấy được ghi vào biên bản là ba lần chưa giải thích được.</p>
+<p>Trạm đếm số một chạy từ ngày mồng hai tháng hai năm 2059. Trung bình ngày của năm 2059 là ba mươi chín. Của năm 2060 là chín mươi sáu. Của nửa đầu năm 2061, tính tới hôm nay, là hai trăm mười.</p>
+<p>Sáu giờ sáng, con số của hai mươi bốn tiếng trước đi lên ban tác chiến. Bảy giờ, nó vào bản giao ban. Nó còn đi thêm ba chỗ nữa: bảng theo dõi của bộ phận dự báo nhu cầu đạn, bản tin tuần của ban thư ký, và một bảng mà không ai ở phân khu bảy biết là bảng của ai.</p>
+<p>Mục hai của bản tin tuần lấy con số ngày về và cộng lại thành tổng số tuần. Trong tất cả những con số đi lên trên, đây là con số duy nhất không do một đơn vị nào tự khai về chính mình.</p>
+<p>Viên thiếu tá phụ trách vật tư của phân khu bảy không đếm gì cả. Việc của ông là danh mục những thứ phải có để cái việc đếm ấy xảy ra được.</p>
+<p>Pin cho bốn cụm quang học, hai mươi hai viên một tuần cho mỗi trạm. Giấy in nhiệt cho máy ghi, một cuộn bốn ngày. Sợi đốt cho bóng hồng ngoại. Ruy băng mực cho máy chữ ở phòng lập biểu, vì biểu mẫu tình hình ngày nộp lên bằng bản đánh máy chứ không bằng bản viết tay. Chính cái biểu mẫu ấy, in sẵn, một trăm tờ một tập. Găng tay lớp trong, cấp bảy đôi một người một tháng, vì ở nhiệt độ ấy thì lớp trong ẩm là hỏng cả bàn tay. Dầu cho máy phát của trạm đếm, tính riêng, không tính chung với dầu của tuyến ngăn chặn, và việc tính riêng ấy là do chính ông đề nghị năm 2059.</p>
+<p>Nhà sản xuất ghi tuổi thọ cụm cảm biến ngoài trời là bốn trăm giờ. Ở âm ba mươi tám độ thì nó chạy được hai trăm sáu mươi giờ.</p>
+<p>Mỗi tuần ông duyệt chừng sáu chục cái phiếu. Ông viết ô lý do bằng chữ nhỏ và viết đủ câu, và có ba người trong ban đã nói với ông rằng không cần viết đủ câu.</p>
+<p>Đến ngày mồng bốn tháng sáu năm 2061, mục 2.1 có số liền tám trăm năm mươi tư ngày.</p>
+<p>Viên thiếu tá chưa nhìn thấy cái cấu trúc ấy bằng mắt mình lần nào. Phân khu bảy nằm ở phía bên kia, và trong ba năm ông chưa có một lý do công vụ nào để đi vòng qua.</p>
+<p>Ngày mười tám tháng ba năm 2062, cửa sổ tiếp vận cuối cùng trước mùa đông đóng sớm mười một ngày vì băng.</p>
+<p>Hai công ten nơ ở lại trên bến. Một cái đựng bốn nghìn viên pin cảm biến. Một cái đựng giày.</p>
+<p>Chuyện đôi giày thì không có ai nói dối một chữ nào. Đơn đặt hai nghìn đôi. Giao đủ hai nghìn đôi, đúng chủng loại, đúng thời hạn. Bảng cỡ ghi trong đơn là bảng cỡ của một nước khác với bảng cỡ nhà máy dùng, và hai bảng ấy lệch nhau một cỡ rưỡi. Một nghìn một trăm bốn mươi đôi không có ai đi vừa. Số còn lại thì đổi chéo trong đơn vị, và đổi chéo thì được, nhưng đổi chéo là việc phải có người ngồi ghi ai đổi cho ai, và người ngồi ghi thì phải lấy ở đâu ra.</p>
+<p>Tháng năm, ban tài chính hợp nhất hai mươi mốt dòng dầu riêng lẻ thành bốn dòng. Đề nghị hợp nhất ấy đúng về nghiệp vụ: hai mươi mốt dòng thì hai mươi mốt lần đối chiếu, và đối chiếu thì tốn người. Dòng dầu của ba trạm đếm nhập vào dòng dầu chung của vành đai. Từ đó, khi dầu thiếu thì nó thiếu ở chỗ nào cần ít nhất, và chỗ cần ít nhất luôn luôn là chỗ không có ai bắn.</p>
+<p>Đơn vị thay ca lẽ ra tới ngày mười một tháng tư. Nó được điều sang phân khu ba. Từ ngày hai mươi tháng tư, ca ở trạm đếm là tám tiếng thay cho sáu. Từ ngày mồng hai tháng sáu là mười hai tiếng.</p>
+<p>Kính của cụm quang học phải lau bốn tiếng một lần vì hơi nước đóng lại thành lớp. Người lau kính bây giờ kiêm thêm việc chạy máy phát. Từ ngày mồng chín tháng năm, lịch lau đổi thành sáu tiếng một lần. Từ ngày ba mươi tháng năm, cụm số hai và cụm số bốn ngừng.</p>
+<p>Hai cuộn dây thì trôi. Chúng cần hiệu chuẩn hai tuần một lần bằng một nguồn chuẩn, và nguồn chuẩn hết hạn vào tháng bảy, và cái nguồn mới nằm trong công ten nơ để lại trên bến.</p>
+<p>Găng tay lớp trong thì hết vào tuần thứ ba tháng năm. Phiếu xin bổ sung của ông được duyệt, hàng ghi là sẽ có trong chuyến kế tiếp, và chuyến kế tiếp là tháng mười một.</p>
+<p>Đêm ở đó, từ hai mươi tháng năm đến hai mươi hai tháng bảy, là một đêm dài không đứt.</p>
+<p>Ngày mười bốn tháng sáu, ca ba, một người lính hỏi ông.</p>
+<p>"Mấy giờ rồi?"</p>
+<p>Ông nói giờ. Bốn mươi phút sau người ấy hỏi lại, và ông nói lại. Lần thứ ba là hơn một tiếng sau, và ông cũng nói.</p>
+<p>Người ấy thuộc kíp lẽ ra được thay ngày mười một tháng tư. Đến hôm ấy là ngày thứ sáu mươi tư.</p>
+<p>Đồng hồ treo tường ở trạm số hai hỏng từ tháng tư. Trong mục vật tư cần bổ sung của tuần ấy, ông ghi thêm một dòng, và dòng ấy là một cái đồng hồ treo tường.</p>
+<p>Ngày mười chín tháng sáu, lúc ba giờ bốn mươi sáng, viên thiếu tá ký một phiếu điều chuyển chín trăm viên pin còn lại từ kho trạm đếm sang trạm quân y. Trạm quân y cần pin cho máy hút và cho đèn mổ dự phòng. Trong ô lý do ông ghi: điều chuyển theo thứ tự ưu tiên hiện hành, mục 3 điểm b.</p>
+<p>Trạm quân y phân khu bảy trong tháng năm nhận ba mươi mốt ca. Máy hút chạy pin dùng ở hai ca, và cả hai ca ấy đều là bỏng lạnh chứ không phải thương vong chiến đấu. Đèn mổ dự phòng tháng ấy không dùng lần nào.</p>
+<p>Cái quyết định ấy đúng. Ông đã đọc lại thứ tự ưu tiên trước khi ký, đọc cả ở bản gốc lẫn ở bản sửa đổi tháng ba, và cả hai bản đều xếp quân y trên thiết bị đo.</p>
+<p>Từ ngày mồng một tháng bảy, vành đai không còn là một tuyến. Ba trong bảy vị trí của vòng trong bỏ trống, và tuyến ngăn chặn chuyển sang phương thức phản ứng theo điểm, và cái phương thức ấy được ghi vào lệnh bằng đúng ba dòng.</p>
+<p>Từ ngày mồng hai tháng tám, ở trạm đếm chỉ còn cách thứ ba. Hai người, mười hai tiếng, và ba con số để đối chiếu thì còn một.</p>
+<p>Mười hai tiếng nhìn một dải đất được chiếu bằng đèn hồng ngoại thì mắt làm một việc mà bản hướng dẫn có nói tới ở mục 9: nó bắt đầu thấy chuyển động ở chỗ không có chuyển động. Mục 9 khuyến nghị nghỉ mười phút sau mỗi hai tiếng. Với ca mười hai tiếng và hai người thì nghỉ mười phút nghĩa là trong mười phút ấy có một người nhìn cả sáu ô.</p>
+<p>Ba tuần cuối tháng tám, phiếu đếm của trạm số hai vẫn nộp đủ, đủ cả chữ ký, đủ cả phần cộng ở dòng dưới cùng. Viên thiếu tá không có quyền xem chúng, vì phiếu đếm không thuộc dây vật tư.</p>
+<p>Quy tắc đếm lại vẫn nằm nguyên ở mục 4 của bản hướng dẫn. Không ai bỏ nó đi.</p>
+<p>Lần đếm lại cuối cùng của trạm số hai là ngày ba mươi mốt tháng bảy. Ba con số hôm ấy lệch nhau bốn. Ca ở lại thêm sáu tiếng, đếm lại từ đầu ca, và lần đếm lại ra một con số thứ tư, khác cả ba con số kia hai đơn vị. Ca trưởng lấy con số của người, ghi vào biên bản lý do lấy, và ký.</p>
+<p>Ngày ba mươi tháng tám, viên thiếu tá ký cái phiếu cuối cùng có chữ ký của ông trong tập hồ sơ vật tư của phân khu bảy. Cái phiếu ấy đề nghị bổ sung một cái đồng hồ treo tường, và nó chưa được duyệt.</p>
+<p>Ngày mồng chín tháng tám năm 2062, nhóm đi cây số hai mươi sáu.</p>
+<p>Cái tổ chức cứu trợ ở nước ngoài hỏi hai câu, và hai câu ấy Bảo Thư dịch ra thành một trang: con đường đó chở gì, và nó lấy đi cái gì của vùng này. Hồ sơ phải có ảnh, có bảng đếm xe theo giờ, và có bản chụp ít nhất một tài liệu gốc.</p>
+<p>Hai xe, bốn người. Ông Đô, Toản, Bảo Thư, Elin. Từ trạm ra tới cây số không là ba mươi mốt cây, và trên ba mươi mốt cây ấy có hai chỗ phải trình giấy. Xuất phát năm giờ hai mươi. Tới cây số hai mươi sáu lúc mười giờ bốn mươi. Đếm xe từ mười một giờ. Kế hoạch là đếm tới ba giờ, quay đầu ba giờ hai mươi.</p>
+<p>Ở cây số hai mươi sáu có một cái barie và một cái chòi. Người trực chòi cầm tờ giấy giới thiệu đọc từ đầu tới cuối, hỏi tổ khảo sát là khảo sát cái chi, và Bảo Thư nói là đất với nước. Anh ta trả lại giấy, chỉ cho họ chỗ ngồi khuất nắng ở phía sau chòi, và dặn ngồi phía sau thì đừng để cái xe chắn lối.</p>
+<p>Bảng đếm xe lập trên mặt sau ba tờ biểu mẫu lấy mẫu đất.</p>
+<p>Từ mười một giờ tới một giờ, họ đếm được bốn mươi sáu xe đi lên và mười một xe đi xuống. Trong bốn mươi sáu xe đi lên có hai mươi chín xe phủ bạt. Bảo Thư ghi từng cái, kèm giờ, kèm chiều, và kèm số trục nếu nhìn thấy.</p>
+<p>Một giờ hai mươi, ông Đô đứng dậy.</p>
+<p>"Quay."</p>
+<p>"Còn hai tiếng nữa mà chú." Toản nói.</p>
+<p>"Gió đổi từ mười một giờ." Ông Đô nói. "Đoạn từ mười tám lên đây vừa rải đá dăm mới, đá dăm mới thì bánh trượt, mà trượt thì ga phải nhiều hơn. Xe thứ hai chở hai người. Cả đi cả về là một trăm mười bốn cây. Tính ra về tới nhà là cạn, không dư một giọt nào."</p>
+<p>"Cạn thì đẩy."</p>
+<p>"Hết xăng ở quãng đá dăm thì dắt bảy cây." Ông Đô nói. "Dắt bảy cây mất hai tiếng rưỡi. Hai tiếng rưỡi đó phải có trong ngày."</p>
+<p>Elin nói cô cần một mẫu ở khoảng cây số hai mươi hai, vì điểm mười bảy nằm ở đó và cô chưa có số liệu điểm mười bảy từ tháng ba.</p>
+<p>"Quay." Ông Đô nói.</p>
+<p>Họ rời cây số hai mươi sáu lúc một giờ hai mươi lăm. Đi qua cây số chín lúc hai giờ năm mươi hai, và Bảo Thư có ghi giờ đó, vì cô ghi giờ ở mọi cái cột cây số.</p>
+<p>Bốn giờ năm mươi chiều, ở cây số chín, một hàng cắt ngang đường.</p>
+<p>Chúng đi từ phía tây bắc xuống. Chỗ chúng cắt qua là chỗ đường lõm, và ở chỗ đường lõm thì xe phải xuống số.</p>
+<p>Trong bản kê ba hôm sau, và nhóm có được bản chụp bản kê ấy, số người chết là bốn mươi bảy. Mười bốn xe, và mười bốn cái ấy đi xuống. Trong bốn mươi bảy người có mười một người không phải quân nhân, là dân đi nhờ xe, và trong sổ thì cột đơn vị của mười một người ấy để trống.</p>
+<p>Bản kê có cột nguyên nhân. Bốn mươi hai dòng ghi cùng một chữ, và chữ đó là tổn thương mô do năng lượng.</p>
+<p>Nhóm tới đó ngày mười hai tháng tám, đi từ sáng sớm, và ở lại được bốn mươi phút.</p>
+<p>Họ đếm mười bốn cái xe. Họ chụp hai mươi sáu tấm ảnh. Elin đo bốn cái vết cháy trên thành bốn cái xe khác nhau, đo bằng cái thước lá trong hộp lấy mẫu, và bốn cái vết ấy đều tròn, và bốn đường kính chênh nhau chưa tới một phân.</p>
+<p>Cô ghi số đo vào sổ tay ở trang bên phải, ghi cả tên cái dụng cụ đã dùng, theo đúng lối cô vẫn ghi từ năm thứ nhất.</p>
+<p>Trong bảng tuần ấy, ô của điểm mười bảy để trống, và ở cột ghi chú cô viết ba chữ: không tới được.</p>
+<p>Ông Đô không nói gì về chuyện ấy, không hôm mười hai và cũng không về sau. Tối mười hai tháng tám ông tra dầu xích cả hai cái xe, chỉnh lại phanh sau của cái xe thứ hai, và vá một chỗ ở săm trước.</p>
+<p>Toản tính lại phép tính xăng.</p>
+<p>Cậu tính lần thứ nhất tối mồng chín, ở phòng máy, trên mặt sau một tờ bản tin. Cậu tính lần thứ hai sáng mồng mười. Trong hai tuần cậu tính mười một lần, và cậu đổi cả cách tính, cậu thử tính theo mức tiêu hao trung bình ghi trong sách, rồi thử tính theo mức tiêu hao đo được của chính hai cái xe ấy hồi tháng bảy.</p>
+<p>Lần nào cũng ra một giờ hai mươi.</p>
+<p>Trong bốn mươi sáu cái xe nhóm đếm được lúc sáng, cái nào nằm trong mười bốn cái kia và cái nào không thì không ai tính ra được, vì bảng của Bảo Thư ghi giờ, ghi chiều, ghi số trục, và không ghi biển số.</p>
+<p>Nghĩa là ông Đô tính đúng, và ông tính đúng cho cái xăng, và ông không biết gì về cái hàng cắt ngang đường ở cây số hai mươi bốn, và không có cách nào để ông biết.</p>
+<p>Bảo Thư ghi vào sổ, dòng đề ngày 23 tháng 8, mười giờ bốn mươi: Toản tính lại lần thứ mười một.</p>
+<p>Ngày mười bốn tháng chín năm 2062 ở dưới này là một ngày không có gì. Trời nắng, đò chạy hai chuyến, và buổi chiều có người đến trạm hỏi mượn cái bơm xe.</p>
+<p>Cũng hôm ấy, ô ở cột thứ sáu trong bảng của Diễm để trống.</p>
+<p>Cô kiểm lại trước khi kết luận, vì cô vẫn kiểm lại trước khi kết luận. Cô mở ba nguồn. Cả ba đều dẫn về cùng một biểu mẫu tình hình ngày, và ở biểu mẫu ấy mục 2.1 không có số. Ô không bị xoá. Ô không có chữ nào. Ô trắng, và đường kẻ của nó thì vẫn còn, vì biểu mẫu in sẵn.</p>
+<p>Ngày mười lăm cũng vậy. Mười sáu, mười bảy cũng vậy.</p>
+<p>Không có thông báo nào. Không ai nói rằng đã thôi đếm.</p>
+<p>Ở trạm, chuyện ấy không thành một cuộc nói chuyện nào. Chị Liên hỏi Diễm một câu, là rứa từ chừ không có nữa hả, và Diễm nói là chưa biết. Rồi chị Liên ghi vào sổ giao nhận của chị một dòng không dính gì tới chuyện đó, vì hôm ấy có hàng về.</p>
+<p>Bản tin tuần ngày mười chín tháng chín, mục hai vẫn bốn câu. Câu thứ ba, câu vẫn chứa tổng số của tuần, có một khoảng trắng dài chừng ba phân nằm giữa hai chữ.</p>
+<p>Bản tin tuần ngày hai mươi sáu tháng chín, mục hai vẫn bốn câu, không câu nào có con số, và không có chỗ trắng nào.</p>
+<p>Diễm ghi cả hai bản tin vào sổ, kèm số hiệu và ngày phát hành.</p>
+<p>Ở lớp thứ ba trong sổ cô, cái lớp ghi người ta chờ con số nào, dòng đề ngày mười chín tháng chín để trống. Từ ngày hai mươi bảy tháng hai năm 2059 tới hôm ấy, đó là lần đầu tiên hai ô trên cùng một dòng đều trống.</p>
+<p>Mục 2.1 có số từ ngày mồng hai tháng hai năm 2059. Một nghìn ba trăm hai mươi ngày. Diễm đếm cái đó bằng tay, trên tờ lịch, và cô đếm hai lần.</p>
+<p>Rồi cô viết hai dòng và gửi hai dòng ấy đi, vào cái địa chỉ cô không nói là của ai. Dòng thứ nhất là ngày. Dòng thứ hai là số ngày.</p>
+<p>Elin cũng chép con số ngày, vào cột thứ tư của bảng tuần, từ tháng giêng năm 2060. Cô bắt đầu chép vì Toản hỏi một câu, là cái số đó có ăn nhập gì với chuyện dưới này không, và cô nói để cô coi. Ba mươi hai tháng số liệu. Tương quan với chuỗi độ dẫn điện của cô gần bằng không, và cô đã trả lời Toản đúng như thế từ mùa hè năm 2060, và cô vẫn chép tiếp.</p>
+<p>Tháng bảy năm ấy Diễm nhận được một bản mục lục.</p>
+<p>Hai nghìn một trăm mục của một kho lưu trữ, mỗi mục một dòng, và mỗi dòng có số hiệu, loại, thời lượng hoặc số trang, mức ưu tiên, và một ô ghi liên hệ tác chiến. Cô xếp chúng vào bảy nhóm. Mười một mục cô không xếp được vào nhóm nào.</p>
+<p>Toản hỏi mười một cái đó là mười một cái chi, và cô đọc to ba cái.</p>
+<p>"MT-2059-0044. Bản đồ địa hình có sửa tay, tám trang, mức ưu tiên trung bình, liên hệ tác chiến: không."</p>
+<p>"HS-2060-0912. Hồ sơ nhân sự, chín trang, đã rút, lý do rút không ghi."</p>
+<p>"GC-2058-1141. Ghi nhận hiện tượng. Bốn mươi giây. Trạm Quan Sát Số 3. Mức ưu tiên thấp. Liên hệ tác chiến: không."</p>
+<p>"Hiện tượng chi?"</p>
+<p>"Không ghi."</p>
+<p>Cô để cả ba dòng ấy vào cặp bìa đề chưa xếp được, cùng với tám dòng kia, rồi quay lại làm nhóm thứ tư.</p>
+<p>Ngày mồng hai tháng mười, đài đọc bản dịch bài phát biểu của tướng Marcus Webb lúc bảy giờ tối. Bản dịch dài ba phút, là bản trích. Bản đầy đủ, chín trang, Diễm có được hôm sau.</p>
+<p>Bài ấy hay, và mọi dữ kiện trong nó đều đúng.</p>
+<p>Ông mở đầu bằng ba con số của chính mình: trung bình ngày của năm 2059, của năm 2060, của năm 2061. Ông đọc cả ba, không làm tròn.</p>
+<p>"Trong ba năm bảy tháng, mỗi ngày một lần, chúng ta trả lời được một câu hỏi." Ông nói. "Câu hỏi đó là hôm nay bao nhiêu."</p>
+<p>"Từ ngày mười bốn tháng chín, chúng ta không trả lời được nữa. Tôi không đứng đây để nói với quý vị rằng chúng ta sẽ trả lời lại được."</p>
+<p>Ông nói về vành đai bằng chính chữ trong lệnh. Vành đai không còn là một tuyến. Từ tháng bảy nó là một tập hợp các vị trí. Ông nói ông là người ký cái lệnh chuyển sang phương thức phản ứng theo điểm, ông đọc ngày ký và số hiệu lệnh, và ông không giải thích thêm về nó.</p>
+<p>"Một lực lượng không đếm được cái đi qua trước mặt mình thì không phòng thủ." Ông nói. "Nó phản ứng."</p>
+<p>Ông nói tiếp về việc con số ấy dùng để làm gì. Nó dùng để tính đạn cho quý sau. Nó dùng để tính người. Nó dùng để quyết định một tuyến giữ được hay bỏ, và trong bốn năm, có mười một lần một tuyến được giữ lại chỉ vì con số của bảy ngày trước đó thấp hơn con số của bảy ngày trước nữa.</p>
+<p>"Những quyết định như thế vẫn sẽ được đưa ra." Ông nói. "Từ tháng này thì đưa ra mà không có cái để dựa vào. Không có cách nào để không đưa ra chúng."</p>
+<p>Rồi ông đọc mười chín cái tên vùng. Ông đọc chậm, và giữa các cái tên ông không thêm một chữ nào.</p>
+<p>"Tôi sẽ không nói với quý vị rằng việc này đang tiến triển tốt."</p>
+<p>"Chúng đi qua chỗ đó mỗi ngày. Bây giờ chúng đi qua và không còn ai ghi lại."</p>
+<p>"Có một cách để không cần đếm nữa. Tôi sẽ trình bày nó khi tôi có đủ số liệu."</p>
+<p>Trước bài phát biểu, đài đọc bản tin giá cả. Sau bài phát biểu, đài phát một chương trình ca nhạc theo yêu cầu thính giả, và chương trình ấy dài hai mươi lăm phút và tuần nào cũng có.</p>
+<p>Ở phòng máy, máy phát vẫn nổ, và không ai tắt đài.</p>
+<p>"Ông nớ nói đúng." Ông Đô nói.</p>
+<p>Không ai trả lời câu đó.</p>
+<p>Chị Liên đứng dậy đi coi nồi nước. Ông Tứ rút một điếu thuốc ra, cầm ở tay, và ngồi lại xuống.</p>
+<p>Toản ngồi ở đầu bàn với xấp phiếu trước mặt và không xếp cái nào.</p>
+<p>Hôm sau Diễm đọc hết chín trang, và cô gạch chân đúng một câu. Câu ấy là câu nói rằng sẽ không trả lời lại được.</p>
+<p>Sáng hôm sau nữa Elin đi điểm mười một.</p>
+<p>Cô lấy sáu ống ở sáu chỗ, dán nhãn từng cái, ghi số điểm, ghi tầng, ghi ngày.</p>
+<p>Rồi cô về, mở bảng tuần ra, và điền.</p>
+<p>Ở cột thứ tư, cô kẻ tiếp xuống hết trang và để trống. Cô không bỏ cái cột ấy đi.</p>
+</article>
+
+
+<svg class="rift-small" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+</svg>
+
+
+<div class="chapter-foot">
+  <nav class="chapter-nav" aria-label="Điều hướng chương">
+    <a class="prev" href="chuong-13.html"><span class="lbl">Trước</span><span class="ttl">Một Chữ</span></a>
+    <a class="toc-link" href="index.html" aria-label="Về mục lục"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></a>
+    <a class="next" href="chuong-15.html"><span class="lbl">Sau</span><span class="ttl">Ba Món Đồ</span></a>
+  </nav>
+</div>
+
+<footer class="sitefoot">
+  <p>Khúc Ai Ca Cho Những Kẻ Vô Danh — Vòng Tuần Hoàn Người Gieo Hạt · Quyển II</p>
+  <p>© 2026 Nguyễn Duy Anh (bút danh: Mendingur). Bản quyền tác phẩm thuộc về tác giả.</p>
+</footer>
+
+<script src="glow.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tương Quan Bằng Không — Khúc Ai Ca Cho Những Kẻ Vô Danh</title>
+<meta name="description" content="Vòng Tuần Hoàn Người Gieo Hạt · Quyển II — tiểu thuyết của Mendingur">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="style.css">
+<script src="reader.js" defer></script>
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem('mendingur-theme');
+    var theme = saved === 'dark' || saved === 'light'
+      ? saved
+      : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+  <linearGradient id="wingGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="55%" stop-color="#C99A3E"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+  <radialGradient id="coreGlow" cx="50%" cy="55%" r="55%">
+    <stop offset="0%" stop-color="#FFF6DE" stop-opacity="0.95"/>
+    <stop offset="55%" stop-color="#E4C077" stop-opacity="0.35"/>
+    <stop offset="100%" stop-color="#E4C077" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="flowerGrad" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="#A8532A"/>
+    <stop offset="100%" stop-color="#E4C077"/>
+  </linearGradient>
+</defs>
+</svg>
+<div class="grain"></div>
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+<div class="settings-menu" id="settingsMenu">
+  <button class="menu-toggle" type="button" id="settingsMenuToggle" aria-haspopup="true" aria-expanded="false" aria-controls="settingsPopover" aria-label="Cài đặt giao diện">
+    <span class="menu-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+  </button>
+  <div class="settings-popover" id="settingsPopover" role="menu">
+    <div class="settings-group">
+      <p class="settings-group-label">Giao diện</p>
+      <div class="theme-switcher" id="themeSwitcher" role="group" aria-label="Giao diện sáng / tối">
+        <button class="theme-btn active" type="button" data-theme-choice="light" aria-pressed="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <span>Sáng</span>
+        </button>
+        <button class="theme-btn" type="button" data-theme-choice="dark" aria-pressed="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+          <span>Tối</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<header class="sitebar">
+  <a class="brand" href="index.html">
+    <span class="mark"><svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sower's Cycle mark">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+<g transform="translate(200,278)">
+  <g><ellipse rx="14" ry="21" transform="rotate(0)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(72)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(144)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(216)" fill="url(#flowerGrad)"/><ellipse rx="14" ry="21" transform="rotate(288)" fill="url(#flowerGrad)"/></g>
+  <circle r="9.5" fill="#FFF6DE"/>
+</g>
+<g transform="translate(200,96)"><path d="M0,-24 C2,-7 7,-2 24,0 C7,2 2,7 0,24 C-2,7 -7,2 -24,0 C-7,-2 -2,-7 0,-24 Z" fill="#F3D488"/></g>
+</svg></span>
+    <span class="word">Khúc Ai Ca Cho Những Kẻ Vô Danh</span>
+  </a>
+  <nav>
+    <a href="index.html" class="toc-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      Mục lục
+    </a>
+  </nav>
+</header>
+<div class="progress-track"><div class="progress-fill"></div></div>
+
+<header class="chapter-head">
+  <p class="crumb"><a href="index.html">INTROITUS · BỘ BÁT ĐĨA ĐỦ SÁU NGƯỜI</a></p>
+  <span class="cnum">Chương 3</span>
+  <h1>Tương Quan Bằng Không</h1>
+  <div class="font-toggle" role="group" aria-label="Cỡ chữ">
+    <button type="button" data-size="sm" aria-pressed="false">A-</button>
+    <button type="button" data-size="md" aria-pressed="true">A</button>
+    <button type="button" data-size="lg" aria-pressed="false">A+</button>
+  </div>
+</header>
+
+<article class="prose" data-size="md">
+<p>Cuốn sổ có chín cột.</p>
+<p>Ngày. Giờ tỉnh. Số giờ ngủ. Cà phê, ghi số cốc và giờ cốc cuối cùng. Rượu. Nhiệt độ phòng. Giờ ăn tối. Mức căng thẳng theo thang một đến năm, tự chấm. Và ba từ khoá.</p>
+<p>Elin mua nó vào tuần thứ hai của tháng hai năm 2058. Cô đứng trước giá hàng bốn phút. Có sổ gáy lò xo, có sổ bìa mềm, có loại giấy chấm bi đang bán chạy vì người ta vẽ được biểu đồ lên đó. Cuối cùng cô lấy đúng loại cô vẫn dùng trong phòng thí nghiệm: bìa cứng, giấy kẻ ô vuông, gáy khâu chỉ. Cô nghĩ trong bốn phút ấy và không nghĩ ra loại nào hợp hơn.</p>
+<p>Ở lề trang đầu cô viết một dòng cho chính mình:</p>
+<p class="p-note">biến chủ quan, không dùng để kết luận.</p>
+<p>Cô viết dòng đó trước khi ghi dòng dữ liệu nào, vì cô biết trước rằng nếu không viết thì đến tuần thứ sáu cô sẽ bắt đầu tin vào bảng của mình.</p>
+<p>Ở trang cuối cùng của cuốn sổ có một mục riêng, không kẻ cột. Mục đó dành cho những thứ cô chỉ gọi được bằng một chữ cái, vì cô không có từ cho chúng. Trong chín tuần, mục đó được ba dòng.</p>
+<p>Cô ghét mục đó. Nó là chỗ người đo phải thừa nhận rằng dụng cụ của mình không đủ.</p>
+<hr class="scene-break" aria-hidden="true">
+<p>Đêm mười chín tháng hai, hai tay cô không bận gì cả.</p>
+<p>Và như vậy còn tệ hơn.</p>
+<p>Lần này cô cúi xuống được. Chân cô đi dép nhựa, quai ngang bản, không phải dép của cô. Nền đất nện, có chỗ ướt, và trên nền đất có bóng người đổ xuống, nhiều bóng, nhưng ánh sáng không đến từ phía nào cả. Mọi thứ đều rõ và không có chỗ nào sáng hơn chỗ nào.</p>
+<p>Có ghế. Ghế nhựa màu xanh, loại xếp chồng lên nhau được, kê thành một hàng không đều. Cô đếm. Được năm cái. Cô đếm lại, được sáu. Lần thứ ba được bốn. Cô không thấy chuyện đó lạ trong lúc đang mơ, cô chỉ thấy phiền, giống như đếm lại một khay ống nghiệm.</p>
+<p>Có một tấm biển viết tay, mực đen trên mảnh bìa các tông cắt không thẳng, dựng dựa vào chân cái ghế thứ hai. Chữ trên đó là chữ cái của cô. Cô nhận ra từng con chữ một, a, n, h. Nhưng trên và dưới mấy con chữ ấy có những dấu nhỏ mà cô không biết gọi tên, và khi cô nhìn lâu thì mấy cái dấu ấy không chịu nằm yên, và cô không đọc được một chữ nào.</p>
+<p>Mùi vẫn hai lớp. Lớp dưới là tro ướt, y như lần trước. Lớp trên là một mùi mặn, lên men, hơi tanh, gần với cá muối mà không phải cá muối, và có dầu diesel trộn vào.</p>
+<p>Ở bên phải, không gần, có một giọng phụ nữ đang đếm.</p>
+<p>Bà ta đếm từng cụm ngắn, mỗi cụm kết bằng một âm đi xuống. Rồi bà ta dừng. Bà ta dừng lâu, lâu đến mức Elin quay đầu về phía đó, và lần này cô quay đầu được.</p>
+<p>Rồi bà ta đếm lại.</p>
+<p>Không phải đếm tiếp. Đếm lại, từ đầu, từ đúng cái âm đầu tiên.</p>
+<p>Đến lần thứ ba thì Elin hiểu ra, và cô hiểu bằng cái phần trong người vẫn làm việc kể cả trong mơ: người ta chỉ đếm lại từ đầu khi có gì đó không khớp.</p>
+<hr class="scene-break" aria-hidden="true">
+<p>Cô tỉnh dậy lúc bốn giờ mười hai phút. Mạch tám mươi tư.</p>
+<p>Cô bật đèn, ngồi dựa vào tường, và làm việc trong hai mươi phút.</p>
+<p>Cô không viết lại giấc mơ theo lối kể chuyện. Cô viết theo lối biên bản, vì kể chuyện thì trí nhớ sẽ vá vào những chỗ trống, còn biên bản thì để trống ra.</p>
+<p>Với cái mùi, cô viết <em>cá muối?</em> rồi gạch đi. Cô viết <em>nước mắm?</em> rồi cũng gạch đi, vì cô mới chỉ đọc chữ ấy trên một cái chai ở cửa hàng châu Á đường Herenstraat và chưa bao giờ mở nắp chai đó ra ngửi. Cuối cùng cô viết vào mục ở trang cuối sổ:</p>
+<p class="p-note">MÙI X. mặn, lên men, có dầu. lần hai. giống hệt lần một ở lớp dưới.</p>
+<p>Với giọng đếm thì khó hơn.</p>
+<p>Bà ta đã đếm ba lần, và ba lần đều dừng ở những chỗ khác nhau. Elin có ba đoạn chồng lấn. Cô ráp ba đoạn ấy lại theo đúng cách cô vẫn ráp một chuỗi số liệu bị đứt quãng, so phần trùng nhau để nối, và cô ra được mười âm.</p>
+<p>Cô viết chúng thành một hàng ngang giữa trang giấy kẻ ô, mỗi âm một ô, viết bằng bảng chữ cái của mình vì cô không có bảng chữ cái nào khác:</p>
+<p><strong>mot · hai · ba · bon · nam · sau · bay · tam · chin · muoi</strong></p>
+<p>Bên dưới hàng ấy cô ghi ba dòng chú thích.</p>
+<p class="p-epigraph"><span class="line">âm 1 và âm 10 không chắc.</span><span class="line">10 âm, lặp lại theo vòng. gần như chắc chắn là số đếm.</span><span class="line">mỗi âm còn có một cái lên hoặc một cái xuống trong cổ họng. nghe rất rõ. không biết ghi bằng ký hiệu gì.</span></p>
+<p>Cô đọc lại dòng thứ ba, rồi để bút xuống.</p>
+<p>Thứ cô nghe rõ nhất là thứ cô không có cách nào ghi lại. Cô đã gặp chuyện đó đúng một lần trước đây, hồi năm thứ nhất, khi phải mô tả màu của một phản ứng cho một người mù màu, và cô đã ghét cảm giác ấy suốt cả học kỳ.</p>
+<p>Cô tắt đèn lúc năm giờ kém năm và không ngủ lại được.</p>
+<hr class="scene-break" aria-hidden="true">
+<p>Đến giữa tháng tư, cuốn sổ có bốn mươi mốt dòng trải chín tuần. Mười hai đêm có giấc mơ. Hai đêm cô quên ghi, và cô ghi luôn cả chữ <em>không ghi</em> vào ô đó, vì một ô trống và một ô ghi rằng mình quên là hai thứ khác nhau.</p>
+<p>Cô làm đúng những gì cô được dạy làm.</p>
+<p>Cô lập bảng tương quan giữa cột "có mơ" và tám cột còn lại. Cà phê: gần bằng không. Số giờ ngủ: gần bằng không. Rượu, mà cô uống bốn lần trong chín tuần nên cột đó vô dụng ngay từ đầu: gần bằng không. Mức căng thẳng tự chấm, cột mà cô tin nhất lúc bắt đầu: âm 0,07.</p>
+<p>Hệ số mạnh nhất là nhiệt độ phòng, r bằng 0,19.</p>
+<p>Với n bằng bốn mươi mốt thì con số đó không có nghĩa gì cả, và Elin biết vậy ngay khi nhìn thấy nó, nhưng cô vẫn viết khoảng tin cậy ra giấy bằng tay, đầy đủ hai đầu, để tự nhìn thấy cái khoảng ấy trùm qua số không rộng đến mức nào.</p>
+<p>Vào ô kết luận cô ghi đúng cái chữ cô vẫn ghi trong báo cáo thí nghiệm:</p>
+<p class="p-note">không có tương quan.</p>
+<p>Có một tuần cô thêm một cột cho pha Mặt Trăng. Cô thêm nó vào tối thứ Ba và cô biết ngay lúc thêm rằng mình đang đùa với chính mình. Hai tuần sau cô bỏ cột đó đi, và cô ghi cả việc bỏ cột vào sổ, kèm ngày, vì bỏ một biến cũng là một thao tác và thao tác nào cũng phải có dấu vết.</p>
+<p>Còn lại con số bốn giờ mười hai phút.</p>
+<p>Trong mười hai đêm có mơ, bảy đêm cô tỉnh đúng bốn giờ mười hai. Ba đêm trong khoảng bốn giờ lẻ chín đến bốn giờ mười lăm. Một đêm ba giờ bốn mươi bảy. Một đêm năm giờ hai mươi.</p>
+<p>Cô làm phép tính thô. Một đêm có một nghìn bốn trăm bốn mươi phút. Nếu giờ tỉnh rải đều thì xác suất trúng một phút cụ thể là một phần một nghìn bốn trăm bốn mươi, và bảy lần trúng trong mười hai đêm thì không có cách nào là ngẫu nhiên.</p>
+<p>Rồi cô ngồi tự phá phép tính đó, và cô phá được trong bốn phút.</p>
+<p>Giờ tỉnh không rải đều. Nó khoá theo giờ đi ngủ, và cô đi ngủ lúc mười một giờ trong ba mươi bốn trên bốn mươi mốt đêm, nên khoảng khả dĩ hẹp hơn hai chục lần chứ không phải một nghìn bốn trăm bốn mươi phút. Điện thoại hiện phút chứ không hiện giây, nên bốn giờ mười hai thật ra là một cửa sổ sáu mươi giây. Và quan trọng nhất: cô đã biết trước con số bốn giờ mười hai từ tháng chín năm ngoái, nên trong mười hai đêm ấy, đêm nào thấy con số đó cô cũng nhớ kỹ hơn những đêm thấy con số khác.</p>
+<p>Người ghi và cái mẫu vẫn là một người. Đó là lỗi hệ thống, không phải lỗi ngẫu nhiên, và không có cách nào chữa bằng cách ghi thêm dữ liệu.</p>
+<p>Ở lề trang cô viết: <em>4:12, bảy trên mười hai.</em></p>
+<p>Cô định viết một dấu hỏi sau đó. Cô đã viết nó.</p>
+<p>Rồi cô gạch cái dấu hỏi đi, vì một dấu hỏi không phải là một kết quả.</p>
+<hr class="scene-break" aria-hidden="true">
+<p>Một buổi sáng cuối tháng ba, cô ngồi ghi sổ ở bàn bếp trong lúc đợi ấm nước.</p>
+<p>"Cậu ghi cái gì đấy?" Joris hỏi. Cậu ta đứng ở tủ lạnh, cửa mở, tay cầm hộp sữa, và cậu ta hỏi bằng đúng cái giọng cậu ta hỏi mọi thứ.</p>
+<p>"Dữ liệu giấc ngủ."</p>
+<p>"Để làm gì?"</p>
+<p>"Để loại biến."</p>
+<p>Joris đóng tủ lạnh.</p>
+<p>"Cậu mất ngủ à?"</p>
+<p>"Không."</p>
+<p>"Thế thì loại biến gì?"</p>
+<p>Elin ngẩng lên. Đó là một câu hỏi đúng, hỏi bởi một người không hề định hỏi một câu đúng, và cô không có câu trả lời nào cả.</p>
+<p>"Chưa biết." Cô nói. "Đến lúc loại xong thì biết."</p>
+<p>"Ừ." Joris rót sữa. "Kiểu như tìm chìa khoá ấy hả. Loại hết chỗ không có thì còn chỗ có."</p>
+<p>"Không phải." Elin nói. "Loại hết chỗ không có thì có thể là mất chìa khoá thật."</p>
+<p>Joris cân nhắc chuyện đó khoảng hai giây, gật đầu, và đi lên gác.</p>
+<p>Sanne ngồi xuống ghế đối diện với một cái bánh mì và không ăn nó. Cô ấy nói về đề cương, rồi nói về giáo sư hướng dẫn, rồi nói về chuyện mùa đông năm nay ai cũng mệt, rồi nói rằng dạo này Elin dậy sớm, rồi nói rằng dậy sớm cũng tốt, tuỳ người. Chuyện ấy kéo gần hai phút.</p>
+<p>Trong gần hai phút đó, Sanne đang hỏi Elin có ổn không, và không hỏi lần nào.</p>
+<p>"Mình ổn." Elin nói.</p>
+<p>"Ừ thì." Sanne nói. "Mình có bảo gì đâu."</p>
+<hr class="scene-break" aria-hidden="true">
+<p>Cuối tháng ba cô làm một việc mà cô không ghi vào sổ.</p>
+<p>Cô bật ghi âm điện thoại và đọc mười âm tiết ấy thành tiếng, ba lần, cố giữ đúng nhịp của người phụ nữ trong giấc mơ. Nghe lại thì giọng cô nghe buồn cười, giọng một người Hà Lan đang đọc một danh sách mua hàng bằng thứ tiếng không có thật.</p>
+<p>Cô gõ mười âm ấy vào ô tìm kiếm, viết liền, cách nhau bằng dấu chấm.</p>
+<p>Máy trả về một trang kết quả. Có mấy diễn đàn về ngôn ngữ nhân tạo. Có một bài viết về cách trẻ con đếm nhịp trong trò chơi dân gian. Và ở dòng thứ ba có tên một ngôn ngữ, kèm dòng mô tả: chữ viết hệ Latinh, có dấu thanh, mỗi âm tiết một âm.</p>
+<p>Elin bấm vào.</p>
+<p>Trang đó có nút phát âm thanh. Cô bấm nghe bản đọc số đếm từ một đến mười.</p>
+<p>Không khớp.</p>
+<p>Cô nghe lại bốn lần và vẫn không khớp. Nguyên âm trong bản mẫu gọn hơn, sạch hơn, đóng lại nhanh hơn. Âm thứ tư và âm thứ sáu trong giấc mơ bị kéo dài ra và hạ xuống thấp hơn hẳn. Bản mẫu nghe như một người đứng thẳng đọc cho rõ. Người phụ nữ kia nghe như đang đếm nhanh giữa nhiều người, và đếm bằng cái miệng của bà ta chứ không phải bằng cái miệng của một cuốn từ điển.</p>
+<p>Cô thử một bản đọc thứ hai, ở một trang khác. Cũng không khớp, và không khớp theo đúng kiểu như bản thứ nhất.</p>
+<p>Elin viết vào sổ:</p>
+<p class="p-epigraph"><span class="line">khớp 6 trên 10. bản mẫu là giọng tổng hợp, đọc từng tiếng rời. đối chứng không hợp lệ.</span><span class="line">không kết luận được.</span></p>
+<p>So một cái nghe trong mơ với một giọng máy đọc rành rọt thì không so được. Cô biết vậy, và cô ghi ra rằng cô biết vậy.</p>
+<p>Ở tầng trệt toà nhà bên cạnh có trung tâm ngôn ngữ của trường. Họ dạy sáu thứ tiếng và có một phòng tư vấn mở ba buổi một tuần, và ở đó chắc chắn có người nghe một đoạn ghi âm ba mươi giây rồi nói ngay được đó là tiếng gì.</p>
+<p>Elin đi ngang cửa phòng ấy hai lần trong tuần đó, một lần đi lên và một lần đi xuống.</p>
+<p>Cô không vào, và cô có lý do để không vào, và lý do ấy đứng vững: cô sẽ phải giải thích đoạn ghi âm ở đâu ra. Cô sẽ phải nói với một người lạ rằng cô đọc lại mấy cái âm nghe được trong một giấc mơ. Người đó sẽ tử tế, và sẽ trả lời, và trong lúc trả lời thì sẽ nhìn cô theo một kiểu nhất định.</p>
+<p>Cô không viết tên cái ngôn ngữ ấy vào cuốn sổ.</p>
+<p>Cô đóng tab lại.</p>
+<hr class="scene-break" aria-hidden="true">
+<p>Tháng mười một năm trước, trong biên bản họp nhóm, Elin nhận phần tổng quan tài liệu, cùng ba đầu việc khác. Chủ đề: phục hồi đất nông nghiệp nhiễm chất diệt cỏ tồn lưu, phạm vi Đông Nam Á. Phạm vi ấy được chọn vì đó là nơi có chuỗi số liệu dài nhất mà nhóm không phải trả tiền bản quyền để dùng.</p>
+<p>Cô nhận việc đó vì cô đọc nhanh, và vì cô là người duy nhất trong nhóm không có phần thực địa mùa xuân.</p>
+<p>Ngày mười một tháng tư, cô mở tệp thứ hai mươi ba trong danh sách của mình. Báo cáo của một tổ chức cứu trợ, in năm 2055, sáu mươi hai trang, quét từ bản giấy nên chữ hơi nghiêng sang phải và mép trang nào cũng có một vệt xám.</p>
+<p>Cô đọc phần phương pháp. Cô đọc phần số liệu đất. Chỗ có ích với cô nằm ở chương bốn, và cô lướt qua ba chương đầu.</p>
+<p>Hình 4 ở trang hai mươi chín là ảnh hiện trường, độ phân giải thấp, in đen trắng rồi quét lại nên chi tiết nhoè. Chú thích ghi tên một tỉnh miền Trung Việt Nam và tháng tám năm 2055.</p>
+<p>Trong ảnh có một dãy ghế nhựa kê không đều.</p>
+<p>Và dựa vào chân cái ghế thứ hai từ trái sang, có một mảnh bìa các tông cắt không thẳng, trên đó có chữ viết tay.</p>
+<p>Elin ngồi yên khoảng một phút. Rồi cô làm việc.</p>
+<p>Cô mở lịch sử tải tệp để loại trừ khả năng mình đã đọc báo cáo này rồi quên và nhớ lại trong mơ. Lần tải đầu tiên: hôm kia, mười một giờ bốn mươi hai phút sáng. Trước đó không có bản nào trong máy cô.</p>
+<p>Cô đi tìm cách bác bỏ.</p>
+<p>Ghế nhựa xếp chồng màu xanh được sản xuất ở ít nhất mười một nước. Cô tìm ra ảnh của loại ghế đó ở một sân bóng tại Bulgaria, ở một chợ tại Lagos, ở một bến xe tại Recife. Cô đứng dậy, ra cửa sổ hành lang, và nhìn xuống bãi giữ xe cách chỗ cô ngồi hai trăm mét, nơi có bốn cái ghế nhựa màu xanh xếp chồng cạnh chòi bảo vệ, đúng loại ấy, đã bạc màu.</p>
+<p>Biển viết tay trên bìa các tông thì có ở mọi nơi trên đời có bìa các tông.</p>
+<p>Cô ghi cả ba điều đó vào sổ, ở cột từ khoá, viết tắt.</p>
+<p>Rồi cô quay lại báo cáo và đọc tiếp, vì dù sao thì cô cũng phải làm cái tổng quan tài liệu.</p>
+<p>Ở trang bốn mươi mốt có một đoạn mô tả quy trình phát vật tư cứu trợ tại các điểm tập kết. Đoạn đó dài mười một dòng. Nó viết rằng người dân xếp hàng theo hộ, một nhân viên gọi số theo danh sách đã lập từ hôm trước, và nếu số người có mặt không khớp với danh sách thì phải gọi lại từ đầu.</p>
+<p>Elin đọc đoạn đó.</p>
+<p>Rồi cô đọc lại.</p>
+<hr class="scene-break" aria-hidden="true">
+<p>Cô đóng tệp lúc bốn giờ chiều và đi học tiết bốn.</p>
+<p>Trong bảy ngày sau đó cô không mở lại nó.</p>
+<p>Cô làm những việc phải làm và làm chúng tử tế. Cô chạy nốt loạt mẫu tồn từ tháng ba. Cô viết thư lần thứ ba cho chủ nhà về cái điều hoà tầng hai, có kèm bảng ghi ngày giờ từng lần nó kêu, và lần này chủ nhà trả lời trong hai ngày. Cô gọi cho ông bà vào tối thứ Tư. Bà Trees kể chuyện cái nồi nhỏ vẫn trào, và ông Wim vẫn chưa mua cái mới, và ông hỏi cháu ăn chưa.</p>
+<p>Cô nộp phần tổng quan tài liệu đúng hạn, dài mười bốn trang. Bà Veenstra bảo phần dẫn nhập hơi dài nhưng phần bảng thì tốt.</p>
+<p>Rồi bà nói tiếp, bằng đúng cái giọng bà vẫn dùng khi đọc bảng dự toán.</p>
+<p>"Có một tổ chức phi chính phủ ở Utrecht đang tuyển người cho một chương trình phục hồi đất hậu xung đột. Miền Trung Việt Nam. Họ cần người đọc được số liệu chứ không cần người viết được báo cáo, mà mấy chỗ ấy thì bao giờ cũng thiếu đúng loại người đó. Có hỗ trợ sinh hoạt phí. Hạn nộp đầu tháng năm."</p>
+<p>"Vâng ạ."</p>
+<p>"Tôi không khuyên cậu đi." Bà Veenstra nói. "Tôi cũng không khuyên cậu đừng đi. Tôi chuyển thông tin, vì cậu đọc nhanh và trong nhóm này chỉ có cậu là đọc nhanh. Cậu tự xem."</p>
+<p>Bà chuyển tiếp cho cô một email và không nhắc lại chuyện đó nữa.</p>
+<p>Ngày mười tám tháng tư, đêm không mơ. Elin ghi vào cột giờ tỉnh: bảy giờ lẻ năm. Ghi vào cột giấc mơ: <em>không.</em></p>
+<p>Rồi cô kéo cuốn sổ lại gần và ghi vào cột từ khoá của dòng ấy một dãy chữ và số.</p>
+<p>Đó là số hiệu ấn phẩm của bản báo cáo in năm 2055.</p>
+<p>Cô đóng sổ và cho nó vào ngăn trong ba lô, cạnh cuộn băng dính vải.</p>
+<p>Nhãn giá trên cuộn băng vẫn còn.</p>
+<hr class="scene-break" aria-hidden="true">
+</article>
+
+
+<svg class="rift-small" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M200,338 C158,330 108,312 78,262 C52,218 50,160 78,108 C64,155 66,205 96,245 C118,274 148,296 178,308 C188,312 195,315 200,318 Z" fill="url(#wingGrad)"/>
+<path d="M200,338 C242,330 292,312 322,262 C348,218 350,160 322,108 C336,155 334,205 304,245 C282,274 252,296 222,308 C212,312 205,315 200,318 Z" fill="url(#wingGrad)"/>
+</svg>
+
+
+<div class="chapter-foot">
+  <nav class="chapter-nav" aria-label="Điều hướng chương">
+    <a class="prev" href="chuong-02.html"><span class="lbl">Trước</span><span class="ttl">Cái Tên Viết Sai</span></a>
+    <a class="toc-link" href="index.html" aria-label="Về mục lục"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></a>
+    <a class="next" href="chuong-04.html"><span class="lbl">Sau</span><span class="ttl">Mười Bốn Cái Biểu Mẫu</span></a>
+  </nav>
+</div>
+
+<footer class="sitefoot">
+  <p>Khúc Ai Ca Cho Những Kẻ Vô Danh — Vòng Tuần Hoàn Người Gieo Hạt · Quyển II</p>
+  <p>© 2026 Nguyễn Duy Anh (bút danh: Mendingur). Bản quyền tác phẩm thuộc về tác giả.</p>
+</footer>
+
+<script src="glow.js" defer></script>
+</body>
+</html>
