@@ -299,7 +299,7 @@
     });
 
     var saved = null;
-    try { localStorage.getItem('mendingur-language'); } catch (e) {}
+    try { saved = localStorage.getItem('mendingur-language'); } catch (e) {}
     if (saved === 'en' || saved === 'vi') setLanguage(saved, false);
   })();
 
