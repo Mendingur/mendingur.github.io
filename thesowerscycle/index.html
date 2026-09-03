@@ -207,7 +207,9 @@ a.volume-card:focus-visible { outline: 2px solid var(--color-accent); outline-of
     font-style: normal;
     font-weight: 600;
     font-size: 1.25rem;
-    overflow-wrap: anywhere;
+    line-height: 1.22;
+    overflow-wrap: break-word;
+    text-wrap: balance;
   }
 
 .volume-status {
@@ -285,6 +287,8 @@ a.volume-card:hover .volume-cta svg, a.volume-card:focus-visible .volume-cta svg
 @media (max-width: 560px) {
   .volume-card { padding: 1.1rem 1rem; gap: .8rem; }
   .volume-num { flex-basis: 44px; width: 44px; height: 44px; font-size: 1.15rem; }
+  .volume-top { gap: .45rem .6rem; }
+  .volume-title { font-size: 1.08rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

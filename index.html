@@ -272,7 +272,15 @@ h1 {
     width: min(280px, 60vw);
     margin: 0 auto;
     position: relative;
+    animation: breathe 7s ease-in-out infinite;      /* ← thêm */
   }
+@keyframes breathe {                                  /* ← thêm cả khối */
+  0%, 100% { transform: scale(1);    filter: drop-shadow(0 0 18px var(--color-accent-soft)); }
+  50%      { transform: scale(1.02); filter: drop-shadow(0 0 26px var(--color-accent-soft)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rift-wrap { animation: none; filter: drop-shadow(0 0 18px var(--color-accent-soft)); }
+}
 
 .rift-wrap svg { display: block; width: 100%; height: auto; }
 
