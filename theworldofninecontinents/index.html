@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem('mendingur-theme');
+    var theme = saved === 'dark' || saved === 'light'
+      ? saved
+      : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {}
+})();
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Mendingur - The World of Nine Continents</title>
+<meta name="description" content="The World of Nine Continents - tiểu thuyết giả tưởng dài kỳ của Mendingur: chín đại lục, bảy chủng tộc, mười bảy vương quốc cùng quy luật tuần hoàn của mana Tụ và mana Tán.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../style/site.css">
+<style>
+html, body { overflow-x: clip; }
+
+body {
+  margin: 0;
+  min-height: 100%;
+  background:
+    radial-gradient(
+      ellipse 120% 80% at 50% -10%,
+      var(--bg-grad-top) 0%,
+      var(--bg-grad-mid) 45%,
+      var(--bg-grad-bottom) 100%
+    );
+  background-attachment: fixed;
+  background-size: 100% 100vh;
+  background-repeat: no-repeat;
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  padding-inline: max(0px, env(safe-area-inset-left)) max(0px, env(safe-area-inset-right));
+}
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+main { display: block; position: relative; }
+
+/* ================= MASTHEAD ================= */
+.mast {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-2xs);
+  padding: var(--space-lg) var(--page-gutter) 0;
+  text-align: center;
+}
+.mast-line {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0;
+}
+.mast-line a { color: inherit; text-decoration: none; }
+.mast-line a:hover, .mast-line a:focus-visible { text-decoration: underline; }
+.mast-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.7rem, 4.2vw, 2.4rem);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  margin: 0;
+  color: var(--color-ink);
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+.mast-rule {
+  width: 100%;
+  max-width: 640px;
+  height: 4px;
+  margin: var(--space-sm) 0 0;
+  border: 0;
+  border-top: var(--rule-hair) solid var(--color-rule);
+  border-bottom: var(--rule-hair) solid var(--color-rule);
+}
+
+/* ================= HERO ================= */
+.hero {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: var(--space-2xl) var(--page-gutter) var(--space-xl);
+  text-align: center;
+}
+.eyebrow {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  color: var(--color-accent);
+  margin: 0 0 var(--space-sm);
+}
+h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-display);
+  line-height: 1.05;
+  margin: 0 0 var(--space-xs);
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+.tagline {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  color: var(--color-ink-soft);
+  margin: 0 0 var(--space-lg);
+}
+.hero-copy {
+  font-size: var(--text-base);
+  line-height: 1.7;
+  color: var(--color-ink-soft);
+  max-width: 62ch;
+  margin: 0 auto var(--space-md);
+}
+.strip {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-xs);
+  margin: var(--space-lg) 0 0;
+}
+.mini-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  padding: var(--space-2xs) var(--space-sm);
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-accent-gold-border);
+  background: linear-gradient(180deg, var(--card-sheen-top-strong), var(--card-sheen-bottom-strong));
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+  white-space: nowrap;
+}
+.mini-pill .dot { width: 7px; height: 7px; border-radius: 50%; flex: none; }
+.dot--done { background: var(--color-accent); }
+.dot--active { background: var(--color-accent); }
+.dot--seed { background: transparent; border: 1.5px solid var(--color-accent-gold); }
+
+/* ================= SECTIONS ================= */
+.section {
+  padding: var(--space-2xl) var(--page-gutter);
+  max-width: 1180px;
+  margin: 0 auto;
+}
+.section-head { max-width: 62ch; margin: 0 0 var(--space-xl); }
+.section-head h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-display-s);
+  line-height: 1.08;
+  margin: 0 0 var(--space-sm);
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+.section-head p {
+  font-size: var(--text-base);
+  line-height: 1.7;
+  color: var(--color-ink-soft);
+  margin: 0 0 var(--space-sm);
+}
+.section-head p:last-child { margin-bottom: 0; }
+
+/* ================= CARDS (sáng hơn khi rê chuột, như trang chủ) ================= */
+.now-card {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--card-sheen-top), var(--card-sheen-bottom));
+  border: 1px solid var(--color-paper-edge);
+  border-radius: var(--radius-card);
+  padding: var(--space-lg);
+  transition: border-color var(--dur-short) var(--ease-out);
+}
+.now-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle 220px at var(--mx, 50%) var(--my, 50%), var(--color-accent-border), transparent 72%);
+  opacity: 0;
+  transition: opacity var(--dur-long) var(--ease-out);
+  pointer-events: none;
+}
+.now-card:hover::before { opacity: 1; }
+.now-card:hover { border-color: var(--color-accent-gold-border); }
+.now-card > *:not(.ripple) { position: relative; z-index: 1; }
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr));
+  gap: var(--space-lg);
+  align-items: stretch;
+}
+.now-card--full { grid-column: 1 / -1; }
+@media (min-width: 64rem) {
+  .now-card--span2 { grid-column: span 2; }
+}
+.card-kicker {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--color-accent);
+  margin: 0 0 var(--space-xs);
+}
+.card-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-xl);
+  line-height: 1.15;
+  margin: 0 0 var(--space-sm);
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+.card-text {
+  font-size: var(--text-base);
+  line-height: 1.62;
+  color: var(--color-ink-soft);
+  margin: 0 0 var(--space-md);
+}
+.card-text:last-child { margin-bottom: 0; }
+.facts {
+  list-style: none;
+  margin: var(--space-md) 0 0;
+  padding: var(--space-sm) 0 0;
+  border-top: 1px solid var(--color-rule);
+  display: grid;
+  gap: var(--space-2xs);
+  font-size: var(--text-sm);
+  line-height: 1.55;
+  color: var(--color-ink-soft);
+}
+.facts strong { color: var(--color-ink); font-weight: 600; }
+.term-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-sm);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  color: var(--color-ink-soft);
+}
+.term-list strong { color: var(--color-ink); font-weight: 600; }
+.block-gap { margin-top: var(--space-lg); }
+.rank-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  margin: var(--space-sm) 0 var(--space-md);
+  padding: 0;
+  list-style: none;
+}
+
+/* ================= TIMELINE ================= */
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 var(--space-lg);
+  border-left: 2px solid var(--color-accent-gold-border);
+  display: grid;
+  gap: var(--space-lg);
+  max-width: 70ch;
+}
+.timeline li { position: relative; }
+.timeline li::before {
+  content: "";
+  position: absolute;
+  left: calc(-1 * var(--space-lg) - 6px);
+  top: 0.5rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-accent-gold);
+}
+.tl-when {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--color-accent);
+  margin: 0 0 var(--space-3xs);
+}
+.tl-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-lg);
+  line-height: 1.2;
+  margin: 0 0 var(--space-2xs);
+}
+.tl-text {
+  font-size: var(--text-base);
+  line-height: 1.62;
+  color: var(--color-ink-soft);
+  margin: 0;
+}
+
+/* ================= FOOTER ================= */
+.foot-letter {
+  padding: var(--space-2xl) var(--page-gutter) var(--space-xl);
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  gap: var(--space-lg);
+  text-align: center;
+}
+.foot-letter__close {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--text-lg);
+  line-height: 1.4;
+  margin: 0 auto;
+  max-width: 60ch;
+}
+.foot-letter__sign { font-style: normal; font-weight: 600; }
+.foot-letter__row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-md);
+  align-items: center;
+  font-size: var(--text-sm);
+}
+.foot-letter__row a {
+  text-decoration: none;
+  color: var(--color-ink-soft);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  transition: color var(--dur-short) var(--ease-out);
+}
+.foot-letter__row a:hover, .foot-letter__row a:focus-visible { color: var(--color-accent); }
+.foot-letter__row svg { width: 16px; height: 16px; }
+.foot-letter__row .sep { color: var(--color-paper-edge); }
+.foot-letter__copyright {
+  text-align: center;
+  font-size: var(--text-xs);
+  line-height: 1.5;
+  color: var(--color-ink-soft);
+  opacity: 0.75;
+}
+
+/* ================= REVEAL ================= */
+.reveal {
+  opacity: 0;
+  transform: translateY(8px);
+  animation: reveal var(--dur-long) var(--ease-out) forwards;
+  animation-delay: calc(var(--i, 0) * 60ms);
+}
+@keyframes reveal { to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { animation-duration: 150ms; transform: none; }
+}
+@media (max-width: 30rem) {
+  .section { padding: var(--space-xl) var(--page-gutter); }
+  .hero { padding-top: var(--space-xl); }
+}
+</style>
+</head>
+<body>
+
+  <a href="#" id="backLink" class="back-link-icon" data-fallback="https://mendingur.github.io/" aria-label="Quay lại" data-aria-vi="Quay lại" data-aria-en="Go back">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+  </a>
+
+  <div class="settings-menu" id="settingsMenu">
+    <button class="menu-toggle" type="button" id="settingsMenuToggle" aria-haspopup="true" aria-expanded="false" aria-controls="settingsPopover" aria-label="Cài đặt" data-aria-vi="Cài đặt" data-aria-en="Settings">
+      <span class="menu-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+    </button>
+    <div class="settings-popover" id="settingsPopover" role="menu">
+      <div class="settings-group">
+        <p class="settings-group-label" data-i18n data-vi="Ngôn ngữ" data-en="Language">Ngôn ngữ</p>
+        <div class="language-switcher" id="languageSwitcher" role="group" aria-label="Ngôn ngữ / Language">
+          <button class="lang-btn active" type="button" data-lang="vi" aria-pressed="true">VI</button>
+          <button class="lang-btn" type="button" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+      </div>
+      <div class="settings-divider" role="separator"></div>
+      <div class="settings-group">
+        <p class="settings-group-label" data-i18n data-vi="Giao diện" data-en="Theme">Giao diện</p>
+        <div class="theme-switcher" id="themeSwitcher" role="group" aria-label="Giao diện sáng / tối" data-aria-vi="Giao diện sáng / tối" data-aria-en="Light / dark theme">
+          <button class="theme-btn active" type="button" data-theme-choice="light" aria-pressed="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+            <span data-i18n data-vi="Sáng" data-en="Light">Sáng</span>
+          </button>
+          <button class="theme-btn" type="button" data-theme-choice="dark" aria-pressed="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+            <span data-i18n data-vi="Tối" data-en="Dark">Tối</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+<main id="main">
+
+  <header class="mast">
+    <p class="mast-line">
+      <a href="https://mendingur.github.io/" data-i18n data-vi="← Về Đại Sảnh Mendingur" data-en="← Back to Mendingur Hall">← Về Đại Sảnh Mendingur</a>
+    </p>
+    <p class="mast-name">The World of Nine Continents</p>
+    <hr class="mast-rule" aria-hidden="true">
+  </header>
+
+  <section class="hero" aria-labelledby="pageTitle">
+    <p class="eyebrow reveal" style="--i:0" data-i18n data-vi="Tiểu thuyết giả tưởng dài kỳ" data-en="A long-form fantasy novel">Tiểu thuyết giả tưởng dài kỳ</p>
+    <h1 id="pageTitle" class="reveal" style="--i:1">The World of Nine Continents</h1>
+    <p class="tagline reveal" style="--i:2" data-i18n data-vi="Chín đại lục, bảy chủng tộc, một thế giới nguyên bản tách biệt với Trái Đất" data-en="Nine continents, seven races, an original world apart from Earth">Chín đại lục, bảy chủng tộc, một thế giới nguyên bản tách biệt với Trái Đất</p>
+    <p class="hero-copy reveal" style="--i:3" data-i18n data-vi="Trên một hành tinh rộng gấp năm lần Trái Đất, năng lượng, hay còn được gọi là mana, ẩn mình trong từng thớ gỗ, làn gió, dòng nước và tầng đất sâu. Bảy chủng tộc định cư trên bảy đại lục riêng biệt, cùng ngước nhìn về một Đấng Sáng Thế duy nhất nhưng lại chia rẽ bởi giáo lý và cơn khát tài nguyên. Câu chuyện theo chân nhiều số phận song song khắp các vùng đất, để rồi từng bước hội tụ giữa vòng xoáy của thời đại." data-en="On a planet five times the size of Earth, energy, also known as mana, courses through timber, wind, water, and deep stone. Seven races dwell upon seven distinct continents, looking up to a single Creator yet divided by doctrine and the thirst for resources. The narrative follows parallel lives across distant lands, steadily converging into the tempest of their age.">Trên một hành tinh rộng gấp năm lần Trái Đất, năng lượng, hay còn được gọi là mana, ẩn mình trong từng thớ gỗ, làn gió, dòng nước và tầng đất sâu. Bảy chủng tộc định cư trên bảy đại lục riêng biệt, cùng ngước nhìn về một Đấng Sáng Thế duy nhất nhưng lại chia rẽ bởi giáo lý và cơn khát tài nguyên. Câu chuyện theo chân nhiều số phận song song khắp các vùng đất, để rồi từng bước hội tụ giữa vòng xoáy của thời đại.</p>
+    <p class="hero-copy reveal" style="--i:4" data-i18n data-vi="Toàn bộ quy luật ma pháp, bản đồ địa chính trị và biên niên sử đã hoàn tất. Hiện tác phẩm đang trong giai đoạn hoàn thiện dàn nhân vật trước khi những chương truyện đầu tiên chính thức lên sóng." data-en="The laws of magic, geopolitical maps, and historical chronicles are complete. The ensemble cast is now being finalized before the first chapters are published.">Toàn bộ quy luật ma pháp, bản đồ địa chính trị và biên niên sử đã hoàn tất. Hiện tác phẩm đang trong giai đoạn hoàn thiện dàn nhân vật trước khi những chương truyện đầu tiên chính thức lên sóng.</p>
+    <div class="strip reveal" style="--i:5" role="list" aria-label="Trạng thái" data-aria-vi="Trạng thái" data-aria-en="Status">
+      <span class="mini-pill" role="listitem"><span class="dot dot--done" aria-hidden="true"></span><span data-i18n data-vi="Thế giới: Đã Hoàn Tất Nền Móng" data-en="World: Foundation Complete">Thế giới: Đã Hoàn Tất Nền Móng</span></span>
+      <span class="mini-pill" role="listitem"><span class="dot dot--active" aria-hidden="true"></span><span data-i18n data-vi="Nhân vật: Đang Hoàn Thiện" data-en="Cast: In Progress">Nhân vật: Đang Hoàn Thiện</span></span>
+      <span class="mini-pill" role="listitem"><span class="dot dot--seed" aria-hidden="true"></span><span data-i18n data-vi="Chính văn: Chưa Đăng Tải" data-en="Chapters: Not Yet Posted">Chính văn: Chưa Đăng Tải</span></span>
+    </div>
+  </section>
+
+  <section class="section" id="continents" aria-labelledby="continentsHeading">
+    <div class="section-head">
+      <p class="eyebrow" data-i18n data-vi="Chín Đại Lục" data-en="Nine Continents">Chín Đại Lục</p>
+      <h2 id="continentsHeading" data-i18n data-vi="Bảy cõi người ở, hai miền đất cấm" data-en="Seven realms of life, two forbidden lands">Bảy cõi người ở, hai miền đất cấm</h2>
+      <p data-i18n data-vi="Trên bề mặt hành tinh rộng gấp năm lần Trái Đất, gần tám phần mười diện tích là đại dương mênh mông; chín đại lục chỉ chiếm vỏn vẹn hai phần mười. Bảy đại lục trong số đó là quê hương của bảy chủng tộc riêng biệt. Hai đại lục còn lại là vùng cấm địa của tự nhiên: một nơi mana đậm đặc đến mức làm cho hầu hết sinh vật vừa đặt chân vào đã kiệt sức mà chết, một nơi vĩnh viễn chìm trong băng giá cực nam." data-en="Across a planet five times as vast as Earth, nearly eighty percent is open ocean while nine continents claim barely a fifth. Seven of these are home to seven distinct races. The remaining two are forbidden realms of nature: one so saturated with mana that most creatures collapse and die of exhaustion the moment they set foot upon it, the other locked in the eternal ice of the south pole.">Trên bề mặt hành tinh rộng gấp năm lần Trái Đất, gần tám phần mười diện tích là đại dương mênh mông; chín đại lục chỉ chiếm vỏn vẹn hai phần mười. Bảy đại lục trong số đó là quê hương của bảy chủng tộc riêng biệt. Hai đại lục còn lại là vùng cấm địa của tự nhiên: một nơi mana đậm đặc đến mức làm cho hầu hết sinh vật vừa đặt chân vào đã kiệt sức mà chết, một nơi vĩnh viễn chìm trong băng giá cực nam.</p>
+      <p data-i18n data-vi="Tùy vào trữ lượng và nhịp phục hồi mana, đất đai trên thế giới chia làm ba hạng: Linh Địa (trữ lượng dồi dào nhưng hồi chậm), Bình Địa (cân bằng) và Khô Địa (nghèo mana nhưng tái tạo cực nhanh). Đất trời không bất biến - một vùng Linh Địa bị vắt kiệt qua hàng thế kỷ sẽ dần hóa thành Khô Địa, và một vùng đất cằn được trả lại sự tĩnh lặng cũng có ngày hồi sinh." data-en="By mana reserve and recovery rate, lands fall into three tiers: Hallowed Lands (abundant reserves, slow recovery), Temperate Lands (balanced), and Parched Lands (scarce reserves, rapid recovery). Nothing is permanent - a rich Hallowed Land overexploited for centuries will wither into a Parched Land, while a barren realm left in peace can slowly heal.">Tùy vào trữ lượng và nhịp phục hồi mana, đất đai trên thế giới chia làm ba hạng: Linh Địa (trữ lượng dồi dào nhưng hồi chậm), Bình Địa (cân bằng) và Khô Địa (nghèo mana nhưng tái tạo cực nhanh). Đất trời không bất biến - một vùng Linh Địa bị vắt kiệt qua hàng thế kỷ sẽ dần hóa thành Khô Địa, và một vùng đất cằn được trả lại sự tĩnh lặng cũng có ngày hồi sinh.</p>
+    </div>
+    <div class="card-grid">
+      <article class="now-card">
+        <p class="card-kicker" data-i18n data-vi="Caelari" data-en="The Caelari">Caelari</p>
+        <h3 class="card-title">Sanctaria</h3>
+        <p class="card-text" data-i18n data-vi="Thánh địa của Sáng Thế Giáo và là quê hương của tộc Caelari. Cả tộc chỉ vỏn vẹn vài trăm người chia làm năm gia tộc, bản tính anh minh, điềm đạm, xa lánh chiến tranh và lòng tham. Mọi đứa trẻ Caelari vừa chào đời đã mang sức mạnh cấp Đế - chỉ đứng dưới cấp Thần - nên vùng Linh Địa này chính là chiếc nôi nuôi dưỡng nguồn năng lượng khổng lồ của họ." data-en="Holy seat of the Church of Genesis and homeland of the Caelari. Numbering only a few hundred across five noble houses, they are wise, serene, and averse to war and greed. Every Caelari child is born at Emperor rank - second only to Divine - sustained by the rich Hallowed Lands beneath their feet.">Thánh địa của Sáng Thế Giáo và là quê hương của tộc Caelari. Cả tộc chỉ vỏn vẹn vài trăm người chia làm năm gia tộc, bản tính anh minh, điềm đạm, xa lánh chiến tranh và lòng tham. Mọi đứa trẻ Caelari vừa chào đời đã mang sức mạnh cấp Đế - chỉ đứng dưới cấp Thần - nên vùng Linh Địa này chính là chiếc nôi nuôi dưỡng nguồn năng lượng khổng lồ của họ.</p>
+        <ul class="facts"><li><strong data-i18n data-vi="Vương quốc" data-en="Kingdoms">Vương quốc</strong>: <span data-i18n data-vi="Sanctaria (thủ đô Aracaelum)" data-en="Sanctaria (capital Aracaelum)">Sanctaria (thủ đô Aracaelum)</span></li><li><strong data-i18n data-vi="Tuổi thọ trung bình" data-en="Average lifespan">Tuổi thọ trung bình</strong>: <span data-i18n data-vi="400 năm" data-en="400 years">400 năm</span></li><li><strong data-i18n data-vi="Diện tích" data-en="Area">Diện tích</strong>: <span data-i18n data-vi="12 triệu km²" data-en="12 million km²">12 triệu km²</span></li></ul>
+      </article>
+      <article class="now-card">
+        <p class="card-kicker" data-i18n data-vi="Tiên tộc" data-en="The Feyfolk">Tiên tộc</p>
+        <h3 class="card-title" data-i18n data-vi="Lạc Lĩnh" data-en="Mistcrest">Lạc Lĩnh</h3>
+        <p class="card-text" data-i18n data-vi="Miền Linh Địa của núi cao sương phủ và những cánh rừng nguyên sinh đại ngàn, mang đậm hơi thở văn hóa Tày, Thái, Mường cùng âm hưởng truyền thuyết Con Rồng cháu Tiên. Với tiên tộc, việc gìn giữ từng tán rừng già và chăm sóc các địa mạch dưới lòng đất không chỉ là sinh kế, mà là bổn phận thiêng liêng trước Đấng Sáng Thế." data-en="A misty Hallowed Land of high peaks, terraced valleys, and primeval forests, steeped in highland folklore and the ancient myth of the Dragon and the Immortal. To the Feyfolk, tending the old-growth woods and the subterranean ley lines is not merely a livelihood, but a sacred duty before the Creator.">Miền Linh Địa của núi cao sương phủ và những cánh rừng nguyên sinh đại ngàn, mang đậm hơi thở văn hóa Tày, Thái, Mường cùng âm hưởng truyền thuyết Con Rồng cháu Tiên. Với tiên tộc, việc gìn giữ từng tán rừng già và chăm sóc các địa mạch dưới lòng đất không chỉ là sinh kế, mà là bổn phận thiêng liêng trước Đấng Sáng Thế.</p>
+        <ul class="facts"><li><strong data-i18n data-vi="Vương quốc" data-en="Kingdoms">Vương quốc</strong>: <span data-i18n data-vi="Mường Vân, Mường Tùng (liên minh gắn kết)" data-en="Cloudvale, Pinevale (allied realms)">Mường Vân, Mường Tùng (liên minh gắn kết)</span></li><li><strong data-i18n data-vi="Tuổi thọ trung bình" data-en="Average lifespan">Tuổi thọ trung bình</strong>: <span data-i18n data-vi="250 năm" data-en="250 years">250 năm</span></li><li><strong data-i18n data-vi="Diện tích" data-en="Area">Diện tích</strong>: <span data-i18n data-vi="38 triệu km²" data-en="38 million km²">38 triệu km²</span></li></ul>
+      </article>
+      <article class="now-card">
+        <p class="card-kicker" data-i18n data-vi="Nhân tộc" data-en="Humanity">Nhân tộc</p>
+        <h3 class="card-title">Ecumenia</h3>
+        <p class="card-text" data-i18n data-vi="Đại lục đông đúc và nhộn nhịp nhất hành tinh. Không sở hữu thể chất vượt trội hay nguồn mana thiên phú, nhân tộc bù đắp bằng sức thích nghi bền bỉ và khả năng lĩnh hội mọi trường phái ma pháp. Năm vương quốc lớn trên đại lục vừa cầm gươm đối đầu ở biên giới, vừa bắt tay giao thương, trong khi những đoàn người di cư đã mang dấu chân nhân tộc đi khắp các vùng biển." data-en="The most populous and restless continent on the planet. Lacking innate physical supremacy or specialized mana channels, Humans compensate through unmatched adaptability and the capacity to master every school of magic. Five great kingdoms clash along their borders while trading across the plains, even as human settlers spread to distant shores.">Đại lục đông đúc và nhộn nhịp nhất hành tinh. Không sở hữu thể chất vượt trội hay nguồn mana thiên phú, nhân tộc bù đắp bằng sức thích nghi bền bỉ và khả năng lĩnh hội mọi trường phái ma pháp. Năm vương quốc lớn trên đại lục vừa cầm gươm đối đầu ở biên giới, vừa bắt tay giao thương, trong khi những đoàn người di cư đã mang dấu chân nhân tộc đi khắp các vùng biển.</p>
+        <ul class="facts"><li><strong data-i18n data-vi="Vương quốc" data-en="Kingdoms">Vương quốc</strong>: <span data-i18n data-vi="Hanamori, Eisenreich, Clairmont, Solmaris, Zlatograd" data-en="Hanamori, Eisenreich, Clairmont, Solmaris, Zlatograd">Hanamori, Eisenreich, Clairmont, Solmaris, Zlatograd</span></li><li><strong data-i18n data-vi="Tuổi thọ trung bình" data-en="Average lifespan">Tuổi thọ trung bình</strong>: <span data-i18n data-vi="80 năm" data-en="80 years">80 năm</span></li><li><strong data-i18n data-vi="Diện tích" data-en="Area">Diện tích</strong>: <span data-i18n data-vi="80 triệu km²" data-en="80 million km²">80 triệu km²</span></li></ul>
+      </article>
+      <article class="now-card">
+        <p class="card-kicker" data-i18n data-vi="Ma tộc" data-en="The Daemonfolk">Ma tộc</p>
+        <h3 class="card-title">Sahraqand</h3>
+        <p class="card-text" data-i18n data-vi="Xứ sở của cát đỏ, cao nguyên đá đen và những cuộc chiến không hồi kết. Sinh tồn giữa vùng Khô Địa nghèo mana nhưng tái tạo cực nhanh, ma tộc tiến hóa với kênh dẫn nhỏ nhưng tốc độ hồi phục đáng kinh ngạc - biến họ thành những chiến binh bền bỉ bậc nhất trong thuật Ventaris và Đấu Khí giữa vòng xoáy phân tranh của bốn vương quốc." data-en="A realm of red sands, black-stone plateaus, and relentless warfare. Tempered by Parched Lands scarce in mana yet rapid in recovery, the Daemonfolk evolved narrow mana channels with extraordinary endurance - making them formidable practitioners of Ventaris and Battle Aura amid the four kingdoms' ceaseless struggles.">Xứ sở của cát đỏ, cao nguyên đá đen và những cuộc chiến không hồi kết. Sinh tồn giữa vùng Khô Địa nghèo mana nhưng tái tạo cực nhanh, ma tộc tiến hóa với kênh dẫn nhỏ nhưng tốc độ hồi phục đáng kinh ngạc - biến họ thành những chiến binh bền bỉ bậc nhất trong thuật Ventaris và Đấu Khí giữa vòng xoáy phân tranh của bốn vương quốc.</p>
+        <ul class="facts"><li><strong data-i18n data-vi="Vương quốc" data-en="Kingdoms">Vương quốc</strong>: <span data-i18n data-vi="Kavirdan, Tashkara, Rimalan, Najmabad" data-en="Kavirdan, Tashkara, Rimalan, Najmabad">Kavirdan, Tashkara, Rimalan, Najmabad</span></li><li><strong data-i18n data-vi="Tuổi thọ trung bình" data-en="Average lifespan">Tuổi thọ trung bình</strong>: <span data-i18n data-vi="230 năm" data-en="230 years">230 năm</span></li><li><strong data-i18n data-vi="Diện tích" data-en="Area">Diện tích</strong>: <span data-i18n data-vi="55 triệu km²" data-en="55 million km²">55 triệu km²</span></li></ul>
+      </article>
+      <article class="now-card">
+        <p class="card-kicker" data-i18n data-vi="Long tộc" data-en="The Dragonkin">Long tộc</p>
+        <h3 class="card-title">Drekafjall</h3>
+        <p class="card-text" data-i18n data-vi="Miền Linh Địa băng tuyết và núi lửa phương bắc của long tộc - một chủng tộc cổ xưa hoàn toàn tách biệt với Caelari lẫn ma thú. Nằm ngay trên giao điểm của những địa mạch hùng vĩ nhất hành tinh, Drekafjall nắm giữ trữ lượng Mạch Tinh lớn nhất thế giới và tận hưởng nền hòa bình lâu dài dưới một vương triều duy nhất." data-en="The northern Hallowed Lands of frost peaks and geothermal valleys, home to the Dragonkin - an ancient race distinct from both the Caelari and Mana Beasts. Seated atop the planet's greatest converging ley lines, Drekafjall guards the world's richest Vein Crystal mines in unified peace.">Miền Linh Địa băng tuyết và núi lửa phương bắc của long tộc - một chủng tộc cổ xưa hoàn toàn tách biệt với Caelari lẫn ma thú. Nằm ngay trên giao điểm của những địa mạch hùng vĩ nhất hành tinh, Drekafjall nắm giữ trữ lượng Mạch Tinh lớn nhất thế giới và tận hưởng nền hòa bình lâu dài dưới một vương triều duy nhất.</p>
+        <ul class="facts"><li><strong data-i18n data-vi="Vương quốc" data-en="Kingdoms">Vương quốc</strong>: <span data-i18n data-vi="Drekafjall (thủ đô Jarnborg)" data-en="Drekafjall (capital Jarnborg)">Drekafjall (thủ đô Jarnborg)</span></li><li><strong data-i18n data-vi="Tuổi thọ trung bình" data-en="Average lifespan">Tuổi thọ trung bình</strong>: <span data-i18n data-vi="235 năm" data-en="235 years">235 năm</span></li><li><strong data-i18n data-vi="Diện tích" data-en="Area">Diện tích</strong>: <span data-i18n data-vi="30 triệu km²" data-en="30 million km²">30 triệu km²</span></li></ul>
+      </article>
+      <article class="now-card">
+        <p class="card-kicker" data-i18n data-vi="Thú nhân tộc" data-en="The Beastfolk">Thú nhân tộc</p>
+        <h3 class="card-title">Altaryn</h3>
+        <p class="card-text" data-i18n data-vi="Vùng Bình Địa của những thảo nguyên lộng gió và rừng rậm bạt ngàn. Mang kênh dẫn mana vừa phải nhưng sở hữu thể phách cường tráng, thú nhân tộc lấy Đấu Khí làm gốc. Ba vương quốc trên thảo nguyên kết thành liên minh bền chặt, cùng sát cánh săn lùng những đàn ma thú vượt biển tràn sang từ Sachamayu." data-en="A vast Temperate Land of wind-swept steppes and deep forests. With modest mana channels but formidable physical prowess, the Beastfolk excel in Battle Aura. Their three kingdoms stand in close alliance, riding together to hunt the Mana Beasts crossing over from Sachamayu.">Vùng Bình Địa của những thảo nguyên lộng gió và rừng rậm bạt ngàn. Mang kênh dẫn mana vừa phải nhưng sở hữu thể phách cường tráng, thú nhân tộc lấy Đấu Khí làm gốc. Ba vương quốc trên thảo nguyên kết thành liên minh bền chặt, cùng sát cánh săn lùng những đàn ma thú vượt biển tràn sang từ Sachamayu.</p>
+        <ul class="facts"><li><strong data-i18n data-vi="Vương quốc" data-en="Kingdoms">Vương quốc</strong>: <span data-i18n data-vi="Tengrun, Khokhtal, Ulaantal" data-en="Tengrun, Khokhtal, Ulaantal">Tengrun, Khokhtal, Ulaantal</span></li><li><strong data-i18n data-vi="Tuổi thọ trung bình" data-en="Average lifespan">Tuổi thọ trung bình</strong>: <span data-i18n data-vi="80 năm" data-en="80 years">80 năm</span></li><li><strong data-i18n data-vi="Diện tích" data-en="Area">Diện tích</strong>: <span data-i18n data-vi="50 triệu km²" data-en="50 million km²">50 triệu km²</span></li></ul>
+      </article>
+      <article class="now-card">
+        <p class="card-kicker" data-i18n data-vi="Giao nhân tộc" data-en="The Merfolk">Giao nhân tộc</p>
+        <h3 class="card-title" data-i18n data-vi="Đại Chiêm" data-en="Tidecrown">Đại Chiêm</h3>
+        <p class="card-text" data-i18n data-vi="Đại lục của giao nhân tộc, nơi biển nội địa Thiên Hải và mạng lưới sông hồ chiếm quá nửa diện tích. Văn hóa nơi đây là sự giao hòa tuyệt đẹp giữa Đại Việt và Champa: từ làng xã, đê điều, đình làng, thủy chiến nơi châu thổ cho đến những thương cảng sầm uất, tháp gạch nung, gốm sứ và rừng trầm hương ven biển." data-en="Homeland of the aquatic Merfolk, where the inland Celestial Sea and winding rivers claim more than half the realm. Its unified kingdom blends river-delta communal traditions with maritime grandeur: dikes, water-bound villages, and naval mastery alongside sun-baked brick towers, trading ports, ceramics, and fragrant agarwood coasts.">Đại lục của giao nhân tộc, nơi biển nội địa Thiên Hải và mạng lưới sông hồ chiếm quá nửa diện tích. Văn hóa nơi đây là sự giao hòa tuyệt đẹp giữa Đại Việt và Champa: từ làng xã, đê điều, đình làng, thủy chiến nơi châu thổ cho đến những thương cảng sầm uất, tháp gạch nung, gốm sứ và rừng trầm hương ven biển.</p>
+        <ul class="facts"><li><strong data-i18n data-vi="Vương quốc" data-en="Kingdoms">Vương quốc</strong>: <span data-i18n data-vi="Đại Chiêm (thủ đô Thăng Phù)" data-en="Tidecrown (capital Tiderise)">Đại Chiêm (thủ đô Thăng Phù)</span></li><li><strong data-i18n data-vi="Tuổi thọ trung bình" data-en="Average lifespan">Tuổi thọ trung bình</strong>: <span data-i18n data-vi="180 năm" data-en="180 years">180 năm</span></li><li><strong data-i18n data-vi="Diện tích" data-en="Area">Diện tích</strong>: <span data-i18n data-vi="45 triệu km² (mặt nước 25, đất liền 20)" data-en="45 million km² (25 water, 20 land)">45 triệu km² (mặt nước 25, đất liền 20)</span></li></ul>
+      </article>
+      <article class="now-card">
+        <p class="card-kicker" data-i18n data-vi="Đại lục cấm" data-en="Forbidden continent">Đại lục cấm</p>
+        <h3 class="card-title">Sachamayu</h3>
+        <p class="card-text" data-i18n data-vi="Đại lục lớn nhất hành tinh, nơi mật độ mana đậm đặc đến mức làm cho hầu hết sinh vật vừa đặt chân vào đã kiệt sức mà chết vì quá tải. Giữa đại ngàn rộng gấp mười bảy lần rừng Amazon là vô số loài ma thú vừa hung hiểm vừa kỳ vĩ - tai họa cho những bờ biển lân cận, nhưng cũng là người bạn đồng hành vô giá cho những ai biết thuần hóa và kết giao." data-en="The largest continent on the planet, where mana is so overwhelmingly dense that most creatures collapse and die of exhaustion from overload the moment they step in. Within primeval jungles seventeen times the size of the Amazon roam countless Mana Beasts - a terror when they migrate across the sea, yet loyal companions to the rare few who can tame them.">Đại lục lớn nhất hành tinh, nơi mật độ mana đậm đặc đến mức làm cho hầu hết sinh vật vừa đặt chân vào đã kiệt sức mà chết vì quá tải. Giữa đại ngàn rộng gấp mười bảy lần rừng Amazon là vô số loài ma thú vừa hung hiểm vừa kỳ vĩ - tai họa cho những bờ biển lân cận, nhưng cũng là người bạn đồng hành vô giá cho những ai biết thuần hóa và kết giao.</p>
+        <ul class="facts"><li><strong data-i18n data-vi="Diện tích" data-en="Area">Diện tích</strong>: <span data-i18n data-vi="140 triệu km² (rừng già 93,5; núi, sông, hồ 46,5)" data-en="140 million km² (forest 93.5; mountains, rivers, lakes 46.5)">140 triệu km² (rừng già 93,5; núi, sông, hồ 46,5)</span></li></ul>
+      </article>
+      <article class="now-card">
+        <p class="card-kicker" data-i18n data-vi="Đại lục cấm" data-en="Forbidden continent">Đại lục cấm</p>
+        <h3 class="card-title">Sikununa</h3>
+        <p class="card-text" data-i18n data-vi="Vùng lục địa trắng xóa nằm cô độc quanh cực nam. Không một bóng cây, lớp băng vĩnh cửu và bầu không khí cắt da chỉ giữ được một lượng mana ít ỏi, lại chưa từng có cư dân sinh sống để kích thích môi trường thích nghi hồi phục. Kẻ đặt chân đến Sikununa sẽ hóa tượng băng trước cả khi kịp ngã xuống vì cạn mana." data-en="A white expanse locked around the south pole. Treeless and bound in eternal ice, its freezing air holds scarcely any mana, and with no inhabitants to draw upon it, the land has never adapted to recover quickly. Those who venture here freeze to death long before mana exhaustion can claim them.">Vùng lục địa trắng xóa nằm cô độc quanh cực nam. Không một bóng cây, lớp băng vĩnh cửu và bầu không khí cắt da chỉ giữ được một lượng mana ít ỏi, lại chưa từng có cư dân sinh sống để kích thích môi trường thích nghi hồi phục. Kẻ đặt chân đến Sikununa sẽ hóa tượng băng trước cả khi kịp ngã xuống vì cạn mana.</p>
+        <ul class="facts"><li><strong data-i18n data-vi="Diện tích" data-en="Area">Diện tích</strong>: <span data-i18n data-vi="62 triệu km²" data-en="62 million km²">62 triệu km²</span></li></ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="magic" aria-labelledby="magicHeading">
+    <div class="section-head">
+      <p class="eyebrow" data-i18n data-vi="Ma Pháp" data-en="Magic">Ma Pháp</p>
+      <h2 id="magicHeading" data-i18n data-vi="Hơi thở của thế giới: Mana Tụ và Mana Tán" data-en="The breath of the world: Condensed and Dispersed Mana">Hơi thở của thế giới: Mana Tụ và Mana Tán</h2>
+      <p data-i18n data-vi="Mana hiện diện trong vạn vật: từ tán cây, ngọn gió, dòng nước cho tới lòng đất sâu. Mọi sinh vật sống đều tuân theo cùng một định luật ấy. Nguồn mana nằm trong cơ thể mỗi người chỉ dùng để duy trì sinh mệnh và là bất khả xâm phạm; muốn thi triển ma pháp, pháp sư buộc phải dẫn truyền mana từ thiên nhiên quanh mình." data-en="Mana dwells in all things: in canopy, wind, water, and deep earth. Every living creature obeys this same law. The mana within a body exists solely to sustain life and is inviolable; to cast a spell, a mage must draw upon the mana of the surrounding world.">Mana hiện diện trong vạn vật: từ tán cây, ngọn gió, dòng nước cho tới lòng đất sâu. Mọi sinh vật sống đều tuân theo cùng một định luật ấy. Nguồn mana nằm trong cơ thể mỗi người chỉ dùng để duy trì sinh mệnh và là bất khả xâm phạm; muốn thi triển ma pháp, pháp sư buộc phải dẫn truyền mana từ thiên nhiên quanh mình.</p>
+    </div>
+    <div class="card-grid">
+      <article class="now-card">
+        <p class="card-kicker" data-i18n data-vi="Trạng thái 1" data-en="State 1">Trạng thái 1</p>
+        <h3 class="card-title" data-i18n data-vi="Mana Tụ" data-en="Condensed Mana">Mana Tụ</h3>
+        <p class="card-text" data-i18n data-vi="Là mana đang kết lắng và được lưu giữ bên trong một vật chủ tự nhiên - đất đá, cây cối, dòng nước hoặc bầu khí quyển - hay trong các tinh thể Mạch Tinh. Chỉ ở trạng thái Tụ đậm đặc này, mana mới có thể được pháp sư hấp thụ để khởi động ma pháp." data-en="Mana gathered and bound within a natural vessel - stone, living flora, water, or air - or crystallized inside Vein Crystal cores. Only in this rich, Condensed state can mana be drawn by a caster to weave spells.">Là mana đang kết lắng và được lưu giữ bên trong một vật chủ tự nhiên - đất đá, cây cối, dòng nước hoặc bầu khí quyển - hay trong các tinh thể Mạch Tinh. Chỉ ở trạng thái Tụ đậm đặc này, mana mới có thể được pháp sư hấp thụ để khởi động ma pháp.</p>
+      </article>
+      <article class="now-card">
+        <p class="card-kicker" data-i18n data-vi="Trạng thái 2" data-en="State 2">Trạng thái 2</p>
+        <h3 class="card-title" data-i18n data-vi="Mana Tán" data-en="Dispersed Mana">Mana Tán</h3>
+        <p class="card-text" data-i18n data-vi="Là mana đã giải phóng năng lượng sau khi phép thuật hoàn tất. Loãng, vô định và lơ lửng tự do trong không gian, mana Tán không còn đủ độ đậm để vận hành phép thuật mà âm thầm trôi về những vùng đang thiếu hụt, chờ thiên nhiên hấp thụ và cô đặc trở lại thành mana Tụ." data-en="Mana released after a spell has spent its force. Dilute, unbound, and drifting freely through space, Dispersed Mana cannot power strong magic; instead, it flows toward depleted regions, waiting for nature to absorb and condense it back into Condensed Mana.">Là mana đã giải phóng năng lượng sau khi phép thuật hoàn tất. Loãng, vô định và lơ lửng tự do trong không gian, mana Tán không còn đủ độ đậm để vận hành phép thuật mà âm thầm trôi về những vùng đang thiếu hụt, chờ thiên nhiên hấp thụ và cô đặc trở lại thành mana Tụ.</p>
+      </article>
+      <article class="now-card">
+        <p class="card-kicker" data-i18n data-vi="Bốn nguồn mana" data-en="Four sources of mana">Bốn nguồn mana</p>
+        <h3 class="card-title" data-i18n data-vi="Mộc, Phong, Thủy, Thổ" data-en="Sylvan, Gale, Tide, and Earth">Mộc, Phong, Thủy, Thổ</h3>
+        <ul class="term-list">
+          <li><span data-i18n data-vi="&lt;strong&gt;Mộc lực&lt;/strong&gt; (cây cối): nguồn mana mang hơi thở sự sống, mềm mại, dễ dẫn truyền và tái tạo rất nhanh chừng nào rừng cây còn xanh." data-en="&lt;strong&gt;Sylvan Force&lt;/strong&gt; (flora): living mana, supple and easy to channel, regenerating swiftly so long as the forest lives."><strong>Mộc lực</strong> (cây cối): nguồn mana mang hơi thở sự sống, mềm mại, dễ dẫn truyền và tái tạo rất nhanh chừng nào rừng cây còn xanh.</span></li>
+          <li><span data-i18n data-vi="&lt;strong&gt;Phong lực&lt;/strong&gt; (không khí): thanh nhẹ, linh hoạt và hiện diện ở khắp mọi nơi, nhưng trữ lượng thấp và rất mau cạn." data-en="&lt;strong&gt;Gale Force&lt;/strong&gt; (air): light, swift, and omnipresent, though thin in reserve and quickly spent."><strong>Phong lực</strong> (không khí): thanh nhẹ, linh hoạt và hiện diện ở khắp mọi nơi, nhưng trữ lượng thấp và rất mau cạn.</span></li>
+          <li><span data-i18n data-vi="&lt;strong&gt;Thủy lực&lt;/strong&gt; (nước): mạch dẫn truyền ưu việt nhất tự nhiên, kết nối các nguồn mana đi xuyên qua sông hồ và đại dương." data-en="&lt;strong&gt;Tidal Force&lt;/strong&gt; (water): nature's finest conductor, carrying mana across rivers, lakes, and oceans."><strong>Thủy lực</strong> (nước): mạch dẫn truyền ưu việt nhất tự nhiên, kết nối các nguồn mana đi xuyên qua sông hồ và đại dương.</span></li>
+          <li><span data-i18n data-vi="&lt;strong&gt;Thổ lực&lt;/strong&gt; (đất đá): trầm đục, nặng nề và hồi phục chậm nhất, nhưng sở hữu trữ lượng khổng lồ nơi các địa mạch ẩn sâu." data-en="&lt;strong&gt;Earthen Force&lt;/strong&gt; (stone): heavy, dense, and slowest to recover, yet holding vast reserves within the deep ley lines."><strong>Thổ lực</strong> (đất đá): trầm đục, nặng nề và hồi phục chậm nhất, nhưng sở hữu trữ lượng khổng lồ nơi các địa mạch ẩn sâu.</span></li>
+        </ul>
+      </article>
+    </div>
+    <div class="section-head block-gap">
+      <p data-i18n data-vi="Tổng lượng mana trong vũ trụ không hề mất đi mà chỉ chuyển từ đậm sang loãng: uy lực của một phép thuật được sinh ra từ chính độ chênh lệch đậm đặc giữa dòng mana Tụ đi vào và làn mana Tán thoát ra. Vì thế, tốc độ môi trường cô đặc mana Tán trở lại thành mana Tụ chính là chìa khóa quyết định một pháp sư có thể duy trì cuộc chiến trong bao lâu." data-en="The total quantity of mana in the universe is never lost, only diluted: a spell's power arises from the difference in density between the Condensed Mana drawn in and the Dispersed Mana released. How quickly the environment condenses Dispersed Mana back into Condensed Mana dictates how long a mage can sustain battle.">Tổng lượng mana trong vũ trụ không hề mất đi mà chỉ chuyển từ đậm sang loãng: uy lực của một phép thuật được sinh ra từ chính độ chênh lệch đậm đặc giữa dòng mana Tụ đi vào và làn mana Tán thoát ra. Vì thế, tốc độ môi trường cô đặc mana Tán trở lại thành mana Tụ chính là chìa khóa quyết định một pháp sư có thể duy trì cuộc chiến trong bao lâu.</p>
+    </div>
+
+  </section>
+
+  <section class="section" id="schools" aria-labelledby="schoolsHeading">
+    <div class="section-head">
+      <p class="eyebrow" data-i18n data-vi="Năm Trường Phái" data-en="Five Schools">Năm Trường Phái</p>
+      <h2 id="schoolsHeading" data-i18n data-vi="Năm gia tộc Caelari, năm nhánh đạo pháp" data-en="Five Caelari houses, five paths of magic">Năm gia tộc Caelari, năm nhánh đạo pháp</h2>
+      <p data-i18n data-vi="Năm trường phái ma pháp của thế giới mang tên năm gia tộc khởi nguyên của tộc Caelari: Ventaris, Muralis, Sanavia, Vocaria và Redivia. Bất kỳ ai cũng có thể tu luyện nhiều trường phái cùng lúc; trường phái gắn với mỗi chủng tộc hay vùng đất chỉ là nhánh đạo pháp mà họ ưu tiên và tương hợp nhất." data-en="The five schools of magic bear the names of the five Caelari houses: Ventaris, Muralis, Sanavia, Vocaria, and Redivia. Anyone may study multiple schools; the school associated with a race or region simply reflects its primary affinity.">Năm trường phái ma pháp của thế giới mang tên năm gia tộc khởi nguyên của tộc Caelari: Ventaris, Muralis, Sanavia, Vocaria và Redivia. Bất kỳ ai cũng có thể tu luyện nhiều trường phái cùng lúc; trường phái gắn với mỗi chủng tộc hay vùng đất chỉ là nhánh đạo pháp mà họ ưu tiên và tương hợp nhất.</p>
+    </div>
+    <div class="card-grid">
+      <article class="now-card">
+        <p class="card-kicker" data-i18n data-vi="Trường phái" data-en="School">Trường phái</p>
+        <h3 class="card-title">Ventaris</h3>
+        <p class="card-text" data-i18n data-vi="Nghệ thuật chuyển hóa mana thành nhiệt năng, động năng, lôi điện hoặc tái cấu trúc vật chất - dùng để chế tác khí cụ đời thường lẫn giáng những đòn công phạt hủy diệt trên chiến trường." data-en="The art of converting mana into heat, kinetic force, lightning, or reshaped matter - used alike to craft everyday tools and to unleash devastating strikes on the battlefield.">Nghệ thuật chuyển hóa mana thành nhiệt năng, động năng, lôi điện hoặc tái cấu trúc vật chất - dùng để chế tác khí cụ đời thường lẫn giáng những đòn công phạt hủy diệt trên chiến trường.</p>
+      </article>
+      <article class="now-card">
+        <p class="card-kicker" data-i18n data-vi="Trường phái" data-en="School">Trường phái</p>
+        <h3 class="card-title">Muralis</h3>
+        <p class="card-text" data-i18n data-vi="Trường phái của những bức tường vô hình. Bằng cách dựng kết giới hấp thụ hoặc bẻ cong động năng của đòn đánh, pháp sư Muralis đứng vững trước mọi mũi giáo chừng nào lưu lượng mana của họ còn trụ vững." data-en="The school of unseen ramparts. By raising barriers that absorb or deflect kinetic force, Muralis mages stand unbowed so long as their mana flow can endure the impact.">Trường phái của những bức tường vô hình. Bằng cách dựng kết giới hấp thụ hoặc bẻ cong động năng của đòn đánh, pháp sư Muralis đứng vững trước mọi mũi giáo chừng nào lưu lượng mana của họ còn trụ vững.</p>
+      </article>
+      <article class="now-card">
+        <p class="card-kicker" data-i18n data-vi="Trường phái" data-en="School">Trường phái</p>
+        <h3 class="card-title">Sanavia</h3>
+        <p class="card-text" data-i18n data-vi="Thúc đẩy quá trình sinh học tự nhiên để khép miệng vết thương và thanh tẩy độc tố. Từ cấp Đế trở lên, Sanavia có thể tái tạo cả tứ chi đã mất từ nhiều năm trước; và khi chạm tới cấp Thần, nó có thể kéo dài tuổi thọ sinh vật với cái giá là một biển mana khổng lồ." data-en="Accelerates natural biological processes to mend wounds and purge venom. From Emperor rank upward, Sanavia can regrow limbs lost years prior; at Divine rank, it can extend mortal lifespans at the cost of an astronomical ocean of mana.">Thúc đẩy quá trình sinh học tự nhiên để khép miệng vết thương và thanh tẩy độc tố. Từ cấp Đế trở lên, Sanavia có thể tái tạo cả tứ chi đã mất từ nhiều năm trước; và khi chạm tới cấp Thần, nó có thể kéo dài tuổi thọ sinh vật với cái giá là một biển mana khổng lồ.</p>
+      </article>
+      <article class="now-card">
+        <p class="card-kicker" data-i18n data-vi="Trường phái" data-en="School">Trường phái</p>
+        <h3 class="card-title">Vocaria</h3>
+        <p class="card-text" data-i18n data-vi="Triệu hồi vạn vật xuyên qua không gian bằng ngôn ngữ cổ tự và sự hình dung chuẩn xác trên ma pháp trận, hoặc gọi thẳng sinh vật đã lập khế ước mà không cần vẽ trận. Tuy nhiên, triệu hồi một sinh vật vượt quá thực lực luôn đi kèm nguy cơ bị chính nó phản phệ." data-en="Summons objects or beings across space through runic circles and precise visualization, or calls contracted creatures directly without a circle. Yet summoning a beast beyond one's rank carries the deadly risk of betrayal.">Triệu hồi vạn vật xuyên qua không gian bằng ngôn ngữ cổ tự và sự hình dung chuẩn xác trên ma pháp trận, hoặc gọi thẳng sinh vật đã lập khế ước mà không cần vẽ trận. Tuy nhiên, triệu hồi một sinh vật vượt quá thực lực luôn đi kèm nguy cơ bị chính nó phản phệ.</p>
+      </article>
+      <article class="now-card now-card--span2">
+        <p class="card-kicker" data-i18n data-vi="Trường phái" data-en="School">Trường phái</p>
+        <h3 class="card-title">Redivia</h3>
+        <p class="card-text" data-i18n data-vi="Trường phái hiếm hoi và trân quý nhất thế giới: không tấn công cũng chẳng phòng ngự, mà tác động trực tiếp lên thiên nhiên để mở rộng phạm vi dẫn truyền và thúc đẩy quá trình cô đặc mana Tán trở lại thành mana Tụ. Muốn bước chân vào Redivia chỉ có hai con đường: mang huyết mạch bẩm sinh, hoặc miệt mài tu luyện suốt năm mươi năm ròng rã. Dù chỉ dừng lại ở trần cấp Đế, mỗi người theo Redivia đều là quốc bảo được các vương quốc và Giáo hội trọng vọng." data-en="The rarest and most revered school in the world: neither blade nor shield, Redivia acts upon nature itself to widen absorption reach and accelerate the condensation of Dispersed Mana back into Condensed Mana. Only two paths lead to it: innate bloodline, or fifty years of unbroken study. Though capped at Emperor rank, every Redivia practitioner is treasured by kingdoms and Church alike.">Trường phái hiếm hoi và trân quý nhất thế giới: không tấn công cũng chẳng phòng ngự, mà tác động trực tiếp lên thiên nhiên để mở rộng phạm vi dẫn truyền và thúc đẩy quá trình cô đặc mana Tán trở lại thành mana Tụ. Muốn bước chân vào Redivia chỉ có hai con đường: mang huyết mạch bẩm sinh, hoặc miệt mài tu luyện suốt năm mươi năm ròng rã. Dù chỉ dừng lại ở trần cấp Đế, mỗi người theo Redivia đều là quốc bảo được các vương quốc và Giáo hội trọng vọng.</p>
+        <p class="card-text" data-i18n data-vi="Hai sứ mệnh cao quý nhất của trường phái này là Thủ Mạch - những người gắn đời mình với một địa mạch hay vùng đất để giữ nhịp thở cho thiên nhiên; và Nạp Sư - những người chuyên cô đặc mana Tán vào lõi Mạch Tinh để nuôi sống toàn bộ nền văn minh ma đạo." data-en="Its practitioners hold two vital callings: Vein Wardens, guardians bound to a ley line or region to sustain the land's breath; and Core Infusers, specialists who condense mana into Vein Crystal cores to power arcane civilization.">Hai sứ mệnh cao quý nhất của trường phái này là Thủ Mạch - những người gắn đời mình với một địa mạch hay vùng đất để giữ nhịp thở cho thiên nhiên; và Nạp Sư - những người chuyên cô đặc mana Tán vào lõi Mạch Tinh để nuôi sống toàn bộ nền văn minh ma đạo.</p>
+      </article>
+    </div>
+    <div class="section-head block-gap">
+      <p class="eyebrow" data-i18n data-vi="Cấp bậc" data-en="Ranks">Cấp bậc</p>
+      <ul class="rank-row" aria-label="Cấp bậc" data-aria-vi="Cấp bậc" data-aria-en="Ranks">
+        <li class="mini-pill" data-i18n data-vi="Sơ" data-en="Novice">Sơ</li>
+        <li class="mini-pill" data-i18n data-vi="Trung" data-en="Adept">Trung</li>
+        <li class="mini-pill" data-i18n data-vi="Thượng" data-en="High">Thượng</li>
+        <li class="mini-pill" data-i18n data-vi="Thánh" data-en="Saint">Thánh</li>
+        <li class="mini-pill" data-i18n data-vi="Vương" data-en="Sovereign">Vương</li>
+        <li class="mini-pill" data-i18n data-vi="Đế" data-en="Emperor">Đế</li>
+        <li class="mini-pill" data-i18n data-vi="Thần" data-en="Divine">Thần</li>
+      </ul>
+      <p data-i18n data-vi="Danh xưng cấp bậc được đặt ngay sau tên trường phái - chẳng hạn Redivia Thánh cấp - phản ánh lưu lượng và bán kính không gian mà người đó có thể dẫn truyền mana: từ vài bước chân quanh mình ở Sơ cấp cho đến bao phủ trọn một đại lục ở Đế cấp. Ngoại trừ Redivia dừng lại ở cấp Đế, mọi trường phái và mọi sinh vật sống đều có cơ hội chạm tới ngưỡng Thần cấp." data-en="Ranks accompany the school's name - such as Saint-rank Redivia - measuring the flow and spherical reach from which a practitioner can draw mana: from a few paces at Novice rank to an entire continent at Emperor rank. Save for Redivia, which caps at Emperor, every school and every living creature can potentially ascend to Divine rank.">Danh xưng cấp bậc được đặt ngay sau tên trường phái - chẳng hạn Redivia Thánh cấp - phản ánh lưu lượng và bán kính không gian mà người đó có thể dẫn truyền mana: từ vài bước chân quanh mình ở Sơ cấp cho đến bao phủ trọn một đại lục ở Đế cấp. Ngoại trừ Redivia dừng lại ở cấp Đế, mọi trường phái và mọi sinh vật sống đều có cơ hội chạm tới ngưỡng Thần cấp.</p>
+    </div>
+
+  </section>
+
+  <section class="section" id="tools" aria-labelledby="toolsHeading">
+    <div class="section-head">
+      <p class="eyebrow" data-i18n data-vi="Khí Cụ Và Chiến Trận" data-en="Tools and Warfare">Khí Cụ Và Chiến Trận</p>
+      <h2 id="toolsHeading" data-i18n data-vi="Ma đạo cụ, kiếm phái và ma đạo khải" data-en="Arcane instruments, sword schools, and arcane armor">Ma đạo cụ, kiếm phái và ma đạo khải</h2>
+    </div>
+    <div class="card-grid">
+      <article class="now-card">
+        <p class="card-kicker" data-i18n data-vi="Ma đạo cụ" data-en="Arcane instruments">Ma đạo cụ</p>
+        <h3 class="card-title" data-i18n data-vi="Sáu nhóm khí cụ theo dòng chảy mana" data-en="Six classes of instruments in the mana flow">Sáu nhóm khí cụ theo dòng chảy mana</h3>
+        <ul class="term-list">
+          <li><span data-i18n data-vi="&lt;strong&gt;Trữ Cụ&lt;/strong&gt;: lõi Mạch Tinh hoặc Thú Tinh dùng để tích trữ mana Tụ như một viên pin năng lượng." data-en="&lt;strong&gt;Storage Vessels&lt;/strong&gt;: Vein Crystal or Beast Core receptacles that store Condensed Mana like a battery."><strong>Trữ Cụ</strong>: lõi Mạch Tinh hoặc Thú Tinh dùng để tích trữ mana Tụ như một viên pin năng lượng.</span></li>
+          <li><span data-i18n data-vi="&lt;strong&gt;Khuếch Cụ&lt;/strong&gt;: trượng và vòng đeo không tự chứa mana, nhưng giúp khuếch đại lưu lượng, mật độ hoặc bán kính hấp thụ của pháp sư." data-en="&lt;strong&gt;Amplifiers&lt;/strong&gt;: staffs and rings that hold no mana of their own, but magnify a mage's flow, density, or absorption reach."><strong>Khuếch Cụ</strong>: trượng và vòng đeo không tự chứa mana, nhưng giúp khuếch đại lưu lượng, mật độ hoặc bán kính hấp thụ của pháp sư.</span></li>
+          <li><span data-i18n data-vi="&lt;strong&gt;Trận Cụ&lt;/strong&gt;: khí cụ khắc sẵn pháp trận để vận hành một chức năng cố định, từ kiếm chiến đấu, nhẫn hộ thân cho tới đèn đường và bếp lửa." data-en="&lt;strong&gt;Runed Artifacts&lt;/strong&gt;: implements engraved with a fixed spell - from enchanted blades and warding rings to streetlamps and hearths."><strong>Trận Cụ</strong>: khí cụ khắc sẵn pháp trận để vận hành một chức năng cố định, từ kiếm chiến đấu, nhẫn hộ thân cho tới đèn đường và bếp lửa.</span></li>
+          <li><span data-i18n data-vi="&lt;strong&gt;Trận Quyển&lt;/strong&gt;: cuộn giấy khắc trận dùng một lần, tự động rút mana từ môi trường xung quanh ngay khoảnh khắc được xé mở." data-en="&lt;strong&gt;Spell Scrolls&lt;/strong&gt;: single-use engraved scrolls that draw mana directly from the surroundings upon activation."><strong>Trận Quyển</strong>: cuộn giấy khắc trận dùng một lần, tự động rút mana từ môi trường xung quanh ngay khoảnh khắc được xé mở.</span></li>
+          <li><span data-i18n data-vi="&lt;strong&gt;Cảm Cụ&lt;/strong&gt;: bộ đồ nghề tầm soát của Thủ Mạch và Nạp Sư, gồm Mạch Bàn dò địa mạch, kính đo mật độ và chuông báo quá tải mana." data-en="&lt;strong&gt;Divining Instruments&lt;/strong&gt;: precision tools for Vein Wardens and Core Infusers, including Ley Compasses, density lenses, and overload warning bells."><strong>Cảm Cụ</strong>: bộ đồ nghề tầm soát của Thủ Mạch và Nạp Sư, gồm Mạch Bàn dò địa mạch, kính đo mật độ và chuông báo quá tải mana.</span></li>
+          <li><span data-i18n data-vi="&lt;strong&gt;Tụ Mạch Trụ&lt;/strong&gt;: cột trụ khổng lồ khắc trận giúp nới rộng tầm gom mana cho cả một vùng, cho phép thi triển đại pháp giữa Khô Địa với cái giá là vắt kiệt đất đai quanh trụ nhanh gấp bội." data-en="&lt;strong&gt;Convergence Spires&lt;/strong&gt;: monumental engraved pillars that expand mana reach across a whole district, enabling grand spells in Parched Lands at the cost of rapidly draining the surrounding earth."><strong>Tụ Mạch Trụ</strong>: cột trụ khổng lồ khắc trận giúp nới rộng tầm gom mana cho cả một vùng, cho phép thi triển đại pháp giữa Khô Địa với cái giá là vắt kiệt đất đai quanh trụ nhanh gấp bội.</span></li>
+        </ul>
+      </article>
+      <article class="now-card">
+        <p class="card-kicker" data-i18n data-vi="Chiến đấu" data-en="Combat">Chiến đấu</p>
+        <h3 class="card-title" data-i18n data-vi="Đấu Khí và tứ đại kiếm phái" data-en="Battle Aura and the four sword schools">Đấu Khí và tứ đại kiếm phái</h3>
+        <p class="card-text" data-i18n data-vi="Tách biệt với năm trường phái ma pháp, Đấu Khí là kỹ thuật dẫn dòng mana chảy trực tiếp qua cơ thể và lưỡi kiếm mà không cần niệm chú, giúp bứt phá giới hạn sức mạnh, tốc độ lẫn độ sắc bén." data-en="Distinct from the five magic schools, Battle Aura channels mana directly through flesh and steel without incantation, multiplying a warrior's strength, speed, and resilience.">Tách biệt với năm trường phái ma pháp, Đấu Khí là kỹ thuật dẫn dòng mana chảy trực tiếp qua cơ thể và lưỡi kiếm mà không cần niệm chú, giúp bứt phá giới hạn sức mạnh, tốc độ lẫn độ sắc bén.</p>
+        <p class="card-text" data-i18n data-vi="Từ bốn nguồn mana trong tự nhiên, kiếm thuật phân hóa thành bốn nhánh: Phong Kiếm Lưu lấy tốc độ đoạt tiên cơ; Thủy Kiếm Lưu mượn lực trả đòn, hóa giải động năng đối thủ; Thổ Kiếm Lưu trầm ổn với trọng kiếm, lá chắn và giáp dày; cùng Mộc Kiếm Lưu biến ảo, dẻo dai bất tận dưới những tán rừng." data-en="Rooted in the four natural mana sources, swordsmanship branches into four styles: Galeblade Style (blinding speed and first strike), Tideblade Style (flowing redirection and counter-strikes), Stoneblade Style (immovable defense with heavy blades and shields), and Sylvanblade Style (relentless, adaptable agility beneath forest canopies).">Từ bốn nguồn mana trong tự nhiên, kiếm thuật phân hóa thành bốn nhánh: Phong Kiếm Lưu lấy tốc độ đoạt tiên cơ; Thủy Kiếm Lưu mượn lực trả đòn, hóa giải động năng đối thủ; Thổ Kiếm Lưu trầm ổn với trọng kiếm, lá chắn và giáp dày; cùng Mộc Kiếm Lưu biến ảo, dẻo dai bất tận dưới những tán rừng.</p>
+      </article>
+      <article class="now-card">
+        <p class="card-kicker" data-i18n data-vi="Giáp trụ" data-en="Armor">Giáp trụ</p>
+        <h3 class="card-title" data-i18n data-vi="Ma đạo khải" data-en="Arcane Armor">Ma đạo khải</h3>
+        <p class="card-text" data-i18n data-vi="Đỉnh cao của nghệ thuật khắc trận thủ công: những bộ chiến giáp vận hành bằng lõi Mạch Tinh và khung dẫn mana, trải dài từ khải nhẹ phòng thân, khải trợ lực cường hóa thể chất, khải chiến tích hợp pháo Ventaris cho đến những cỗ khải thành khổng lồ cần cả một tiểu đội điều khiển." data-en="The pinnacle of artisanal runesmithing: mechanized suits powered by Vein Crystal cores and mana-conducting frames, ranging from light warded armor and power-assist frames to Ventaris-armed battle armor and colossal fortress armor crewed by whole squads.">Đỉnh cao của nghệ thuật khắc trận thủ công: những bộ chiến giáp vận hành bằng lõi Mạch Tinh và khung dẫn mana, trải dài từ khải nhẹ phòng thân, khải trợ lực cường hóa thể chất, khải chiến tích hợp pháo Ventaris cho đến những cỗ khải thành khổng lồ cần cả một tiểu đội điều khiển.</p>
+        <p class="card-text" data-i18n data-vi="Sức mạnh của ma đạo khải phụ thuộc hoàn toàn vào viên lõi bên trong: một khi Mạch Tinh cạn kiệt hoặc bị khí hậu Khô Địa rút rò rỉ hết năng lượng, cỗ giáp hùng mạnh nhất cũng chỉ còn là khối sắt vô tri nếu thiếu bàn tay của các Nạp Sư." data-en="Yet even the mightiest suit is bound to its core: once its Vein Crystal runs dry or leaks away in the parched air of the Parched Lands, it becomes dead iron without a Core Infuser to restore it.">Sức mạnh của ma đạo khải phụ thuộc hoàn toàn vào viên lõi bên trong: một khi Mạch Tinh cạn kiệt hoặc bị khí hậu Khô Địa rút rò rỉ hết năng lượng, cỗ giáp hùng mạnh nhất cũng chỉ còn là khối sắt vô tri nếu thiếu bàn tay của các Nạp Sư.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="faith" aria-labelledby="faithHeading">
+    <div class="section-head">
+      <p class="eyebrow" data-i18n data-vi="Đức Tin Và Thế Lực" data-en="Faith and Powers">Đức Tin Và Thế Lực</p>
+      <h2 id="faithHeading" data-i18n data-vi="Một Đấng Sáng Thế, muôn nẻo nhân tâm" data-en="One Creator, many mortal paths">Một Đấng Sáng Thế, muôn nẻo nhân tâm</h2>
+      <p data-i18n data-vi="Khắp bảy đại lục, mọi chủng tộc đều hướng lòng thành về một vị thần duy nhất - Đấng Sáng Thế. Thế nhưng từ cùng một đức tin, mỗi vùng đất lại diễn giải ý chí của Ngài theo một cách khác nhau. Bởi vậy, những cuộc chiến đẫm máu trên thế giới này chưa bao giờ là cuộc đối đầu đơn giản giữa cái thiện và cái ác, mà là bi kịch của những giáo lý va chạm nhau giữa cơn khát tài nguyên mana." data-en="Across all seven continents, every race reveres a single deity - the Creator. Yet from one shared faith spring vastly different interpretations of divine will. Wars in this world are never simple clashes of good against evil, but tragedies born of conflicting doctrines and the struggle for mana.">Khắp bảy đại lục, mọi chủng tộc đều hướng lòng thành về một vị thần duy nhất - Đấng Sáng Thế. Thế nhưng từ cùng một đức tin, mỗi vùng đất lại diễn giải ý chí của Ngài theo một cách khác nhau. Bởi vậy, những cuộc chiến đẫm máu trên thế giới này chưa bao giờ là cuộc đối đầu đơn giản giữa cái thiện và cái ác, mà là bi kịch của những giáo lý va chạm nhau giữa cơn khát tài nguyên mana.</p>
+    </div>
+    <div class="card-grid">
+      <article class="now-card now-card--full">
+        <p class="card-kicker" data-i18n data-vi="Tôn giáo lớn nhất" data-en="The largest religion">Tôn giáo lớn nhất</p>
+        <h3 class="card-title" data-i18n data-vi="Sáng Thế Giáo" data-en="The Church of Genesis">Sáng Thế Giáo</h3>
+        <p class="card-text" data-i18n data-vi="Đặt tòa thánh tại thủ đô Aracaelum trên đại lục Sanctaria, Sáng Thế Giáo do Giáo Hoàng đứng đầu - một vị được hội đồng cha sứ bầu chọn từ năm gia tộc Caelari chứ không truyền ngôi theo huyết thống. Trong mắt tín đồ, người Caelari không phải là thần linh để thờ phụng, mà là những người giữ đạo và phụng sự ý chí của Đấng Sáng Thế." data-en="Centered at the holy see of Aracaelum on Sanctaria, the Church of Genesis is led by a Pope elected by a council of priests from the five Caelari houses rather than by blood succession. The Caelari are not worshipped as gods, but revered as stewards and shepherds of the Creator's law.">Đặt tòa thánh tại thủ đô Aracaelum trên đại lục Sanctaria, Sáng Thế Giáo do Giáo Hoàng đứng đầu - một vị được hội đồng cha sứ bầu chọn từ năm gia tộc Caelari chứ không truyền ngôi theo huyết thống. Trong mắt tín đồ, người Caelari không phải là thần linh để thờ phụng, mà là những người giữ đạo và phụng sự ý chí của Đấng Sáng Thế.</p>
+        <p class="card-text" data-i18n data-vi="Giáo lý cốt lõi của Giáo hội bắt nguồn từ quy luật cân bằng tự nhiên: vắt kiệt địa mạch của một vùng đất chính là trọng tội nghịch lại Đấng Sáng Thế. Không cần nuôi bất kỳ đạo quân nào, Sáng Thế Giáo vẫn nắm giữ quyền lực tối thượng nhờ uy tín đạo đức, quyền rút phép thông công, quyền phân bổ các Thủ Mạch và Nạp Sư đi khắp thế gian, cùng độc quyền ban phép kéo dài tuổi thọ của ba vị pháp sư Sanavia cấp Thần duy nhất trên hành tinh." data-en="Its core doctrine rests on the natural balance of mana: draining a land's ley lines dry is a sin against the Creator's design. Though it fields no army, the Church wields unmatched influence through moral authority, excommunication, the dispatch of Vein Wardens and Core Infusers across the realms, and sole stewardship over the life-extending magic of the world's only three Divine-rank Sanavia mages.">Giáo lý cốt lõi của Giáo hội bắt nguồn từ quy luật cân bằng tự nhiên: vắt kiệt địa mạch của một vùng đất chính là trọng tội nghịch lại Đấng Sáng Thế. Không cần nuôi bất kỳ đạo quân nào, Sáng Thế Giáo vẫn nắm giữ quyền lực tối thượng nhờ uy tín đạo đức, quyền rút phép thông công, quyền phân bổ các Thủ Mạch và Nạp Sư đi khắp thế gian, cùng độc quyền ban phép kéo dài tuổi thọ của ba vị pháp sư Sanavia cấp Thần duy nhất trên hành tinh.</p>
+      </article>
+      <article class="now-card">
+        <p class="card-kicker" data-i18n data-vi="Thế lực" data-en="Power">Thế lực</p>
+        <h3 class="card-title" data-i18n data-vi="Hiệp hội mạo hiểm giả" data-en="The Adventurers' Guild">Hiệp hội mạo hiểm giả</h3>
+        <p class="card-text" data-i18n data-vi="Đặt tổng bộ tại thành tự do Mesopolis với mạng lưới chi nhánh phủ khắp các vương đô. Hiệp hội giữ lập trường trung lập tuyệt đối trước mọi cuộc chiến chính trị, tiếp nhận mọi ủy thác từ Sơ cấp đến Thần cấp - nơi hai mạo hiểm giả cùng một mái nhà có thể chạm trán nhau ở hai bên chiến tuyến." data-en="Headquartered in the free city of Mesopolis with branches in every royal capital. Strictly neutral in wars between kingdoms, the Guild accepts commissions from Novice to Divine rank - meaning two fellow adventurers may well cross blades on opposite sides of the same battlefield.">Đặt tổng bộ tại thành tự do Mesopolis với mạng lưới chi nhánh phủ khắp các vương đô. Hiệp hội giữ lập trường trung lập tuyệt đối trước mọi cuộc chiến chính trị, tiếp nhận mọi ủy thác từ Sơ cấp đến Thần cấp - nơi hai mạo hiểm giả cùng một mái nhà có thể chạm trán nhau ở hai bên chiến tuyến.</p>
+      </article>
+      <article class="now-card">
+        <p class="card-kicker" data-i18n data-vi="Thế lực" data-en="Power">Thế lực</p>
+        <h3 class="card-title" data-i18n data-vi="Hội Thợ Khắc Trận" data-en="The Guild of Runesmiths">Hội Thợ Khắc Trận</h3>
+        <p class="card-text" data-i18n data-vi="Liên minh các phường thợ thủ công tinh hoa đóng tại Hohenstahl (vương quốc Eisenreich), nơi nắm giữ bí truyền chế tác ma đạo khải và những pháp trận công thành phức tạp nhất theo đơn đặt hàng của các vương triều." data-en="A powerful alliance of master workshops in Hohenstahl (Eisenreich), guarding the artisanal secrets of crafting custom Arcane Armor and siege-grade magic circles for royal courts.">Liên minh các phường thợ thủ công tinh hoa đóng tại Hohenstahl (vương quốc Eisenreich), nơi nắm giữ bí truyền chế tác ma đạo khải và những pháp trận công thành phức tạp nhất theo đơn đặt hàng của các vương triều.</p>
+      </article>
+      <article class="now-card">
+        <p class="card-kicker" data-i18n data-vi="Thế lực" data-en="Power">Thế lực</p>
+        <h3 class="card-title" data-i18n data-vi="Hội Thương Năng Lượng" data-en="The Core-Traders' Syndicate">Hội Thương Năng Lượng</h3>
+        <p class="card-text" data-i18n data-vi="Mạng lưới thương gia đặt trụ sở tại Mesopolis, kiểm soát các tuyến vận chuyển lõi Mạch Tinh xuyên đại lục, vận hành hệ thống trạm nạp và chiêu mộ những Nạp Sư tự do." data-en="A merchant syndicate based in Mesopolis that controls transcontinental Vein Crystal trade routes, operates recharging stations, and employs independent Core Infusers.">Mạng lưới thương gia đặt trụ sở tại Mesopolis, kiểm soát các tuyến vận chuyển lõi Mạch Tinh xuyên đại lục, vận hành hệ thống trạm nạp và chiêu mộ những Nạp Sư tự do.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="history" aria-labelledby="historyHeading">
+    <div class="section-head">
+      <p class="eyebrow" data-i18n data-vi="Biên Niên Sử" data-en="Chronicle">Biên Niên Sử</p>
+      <h2 id="historyHeading" data-i18n data-vi="Những bước ngoặt của Thánh Lịch" data-en="Turning points of the Sacred Calendar">Những bước ngoặt của Thánh Lịch</h2>
+      <p data-i18n data-vi="Thế giới đếm thời gian theo Thánh Lịch (TL), lấy năm Hòa ước Mesopolis được ký kết và Sáng Thế Giáo ra đời làm năm 0. Đằng sau mỗi cột mốc lịch sử là cuộc giằng co dai dẳng giữa tham vọng của các vương triều và giới hạn chịu đựng của đất trời." data-en="Time is measured by the Sacred Calendar (SC), marking Year 0 at the signing of the Treaty of Mesopolis and the founding of the Church of Genesis. Behind every milestone lies an enduring struggle between mortal ambition and the limits of the living earth.">Thế giới đếm thời gian theo Thánh Lịch (TL), lấy năm Hòa ước Mesopolis được ký kết và Sáng Thế Giáo ra đời làm năm 0. Đằng sau mỗi cột mốc lịch sử là cuộc giằng co dai dẳng giữa tham vọng của các vương triều và giới hạn chịu đựng của đất trời.</p>
+    </div>
+    <ol class="timeline">
+      <li>
+        <p class="tl-when" data-i18n data-vi="Trước TL −700" data-en="Before SC −700">Trước TL −700</p>
+        <h3 class="tl-title" data-i18n data-vi="Kỷ Nguyên Ngăn Cách" data-en="The Age of Isolation">Kỷ Nguyên Ngăn Cách</h3>
+        <p class="tl-text" data-i18n data-vi="Ngăn cách bởi những đại dương mênh mông rộng hơn năm ngàn cây số, bảy chủng tộc lớn lên như những ốc đảo cô độc trên bảy đại lục, tự hình thành ngôn ngữ, văn hóa và tín ngưỡng riêng mà chưa từng biết đến sự tồn tại của nhau dưới cùng một vòm trời." data-en="Divided by oceans more than five thousand kilometers wide, the seven races grew in isolation upon their own continents, shaping their own tongues, cultures, and faiths without ever knowing others shared their sky.">Ngăn cách bởi những đại dương mênh mông rộng hơn năm ngàn cây số, bảy chủng tộc lớn lên như những ốc đảo cô độc trên bảy đại lục, tự hình thành ngôn ngữ, văn hóa và tín ngưỡng riêng mà chưa từng biết đến sự tồn tại của nhau dưới cùng một vòm trời.</p>
+      </li>
+      <li>
+        <p class="tl-when" data-i18n data-vi="TL −700 đến −120" data-en="SC −700 to −120">TL −700 đến −120</p>
+        <h3 class="tl-title" data-i18n data-vi="Thời Đại Hải Trình" data-en="The Age of Great Voyages">Thời Đại Hải Trình</h3>
+        <p class="tl-text" data-i18n data-vi="Những hoa tiêu giao nhân tộc nương theo dòng hải lưu dẫn lối cho đội thuyền buồm của nhân tộc vượt biển lớn, nối liền các đại lục và mở màn cho những cuộc di cư đầu tiên. Thế nhưng biển mở cũng là lúc tai họa thức giấc: từng đàn ma thú hung hãn từ rừng già Sachamayu bắt đầu vượt đại dương, tràn vào bờ cõi Ecumenia, Đại Chiêm và Altaryn." data-en="Aquatic Merfolk navigators guided human sailing fleets along deep ocean currents, linking the continents and sparking the first migrations. Yet open seas also brought calamity: packs of fierce Mana Beasts from the jungles of Sachamayu began crossing the waters to prey upon Ecumenia, Tidecrown, and Altaryn.">Những hoa tiêu giao nhân tộc nương theo dòng hải lưu dẫn lối cho đội thuyền buồm của nhân tộc vượt biển lớn, nối liền các đại lục và mở màn cho những cuộc di cư đầu tiên. Thế nhưng biển mở cũng là lúc tai họa thức giấc: từng đàn ma thú hung hãn từ rừng già Sachamayu bắt đầu vượt đại dương, tràn vào bờ cõi Ecumenia, Đại Chiêm và Altaryn.</p>
+      </li>
+      <li>
+        <p class="tl-when" data-i18n data-vi="TL −120 đến −1" data-en="SC −120 to −1">TL −120 đến −1</p>
+        <h3 class="tl-title" data-i18n data-vi="Đại Suy Mạch - Thế Kỷ Khát Mana" data-en="The Great Vein Collapse">Đại Suy Mạch - Thế Kỷ Khát Mana</h3>
+        <p class="tl-text" data-i18n data-vi="Để chống trả ma thú và thôn tính lẫn nhau, các vương quốc cổ trên Ecumenia điên cuồng vắt kiệt các địa mạch. Nhiều vùng Linh Địa trù phú suy thoái thành Bình Địa rồi chết khô thành Khô Địa; mùa màng thất bát, dịch sốt cạn mana và chiến tranh đẩy cả đại lục đến bờ diệt vong - buộc tộc Caelari lần đầu tiên phải rời thánh địa Sanctaria bước vào thế cuộc." data-en="To repel Mana Beasts and conquer neighbors, the old kingdoms of Ecumenia ruthlessly overexploited their ley lines. Lush Hallowed Lands degraded into Temperate Lands and withered into barren Parched Lands; famine, mana-depletion fever, and war pushed the continent to the brink of ruin - compelling the Caelari to leave Sanctaria for the first time in history.">Để chống trả ma thú và thôn tính lẫn nhau, các vương quốc cổ trên Ecumenia điên cuồng vắt kiệt các địa mạch. Nhiều vùng Linh Địa trù phú suy thoái thành Bình Địa rồi chết khô thành Khô Địa; mùa màng thất bát, dịch sốt cạn mana và chiến tranh đẩy cả đại lục đến bờ diệt vong - buộc tộc Caelari lần đầu tiên phải rời thánh địa Sanctaria bước vào thế cuộc.</p>
+      </li>
+      <li>
+        <p class="tl-when" data-i18n data-vi="TL 0" data-en="SC 0">TL 0</p>
+        <h3 class="tl-title" data-i18n data-vi="Hòa Ước Mesopolis &amp; Khởi Đầu Thánh Lịch" data-en="The Treaty of Mesopolis &amp; Year Zero">Hòa Ước Mesopolis &amp; Khởi Đầu Thánh Lịch</h3>
+        <p class="tl-text" data-i18n data-vi="Giữa đồng bằng trung tâm Mesopedion, các Caelari triệu tập chư quốc Ecumenia, ký kết Khế Ước Cân Bằng và chính thức lập nên Sáng Thế Giáo. Năm cánh cổng thành tự do Mesopolis mở ra được chọn làm năm 0 của Thánh Lịch, mở đầu kỷ nguyên các Thủ Mạch và Nạp Sư được Giáo hội đào tạo, che chở và phái đi giữ nhịp thở cho cả bảy đại lục." data-en="On the central plains of Mesopedion, the Caelari convened the kingdoms of Ecumenia to sign the Covenant of Balance and establish the Church of Genesis. The founding of the free city of Mesopolis became Year 0 of the Sacred Calendar, ushering in an era where Vein Wardens and Core Infusers were trained and protected by the Church across all seven continents.">Giữa đồng bằng trung tâm Mesopedion, các Caelari triệu tập chư quốc Ecumenia, ký kết Khế Ước Cân Bằng và chính thức lập nên Sáng Thế Giáo. Năm cánh cổng thành tự do Mesopolis mở ra được chọn làm năm 0 của Thánh Lịch, mở đầu kỷ nguyên các Thủ Mạch và Nạp Sư được Giáo hội đào tạo, che chở và phái đi giữ nhịp thở cho cả bảy đại lục.</p>
+      </li>
+      <li>
+        <p class="tl-when" data-i18n data-vi="TL 380" data-en="SC 380">TL 380</p>
+        <h3 class="tl-title" data-i18n data-vi="Đế Quốc Sahra Tan Vỡ" data-en="The Shattering of the Sahra Empire">Đế Quốc Sahra Tan Vỡ</h3>
+        <p class="tl-text" data-i18n data-vi="Hòa bình ở phương đông không cứu được vùng cát đỏ phương tây. Cuộc tranh đoạt địa mạch ngầm tại cao nguyên đá đen Karatash làm Đế quốc Sahra thống nhất vỡ vụn thành bốn vương quốc thù địch: Kavirdan, Tashkara, Rimalan và Najmabad. Khói lửa liên miên suốt nhiều thế kỷ từ đó rút kiệt sức sống của đất đai, biến Sahraqand thành một Khô Địa khát mana đến tuyệt vọng." data-en="Peace in the east could not save the red sands of the west. A bitter conflict over the ley lines at the black-stone plateau of Karatash shattered the unified Sahra Empire into four rival kingdoms: Kavirdan, Tashkara, Rimalan, and Najmabad. Centuries of unceasing war drained the earth further, locking Sahraqand into a desperate Parched Land.">Hòa bình ở phương đông không cứu được vùng cát đỏ phương tây. Cuộc tranh đoạt địa mạch ngầm tại cao nguyên đá đen Karatash làm Đế quốc Sahra thống nhất vỡ vụn thành bốn vương quốc thù địch: Kavirdan, Tashkara, Rimalan và Najmabad. Khói lửa liên miên suốt nhiều thế kỷ từ đó rút kiệt sức sống của đất đai, biến Sahraqand thành một Khô Địa khát mana đến tuyệt vọng.</p>
+      </li>
+      <li>
+        <p class="tl-when" data-i18n data-vi="TL 610 đến 1.301" data-en="SC 610 to 1,301">TL 610 đến 1.301</p>
+        <h3 class="tl-title" data-i18n data-vi="Kỷ Nguyên Khắc Trận Và Ma Đạo Khải" data-en="The Age of Runesmiths and Arcane Armor">Kỷ Nguyên Khắc Trận Và Ma Đạo Khải</h3>
+        <p class="tl-text" data-i18n data-vi="Sự ra đời của Hội Thợ Khắc Trận tại Eisenreich (TL 610) châm ngòi cho cuộc cách mạng trên chiến trường. Từ những bộ khải trợ lực đầu tiên (TL 1.160), khải chiến (TL 1.236) cho tới những pháo đài di động khải thành (TL 1.301) lần lượt bước ra từ lò rèn Hohenstahl, biến lõi Mạch Tinh và các Nạp Sư thành mạch máu sống còn của mọi đạo quân." data-en="The founding of the Guild of Runesmiths in Eisenreich (SC 610) sparked a revolution in warfare. From the first power-assist armor (SC 1,160) and battle armor (SC 1,236) to towering fortress armor (SC 1,301) forged in Hohenstahl, Vein Crystal cores and Core Infusers became the lifeblood of every military campaign.">Sự ra đời của Hội Thợ Khắc Trận tại Eisenreich (TL 610) châm ngòi cho cuộc cách mạng trên chiến trường. Từ những bộ khải trợ lực đầu tiên (TL 1.160), khải chiến (TL 1.236) cho tới những pháo đài di động khải thành (TL 1.301) lần lượt bước ra từ lò rèn Hohenstahl, biến lõi Mạch Tinh và các Nạp Sư thành mạch máu sống còn của mọi đạo quân.</p>
+      </li>
+      <li>
+        <p class="tl-when" data-i18n data-vi="TL 1.298 đến 1.303" data-en="SC 1,298 to 1,303">TL 1.298 đến 1.303</p>
+        <h3 class="tl-title" data-i18n data-vi="Biến Cố Wadi Najma &amp; Lời Đồn Bỏ Quên" data-en="The Wadi Najma Catastrophe &amp; The Whisper of Forsaking">Biến Cố Wadi Najma &amp; Lời Đồn Bỏ Quên</h3>
+        <p class="tl-text" data-i18n data-vi="Một đợt xả mana hủy diệt trong cuộc chiến tại khe cạn Wadi Najma làm đứt gãy mạch ngầm, khiến hàng vạn sinh linh chết khô trong cơn sốt cạn mana. Từ đống tro tàn ấy, lời đồn rằng &quot;Đấng Sáng Thế đã bỏ quên thế giới&quot; lan đi khắp các đại lục, sản sinh ra Phái Vô Chủ - những kẻ muốn tự cứu lấy mình bằng cách nghiên cứu cấm thuật chạm vào không gian và thời gian. Công đồng Aracaelum năm 1.303 quyết định không đàn áp mà xem đó là phép thử đức tin của nhân thế." data-en="A catastrophic mana discharge during battle at Wadi Najma severed local veins, leaving tens of thousands to perish from mana-depletion fever. From those ashes spread the rumor that &quot;the Creator has forsaken the world,&quot; giving rise to the Masterless Sect - dissidents seeking salvation through forbidden space and time magic. In SC 1,303, the Council of Aracaelum chose not to purge them, declaring the rumor a trial of mortal faith.">Một đợt xả mana hủy diệt trong cuộc chiến tại khe cạn Wadi Najma làm đứt gãy mạch ngầm, khiến hàng vạn sinh linh chết khô trong cơn sốt cạn mana. Từ đống tro tàn ấy, lời đồn rằng "Đấng Sáng Thế đã bỏ quên thế giới" lan đi khắp các đại lục, sản sinh ra Phái Vô Chủ - những kẻ muốn tự cứu lấy mình bằng cách nghiên cứu cấm thuật chạm vào không gian và thời gian. Công đồng Aracaelum năm 1.303 quyết định không đàn áp mà xem đó là phép thử đức tin của nhân thế.</p>
+      </li>
+      <li>
+        <p class="tl-when" data-i18n data-vi="TL 1.380 đến 1.412" data-en="SC 1,380 to 1,412">TL 1.380 đến 1.412</p>
+        <h3 class="tl-title" data-i18n data-vi="Cơn Khát Của Những Tụ Mạch Trụ (Hiện Tại)" data-en="The Thirst of the Convergence Spires (Present Era)">Cơn Khát Của Những Tụ Mạch Trụ (Hiện Tại)</h3>
+        <p class="tl-text" data-i18n data-vi="Năm 1.380, Tashkara dựng cây Tụ Mạch Trụ đầu tiên tại Karatash, cưỡng bức gom mana cả một vùng rộng lớn để thi triển đại pháp giữa lòng sa mạc. Bốn nước Sahraqand lập tức lao vào cuộc chạy đua dựng trụ; đến năm 1.412 TL, các khe cạn và ốc đảo đang trơ đáy từng ngày, những cuộc săn lùng Thủ Mạch và Nạp Sư nổ ra ngầm khắp các đại lục - cũng là lúc bánh xe số phận của câu chuyện bắt đầu chuyển dịch." data-en="In SC 1,380, Tashkara erected the first Convergence Spire at Karatash, forcibly drawing mana across a vast radius to cast grand spells in the desert. All four kingdoms of Sahraqand rushed to build their own; by SC 1,412, oases and wadis are drying at an alarming rate, covert hunts for Vein Wardens and Core Infusers are spreading across the continents - and the wheels of our story begin to turn.">Năm 1.380, Tashkara dựng cây Tụ Mạch Trụ đầu tiên tại Karatash, cưỡng bức gom mana cả một vùng rộng lớn để thi triển đại pháp giữa lòng sa mạc. Bốn nước Sahraqand lập tức lao vào cuộc chạy đua dựng trụ; đến năm 1.412 TL, các khe cạn và ốc đảo đang trơ đáy từng ngày, những cuộc săn lùng Thủ Mạch và Nạp Sư nổ ra ngầm khắp các đại lục - cũng là lúc bánh xe số phận của câu chuyện bắt đầu chuyển dịch.</p>
+      </li>
+    </ol>
+  </section>
+
+  <footer class="foot-letter">
+    <p class="foot-letter__close" data-i18n data-vi="Cảm ơn bạn đã ghé thăm thế giới của chín đại lục." data-en="Thank you for visiting the World of Nine Continents.">
+      Cảm ơn bạn đã ghé thăm thế giới của chín đại lục.<br>
+      <span class="foot-letter__sign" data-i18n data-vi="- Mendingur" data-en="- Mendingur">- Mendingur</span>
+    </p>
+
+    <div class="foot-letter__row">
+      <a href="https://youtube.com/@Mendingur" aria-label="YouTube">
+        <svg class="icon-yt" viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"><path d="M5 6.5H19A4 4 0 0 1 23 10.5V13.5A4 4 0 0 1 19 17.5H5A4 4 0 0 1 1 13.5V10.5A4 4 0 0 1 5 6.5ZM10 9.7L10 14.3L16 12Z"/></svg>
+      </a>
+      <span class="sep">·</span>
+      <a href="https://x.com/Mendingur" aria-label="X">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.6 8.7L23 22h-6.8l-5.3-6.9L4.8 22H1.7l8.1-9.3L1 2h7l4.8 6.3L18.9 2Zm-1.2 18h1.9L7.4 4H5.4l12.3 16Z"/></svg>
+      </a>
+      <span class="sep">·</span>
+      <a href="https://facebook.com/Mendingur" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12Z"/></svg>
+      </a>
+      <span class="sep">·</span>
+      <a href="https://www.instagram.com/mendingur/" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"><path d="M7 2H17A5 5 0 0 1 22 7V17A5 5 0 0 1 17 22H7A5 5 0 0 1 2 17V7A5 5 0 0 1 7 2Z M7.4 3.8H16.6A3.6 3.6 0 0 1 20.2 7.4V16.6A3.6 3.6 0 0 1 16.6 20.2H7.4A3.6 3.6 0 0 1 3.8 16.6V7.4A3.6 3.6 0 0 1 7.4 3.8Z M7 12A5 5 0 1 0 17 12A5 5 0 1 0 7 12Z M8.8 12A3.2 3.2 0 1 0 15.2 12A3.2 3.2 0 1 0 8.8 12Z M16.4 6.5A1.1 1.1 0 1 0 18.6 6.5A1.1 1.1 0 1 0 16.4 6.5Z"/></svg>
+      </a>
+      <span class="sep">·</span>
+      <a href="https://mendingur.github.io/donate/" class="donate-link">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-6.7-4.35-9.3-8.1C.8 10.1 1.4 6.6 4.3 5.1c2.2-1.15 4.6-.5 6.1 1.2.5.55 1 1.2 1.6 1.9.6-.7 1.1-1.35 1.6-1.9 1.5-1.7 3.9-2.35 6.1-1.2 2.9 1.5 3.5 5 1.6 7.8C18.7 16.65 12 21 12 21Z"/></svg>
+        <span data-i18n data-vi="Ủng hộ" data-en="Donate">Ủng hộ</span>
+      </a>
+    </div>
+
+    <div class="foot-letter__copyright" data-i18n data-vi="© 2026 Nguyễn Duy Anh (bút danh: Mendingur)." data-en="© 2026 Nguyen Duy Anh (pen name: Mendingur).">
+      © 2026 Nguyễn Duy Anh (bút danh: Mendingur).
+    </div>
+  </footer>
+
+</main>
+
+<script>
+  window.MENDINGUR_PAGE = {
+    titleVi: 'Mendingur - The World of Nine Continents',
+    titleEn: 'Mendingur - The World of Nine Continents',
+    descVi: 'The World of Nine Continents - tiểu thuyết giả tưởng dài kỳ của Mendingur: chín đại lục, bảy chủng tộc, mười bảy vương quốc cùng quy luật tuần hoàn của mana Tụ và mana Tán.',
+    descEn: 'The World of Nine Continents - a long-form fantasy novel by Mendingur: nine continents, seven races, seventeen kingdoms, and the cycle of Condensed and Dispersed Mana.'
+  };
+</script>
+<script src="../script/site.js"></script>
+</body>
+</html>

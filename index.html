@@ -14,8 +14,8 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Mendingur — Đại Sảnh</title>
-<meta name="description" content="Đại Sảnh của Mendingur — nơi hội tụ tiểu thuyết Vòng Tuần Hoàn Người Gieo Hạt và một dự án game đang được ấp ủ.">
+<title>Mendingur - Đại Sảnh</title>
+<meta name="description" content="Đại Sảnh của Mendingur - nơi khởi nguồn của tiểu thuyết giả tưởng The World of Nine Continents và một dự án game đang được ấp ủ.">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="tokens.css">
 <link rel="stylesheet" href="style/site.css">
@@ -53,7 +53,7 @@ html { scroll-behavior: smooth; }
 }
 
 main { display: block; position: relative; }
-/* ==== Hiệu ứng "sáng hơn khi rê chuột", bê từ thesowerscycle/.volume-card ==== */
+/* ==== Hiệu ứng "sáng hơn khi rê chuột" ==== */
 
 .split-row {
   position: relative;
@@ -132,7 +132,7 @@ a.split-row__link:focus-visible .split-row::before { opacity: 1; }
     border-bottom: var(--rule-hair) solid var(--color-rule);
   }
 
-/* ================= HERO — SPLIT DIPTYCH ================= */
+/* ================= HERO - SPLIT DIPTYCH ================= */
 
 .hero-split {
     display: grid;
@@ -272,9 +272,9 @@ h1 {
     width: min(280px, 60vw);
     margin: 0 auto;
     position: relative;
-    animation: breathe 7s ease-in-out infinite;      /* ← thêm */
+    animation: breathe 7s ease-in-out infinite;
   }
-@keyframes breathe {                                  /* ← thêm cả khối */
+@keyframes breathe {
   0%, 100% { transform: scale(1);    filter: drop-shadow(0 0 18px var(--color-accent-soft)); }
   50%      { transform: scale(1.02); filter: drop-shadow(0 0 26px var(--color-accent-soft)); }
 }
@@ -318,12 +318,8 @@ h1 {
     max-width: 56ch;
   }
 
-/* ================= SPLIT ROW (pillars — diptych, alternating) ================= */
+/* ================= SPLIT ROW (pillars - diptych, alternating) ================= */
 
-/* Hai trụ cột đặt cạnh nhau thành hai cột thật — vừa đúng nghĩa "hai trụ cột",
-   vừa lấp khoảng trống bên phải, vừa giới hạn vùng bấm của thẻ Tiểu Thuyết
-   trong đúng cột của nó (trước đây thẻ <a> trải hết chiều ngang nên khoảng
-   trống bên phải vẫn bấm được). */
 .pillar-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -345,7 +341,6 @@ h1 {
     transition: border-color var(--dur-short) var(--ease-out);
   }
 
-/* Huy hiệu tròn nhỏ, đứng ngay trước tên trụ cột trong cùng một dòng. */
 .split-row__figure {
     display: inline-grid;
     place-items: center;
@@ -552,7 +547,7 @@ a.split-row__link:focus-visible { outline: 2px solid var(--color-accent); outlin
     color: var(--color-ink-soft);
   }
 
-/* ================= FOOTER — LETTER CLOSE (Ft6, tùy biến) ================= */
+/* ================= FOOTER - LETTER CLOSE (Ft6, tùy biến) ================= */
 
 .foot-letter {
     padding: var(--space-2xl) var(--page-gutter) var(--space-xl);
@@ -668,39 +663,36 @@ a.split-row__link:focus-visible { outline: 2px solid var(--color-accent); outlin
 
   <!-- ============ MASTHEAD (N6) ============ -->
   <header class="mast">
-    <p class="mast-line" data-i18n data-vi="Nơi Vũ Trụ Bắt Đầu" data-en="Where the Universe Begins">Nơi Vũ Trụ Bắt Đầu</p>
+    <p class="mast-line" data-i18n data-vi="Nơi Vũ Trụ Khởi Nguồn" data-en="Where the Universe Begins">Nơi Vũ Trụ Khởi Nguồn</p>
     <p class="mast-name">Mendingur</p>
     <hr class="mast-rule" aria-hidden="true">
   </header>
 
-  <!-- ============ HERO — SPLIT DIPTYCH ============ -->
+  <!-- ============ HERO - SPLIT DIPTYCH ============ -->
   <section class="hero-split" id="stage" aria-labelledby="pageTitle">
 
     <div class="hero-split__body reveal" style="--i:0">
-      <h1 id="pageTitle" data-i18n data-vi="Vòng Tuần Hoàn Người Gieo Hạt" data-en="The Sower's Cycle">Vòng Tuần Hoàn Người Gieo Hạt</h1>
-      <p class="tagline" data-i18n data-vi="Một bộ trường ca hậu tận thế" data-en="A post-apocalyptic saga">Một bộ trường ca hậu tận thế</p>
+      <h1 id="pageTitle" data-i18n data-vi="The World of Nine Continents" data-en="The World of Nine Continents">The World of Nine Continents</h1>
+      <p class="tagline" data-i18n data-vi="Biên niên sử giả tưởng dài kỳ đang thành hình" data-en="A long-form fantasy chronicle in the making">Biên niên sử giả tưởng dài kỳ đang thành hình</p>
 
-      <p class="hero-copy" data-i18n data-vi="&lt;a href=&quot;https://mendingur.github.io/thesowerscycle/&quot;&gt;Vòng Tuần Hoàn Người Gieo Hạt&lt;/a&gt; là một vũ trụ giả tưởng được dựng nên bởi &lt;a href=&quot;https://mendingur.github.io/tacgia/&quot;&gt;Mendingur&lt;/a&gt;, với hai trụ cột chính: tiểu thuyết và game. Hai hình thức ấy cùng kể một câu chuyện, cùng chia sẻ một thế giới, và cùng lớn lên theo thời gian." data-en="&lt;a href=&quot;https://mendingur.github.io/thesowerscycle/&quot;&gt;The Sower's Cycle&lt;/a&gt; is a fictional universe built by &lt;a href=&quot;https://mendingur.github.io/tacgia/&quot;&gt;Mendingur&lt;/a&gt;, standing on two pillars: fiction and a game. The two forms tell one story, share one world, and grow together over time."><a href="https://mendingur.github.io/thesowerscycle/">Vòng Tuần Hoàn Người Gieo Hạt</a> là một vũ trụ giả tưởng được dựng nên bởi <a href="https://mendingur.github.io/tacgia/">Mendingur</a>, với hai trụ cột chính: tiểu thuyết và game. Hai hình thức ấy cùng kể một câu chuyện, cùng chia sẻ một thế giới, và cùng lớn lên theo thời gian.</p>
+      <p class="hero-copy" data-i18n data-vi="&lt;a href=&quot;https://mendingur.github.io/theworldofninecontinents/&quot;&gt;The World of Nine Continents&lt;/a&gt; là dự án tiểu thuyết giả tưởng dài kỳ của &lt;a href=&quot;https://mendingur.github.io/tacgia/&quot;&gt;Mendingur&lt;/a&gt;, mở ra một thế giới hoàn toàn tách biệt với Trái Đất - nơi chín đại lục nổi lên giữa biển khơi, bảy chủng tộc cùng tồn tại dưới một bầu trời, và dòng chảy ma pháp vận hành theo những định luật tự nhiên khắc nghiệt của riêng nó." data-en="&lt;a href=&quot;https://mendingur.github.io/theworldofninecontinents/&quot;&gt;The World of Nine Continents&lt;/a&gt; is a long-form fantasy novel by &lt;a href=&quot;https://mendingur.github.io/tacgia/&quot;&gt;Mendingur&lt;/a&gt;, set in a realm entirely separate from Earth - where nine continents rise from vast oceans, seven races share a single sky, and magic flows by uncompromising natural laws of its own."><a href="https://mendingur.github.io/theworldofninecontinents/">The World of Nine Continents</a> là dự án tiểu thuyết giả tưởng dài kỳ của <a href="https://mendingur.github.io/tacgia/">Mendingur</a>, mở ra một thế giới hoàn toàn tách biệt với Trái Đất - nơi chín đại lục nổi lên giữa biển khơi, bảy chủng tộc cùng tồn tại dưới một bầu trời, và dòng chảy ma pháp vận hành theo những định luật tự nhiên khắc nghiệt của riêng nó.</p>
 
-      <p class="hero-copy" data-i18n data-vi="Năm 2054, giữa tro tàn của một thế giới cũ, một cô gái mang theo hy vọng. Câu chuyện của cô giờ đây được kể lại qua trang sách, qua giai điệu, và — sớm thôi — qua một thế giới bạn có thể bước vào." data-en="In 2054, amid the ashes of an old world, a girl who carried hope within her. Her story is now being told through pages, through melody, and — soon — through a world you'll be able to step into.">Năm 2054, giữa tro tàn của một thế giới cũ, một cô gái mang theo hy vọng. Câu chuyện của cô giờ đây được kể lại qua trang sách, qua giai điệu, và — sớm thôi — qua một thế giới bạn có thể bước vào.</p>
+      <p class="hero-copy" data-i18n data-vi="Toàn bộ nền móng địa lý, lịch sử và hệ thống ma pháp đã được đặt định vững chắc. Dàn nhân vật cùng các tuyến truyện song song đang trong giai đoạn hoàn thiện cuối cùng trước khi những chương đầu tiên chính thức ra mắt." data-en="The foundations of its geography, history, and magic system are firmly laid. Its ensemble cast and parallel story threads are now being refined ahead of the first chapters' release.">Toàn bộ nền móng địa lý, lịch sử và hệ thống ma pháp đã được đặt định vững chắc. Dàn nhân vật cùng các tuyến truyện song song đang trong giai đoạn hoàn thiện cuối cùng trước khi những chương đầu tiên chính thức ra mắt.</p>
 
       <p class="byline">
-        <span data-i18n data-vi="một dự án của" data-en="a project by">một dự án của</span>
+        <span data-i18n data-vi="một vũ trụ sáng tạo của" data-en="a universe crafted by">một vũ trụ sáng tạo của</span>
         <a href="https://mendingur.github.io/tacgia/">Mendingur</a>
       </p>
 
-      <p class="quote" data-i18n data-vi="&quot;Giữa tro tàn, vẫn kiên tâm vun xới không ngừng.&quot;" data-en="&quot;Among the ashes, still tending the soil without cease.&quot;">"Giữa tro tàn, vẫn kiên tâm vun xới không ngừng."</p>
-
       <div class="strip" role="list" aria-label="Trạng thái các dự án" data-aria-vi="Trạng thái các dự án" data-aria-en="Project status">
-        <span class="mini-pill" role="listitem"><span class="dot dot--done" aria-hidden="true"></span><span data-i18n data-vi="Quyển I: Hoàn Thành" data-en="Volume I: Complete">Quyển I: Hoàn Thành</span></span>
-        <span class="mini-pill" role="listitem"><span class="dot dot--done" aria-hidden="true"></span><span data-i18n data-vi="Quyển II: Hoàn Thành" data-en="Volume II: Complete">Quyển II: Hoàn Thành</span></span>
-        <span class="mini-pill" role="listitem"><span class="dot dot--seed" aria-hidden="true"></span><span data-i18n data-vi="Game: Chưa Bắt Đầu" data-en="Game: Not Started">Game: Chưa Bắt Đầu</span></span>
+        <span class="mini-pill" role="listitem"><span class="dot dot--active" aria-hidden="true"></span><span data-i18n data-vi="Tiểu thuyết: Đang Kiến Tạo" data-en="Novel: In Development">Tiểu thuyết: Đang Kiến Tạo</span></span>
+        <span class="mini-pill" role="listitem"><span class="dot dot--seed" aria-hidden="true"></span><span data-i18n data-vi="Game: Đang Ấp Ủ" data-en="Game: In Incubation">Game: Đang Ấp Ủ</span></span>
       </div>
     </div>
 
     <figure class="hero-split__figure reveal" style="--i:1">
       <div class="rift-wrap">
-        <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Biểu tượng Vòng Tuần Hoàn Người Gieo Hạt">
+        <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Biểu tượng Mendingur">
           <defs>
             <linearGradient id="wingGrad" x1="0" y1="1" x2="0" y2="0">
               <stop offset="0%" stop-color="#A8532A"/><stop offset="55%" stop-color="#C99A3E"/><stop offset="100%" stop-color="#E4C077"/>
@@ -737,18 +729,18 @@ a.split-row__link:focus-visible { outline: 2px solid var(--color-accent); outlin
 
   </section>
 
-  <!-- ============ HAI TRỤ CỘT — SPLIT ROWS, ĐẢO HƯỚNG ============ -->
+  <!-- ============ HAI TRỤ CỘT - SPLIT ROWS, ĐẢO HƯỚNG ============ -->
   <section class="section" id="pillars" aria-labelledby="pillarsHeading">
 
     <div class="section-head">
       <p class="eyebrow" data-i18n data-vi="Hai Trụ Cột" data-en="Two Pillars">Hai Trụ Cột</p>
-      <h2 id="pillarsHeading" data-i18n data-vi="Một câu chuyện, hai hình hài" data-en="One story, two forms">Một câu chuyện, hai hình hài</h2>
-      <p data-i18n data-vi="Cùng một thế giới — kể lại bằng trang sách, và sắp tới, bằng một không gian để bước vào." data-en="The same world — told through pages, and soon, through a space to step into.">Cùng một thế giới — kể lại bằng trang sách, và sắp tới, bằng một không gian để bước vào.</p>
+      <h2 id="pillarsHeading" data-i18n data-vi="Một thế giới, hai hình hài" data-en="One world, two forms">Một thế giới, hai hình hài</h2>
+      <p data-i18n data-vi="Khởi đầu từ những trang văn, và hướng tới một không gian sống động nơi người đọc có thể trực tiếp đặt chân vào." data-en="Beginning on the written page, and growing toward a living space you can step right into.">Khởi đầu từ những trang văn, và hướng tới một không gian sống động nơi người đọc có thể trực tiếp đặt chân vào.</p>
     </div>
 
     <div class="pillar-grid">
 
-    <a class="split-row__link" href="https://mendingur.github.io/thesowerscycle/">
+    <a class="split-row__link" href="https://mendingur.github.io/theworldofninecontinents/">
       <div class="split-row">
         <div class="split-row__body">
           <div class="split-row__top">
@@ -756,12 +748,12 @@ a.split-row__link:focus-visible { outline: 2px solid var(--color-accent); outlin
               <svg class="icon-on-accent" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
             </span>
             <h3 class="split-row__title" data-i18n data-vi="Tiểu Thuyết" data-en="The Novel">Tiểu Thuyết</h3>
-            <span class="split-row__tag tag-writing" data-i18n data-vi="Đang Tiếp Diễn" data-en="Ongoing">Đang Tiếp Diễn</span>
+            <span class="split-row__tag tag-writing" data-i18n data-vi="Đang Kiến Tạo" data-en="In Development">Đang Kiến Tạo</span>
           </div>
-          <p class="split-row__meta" data-i18n data-vi="Vòng Tuần Hoàn Người Gieo Hạt" data-en="The Sower's Cycle">Vòng Tuần Hoàn Người Gieo Hạt</p>
-          <p class="split-row__blurb" data-i18n data-vi="Quyển I: Khúc Ca Hy Vọng đã hoàn thành — 28 chương, 4 xen kẽ.&lt;br&gt;Quyển II: Khúc Ai Ca Cho Những Kẻ Vô Danh đã hoàn thành — 34 chương, khoảng 122.000 chữ.&lt;br&gt;Quyển III đang ở phía trước." data-en="Volume I: Anthem of Hope is complete — 28 chapters, 4 interludes.&lt;br&gt;Volume II: Threnody of the Nameless is complete — 34 chapters, about 122,000 words.&lt;br&gt;Volume III lies ahead.">Quyển I: Khúc Ca Hy Vọng đã hoàn thành — 28 chương, 4 xen kẽ.<br>Quyển II: Khúc Ai Ca Cho Những Kẻ Vô Danh đã hoàn thành — 34 chương, khoảng 122.000 chữ.<br>Quyển III đang ở phía trước.</p>
+          <p class="split-row__meta" data-i18n data-vi="The World of Nine Continents" data-en="The World of Nine Continents">The World of Nine Continents</p>
+          <p class="split-row__blurb" data-i18n data-vi="Chín đại lục, bảy chủng tộc, mười bảy vương quốc cùng vòng tuần hoàn bất tận giữa các trạng thái năng lượng. Khung thiết lập đã hoàn chỉnh, sẵn sàng cho hành trình dài kỳ sắp mở màn." data-en="Nine continents, seven races, seventeen kingdoms, and the endless cycle between states of energy. The world's foundations are complete, awaiting the long-form journey ahead.">Chín đại lục, bảy chủng tộc, mười bảy vương quốc cùng vòng tuần hoàn bất tận giữa các trạng thái năng lượng. Khung thiết lập đã hoàn chỉnh, sẵn sàng cho hành trình dài kỳ sắp mở màn.</p>
           <span class="split-row__cta">
-            <span data-i18n data-vi="Bắt đầu đọc" data-en="Start reading">Bắt đầu đọc</span>
+            <span data-i18n data-vi="Khám phá thiết lập thế giới" data-en="Explore the world">Khám phá thiết lập thế giới</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </span>
         </div>
@@ -775,10 +767,10 @@ a.split-row__link:focus-visible { outline: 2px solid var(--color-accent); outlin
             <svg class="icon-on-accent" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9 9 3h6l5 6-8 12Z"/><path d="M4 9h16"/><path d="M9 3 7 9l5 12"/><path d="M15 3l2 6-5 12"/></svg>
           </span>
           <h3 class="split-row__title" data-i18n data-vi="Game" data-en="Game">Game</h3>
-          <span class="split-row__tag tag-soon" data-i18n data-vi="Chưa Bắt Đầu" data-en="Not Started">Chưa Bắt Đầu</span>
+          <span class="split-row__tag tag-soon" data-i18n data-vi="Đang Ấp Ủ" data-en="In Incubation">Đang Ấp Ủ</span>
         </div>
-        <p class="split-row__meta" data-i18n data-vi="chuyển thể thế giới" data-en="adapting the world">chuyển thể thế giới</p>
-        <p class="split-row__blurb" data-i18n data-vi="Một bước đi xa hơn của vũ trụ — thẩm mỹ lấy cảm hứng từ Genshin Impact và Wuthering Waves. Dự án chưa chính thức khởi động." data-en="A further step for the universe — aesthetics inspired by Genshin Impact and Wuthering Waves. The project hasn't officially begun.">Một bước đi xa hơn của vũ trụ — thẩm mỹ lấy cảm hứng từ Genshin Impact và Wuthering Waves. Dự án chưa chính thức khởi động.</p>
+        <p class="split-row__meta" data-i18n data-vi="Dự án chuyển thể tương tác" data-en="Interactive adaptation">Dự án chuyển thể tương tác</p>
+        <p class="split-row__blurb" data-i18n data-vi="Ước vọng đưa chín đại lục bước ra khỏi trang viết thành một thế giới mở giàu tính thẩm mỹ, lấy cảm hứng từ phong cách của Genshin Impact và Wuthering Waves." data-en="An ambition to bring the nine continents beyond the page into an expressive open world, inspired by the aesthetics of Genshin Impact and Wuthering Waves.">Ước vọng đưa chín đại lục bước ra khỏi trang viết thành một thế giới mở giàu tính thẩm mỹ, lấy cảm hứng từ phong cách của Genshin Impact và Wuthering Waves.</p>
       </div>
     </div>
 
@@ -791,7 +783,7 @@ a.split-row__link:focus-visible { outline: 2px solid var(--color-accent); outlin
 
     <div class="section-head">
       <p class="eyebrow" data-i18n data-vi="Ngay Lúc Này" data-en="Right Now">Ngay Lúc Này</p>
-      <h2 id="nowHeading" data-i18n data-vi="Người đứng sau, và những gì đang diễn ra" data-en="Who's behind it, and what's happening">Người đứng sau, và những gì đang diễn ra</h2>
+      <h2 id="nowHeading" data-i18n data-vi="Người chấp bút và nhịp đập của vũ trụ" data-en="The creator and the pulse of the universe">Người chấp bút và nhịp đập của vũ trụ</h2>
     </div>
 
     <div class="now-grid">
@@ -801,8 +793,8 @@ a.split-row__link:focus-visible { outline: 2px solid var(--color-accent); outlin
         <span class="now-card__icon" aria-hidden="true">
           <svg class="icon-on-accent" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-7 8-7s8 3 8 7"/></svg>
         </span>
-        <span class="now-card__title" data-i18n data-vi="Người tạo ra vũ trụ này" data-en="The person behind it">Người tạo ra vũ trụ này</span>
-        <span class="now-card__blurb" data-i18n data-vi="Nguyễn Duy Anh — bút danh Mendingur — viết, và tự tay dựng nên toàn bộ vũ trụ Vòng Tuần Hoàn Người Gieo Hạt, từ trang truyện đầu tiên đến từng dòng mã nguồn." data-en="Nguyễn Duy Anh — pen name Mendingur — writes, and built this entire The Sower's Cycle universe by hand, from the first page to every line of code.">Nguyễn Duy Anh — bút danh Mendingur — viết, và tự tay dựng nên toàn bộ vũ trụ Vòng Tuần Hoàn Người Gieo Hạt, từ trang truyện đầu tiên đến từng dòng mã nguồn.</span>
+        <span class="now-card__title" data-i18n data-vi="Người đứng sau thế giới này" data-en="The architect of this world">Người đứng sau thế giới này</span>
+        <span class="now-card__blurb" data-i18n data-vi="Nguyễn Duy Anh - với bút danh Mendingur - tự tay kiến tạo từng mảnh ghép của vũ trụ này: từ những quy luật ma pháp đầu tiên, bản đồ các đại lục cho đến từng dòng mã nguồn." data-en="Nguyen Duy Anh - writing under the pen name Mendingur - crafts every piece of this universe by hand: from its foundational laws of magic and continental maps to every line of code.">Nguyễn Duy Anh - với bút danh Mendingur - tự tay kiến tạo từng mảnh ghép của vũ trụ này: từ những quy luật ma pháp đầu tiên, bản đồ các đại lục cho đến từng dòng mã nguồn.</span>
         <span class="now-card__cta">
           <span data-i18n data-vi="Tìm hiểu về tác giả" data-en="Meet the author">Tìm hiểu về tác giả</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -811,20 +803,16 @@ a.split-row__link:focus-visible { outline: 2px solid var(--color-accent); outlin
       </a>
 
       <div class="now-card">
-        <h3 class="now-card__title" data-i18n data-vi="Nhật ký vũ trụ" data-en="Universe log">Nhật ký vũ trụ</h3>
+        <h3 class="now-card__title" data-i18n data-vi="Nhật ký kiến tạo" data-en="Creation log">Nhật ký kiến tạo</h3>
         <!-- Thêm mục mới: sao chép một .log-item, đặt lên đầu danh sách (mới nhất trước). -->
         <ul class="log-list">
           <li class="log-item">
             <span class="log-dot" aria-hidden="true"></span>
-            <span class="log-text" data-i18n data-vi="Quyển II: Khúc Ai Ca Cho Những Kẻ Vô Danh hoàn thành — 5 phần, 14 tập, 34 chương, khoảng 122.000 chữ." data-en="Volume II: Threnody of the Nameless completed — 5 parts, 14 books, 34 chapters, about 122,000 words.">Quyển II: Khúc Ai Ca Cho Những Kẻ Vô Danh hoàn thành — 5 phần, 14 tập, 34 chương, khoảng 122.000 chữ.</span>
+            <span class="log-text" data-i18n data-vi="Hoàn tất hồ sơ nền tảng của thế giới: bản đồ chín đại lục, bảy chủng tộc, mười bảy vương quốc, định luật ma pháp, đức tin và biên niên sử Thánh Lịch." data-en="Completed the world's foundational lore: nine continents, seven races, seventeen kingdoms, laws of magic, faiths, and the Sacred Calendar chronicle.">Hoàn tất hồ sơ nền tảng của thế giới: bản đồ chín đại lục, bảy chủng tộc, mười bảy vương quốc, định luật ma pháp, đức tin và biên niên sử Thánh Lịch.</span>
           </li>
           <li class="log-item">
             <span class="log-dot" aria-hidden="true"></span>
-            <span class="log-text" data-i18n data-vi="Quyển I: Khúc Ca Hy Vọng tái bản — mở rộng lên 28 chương, 4 xen kẽ, khoảng 62.000 chữ." data-en="Volume I: Anthem of Hope re-released — expanded to 28 chapters, 4 interludes, about 62,000 words.">Quyển I: Khúc Ca Hy Vọng tái bản — mở rộng lên 28 chương, 4 xen kẽ, khoảng 62.000 chữ.</span>
-          </li>
-          <li class="log-item">
-            <span class="log-dot" aria-hidden="true"></span>
-            <span class="log-text" data-i18n data-vi="Quyển I: Khúc Ca Hy Vọng hoàn thành — 25 chương, khoảng 52.000 chữ." data-en="Volume I: Anthem of Hope completed — 25 chapters, about 52,000 words.">Quyển I: Khúc Ca Hy Vọng hoàn thành — 25 chương, khoảng 52.000 chữ.</span>
+            <span class="log-text" data-i18n data-vi="Khởi động dự án tiểu thuyết dài kỳ The World of Nine Continents - đặt nền móng cho một vũ trụ giả tưởng nguyên bản, tách biệt hoàn toàn với Trái Đất." data-en="Launched the long-form novel project The World of Nine Continents - laying the cornerstone for an original fantasy universe completely separate from Earth.">Khởi động dự án tiểu thuyết dài kỳ The World of Nine Continents - đặt nền móng cho một vũ trụ giả tưởng nguyên bản, tách biệt hoàn toàn với Trái Đất.</span>
           </li>
         </ul>
       </div>
@@ -832,11 +820,11 @@ a.split-row__link:focus-visible { outline: 2px solid var(--color-accent); outlin
     </div>
   </section>
 
-  <!-- ============ FOOTER — LETTER CLOSE (Ft6) ============ -->
+  <!-- ============ FOOTER - LETTER CLOSE (Ft6) ============ -->
   <footer class="foot-letter">
-    <p class="foot-letter__close" data-i18n data-vi="Cảm ơn vì đã ghé qua." data-en="Thank you for stopping by.">
-      Cảm ơn vì đã ghé qua.<br>
-      <span class="foot-letter__sign" data-i18n data-vi="— Mendingur" data-en="— Mendingur">— Mendingur</span>
+    <p class="foot-letter__close" data-i18n data-vi="Cảm ơn bạn đã ghé thăm Đại Sảnh." data-en="Thank you for stopping by the Hall.">
+      Cảm ơn bạn đã ghé thăm Đại Sảnh.<br>
+      <span class="foot-letter__sign" data-i18n data-vi="- Mendingur" data-en="- Mendingur">- Mendingur</span>
     </p>
 
     <div class="foot-letter__row">
@@ -862,7 +850,7 @@ a.split-row__link:focus-visible { outline: 2px solid var(--color-accent); outlin
       </a>
     </div>
 
-    <div class="foot-letter__copyright" data-i18n data-vi="© 2026 Nguyễn Duy Anh (bút danh: Mendingur)." data-en="© 2026 Nguyễn Duy Anh (pen name: Mendingur).">
+    <div class="foot-letter__copyright" data-i18n data-vi="© 2026 Nguyễn Duy Anh (bút danh: Mendingur)." data-en="© 2026 Nguyen Duy Anh (pen name: Mendingur).">
       © 2026 Nguyễn Duy Anh (bút danh: Mendingur).
     </div>
   </footer>
@@ -871,10 +859,10 @@ a.split-row__link:focus-visible { outline: 2px solid var(--color-accent); outlin
 
 <script>
   window.MENDINGUR_PAGE = {
-    titleVi: 'Mendingur — Đại Sảnh',
-    titleEn: 'Mendingur — The Hall',
-    descVi: 'Đại Sảnh của Mendingur — nơi hội tụ tiểu thuyết Vòng Tuần Hoàn Người Gieo Hạt và một dự án game đang được ấp ủ.',
-    descEn: "Mendingur's Hall — where the novel The Sower's Cycle and an early-stage game project come together."
+    titleVi: 'Mendingur - Đại Sảnh',
+    titleEn: 'Mendingur - The Hall',
+    descVi: 'Đại Sảnh của Mendingur - nơi khởi nguồn của tiểu thuyết giả tưởng The World of Nine Continents và một dự án game đang được ấp ủ.',
+    descEn: "Mendingur's Hall - home to the fantasy novel The World of Nine Continents and an early-stage game project."
   };
 </script>
 <script src="script/site.js"></script>
