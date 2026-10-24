@@ -267,6 +267,7 @@ h1 {
 /* ================= MỤC LỤC (TOC) — kiểu mục lục sách ================= */
 .section[id] { scroll-margin-top: var(--space-lg); }
 #ranks { scroll-margin-top: 4rem; }
+#toc { scroll-margin-top: 3.75rem; }
 
 .toc {
   max-width: 1180px;
@@ -549,7 +550,7 @@ h1 {
 
   <div class="cursor-glow" id="cursorGlow"></div>
 
-  <button class="to-top" id="toTop" type="button" aria-label="Cuộn lên đầu trang" data-aria-vi="Cuộn lên đầu trang" data-aria-en="Back to top">
+  <button class="to-top" id="toTop" type="button" aria-label="Về mục lục" data-aria-vi="Về mục lục" data-aria-en="Back to contents">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg>
   </button>
 
@@ -951,6 +952,7 @@ h1 {
 /* Mục lục + nút cuộn lên: tự cuộn mượt bằng JS, không phụ thuộc CSS scroll-behavior
    (nhiều máy Windows bật "giảm chuyển động" khiến cuộn mượt của CSS bị tắt). */
 (function () {
+  var root = document.documentElement;
   var rafId = null;
 
   function ease(t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
@@ -958,30 +960,43 @@ h1 {
     try { window.scrollTo({ top: y, behavior: 'instant' }); }
     catch (e) { window.scrollTo(0, y); }
   }
-  function cancel() { if (rafId !== null) { cancelAnimationFrame(rafId); rafId = null; } }
+  function currentY() {
+    return window.pageYOffset || root.scrollTop || document.body.scrollTop || 0;
+  }
+  // tắt scroll-behavior của CSS trong lúc tự cuộn để hai cơ chế không giẫm chân nhau
+  function lockCss() { root.style.scrollBehavior = 'auto'; }
+  function unlockCss() { root.style.scrollBehavior = ''; }
+  function cancel() {
+    if (rafId !== null) { cancelAnimationFrame(rafId); rafId = null; }
+    unlockCss();
+  }
 
   function scrollToY(target, done) {
     cancel();
-    var start = window.pageYOffset;
-    var max = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+    var start = currentY();
+    var max = Math.max(0, root.scrollHeight - window.innerHeight);
     target = Math.max(0, Math.min(target, max));
     var dist = target - start;
     if (Math.abs(dist) < 2) { if (done) done(); return; }
-    var dur = Math.min(900, Math.max(450, Math.abs(dist) * 0.3));
+    var dur = Math.min(1100, Math.max(450, Math.abs(dist) * 0.3));
     var t0 = null;
+    lockCss();
     function step(ts) {
       if (t0 === null) t0 = ts;
       var p = Math.min(1, (ts - t0) / dur);
       jump(start + dist * ease(p));
-      if (p < 1) { rafId = requestAnimationFrame(step); }
-      else { rafId = null; if (done) done(); }
+      if (p < 1) { rafId = requestAnimationFrame(step); return; }
+      rafId = null;
+      jump(target);               // chốt đúng vị trí đích
+      unlockCss();
+      if (done) done();
     }
     rafId = requestAnimationFrame(step);
   }
 
-  // người dùng tự cuộn/chạm thì dừng hiệu ứng ngay
-  ['wheel', 'touchstart', 'keydown'].forEach(function (ev) {
-    window.addEventListener(ev, cancel, { passive: true });
+  // người dùng tự cuộn bằng chuột/chạm thì dừng hiệu ứng ngay
+  ['wheel', 'touchmove'].forEach(function (ev) {
+    window.addEventListener(ev, function () { if (rafId !== null) cancel(); }, { passive: true });
   });
 
   function setHash(hash) {
@@ -998,25 +1013,32 @@ h1 {
       if (!el) return;
       e.preventDefault();
       var offset = parseFloat(getComputedStyle(el).scrollMarginTop) || 0;
-      scrollToY(el.getBoundingClientRect().top + window.pageYOffset - offset, function () {
+      scrollToY(el.getBoundingClientRect().top + currentY() - offset, function () {
         setHash('#' + id);
       });
     });
   });
 
+  // Nút ở góc phải dưới: chỉ hiện khi đã cuộn xuống khỏi mục lục,
+  // bấm vào thì trượt về đúng mục lục.
   var toTop = document.getElementById('toTop');
-  if (toTop) {
+  var tocEl = document.getElementById('toc');
+  if (toTop && tocEl) {
     var ticking = false;
     function update() {
       ticking = false;
-      toTop.classList.toggle('show', window.pageYOffset > 400);
+      toTop.classList.toggle('show', tocEl.getBoundingClientRect().bottom < 0);
     }
     window.addEventListener('scroll', function () {
       if (!ticking) { ticking = true; requestAnimationFrame(update); }
     }, { passive: true });
+    window.addEventListener('resize', update);
     update();
     toTop.addEventListener('click', function () {
-      scrollToY(0, function () { setHash(''); });
+      var offset = parseFloat(getComputedStyle(tocEl).scrollMarginTop) || 0;
+      scrollToY(tocEl.getBoundingClientRect().top + window.pageYOffset - offset, function () {
+        setHash('#toc');
+      });
     });
   }
 })();
