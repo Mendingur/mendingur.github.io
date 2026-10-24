@@ -142,10 +142,6 @@ a { color: inherit; }
     transition: opacity .35s ease;
   }
 
-@media (prefers-reduced-motion: reduce) {
-  .cursor-glow { display: none; }
-}
-
 /* ---- top-left back navigation (absent on the Gate itself) ---- */
 
 .back-link {
@@ -515,7 +511,6 @@ footer .sep {
 
 @media (prefers-reduced-motion: reduce) {
   .spark { display: none; }
-  .cursor-glow { display: none; }
   .back-link, .back-link svg, .back-link-icon, .back-link-icon svg { animation: none !important; transition: none !important; }
   .settings-popover, .menu-toggle-bars span, html, body { transition: none !important; }
 }

@@ -257,7 +257,9 @@
   // soft brown glow that follows the cursor anywhere on the page.
   // Uses transform (GPU compositing) instead of left/top so it stays cheap
   // even at a high mousemove rate.
-  if (!reduceMotion) {
+  // Giữ hoạt động cả khi hệ điều hành bật "giảm chuyển động": vệt sáng này
+  // chỉ di chuyển theo chính con trỏ của người dùng, không tự chạy.
+  {
     var glow = document.getElementById('cursorGlow');
     if (glow) {
       var glowShown = false;

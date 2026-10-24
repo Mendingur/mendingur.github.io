@@ -95,16 +95,20 @@ main { display: block; position: relative; }
   }
 
 .rift-wrap {
-    width: min(160px, 38vw);
+    --rift-w: min(160px, 38vw);
+    --glow-lo: calc(var(--rift-w) * 0.082);
+    --glow-hi: calc(var(--rift-w) * 0.118);
+    width: var(--rift-w);
     margin: 0 auto var(--space-sm);
     position: relative;
     z-index: 1;
+    filter: drop-shadow(0 0 var(--glow-lo) var(--color-accent-soft));
     animation: breathe 7s ease-in-out infinite;
   }
 @media (prefers-reduced-motion: reduce) { .rift-wrap { animation: none; } }
 @keyframes breathe {
-  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 18px var(--color-accent-soft)); }
-  50% { transform: scale(1.02); filter: drop-shadow(0 0 26px var(--color-accent-soft)); }
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 var(--glow-lo) var(--color-accent-soft)); }
+  50% { transform: scale(1.02); filter: drop-shadow(0 0 var(--glow-hi) var(--color-accent-soft)); }
 }
 
 h1 {
